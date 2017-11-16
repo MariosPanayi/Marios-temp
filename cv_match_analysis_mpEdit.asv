@@ -90,13 +90,12 @@ else
     peak_max = find(voltages > params.shiftV_max, 1, 'last');
 end
 
-%
-
 shifted_cv = fcv_CV;
 if params.shiftpeak
     [~, index] = max(cv_match);
     avg_peak = round(mean(index(1:7)));
     %hardcoded number of templates
+    %add zeros to start or end of raw data
     [value, data_peak] = max(shifted_cv(peak_min:peak_max));
     shift_val = abs(data_peak+(peak_min-1)-avg_peak);
     
@@ -109,10 +108,11 @@ if params.shiftpeak
             hold on
             plot(cv_match(:,length(shifted_cv):length(shifted_cv)+shift_val,'color',[0.6350    0.0780    0.1840]))
         end
-        
-        %remove start of raw data
         shifted_cv(1:shift_val) = [];        
-        %remove end of cv templates
+        %add nans to the end
+        %shifted_cv(length(shifted_cv):length(shifted_cv)+shift_val)=nan;
+        
+        %or remove end of cv match
         cv_match(:,length(shifted_cv):length(shifted_cv)+shift_val)=[];
         
     elseif data_peak<avg_peak && params.shiftpeak
@@ -127,10 +127,11 @@ if params.shiftpeak
             hold on
             plot(cv_match(1:shift_val,:),'color',[0.6350    0.0780    0.1840])
         end
-        
-        %remove end of raw data
         shifted_cv(start_index:end_index)=[];  
-        %remove start of cv templates
+        %add nans to start
+        %shifted_cv = [shifted_cv;nan(shift_val,1)];
+        
+        %or remove start of cv match
         cv_match(1:shift_val,:) = [];
     end
 end

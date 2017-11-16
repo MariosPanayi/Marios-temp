@@ -14,6 +14,10 @@ cv_params.colormap_type = 'fcv';
 cv_params.scan_number = 60;
 cv_params.point_number = 319;
 cv_params.bg = 45;
+cv_params.no_of_channels = 1;
+cv_params.shiftV_min = 0.6;
+cv_params.shiftV_max = 0.8;
+cv_params.shiftV_ascending = 1;
 
 %--------------------------------------------------------------
 
@@ -54,4 +58,4 @@ for i = 1:length(cut_ch0_data)
 end
 
 
-[RHO, r_sqr, h] = cv_match_analysis(processed_data{2}, cv_params, cut_TTLs{2});
+[RHO, r_sqr, h] = cv_match_analysis_mpEdit(processed_data{2}, cv_params, cut_TTLs{2});
