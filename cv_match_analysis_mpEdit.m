@@ -32,7 +32,7 @@ if nargin < 3; TTLs = []; end;
 
 %check params - apply defaults for missing values
 if ~isfield(params,'cv_match_template') || isempty(params.cv_match_template)
-    error('Please provide CV match template filename')
+    error('Please provide CV match templates')
 end
 if ~isfield(params,'point_number') || isempty(params.point_number)
      params.point_number = 150;
@@ -61,13 +61,8 @@ end
 if ~isfield(params,'shiftV_ascending') || isempty(params.shiftV_ascending)
      params.shiftV_ascending = 1;
 end
-%% load model cvs from filepath -> cv_match
-try
-    cv_match = load(params.cv_match_template);
-catch
-    error('Failed to load cv match template, please check filename')
-end
-
+%% Pull out fcv data at specified scan number/point for plotting and analysis
+cv_match = params.cv_match_template;
 fcv_IT = fcv_data(params.point_number,:);
 fcv_CV = fcv_data(:,params.scan_number);
 ts = [0:0.1:length(fcv_IT)/10-0.1];
@@ -95,8 +90,8 @@ end
 shifted_cv = fcv_CV;
 if params.shiftpeak
     [~, index] = max(cv_match);
-    avg_peak = round(mean(index(1:7)));
-    %hardcoded number of templates
+    avg_peak = round(mean(index));
+
     [value, data_peak] = max(shifted_cv(peak_min:peak_max));
     shift_val = abs(data_peak+(peak_min-1)-avg_peak);
     
@@ -105,9 +100,9 @@ if params.shiftpeak
             subplot(2,3,3);
             hold on
             plot(shifted_cv(1:shift_val),'color',[0.6350    0.0780    0.1840])
-            subplot(2,3,4);
-            hold on
-            plot(cv_match(:,length(shifted_cv):length(shifted_cv)+shift_val,'color',[0.6350    0.0780    0.1840]))
+%             subplot(2,3,6);
+%             hold on
+%             plot(cv_match(:,length(shifted_cv):length(shifted_cv)+shift_val,'color',[0.6350    0.0780    0.1840]))
         end
         
         %remove start of raw data
@@ -123,9 +118,9 @@ if params.shiftpeak
             subplot(2,3,3);
             hold on
             plot([start_index:end_index],shifted_cv(start_index:end_index),'color',[0.6350    0.0780    0.1840])
-            subplot(2,3,4);
-            hold on
-            plot(cv_match(1:shift_val,:),'color',[0.6350    0.0780    0.1840])
+%             subplot(2,3,6);
+%             hold on
+%             plot(cv_match(1:shift_val,:),'color',[0.6350    0.0780    0.1840])
         end
         
         %remove end of raw data
@@ -142,7 +137,7 @@ r_sqr = RHO.^2;
 r_sqr = r_sqr.*index;
 if params.plotfig
     [val,index] = max(r_sqr(1:7));
-    suptitle(sprintf('rsqr = %d in template: %d bg = %d scan = %d',val,index,params.bg,params.scan_number))
+    suptitle(sprintf('Rsqr = %d in template # %d bg = %d scan = %d',val,index,params.bg,params.scan_number))
     pos = get(h,'position');
     set(h,'position',[pos(1:2)/4 pos(3:4)*2])
 

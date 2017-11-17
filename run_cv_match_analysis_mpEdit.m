@@ -2,12 +2,16 @@ clear
 close all
 datapath = 'C:\Users\mpanagi\Documents\GitHub\fcv_data_processing\test data\46_20170208_02 - Variable reward post\';
 
-%-------------------------------------------------------------
+%%
+%Define templates for analyte of interest - n.b. only 1 analyte at a time, repeat cv match separately for additional analytes
+CV_templates = dlmread('C:\Users\mpanagi\Documents\GitHub\fcv_data_processing\chemoset\cvmatrix1.txt');
+CV_templates = CV_templates(:,1:7);
 %cv match params
 bg_params.filt_freq = 4000; %we found 2000Hz for 2 channel data gave a smoother CV
 bg_params.sample_freq = 58820; 
 
-cv_params.cv_match_template = 'C:\Users\mpanagi\Documents\GitHub\fcv_data_processing\chemoset\cvmatrix1.txt';
+
+cv_params.cv_match_template = CV_templates;
 cv_params.shiftpeak = 1;
 cv_params.plotfig = 1;
 cv_params.colormap_type = 'fcv';
