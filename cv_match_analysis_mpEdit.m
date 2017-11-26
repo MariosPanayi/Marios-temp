@@ -18,9 +18,12 @@ function [RHO, r_sqr, h] = cv_match_analysis(fcv_data, params, TTLs)
 %         .shiftpeak = 1;           %%if .shiftpeak = 1, allow cv match to shift the peak of the data CV to match the template cv
 %         .plotfig = 1;            %%if .plotfig = 1, plot tarheel style data for example
 %         .colormap_type = 'fcv';
-%         .scan_number = 140;
-%         .point_number = 170;
+%         .scan_number = 20;
+%         .point_number = 150;
 %         .bg = 95;
+%         .shiftV_min = 0.6;    %%For peak shift matching, sets lower bound Voltage of waveform for where the peak of the wave form should be.
+%         .shiftV_max = 0.8;    %%For peak shift matching, sets upper bound Voltage of waveform for where the peak of the wave form should be.
+%         .shiftV_ascending = 1;%%For peak shift matching, deinfes whether the min/max Voltage bounds are on the ascending or descending part of the applied waveform
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 %check inputs
 if nargin < 1; error('Need FCV data'); end;
@@ -29,7 +32,7 @@ if nargin < 3; TTLs = []; end;
 
 %check params - apply defaults for missing values
 if ~isfield(params,'cv_match_template') || isempty(params.cv_match_template)
-    error('Please provide CV match template filename')
+    error('Please provide CV match templates')
 end
 if ~isfield(params,'point_number') || isempty(params.point_number)
      params.point_number = 150;
@@ -49,14 +52,17 @@ end
 if ~isfield(params,'bg') || isempty(params.bg)
      params.bg = [];
 end
-
-%% load model cvs from filepath -> cv_match
-try
-    cv_match = load(params.cv_match_template);
-catch
-    error('Failed to load cv match template, please check filename')
+if ~isfield(params,'shiftV_min') || isempty(params.shiftV_min)
+     params.shiftV_min = 0.6;
 end
-
+if ~isfield(params,'shiftV_max') || isempty(params.shiftV_max)
+     params.shiftV_max = 0.8;
+end
+if ~isfield(params,'shiftV_ascending') || isempty(params.shiftV_ascending)
+     params.shiftV_ascending = 1;
+end
+%% Pull out fcv data at specified scan number/point for plotting and analysis
+cv_match = params.cv_match_template;
 fcv_IT = fcv_data(params.point_number,:);
 fcv_CV = fcv_data(:,params.scan_number);
 ts = [0:0.1:length(fcv_IT)/10-0.1];
@@ -68,33 +74,43 @@ end
 
 %% if .shiftpeak = 1, allow cv match to shift the peak of the data CV to match the template cv
 %This is where hardcoding needs to be fixed
+
+%identify min and max boundary for peak shift
+voltages = voltagesweep(params.no_of_channels);
+if params.shiftV_ascending
+    peak_min = find(voltages > params.shiftV_min, 1, 'first');
+    peak_max = find(voltages > params.shiftV_max, 1, 'first');
+else
+    peak_min = find(voltages > params.shiftV_min, 1, 'last');
+    peak_max = find(voltages > params.shiftV_max, 1, 'last');
+end
+
+%
+
 shifted_cv = fcv_CV;
 if params.shiftpeak
     [~, index] = max(cv_match);
-    avg_peak = round(mean(index(1:7)));
-    %hardcoded number of templates
-    %add zeros to start or end of raw data
-    %HARDCODED PEAK VALS
-    [value, peak] = max(shifted_cv(148:178));
-    shift_val = abs(peak+147-avg_peak);
+    avg_peak = round(mean(index));
+
+    [value, data_peak] = max(shifted_cv(peak_min:peak_max));
+    shift_val = abs(data_peak+(peak_min-1)-avg_peak);
     
-    if peak>avg_peak && params.shiftpeak
+    if data_peak>avg_peak && params.shiftpeak
         if params.plotfig
             subplot(2,3,3);
             hold on
             plot(shifted_cv(1:shift_val),'color',[0.6350    0.0780    0.1840])
-            subplot(2,3,4);
-            hold on
-            plot(cv_match(:,length(shifted_cv):length(shifted_cv)+shift_val,'color',[0.6350    0.0780    0.1840]))
+%             subplot(2,3,6);
+%             hold on
+%             plot(cv_match(:,length(shifted_cv):length(shifted_cv)+shift_val,'color',[0.6350    0.0780    0.1840]))
         end
-        shifted_cv(1:shift_val) = [];        
-        %add nans to the end
-        %shifted_cv(length(shifted_cv):length(shifted_cv)+shift_val)=nan;
         
-        %or remove end of cv match
+        %remove start of raw data
+        shifted_cv(1:shift_val) = [];        
+        %remove end of cv templates
         cv_match(:,length(shifted_cv):length(shifted_cv)+shift_val)=[];
         
-    elseif peak<avg_peak && params.shiftpeak
+    elseif data_peak<avg_peak && params.shiftpeak
         
         start_index = length(shifted_cv)-shift_val+1;
         end_index = length(shifted_cv);
@@ -102,19 +118,28 @@ if params.shiftpeak
             subplot(2,3,3);
             hold on
             plot([start_index:end_index],shifted_cv(start_index:end_index),'color',[0.6350    0.0780    0.1840])
-            subplot(2,3,4);
-            hold on
-            plot(cv_match(1:shift_val,:),'color',[0.6350    0.0780    0.1840])
+%             subplot(2,3,6);
+%             hold on
+%             plot(cv_match(1:shift_val,:),'color',[0.6350    0.0780    0.1840])
         end
-        shifted_cv(start_index:end_index)=[];  
-        %add nans to start
-        %shifted_cv = [shifted_cv;nan(shift_val,1)];
         
-        %or remove start of cv match
+        %remove end of raw data
+        shifted_cv(start_index:end_index)=[];  
+        %remove start of cv templates
         cv_match(1:shift_val,:) = [];
     end
 end
 
+%r² for data cv and different cv matchs
+RHO = corr(shifted_cv,cv_match);
+index = sign(RHO);
+r_sqr = RHO.^2;
+r_sqr = r_sqr.*index;
+if params.plotfig
+    [val,index] = max(r_sqr(1:7));
+    suptitle(sprintf('Rsqr = %d in template # %d bg = %d scan = %d',val,index,params.bg,params.scan_number))
+    pos = get(h,'position');
+    set(h,'position',[pos(1:2)/4 pos(3:4)*2])
 
 
 end
