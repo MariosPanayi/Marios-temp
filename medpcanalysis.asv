@@ -21,7 +21,7 @@ clc
 
 
 FILEPATH = 'C:\Users\mpanagi\Documents\GitHub\Marios-temp\MPCTransferData.xlsx';
-for subj = 1:32
+for subj = 17:32
     try
         
         
@@ -38,11 +38,7 @@ for subj = 1:32
         % data = num(1:index(1)-1,:);
         data = num(index(subj)+1:index(subj+1)-1,:);
         
-        if sum(data(:,1)==5) > sum(data(:,1)==7)
-            activeLP = 5;
-        else
-            activeLP = 7;
-        end
+        if sum(data(:,1)==5)
         
         
         %Get subject details from sheet 2
@@ -279,5 +275,5 @@ for subj = 1:32
         
     end
     close all
-    %     clearvars -except subj
+%     clearvars -except subj
 end
