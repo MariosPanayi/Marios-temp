@@ -20,8 +20,12 @@ clc
 % \17 = ITI start
 
 
-FILEPATH = 'C:\Users\mpanagi\Documents\GitHub\Marios-temp\MPCTransferData.xlsx';
-for subj = 1:32
+FILEPATH = 'C:\Users\mpanagi\Documents\GitHub\Marios-temp\GLRA003\GLRA003_RI30.xlsx';
+[~,~,dataId]= xlsread(FILEPATH,2);
+totalSubj = size(dataId,1)/2;
+
+for subj = 1:totalSubj
+
     try
         
         
@@ -54,7 +58,7 @@ for subj = 1:32
         
         genotype = dataId(subj*2, 5);
         genotype = char(genotype);
-        if genotype(1) == 'G'
+        if genotype(1) == 'K'
             genotype = 'KO';
         else
             genotype = 'WT';
@@ -113,7 +117,7 @@ for subj = 1:32
         subplot(2,2,4)
         plot(magEntry,magDiff)
         title('Mag Duration - across session');
-        xlabel('mageEntry time within session')
+        xlabel('magEntry time within session')
         ylabel('IRI (s)')
         
         
@@ -272,7 +276,7 @@ for subj = 1:32
         
         fignames = {'Inter Response Intervals', 'Aligned Responses', 'Post Reward Response Intervals', 'Response Chains'};
         for i = 1:length(figlist)
-            saveas(figure(i), ['GLRA003_Fig' num2str(i) '_' genotype '_' mouseid '_' fignames{1,i} '.png'])
+            saveas(figure(i), ['GLRA003_RI30_Fig' num2str(i) '_' genotype '_' mouseid '_' fignames{1,i} '.png'])
         end
         
     catch

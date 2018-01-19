@@ -20,8 +20,12 @@ clc
 % \17 = ITI start
 
 
-FILEPATH = 'C:\Users\mpanagi\Documents\GitHub\Marios-temp\GLRA003\GLRA003_MPCData.xlsx';
-for subj = 1
+FILEPATH = 'C:\Users\mpanagi\Documents\GitHub\Marios-temp\GLRA003\GLRA003_RI60Day1.xlsx';
+[~,~,dataId]= xlsread(FILEPATH,2);
+totalSubj = size(dataId,1)/2;
+
+for subj = 1:totalSubj
+
     try
         
         
@@ -33,8 +37,6 @@ for subj = 1
         index = [1;index];
         
         
-        [~,sheets] = xlsfinfo(FILEPATH);
-        numsheets = size(sheets,2);
         
         % locate data associated between NaNs
         % data = num(1:index(1)-1,:);
@@ -56,7 +58,7 @@ for subj = 1
         
         genotype = dataId(subj*2, 5);
         genotype = char(genotype);
-        if genotype(1) == 'G'
+        if genotype(1) == 'K'
             genotype = 'KO';
         else
             genotype = 'WT';
@@ -115,7 +117,7 @@ for subj = 1
         subplot(2,2,4)
         plot(magEntry,magDiff)
         title('Mag Duration - across session');
-        xlabel('mageEntry time within session')
+        xlabel('magEntry time within session')
         ylabel('IRI (s)')
         
         
@@ -169,22 +171,6 @@ for subj = 1
         set(gca,'Ydir','reverse')
         hold off
         
-        
-        
-        %%
-        timeResolution = 0.01;
-        Cont_rasterDataLP = zeros(numTrials, (time_pre + time_post)/timeResolution);
-        index = sub2ind(size(Cont_rasterDataLP), rasterDataLP(:,1), ((rasterDataLP(:,2) + time_pre)/timeResolution));
-        Cont_rasterDataLP(int16(index)) = 1;
-       
-        
-        Cont_rasterDataMagActivity = zeros(numTrials, (time_pre + time_post)/timeResolution);
-        
-        
-        
-        rasterDataMagEntry
-        rasterDataMagExit
-      %%  
         
         %first response post reward [not indicating what the response is...]
         %Reward intervals
@@ -289,13 +275,13 @@ for subj = 1
         fullscreen = get(0, 'ScreenSize');
         
         fignames = {'Inter Response Intervals', 'Aligned Responses', 'Post Reward Response Intervals', 'Response Chains'};
-%         for i = 1:length(figlist)
-%             saveas(figure(i), ['Fig' num2str(i) '_' genotype '_' mouseid '_' fignames{1,i} '.png'])
-%         end
+        for i = 1:length(figlist)
+            saveas(figure(i), ['GLRA003_RI60Day1_Fig' num2str(i) '_' genotype '_' mouseid '_' fignames{1,i} '.png'])
+        end
         
     catch
         
     end
-%     close all
+    close all
     %     clearvars -except subj
 end
