@@ -12,11 +12,13 @@ eventMatrix = 'A';
 tsMatrix = 'B';
 
 %Active lever is in list L; 1 = Left, 2 = Right N.B. this is based on the inputs of the Med Box, the correspondign ts is Left lever = 5, Right lever = 7
-activeLP = 'L'
+LeverIdentityList = 'L';
 leftLeverid = 5;
 rightLeverid = 7;
+
+responseBins_All = [];
 %%
-for i =1 
+for i = size(rawdata,2) 
     %1:size(rawdata,2)
     
     %% Extract information first
@@ -32,7 +34,7 @@ for i =1
     MSN = rawdata{1,i}.MSN;
     
     %Establish Lever identity
-    if rawdata{1,i}.L == 1
+    if rawdata{1,i}.(LeverIdentityList) == 1
         activeLP = leftLeverid;
         Active_Lever = 'Left';
     else
@@ -44,12 +46,13 @@ for i =1
     event = rawdata{1,i}.(eventMatrix);
     ts = rawdata{1,i}.(tsMatrix);
         data = [event; ts]';
+        
     %% Analyse data
     [ IRI, targetExtracted ] = extractRFrequency( data, activeLP );
-    binSize = 360;
+    binSize = 60;
     session_Length = 1800;    
     [ timeBins, responseBins ] = extractRFrequency_timebins( targetExtracted, binSize, session_Length );
     
-      
+      responseBins_All(i) = responseBins;
     
 end
