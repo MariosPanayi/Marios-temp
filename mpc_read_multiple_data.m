@@ -13,12 +13,14 @@ function data = mpc_read_data(filename)
     %          converted to vectors.
     %
     % Sam Gershman, June 2012
+    % Marios Panayi edit 12/03/2018 - multiple subjects as output 
     
     f = fopen(filename);
     
     tline = fgetl(f);
     c = 0;
     x = [];
+    subj = 1;
 %     data = cell(4,1);
     
     while ischar(tline)
@@ -40,7 +42,8 @@ function data = mpc_read_data(filename)
             a = T{c-1}(1:j-1);
             a(a==' ') = '_';    %you can't have spaces in field names, so convert to underscore       
             if strcmp(a,'Start_Date') &&  exist('temp','var'); 
-                data{temp.Box} = temp; 
+                data{subj} = temp; 
+                subj = subj +1;
             end
             if numel(a)>0
                 h = T{c-1}(j+1:end);
@@ -53,6 +56,6 @@ function data = mpc_read_data(filename)
             end
         end
     end
-    data = temp;
-%     data{temp.Box} = temp;
+%     data = temp;
+    data{subj} = temp;
     fclose(f);
