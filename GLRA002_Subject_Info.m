@@ -57,6 +57,36 @@ calibrationfactor = [0.04072445
 0.01435];
         %% Plot
       close all
-        i = 12;
+        i = 14;
         h = plot_fcv_trials_Anaesthetized(data(i).processed.model_cvs, data(i).processed.ts, data(i).raw.TTLs, params, data(i).processed.c_predicted);
+        data(i).subject
          %suptitle([params.fig_title]);
+         %%
+         
+
+subjects = {'GLRA50.6d';'GLRA51.6c';'GLRA64.1e';'GLRA64.1c';'GLRA52.4d';'GLRA53.5f';'GLRA54.3d';'GLRA56.2a';'GLRA62.4b';'GLRA65.1a';'GLRA58.3c';'GLRA58.3d';'GLRA58.3b';'GLRA65.2a'};
+
+peakperiod = [3;3;6;3;3;3;3;3;3;3;3;3;3;3];
+trim = [0 20;
+    0 20;
+    0 20;
+    0 20;
+    0 20;
+    0 20;
+    0 20;
+    0 20;
+    0 20;
+    5 25;
+    0 20;
+    0 20;
+    0 20;
+    0 20;];
+
+%%
+
+readtable('C:\Users\mpanagi\Documents\GitHub\Marios-temp\GLRA002_params.xlsx');
+
+subj = 'GLRA65.2a';
+C = {experimentParams{:,1}};
+answer = cellfun(@(x) strfind(x,subj), C,  'UniformOutput', false )
+location = find(~cellfun(@isempty, answer))
