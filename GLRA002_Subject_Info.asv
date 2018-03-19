@@ -85,17 +85,8 @@ trim = [0 20;
 %%
 
 experimentParams = readtable('C:\Users\mario\Documents\GitHub\Marios-temp\GLRA002_params.xlsx');
-%set row names
-experimentParams.Properties.RowNames = experimentParams.SubjID;
 
 subj = {'GLRA64.1e'};
 C = {experimentParams{:,1}};
 answer = cellfun(@(x) strfind(x,subj), C,  'UniformOutput', false )
-location = find(~cellfun(@isempty, answer{1, 1}))
-
-
-
-cut_params.trimData = [0 20];
-cut_params.bg_pos = -0.5;
-cut_params.target_pos = 5;
-max_end = 5;
+location = find(~cellfun(@isempty, answer{1,1}))
