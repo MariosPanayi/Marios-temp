@@ -57,7 +57,7 @@ calibrationfactor = [0.04072445
 0.01435];
         %% Plot
       close all
-        i = 14;
+        i = 10;
         h = plot_fcv_trials_Anaesthetized(data(i).processed.model_cvs, data(i).processed.ts, data(i).raw.TTLs, params, data(i).processed.c_predicted);
         data(i).subject
          %suptitle([params.fig_title]);
@@ -88,14 +88,9 @@ experimentParams = readtable('C:\Users\mario\Documents\GitHub\Marios-temp\GLRA00
 %set row names
 experimentParams.Properties.RowNames = experimentParams.SubjID;
 
-subj = {'GLRA64.1e'};
-C = {experimentParams{:,1}};
-answer = cellfun(@(x) strfind(x,subj), C,  'UniformOutput', false )
-location = find(~cellfun(@isempty, answer{1, 1}))
+% subj = {'GLRA64.1e'};
+% C = {experimentParams{:,1}};
+% answer = cellfun(@(x) strfind(x,subj), C,  'UniformOutput', false )
+% location = find(~cellfun(@isempty, answer{1, 1}))
+% 
 
-
-
-cut_params.trimData = [0 20];
-cut_params.bg_pos = -0.5;
-cut_params.target_pos = 5;
-max_end = 5;
