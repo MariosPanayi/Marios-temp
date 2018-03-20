@@ -57,12 +57,15 @@ calibrationfactor = [0.04072445
 0.01435];
         %% Plot
       close all
-        i = 10;
+      
+      for  i = 1:size(data,2)
+        params.plot_each =  0; %plot individual trials/cut timestamps
+        
         h = plot_fcv_trials_Anaesthetized(data(i).processed.model_cvs, data(i).processed.ts, data(i).raw.TTLs, params, data(i).processed.c_predicted);
-        data(i).subject
-         %suptitle([params.fig_title]);
-         %%
-         
+       
+        suptitle([data(i).subject, data(i).genotype, data(i).sex]); 
+      end
+      %%
 
 subjects = {'GLRA50.6d';'GLRA51.6c';'GLRA64.1e';'GLRA64.1c';'GLRA52.4d';'GLRA53.5f';'GLRA54.3d';'GLRA56.2a';'GLRA62.4b';'GLRA65.1a';'GLRA58.3c';'GLRA58.3d';'GLRA58.3b';'GLRA65.2a'};
 
