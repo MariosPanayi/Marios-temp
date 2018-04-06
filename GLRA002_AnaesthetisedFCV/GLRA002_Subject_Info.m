@@ -69,7 +69,9 @@ calibrationfactor = [0.04072445
 
 subjects = {'GLRA50.6d';'GLRA51.6c';'GLRA64.1e';'GLRA64.1c';'GLRA52.4d';'GLRA53.5f';'GLRA54.3d';'GLRA56.2a';'GLRA62.4b';'GLRA65.1a';'GLRA58.3c';'GLRA58.3d';'GLRA58.3b';'GLRA65.2a'};
 
+
 peakperiod = [3;3;6;3;3;3;3;3;3;3;3;3;3;3];
+
 trim = [0 20;
     0 20;
     0 20;
@@ -84,6 +86,9 @@ trim = [0 20;
     0 20;
     0 20;
     0 20;];
+
+
+
 
 %%
 
