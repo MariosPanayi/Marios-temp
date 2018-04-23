@@ -102,3 +102,6 @@ experimentParams.Properties.RowNames = experimentParams.SubjID;
 % location = find(~cellfun(@isempty, answer{1, 1}))
 % 
 
+%%
+% GLRA002_20170922_GLRA65.1a
+% This subject has varying backgrounds so 

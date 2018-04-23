@@ -4,7 +4,7 @@ clear all
 %Move these inside data processing loop if you want to setup individual parameters for each animal/session
 
 %list of experiment specific params
-experimentParams = readtable('E:\Marios aFCV\GLRA_002\DataAnalysis\GLRA002_params.xlsx');
+experimentParams = readtable('F:\Marios aFCV\GLRA_002\DataAnalysis\GLRA002_params.xlsx');
 
 %Set number of channels
 no_of_channels = 1;
@@ -15,8 +15,8 @@ bg_params.sample_freq = 58820;
 
 
 %chemometric variables
-chemo_params.cv_matrix = dlmread('E:\Marios aFCV\chemoset1\cvmatrix1.txt');
-chemo_params.conc_matrix = dlmread('E:\Marios aFCV\chemoset1\concmatrix1.txt');
+chemo_params.cv_matrix = dlmread('F:\Marios aFCV\chemoset1\cvmatrix1.txt');
+chemo_params.conc_matrix = dlmread('F:\Marios aFCV\chemoset1\concmatrix1.txt');
 chemo_params.pcs = [];
 chemo_params.alpha = 0.05;
 chemo_params.plotfigs = 0;
@@ -39,7 +39,7 @@ params.fig_title = 'Amplitude Response Curve';
 %% Set up data path and subfolder structure
 
 %Directory containing all files
-directory = 'E:\Marios aFCV\GLRA_002\';
+directory = 'F:\Marios aFCV\GLRA_002\';
 %Pull out all folders within the directory, i.e. individual subjects
 folderlist = dir(directory);
 folders = {folderlist.name};
@@ -200,7 +200,7 @@ end
 % ans = cellfind('WT', [data.genotype])
 % {data(ans).subject}
 
-%save('E:\Marios aFCV\GLRA_002\DataAnalysis\GLRA002_PulseResponse', 'data', 'summary' )
+%save('F:\Marios aFCV\GLRA_002\DataAnalysis\GLRA002_PulseResponse', 'data', 'summary' )
 
 %%
 %Average responses during baseline period
@@ -234,7 +234,7 @@ end
 
 
 %%
-save('E:\Marios aFCV\GLRA_002\DataAnalysis\GLRA002_04BaselineData', 'data', 'summary', 'avg_DA_WT','avg_DA_cal_WT' , 'avg_DA_KO','avg_DA_cal_KO')
+save('F:\Marios aFCV\GLRA_002\DataAnalysis\GLRA002_04BaselineData', 'data', 'summary', 'avg_DA_WT','avg_DA_cal_WT' , 'avg_DA_KO','avg_DA_cal_KO')
 
 
 
