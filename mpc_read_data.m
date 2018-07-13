@@ -53,6 +53,6 @@ function data = mpc_read_data(filename)
             end
         end
     end
-    data = temp;
-%     data{temp.Box} = temp;
+   % data = temp;
+  data{temp.Box} = temp;
     fclose(f);
