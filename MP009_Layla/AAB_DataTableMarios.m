@@ -1,4 +1,6 @@
+%load data
 
+load('C:\Users\mpanagi\Documents\GitHub\Marios-temp\MP009_Layla\MP009_LaylaData_AABonly.mat');
 
 %make datatable easier to call
 T = MP009LaylaMiceAABDataS1;
