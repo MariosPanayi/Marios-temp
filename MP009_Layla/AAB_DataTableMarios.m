@@ -12,7 +12,7 @@ databins = T(:, {'Genotype','Animal', 'Stage', 'minbins'});
 
 %Here we find what the unique groups are based on the groups/grouping variables we left in databins
 %G will acxt as a sparse array for the split apply functions
-%databins will be replaced with a list of all the unqiue occurences in the order correspodnign to sparse array G
+%databins will be replaced with a list of all the unqiue occurences in the order corresponding to sparse array G
 [G,databins] = findgroups(databins);
 
 databins.distance = splitapply(@mean, T.Distance, G);
