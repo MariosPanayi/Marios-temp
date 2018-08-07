@@ -104,9 +104,10 @@ writetable(T,'C:\Users\mpanagi\Documents\GitHub\Marios-temp\MP009_Layla\AABsmoot
 %%
 %Identify AAB peaks amd other statistics
 %RawData - i.e. unsmoothed
-data = datas.Distance(find(datas.Test == 3));
+data = datas.Distance(find(datas.Test == 1));
 % Smooth data
 smoothlowess = smooth(data, 'lowess');
+smoothloess = smooth(data, 'loess');
 smooth3 = smooth(data, 3);
 smooth6 = smooth(data, 6);
 
@@ -114,8 +115,8 @@ figure
 plot(data)
 hold on
 plot(smoothlowess)
+plot(smoothloess)
 plot(smooth3)
 plot(smooth6)
-legend('Raw', 'Lowess', '3 point', '6 point')
-hold off
+legend('Raw', 'Lowess', 'Loess', '3 point
 
