@@ -62,7 +62,7 @@ T.smooth3 = smoothed;
 
 
 
-datas = table2struct(T, 'ToScalar',true)
+datas = table2struct(T, 'ToScalar',true);
 
 
 
@@ -104,18 +104,74 @@ writetable(T,'C:\Users\mpanagi\Documents\GitHub\Marios-temp\MP009_Layla\AABsmoot
 %%
 %Identify AAB peaks amd other statistics
 %RawData - i.e. unsmoothed
-data = datas.Distance(find(datas.Test == 3));
+data = datas.Distance(find(datas.Test == 5));
 % Smooth data
 smoothlowess = smooth(data, 'lowess');
 smooth3 = smooth(data, 3);
 smooth6 = smooth(data, 6);
 
+maxpeak = max(data(1:18));
+
+
 figure
+subplot(3,1,1)
 plot(data)
 hold on
 plot(smoothlowess)
 plot(smooth3)
 plot(smooth6)
+
 legend('Raw', 'Lowess', '3 point', '6 point')
 hold off
+
+subplot(3,1,2)
+findpeaks(data, 'MinPeakProminence', maxpeak*.05, 'Annotate','extents','WidthReference','halfheight')
+
+subplot(3,1,3)
+
+findpeaks(smoothlowess, 'MinPeakProminence', maxpeak*0.05, 'Annotate','extents','WidthReference','halfheight')
+
+%%
+data1 = datas.Distance(find(datas.Test == 10));
+data2 = datas.Distance(find(datas.Test == 11));
+data3 = datas.Distance(find(datas.Test == 12));
+% [pks1,locs1,w1,p1] = findpeaks(data1(1:12));
+% [pks2,locs2,w2,p2] = findpeaks(data2(1:12));
+% [pks3,locs3,w3,p3] = findpeaks(data3(1:12));
+% 
+% % pks1
+% % pks2
+% % pks3
+% % locs1
+% % locs2
+% % locs3
+% 
+% [M1,I1] = max((data1(1:18)));
+% [M2,I2] = max((data2(1:18)));
+% [M3,I3] = max((data3(1:18)));
+% [M1, M2, M3]
+% [I1, I2, I3]
+
+order = 1;
+figure
+subplot(4,1,1)
+hold on
+fit1 = polyfit(log([1:5:30]),data1(1:6)',order);
+plot(polyval(fit1, log([1:5:30])))
+plot(data1(1:6))
+
+subplot(4,1,2)
+hold on
+fit2 = polyfit(log([1:5:30]),data2(1:6)',order);
+plot(polyval(fit2, log([1:5:30])))
+plot(data2(1:6))
+
+subplot(4,1,3)
+hold on
+fit3 = polyfit(log([1:5:30]),data3(1:6)',order);
+plot(polyval(fit3, log([1:5:30])))
+plot(data3(1:6))
+
+subplot(4,1,4)
+bar([fit1(1) fit2(1) fit3(1) fit1(2) fit2(2) fit3(2)]);
 
