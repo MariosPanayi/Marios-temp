@@ -2,13 +2,14 @@
         cd ../Behaviour
         if p ~= [5 12] %% exclude rats 5 and 12
             
-            %% standard model
-            DAglm = Data_base(3:end,:);
-
-            % Remove error trials
-            temp = tbl{p};
+%             %% standard model
+%             DAglm = Data_base(3:end,:);
+% 
+%             % Remove error trials
+%             temp = tbl{p};
+            
             temp(:,(isnan(temp(1,:)) == 1)) = [];
-            DAglm = Data_base (3:end,find(Data_base(2,:) < 10));
+%             DAglm = Data_base (3:end,find(Data_base(2,:) < 10));
 
             reward = temp(1,:); %% pellet / sucrose
             trial = temp(2,:);  %% forced v choice
