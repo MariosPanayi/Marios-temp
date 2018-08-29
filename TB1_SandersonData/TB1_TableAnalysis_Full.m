@@ -76,6 +76,37 @@ data.Bin2_5s = ceil(data.Time_bin/2.5);
 data.Bin5s = ceil(data.Time_bin/5);
 data.Bin10s = ceil(data.Time_bin/10);
 
+
+%% Calculate Reward Deliery at different points
+% Extract location of each individual trial per animal/session/channel contained in 'uid'
+baseline = data(:, {'uid', 'LightNo'});
+[G_baseline,baseline] = findgroups(baseline);
+
+% Calculate Rewards delivered in 5s bins 
+for i = min(G_baseline):max(G_baseline)
+index = find(G_baseline == i);
+Reward_1(index) = nansum(data.rewardTTL(index(1:50)));
+Reward_2(index) = nansum(data.rewardTTL(index(51:100)));
+Reward_3(index) = nansum(data.rewardTTL(index(101:150)));
+Reward_4(index) = nansum(data.rewardTTL(index(151:200)));
+Reward_5(index) = nansum(data.rewardTTL(index(201:250)));
+Reward_6(index) = nansum(data.rewardTTL(index(251:300)));
+Reward_7(index) = nansum(data.rewardTTL(index(301:350)));
+Reward_8(index) = nansum(data.rewardTTL(index(351:400)));
+end
+
+% Create new variables in data table with NaN info
+data.Reward_1 = Reward_1';
+data.Reward_2 = Reward_2';
+data.Reward_3 = Reward_3';
+data.Reward_4 = Reward_4';
+data.Reward_5 = Reward_5';
+data.Reward_6 = Reward_6';
+data.Reward_7 = Reward_7';
+data.Reward_8 = Reward_8';
+
+
+
 %% Save data to excel file
  writetable(data, 'C:\Users\mpanagi\Documents\GitHub\Marios-temp\TB1_SandersonData\TB1DataLongFormat_BaselinesNaNFilts.xlsx');
 
