@@ -5,6 +5,12 @@
             %% standard model
 %             DAglm = Data_base(3:end,:);
 
+%Import sample data
+            temp = dlmread('C:\Users\mario\Documents\GitHub\Marios-temp\TB1_SandersonData\MEW_GLM\temp_Table_for_marios.txt');
+            DAglm = dlmread('C:\Users\mario\Documents\GitHub\Marios-temp\TB1_SandersonData\MEW_GLM\DAglm_DAdata_for_marios.txt');
+
+            p = 1;
+            
             % Remove error trials
 %             temp = tbl{p};
             temp(:,(isnan(temp(1,:)) == 1)) = [];
@@ -21,9 +27,6 @@
             perf = temp(9,:); %% %choice in choice trials at end of block
             
 
-
-            
-            
         %% Model fit
                     for i = 80:160;
                         xxx = table(reward',trial',idsup',rewXid',valsup',rewXval',peleat',perf',DAglm(i,:)','VariableNames',{'reward','forcedchoice','identity','rewXidentity','value','rewXvalue','eaten','choice','DA'});
