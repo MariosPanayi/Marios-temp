@@ -151,19 +151,11 @@ timeFilt = (0 < data.Bin1s) & (data.Bin1s < 11);
 fullFilter = all([nanFilter, RewardFilter, timeFilt],2);
 
 filteredData = data(fullFilter,{'uid','Genotype','Mouse','Session','Channel','Time_bin','Dopamine','HouseLED','PreviousSameDiff','NextSameDiff','FirstSecond','subject','LightNo','nans','rewardTTL','baseSub2','baseSub2_5','baseSub3','baseSub4','baseSub5','NaN_1','NaN_2','NaN_3','NaN_4','NaN_5','NaN_6','NaN_7','NaN_8','Bin1s','Bin2s','Bin2_5s','Bin5s','Bin10s','Reward_1','Reward_2','Reward_3','Reward_4','Reward_5','Reward_6','Reward_7','Reward_8'});
-
-% Collapse across trial number and in 1s bins
-avgTrials =  filteredData(:,{'uid','Genotype','Mouse','Session','Channel','Bin1s','HouseLED','PreviousSameDiff','NextSameDiff','FirstSecond','subject'});
+% Collapse across trial number
+avgTrials =  filteredData(:,{'uid','Genotype','Mouse','Session','Channel','Time_bin','HouseLED','PreviousSameDiff','NextSameDiff','FirstSecond','subject'});
 [G,avgTrials] = findgroups(avgTrials);
 avgTrials.Dopamine = splitapply(@nanmean, filteredData.Dopamine, G);
-avgTrials.baseSub2 = splitapply(@nanmean, filteredData.baseSub2, G);
-avgTrials.baseSub2_5 = splitapply(@nanmean, filteredData.baseSub2_5, G);
-avgTrials.baseSub3 = splitapply(@nanmean, filteredData.baseSub3, G);
-avgTrials.baseSub4 = splitapply(@nanmean, filteredData.baseSub4, G);
-avgTrials.baseSub5 = splitapply(@nanmean, filteredData.baseSub5, G);
 
-  
-%strcmp(avgTrials.Genotype,'WT')
 
 
 
