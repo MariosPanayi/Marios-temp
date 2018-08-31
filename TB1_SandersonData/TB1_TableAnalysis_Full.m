@@ -130,8 +130,8 @@ filt1 = data.Reward_1 < 0;
 filt2 = data.Reward_2 < 0;
 filt3 = data.Reward_3 > 0;
 filt4 = data.Reward_4 > 0;
-filt5 = data.Reward_5 > 0;
-filt6 = data.Reward_6 > 0;
+filt5 = data.Reward_5 < 0;
+filt6 = data.Reward_6 < 0;
 filt7 = data.Reward_7 < 0;
 filt8 = data.Reward_8 < 0;
 
@@ -162,10 +162,13 @@ avgTrials.baseSub3 = splitapply(@nanmean, filteredData.baseSub3, G);
 avgTrials.baseSub4 = splitapply(@nanmean, filteredData.baseSub4, G);
 avgTrials.baseSub5 = splitapply(@nanmean, filteredData.baseSub5, G);
 
-  
-%strcmp(avgTrials.Genotype,'WT')
+% Filter for only 2nd Light trials, Same/Diff Identity
+secondLight = strcmp(avgTrials.FirstSecond,'Second light');
+sameDiff = ~strcmp(avgTrials.PreviousSameDiff,'First');
+trialFilter = all([secondLight,sameDiff], 2);
 
+avgTrials_SamDiff = avgTrials(trialFilter,:);
 
-
+avgTrials_SamDiff.Properties.VariableNames;
 
 
