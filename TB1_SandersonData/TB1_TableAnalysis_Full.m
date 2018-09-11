@@ -125,12 +125,13 @@ nanFilter = filt1+ filt2 +filt3 +filt4 +filt5 +filt6 +filt7 +filt8;
 
 nanFilter = ~nanFilter;
 %% Filter Data - Rewards
+% inequality direction used for filter here
 
 filt1 = data.Reward_1 < 0;
 filt2 = data.Reward_2 < 0;
 filt3 = data.Reward_3 > 0;
 filt4 = data.Reward_4 > 0;
-filt5 = data.Reward_5 < 0;
+filt5 = data.Reward_5 > 0;
 filt6 = data.Reward_6 < 0;
 filt7 = data.Reward_7 < 0;
 filt8 = data.Reward_8 < 0;
@@ -153,7 +154,7 @@ fullFilter = all([nanFilter, RewardFilter, timeFilt],2);
 filteredData = data(fullFilter,{'uid','Genotype','Mouse','Session','Channel','Time_bin','Dopamine','HouseLED','PreviousSameDiff','NextSameDiff','FirstSecond','subject','LightNo','nans','rewardTTL','baseSub2','baseSub2_5','baseSub3','baseSub4','baseSub5','NaN_1','NaN_2','NaN_3','NaN_4','NaN_5','NaN_6','NaN_7','NaN_8','Bin1s','Bin2s','Bin2_5s','Bin5s','Bin10s','Reward_1','Reward_2','Reward_3','Reward_4','Reward_5','Reward_6','Reward_7','Reward_8'});
 
 % Collapse across trial number and in 1s bins
-avgTrials =  filteredData(:,{'uid','Genotype','Mouse','Session','Channel','Bin1s','HouseLED','PreviousSameDiff','NextSameDiff','FirstSecond','subject'});
+avgTrials =  filteredData(:,{'uid','subject','Genotype','Mouse','Session','Channel','HouseLED','PreviousSameDiff','NextSameDiff','FirstSecond','Bin5s','Bin2s','Bin1s'});
 [G,avgTrials] = findgroups(avgTrials);
 avgTrials.Dopamine = splitapply(@nanmean, filteredData.Dopamine, G);
 avgTrials.baseSub2 = splitapply(@nanmean, filteredData.baseSub2, G);
@@ -165,10 +166,15 @@ avgTrials.baseSub5 = splitapply(@nanmean, filteredData.baseSub5, G);
 % Filter for only 2nd Light trials, Same/Diff Identity
 secondLight = strcmp(avgTrials.FirstSecond,'Second light');
 sameDiff = ~strcmp(avgTrials.PreviousSameDiff,'First');
-trialFilter = all([secondLight,sameDiff], 2);
+SameDifftrialFilter = all([secondLight,sameDiff], 2);
 
-avgTrials_SamDiff = avgTrials(trialFilter,:);
+avgTrials_SameDiff = avgTrials(SameDifftrialFilter,:);
 
-avgTrials_SamDiff.Properties.VariableNames;
+
+
+%% Save data to excel file
+  writetable(avgTrials, 'C:\Users\mpanagi\Documents\GitHub\Marios-temp\TB1_SandersonData\TB1DataLongFormat_Reward10sPre5spost_NaN10pre10post_FullData.xlsx');
+
+
 
 
