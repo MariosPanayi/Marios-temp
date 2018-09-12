@@ -130,7 +130,7 @@ nanFilter = ~nanFilter;
 filt1 = data.Reward_1 < 0;
 filt2 = data.Reward_2 < 0;
 filt3 = data.Reward_3 < 0;
-filt4 = data.Reward_4 > 0;
+filt4 = data.Reward_4 < 0;
 filt5 = data.Reward_5 > 0;
 filt6 = data.Reward_6 > 0;
 filt7 = data.Reward_7 < 0;
@@ -173,9 +173,9 @@ avgTrials_SameDiff = avgTrials(SameDifftrialFilter,:);
 
 
 %% Save data to excel file
-  writetable(avgTrials, 'C:\Users\mpanagi\Documents\GitHub\Marios-temp\TB1_SandersonData\TB1DataLongFormat_Reward5sPre10spost_NaN10pre10post_FullData.xlsx');
+  writetable(avgTrials, 'C:\Users\mpanagi\Documents\GitHub\Marios-temp\TB1_SandersonData\TB1DataLongFormat_Reward0sPre10spost_NaN10pre10post_FullData.xlsx');
 
-  %writetable(filteredData, 'C:\Users\mpanagi\Documents\GitHub\Marios-temp\TB1_SandersonData\TB1DataLongFormat_Reward0sPre10spost_NaN10pre10post_dAVIDdATA.xlsx');
+  writetable(data, 'C:\Users\mpanagi\Documents\GitHub\Marios-temp\TB1_SandersonData\TB1DataLongFormat_Reward0sPre10spost_NaN10pre10post_FullData.xlsx');
 
 
 
