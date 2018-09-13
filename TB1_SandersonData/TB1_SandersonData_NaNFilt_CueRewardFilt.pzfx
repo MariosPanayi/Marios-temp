@@ -1,0 +1,7335 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GraphPadPrismFile xmlns="http://graphpad.com/prism/Prism.htm" PrismXMLVersion="5.00">
+<Created>
+<OriginalVersion CreatedByProgram="GraphPad Prism" CreatedByVersion="7.0.1.180" Login="mpanagi" DateTime="2018-09-13T16:35:04+00:00"/>
+<MostRecentVersion CreatedByProgram="GraphPad Prism" CreatedByVersion="7.0.1.180" Login="mpanagi" DateTime="2018-09-13T18:05:49+00:00"/>
+</Created>
+<InfoSequence>
+<Ref ID="Info0" Selected="1"/>
+<Ref ID="Info1"/>
+</InfoSequence>
+<Info ID="Info0">
+<Title>Project info 1</Title>
+<Notes>
+</Notes>
+<Constant><Name>Experiment Date</Name><Value>2018-09-13</Value></Constant>
+<Constant><Name>Experiment ID</Name><Value/></Constant>
+<Constant><Name>Notebook ID</Name><Value/></Constant>
+<Constant><Name>Project</Name><Value/></Constant>
+<Constant><Name>Experimenter</Name><Value/></Constant>
+<Constant><Name>Protocol</Name><Value/></Constant>
+</Info>
+
+<Info ID="Info1">
+<Title>Project info 1</Title>
+<Notes>
+</Notes>
+<Constant><Name>Experiment Date</Name><Value>2018-09-13</Value></Constant>
+<Constant><Name>Experiment ID</Name><Value/></Constant>
+<Constant><Name>Notebook ID</Name><Value/></Constant>
+<Constant><Name>Project</Name><Value/></Constant>
+<Constant><Name>Experimenter</Name><Value/></Constant>
+<Constant><Name>Protocol</Name><Value/></Constant>
+</Info>
+
+<TableSequence>
+
+<Ref ID="Table0"/>
+<Ref ID="Table2"/>
+<Ref ID="Table4"/>
+<Ref ID="Table5"/>
+<Ref ID="Table6"/>
+<Ref ID="Table7"/>
+<Ref ID="Table8"/>
+<Ref ID="Table9" Selected="1"/>
+</TableSequence>
+<Table ID="Table0" XFormat="none" YFormat="replicates" Replicates="16" TableType="TwoWay" EVFormat="AsteriskAfterNumber">
+<Title>WT: House First</Title>
+<RowTitlesColumn Width="70">
+<Subcolumn>
+<d>-4</d>
+<d>-3</d>
+<d>-2</d>
+<d>-1</d>
+<d>0</d>
+<d>1</d>
+<d>2</d>
+<d>3</d>
+<d>4</d>
+<d>5</d>
+<d>6</d>
+<d>7</d>
+<d>8</d>
+<d>9</d>
+<d>10</d>
+<d>11</d>
+<d>12</d>
+<d>13</d>
+<d>14</d>
+<d>15</d>
+</Subcolumn>
+</RowTitlesColumn>
+<YColumn Width="1216" Decimals="9" Subcolumns="16">
+<Title><TextAlign align="Center">First</TextAlign></Title>
+<Subcolumn>
+<d>0.09016375</d>
+<d>0.10015375</d>
+<d>0.0186</d>
+<d>0.02249</d>
+<d>0.02189</d>
+<d>0.309875</d>
+<d>0.501195</d>
+<d>0.48459125</d>
+<d>0.33818</d>
+<d>0.20000625</d>
+<d>0.141374583</d>
+<d>0.11520625</d>
+<d>0.06976</d>
+<d>0.095343333</d>
+<d>0.06956625</d>
+<d>-0.03220375</d>
+<d>-0.1432375</d>
+<d>-0.21453875</d>
+<d>-0.191216667</d>
+<d>-0.13023375</d>
+</Subcolumn>
+<Subcolumn>
+<d>0.009163333</d>
+<d>0.061597222</d>
+<d>0.04452</d>
+<d>-0.008058889</d>
+<d>0.02425</d>
+<d>0.26168</d>
+<d>0.485701667</d>
+<d>0.577336111</d>
+<d>0.482508333</d>
+<d>0.215550556</d>
+<d>0.041382222</d>
+<d>0.076332778</d>
+<d>0.07198</d>
+<d>-0.0904</d>
+<d>-0.262471667</d>
+<d>-0.368396111</d>
+<d>-0.41822381</d>
+<d>-0.400959615</d>
+<d>-0.574418391</d>
+<d>-0.498587179</d>
+</Subcolumn>
+<Subcolumn>
+<d>-0.0185</d>
+<d>-0.1023</d>
+<d>-0.04934</d>
+<d>0.045385</d>
+<d>0.01261</d>
+<d>0.3156</d>
+<d>0.42451</d>
+<d>0.32396</d>
+<d>0.21617</d>
+<d>0.20818</d>
+<d>0.072445</d>
+<d>0.00982</d>
+<d>-0.109715</d>
+<d>-0.20442</d>
+<d>-0.29463</d>
+<d>-0.4482</d>
+<d>-0.60614</d>
+<d>-0.680615</d>
+<d>-0.74651</d>
+<d>-0.792895</d>
+</Subcolumn>
+<Subcolumn>
+<d>-0.02629</d>
+<d>-0.047565</d>
+<d>-0.065865</d>
+<d>-0.022555</d>
+<d>-0.00161</d>
+<d>0.11748625</d>
+<d>0.129875</d>
+<d>0.08634</d>
+<d>0.02724</d>
+<d>-0.038105</d>
+<d>-0.0030725</d>
+<d>-0.13568</d>
+<d>-0.22655</d>
+<d>-0.222335</d>
+<d>-0.337085</d>
+<d>-0.390095</d>
+<d>-0.44347</d>
+<d>-0.49941</d>
+<d>-0.533965</d>
+<d>-0.569745</d>
+</Subcolumn>
+<Subcolumn>
+<d>0.106065</d>
+<d>0.04495</d>
+<d>0.013465</d>
+<d>-0.03845</d>
+<d>-0.005455</d>
+<d>-0.042575</d>
+<d>-0.00098</d>
+<d>0.0103</d>
+<d>-0.018215</d>
+<d>-0.07396</d>
+<d>-0.079775</d>
+<d>-0.22663</d>
+<d>-0.203755</d>
+<d>-0.12928</d>
+<d>-0.213795</d>
+<d>-0.282215</d>
+<d>-0.25781</d>
+<d>-0.337475</d>
+<d>-0.328615</d>
+<d>-0.403085</d>
+</Subcolumn>
+<Subcolumn>
+<d>0.03064</d>
+<d>-0.00934</d>
+<d>0.00906</d>
+<d>-0.112606667</d>
+<d>-0.011188333</d>
+<d>0.715525</d>
+<d>1.145146667</d>
+<d>1.00836</d>
+<d>0.781806667</d>
+<d>0.761793333</d>
+<d>0.640613333</d>
+<d>0.576291111</d>
+<d>0.453525</d>
+<d>0.242585</d>
+<d>0.141535</d>
+<d>0.076472</d>
+<d>0.02363</d>
+<d>-0.18721</d>
+<d>-0.18129</d>
+<d>-0.29679</d>
+</Subcolumn>
+<Subcolumn>
+<d>0.100405</d>
+<d>0.05739</d>
+<d>0.050025</d>
+<d>0.057615</d>
+<d>-0.00361</d>
+<d>0.249015</d>
+<d>0.34128</d>
+<d>0.376905</d>
+<d>0.318985</d>
+<d>0.29781</d>
+<d>0.316525</d>
+<d>0.28815</d>
+<d>0.267965</d>
+<d>0.220165</d>
+<d>0.11791</d>
+<d>0.11715</d>
+<d>0.093525</d>
+<d>0.06614</d>
+<d>0.05125</d>
+<d>-0.021105</d>
+</Subcolumn>
+<Subcolumn>
+<d>0.04099</d>
+<d>-0.00359</d>
+<d>-0.0506</d>
+<d>0.009</d>
+<d>0.02108375</d>
+<d>0.621653333</d>
+<d>0.9793325</d>
+<d>0.882455</d>
+<d>0.682532083</d>
+<d>0.62313</d>
+<d>0.733025</d>
+<d>0.692775</d>
+<d>0.457485</d>
+<d>0.35715</d>
+<d>0.356655</d>
+<d>0.225235</d>
+<d>-0.016485</d>
+<d>-0.04589</d>
+<d>-0.131165</d>
+<d>-0.142665</d>
+</Subcolumn>
+<Subcolumn>
+<d>0.029560833</d>
+<d>0.003495299</d>
+<d>-0.050329583</d>
+<d>0.01377</d>
+<d>0.01323</d>
+<d>0.288185</d>
+<d>0.45689</d>
+<d>0.3761</d>
+<d>0.23392875</d>
+<d>0.21437125</d>
+<d>0.234345</d>
+<d>0.16865</d>
+<d>-0.01256</d>
+<d>-0.05883</d>
+<d>-0.075385</d>
+<d>-0.246545</d>
+<d>-0.41702</d>
+<d>-0.456335</d>
+<d>-0.49276875</d>
+<d>-0.5096275</d>
+</Subcolumn>
+<Subcolumn>
+<d>-0.05439</d>
+<d>0.0053975</d>
+<d>0.00716</d>
+<d>0.00621</d>
+<d>-0.012635</d>
+<d>0.42303</d>
+<d>0.816855</d>
+<d>0.81039</d>
+<d>0.6615</d>
+<d>0.51639</d>
+<d>0.341755</d>
+<d>0.25662</d>
+<d>0.22656</d>
+<d>0.176925</d>
+<d>0.141035</d>
+<d>0.014075</d>
+<d>-0.177435</d>
+<d>-0.22761</d>
+<d>-0.212545</d>
+<d>-0.28534</d>
+</Subcolumn>
+<Subcolumn>
+<d>0.0885</d>
+<d>-0.05258</d>
+<d>0.058266667</d>
+<d>0.0331</d>
+<d>0.020866667</d>
+<d>0.521766667</d>
+<d>0.756926667</d>
+<d>0.542466667</d>
+<d>0.492286667</d>
+<d>0.279333333</d>
+<d>0.278753333</d>
+<d>0.160553333</d>
+<d>0.156593333</d>
+<d>-0.02548</d>
+<d>-0.074353333</d>
+<d>-0.048286667</d>
+<d>-0.126886667</d>
+<d>-0.205586667</d>
+<d>-0.209955</d>
+<d>-0.28912</d>
+</Subcolumn>
+<Subcolumn>
+<d>0.14507</d>
+<d>0.11653</d>
+<d>0.07002</d>
+<d>0.058735</d>
+<d>0.00073</d>
+<d>0.20915</d>
+<d>0.37406</d>
+<d>0.40486</d>
+<d>0.34989</d>
+<d>0.364835</d>
+<d>0.321295</d>
+<d>0.2341</d>
+<d>0.14972</d>
+<d>0.03451</d>
+<d>-0.05606875</d>
+<d>-0.1019475</d>
+<d>-0.19494</d>
+<d>-0.229415</d>
+<d>-0.299985</d>
+<d>-0.34857</d>
+</Subcolumn>
+<Subcolumn>
+<d>0.246175</d>
+<d>0.18777</d>
+<d>0.12789</d>
+<d>0.06377</d>
+<d>-0.012135</d>
+<d>0.3397</d>
+<d>0.74472</d>
+<d>0.784825</d>
+<d>0.773505</d>
+<d>0.750695</d>
+<d>0.63353</d>
+<d>0.58782</d>
+<d>0.54855</d>
+<d>0.356355</d>
+<d>0.223285</d>
+<d>0.060527083</d>
+<d>-0.063701667</d>
+<d>-0.180751667</d>
+<d>-0.210603509</d>
+<d>-0.3808525</d>
+</Subcolumn>
+<Subcolumn>
+<d>-0.226586667</d>
+<d>-0.134053333</d>
+<d>-0.089266667</d>
+<d>-0.004613333</d>
+<d>0.000213333</d>
+<d>0.246406667</d>
+<d>0.48922</d>
+<d>0.610326667</d>
+<d>0.67566</d>
+<d>0.697673333</d>
+<d>0.388153333</d>
+<d>0.241993333</d>
+<d>0.184573333</d>
+<d>0.048026667</d>
+<d>-0.051233333</d>
+<d>-0.185306667</d>
+<d>-0.244326667</d>
+<d>-0.408046667</d>
+<d>-0.494746667</d>
+<d>-0.603773333</d>
+</Subcolumn>
+<Subcolumn>
+<d>-0.12492</d>
+<d>-0.117733333</d>
+<d>-0.07094</d>
+<d>-0.057626667</d>
+<d>-0.000173333</d>
+<d>0.246806667</d>
+<d>0.556906667</d>
+<d>0.667966667</d>
+<d>0.742926667</d>
+<d>0.73298</d>
+<d>0.64206</d>
+<d>0.559586667</d>
+<d>0.401053333</d>
+<d>0.236286667</d>
+<d>0.16324</d>
+<d>0.103926667</d>
+<d>-0.026046667</d>
+<d>-0.162833333</d>
+<d>-0.29386</d>
+<d>-0.341913333</d>
+</Subcolumn>
+<Subcolumn>
+<d>0.04118</d>
+<d>0.024040351</d>
+<d>0.08853</d>
+<d>0.04347</d>
+<d>0.020065</d>
+<d>0.565625</d>
+<d>0.639225</d>
+<d>0.45528</d>
+<d>0.27111</d>
+<d>0.09545</d>
+<d>0.02235</d>
+<d>-0.116655</d>
+<d>-0.170555</d>
+<d>-0.25263125</d>
+<d>-0.35076875</d>
+<d>-0.502295</d>
+<d>-0.5666975</d>
+<d>-0.61919625</d>
+<d>-0.716479583</d>
+<d>-0.718332083</d>
+</Subcolumn>
+</YColumn>
+<YColumn Width="1216" Decimals="6" Subcolumns="16">
+<Title><TextAlign align="Center">Same</TextAlign></Title>
+<Subcolumn>
+<d Excluded="1">0.04302</d>
+<d Excluded="1">0.13936</d>
+<d Excluded="1">0.23558</d>
+<d Excluded="1">0.09966</d>
+<d Excluded="1">0.04486</d>
+<d Excluded="1">0.18374</d>
+<d Excluded="1">0.43906</d>
+<d Excluded="1">0.46672</d>
+<d Excluded="1">0.63146</d>
+<d Excluded="1">0.58124</d>
+<d Excluded="1">0.45982</d>
+<d Excluded="1">0.4452</d>
+<d Excluded="1">0.475705</d>
+<d Excluded="1">0.330765</d>
+<d Excluded="1">0.14296</d>
+<d Excluded="1">0.12594</d>
+<d Excluded="1">0.15274</d>
+<d Excluded="1">-0.03298</d>
+<d Excluded="1">0.14272</d>
+<d Excluded="1">0.0889</d>
+</Subcolumn>
+<Subcolumn>
+<d Excluded="1">0.0485975</d>
+<d Excluded="1">0.2130325</d>
+<d Excluded="1">0.1383675</d>
+<d Excluded="1">0.168864167</d>
+<d Excluded="1">0.087455833</d>
+<d Excluded="1">0.254269167</d>
+<d Excluded="1">0.43368</d>
+<d Excluded="1">0.314875</d>
+<d Excluded="1">0.33311</d>
+<d Excluded="1">0.347534167</d>
+<d Excluded="1">0.232485</d>
+<d Excluded="1">0.18397</d>
+<d Excluded="1">0.0988175</d>
+<d Excluded="1">-0.020555</d>
+<d Excluded="1">0.04998</d>
+<d Excluded="1">-0.01313</d>
+<d Excluded="1">-0.108085</d>
+<d Excluded="1">-0.08899</d>
+<d Excluded="1">-0.08753</d>
+<d Excluded="1">-0.2061</d>
+</Subcolumn>
+<Subcolumn>
+<d Excluded="1">-0.04756</d>
+<d Excluded="1">-0.05652</d>
+<d Excluded="1">-0.02485</d>
+<d Excluded="1">0.0358</d>
+<d Excluded="1">0.00313</d>
+<d Excluded="1">0.13285</d>
+<d Excluded="1">0.28894</d>
+<d Excluded="1">0.15338</d>
+<d Excluded="1">0.08826</d>
+<d Excluded="1">0.03728</d>
+<d Excluded="1">-0.09601</d>
+<d Excluded="1">-0.10394</d>
+<d Excluded="1">-0.22929</d>
+<d Excluded="1">-0.44738</d>
+<d Excluded="1">-0.53568</d>
+<d Excluded="1">-0.59972</d>
+<d Excluded="1">-0.67848</d>
+<d Excluded="1">-0.80592</d>
+<d Excluded="1">-0.89211</d>
+<d Excluded="1">-0.89044</d>
+</Subcolumn>
+<Subcolumn>
+<d Excluded="1">-0.10954</d>
+<d Excluded="1">-0.02136</d>
+<d Excluded="1">-0.03947</d>
+<d Excluded="1">-0.00003</d>
+<d Excluded="1">0.0217</d>
+<d Excluded="1">0.19404</d>
+<d Excluded="1">0.13042</d>
+<d Excluded="1">0.13355</d>
+<d Excluded="1">0.11642</d>
+<d Excluded="1">0.11036</d>
+<d Excluded="1">0.06539</d>
+<d Excluded="1">0.00304</d>
+<d Excluded="1">-0.00807</d>
+<d Excluded="1">-0.04487</d>
+<d Excluded="1">-0.09452</d>
+<d Excluded="1">-0.13335</d>
+<d Excluded="1">-0.21085</d>
+<d Excluded="1">-0.21248</d>
+<d Excluded="1">-0.32816</d>
+<d Excluded="1">-0.40958</d>
+</Subcolumn>
+<Subcolumn>
+<d Excluded="1">-0.12603</d>
+<d Excluded="1">-0.05943</d>
+<d Excluded="1">0.00395</d>
+<d Excluded="1">0.00315</d>
+<d Excluded="1">-0.01648</d>
+<d Excluded="1">0.0439</d>
+<d Excluded="1">0.07352</d>
+<d Excluded="1">0.03464</d>
+<d Excluded="1">-0.08596</d>
+<d Excluded="1">-0.00472</d>
+<d Excluded="1">0.07066</d>
+<d Excluded="1">0.00008</d>
+<d Excluded="1">-0.09675</d>
+<d Excluded="1">-0.01836</d>
+<d Excluded="1">-0.04122</d>
+<d Excluded="1">-0.23011</d>
+<d Excluded="1">-0.28057</d>
+<d Excluded="1">-0.29097</d>
+<d Excluded="1">-0.29115</d>
+<d Excluded="1">-0.1888</d>
+</Subcolumn>
+<Subcolumn>
+<d Excluded="1">-0.08478</d>
+<d Excluded="1">0.11436</d>
+<d Excluded="1">0.1291</d>
+<d Excluded="1">-0.0273375</d>
+<d Excluded="1">-0.00082</d>
+<d Excluded="1">0.80091</d>
+<d Excluded="1">1.75298</d>
+<d Excluded="1">1.64976</d>
+<d Excluded="1">1.49423</d>
+<d Excluded="1">1.289535</d>
+<d Excluded="1">1.040503333</d>
+<d Excluded="1">1.0136</d>
+<d Excluded="1">0.847438333</d>
+<d Excluded="1">0.563384615</d>
+<d Excluded="1">-0.00624</d>
+<d Excluded="1">0.04302</d>
+<d Excluded="1">-0.03734</d>
+<d Excluded="1">-0.17282</d>
+<d Excluded="1">-0.40962</d>
+<d Excluded="1">-0.50616</d>
+</Subcolumn>
+<Subcolumn>
+<d Excluded="1">0.0478</d>
+<d Excluded="1">0.02502</d>
+<d Excluded="1">0.01474</d>
+<d Excluded="1">-0.02468</d>
+<d Excluded="1">0.00929</d>
+<d Excluded="1">0.31985</d>
+<d Excluded="1">0.38855</d>
+<d Excluded="1">0.40331</d>
+<d Excluded="1">0.514399167</d>
+<d Excluded="1">0.419299167</d>
+<d Excluded="1">0.423966667</d>
+<d Excluded="1">0.382052222</d>
+<d Excluded="1">0.108623958</d>
+<d Excluded="1">0.195755</d>
+<d Excluded="1">0.0961025</d>
+<d Excluded="1">0.0437725</d>
+<d Excluded="1">-0.069435</d>
+<d Excluded="1">-0.173255</d>
+<d Excluded="1">-0.19922</d>
+<d Excluded="1">-0.24733</d>
+</Subcolumn>
+<Subcolumn>
+<d Excluded="1">0.051065833</d>
+<d Excluded="1">0.034873333</d>
+<d Excluded="1">-0.146778333</d>
+<d Excluded="1">0.06609</d>
+<d Excluded="1">0.01218</d>
+<d Excluded="1">0.55496</d>
+<d Excluded="1">1.02787</d>
+<d Excluded="1">0.83675</d>
+<d Excluded="1">0.55758</d>
+<d Excluded="1">0.40271</d>
+<d Excluded="1">0.12968</d>
+<d Excluded="1">0.1251275</d>
+<d Excluded="1">0.065804167</d>
+<d Excluded="1">-0.094505</d>
+<d Excluded="1">-0.05547619</d>
+<d Excluded="1">-0.34244</d>
+<d Excluded="1">-0.57036</d>
+<d Excluded="1">-0.56266</d>
+<d Excluded="1">-0.59238</d>
+<d Excluded="1">-0.61518</d>
+</Subcolumn>
+<Subcolumn>
+<d Excluded="1">0.001168333</d>
+<d Excluded="1">-0.063827193</d>
+<d Excluded="1">-0.355438235</d>
+<d Excluded="1">0.06568</d>
+<d Excluded="1">0.0144</d>
+<d Excluded="1">0.40505</d>
+<d Excluded="1">0.66166</d>
+<d Excluded="1">0.44054</d>
+<d Excluded="1">0.20732</d>
+<d Excluded="1">0.05363</d>
+<d Excluded="1">-0.18514</d>
+<d Excluded="1">-0.22767</d>
+<d Excluded="1">-0.30426</d>
+<d Excluded="1">-0.392978333</d>
+<d Excluded="1">-0.442323077</d>
+<d Excluded="1">-0.68136</d>
+<d Excluded="1">-0.86344</d>
+<d Excluded="1">-0.77478</d>
+<d Excluded="1">-0.67784</d>
+<d Excluded="1">-0.81048</d>
+</Subcolumn>
+<Subcolumn>
+<d Excluded="1">0.06655</d>
+<d Excluded="1">-0.0163</d>
+<d Excluded="1">-0.02845</d>
+<d Excluded="1">-0.03271</d>
+<d Excluded="1">0.00101</d>
+<d Excluded="1">0.27871</d>
+<d Excluded="1">0.49389</d>
+<d Excluded="1">0.49105</d>
+<d Excluded="1">0.36302</d>
+<d Excluded="1">0.30613</d>
+<d Excluded="1">0.17851</d>
+<d Excluded="1">0.00659</d>
+<d Excluded="1">-0.10451</d>
+<d Excluded="1">-0.05045</d>
+<d Excluded="1">-0.03957</d>
+<d Excluded="1">-0.13867</d>
+<d Excluded="1">-0.25404</d>
+<d Excluded="1">-0.33662</d>
+<d Excluded="1">-0.39585</d>
+<d Excluded="1">-0.44928</d>
+</Subcolumn>
+<Subcolumn>
+<d Excluded="1">-0.5144</d>
+<d Excluded="1">-0.2182</d>
+<d Excluded="1">-0.33328</d>
+<d Excluded="1">-0.21906</d>
+<d Excluded="1">-0.0166</d>
+<d Excluded="1">0.38808</d>
+<d Excluded="1">0.57586</d>
+<d Excluded="1">0.3112</d>
+<d Excluded="1">0.06584</d>
+<d Excluded="1">0.08254</d>
+<d Excluded="1">0.04334</d>
+<d Excluded="1">0.01846</d>
+<d Excluded="1">-0.22848</d>
+<d Excluded="1">-0.15778</d>
+<d Excluded="1">-0.17588</d>
+<d Excluded="1">-0.53632</d>
+<d Excluded="1">-0.52546</d>
+<d Excluded="1">-0.58808</d>
+<d Excluded="1">-0.72272</d>
+<d Excluded="1">-0.74094</d>
+</Subcolumn>
+<Subcolumn>
+<d Excluded="1">0.07975</d>
+<d Excluded="1">0.08837</d>
+<d Excluded="1">0.05043</d>
+<d Excluded="1">0.01123</d>
+<d Excluded="1">0.00006</d>
+<d Excluded="1">0.29521</d>
+<d Excluded="1">0.45977</d>
+<d Excluded="1">0.5149</d>
+<d Excluded="1">0.49221</d>
+<d Excluded="1">0.42537</d>
+<d Excluded="1">0.43597</d>
+<d Excluded="1">0.35388</d>
+<d Excluded="1">0.16331</d>
+<d Excluded="1">0.10585</d>
+<d Excluded="1">-0.02167</d>
+<d Excluded="1">-0.09303</d>
+<d Excluded="1">-0.13105</d>
+<d Excluded="1">-0.1787</d>
+<d Excluded="1">-0.32581</d>
+<d Excluded="1">-0.35936</d>
+</Subcolumn>
+<Subcolumn>
+<d Excluded="1">0.01009</d>
+<d Excluded="1">-0.0207</d>
+<d Excluded="1">-0.020175</d>
+<d Excluded="1">-0.0228375</d>
+<d Excluded="1">-0.00089</d>
+<d Excluded="1">0.43712</d>
+<d Excluded="1">0.84069</d>
+<d Excluded="1">0.83956</d>
+<d Excluded="1">0.78237</d>
+<d Excluded="1">0.67704</d>
+<d Excluded="1">0.62332</d>
+<d Excluded="1">0.51691</d>
+<d Excluded="1">0.31628</d>
+<d Excluded="1">0.18249</d>
+<d Excluded="1">0.06305</d>
+<d Excluded="1">0.00706</d>
+<d Excluded="1">-0.1301</d>
+<d Excluded="1">-0.22327</d>
+<d Excluded="1">-0.38436</d>
+<d Excluded="1">-0.43772</d>
+</Subcolumn>
+<Subcolumn>
+<d Excluded="1">-0.22412</d>
+<d Excluded="1">-0.17064</d>
+<d Excluded="1">-0.12712</d>
+<d Excluded="1">0.01868</d>
+<d Excluded="1">-0.0232</d>
+<d Excluded="1">-0.0412</d>
+<d Excluded="1">-0.00736</d>
+<d Excluded="1">0.10762</d>
+<d Excluded="1">-0.0411</d>
+<d Excluded="1">0.0579</d>
+<d Excluded="1">0.06116</d>
+<d Excluded="1">-0.05098</d>
+<d Excluded="1">-0.1491</d>
+<d Excluded="1">-0.24084</d>
+<d Excluded="1">-0.31704</d>
+<d Excluded="1">-0.4156</d>
+<d Excluded="1">-0.52988</d>
+<d Excluded="1">-0.56692</d>
+<d Excluded="1">-0.66042</d>
+<d Excluded="1">-0.47382</d>
+</Subcolumn>
+<Subcolumn>
+<d Excluded="1">0.008885</d>
+<d Excluded="1">-0.01854</d>
+<d Excluded="1">0.07276</d>
+<d Excluded="1">0.08918</d>
+<d Excluded="1">0.00446</d>
+<d Excluded="1">0.21298</d>
+<d Excluded="1">0.3811</d>
+<d Excluded="1">0.46048</d>
+<d Excluded="1">0.34338</d>
+<d Excluded="1">0.47676</d>
+<d Excluded="1">0.3927</d>
+<d Excluded="1">0.25792</d>
+<d Excluded="1">0.23668</d>
+<d Excluded="1">0.20204</d>
+<d Excluded="1">0.1327</d>
+<d Excluded="1">0.04322</d>
+<d Excluded="1">-0.11814</d>
+<d Excluded="1">-0.18906</d>
+<d Excluded="1">-0.37814</d>
+<d Excluded="1">-0.3908</d>
+</Subcolumn>
+<Subcolumn>
+<d Excluded="1">-0.123141667</d>
+<d Excluded="1">-0.13176</d>
+<d Excluded="1">-0.10088</d>
+<d Excluded="1">-0.01952</d>
+<d Excluded="1">0.00476</d>
+<d Excluded="1">0.28934</d>
+<d Excluded="1">0.3373</d>
+<d Excluded="1">0.19598</d>
+<d Excluded="1">0.37248</d>
+<d Excluded="1">0.3366</d>
+<d Excluded="1">0.23674</d>
+<d Excluded="1">0.2053</d>
+<d Excluded="1">0.05496</d>
+<d Excluded="1">0.284978333</d>
+<d Excluded="1">0.117</d>
+<d Excluded="1"/>
+<d Excluded="1"/>
+<d Excluded="1"/>
+<d Excluded="1">-0.102</d>
+<d Excluded="1">0.01182</d>
+</Subcolumn>
+</YColumn>
+<YColumn Width="1216" Decimals="9" Subcolumns="16">
+<Title><TextAlign align="Center">Different</TextAlign></Title>
+<Subcolumn>
+<d Excluded="1">0.15362</d>
+<d Excluded="1">0.26016</d>
+<d Excluded="1">0.11322</d>
+<d Excluded="1">-0.075485</d>
+<d Excluded="1">0.04378</d>
+<d Excluded="1">0.43582</d>
+<d Excluded="1">0.6129</d>
+<d Excluded="1">0.62022</d>
+<d Excluded="1">0.4813</d>
+<d Excluded="1">0.265213333</d>
+<d Excluded="1">0.303358333</d>
+<d Excluded="1">0.3144</d>
+<d Excluded="1">0.182436667</d>
+<d Excluded="1">0.18266</d>
+<d Excluded="1">0.33607</d>
+<d Excluded="1">0.227395</d>
+<d Excluded="1">-0.02696</d>
+<d Excluded="1">-0.26144</d>
+<d Excluded="1">-0.13222</d>
+<d Excluded="1">-0.2626</d>
+</Subcolumn>
+<Subcolumn>
+<d Excluded="1">-0.33094</d>
+<d Excluded="1">-0.28354</d>
+<d Excluded="1">-0.28582</d>
+<d Excluded="1">-0.07938</d>
+<d Excluded="1">-0.04494</d>
+<d Excluded="1">0.07336</d>
+<d Excluded="1">0.43488</d>
+<d Excluded="1">0.39036</d>
+<d Excluded="1">0.33232</d>
+<d Excluded="1">0.16476</d>
+<d Excluded="1">0.0101</d>
+<d Excluded="1">-0.08344</d>
+<d Excluded="1">-0.05562</d>
+<d Excluded="1">-0.07778</d>
+<d Excluded="1">-0.1585</d>
+<d Excluded="1">-0.22286</d>
+<d Excluded="1">-0.21332</d>
+<d Excluded="1">-0.26476</d>
+<d Excluded="1">-0.18388</d>
+<d Excluded="1">-0.36114</d>
+</Subcolumn>
+<Subcolumn>
+<d Excluded="1">-0.0198</d>
+<d Excluded="1">-0.00013</d>
+<d Excluded="1">-0.04903</d>
+<d Excluded="1">-0.030995</d>
+<d Excluded="1">-0.01585</d>
+<d Excluded="1">0.23385</d>
+<d Excluded="1">0.34851</d>
+<d Excluded="1">0.23443</d>
+<d Excluded="1">0.16969</d>
+<d Excluded="1">0.10619</d>
+<d Excluded="1">0.07852</d>
+<d Excluded="1">-0.14062</d>
+<d Excluded="1">-0.16934</d>
+<d Excluded="1">-0.24198</d>
+<d Excluded="1">-0.38768</d>
+<d Excluded="1">-0.48364</d>
+<d Excluded="1">-0.64166</d>
+<d Excluded="1">-0.68915</d>
+<d Excluded="1">-0.73633</d>
+<d Excluded="1">-0.78635</d>
+</Subcolumn>
+<Subcolumn>
+<d Excluded="1">-0.12206</d>
+<d Excluded="1">-0.03006</d>
+<d Excluded="1">-0.0734</d>
+<d Excluded="1">-0.04352</d>
+<d Excluded="1">-0.022</d>
+<d Excluded="1">0.11788</d>
+<d Excluded="1">0.1869</d>
+<d Excluded="1">0.11794</d>
+<d Excluded="1">0.0764</d>
+<d Excluded="1">0.06482</d>
+<d Excluded="1">0.00622</d>
+<d Excluded="1">0.01056</d>
+<d Excluded="1">0.0074</d>
+<d Excluded="1">-0.03782</d>
+<d Excluded="1">-0.06758</d>
+<d Excluded="1">-0.19474</d>
+<d Excluded="1">-0.10146</d>
+<d Excluded="1">-0.10302</d>
+<d Excluded="1">-0.08568</d>
+<d Excluded="1">-0.27177</d>
+</Subcolumn>
+<Subcolumn>
+<d Excluded="1">0.05336</d>
+<d Excluded="1">0.02635</d>
+<d Excluded="1">0.07499</d>
+<d Excluded="1">-0.06542</d>
+<d Excluded="1">0.02571</d>
+<d Excluded="1">-0.09305</d>
+<d Excluded="1">0.01974</d>
+<d Excluded="1">-0.07836</d>
+<d Excluded="1">-0.15169</d>
+<d Excluded="1">-0.01335</d>
+<d Excluded="1">-0.03642</d>
+<d Excluded="1">-0.26023</d>
+<d Excluded="1">-0.30627</d>
+<d Excluded="1">-0.24515</d>
+<d Excluded="1">-0.24777</d>
+<d Excluded="1">-0.34542</d>
+<d Excluded="1">-0.44723</d>
+<d Excluded="1">-0.51682</d>
+<d Excluded="1">-0.42367</d>
+<d Excluded="1">-0.32017</d>
+</Subcolumn>
+<Subcolumn>
+<d Excluded="1">0.2071</d>
+<d Excluded="1">0.14416</d>
+<d Excluded="1">0.14564</d>
+<d Excluded="1">0.0406</d>
+<d Excluded="1">0.00676</d>
+<d Excluded="1">0.35338</d>
+<d Excluded="1">0.51942</d>
+<d Excluded="1">0.53026</d>
+<d Excluded="1">0.42246</d>
+<d Excluded="1">0.36404</d>
+<d Excluded="1">0.3634</d>
+<d Excluded="1">0.15648</d>
+<d Excluded="1">0.13538</d>
+<d Excluded="1">0.0566</d>
+<d Excluded="1">0.03128</d>
+<d Excluded="1">0.06704</d>
+<d Excluded="1">-0.1351</d>
+<d Excluded="1">-0.28756</d>
+<d Excluded="1">-0.21406</d>
+<d Excluded="1">-0.27848</d>
+</Subcolumn>
+<Subcolumn>
+<d Excluded="1">-0.11533</d>
+<d Excluded="1">0.0166</d>
+<d Excluded="1">0.0559</d>
+<d Excluded="1">0.04948</d>
+<d Excluded="1">-0.0028</d>
+<d Excluded="1">0.07038</d>
+<d Excluded="1">0.19659</d>
+<d Excluded="1">0.13176</d>
+<d Excluded="1">0.08532</d>
+<d Excluded="1">0.1015</d>
+<d Excluded="1">0.15946</d>
+<d Excluded="1">0.08663</d>
+<d Excluded="1">0.09308</d>
+<d Excluded="1">0.11385</d>
+<d Excluded="1">0.15917</d>
+<d Excluded="1">0.05138</d>
+<d Excluded="1">0.01711</d>
+<d Excluded="1">-0.03903</d>
+<d Excluded="1">-0.03974</d>
+<d Excluded="1">-0.06137</d>
+</Subcolumn>
+<Subcolumn>
+<d Excluded="1">-0.04542</d>
+<d Excluded="1">-0.03086</d>
+<d Excluded="1">0.01788</d>
+<d Excluded="1">-0.03342</d>
+<d Excluded="1">0.0095</d>
+<d Excluded="1">0.60799</d>
+<d Excluded="1">0.915550833</d>
+<d Excluded="1">0.827025</d>
+<d Excluded="1">0.605574167</d>
+<d Excluded="1">0.523945</d>
+<d Excluded="1">0.225344444</d>
+<d Excluded="1">0.284101667</d>
+<d Excluded="1">0.262962281</d>
+<d Excluded="1">0.061110833</d>
+<d Excluded="1">-0.01398</d>
+<d Excluded="1">-0.13328</d>
+<d Excluded="1">-0.34935</d>
+<d Excluded="1">-0.460613333</d>
+<d Excluded="1">-0.41294</d>
+<d Excluded="1">-0.501678704</d>
+</Subcolumn>
+<Subcolumn>
+<d Excluded="1">0.03088</d>
+<d Excluded="1">-0.00517</d>
+<d Excluded="1">0.03601</d>
+<d Excluded="1">0.00253</d>
+<d Excluded="1">0.0075</d>
+<d Excluded="1">0.41811</d>
+<d Excluded="1">0.52937</d>
+<d Excluded="1">0.4686725</d>
+<d Excluded="1">0.3666725</d>
+<d Excluded="1">0.2706</d>
+<d Excluded="1">0.138760833</d>
+<d Excluded="1">0.173358333</d>
+<d Excluded="1">0.19801</d>
+<d Excluded="1">0.042044792</d>
+<d Excluded="1">-0.06199</d>
+<d Excluded="1">-0.17935</d>
+<d Excluded="1">-0.354466667</d>
+<d Excluded="1">-0.51897</d>
+<d Excluded="1">-0.46633</d>
+<d Excluded="1">-0.617867647</d>
+</Subcolumn>
+<Subcolumn>
+<d Excluded="1">-0.03088</d>
+<d Excluded="1">-0.1364</d>
+<d Excluded="1">-0.04703</d>
+<d Excluded="1">-0.0147</d>
+<d Excluded="1">0.00494</d>
+<d Excluded="1">0.20567</d>
+<d Excluded="1">0.41245</d>
+<d Excluded="1">0.61234</d>
+<d Excluded="1">0.48977</d>
+<d Excluded="1">0.41434</d>
+<d Excluded="1">0.38447</d>
+<d Excluded="1">0.19519</d>
+<d Excluded="1">0.1085</d>
+<d Excluded="1">0.0342</d>
+<d Excluded="1">-0.11352</d>
+<d Excluded="1">-0.23849</d>
+<d Excluded="1">-0.42658</d>
+<d Excluded="1">-0.57214</d>
+<d Excluded="1">-0.60039</d>
+<d Excluded="1">-0.68673</d>
+</Subcolumn>
+<Subcolumn>
+<d Excluded="1">0.10704</d>
+<d Excluded="1">0.11495</d>
+<d Excluded="1">0.04538</d>
+<d Excluded="1">0.12818</d>
+<d Excluded="1">0.01916</d>
+<d Excluded="1">0.84573</d>
+<d Excluded="1">1.12342</d>
+<d Excluded="1">0.93372</d>
+<d Excluded="1">0.90752</d>
+<d Excluded="1">0.70189</d>
+<d Excluded="1">0.67328</d>
+<d Excluded="1">0.5751</d>
+<d Excluded="1">0.49724</d>
+<d Excluded="1">0.454565</d>
+<d Excluded="1">0.31436</d>
+<d Excluded="1">0.24072</d>
+<d Excluded="1">0.16359</d>
+<d Excluded="1">0.1257</d>
+<d Excluded="1">0.03226</d>
+<d Excluded="1">0.14195</d>
+</Subcolumn>
+<Subcolumn>
+<d Excluded="1">0.08388</d>
+<d Excluded="1">-0.00629</d>
+<d Excluded="1">-0.031165</d>
+<d Excluded="1">0.072</d>
+<d Excluded="1">0.01762</d>
+<d Excluded="1">0.31151</d>
+<d Excluded="1">0.53033</d>
+<d Excluded="1">0.50851</d>
+<d Excluded="1">0.46481</d>
+<d Excluded="1">0.40521</d>
+<d Excluded="1">0.35746</d>
+<d Excluded="1">0.23284</d>
+<d Excluded="1">0.18678</d>
+<d Excluded="1">0.10039</d>
+<d Excluded="1">-0.01496</d>
+<d Excluded="1">-0.11036</d>
+<d Excluded="1">-0.21272</d>
+<d Excluded="1">-0.38172</d>
+<d Excluded="1">-0.4748</d>
+<d Excluded="1">-0.4581</d>
+</Subcolumn>
+<Subcolumn>
+<d Excluded="1">0.04801</d>
+<d Excluded="1">0.01797</d>
+<d Excluded="1">-0.01258</d>
+<d Excluded="1">0.00306</d>
+<d Excluded="1">0.01645</d>
+<d Excluded="1">0.56752</d>
+<d Excluded="1">1.02547</d>
+<d Excluded="1">0.89353</d>
+<d Excluded="1">0.89277</d>
+<d Excluded="1">0.79844</d>
+<d Excluded="1">0.84455</d>
+<d Excluded="1">0.63669</d>
+<d Excluded="1">0.51919</d>
+<d Excluded="1">0.51105</d>
+<d Excluded="1">0.44404</d>
+<d Excluded="1">0.2805775</d>
+<d Excluded="1">0.102035</d>
+<d Excluded="1">-0.04919</d>
+<d Excluded="1">-0.17134</d>
+<d Excluded="1">-0.18829</d>
+</Subcolumn>
+<Subcolumn>
+<d Excluded="1">-0.1546</d>
+<d Excluded="1">-0.100945098</d>
+<d Excluded="1">0.04448</d>
+<d Excluded="1">0.02492</d>
+<d Excluded="1">-0.01885</d>
+<d Excluded="1">0.06973</d>
+<d Excluded="1">0.111</d>
+<d Excluded="1">0.00772</d>
+<d Excluded="1">-0.1087</d>
+<d Excluded="1">-0.23755</d>
+<d Excluded="1">-0.38249</d>
+<d Excluded="1">-0.50753</d>
+<d Excluded="1">-0.58548</d>
+<d Excluded="1">-0.80041</d>
+<d Excluded="1">-0.674410526</d>
+<d Excluded="1">-0.612008824</d>
+<d Excluded="1">-0.590626667</d>
+<d Excluded="1">-0.27942</d>
+<d Excluded="1">-0.52054</d>
+<d Excluded="1">-0.5617</d>
+</Subcolumn>
+<Subcolumn>
+<d Excluded="1">-0.06546</d>
+<d Excluded="1">0.184405556</d>
+<d Excluded="1">0.07558</d>
+<d Excluded="1">0.08022</d>
+<d Excluded="1">-0.00728</d>
+<d Excluded="1">0.09386</d>
+<d Excluded="1">0.29796</d>
+<d Excluded="1">0.27268</d>
+<d Excluded="1">0.16544</d>
+<d Excluded="1">0.05363</d>
+<d Excluded="1">-0.00795</d>
+<d Excluded="1">-0.09803</d>
+<d Excluded="1">-0.1736125</d>
+<d Excluded="1">-0.292741228</d>
+<d Excluded="1">0.046163636</d>
+<d Excluded="1">-0.161573333</d>
+<d Excluded="1">0.00982</d>
+<d Excluded="1">-0.0984</d>
+<d Excluded="1">-0.2255</d>
+<d Excluded="1">-0.25436</d>
+</Subcolumn>
+<Subcolumn>
+<d Excluded="1">-0.1708025</d>
+<d Excluded="1">-0.143</d>
+<d Excluded="1">-0.21362</d>
+<d Excluded="1">-0.02772</d>
+<d Excluded="1">-0.02345</d>
+<d Excluded="1">0.23694</d>
+<d Excluded="1">0.49674</d>
+<d Excluded="1">0.35963</d>
+<d Excluded="1">0.24917</d>
+<d Excluded="1">0.19405</d>
+<d Excluded="1">0.03016</d>
+<d Excluded="1">0.16455</d>
+<d Excluded="1">0.11883</d>
+<d Excluded="1">0.06182</d>
+<d Excluded="1">-0.14257</d>
+<d Excluded="1">-0.33043</d>
+<d Excluded="1">-0.50894</d>
+<d Excluded="1">-0.72133</d>
+<d Excluded="1">-0.79074</d>
+<d Excluded="1">-0.79484</d>
+</Subcolumn>
+</YColumn>
+</Table>
+<Table ID="Table2" XFormat="none" YFormat="replicates" Replicates="16" TableType="TwoWay" EVFormat="AsteriskAfterNumber">
+<Title>WT: House Second</Title>
+<RowTitlesColumn Width="70">
+<Subcolumn>
+<d>-4</d>
+<d>-3</d>
+<d>-2</d>
+<d>-1</d>
+<d>0</d>
+<d>1</d>
+<d>2</d>
+<d>3</d>
+<d>4</d>
+<d>5</d>
+<d>6</d>
+<d>7</d>
+<d>8</d>
+<d>9</d>
+<d>10</d>
+<d>11</d>
+<d>12</d>
+<d>13</d>
+<d>14</d>
+<d>15</d>
+</Subcolumn>
+</RowTitlesColumn>
+<YColumn Width="1216" Decimals="9" Subcolumns="16">
+<Title><TextAlign align="Center">First</TextAlign></Title>
+<Subcolumn>
+<d Excluded="1">0.09016375</d>
+<d Excluded="1">0.10015375</d>
+<d Excluded="1">0.0186</d>
+<d Excluded="1">0.02249</d>
+<d Excluded="1">0.02189</d>
+<d Excluded="1">0.309875</d>
+<d Excluded="1">0.501195</d>
+<d Excluded="1">0.48459125</d>
+<d Excluded="1">0.33818</d>
+<d Excluded="1">0.20000625</d>
+<d Excluded="1">0.141374583</d>
+<d Excluded="1">0.11520625</d>
+<d Excluded="1">0.06976</d>
+<d Excluded="1">0.095343333</d>
+<d Excluded="1">0.06956625</d>
+<d Excluded="1">-0.03220375</d>
+<d Excluded="1">-0.1432375</d>
+<d Excluded="1">-0.21453875</d>
+<d Excluded="1">-0.191216667</d>
+<d Excluded="1">-0.13023375</d>
+</Subcolumn>
+<Subcolumn>
+<d Excluded="1">0.009163333</d>
+<d Excluded="1">0.061597222</d>
+<d Excluded="1">0.04452</d>
+<d Excluded="1">-0.008058889</d>
+<d Excluded="1">0.02425</d>
+<d Excluded="1">0.26168</d>
+<d Excluded="1">0.485701667</d>
+<d Excluded="1">0.577336111</d>
+<d Excluded="1">0.482508333</d>
+<d Excluded="1">0.215550556</d>
+<d Excluded="1">0.041382222</d>
+<d Excluded="1">0.076332778</d>
+<d Excluded="1">0.07198</d>
+<d Excluded="1">-0.0904</d>
+<d Excluded="1">-0.262471667</d>
+<d Excluded="1">-0.368396111</d>
+<d Excluded="1">-0.41822381</d>
+<d Excluded="1">-0.400959615</d>
+<d Excluded="1">-0.574418391</d>
+<d Excluded="1">-0.498587179</d>
+</Subcolumn>
+<Subcolumn>
+<d Excluded="1">-0.0185</d>
+<d Excluded="1">-0.1023</d>
+<d Excluded="1">-0.04934</d>
+<d Excluded="1">0.045385</d>
+<d Excluded="1">0.01261</d>
+<d Excluded="1">0.3156</d>
+<d Excluded="1">0.42451</d>
+<d Excluded="1">0.32396</d>
+<d Excluded="1">0.21617</d>
+<d Excluded="1">0.20818</d>
+<d Excluded="1">0.072445</d>
+<d Excluded="1">0.00982</d>
+<d Excluded="1">-0.109715</d>
+<d Excluded="1">-0.20442</d>
+<d Excluded="1">-0.29463</d>
+<d Excluded="1">-0.4482</d>
+<d Excluded="1">-0.60614</d>
+<d Excluded="1">-0.680615</d>
+<d Excluded="1">-0.74651</d>
+<d Excluded="1">-0.792895</d>
+</Subcolumn>
+<Subcolumn>
+<d Excluded="1">-0.02629</d>
+<d Excluded="1">-0.047565</d>
+<d Excluded="1">-0.065865</d>
+<d Excluded="1">-0.022555</d>
+<d Excluded="1">-0.00161</d>
+<d Excluded="1">0.11748625</d>
+<d Excluded="1">0.129875</d>
+<d Excluded="1">0.08634</d>
+<d Excluded="1">0.02724</d>
+<d Excluded="1">-0.038105</d>
+<d Excluded="1">-0.0030725</d>
+<d Excluded="1">-0.13568</d>
+<d Excluded="1">-0.22655</d>
+<d Excluded="1">-0.222335</d>
+<d Excluded="1">-0.337085</d>
+<d Excluded="1">-0.390095</d>
+<d Excluded="1">-0.44347</d>
+<d Excluded="1">-0.49941</d>
+<d Excluded="1">-0.533965</d>
+<d Excluded="1">-0.569745</d>
+</Subcolumn>
+<Subcolumn>
+<d Excluded="1">0.106065</d>
+<d Excluded="1">0.04495</d>
+<d Excluded="1">0.013465</d>
+<d Excluded="1">-0.03845</d>
+<d Excluded="1">-0.005455</d>
+<d Excluded="1">-0.042575</d>
+<d Excluded="1">-0.00098</d>
+<d Excluded="1">0.0103</d>
+<d Excluded="1">-0.018215</d>
+<d Excluded="1">-0.07396</d>
+<d Excluded="1">-0.079775</d>
+<d Excluded="1">-0.22663</d>
+<d Excluded="1">-0.203755</d>
+<d Excluded="1">-0.12928</d>
+<d Excluded="1">-0.213795</d>
+<d Excluded="1">-0.282215</d>
+<d Excluded="1">-0.25781</d>
+<d Excluded="1">-0.337475</d>
+<d Excluded="1">-0.328615</d>
+<d Excluded="1">-0.403085</d>
+</Subcolumn>
+<Subcolumn>
+<d Excluded="1">0.03064</d>
+<d Excluded="1">-0.00934</d>
+<d Excluded="1">0.00906</d>
+<d Excluded="1">-0.112606667</d>
+<d Excluded="1">-0.011188333</d>
+<d Excluded="1">0.715525</d>
+<d Excluded="1">1.145146667</d>
+<d Excluded="1">1.00836</d>
+<d Excluded="1">0.781806667</d>
+<d Excluded="1">0.761793333</d>
+<d Excluded="1">0.640613333</d>
+<d Excluded="1">0.576291111</d>
+<d Excluded="1">0.453525</d>
+<d Excluded="1">0.242585</d>
+<d Excluded="1">0.141535</d>
+<d Excluded="1">0.076472</d>
+<d Excluded="1">0.02363</d>
+<d Excluded="1">-0.18721</d>
+<d Excluded="1">-0.18129</d>
+<d Excluded="1">-0.29679</d>
+</Subcolumn>
+<Subcolumn>
+<d Excluded="1">0.100405</d>
+<d Excluded="1">0.05739</d>
+<d Excluded="1">0.050025</d>
+<d Excluded="1">0.057615</d>
+<d Excluded="1">-0.00361</d>
+<d Excluded="1">0.249015</d>
+<d Excluded="1">0.34128</d>
+<d Excluded="1">0.376905</d>
+<d Excluded="1">0.318985</d>
+<d Excluded="1">0.29781</d>
+<d Excluded="1">0.316525</d>
+<d Excluded="1">0.28815</d>
+<d Excluded="1">0.267965</d>
+<d Excluded="1">0.220165</d>
+<d Excluded="1">0.11791</d>
+<d Excluded="1">0.11715</d>
+<d Excluded="1">0.093525</d>
+<d Excluded="1">0.06614</d>
+<d Excluded="1">0.05125</d>
+<d Excluded="1">-0.021105</d>
+</Subcolumn>
+<Subcolumn>
+<d Excluded="1">0.04099</d>
+<d Excluded="1">-0.00359</d>
+<d Excluded="1">-0.0506</d>
+<d Excluded="1">0.009</d>
+<d Excluded="1">0.02108375</d>
+<d Excluded="1">0.621653333</d>
+<d Excluded="1">0.9793325</d>
+<d Excluded="1">0.882455</d>
+<d Excluded="1">0.682532083</d>
+<d Excluded="1">0.62313</d>
+<d Excluded="1">0.733025</d>
+<d Excluded="1">0.692775</d>
+<d Excluded="1">0.457485</d>
+<d Excluded="1">0.35715</d>
+<d Excluded="1">0.356655</d>
+<d Excluded="1">0.225235</d>
+<d Excluded="1">-0.016485</d>
+<d Excluded="1">-0.04589</d>
+<d Excluded="1">-0.131165</d>
+<d Excluded="1">-0.142665</d>
+</Subcolumn>
+<Subcolumn>
+<d Excluded="1">0.029560833</d>
+<d Excluded="1">0.003495299</d>
+<d Excluded="1">-0.050329583</d>
+<d Excluded="1">0.01377</d>
+<d Excluded="1">0.01323</d>
+<d Excluded="1">0.288185</d>
+<d Excluded="1">0.45689</d>
+<d Excluded="1">0.3761</d>
+<d Excluded="1">0.23392875</d>
+<d Excluded="1">0.21437125</d>
+<d Excluded="1">0.234345</d>
+<d Excluded="1">0.16865</d>
+<d Excluded="1">-0.01256</d>
+<d Excluded="1">-0.05883</d>
+<d Excluded="1">-0.075385</d>
+<d Excluded="1">-0.246545</d>
+<d Excluded="1">-0.41702</d>
+<d Excluded="1">-0.456335</d>
+<d Excluded="1">-0.49276875</d>
+<d Excluded="1">-0.5096275</d>
+</Subcolumn>
+<Subcolumn>
+<d Excluded="1">-0.05439</d>
+<d Excluded="1">0.0053975</d>
+<d Excluded="1">0.00716</d>
+<d Excluded="1">0.00621</d>
+<d Excluded="1">-0.012635</d>
+<d Excluded="1">0.42303</d>
+<d Excluded="1">0.816855</d>
+<d Excluded="1">0.81039</d>
+<d Excluded="1">0.6615</d>
+<d Excluded="1">0.51639</d>
+<d Excluded="1">0.341755</d>
+<d Excluded="1">0.25662</d>
+<d Excluded="1">0.22656</d>
+<d Excluded="1">0.176925</d>
+<d Excluded="1">0.141035</d>
+<d Excluded="1">0.014075</d>
+<d Excluded="1">-0.177435</d>
+<d Excluded="1">-0.22761</d>
+<d Excluded="1">-0.212545</d>
+<d Excluded="1">-0.28534</d>
+</Subcolumn>
+<Subcolumn>
+<d Excluded="1">0.0885</d>
+<d Excluded="1">-0.05258</d>
+<d Excluded="1">0.058266667</d>
+<d Excluded="1">0.0331</d>
+<d Excluded="1">0.020866667</d>
+<d Excluded="1">0.521766667</d>
+<d Excluded="1">0.756926667</d>
+<d Excluded="1">0.542466667</d>
+<d Excluded="1">0.492286667</d>
+<d Excluded="1">0.279333333</d>
+<d Excluded="1">0.278753333</d>
+<d Excluded="1">0.160553333</d>
+<d Excluded="1">0.156593333</d>
+<d Excluded="1">-0.02548</d>
+<d Excluded="1">-0.074353333</d>
+<d Excluded="1">-0.048286667</d>
+<d Excluded="1">-0.126886667</d>
+<d Excluded="1">-0.205586667</d>
+<d Excluded="1">-0.209955</d>
+<d Excluded="1">-0.28912</d>
+</Subcolumn>
+<Subcolumn>
+<d Excluded="1">0.14507</d>
+<d Excluded="1">0.11653</d>
+<d Excluded="1">0.07002</d>
+<d Excluded="1">0.058735</d>
+<d Excluded="1">0.00073</d>
+<d Excluded="1">0.20915</d>
+<d Excluded="1">0.37406</d>
+<d Excluded="1">0.40486</d>
+<d Excluded="1">0.34989</d>
+<d Excluded="1">0.364835</d>
+<d Excluded="1">0.321295</d>
+<d Excluded="1">0.2341</d>
+<d Excluded="1">0.14972</d>
+<d Excluded="1">0.03451</d>
+<d Excluded="1">-0.05606875</d>
+<d Excluded="1">-0.1019475</d>
+<d Excluded="1">-0.19494</d>
+<d Excluded="1">-0.229415</d>
+<d Excluded="1">-0.299985</d>
+<d Excluded="1">-0.34857</d>
+</Subcolumn>
+<Subcolumn>
+<d Excluded="1">0.246175</d>
+<d Excluded="1">0.18777</d>
+<d Excluded="1">0.12789</d>
+<d Excluded="1">0.06377</d>
+<d Excluded="1">-0.012135</d>
+<d Excluded="1">0.3397</d>
+<d Excluded="1">0.74472</d>
+<d Excluded="1">0.784825</d>
+<d Excluded="1">0.773505</d>
+<d Excluded="1">0.750695</d>
+<d Excluded="1">0.63353</d>
+<d Excluded="1">0.58782</d>
+<d Excluded="1">0.54855</d>
+<d Excluded="1">0.356355</d>
+<d Excluded="1">0.223285</d>
+<d Excluded="1">0.060527083</d>
+<d Excluded="1">-0.063701667</d>
+<d Excluded="1">-0.180751667</d>
+<d Excluded="1">-0.210603509</d>
+<d Excluded="1">-0.3808525</d>
+</Subcolumn>
+<Subcolumn>
+<d Excluded="1">-0.226586667</d>
+<d Excluded="1">-0.134053333</d>
+<d Excluded="1">-0.089266667</d>
+<d Excluded="1">-0.004613333</d>
+<d Excluded="1">0.000213333</d>
+<d Excluded="1">0.246406667</d>
+<d Excluded="1">0.48922</d>
+<d Excluded="1">0.610326667</d>
+<d Excluded="1">0.67566</d>
+<d Excluded="1">0.697673333</d>
+<d Excluded="1">0.388153333</d>
+<d Excluded="1">0.241993333</d>
+<d Excluded="1">0.184573333</d>
+<d Excluded="1">0.048026667</d>
+<d Excluded="1">-0.051233333</d>
+<d Excluded="1">-0.185306667</d>
+<d Excluded="1">-0.244326667</d>
+<d Excluded="1">-0.408046667</d>
+<d Excluded="1">-0.494746667</d>
+<d Excluded="1">-0.603773333</d>
+</Subcolumn>
+<Subcolumn>
+<d Excluded="1">-0.12492</d>
+<d Excluded="1">-0.117733333</d>
+<d Excluded="1">-0.07094</d>
+<d Excluded="1">-0.057626667</d>
+<d Excluded="1">-0.000173333</d>
+<d Excluded="1">0.246806667</d>
+<d Excluded="1">0.556906667</d>
+<d Excluded="1">0.667966667</d>
+<d Excluded="1">0.742926667</d>
+<d Excluded="1">0.73298</d>
+<d Excluded="1">0.64206</d>
+<d Excluded="1">0.559586667</d>
+<d Excluded="1">0.401053333</d>
+<d Excluded="1">0.236286667</d>
+<d Excluded="1">0.16324</d>
+<d Excluded="1">0.103926667</d>
+<d Excluded="1">-0.026046667</d>
+<d Excluded="1">-0.162833333</d>
+<d Excluded="1">-0.29386</d>
+<d Excluded="1">-0.341913333</d>
+</Subcolumn>
+<Subcolumn>
+<d Excluded="1">0.04118</d>
+<d Excluded="1">0.024040351</d>
+<d Excluded="1">0.08853</d>
+<d Excluded="1">0.04347</d>
+<d Excluded="1">0.020065</d>
+<d Excluded="1">0.565625</d>
+<d Excluded="1">0.639225</d>
+<d Excluded="1">0.45528</d>
+<d Excluded="1">0.27111</d>
+<d Excluded="1">0.09545</d>
+<d Excluded="1">0.02235</d>
+<d Excluded="1">-0.116655</d>
+<d Excluded="1">-0.170555</d>
+<d Excluded="1">-0.25263125</d>
+<d Excluded="1">-0.35076875</d>
+<d Excluded="1">-0.502295</d>
+<d Excluded="1">-0.5666975</d>
+<d Excluded="1">-0.61919625</d>
+<d Excluded="1">-0.716479583</d>
+<d Excluded="1">-0.718332083</d>
+</Subcolumn>
+</YColumn>
+<YColumn Width="1216" Decimals="6" Subcolumns="16">
+<Title><TextAlign align="Center">Same</TextAlign></Title>
+<Subcolumn>
+<d>0.04302</d>
+<d>0.13936</d>
+<d>0.23558</d>
+<d>0.09966</d>
+<d>0.04486</d>
+<d>0.18374</d>
+<d>0.43906</d>
+<d>0.46672</d>
+<d>0.63146</d>
+<d>0.58124</d>
+<d>0.45982</d>
+<d>0.4452</d>
+<d>0.475705</d>
+<d>0.330765</d>
+<d>0.14296</d>
+<d>0.12594</d>
+<d>0.15274</d>
+<d>-0.03298</d>
+<d>0.14272</d>
+<d>0.0889</d>
+</Subcolumn>
+<Subcolumn>
+<d>0.0485975</d>
+<d>0.2130325</d>
+<d>0.1383675</d>
+<d>0.168864167</d>
+<d>0.087455833</d>
+<d>0.254269167</d>
+<d>0.43368</d>
+<d>0.314875</d>
+<d>0.33311</d>
+<d>0.347534167</d>
+<d>0.232485</d>
+<d>0.18397</d>
+<d>0.0988175</d>
+<d>-0.020555</d>
+<d>0.04998</d>
+<d>-0.01313</d>
+<d>-0.108085</d>
+<d>-0.08899</d>
+<d>-0.08753</d>
+<d>-0.2061</d>
+</Subcolumn>
+<Subcolumn>
+<d>-0.04756</d>
+<d>-0.05652</d>
+<d>-0.02485</d>
+<d>0.0358</d>
+<d>0.00313</d>
+<d>0.13285</d>
+<d>0.28894</d>
+<d>0.15338</d>
+<d>0.08826</d>
+<d>0.03728</d>
+<d>-0.09601</d>
+<d>-0.10394</d>
+<d>-0.22929</d>
+<d>-0.44738</d>
+<d>-0.53568</d>
+<d>-0.59972</d>
+<d>-0.67848</d>
+<d>-0.80592</d>
+<d>-0.89211</d>
+<d>-0.89044</d>
+</Subcolumn>
+<Subcolumn>
+<d>-0.10954</d>
+<d>-0.02136</d>
+<d>-0.03947</d>
+<d>-0.00003</d>
+<d>0.0217</d>
+<d>0.19404</d>
+<d>0.13042</d>
+<d>0.13355</d>
+<d>0.11642</d>
+<d>0.11036</d>
+<d>0.06539</d>
+<d>0.00304</d>
+<d>-0.00807</d>
+<d>-0.04487</d>
+<d>-0.09452</d>
+<d>-0.13335</d>
+<d>-0.21085</d>
+<d>-0.21248</d>
+<d>-0.32816</d>
+<d>-0.40958</d>
+</Subcolumn>
+<Subcolumn>
+<d>-0.12603</d>
+<d>-0.05943</d>
+<d>0.00395</d>
+<d>0.00315</d>
+<d>-0.01648</d>
+<d>0.0439</d>
+<d>0.07352</d>
+<d>0.03464</d>
+<d>-0.08596</d>
+<d>-0.00472</d>
+<d>0.07066</d>
+<d>0.00008</d>
+<d>-0.09675</d>
+<d>-0.01836</d>
+<d>-0.04122</d>
+<d>-0.23011</d>
+<d>-0.28057</d>
+<d>-0.29097</d>
+<d>-0.29115</d>
+<d>-0.1888</d>
+</Subcolumn>
+<Subcolumn>
+<d>-0.08478</d>
+<d>0.11436</d>
+<d>0.1291</d>
+<d>-0.0273375</d>
+<d>-0.00082</d>
+<d>0.80091</d>
+<d>1.75298</d>
+<d>1.64976</d>
+<d>1.49423</d>
+<d>1.289535</d>
+<d>1.040503333</d>
+<d>1.0136</d>
+<d>0.847438333</d>
+<d>0.563384615</d>
+<d>-0.00624</d>
+<d>0.04302</d>
+<d>-0.03734</d>
+<d>-0.17282</d>
+<d>-0.40962</d>
+<d>-0.50616</d>
+</Subcolumn>
+<Subcolumn>
+<d>0.0478</d>
+<d>0.02502</d>
+<d>0.01474</d>
+<d>-0.02468</d>
+<d>0.00929</d>
+<d>0.31985</d>
+<d>0.38855</d>
+<d>0.40331</d>
+<d>0.514399167</d>
+<d>0.419299167</d>
+<d>0.423966667</d>
+<d>0.382052222</d>
+<d>0.108623958</d>
+<d>0.195755</d>
+<d>0.0961025</d>
+<d>0.0437725</d>
+<d>-0.069435</d>
+<d>-0.173255</d>
+<d>-0.19922</d>
+<d>-0.24733</d>
+</Subcolumn>
+<Subcolumn>
+<d>0.051065833</d>
+<d>0.034873333</d>
+<d>-0.146778333</d>
+<d>0.06609</d>
+<d>0.01218</d>
+<d>0.55496</d>
+<d>1.02787</d>
+<d>0.83675</d>
+<d>0.55758</d>
+<d>0.40271</d>
+<d>0.12968</d>
+<d>0.1251275</d>
+<d>0.065804167</d>
+<d>-0.094505</d>
+<d>-0.05547619</d>
+<d>-0.34244</d>
+<d>-0.57036</d>
+<d>-0.56266</d>
+<d>-0.59238</d>
+<d>-0.61518</d>
+</Subcolumn>
+<Subcolumn>
+<d>0.001168333</d>
+<d>-0.063827193</d>
+<d>-0.355438235</d>
+<d>0.06568</d>
+<d>0.0144</d>
+<d>0.40505</d>
+<d>0.66166</d>
+<d>0.44054</d>
+<d>0.20732</d>
+<d>0.05363</d>
+<d>-0.18514</d>
+<d>-0.22767</d>
+<d>-0.30426</d>
+<d>-0.392978333</d>
+<d>-0.442323077</d>
+<d>-0.68136</d>
+<d>-0.86344</d>
+<d>-0.77478</d>
+<d>-0.67784</d>
+<d>-0.81048</d>
+</Subcolumn>
+<Subcolumn>
+<d>0.06655</d>
+<d>-0.0163</d>
+<d>-0.02845</d>
+<d>-0.03271</d>
+<d>0.00101</d>
+<d>0.27871</d>
+<d>0.49389</d>
+<d>0.49105</d>
+<d>0.36302</d>
+<d>0.30613</d>
+<d>0.17851</d>
+<d>0.00659</d>
+<d>-0.10451</d>
+<d>-0.05045</d>
+<d>-0.03957</d>
+<d>-0.13867</d>
+<d>-0.25404</d>
+<d>-0.33662</d>
+<d>-0.39585</d>
+<d>-0.44928</d>
+</Subcolumn>
+<Subcolumn>
+<d>-0.5144</d>
+<d>-0.2182</d>
+<d>-0.33328</d>
+<d>-0.21906</d>
+<d>-0.0166</d>
+<d>0.38808</d>
+<d>0.57586</d>
+<d>0.3112</d>
+<d>0.06584</d>
+<d>0.08254</d>
+<d>0.04334</d>
+<d>0.01846</d>
+<d>-0.22848</d>
+<d>-0.15778</d>
+<d>-0.17588</d>
+<d>-0.53632</d>
+<d>-0.52546</d>
+<d>-0.58808</d>
+<d>-0.72272</d>
+<d>-0.74094</d>
+</Subcolumn>
+<Subcolumn>
+<d>0.07975</d>
+<d>0.08837</d>
+<d>0.05043</d>
+<d>0.01123</d>
+<d>0.00006</d>
+<d>0.29521</d>
+<d>0.45977</d>
+<d>0.5149</d>
+<d>0.49221</d>
+<d>0.42537</d>
+<d>0.43597</d>
+<d>0.35388</d>
+<d>0.16331</d>
+<d>0.10585</d>
+<d>-0.02167</d>
+<d>-0.09303</d>
+<d>-0.13105</d>
+<d>-0.1787</d>
+<d>-0.32581</d>
+<d>-0.35936</d>
+</Subcolumn>
+<Subcolumn>
+<d>0.01009</d>
+<d>-0.0207</d>
+<d>-0.020175</d>
+<d>-0.0228375</d>
+<d>-0.00089</d>
+<d>0.43712</d>
+<d>0.84069</d>
+<d>0.83956</d>
+<d>0.78237</d>
+<d>0.67704</d>
+<d>0.62332</d>
+<d>0.51691</d>
+<d>0.31628</d>
+<d>0.18249</d>
+<d>0.06305</d>
+<d>0.00706</d>
+<d>-0.1301</d>
+<d>-0.22327</d>
+<d>-0.38436</d>
+<d>-0.43772</d>
+</Subcolumn>
+<Subcolumn>
+<d>-0.22412</d>
+<d>-0.17064</d>
+<d>-0.12712</d>
+<d>0.01868</d>
+<d>-0.0232</d>
+<d>-0.0412</d>
+<d>-0.00736</d>
+<d>0.10762</d>
+<d>-0.0411</d>
+<d>0.0579</d>
+<d>0.06116</d>
+<d>-0.05098</d>
+<d>-0.1491</d>
+<d>-0.24084</d>
+<d>-0.31704</d>
+<d>-0.4156</d>
+<d>-0.52988</d>
+<d>-0.56692</d>
+<d>-0.66042</d>
+<d>-0.47382</d>
+</Subcolumn>
+<Subcolumn>
+<d>0.008885</d>
+<d>-0.01854</d>
+<d>0.07276</d>
+<d>0.08918</d>
+<d>0.00446</d>
+<d>0.21298</d>
+<d>0.3811</d>
+<d>0.46048</d>
+<d>0.34338</d>
+<d>0.47676</d>
+<d>0.3927</d>
+<d>0.25792</d>
+<d>0.23668</d>
+<d>0.20204</d>
+<d>0.1327</d>
+<d>0.04322</d>
+<d>-0.11814</d>
+<d>-0.18906</d>
+<d>-0.37814</d>
+<d>-0.3908</d>
+</Subcolumn>
+<Subcolumn>
+<d>-0.123141667</d>
+<d>-0.13176</d>
+<d>-0.10088</d>
+<d>-0.01952</d>
+<d>0.00476</d>
+<d>0.28934</d>
+<d>0.3373</d>
+<d>0.19598</d>
+<d>0.37248</d>
+<d>0.3366</d>
+<d>0.23674</d>
+<d>0.2053</d>
+<d>0.05496</d>
+<d>0.284978333</d>
+<d>0.117</d>
+<d/>
+<d/>
+<d/>
+<d>-0.102</d>
+<d>0.01182</d>
+</Subcolumn>
+</YColumn>
+<YColumn Width="1216" Decimals="9" Subcolumns="16">
+<Title><TextAlign align="Center">Different</TextAlign></Title>
+<Subcolumn>
+<d>0.15362</d>
+<d>0.26016</d>
+<d>0.11322</d>
+<d>-0.075485</d>
+<d>0.04378</d>
+<d>0.43582</d>
+<d>0.6129</d>
+<d>0.62022</d>
+<d>0.4813</d>
+<d>0.265213333</d>
+<d>0.303358333</d>
+<d>0.3144</d>
+<d>0.182436667</d>
+<d>0.18266</d>
+<d>0.33607</d>
+<d>0.227395</d>
+<d>-0.02696</d>
+<d>-0.26144</d>
+<d>-0.13222</d>
+<d>-0.2626</d>
+</Subcolumn>
+<Subcolumn>
+<d>-0.33094</d>
+<d>-0.28354</d>
+<d>-0.28582</d>
+<d>-0.07938</d>
+<d>-0.04494</d>
+<d>0.07336</d>
+<d>0.43488</d>
+<d>0.39036</d>
+<d>0.33232</d>
+<d>0.16476</d>
+<d>0.0101</d>
+<d>-0.08344</d>
+<d>-0.05562</d>
+<d>-0.07778</d>
+<d>-0.1585</d>
+<d>-0.22286</d>
+<d>-0.21332</d>
+<d>-0.26476</d>
+<d>-0.18388</d>
+<d>-0.36114</d>
+</Subcolumn>
+<Subcolumn>
+<d>-0.0198</d>
+<d>-0.00013</d>
+<d>-0.04903</d>
+<d>-0.030995</d>
+<d>-0.01585</d>
+<d>0.23385</d>
+<d>0.34851</d>
+<d>0.23443</d>
+<d>0.16969</d>
+<d>0.10619</d>
+<d>0.07852</d>
+<d>-0.14062</d>
+<d>-0.16934</d>
+<d>-0.24198</d>
+<d>-0.38768</d>
+<d>-0.48364</d>
+<d>-0.64166</d>
+<d>-0.68915</d>
+<d>-0.73633</d>
+<d>-0.78635</d>
+</Subcolumn>
+<Subcolumn>
+<d>-0.12206</d>
+<d>-0.03006</d>
+<d>-0.0734</d>
+<d>-0.04352</d>
+<d>-0.022</d>
+<d>0.11788</d>
+<d>0.1869</d>
+<d>0.11794</d>
+<d>0.0764</d>
+<d>0.06482</d>
+<d>0.00622</d>
+<d>0.01056</d>
+<d>0.0074</d>
+<d>-0.03782</d>
+<d>-0.06758</d>
+<d>-0.19474</d>
+<d>-0.10146</d>
+<d>-0.10302</d>
+<d>-0.08568</d>
+<d>-0.27177</d>
+</Subcolumn>
+<Subcolumn>
+<d>0.05336</d>
+<d>0.02635</d>
+<d>0.07499</d>
+<d>-0.06542</d>
+<d>0.02571</d>
+<d>-0.09305</d>
+<d>0.01974</d>
+<d>-0.07836</d>
+<d>-0.15169</d>
+<d>-0.01335</d>
+<d>-0.03642</d>
+<d>-0.26023</d>
+<d>-0.30627</d>
+<d>-0.24515</d>
+<d>-0.24777</d>
+<d>-0.34542</d>
+<d>-0.44723</d>
+<d>-0.51682</d>
+<d>-0.42367</d>
+<d>-0.32017</d>
+</Subcolumn>
+<Subcolumn>
+<d>0.2071</d>
+<d>0.14416</d>
+<d>0.14564</d>
+<d>0.0406</d>
+<d>0.00676</d>
+<d>0.35338</d>
+<d>0.51942</d>
+<d>0.53026</d>
+<d>0.42246</d>
+<d>0.36404</d>
+<d>0.3634</d>
+<d>0.15648</d>
+<d>0.13538</d>
+<d>0.0566</d>
+<d>0.03128</d>
+<d>0.06704</d>
+<d>-0.1351</d>
+<d>-0.28756</d>
+<d>-0.21406</d>
+<d>-0.27848</d>
+</Subcolumn>
+<Subcolumn>
+<d>-0.11533</d>
+<d>0.0166</d>
+<d>0.0559</d>
+<d>0.04948</d>
+<d>-0.0028</d>
+<d>0.07038</d>
+<d>0.19659</d>
+<d>0.13176</d>
+<d>0.08532</d>
+<d>0.1015</d>
+<d>0.15946</d>
+<d>0.08663</d>
+<d>0.09308</d>
+<d>0.11385</d>
+<d>0.15917</d>
+<d>0.05138</d>
+<d>0.01711</d>
+<d>-0.03903</d>
+<d>-0.03974</d>
+<d>-0.06137</d>
+</Subcolumn>
+<Subcolumn>
+<d>-0.04542</d>
+<d>-0.03086</d>
+<d>0.01788</d>
+<d>-0.03342</d>
+<d>0.0095</d>
+<d>0.60799</d>
+<d>0.915550833</d>
+<d>0.827025</d>
+<d>0.605574167</d>
+<d>0.523945</d>
+<d>0.225344444</d>
+<d>0.284101667</d>
+<d>0.262962281</d>
+<d>0.061110833</d>
+<d>-0.01398</d>
+<d>-0.13328</d>
+<d>-0.34935</d>
+<d>-0.460613333</d>
+<d>-0.41294</d>
+<d>-0.501678704</d>
+</Subcolumn>
+<Subcolumn>
+<d>0.03088</d>
+<d>-0.00517</d>
+<d>0.03601</d>
+<d>0.00253</d>
+<d>0.0075</d>
+<d>0.41811</d>
+<d>0.52937</d>
+<d>0.4686725</d>
+<d>0.3666725</d>
+<d>0.2706</d>
+<d>0.138760833</d>
+<d>0.173358333</d>
+<d>0.19801</d>
+<d>0.042044792</d>
+<d>-0.06199</d>
+<d>-0.17935</d>
+<d>-0.354466667</d>
+<d>-0.51897</d>
+<d>-0.46633</d>
+<d>-0.617867647</d>
+</Subcolumn>
+<Subcolumn>
+<d>-0.03088</d>
+<d>-0.1364</d>
+<d>-0.04703</d>
+<d>-0.0147</d>
+<d>0.00494</d>
+<d>0.20567</d>
+<d>0.41245</d>
+<d>0.61234</d>
+<d>0.48977</d>
+<d>0.41434</d>
+<d>0.38447</d>
+<d>0.19519</d>
+<d>0.1085</d>
+<d>0.0342</d>
+<d>-0.11352</d>
+<d>-0.23849</d>
+<d>-0.42658</d>
+<d>-0.57214</d>
+<d>-0.60039</d>
+<d>-0.68673</d>
+</Subcolumn>
+<Subcolumn>
+<d>0.10704</d>
+<d>0.11495</d>
+<d>0.04538</d>
+<d>0.12818</d>
+<d>0.01916</d>
+<d>0.84573</d>
+<d>1.12342</d>
+<d>0.93372</d>
+<d>0.90752</d>
+<d>0.70189</d>
+<d>0.67328</d>
+<d>0.5751</d>
+<d>0.49724</d>
+<d>0.454565</d>
+<d>0.31436</d>
+<d>0.24072</d>
+<d>0.16359</d>
+<d>0.1257</d>
+<d>0.03226</d>
+<d>0.14195</d>
+</Subcolumn>
+<Subcolumn>
+<d>0.08388</d>
+<d>-0.00629</d>
+<d>-0.031165</d>
+<d>0.072</d>
+<d>0.01762</d>
+<d>0.31151</d>
+<d>0.53033</d>
+<d>0.50851</d>
+<d>0.46481</d>
+<d>0.40521</d>
+<d>0.35746</d>
+<d>0.23284</d>
+<d>0.18678</d>
+<d>0.10039</d>
+<d>-0.01496</d>
+<d>-0.11036</d>
+<d>-0.21272</d>
+<d>-0.38172</d>
+<d>-0.4748</d>
+<d>-0.4581</d>
+</Subcolumn>
+<Subcolumn>
+<d>0.04801</d>
+<d>0.01797</d>
+<d>-0.01258</d>
+<d>0.00306</d>
+<d>0.01645</d>
+<d>0.56752</d>
+<d>1.02547</d>
+<d>0.89353</d>
+<d>0.89277</d>
+<d>0.79844</d>
+<d>0.84455</d>
+<d>0.63669</d>
+<d>0.51919</d>
+<d>0.51105</d>
+<d>0.44404</d>
+<d>0.2805775</d>
+<d>0.102035</d>
+<d>-0.04919</d>
+<d>-0.17134</d>
+<d>-0.18829</d>
+</Subcolumn>
+<Subcolumn>
+<d>-0.1546</d>
+<d>-0.100945098</d>
+<d>0.04448</d>
+<d>0.02492</d>
+<d>-0.01885</d>
+<d>0.06973</d>
+<d>0.111</d>
+<d>0.00772</d>
+<d>-0.1087</d>
+<d>-0.23755</d>
+<d>-0.38249</d>
+<d>-0.50753</d>
+<d>-0.58548</d>
+<d>-0.80041</d>
+<d>-0.674410526</d>
+<d>-0.612008824</d>
+<d>-0.590626667</d>
+<d>-0.27942</d>
+<d>-0.52054</d>
+<d>-0.5617</d>
+</Subcolumn>
+<Subcolumn>
+<d>-0.06546</d>
+<d>0.184405556</d>
+<d>0.07558</d>
+<d>0.08022</d>
+<d>-0.00728</d>
+<d>0.09386</d>
+<d>0.29796</d>
+<d>0.27268</d>
+<d>0.16544</d>
+<d>0.05363</d>
+<d>-0.00795</d>
+<d>-0.09803</d>
+<d>-0.1736125</d>
+<d>-0.292741228</d>
+<d>0.046163636</d>
+<d>-0.161573333</d>
+<d>0.00982</d>
+<d>-0.0984</d>
+<d>-0.2255</d>
+<d>-0.25436</d>
+</Subcolumn>
+<Subcolumn>
+<d>-0.1708025</d>
+<d>-0.143</d>
+<d>-0.21362</d>
+<d>-0.02772</d>
+<d>-0.02345</d>
+<d>0.23694</d>
+<d>0.49674</d>
+<d>0.35963</d>
+<d>0.24917</d>
+<d>0.19405</d>
+<d>0.03016</d>
+<d>0.16455</d>
+<d>0.11883</d>
+<d>0.06182</d>
+<d>-0.14257</d>
+<d>-0.33043</d>
+<d>-0.50894</d>
+<d>-0.72133</d>
+<d>-0.79074</d>
+<d>-0.79484</d>
+</Subcolumn>
+</YColumn>
+</Table>
+<Table ID="Table4" XFormat="none" YFormat="replicates" Replicates="16" TableType="TwoWay" EVFormat="AsteriskAfterNumber">
+<Title>WT: LED First</Title>
+<RowTitlesColumn Width="70">
+<Subcolumn>
+<d>-4</d>
+<d>-3</d>
+<d>-2</d>
+<d>-1</d>
+<d>0</d>
+<d>1</d>
+<d>2</d>
+<d>3</d>
+<d>4</d>
+<d>5</d>
+<d>6</d>
+<d>7</d>
+<d>8</d>
+<d>9</d>
+<d>10</d>
+<d>11</d>
+<d>12</d>
+<d>13</d>
+<d>14</d>
+<d>15</d>
+</Subcolumn>
+</RowTitlesColumn>
+<YColumn Width="1216" Decimals="9" Subcolumns="16">
+<Title><TextAlign align="Center">First</TextAlign></Title>
+<Subcolumn>
+<d>0.1293875</d>
+<d>0.087585</d>
+<d>0.033715</d>
+<d>0.07634</d>
+<d>-0.00112625</d>
+<d>0.117235</d>
+<d>0.249885</d>
+<d>0.157655</d>
+<d>0.101715</d>
+<d>0.14703</d>
+<d>0.1691</d>
+<d>0.1481575</d>
+<d>0.06272625</d>
+<d>0.064005</d>
+<d>0.0404</d>
+<d>-0.0486825</d>
+<d>-0.168435417</d>
+<d>-0.2614625</d>
+<d>-0.412560417</d>
+<d>-0.380977083</d>
+</Subcolumn>
+<Subcolumn>
+<d>0.254586667</d>
+<d>0.141313333</d>
+<d>0.052653333</d>
+<d>0.0642</d>
+<d>0.002466667</d>
+<d>0.287846667</d>
+<d>0.351833333</d>
+<d>0.263613333</d>
+<d>0.19808</d>
+<d>0.11462</d>
+<d>0.191593333</d>
+<d>0.235473333</d>
+<d>0.181866667</d>
+<d>0.163993333</d>
+<d>0.083173333</d>
+<d>-0.017853333</d>
+<d>-0.123933333</d>
+<d>-0.181713333</d>
+<d>-0.2834</d>
+<d>-0.307461667</d>
+</Subcolumn>
+<Subcolumn>
+<d>-0.16147</d>
+<d>-0.10033</d>
+<d>-0.13131</d>
+<d>-0.050015</d>
+<d>0.00214</d>
+<d>0.21651</d>
+<d>0.29972</d>
+<d>0.2551</d>
+<d>0.202655</d>
+<d>0.168825</d>
+<d>0.085125</d>
+<d>0.008465</d>
+<d>-0.08195</d>
+<d>-0.11979</d>
+<d>-0.19506</d>
+<d>-0.3154</d>
+<d>-0.38783</d>
+<d>-0.38508</d>
+<d>-0.39963</d>
+<d>-0.45533</d>
+</Subcolumn>
+<Subcolumn>
+<d>0.0318</d>
+<d>0.048913889</d>
+<d>0.004225556</d>
+<d>0.056873333</d>
+<d>0.01348</d>
+<d>0.21582</d>
+<d>0.186906667</d>
+<d>0.197053333</d>
+<d>0.19968</d>
+<d>0.211533333</d>
+<d>0.201673333</d>
+<d>0.180693333</d>
+<d>0.12986</d>
+<d>0.1288</d>
+<d>0.140153333</d>
+<d>0.075513333</d>
+<d>0.000486667</d>
+<d>-0.099766667</d>
+<d>-0.181806667</d>
+<d>-0.146613333</d>
+</Subcolumn>
+<Subcolumn>
+<d>0.02335</d>
+<d>0.08979</d>
+<d>0.143105</d>
+<d>0.159685</d>
+<d>-0.009835</d>
+<d>0.133985</d>
+<d>0.19004</d>
+<d>0.13798</d>
+<d>0.10016</d>
+<d>0.054215</d>
+<d>0.077515</d>
+<d>-0.049165</d>
+<d>-0.085325</d>
+<d>-0.132145</d>
+<d>-0.191045</d>
+<d>-0.33643</d>
+<d>-0.339255</d>
+<d>-0.27021</d>
+<d>-0.280645</d>
+<d>-0.316035</d>
+</Subcolumn>
+<Subcolumn>
+<d>0.182926667</d>
+<d>0.119593333</d>
+<d>0.07998</d>
+<d>0.132013333</d>
+<d>-0.012991667</d>
+<d>0.349268333</d>
+<d>0.458946667</d>
+<d>0.29214</d>
+<d>0.164906667</d>
+<d>0.16054</d>
+<d>0.1035</d>
+<d>0.12452</d>
+<d>0.042666667</d>
+<d>-0.06444</d>
+<d>0.046126667</d>
+<d>-0.037686667</d>
+<d>-0.10608</d>
+<d>-0.27385</d>
+<d>-0.24368</d>
+<d>-0.380626667</d>
+</Subcolumn>
+<Subcolumn>
+<d>-0.134035</d>
+<d>-0.059115</d>
+<d>-0.127385</d>
+<d>-0.12762</d>
+<d>-0.007085</d>
+<d>0.109655</d>
+<d>0.206765</d>
+<d>0.304715</d>
+<d>0.318985</d>
+<d>0.26519</d>
+<d>0.284745</d>
+<d>0.354885</d>
+<d>0.29235</d>
+<d>0.35546</d>
+<d>0.312585</d>
+<d>0.283255</d>
+<d>0.27863875</d>
+<d>0.1320975</d>
+<d>0.08549</d>
+<d>0.160465</d>
+</Subcolumn>
+<Subcolumn>
+<d>0.4561075</d>
+<d>0.230983333</d>
+<d>0.012923333</d>
+<d>0.01281</d>
+<d>-0.013115</d>
+<d>0.522675</d>
+<d>0.64314</d>
+<d>0.64108</d>
+<d>0.46878</d>
+<d>0.48693</d>
+<d>0.37695</d>
+<d>0.391315</d>
+<d>0.17518</d>
+<d>0.144405</d>
+<d>0.1340125</d>
+<d>0.03983</d>
+<d>-0.1300825</d>
+<d>-0.232989167</d>
+<d>-0.274875</d>
+<d>-0.312795</d>
+</Subcolumn>
+<Subcolumn>
+<d>0.104463333</d>
+<d>0.143921667</d>
+<d>0.029156838</d>
+<d>0.06146875</d>
+<d>-0.01176</d>
+<d>0.27667</d>
+<d>0.35523</d>
+<d>0.30826</d>
+<d>0.217315</d>
+<d>0.234165</d>
+<d>0.20138</d>
+<d>0.247377477</d>
+<d>0.07686625</d>
+<d>0.01485</d>
+<d>0.009320833</d>
+<d>0.010732222</d>
+<d>-0.124347826</d>
+<d>-0.284580357</d>
+<d>-0.278449444</d>
+<d>-0.370394444</d>
+</Subcolumn>
+<Subcolumn>
+<d>-0.05157</d>
+<d>-0.050555</d>
+<d>-0.02536</d>
+<d>-0.0188575</d>
+<d>-0.006915</d>
+<d>0.19331</d>
+<d>0.271715</d>
+<d>0.33707</d>
+<d>0.32127</d>
+<d>0.196835</d>
+<d>0.129835</d>
+<d>0.12359</d>
+<d>0.06242</d>
+<d>0.04784</d>
+<d>0.048425</d>
+<d>-0.005595</d>
+<d>-0.07178</d>
+<d>-0.09905</d>
+<d>-0.095915</d>
+<d>-0.09283</d>
+</Subcolumn>
+<Subcolumn>
+<d>0.198945</d>
+<d>0.0419</d>
+<d>0.007045</d>
+<d>0.037885</d>
+<d>-0.020385</d>
+<d>0.559005</d>
+<d>0.775985</d>
+<d>0.5586725</d>
+<d>0.608805</d>
+<d>0.72183</d>
+<d>0.64808</d>
+<d>0.65203</d>
+<d>0.475055</d>
+<d>0.52355</d>
+<d>0.43374</d>
+<d>0.392355</d>
+<d>0.28346</d>
+<d>0.142805</d>
+<d>0.097535</d>
+<d>0.09660875</d>
+</Subcolumn>
+<Subcolumn>
+<d>0.024545</d>
+<d>-0.04218</d>
+<d>-0.041125</d>
+<d>-0.02378</d>
+<d>0.00255</d>
+<d>0.21513</d>
+<d>0.19493</d>
+<d>0.137715</d>
+<d>0.085665</d>
+<d>-0.02367</d>
+<d>-0.00908</d>
+<d>-0.084315</d>
+<d>-0.203385</d>
+<d>-0.30192</d>
+<d>-0.326315</d>
+<d>-0.400595</d>
+<d>-0.47172</d>
+<d>-0.53741125</d>
+<d>-0.67381</d>
+<d>-0.69463375</d>
+</Subcolumn>
+<Subcolumn>
+<d>0.02643</d>
+<d>-0.01577375</d>
+<d>-0.05983</d>
+<d>0.01724</d>
+<d>-0.005155</d>
+<d>0.30823</d>
+<d>0.340645</d>
+<d>0.22723</d>
+<d>0.144685</d>
+<d>0.03401</d>
+<d>-0.010862917</d>
+<d>-0.065915</d>
+<d>-0.220886667</d>
+<d>-0.298695</d>
+<d>-0.316425</d>
+<d>-0.33664</d>
+<d>-0.42425375</d>
+<d>-0.56325375</d>
+<d>-0.64816625</d>
+<d>-0.6988675</d>
+</Subcolumn>
+<Subcolumn>
+<d>0.239855</d>
+<d>0.16057125</d>
+<d>0.196015</d>
+<d>-0.04665</d>
+<d>0.030605</d>
+<d>0.226635</d>
+<d>0.232465</d>
+<d>0.2839</d>
+<d>0.139455</d>
+<d>0.17546</d>
+<d>0.13737</d>
+<d>0.23045</d>
+<d>0.219475</d>
+<d>0.152285</d>
+<d>0.111625</d>
+<d>0.11059</d>
+<d>-0.006645</d>
+<d>-0.056425</d>
+<d>-0.080025</d>
+<d>-0.1077</d>
+</Subcolumn>
+<Subcolumn>
+<d>0.08794</d>
+<d>0.05306875</d>
+<d>0.053265</d>
+<d>-0.015455</d>
+<d>0.015215</d>
+<d>0.23685</d>
+<d>0.38183</d>
+<d>0.28350125</d>
+<d>0.20779</d>
+<d>0.232155</d>
+<d>0.22158125</d>
+<d>0.231695</d>
+<d>0.277595</d>
+<d>0.30591</d>
+<d>0.21201</d>
+<d>0.194275</d>
+<d>0.059125</d>
+<d>0.01358</d>
+<d>-0.0188625</d>
+<d>-0.02618</d>
+</Subcolumn>
+<Subcolumn>
+<d>0.136845</d>
+<d>-0.021085</d>
+<d>-0.01249</d>
+<d>0.00311</d>
+<d>0.005075</d>
+<d>0.55175875</d>
+<d>0.582505</d>
+<d>0.38298</d>
+<d>0.158045417</d>
+<d>0.139385833</d>
+<d>0.020665</d>
+<d>-0.09819875</d>
+<d>-0.2614575</d>
+<d>-0.37976375</d>
+<d>-0.366159583</d>
+<d>-0.473976667</d>
+<d>-0.612752991</d>
+<d>-0.641686782</d>
+<d>-0.737618095</d>
+<d>-0.677342</d>
+</Subcolumn>
+</YColumn>
+<YColumn Width="1216" Decimals="7" Subcolumns="16">
+<Title><TextAlign align="Center">Same</TextAlign></Title>
+<Subcolumn>
+<d Excluded="1">-0.12125</d>
+<d Excluded="1">-0.06585</d>
+<d Excluded="1">-0.05928</d>
+<d Excluded="1">-0.09091</d>
+<d Excluded="1">0.00654</d>
+<d Excluded="1">0.04443</d>
+<d Excluded="1">0.1608</d>
+<d Excluded="1">0.24287</d>
+<d Excluded="1">0.21109</d>
+<d Excluded="1">0.1654</d>
+<d Excluded="1">0.13956</d>
+<d Excluded="1">0.221055</d>
+<d Excluded="1">0.20675</d>
+<d Excluded="1">0.16258</d>
+<d Excluded="1">0.11658</d>
+<d Excluded="1">0.01873</d>
+<d Excluded="1">-0.00472</d>
+<d Excluded="1">-0.0207</d>
+<d Excluded="1">-0.16245</d>
+<d Excluded="1">-0.0844925</d>
+</Subcolumn>
+<Subcolumn>
+<d Excluded="1">0.0354225</d>
+<d Excluded="1">0.0198</d>
+<d Excluded="1">0.04372</d>
+<d Excluded="1">-0.05094</d>
+<d Excluded="1">0.02729</d>
+<d Excluded="1">0.23901</d>
+<d Excluded="1">0.26169</d>
+<d Excluded="1">0.12228</d>
+<d Excluded="1">0.08283</d>
+<d Excluded="1">0.02076</d>
+<d Excluded="1">0.05965</d>
+<d Excluded="1">0.13211</d>
+<d Excluded="1">0.03218</d>
+<d Excluded="1">-0.02245</d>
+<d Excluded="1">-0.1058125</d>
+<d Excluded="1">-0.0759225</d>
+<d Excluded="1">-0.19452</d>
+<d Excluded="1">-0.287</d>
+<d Excluded="1">-0.2749</d>
+<d Excluded="1">-0.30665</d>
+</Subcolumn>
+<Subcolumn>
+<d Excluded="1">-0.1079</d>
+<d Excluded="1">-0.08807</d>
+<d Excluded="1">-0.05234</d>
+<d Excluded="1">-0.00903</d>
+<d Excluded="1">-0.02818</d>
+<d Excluded="1">0.06506</d>
+<d Excluded="1">0.05667</d>
+<d Excluded="1">0.14548</d>
+<d Excluded="1">0.06908</d>
+<d Excluded="1">0.09242</d>
+<d Excluded="1">0.02178</d>
+<d Excluded="1">-0.08166</d>
+<d Excluded="1">-0.03677</d>
+<d Excluded="1">-0.18935</d>
+<d Excluded="1">-0.21069</d>
+<d Excluded="1">-0.33802</d>
+<d Excluded="1">-0.41665</d>
+<d Excluded="1">-0.45475</d>
+<d Excluded="1">-0.41644</d>
+<d Excluded="1">-0.56871</d>
+</Subcolumn>
+<Subcolumn>
+<d Excluded="1">-0.01172</d>
+<d Excluded="1">-0.05038</d>
+<d Excluded="1">-0.03273</d>
+<d Excluded="1">-0.01285</d>
+<d Excluded="1">0.00402</d>
+<d Excluded="1">0.09298</d>
+<d Excluded="1">0.15367</d>
+<d Excluded="1">0.27942</d>
+<d Excluded="1">0.23589</d>
+<d Excluded="1">0.29941</d>
+<d Excluded="1">0.29135</d>
+<d Excluded="1">0.23713</d>
+<d Excluded="1">0.28058</d>
+<d Excluded="1">0.22273</d>
+<d Excluded="1">0.30134</d>
+<d Excluded="1">0.21979</d>
+<d Excluded="1">0.08593</d>
+<d Excluded="1">0.01587</d>
+<d Excluded="1">-0.01694</d>
+<d Excluded="1">-0.09839</d>
+</Subcolumn>
+<Subcolumn>
+<d Excluded="1">0.226833333</d>
+<d Excluded="1">0.01016</d>
+<d Excluded="1">0.061468421</d>
+<d Excluded="1">0.116415</d>
+<d Excluded="1">0.071595</d>
+<d Excluded="1">0.460788333</d>
+<d Excluded="1">0.3384525</d>
+<d Excluded="1">0.17508</d>
+<d Excluded="1">0.2348</d>
+<d Excluded="1">0.18439</d>
+<d Excluded="1">0.10173</d>
+<d Excluded="1">0.07979</d>
+<d Excluded="1">0.19763</d>
+<d Excluded="1">0.08435</d>
+<d Excluded="1">0.0605</d>
+<d Excluded="1">0.09443</d>
+<d Excluded="1">0.031</d>
+<d Excluded="1">-0.05885</d>
+<d Excluded="1">-0.15533</d>
+<d Excluded="1">-0.12036</d>
+</Subcolumn>
+<Subcolumn>
+<d Excluded="1">0.2094</d>
+<d Excluded="1">0.17144</d>
+<d Excluded="1">0.00341</d>
+<d Excluded="1">0.00159</d>
+<d Excluded="1">0.0246</d>
+<d Excluded="1">0.42514</d>
+<d Excluded="1">0.763175</d>
+<d Excluded="1">0.646926667</d>
+<d Excluded="1">0.487666667</d>
+<d Excluded="1">0.713695</d>
+<d Excluded="1">0.635513333</d>
+<d Excluded="1">0.624685</d>
+<d Excluded="1">0.3997025</d>
+<d Excluded="1">0.183298333</d>
+<d Excluded="1">0.101781667</d>
+<d Excluded="1">-0.060164167</d>
+<d Excluded="1">-0.1457975</d>
+<d Excluded="1">-0.332650833</d>
+<d Excluded="1">-0.093976667</d>
+<d Excluded="1">-0.164756667</d>
+</Subcolumn>
+<Subcolumn>
+<d Excluded="1">0.01083</d>
+<d Excluded="1">0.06131</d>
+<d Excluded="1">0.04181</d>
+<d Excluded="1">0.04929</d>
+<d Excluded="1">0.00056</d>
+<d Excluded="1">0.16865</d>
+<d Excluded="1">0.24882</d>
+<d Excluded="1">0.31842</d>
+<d Excluded="1">0.26282</d>
+<d Excluded="1">0.26977</d>
+<d Excluded="1">0.31134</d>
+<d Excluded="1">0.26273</d>
+<d Excluded="1">0.19513</d>
+<d Excluded="1">0.20603</d>
+<d Excluded="1">0.40209</d>
+<d Excluded="1">0.40826</d>
+<d Excluded="1">0.48145</d>
+<d Excluded="1">0.48237</d>
+<d Excluded="1">0.41886</d>
+<d Excluded="1">0.46417</d>
+</Subcolumn>
+<Subcolumn>
+<d Excluded="1">0.12245</d>
+<d Excluded="1">0.14613</d>
+<d Excluded="1">0.136775</d>
+<d Excluded="1">0.0106925</d>
+<d Excluded="1">0.01597</d>
+<d Excluded="1">0.51549</d>
+<d Excluded="1">0.4481</d>
+<d Excluded="1">0.51608</d>
+<d Excluded="1">0.45387</d>
+<d Excluded="1">0.399</d>
+<d Excluded="1">0.34295</d>
+<d Excluded="1">0.31945</d>
+<d Excluded="1">0.25452</d>
+<d Excluded="1">0.19695</d>
+<d Excluded="1">0.14685</d>
+<d Excluded="1">0.25711</d>
+<d Excluded="1">-0.07138</d>
+<d Excluded="1">-0.20044</d>
+<d Excluded="1">-0.185258333</d>
+<d Excluded="1">-0.10176</d>
+</Subcolumn>
+<Subcolumn>
+<d Excluded="1">0.10889</d>
+<d Excluded="1">0.128</d>
+<d Excluded="1">0.1129275</d>
+<d Excluded="1">0.047735</d>
+<d Excluded="1">-0.00043</d>
+<d Excluded="1">0.2237</d>
+<d Excluded="1">0.14317</d>
+<d Excluded="1">0.16485</d>
+<d Excluded="1">0.07298</d>
+<d Excluded="1">-0.02084</d>
+<d Excluded="1">-0.08703</d>
+<d Excluded="1">-0.19557</d>
+<d Excluded="1">-0.27197</d>
+<d Excluded="1">-0.360225</d>
+<d Excluded="1">-0.44263</d>
+<d Excluded="1">-0.44611</d>
+<d Excluded="1">-0.67053</d>
+<d Excluded="1">-0.76312</d>
+<d Excluded="1">-0.71215</d>
+<d Excluded="1">-0.6067</d>
+</Subcolumn>
+<Subcolumn>
+<d Excluded="1">0.10715</d>
+<d Excluded="1">0.09881</d>
+<d Excluded="1">0.01942</d>
+<d Excluded="1">0.02675</d>
+<d Excluded="1">-0.00412</d>
+<d Excluded="1">0.09974</d>
+<d Excluded="1">0.16154</d>
+<d Excluded="1">0.08668</d>
+<d Excluded="1">0.00022</d>
+<d Excluded="1">0.07151</d>
+<d Excluded="1">-0.03325</d>
+<d Excluded="1">-0.00459</d>
+<d Excluded="1">0.0028</d>
+<d Excluded="1">-0.05958</d>
+<d Excluded="1">-0.0573</d>
+<d Excluded="1">-0.104</d>
+<d Excluded="1">-0.26398</d>
+<d Excluded="1">-0.37153</d>
+<d Excluded="1">-0.34107</d>
+<d Excluded="1">-0.29353</d>
+</Subcolumn>
+<Subcolumn>
+<d Excluded="1">0.12508</d>
+<d Excluded="1">0.27938</d>
+<d Excluded="1">0.1817</d>
+<d Excluded="1">0.1825</d>
+<d Excluded="1">-0.02399</d>
+<d Excluded="1">0.12601</d>
+<d Excluded="1">0.09571</d>
+<d Excluded="1">0.12765</d>
+<d Excluded="1">-0.07357</d>
+<d Excluded="1">-0.02137</d>
+<d Excluded="1">-0.07816</d>
+<d Excluded="1">-0.08898</d>
+<d Excluded="1">-0.16308</d>
+<d Excluded="1">0.09164</d>
+<d Excluded="1">0.06484</d>
+<d Excluded="1">0.11096</d>
+<d Excluded="1">0.04442</d>
+<d Excluded="1">-0.067</d>
+<d Excluded="1">0.06795</d>
+<d Excluded="1">-0.35319</d>
+</Subcolumn>
+<Subcolumn>
+<d Excluded="1">0.13193</d>
+<d Excluded="1">0.12141</d>
+<d Excluded="1">0.10511</d>
+<d Excluded="1">0.05012</d>
+<d Excluded="1">0.01525</d>
+<d Excluded="1">0.10762</d>
+<d Excluded="1">0.09658</d>
+<d Excluded="1">0.02186</d>
+<d Excluded="1">-0.02752</d>
+<d Excluded="1">0.03243</d>
+<d Excluded="1">-0.06729</d>
+<d Excluded="1">-0.13656</d>
+<d Excluded="1">-0.1572</d>
+<d Excluded="1">-0.1508</d>
+<d Excluded="1">-0.26768</d>
+<d Excluded="1">-0.39305</d>
+<d Excluded="1">-0.45731</d>
+<d Excluded="1">-0.43234</d>
+<d Excluded="1">-0.40546</d>
+<d Excluded="1">-0.38934</d>
+</Subcolumn>
+<Subcolumn>
+<d Excluded="1">0.23289</d>
+<d Excluded="1">0.24978</d>
+<d Excluded="1">0.16787</d>
+<d Excluded="1">0.05033</d>
+<d Excluded="1">0.00284</d>
+<d Excluded="1">0.18469</d>
+<d Excluded="1">0.31256</d>
+<d Excluded="1">0.18279</d>
+<d Excluded="1">-0.00196</d>
+<d Excluded="1">0.02293</d>
+<d Excluded="1">-0.02326</d>
+<d Excluded="1">-0.06353</d>
+<d Excluded="1">-0.1084</d>
+<d Excluded="1">0.03361</d>
+<d Excluded="1">-0.16823</d>
+<d Excluded="1">-0.32427</d>
+<d Excluded="1">-0.4694</d>
+<d Excluded="1">-0.45806</d>
+<d Excluded="1">-0.25501</d>
+<d Excluded="1">-0.20754</d>
+</Subcolumn>
+<Subcolumn>
+<d Excluded="1">-0.03453</d>
+<d Excluded="1">0.00474</d>
+<d Excluded="1">0.01664</d>
+<d Excluded="1">0.05949</d>
+<d Excluded="1">-0.00498</d>
+<d Excluded="1">0.32946</d>
+<d Excluded="1">0.28266</d>
+<d Excluded="1">0.26609</d>
+<d Excluded="1">0.21157</d>
+<d Excluded="1">0.2278</d>
+<d Excluded="1">0.15222</d>
+<d Excluded="1">0.19479</d>
+<d Excluded="1">0.15197</d>
+<d Excluded="1">0.19049</d>
+<d Excluded="1">0.30734</d>
+<d Excluded="1">0.33852</d>
+<d Excluded="1">0.11688</d>
+<d Excluded="1">-0.01132</d>
+<d Excluded="1">-0.14956</d>
+<d Excluded="1">-0.17963</d>
+</Subcolumn>
+<Subcolumn>
+<d Excluded="1">-0.03236</d>
+<d Excluded="1">0.00542</d>
+<d Excluded="1">-0.0161</d>
+<d Excluded="1">0.0467</d>
+<d Excluded="1">-0.01584</d>
+<d Excluded="1">0.18836</d>
+<d Excluded="1">0.44076</d>
+<d Excluded="1">0.33671</d>
+<d Excluded="1">0.25456</d>
+<d Excluded="1">0.23717</d>
+<d Excluded="1">0.23162</d>
+<d Excluded="1">0.18147</d>
+<d Excluded="1">0.18357</d>
+<d Excluded="1">0.30058</d>
+<d Excluded="1">0.43572</d>
+<d Excluded="1">0.38416</d>
+<d Excluded="1">0.15536</d>
+<d Excluded="1">0.15687</d>
+<d Excluded="1">0.0728225</d>
+<d Excluded="1">-0.06831</d>
+</Subcolumn>
+<Subcolumn>
+<d Excluded="1">-0.1434</d>
+<d Excluded="1">-0.03572</d>
+<d Excluded="1">-0.00423</d>
+<d Excluded="1">0.08924</d>
+<d Excluded="1">-0.00082</d>
+<d Excluded="1">0.31561</d>
+<d Excluded="1">0.23175</d>
+<d Excluded="1">0.24789</d>
+<d Excluded="1">0.22402</d>
+<d Excluded="1">0.17897</d>
+<d Excluded="1">0.18107</d>
+<d Excluded="1">0.13342</d>
+<d Excluded="1">-0.09397</d>
+<d Excluded="1">-0.10619</d>
+<d Excluded="1">-0.11064</d>
+<d Excluded="1">-0.02889</d>
+<d Excluded="1">-0.20129</d>
+<d Excluded="1">-0.22849</d>
+<d Excluded="1">-0.25525</d>
+<d Excluded="1">-0.30957</d>
+</Subcolumn>
+</YColumn>
+<YColumn Width="1216" Decimals="9" Subcolumns="16">
+<Title><TextAlign align="Center">Different</TextAlign></Title>
+<Subcolumn>
+<d Excluded="1">0.40542</d>
+<d Excluded="1">0.21655</d>
+<d Excluded="1">0.16844</d>
+<d Excluded="1">0.02796</d>
+<d Excluded="1">-0.02726</d>
+<d Excluded="1">0.09776</d>
+<d Excluded="1">0.21442</d>
+<d Excluded="1">0.23954</d>
+<d Excluded="1">0.08272</d>
+<d Excluded="1">-0.04684</d>
+<d Excluded="1">-0.17512</d>
+<d Excluded="1">-0.08492</d>
+<d Excluded="1">-0.189</d>
+<d Excluded="1">-0.20248</d>
+<d Excluded="1">-0.284</d>
+<d Excluded="1">-0.37206</d>
+<d Excluded="1">-0.467038333</d>
+<d Excluded="1">-0.577051667</d>
+<d Excluded="1">-0.61353</d>
+<d Excluded="1">-0.670141667</d>
+</Subcolumn>
+<Subcolumn>
+<d Excluded="1">0.0622</d>
+<d Excluded="1">0.09432</d>
+<d Excluded="1">0.11192</d>
+<d Excluded="1">0.05358</d>
+<d Excluded="1">0.0095</d>
+<d Excluded="1">0.41498</d>
+<d Excluded="1">0.29758</d>
+<d Excluded="1">0.19014</d>
+<d Excluded="1">0.21954</d>
+<d Excluded="1">0.20722</d>
+<d Excluded="1">0.0593</d>
+<d Excluded="1">0.11224</d>
+<d Excluded="1">0.14096</d>
+<d Excluded="1">0.11686</d>
+<d Excluded="1">0.047</d>
+<d Excluded="1">-0.02714</d>
+<d Excluded="1">0.0019</d>
+<d Excluded="1">-0.1199</d>
+<d Excluded="1">0.09992</d>
+<d Excluded="1">0.08114</d>
+</Subcolumn>
+<Subcolumn>
+<d Excluded="1">0.03585</d>
+<d Excluded="1">0.06951</d>
+<d Excluded="1">-0.0081</d>
+<d Excluded="1">0.01602</d>
+<d Excluded="1">0.0121</d>
+<d Excluded="1">0.15787</d>
+<d Excluded="1">0.16978</d>
+<d Excluded="1">0.18583</d>
+<d Excluded="1">0.17315</d>
+<d Excluded="1">0.05699</d>
+<d Excluded="1">-0.07547</d>
+<d Excluded="1">-0.13594</d>
+<d Excluded="1">-0.09986</d>
+<d Excluded="1">-0.17578</d>
+<d Excluded="1">-0.33551</d>
+<d Excluded="1">-0.4805</d>
+<d Excluded="1">-0.54263</d>
+<d Excluded="1">-0.5458</d>
+<d Excluded="1">-0.61561</d>
+<d Excluded="1">-0.61505</d>
+</Subcolumn>
+<Subcolumn>
+<d Excluded="1">-0.05075</d>
+<d Excluded="1">-0.00524</d>
+<d Excluded="1">-0.07622</d>
+<d Excluded="1">0.00087</d>
+<d Excluded="1">-0.00086</d>
+<d Excluded="1">0.25015</d>
+<d Excluded="1">0.29925</d>
+<d Excluded="1">0.37926</d>
+<d Excluded="1">0.36246</d>
+<d Excluded="1">0.37917</d>
+<d Excluded="1">0.35694</d>
+<d Excluded="1">0.29837</d>
+<d Excluded="1">0.25638</d>
+<d Excluded="1">0.14213</d>
+<d Excluded="1">0.12985</d>
+<d Excluded="1">0.12386</d>
+<d Excluded="1">0.04548</d>
+<d Excluded="1">-0.05561</d>
+<d Excluded="1">-0.19724</d>
+<d Excluded="1">-0.21313</d>
+</Subcolumn>
+<Subcolumn>
+<d Excluded="1">0.09471</d>
+<d Excluded="1">0.09544</d>
+<d Excluded="1">0.08918</d>
+<d Excluded="1">0.00796</d>
+<d Excluded="1">0.03793</d>
+<d Excluded="1">0.25218</d>
+<d Excluded="1">0.11494</d>
+<d Excluded="1">0.21048</d>
+<d Excluded="1">0.10162</d>
+<d Excluded="1">0.05358</d>
+<d Excluded="1">0.05767</d>
+<d Excluded="1">-0.10145</d>
+<d Excluded="1">0.03989</d>
+<d Excluded="1">-0.03915</d>
+<d Excluded="1">-0.06854</d>
+<d Excluded="1">-0.09295</d>
+<d Excluded="1">-0.11329</d>
+<d Excluded="1">-0.18416</d>
+<d Excluded="1">-0.11716</d>
+<d Excluded="1">-0.16167</d>
+</Subcolumn>
+<Subcolumn>
+<d Excluded="1">-0.00512</d>
+<d Excluded="1">0.14253</d>
+<d Excluded="1">0.0594225</d>
+<d Excluded="1">0.022305</d>
+<d Excluded="1">0.00259</d>
+<d Excluded="1">0.34866</d>
+<d Excluded="1">0.50169</d>
+<d Excluded="1">0.33061</d>
+<d Excluded="1">0.25027</d>
+<d Excluded="1">0.13375</d>
+<d Excluded="1">0.14007</d>
+<d Excluded="1">0.15117</d>
+<d Excluded="1">0.02408</d>
+<d Excluded="1">-0.14333</d>
+<d Excluded="1">-0.11896</d>
+<d Excluded="1">-0.23788</d>
+<d Excluded="1">-0.23479</d>
+<d Excluded="1">-0.41383</d>
+<d Excluded="1">-0.48946</d>
+<d Excluded="1">-0.48322</d>
+</Subcolumn>
+<Subcolumn>
+<d Excluded="1">-0.03143</d>
+<d Excluded="1">-0.1001</d>
+<d Excluded="1">-0.06881</d>
+<d Excluded="1">0.04724</d>
+<d Excluded="1">-0.00685</d>
+<d Excluded="1">0.12219</d>
+<d Excluded="1">0.17025</d>
+<d Excluded="1">0.1939</d>
+<d Excluded="1">0.12701</d>
+<d Excluded="1">0.24275</d>
+<d Excluded="1">0.20291</d>
+<d Excluded="1">0.23469</d>
+<d Excluded="1">0.12731</d>
+<d Excluded="1">0.18919</d>
+<d Excluded="1">0.16462</d>
+<d Excluded="1">0.14854</d>
+<d Excluded="1">0.10604</d>
+<d Excluded="1">0.08325</d>
+<d Excluded="1">0.0726</d>
+<d Excluded="1">-0.0553</d>
+</Subcolumn>
+<Subcolumn>
+<d Excluded="1">0.18693</d>
+<d Excluded="1">0.06181</d>
+<d Excluded="1">0.10696</d>
+<d Excluded="1">0.1011</d>
+<d Excluded="1">0.0189</d>
+<d Excluded="1">0.57883</d>
+<d Excluded="1">0.69236</d>
+<d Excluded="1">0.7887475</d>
+<d Excluded="1">0.58599</d>
+<d Excluded="1">0.48634</d>
+<d Excluded="1">0.35693</d>
+<d Excluded="1">0.36457</d>
+<d Excluded="1">0.27464</d>
+<d Excluded="1">0.27049</d>
+<d Excluded="1">0.17795</d>
+<d Excluded="1">0.08374</d>
+<d Excluded="1">-0.05353</d>
+<d Excluded="1">-0.20327</d>
+<d Excluded="1">-0.27852</d>
+<d Excluded="1">-0.2447025</d>
+</Subcolumn>
+<Subcolumn>
+<d Excluded="1">0.311906667</d>
+<d Excluded="1">0.143150877</d>
+<d Excluded="1">0.16806</d>
+<d Excluded="1">0.184629167</d>
+<d Excluded="1">0.01572</d>
+<d Excluded="1">0.35067</d>
+<d Excluded="1">0.39378</d>
+<d Excluded="1">0.413165</d>
+<d Excluded="1">0.29601</d>
+<d Excluded="1">0.17727</d>
+<d Excluded="1">0.14382</d>
+<d Excluded="1">0.16706</d>
+<d Excluded="1">0.03579</d>
+<d Excluded="1">0.01351</d>
+<d Excluded="1">-0.038877451</d>
+<d Excluded="1">-0.26536</d>
+<d Excluded="1">-0.402297436</d>
+<d Excluded="1">-0.4256025</d>
+<d Excluded="1">-0.46942</d>
+<d Excluded="1">-0.471345</d>
+</Subcolumn>
+<Subcolumn>
+<d Excluded="1">-0.117</d>
+<d Excluded="1">-0.073921667</d>
+<d Excluded="1">-0.04939</d>
+<d Excluded="1">-0.00624</d>
+<d Excluded="1">-0.01352</d>
+<d Excluded="1">0.2322</d>
+<d Excluded="1">0.26799</d>
+<d Excluded="1">0.31584</d>
+<d Excluded="1">0.13546</d>
+<d Excluded="1">0.19547</d>
+<d Excluded="1">0.08772</d>
+<d Excluded="1">0.02377</d>
+<d Excluded="1">0.05164</d>
+<d Excluded="1">-0.06531</d>
+<d Excluded="1">-0.05125</d>
+<d Excluded="1">-0.10903</d>
+<d Excluded="1">-0.17399</d>
+<d Excluded="1">-0.2679</d>
+<d Excluded="1">-0.27143</d>
+<d Excluded="1">-0.38504</d>
+</Subcolumn>
+<Subcolumn>
+<d Excluded="1">-0.06517</d>
+<d Excluded="1">0.09374</d>
+<d Excluded="1">0.01653</d>
+<d Excluded="1">0.0058</d>
+<d Excluded="1">0.01954</d>
+<d Excluded="1">0.42904</d>
+<d Excluded="1">0.62136</d>
+<d Excluded="1">0.64652</d>
+<d Excluded="1">0.5918</d>
+<d Excluded="1">0.71069</d>
+<d Excluded="1">0.79683</d>
+<d Excluded="1">0.80452</d>
+<d Excluded="1">0.70073</d>
+<d Excluded="1">0.76079</d>
+<d Excluded="1">0.63747</d>
+<d Excluded="1">0.48393</d>
+<d Excluded="1">0.39325</d>
+<d Excluded="1">0.2855</d>
+<d Excluded="1">0.34836</d>
+<d Excluded="1">0.118</d>
+</Subcolumn>
+<Subcolumn>
+<d Excluded="1">-0.0925</d>
+<d Excluded="1">-0.06612</d>
+<d Excluded="1">-0.03976</d>
+<d Excluded="1">0.00078</d>
+<d Excluded="1">0.0389</d>
+<d Excluded="1">0.46482</d>
+<d Excluded="1">0.66332</d>
+<d Excluded="1">0.58068</d>
+<d Excluded="1">0.68196</d>
+<d Excluded="1">0.63538</d>
+<d Excluded="1">0.584</d>
+<d Excluded="1">0.54726</d>
+<d Excluded="1">0.39182</d>
+<d Excluded="1">0.3952</d>
+<d Excluded="1">0.43556</d>
+<d Excluded="1">0.32528</d>
+<d Excluded="1">0.30284</d>
+<d Excluded="1">0.20124</d>
+<d Excluded="1">0.2134</d>
+<d Excluded="1">0.21696</d>
+</Subcolumn>
+<Subcolumn>
+<d Excluded="1">-0.14676</d>
+<d Excluded="1">-0.16568</d>
+<d Excluded="1">-0.13758</d>
+<d Excluded="1">-0.0924</d>
+<d Excluded="1">0.04394</d>
+<d Excluded="1">0.5104</d>
+<d Excluded="1">0.78536</d>
+<d Excluded="1">0.58826</d>
+<d Excluded="1">0.63962</d>
+<d Excluded="1">0.56554</d>
+<d Excluded="1">0.54692</d>
+<d Excluded="1">0.55336</d>
+<d Excluded="1">0.48322</d>
+<d Excluded="1">0.45622</d>
+<d Excluded="1">0.35332</d>
+<d Excluded="1">0.30634</d>
+<d Excluded="1">0.30198</d>
+<d Excluded="1">0.24028</d>
+<d Excluded="1">0.1857</d>
+<d Excluded="1">0.29642</d>
+</Subcolumn>
+<Subcolumn>
+<d Excluded="1">-0.02998</d>
+<d Excluded="1">-0.0563</d>
+<d Excluded="1">-0.267</d>
+<d Excluded="1">-0.17192</d>
+<d Excluded="1">0.03708</d>
+<d Excluded="1">0.43534</d>
+<d Excluded="1">0.62502</d>
+<d Excluded="1">0.4007</d>
+<d Excluded="1">0.29608</d>
+<d Excluded="1">0.0551</d>
+<d Excluded="1">0.04228</d>
+<d Excluded="1">-0.26636</d>
+<d Excluded="1">-0.29638</d>
+<d Excluded="1">-0.3175</d>
+<d Excluded="1">-0.30454</d>
+<d Excluded="1">-0.18084</d>
+<d Excluded="1">-0.0854</d>
+<d Excluded="1">-0.18922</d>
+<d Excluded="1">-0.0627</d>
+<d Excluded="1">-0.18004</d>
+</Subcolumn>
+<Subcolumn>
+<d Excluded="1">-0.08714</d>
+<d Excluded="1">-0.09786</d>
+<d Excluded="1">-0.12518</d>
+<d Excluded="1">-0.0117</d>
+<d Excluded="1">-0.00164</d>
+<d Excluded="1">0.08748</d>
+<d Excluded="1">0.18212</d>
+<d Excluded="1">0.02002</d>
+<d Excluded="1">-0.0156</d>
+<d Excluded="1">-0.0325</d>
+<d Excluded="1">0.03172</d>
+<d Excluded="1">-0.01746</d>
+<d Excluded="1">-0.12312</d>
+<d Excluded="1">-0.00454</d>
+<d Excluded="1">-0.13654</d>
+<d Excluded="1">-0.08626</d>
+<d Excluded="1">-0.1282</d>
+<d Excluded="1">-0.22664</d>
+<d Excluded="1">-0.21656</d>
+<d Excluded="1">-0.265</d>
+</Subcolumn>
+<Subcolumn>
+<d Excluded="1">0.07339</d>
+<d Excluded="1">0.03074</d>
+<d Excluded="1">0.04906</d>
+<d Excluded="1">0.05033</d>
+<d Excluded="1">-0.00308</d>
+<d Excluded="1">0.35911</d>
+<d Excluded="1">0.40246</d>
+<d Excluded="1">0.2799</d>
+<d Excluded="1">0.20749</d>
+<d Excluded="1">0.16225</d>
+<d Excluded="1">0.04848</d>
+<d Excluded="1">-0.15688</d>
+<d Excluded="1">-0.19462</d>
+<d Excluded="1">-0.20342</d>
+<d Excluded="1">-0.24164</d>
+<d Excluded="1">-0.39219</d>
+<d Excluded="1">-0.41994</d>
+<d Excluded="1">-0.47064</d>
+<d Excluded="1">-0.49482</d>
+<d Excluded="1">-0.59235</d>
+</Subcolumn>
+</YColumn>
+</Table>
+<Table ID="Table5" XFormat="none" YFormat="replicates" Replicates="16" TableType="TwoWay" EVFormat="AsteriskAfterNumber">
+<Title>WT: LED Second</Title>
+<RowTitlesColumn Width="70">
+<Subcolumn>
+<d>-4</d>
+<d>-3</d>
+<d>-2</d>
+<d>-1</d>
+<d>0</d>
+<d>1</d>
+<d>2</d>
+<d>3</d>
+<d>4</d>
+<d>5</d>
+<d>6</d>
+<d>7</d>
+<d>8</d>
+<d>9</d>
+<d>10</d>
+<d>11</d>
+<d>12</d>
+<d>13</d>
+<d>14</d>
+<d>15</d>
+</Subcolumn>
+</RowTitlesColumn>
+<YColumn Width="1216" Decimals="9" Subcolumns="16">
+<Title><TextAlign align="Center">First</TextAlign></Title>
+<Subcolumn>
+<d Excluded="1">0.1293875</d>
+<d Excluded="1">0.087585</d>
+<d Excluded="1">0.033715</d>
+<d Excluded="1">0.07634</d>
+<d Excluded="1">-0.00112625</d>
+<d Excluded="1">0.117235</d>
+<d Excluded="1">0.249885</d>
+<d Excluded="1">0.157655</d>
+<d Excluded="1">0.101715</d>
+<d Excluded="1">0.14703</d>
+<d Excluded="1">0.1691</d>
+<d Excluded="1">0.1481575</d>
+<d Excluded="1">0.06272625</d>
+<d Excluded="1">0.064005</d>
+<d Excluded="1">0.0404</d>
+<d Excluded="1">-0.0486825</d>
+<d Excluded="1">-0.168435417</d>
+<d Excluded="1">-0.2614625</d>
+<d Excluded="1">-0.412560417</d>
+<d Excluded="1">-0.380977083</d>
+</Subcolumn>
+<Subcolumn>
+<d Excluded="1">0.254586667</d>
+<d Excluded="1">0.141313333</d>
+<d Excluded="1">0.052653333</d>
+<d Excluded="1">0.0642</d>
+<d Excluded="1">0.002466667</d>
+<d Excluded="1">0.287846667</d>
+<d Excluded="1">0.351833333</d>
+<d Excluded="1">0.263613333</d>
+<d Excluded="1">0.19808</d>
+<d Excluded="1">0.11462</d>
+<d Excluded="1">0.191593333</d>
+<d Excluded="1">0.235473333</d>
+<d Excluded="1">0.181866667</d>
+<d Excluded="1">0.163993333</d>
+<d Excluded="1">0.083173333</d>
+<d Excluded="1">-0.017853333</d>
+<d Excluded="1">-0.123933333</d>
+<d Excluded="1">-0.181713333</d>
+<d Excluded="1">-0.2834</d>
+<d Excluded="1">-0.307461667</d>
+</Subcolumn>
+<Subcolumn>
+<d Excluded="1">-0.16147</d>
+<d Excluded="1">-0.10033</d>
+<d Excluded="1">-0.13131</d>
+<d Excluded="1">-0.050015</d>
+<d Excluded="1">0.00214</d>
+<d Excluded="1">0.21651</d>
+<d Excluded="1">0.29972</d>
+<d Excluded="1">0.2551</d>
+<d Excluded="1">0.202655</d>
+<d Excluded="1">0.168825</d>
+<d Excluded="1">0.085125</d>
+<d Excluded="1">0.008465</d>
+<d Excluded="1">-0.08195</d>
+<d Excluded="1">-0.11979</d>
+<d Excluded="1">-0.19506</d>
+<d Excluded="1">-0.3154</d>
+<d Excluded="1">-0.38783</d>
+<d Excluded="1">-0.38508</d>
+<d Excluded="1">-0.39963</d>
+<d Excluded="1">-0.45533</d>
+</Subcolumn>
+<Subcolumn>
+<d Excluded="1">0.0318</d>
+<d Excluded="1">0.048913889</d>
+<d Excluded="1">0.004225556</d>
+<d Excluded="1">0.056873333</d>
+<d Excluded="1">0.01348</d>
+<d Excluded="1">0.21582</d>
+<d Excluded="1">0.186906667</d>
+<d Excluded="1">0.197053333</d>
+<d Excluded="1">0.19968</d>
+<d Excluded="1">0.211533333</d>
+<d Excluded="1">0.201673333</d>
+<d Excluded="1">0.180693333</d>
+<d Excluded="1">0.12986</d>
+<d Excluded="1">0.1288</d>
+<d Excluded="1">0.140153333</d>
+<d Excluded="1">0.075513333</d>
+<d Excluded="1">0.000486667</d>
+<d Excluded="1">-0.099766667</d>
+<d Excluded="1">-0.181806667</d>
+<d Excluded="1">-0.146613333</d>
+</Subcolumn>
+<Subcolumn>
+<d Excluded="1">0.02335</d>
+<d Excluded="1">0.08979</d>
+<d Excluded="1">0.143105</d>
+<d Excluded="1">0.159685</d>
+<d Excluded="1">-0.009835</d>
+<d Excluded="1">0.133985</d>
+<d Excluded="1">0.19004</d>
+<d Excluded="1">0.13798</d>
+<d Excluded="1">0.10016</d>
+<d Excluded="1">0.054215</d>
+<d Excluded="1">0.077515</d>
+<d Excluded="1">-0.049165</d>
+<d Excluded="1">-0.085325</d>
+<d Excluded="1">-0.132145</d>
+<d Excluded="1">-0.191045</d>
+<d Excluded="1">-0.33643</d>
+<d Excluded="1">-0.339255</d>
+<d Excluded="1">-0.27021</d>
+<d Excluded="1">-0.280645</d>
+<d Excluded="1">-0.316035</d>
+</Subcolumn>
+<Subcolumn>
+<d Excluded="1">0.182926667</d>
+<d Excluded="1">0.119593333</d>
+<d Excluded="1">0.07998</d>
+<d Excluded="1">0.132013333</d>
+<d Excluded="1">-0.012991667</d>
+<d Excluded="1">0.349268333</d>
+<d Excluded="1">0.458946667</d>
+<d Excluded="1">0.29214</d>
+<d Excluded="1">0.164906667</d>
+<d Excluded="1">0.16054</d>
+<d Excluded="1">0.1035</d>
+<d Excluded="1">0.12452</d>
+<d Excluded="1">0.042666667</d>
+<d Excluded="1">-0.06444</d>
+<d Excluded="1">0.046126667</d>
+<d Excluded="1">-0.037686667</d>
+<d Excluded="1">-0.10608</d>
+<d Excluded="1">-0.27385</d>
+<d Excluded="1">-0.24368</d>
+<d Excluded="1">-0.380626667</d>
+</Subcolumn>
+<Subcolumn>
+<d Excluded="1">-0.134035</d>
+<d Excluded="1">-0.059115</d>
+<d Excluded="1">-0.127385</d>
+<d Excluded="1">-0.12762</d>
+<d Excluded="1">-0.007085</d>
+<d Excluded="1">0.109655</d>
+<d Excluded="1">0.206765</d>
+<d Excluded="1">0.304715</d>
+<d Excluded="1">0.318985</d>
+<d Excluded="1">0.26519</d>
+<d Excluded="1">0.284745</d>
+<d Excluded="1">0.354885</d>
+<d Excluded="1">0.29235</d>
+<d Excluded="1">0.35546</d>
+<d Excluded="1">0.312585</d>
+<d Excluded="1">0.283255</d>
+<d Excluded="1">0.27863875</d>
+<d Excluded="1">0.1320975</d>
+<d Excluded="1">0.08549</d>
+<d Excluded="1">0.160465</d>
+</Subcolumn>
+<Subcolumn>
+<d Excluded="1">0.4561075</d>
+<d Excluded="1">0.230983333</d>
+<d Excluded="1">0.012923333</d>
+<d Excluded="1">0.01281</d>
+<d Excluded="1">-0.013115</d>
+<d Excluded="1">0.522675</d>
+<d Excluded="1">0.64314</d>
+<d Excluded="1">0.64108</d>
+<d Excluded="1">0.46878</d>
+<d Excluded="1">0.48693</d>
+<d Excluded="1">0.37695</d>
+<d Excluded="1">0.391315</d>
+<d Excluded="1">0.17518</d>
+<d Excluded="1">0.144405</d>
+<d Excluded="1">0.1340125</d>
+<d Excluded="1">0.03983</d>
+<d Excluded="1">-0.1300825</d>
+<d Excluded="1">-0.232989167</d>
+<d Excluded="1">-0.274875</d>
+<d Excluded="1">-0.312795</d>
+</Subcolumn>
+<Subcolumn>
+<d Excluded="1">0.104463333</d>
+<d Excluded="1">0.143921667</d>
+<d Excluded="1">0.029156838</d>
+<d Excluded="1">0.06146875</d>
+<d Excluded="1">-0.01176</d>
+<d Excluded="1">0.27667</d>
+<d Excluded="1">0.35523</d>
+<d Excluded="1">0.30826</d>
+<d Excluded="1">0.217315</d>
+<d Excluded="1">0.234165</d>
+<d Excluded="1">0.20138</d>
+<d Excluded="1">0.247377477</d>
+<d Excluded="1">0.07686625</d>
+<d Excluded="1">0.01485</d>
+<d Excluded="1">0.009320833</d>
+<d Excluded="1">0.010732222</d>
+<d Excluded="1">-0.124347826</d>
+<d Excluded="1">-0.284580357</d>
+<d Excluded="1">-0.278449444</d>
+<d Excluded="1">-0.370394444</d>
+</Subcolumn>
+<Subcolumn>
+<d Excluded="1">-0.05157</d>
+<d Excluded="1">-0.050555</d>
+<d Excluded="1">-0.02536</d>
+<d Excluded="1">-0.0188575</d>
+<d Excluded="1">-0.006915</d>
+<d Excluded="1">0.19331</d>
+<d Excluded="1">0.271715</d>
+<d Excluded="1">0.33707</d>
+<d Excluded="1">0.32127</d>
+<d Excluded="1">0.196835</d>
+<d Excluded="1">0.129835</d>
+<d Excluded="1">0.12359</d>
+<d Excluded="1">0.06242</d>
+<d Excluded="1">0.04784</d>
+<d Excluded="1">0.048425</d>
+<d Excluded="1">-0.005595</d>
+<d Excluded="1">-0.07178</d>
+<d Excluded="1">-0.09905</d>
+<d Excluded="1">-0.095915</d>
+<d Excluded="1">-0.09283</d>
+</Subcolumn>
+<Subcolumn>
+<d Excluded="1">0.198945</d>
+<d Excluded="1">0.0419</d>
+<d Excluded="1">0.007045</d>
+<d Excluded="1">0.037885</d>
+<d Excluded="1">-0.020385</d>
+<d Excluded="1">0.559005</d>
+<d Excluded="1">0.775985</d>
+<d Excluded="1">0.5586725</d>
+<d Excluded="1">0.608805</d>
+<d Excluded="1">0.72183</d>
+<d Excluded="1">0.64808</d>
+<d Excluded="1">0.65203</d>
+<d Excluded="1">0.475055</d>
+<d Excluded="1">0.52355</d>
+<d Excluded="1">0.43374</d>
+<d Excluded="1">0.392355</d>
+<d Excluded="1">0.28346</d>
+<d Excluded="1">0.142805</d>
+<d Excluded="1">0.097535</d>
+<d Excluded="1">0.09660875</d>
+</Subcolumn>
+<Subcolumn>
+<d Excluded="1">0.024545</d>
+<d Excluded="1">-0.04218</d>
+<d Excluded="1">-0.041125</d>
+<d Excluded="1">-0.02378</d>
+<d Excluded="1">0.00255</d>
+<d Excluded="1">0.21513</d>
+<d Excluded="1">0.19493</d>
+<d Excluded="1">0.137715</d>
+<d Excluded="1">0.085665</d>
+<d Excluded="1">-0.02367</d>
+<d Excluded="1">-0.00908</d>
+<d Excluded="1">-0.084315</d>
+<d Excluded="1">-0.203385</d>
+<d Excluded="1">-0.30192</d>
+<d Excluded="1">-0.326315</d>
+<d Excluded="1">-0.400595</d>
+<d Excluded="1">-0.47172</d>
+<d Excluded="1">-0.53741125</d>
+<d Excluded="1">-0.67381</d>
+<d Excluded="1">-0.69463375</d>
+</Subcolumn>
+<Subcolumn>
+<d Excluded="1">0.02643</d>
+<d Excluded="1">-0.01577375</d>
+<d Excluded="1">-0.05983</d>
+<d Excluded="1">0.01724</d>
+<d Excluded="1">-0.005155</d>
+<d Excluded="1">0.30823</d>
+<d Excluded="1">0.340645</d>
+<d Excluded="1">0.22723</d>
+<d Excluded="1">0.144685</d>
+<d Excluded="1">0.03401</d>
+<d Excluded="1">-0.010862917</d>
+<d Excluded="1">-0.065915</d>
+<d Excluded="1">-0.220886667</d>
+<d Excluded="1">-0.298695</d>
+<d Excluded="1">-0.316425</d>
+<d Excluded="1">-0.33664</d>
+<d Excluded="1">-0.42425375</d>
+<d Excluded="1">-0.56325375</d>
+<d Excluded="1">-0.64816625</d>
+<d Excluded="1">-0.6988675</d>
+</Subcolumn>
+<Subcolumn>
+<d Excluded="1">0.239855</d>
+<d Excluded="1">0.16057125</d>
+<d Excluded="1">0.196015</d>
+<d Excluded="1">-0.04665</d>
+<d Excluded="1">0.030605</d>
+<d Excluded="1">0.226635</d>
+<d Excluded="1">0.232465</d>
+<d Excluded="1">0.2839</d>
+<d Excluded="1">0.139455</d>
+<d Excluded="1">0.17546</d>
+<d Excluded="1">0.13737</d>
+<d Excluded="1">0.23045</d>
+<d Excluded="1">0.219475</d>
+<d Excluded="1">0.152285</d>
+<d Excluded="1">0.111625</d>
+<d Excluded="1">0.11059</d>
+<d Excluded="1">-0.006645</d>
+<d Excluded="1">-0.056425</d>
+<d Excluded="1">-0.080025</d>
+<d Excluded="1">-0.1077</d>
+</Subcolumn>
+<Subcolumn>
+<d Excluded="1">0.08794</d>
+<d Excluded="1">0.05306875</d>
+<d Excluded="1">0.053265</d>
+<d Excluded="1">-0.015455</d>
+<d Excluded="1">0.015215</d>
+<d Excluded="1">0.23685</d>
+<d Excluded="1">0.38183</d>
+<d Excluded="1">0.28350125</d>
+<d Excluded="1">0.20779</d>
+<d Excluded="1">0.232155</d>
+<d Excluded="1">0.22158125</d>
+<d Excluded="1">0.231695</d>
+<d Excluded="1">0.277595</d>
+<d Excluded="1">0.30591</d>
+<d Excluded="1">0.21201</d>
+<d Excluded="1">0.194275</d>
+<d Excluded="1">0.059125</d>
+<d Excluded="1">0.01358</d>
+<d Excluded="1">-0.0188625</d>
+<d Excluded="1">-0.02618</d>
+</Subcolumn>
+<Subcolumn>
+<d Excluded="1">0.136845</d>
+<d Excluded="1">-0.021085</d>
+<d Excluded="1">-0.01249</d>
+<d Excluded="1">0.00311</d>
+<d Excluded="1">0.005075</d>
+<d Excluded="1">0.55175875</d>
+<d Excluded="1">0.582505</d>
+<d Excluded="1">0.38298</d>
+<d Excluded="1">0.158045417</d>
+<d Excluded="1">0.139385833</d>
+<d Excluded="1">0.020665</d>
+<d Excluded="1">-0.09819875</d>
+<d Excluded="1">-0.2614575</d>
+<d Excluded="1">-0.37976375</d>
+<d Excluded="1">-0.366159583</d>
+<d Excluded="1">-0.473976667</d>
+<d Excluded="1">-0.612752991</d>
+<d Excluded="1">-0.641686782</d>
+<d Excluded="1">-0.737618095</d>
+<d Excluded="1">-0.677342</d>
+</Subcolumn>
+</YColumn>
+<YColumn Width="1216" Decimals="7" Subcolumns="16">
+<Title><TextAlign align="Center">Same</TextAlign></Title>
+<Subcolumn>
+<d>-0.12125</d>
+<d>-0.06585</d>
+<d>-0.05928</d>
+<d>-0.09091</d>
+<d>0.00654</d>
+<d>0.04443</d>
+<d>0.1608</d>
+<d>0.24287</d>
+<d>0.21109</d>
+<d>0.1654</d>
+<d>0.13956</d>
+<d>0.221055</d>
+<d>0.20675</d>
+<d>0.16258</d>
+<d>0.11658</d>
+<d>0.01873</d>
+<d>-0.00472</d>
+<d>-0.0207</d>
+<d>-0.16245</d>
+<d>-0.0844925</d>
+</Subcolumn>
+<Subcolumn>
+<d>0.0354225</d>
+<d>0.0198</d>
+<d>0.04372</d>
+<d>-0.05094</d>
+<d>0.02729</d>
+<d>0.23901</d>
+<d>0.26169</d>
+<d>0.12228</d>
+<d>0.08283</d>
+<d>0.02076</d>
+<d>0.05965</d>
+<d>0.13211</d>
+<d>0.03218</d>
+<d>-0.02245</d>
+<d>-0.1058125</d>
+<d>-0.0759225</d>
+<d>-0.19452</d>
+<d>-0.287</d>
+<d>-0.2749</d>
+<d>-0.30665</d>
+</Subcolumn>
+<Subcolumn>
+<d>-0.1079</d>
+<d>-0.08807</d>
+<d>-0.05234</d>
+<d>-0.00903</d>
+<d>-0.02818</d>
+<d>0.06506</d>
+<d>0.05667</d>
+<d>0.14548</d>
+<d>0.06908</d>
+<d>0.09242</d>
+<d>0.02178</d>
+<d>-0.08166</d>
+<d>-0.03677</d>
+<d>-0.18935</d>
+<d>-0.21069</d>
+<d>-0.33802</d>
+<d>-0.41665</d>
+<d>-0.45475</d>
+<d>-0.41644</d>
+<d>-0.56871</d>
+</Subcolumn>
+<Subcolumn>
+<d>-0.01172</d>
+<d>-0.05038</d>
+<d>-0.03273</d>
+<d>-0.01285</d>
+<d>0.00402</d>
+<d>0.09298</d>
+<d>0.15367</d>
+<d>0.27942</d>
+<d>0.23589</d>
+<d>0.29941</d>
+<d>0.29135</d>
+<d>0.23713</d>
+<d>0.28058</d>
+<d>0.22273</d>
+<d>0.30134</d>
+<d>0.21979</d>
+<d>0.08593</d>
+<d>0.01587</d>
+<d>-0.01694</d>
+<d>-0.09839</d>
+</Subcolumn>
+<Subcolumn>
+<d>0.226833333</d>
+<d>0.01016</d>
+<d>0.061468421</d>
+<d>0.116415</d>
+<d>0.071595</d>
+<d>0.460788333</d>
+<d>0.3384525</d>
+<d>0.17508</d>
+<d>0.2348</d>
+<d>0.18439</d>
+<d>0.10173</d>
+<d>0.07979</d>
+<d>0.19763</d>
+<d>0.08435</d>
+<d>0.0605</d>
+<d>0.09443</d>
+<d>0.031</d>
+<d>-0.05885</d>
+<d>-0.15533</d>
+<d>-0.12036</d>
+</Subcolumn>
+<Subcolumn>
+<d>0.2094</d>
+<d>0.17144</d>
+<d>0.00341</d>
+<d>0.00159</d>
+<d>0.0246</d>
+<d>0.42514</d>
+<d>0.763175</d>
+<d>0.646926667</d>
+<d>0.487666667</d>
+<d>0.713695</d>
+<d>0.635513333</d>
+<d>0.624685</d>
+<d>0.3997025</d>
+<d>0.183298333</d>
+<d>0.101781667</d>
+<d>-0.060164167</d>
+<d>-0.1457975</d>
+<d>-0.332650833</d>
+<d>-0.093976667</d>
+<d>-0.164756667</d>
+</Subcolumn>
+<Subcolumn>
+<d>0.01083</d>
+<d>0.06131</d>
+<d>0.04181</d>
+<d>0.04929</d>
+<d>0.00056</d>
+<d>0.16865</d>
+<d>0.24882</d>
+<d>0.31842</d>
+<d>0.26282</d>
+<d>0.26977</d>
+<d>0.31134</d>
+<d>0.26273</d>
+<d>0.19513</d>
+<d>0.20603</d>
+<d>0.40209</d>
+<d>0.40826</d>
+<d>0.48145</d>
+<d>0.48237</d>
+<d>0.41886</d>
+<d>0.46417</d>
+</Subcolumn>
+<Subcolumn>
+<d>0.12245</d>
+<d>0.14613</d>
+<d>0.136775</d>
+<d>0.0106925</d>
+<d>0.01597</d>
+<d>0.51549</d>
+<d>0.4481</d>
+<d>0.51608</d>
+<d>0.45387</d>
+<d>0.399</d>
+<d>0.34295</d>
+<d>0.31945</d>
+<d>0.25452</d>
+<d>0.19695</d>
+<d>0.14685</d>
+<d>0.25711</d>
+<d>-0.07138</d>
+<d>-0.20044</d>
+<d>-0.185258333</d>
+<d>-0.10176</d>
+</Subcolumn>
+<Subcolumn>
+<d>0.10889</d>
+<d>0.128</d>
+<d>0.1129275</d>
+<d>0.047735</d>
+<d>-0.00043</d>
+<d>0.2237</d>
+<d>0.14317</d>
+<d>0.16485</d>
+<d>0.07298</d>
+<d>-0.02084</d>
+<d>-0.08703</d>
+<d>-0.19557</d>
+<d>-0.27197</d>
+<d>-0.360225</d>
+<d>-0.44263</d>
+<d>-0.44611</d>
+<d>-0.67053</d>
+<d>-0.76312</d>
+<d>-0.71215</d>
+<d>-0.6067</d>
+</Subcolumn>
+<Subcolumn>
+<d>0.10715</d>
+<d>0.09881</d>
+<d>0.01942</d>
+<d>0.02675</d>
+<d>-0.00412</d>
+<d>0.09974</d>
+<d>0.16154</d>
+<d>0.08668</d>
+<d>0.00022</d>
+<d>0.07151</d>
+<d>-0.03325</d>
+<d>-0.00459</d>
+<d>0.0028</d>
+<d>-0.05958</d>
+<d>-0.0573</d>
+<d>-0.104</d>
+<d>-0.26398</d>
+<d>-0.37153</d>
+<d>-0.34107</d>
+<d>-0.29353</d>
+</Subcolumn>
+<Subcolumn>
+<d>0.12508</d>
+<d>0.27938</d>
+<d>0.1817</d>
+<d>0.1825</d>
+<d>-0.02399</d>
+<d>0.12601</d>
+<d>0.09571</d>
+<d>0.12765</d>
+<d>-0.07357</d>
+<d>-0.02137</d>
+<d>-0.07816</d>
+<d>-0.08898</d>
+<d>-0.16308</d>
+<d>0.09164</d>
+<d>0.06484</d>
+<d>0.11096</d>
+<d>0.04442</d>
+<d>-0.067</d>
+<d>0.06795</d>
+<d>-0.35319</d>
+</Subcolumn>
+<Subcolumn>
+<d>0.13193</d>
+<d>0.12141</d>
+<d>0.10511</d>
+<d>0.05012</d>
+<d>0.01525</d>
+<d>0.10762</d>
+<d>0.09658</d>
+<d>0.02186</d>
+<d>-0.02752</d>
+<d>0.03243</d>
+<d>-0.06729</d>
+<d>-0.13656</d>
+<d>-0.1572</d>
+<d>-0.1508</d>
+<d>-0.26768</d>
+<d>-0.39305</d>
+<d>-0.45731</d>
+<d>-0.43234</d>
+<d>-0.40546</d>
+<d>-0.38934</d>
+</Subcolumn>
+<Subcolumn>
+<d>0.23289</d>
+<d>0.24978</d>
+<d>0.16787</d>
+<d>0.05033</d>
+<d>0.00284</d>
+<d>0.18469</d>
+<d>0.31256</d>
+<d>0.18279</d>
+<d>-0.00196</d>
+<d>0.02293</d>
+<d>-0.02326</d>
+<d>-0.06353</d>
+<d>-0.1084</d>
+<d>0.03361</d>
+<d>-0.16823</d>
+<d>-0.32427</d>
+<d>-0.4694</d>
+<d>-0.45806</d>
+<d>-0.25501</d>
+<d>-0.20754</d>
+</Subcolumn>
+<Subcolumn>
+<d>-0.03453</d>
+<d>0.00474</d>
+<d>0.01664</d>
+<d>0.05949</d>
+<d>-0.00498</d>
+<d>0.32946</d>
+<d>0.28266</d>
+<d>0.26609</d>
+<d>0.21157</d>
+<d>0.2278</d>
+<d>0.15222</d>
+<d>0.19479</d>
+<d>0.15197</d>
+<d>0.19049</d>
+<d>0.30734</d>
+<d>0.33852</d>
+<d>0.11688</d>
+<d>-0.01132</d>
+<d>-0.14956</d>
+<d>-0.17963</d>
+</Subcolumn>
+<Subcolumn>
+<d>-0.03236</d>
+<d>0.00542</d>
+<d>-0.0161</d>
+<d>0.0467</d>
+<d>-0.01584</d>
+<d>0.18836</d>
+<d>0.44076</d>
+<d>0.33671</d>
+<d>0.25456</d>
+<d>0.23717</d>
+<d>0.23162</d>
+<d>0.18147</d>
+<d>0.18357</d>
+<d>0.30058</d>
+<d>0.43572</d>
+<d>0.38416</d>
+<d>0.15536</d>
+<d>0.15687</d>
+<d>0.0728225</d>
+<d>-0.06831</d>
+</Subcolumn>
+<Subcolumn>
+<d>-0.1434</d>
+<d>-0.03572</d>
+<d>-0.00423</d>
+<d>0.08924</d>
+<d>-0.00082</d>
+<d>0.31561</d>
+<d>0.23175</d>
+<d>0.24789</d>
+<d>0.22402</d>
+<d>0.17897</d>
+<d>0.18107</d>
+<d>0.13342</d>
+<d>-0.09397</d>
+<d>-0.10619</d>
+<d>-0.11064</d>
+<d>-0.02889</d>
+<d>-0.20129</d>
+<d>-0.22849</d>
+<d>-0.25525</d>
+<d>-0.30957</d>
+</Subcolumn>
+</YColumn>
+<YColumn Width="1216" Decimals="9" Subcolumns="16">
+<Title><TextAlign align="Center">Different</TextAlign></Title>
+<Subcolumn>
+<d>0.40542</d>
+<d>0.21655</d>
+<d>0.16844</d>
+<d>0.02796</d>
+<d>-0.02726</d>
+<d>0.09776</d>
+<d>0.21442</d>
+<d>0.23954</d>
+<d>0.08272</d>
+<d>-0.04684</d>
+<d>-0.17512</d>
+<d>-0.08492</d>
+<d>-0.189</d>
+<d>-0.20248</d>
+<d>-0.284</d>
+<d>-0.37206</d>
+<d>-0.467038333</d>
+<d>-0.577051667</d>
+<d>-0.61353</d>
+<d>-0.670141667</d>
+</Subcolumn>
+<Subcolumn>
+<d>0.0622</d>
+<d>0.09432</d>
+<d>0.11192</d>
+<d>0.05358</d>
+<d>0.0095</d>
+<d>0.41498</d>
+<d>0.29758</d>
+<d>0.19014</d>
+<d>0.21954</d>
+<d>0.20722</d>
+<d>0.0593</d>
+<d>0.11224</d>
+<d>0.14096</d>
+<d>0.11686</d>
+<d>0.047</d>
+<d>-0.02714</d>
+<d>0.0019</d>
+<d>-0.1199</d>
+<d>0.09992</d>
+<d>0.08114</d>
+</Subcolumn>
+<Subcolumn>
+<d>0.03585</d>
+<d>0.06951</d>
+<d>-0.0081</d>
+<d>0.01602</d>
+<d>0.0121</d>
+<d>0.15787</d>
+<d>0.16978</d>
+<d>0.18583</d>
+<d>0.17315</d>
+<d>0.05699</d>
+<d>-0.07547</d>
+<d>-0.13594</d>
+<d>-0.09986</d>
+<d>-0.17578</d>
+<d>-0.33551</d>
+<d>-0.4805</d>
+<d>-0.54263</d>
+<d>-0.5458</d>
+<d>-0.61561</d>
+<d>-0.61505</d>
+</Subcolumn>
+<Subcolumn>
+<d>-0.05075</d>
+<d>-0.00524</d>
+<d>-0.07622</d>
+<d>0.00087</d>
+<d>-0.00086</d>
+<d>0.25015</d>
+<d>0.29925</d>
+<d>0.37926</d>
+<d>0.36246</d>
+<d>0.37917</d>
+<d>0.35694</d>
+<d>0.29837</d>
+<d>0.25638</d>
+<d>0.14213</d>
+<d>0.12985</d>
+<d>0.12386</d>
+<d>0.04548</d>
+<d>-0.05561</d>
+<d>-0.19724</d>
+<d>-0.21313</d>
+</Subcolumn>
+<Subcolumn>
+<d>0.09471</d>
+<d>0.09544</d>
+<d>0.08918</d>
+<d>0.00796</d>
+<d>0.03793</d>
+<d>0.25218</d>
+<d>0.11494</d>
+<d>0.21048</d>
+<d>0.10162</d>
+<d>0.05358</d>
+<d>0.05767</d>
+<d>-0.10145</d>
+<d>0.03989</d>
+<d>-0.03915</d>
+<d>-0.06854</d>
+<d>-0.09295</d>
+<d>-0.11329</d>
+<d>-0.18416</d>
+<d>-0.11716</d>
+<d>-0.16167</d>
+</Subcolumn>
+<Subcolumn>
+<d>-0.00512</d>
+<d>0.14253</d>
+<d>0.0594225</d>
+<d>0.022305</d>
+<d>0.00259</d>
+<d>0.34866</d>
+<d>0.50169</d>
+<d>0.33061</d>
+<d>0.25027</d>
+<d>0.13375</d>
+<d>0.14007</d>
+<d>0.15117</d>
+<d>0.02408</d>
+<d>-0.14333</d>
+<d>-0.11896</d>
+<d>-0.23788</d>
+<d>-0.23479</d>
+<d>-0.41383</d>
+<d>-0.48946</d>
+<d>-0.48322</d>
+</Subcolumn>
+<Subcolumn>
+<d>-0.03143</d>
+<d>-0.1001</d>
+<d>-0.06881</d>
+<d>0.04724</d>
+<d>-0.00685</d>
+<d>0.12219</d>
+<d>0.17025</d>
+<d>0.1939</d>
+<d>0.12701</d>
+<d>0.24275</d>
+<d>0.20291</d>
+<d>0.23469</d>
+<d>0.12731</d>
+<d>0.18919</d>
+<d>0.16462</d>
+<d>0.14854</d>
+<d>0.10604</d>
+<d>0.08325</d>
+<d>0.0726</d>
+<d>-0.0553</d>
+</Subcolumn>
+<Subcolumn>
+<d>0.18693</d>
+<d>0.06181</d>
+<d>0.10696</d>
+<d>0.1011</d>
+<d>0.0189</d>
+<d>0.57883</d>
+<d>0.69236</d>
+<d>0.7887475</d>
+<d>0.58599</d>
+<d>0.48634</d>
+<d>0.35693</d>
+<d>0.36457</d>
+<d>0.27464</d>
+<d>0.27049</d>
+<d>0.17795</d>
+<d>0.08374</d>
+<d>-0.05353</d>
+<d>-0.20327</d>
+<d>-0.27852</d>
+<d>-0.2447025</d>
+</Subcolumn>
+<Subcolumn>
+<d>0.311906667</d>
+<d>0.143150877</d>
+<d>0.16806</d>
+<d>0.184629167</d>
+<d>0.01572</d>
+<d>0.35067</d>
+<d>0.39378</d>
+<d>0.413165</d>
+<d>0.29601</d>
+<d>0.17727</d>
+<d>0.14382</d>
+<d>0.16706</d>
+<d>0.03579</d>
+<d>0.01351</d>
+<d>-0.038877451</d>
+<d>-0.26536</d>
+<d>-0.402297436</d>
+<d>-0.4256025</d>
+<d>-0.46942</d>
+<d>-0.471345</d>
+</Subcolumn>
+<Subcolumn>
+<d>-0.117</d>
+<d>-0.073921667</d>
+<d>-0.04939</d>
+<d>-0.00624</d>
+<d>-0.01352</d>
+<d>0.2322</d>
+<d>0.26799</d>
+<d>0.31584</d>
+<d>0.13546</d>
+<d>0.19547</d>
+<d>0.08772</d>
+<d>0.02377</d>
+<d>0.05164</d>
+<d>-0.06531</d>
+<d>-0.05125</d>
+<d>-0.10903</d>
+<d>-0.17399</d>
+<d>-0.2679</d>
+<d>-0.27143</d>
+<d>-0.38504</d>
+</Subcolumn>
+<Subcolumn>
+<d>-0.06517</d>
+<d>0.09374</d>
+<d>0.01653</d>
+<d>0.0058</d>
+<d>0.01954</d>
+<d>0.42904</d>
+<d>0.62136</d>
+<d>0.64652</d>
+<d>0.5918</d>
+<d>0.71069</d>
+<d>0.79683</d>
+<d>0.80452</d>
+<d>0.70073</d>
+<d>0.76079</d>
+<d>0.63747</d>
+<d>0.48393</d>
+<d>0.39325</d>
+<d>0.2855</d>
+<d>0.34836</d>
+<d>0.118</d>
+</Subcolumn>
+<Subcolumn>
+<d>-0.0925</d>
+<d>-0.06612</d>
+<d>-0.03976</d>
+<d>0.00078</d>
+<d>0.0389</d>
+<d>0.46482</d>
+<d>0.66332</d>
+<d>0.58068</d>
+<d>0.68196</d>
+<d>0.63538</d>
+<d>0.584</d>
+<d>0.54726</d>
+<d>0.39182</d>
+<d>0.3952</d>
+<d>0.43556</d>
+<d>0.32528</d>
+<d>0.30284</d>
+<d>0.20124</d>
+<d>0.2134</d>
+<d>0.21696</d>
+</Subcolumn>
+<Subcolumn>
+<d>-0.14676</d>
+<d>-0.16568</d>
+<d>-0.13758</d>
+<d>-0.0924</d>
+<d>0.04394</d>
+<d>0.5104</d>
+<d>0.78536</d>
+<d>0.58826</d>
+<d>0.63962</d>
+<d>0.56554</d>
+<d>0.54692</d>
+<d>0.55336</d>
+<d>0.48322</d>
+<d>0.45622</d>
+<d>0.35332</d>
+<d>0.30634</d>
+<d>0.30198</d>
+<d>0.24028</d>
+<d>0.1857</d>
+<d>0.29642</d>
+</Subcolumn>
+<Subcolumn>
+<d>-0.02998</d>
+<d>-0.0563</d>
+<d>-0.267</d>
+<d>-0.17192</d>
+<d>0.03708</d>
+<d>0.43534</d>
+<d>0.62502</d>
+<d>0.4007</d>
+<d>0.29608</d>
+<d>0.0551</d>
+<d>0.04228</d>
+<d>-0.26636</d>
+<d>-0.29638</d>
+<d>-0.3175</d>
+<d>-0.30454</d>
+<d>-0.18084</d>
+<d>-0.0854</d>
+<d>-0.18922</d>
+<d>-0.0627</d>
+<d>-0.18004</d>
+</Subcolumn>
+<Subcolumn>
+<d>-0.08714</d>
+<d>-0.09786</d>
+<d>-0.12518</d>
+<d>-0.0117</d>
+<d>-0.00164</d>
+<d>0.08748</d>
+<d>0.18212</d>
+<d>0.02002</d>
+<d>-0.0156</d>
+<d>-0.0325</d>
+<d>0.03172</d>
+<d>-0.01746</d>
+<d>-0.12312</d>
+<d>-0.00454</d>
+<d>-0.13654</d>
+<d>-0.08626</d>
+<d>-0.1282</d>
+<d>-0.22664</d>
+<d>-0.21656</d>
+<d>-0.265</d>
+</Subcolumn>
+<Subcolumn>
+<d>0.07339</d>
+<d>0.03074</d>
+<d>0.04906</d>
+<d>0.05033</d>
+<d>-0.00308</d>
+<d>0.35911</d>
+<d>0.40246</d>
+<d>0.2799</d>
+<d>0.20749</d>
+<d>0.16225</d>
+<d>0.04848</d>
+<d>-0.15688</d>
+<d>-0.19462</d>
+<d>-0.20342</d>
+<d>-0.24164</d>
+<d>-0.39219</d>
+<d>-0.41994</d>
+<d>-0.47064</d>
+<d>-0.49482</d>
+<d>-0.59235</d>
+</Subcolumn>
+</YColumn>
+</Table>
+<Table ID="Table6" XFormat="none" YFormat="replicates" Replicates="9" TableType="TwoWay" EVFormat="AsteriskAfterNumber">
+<Title>KO: House First</Title>
+<RowTitlesColumn Width="70">
+<Subcolumn>
+<d>-4</d>
+<d>-3</d>
+<d>-2</d>
+<d>-1</d>
+<d>0</d>
+<d>1</d>
+<d>2</d>
+<d>3</d>
+<d>4</d>
+<d>5</d>
+<d>6</d>
+<d>7</d>
+<d>8</d>
+<d>9</d>
+<d>10</d>
+<d>11</d>
+<d>12</d>
+<d>13</d>
+<d>14</d>
+<d>15</d>
+</Subcolumn>
+</RowTitlesColumn>
+<YColumn Width="684" Decimals="9" Subcolumns="9">
+<Title><TextAlign align="Center">First</TextAlign></Title>
+<Subcolumn>
+<d>0.02682</d>
+<d>-0.019095</d>
+<d>-0.04967</d>
+<d>0.015095</d>
+<d>0.00705</d>
+<d>0.05621375</d>
+<d>0.159005</d>
+<d>0.19268</d>
+<d>0.191795</d>
+<d>0.18538</d>
+<d>0.138245</d>
+<d>0.13255</d>
+<d>0.098175</d>
+<d>0.065225</d>
+<d>0.10332</d>
+<d>0.075245</d>
+<d>0.06434</d>
+<d>0.027845</d>
+<d>-0.068345</d>
+<d>-0.04343</d>
+</Subcolumn>
+<Subcolumn>
+<d>-0.020995</d>
+<d>-0.03239</d>
+<d>-0.02381</d>
+<d>-0.047925</d>
+<d>0.005845</d>
+<d>0.061815</d>
+<d>0.066225</d>
+<d>0.03602</d>
+<d>0.02361</d>
+<d>0.018435</d>
+<d>-0.00802</d>
+<d>-0.028755</d>
+<d>-0.071065</d>
+<d>-0.071915</d>
+<d>-0.077205</d>
+<d>-0.09689</d>
+<d>-0.18204</d>
+<d>-0.18306</d>
+<d>-0.196195</d>
+<d>-0.199575</d>
+</Subcolumn>
+<Subcolumn>
+<d>0.02959</d>
+<d>-0.00066</d>
+<d>-0.003195</d>
+<d>-0.005095</d>
+<d>-0.0074</d>
+<d>0.2213</d>
+<d>0.57447375</d>
+<d>0.48292</d>
+<d>0.44017</d>
+<d>0.42634375</d>
+<d>0.32229</d>
+<d>0.29648</d>
+<d>0.270885</d>
+<d>0.21698</d>
+<d>0.28026</d>
+<d>0.43169</d>
+<d>0.562715</d>
+<d>0.4567975</d>
+<d>0.358534583</d>
+<d>0.13829</d>
+</Subcolumn>
+<Subcolumn>
+<d>0.022305</d>
+<d>-0.03517</d>
+<d>-0.008045</d>
+<d>0.01805</d>
+<d>-0.00466</d>
+<d>0.214405</d>
+<d>0.387045</d>
+<d>0.49921</d>
+<d>0.498965</d>
+<d>0.271745</d>
+<d>0.11146375</d>
+<d>0.111615</d>
+<d>0.003799167</d>
+<d>-0.052729487</d>
+<d>0.033878095</d>
+<d>-0.22565</d>
+<d>-0.231138333</d>
+<d>-0.289278333</d>
+<d>-0.341360417</d>
+<d>-0.28305</d>
+</Subcolumn>
+<Subcolumn>
+<d>-0.0058</d>
+<d>0.00284</d>
+<d>0.02048</d>
+<d>0.016716667</d>
+<d>-0.01542</d>
+<d>0.174646667</d>
+<d>0.407866667</d>
+<d>0.43862</d>
+<d>0.423986667</d>
+<d>0.328553333</d>
+<d>0.238866667</d>
+<d>0.193753333</d>
+<d>0.155566667</d>
+<d>0.12894</d>
+<d>0.035633333</d>
+<d>0.001246667</d>
+<d>-0.136313333</d>
+<d>-0.100673333</d>
+<d>-0.005096667</d>
+<d>-0.098133333</d>
+</Subcolumn>
+<Subcolumn>
+<d>0.07022875</d>
+<d>-0.001135</d>
+<d>0.03689</d>
+<d>0.022995</d>
+<d>-0.016455</d>
+<d>0.76641</d>
+<d>1.49603</d>
+<d>1.214315</d>
+<d>1.109975</d>
+<d>0.900705</d>
+<d>0.61475</d>
+<d>0.566195</d>
+<d>0.570505</d>
+<d>0.60003</d>
+<d>0.569155</d>
+<d>0.485605</d>
+<d>0.397775</d>
+<d>0.24071</d>
+<d>0.1175525</d>
+<d>-0.021422083</d>
+</Subcolumn>
+<Subcolumn>
+<d>-0.01716</d>
+<d>0.00545</d>
+<d>-0.034105</d>
+<d>-0.02237</d>
+<d>0.001185</d>
+<d>0.607855</d>
+<d>0.988475</d>
+<d>0.85257625</d>
+<d>0.674715</d>
+<d>0.709375</d>
+<d>0.73243</d>
+<d>0.623705</d>
+<d>0.565785</d>
+<d>0.559825</d>
+<d>0.487346667</d>
+<d>0.40456125</d>
+<d>0.16166</d>
+<d>-0.10602</d>
+<d>-0.10896</d>
+<d>-0.20178</d>
+</Subcolumn>
+<Subcolumn>
+<d>0.09797</d>
+<d>0.076435</d>
+<d>0.04849</d>
+<d>0.06152875</d>
+<d>0.008525</d>
+<d>0.15039</d>
+<d>0.208885</d>
+<d>0.22274</d>
+<d>0.152875</d>
+<d>0.12694</d>
+<d>0.09499</d>
+<d>0.06998</d>
+<d>0.011295</d>
+<d>-0.01703</d>
+<d>0.02644</d>
+<d>-0.03135</d>
+<d>-0.057705</d>
+<d>-0.1006875</d>
+<d>-0.2204325</d>
+<d>-0.23353</d>
+</Subcolumn>
+<Subcolumn>
+<d>0.3003575</d>
+<d>0.18808</d>
+<d>0.17225</d>
+<d>-0.01412125</d>
+<d>0.014445</d>
+<d>0.17156875</d>
+<d>0.17039</d>
+<d>0.069445</d>
+<d>-0.105355</d>
+<d>-0.121495</d>
+<d>-0.19159</d>
+<d>-0.160425</d>
+<d>-0.2136475</d>
+<d>-0.2739</d>
+<d>-0.17604</d>
+<d>-0.27296</d>
+<d>-0.39850875</d>
+<d>-0.3590125</d>
+<d>-0.555115</d>
+<d>-0.44001</d>
+</Subcolumn>
+</YColumn>
+<YColumn Width="684" Decimals="7" Subcolumns="9">
+<Title><TextAlign align="Center">Same</TextAlign></Title>
+<Subcolumn>
+<d Excluded="1">0.00704</d>
+<d Excluded="1">0.00111</d>
+<d Excluded="1">0.02681</d>
+<d Excluded="1">-0.02782</d>
+<d Excluded="1">-0.0061525</d>
+<d Excluded="1">0.02934</d>
+<d Excluded="1">0.14823</d>
+<d Excluded="1">0.09061</d>
+<d Excluded="1">0.04587</d>
+<d Excluded="1">0.04651</d>
+<d Excluded="1">0.07091</d>
+<d Excluded="1">0.05817</d>
+<d Excluded="1">0.14937</d>
+<d Excluded="1">0.08136</d>
+<d Excluded="1">0.03718</d>
+<d Excluded="1">0.03614</d>
+<d Excluded="1">-0.01382</d>
+<d Excluded="1">-0.014</d>
+<d Excluded="1">-0.04975</d>
+<d Excluded="1">-0.04249</d>
+</Subcolumn>
+<Subcolumn>
+<d Excluded="1">-0.0497</d>
+<d Excluded="1">-0.0662</d>
+<d Excluded="1">-0.07143</d>
+<d Excluded="1">-0.01852</d>
+<d Excluded="1">0.0031</d>
+<d Excluded="1">0.0367</d>
+<d Excluded="1">0.19754</d>
+<d Excluded="1">0.1965</d>
+<d Excluded="1">0.19078</d>
+<d Excluded="1">0.13903</d>
+<d Excluded="1">0.06777</d>
+<d Excluded="1">0.10106</d>
+<d Excluded="1">0.10209</d>
+<d Excluded="1">0.09252</d>
+<d Excluded="1">0.02814</d>
+<d Excluded="1">-0.0231</d>
+<d Excluded="1">-0.04368</d>
+<d Excluded="1">-0.02616</d>
+<d Excluded="1">-0.06111</d>
+<d Excluded="1">0.07096</d>
+</Subcolumn>
+<Subcolumn>
+<d Excluded="1">0.0671</d>
+<d Excluded="1">-0.0263</d>
+<d Excluded="1">-0.00249</d>
+<d Excluded="1">0.08974</d>
+<d Excluded="1">0.0057</d>
+<d Excluded="1">0.28784</d>
+<d Excluded="1">0.5753</d>
+<d Excluded="1">0.6200225</d>
+<d Excluded="1">0.48728</d>
+<d Excluded="1">0.52894</d>
+<d Excluded="1">0.44169</d>
+<d Excluded="1">0.36719</d>
+<d Excluded="1">0.28244</d>
+<d Excluded="1">0.35109</d>
+<d Excluded="1">0.31024</d>
+<d Excluded="1">0.41609</d>
+<d Excluded="1">0.332935</d>
+<d Excluded="1">0.20838</d>
+<d Excluded="1">0.125505</d>
+<d Excluded="1">0.06196</d>
+</Subcolumn>
+<Subcolumn>
+<d Excluded="1">0.16568</d>
+<d Excluded="1">-0.02378</d>
+<d Excluded="1">0.0028</d>
+<d Excluded="1">0.00858</d>
+<d Excluded="1">0.02928</d>
+<d Excluded="1">0.47728</d>
+<d Excluded="1">0.89456</d>
+<d Excluded="1">0.66836</d>
+<d Excluded="1">0.80838</d>
+<d Excluded="1">0.7671</d>
+<d Excluded="1">0.694275</d>
+<d Excluded="1">0.55266</d>
+<d Excluded="1">0.43608</d>
+<d Excluded="1">0.25048</d>
+<d Excluded="1">0.43226</d>
+<d Excluded="1">0.38182</d>
+<d Excluded="1">0.31738</d>
+<d Excluded="1">0.12028</d>
+<d Excluded="1">0.26948</d>
+<d Excluded="1">0.13416</d>
+</Subcolumn>
+<Subcolumn>
+<d Excluded="1">-0.05396</d>
+<d Excluded="1">-0.07243</d>
+<d Excluded="1">-0.07535</d>
+<d Excluded="1">-0.14857</d>
+<d Excluded="1">-0.00442</d>
+<d Excluded="1">0.12971</d>
+<d Excluded="1">0.44723</d>
+<d Excluded="1">0.37946</d>
+<d Excluded="1">0.30729</d>
+<d Excluded="1">0.26281</d>
+<d Excluded="1">0.21235</d>
+<d Excluded="1">0.15573</d>
+<d Excluded="1">0.04124</d>
+<d Excluded="1">0.00097</d>
+<d Excluded="1">-0.02491</d>
+<d Excluded="1">-0.03433</d>
+<d Excluded="1">0.036155</d>
+<d Excluded="1">-0.0712925</d>
+<d Excluded="1">-0.1227725</d>
+<d Excluded="1">-0.16821</d>
+</Subcolumn>
+<Subcolumn>
+<d Excluded="1">-0.07428</d>
+<d Excluded="1">-0.08199</d>
+<d Excluded="1">0.08761</d>
+<d Excluded="1">-0.00297</d>
+<d Excluded="1">0.02802</d>
+<d Excluded="1">0.87462</d>
+<d Excluded="1">1.30326</d>
+<d Excluded="1">1.19293</d>
+<d Excluded="1">0.99118</d>
+<d Excluded="1">0.82917</d>
+<d Excluded="1">0.7946</d>
+<d Excluded="1">0.85307</d>
+<d Excluded="1">0.77394</d>
+<d Excluded="1">0.72859</d>
+<d Excluded="1">0.59693</d>
+<d Excluded="1">0.55596</d>
+<d Excluded="1">0.44794</d>
+<d Excluded="1">0.37017</d>
+<d Excluded="1">0.26142</d>
+<d Excluded="1">0.21145</d>
+</Subcolumn>
+<Subcolumn>
+<d Excluded="1">-0.05942</d>
+<d Excluded="1">-0.00909</d>
+<d Excluded="1">0.04434</d>
+<d Excluded="1">-0.07617</d>
+<d Excluded="1">0.01186</d>
+<d Excluded="1">0.54919</d>
+<d Excluded="1">0.62481</d>
+<d Excluded="1">0.5087</d>
+<d Excluded="1">0.46583</d>
+<d Excluded="1">0.23086</d>
+<d Excluded="1">0.23144</d>
+<d Excluded="1">0.25808</d>
+<d Excluded="1">0.09829</d>
+<d Excluded="1">0.05742</d>
+<d Excluded="1">0.09402</d>
+<d Excluded="1">0.06729</d>
+<d Excluded="1">-0.08517</d>
+<d Excluded="1">-0.28242</d>
+<d Excluded="1">-0.23844</d>
+<d Excluded="1">-0.23891</d>
+</Subcolumn>
+<Subcolumn>
+<d Excluded="1">0.09202</d>
+<d Excluded="1">0.06307</d>
+<d Excluded="1">0.03138</d>
+<d Excluded="1">0.04379</d>
+<d Excluded="1">0.00964</d>
+<d Excluded="1">0.1663</d>
+<d Excluded="1">0.1923</d>
+<d Excluded="1">0.22774</d>
+<d Excluded="1">0.22629</d>
+<d Excluded="1">0.23568</d>
+<d Excluded="1">0.18668</d>
+<d Excluded="1">0.19328</d>
+<d Excluded="1">0.07942</d>
+<d Excluded="1">-0.02092</d>
+<d Excluded="1">0.00214</d>
+<d Excluded="1">-0.00077</d>
+<d Excluded="1">0.03157</d>
+<d Excluded="1">-0.02273</d>
+<d Excluded="1">-0.08757</d>
+<d Excluded="1">-0.04162</d>
+</Subcolumn>
+<Subcolumn>
+<d Excluded="1">0.02706</d>
+<d Excluded="1">-0.05975</d>
+<d Excluded="1">0.0044</d>
+<d Excluded="1">0.01625</d>
+<d Excluded="1">0.00246</d>
+<d Excluded="1">0.15008</d>
+<d Excluded="1">0.15583</d>
+<d Excluded="1">0.2008</d>
+<d Excluded="1">0.11906</d>
+<d Excluded="1">0.13084</d>
+<d Excluded="1">0.10811</d>
+<d Excluded="1">-0.16444</d>
+<d Excluded="1">-0.24102</d>
+<d Excluded="1">-0.48815</d>
+<d Excluded="1">-0.4395125</d>
+<d Excluded="1">-0.41498</d>
+<d Excluded="1">-0.24351</d>
+<d Excluded="1">-0.39076</d>
+<d Excluded="1">-0.51228</d>
+<d Excluded="1">-0.42708</d>
+</Subcolumn>
+</YColumn>
+<YColumn Width="684" Decimals="9" Subcolumns="9">
+<Title><TextAlign align="Center">Different</TextAlign></Title>
+<Subcolumn>
+<d Excluded="1">0.02454</d>
+<d Excluded="1">0.01176</d>
+<d Excluded="1">-0.00464</d>
+<d Excluded="1">-0.04937</d>
+<d Excluded="1">-0.01378</d>
+<d Excluded="1">-0.02175</d>
+<d Excluded="1">0.08962</d>
+<d Excluded="1">0.07912</d>
+<d Excluded="1">0.10045</d>
+<d Excluded="1">0.06018</d>
+<d Excluded="1">0.06808</d>
+<d Excluded="1">0.13814</d>
+<d Excluded="1">0.07172</d>
+<d Excluded="1">0.09972</d>
+<d Excluded="1">0.07148</d>
+<d Excluded="1">0.1605</d>
+<d Excluded="1">0.072645</d>
+<d Excluded="1">0.03597</d>
+<d Excluded="1">0.03508</d>
+<d Excluded="1">0.01462</d>
+</Subcolumn>
+<Subcolumn>
+<d Excluded="1">-0.04647</d>
+<d Excluded="1">-0.05472</d>
+<d Excluded="1">-0.07761</d>
+<d Excluded="1">-0.00789</d>
+<d Excluded="1">-0.00696</d>
+<d Excluded="1">0.0486</d>
+<d Excluded="1">0.11249</d>
+<d Excluded="1">0.12942</d>
+<d Excluded="1">0.13124</d>
+<d Excluded="1">0.09948</d>
+<d Excluded="1">0.10467</d>
+<d Excluded="1">0.15121</d>
+<d Excluded="1">0.15213</d>
+<d Excluded="1">0.09488</d>
+<d Excluded="1">0.05949</d>
+<d Excluded="1">0.13257</d>
+<d Excluded="1">0.07393</d>
+<d Excluded="1">0.00722</d>
+<d Excluded="1">0.00432</d>
+<d Excluded="1">0.0069</d>
+</Subcolumn>
+<Subcolumn>
+<d Excluded="1">0.07755</d>
+<d Excluded="1">0.1083</d>
+<d Excluded="1">0.15029</d>
+<d Excluded="1">0.11474</d>
+<d Excluded="1">-0.02276</d>
+<d Excluded="1">0.32064</d>
+<d Excluded="1">0.96526</d>
+<d Excluded="1">0.80004</d>
+<d Excluded="1">0.6333075</d>
+<d Excluded="1">0.6374</d>
+<d Excluded="1">0.70188</d>
+<d Excluded="1">0.6764</d>
+<d Excluded="1">0.47187</d>
+<d Excluded="1">0.40836</d>
+<d Excluded="1">0.3799</d>
+<d Excluded="1">0.28913</d>
+<d Excluded="1">0.26071</d>
+<d Excluded="1">0.13363</d>
+<d Excluded="1">0.111155</d>
+<d Excluded="1">-0.026785</d>
+</Subcolumn>
+<Subcolumn>
+<d Excluded="1">0.13571</d>
+<d Excluded="1">0.06728</d>
+<d Excluded="1">0.02798</d>
+<d Excluded="1">0.05599</d>
+<d Excluded="1">0.0102</d>
+<d Excluded="1">0.21074</d>
+<d Excluded="1">0.4786</d>
+<d Excluded="1">0.62706</d>
+<d Excluded="1">0.55557</d>
+<d Excluded="1">0.51772</d>
+<d Excluded="1">0.642745</d>
+<d Excluded="1">0.47854</d>
+<d Excluded="1">0.3487225</d>
+<d Excluded="1">0.428</d>
+<d Excluded="1">0.44275</d>
+<d Excluded="1">0.36866</d>
+<d Excluded="1">0.41945</d>
+<d Excluded="1">0.35211</d>
+<d Excluded="1">0.19238</d>
+<d Excluded="1">0.1195</d>
+</Subcolumn>
+<Subcolumn>
+<d Excluded="1">0.06129</d>
+<d Excluded="1">0.09335</d>
+<d Excluded="1">0.17927</d>
+<d Excluded="1">0.08021</d>
+<d Excluded="1">0.00405</d>
+<d Excluded="1">0.24565</d>
+<d Excluded="1">0.42361</d>
+<d Excluded="1">0.31711</d>
+<d Excluded="1">0.30311</d>
+<d Excluded="1">0.2755875</d>
+<d Excluded="1">0.2729175</d>
+<d Excluded="1">0.33021</d>
+<d Excluded="1">0.28144</d>
+<d Excluded="1">0.16795</d>
+<d Excluded="1">0.12558</d>
+<d Excluded="1">0.06609</d>
+<d Excluded="1">0.07423</d>
+<d Excluded="1">-0.08369</d>
+<d Excluded="1">-0.1244975</d>
+<d Excluded="1">-0.20399</d>
+</Subcolumn>
+<Subcolumn>
+<d Excluded="1">0.0904625</d>
+<d Excluded="1">0.0783</d>
+<d Excluded="1">0.01698</d>
+<d Excluded="1">0.00283</d>
+<d Excluded="1">-0.00118</d>
+<d Excluded="1">0.52233</d>
+<d Excluded="1">0.91514</d>
+<d Excluded="1">0.79356</d>
+<d Excluded="1">0.68784</d>
+<d Excluded="1">0.76933</d>
+<d Excluded="1">0.77749</d>
+<d Excluded="1">0.67089</d>
+<d Excluded="1">0.45991</d>
+<d Excluded="1">0.32458</d>
+<d Excluded="1">0.344</d>
+<d Excluded="1">0.41567</d>
+<d Excluded="1">0.25556</d>
+<d Excluded="1">0.06359</d>
+<d Excluded="1">-0.00814</d>
+<d Excluded="1">-0.1001525</d>
+</Subcolumn>
+<Subcolumn>
+<d Excluded="1">0.13192</d>
+<d Excluded="1">0.18944</d>
+<d Excluded="1">0.09344</d>
+<d Excluded="1">-0.00357</d>
+<d Excluded="1">0.01711</d>
+<d Excluded="1">0.96092</d>
+<d Excluded="1">1.57211</d>
+<d Excluded="1">1.2666</d>
+<d Excluded="1">0.99454</d>
+<d Excluded="1">0.9410375</d>
+<d Excluded="1">0.8141975</d>
+<d Excluded="1">0.82071</d>
+<d Excluded="1">0.56389</d>
+<d Excluded="1">0.40064</d>
+<d Excluded="1">0.29544</d>
+<d Excluded="1">0.31417</d>
+<d Excluded="1">0.1516</d>
+<d Excluded="1">0.019</d>
+<d Excluded="1">-0.12114</d>
+<d Excluded="1">-0.25327</d>
+</Subcolumn>
+<Subcolumn>
+<d Excluded="1">0.01456</d>
+<d Excluded="1">-0.08376</d>
+<d Excluded="1">0.06836</d>
+<d Excluded="1">0.0708</d>
+<d Excluded="1">-0.01225</d>
+<d Excluded="1">0.12685</d>
+<d Excluded="1">0.03994</d>
+<d Excluded="1">0.12507</d>
+<d Excluded="1">0.15924</d>
+<d Excluded="1">0.06237</d>
+<d Excluded="1">0.0565</d>
+<d Excluded="1">0.04512</d>
+<d Excluded="1">0.08241</d>
+<d Excluded="1">-0.06701</d>
+<d Excluded="1">-0.09853</d>
+<d Excluded="1">-0.11116</d>
+<d Excluded="1">-0.18505</d>
+<d Excluded="1">-0.23242</d>
+<d Excluded="1">-0.21652</d>
+<d Excluded="1">-0.308735</d>
+</Subcolumn>
+<Subcolumn>
+<d Excluded="1">-0.21718</d>
+<d Excluded="1">-0.24089</d>
+<d Excluded="1">-0.12733</d>
+<d Excluded="1">-0.069385</d>
+<d Excluded="1">-0.03527</d>
+<d Excluded="1">0.02916</d>
+<d Excluded="1">-0.14969</d>
+<d Excluded="1">-0.05491</d>
+<d Excluded="1">-0.07708</d>
+<d Excluded="1">-0.15107</d>
+<d Excluded="1">-0.05572</d>
+<d Excluded="1">-0.30428</d>
+<d Excluded="1">-0.04027</d>
+<d Excluded="1">-0.3149525</d>
+<d Excluded="1">-0.3772175</d>
+<d Excluded="1">-0.48964</d>
+<d Excluded="1">-0.51696</d>
+<d Excluded="1">-0.5005325</d>
+<d Excluded="1">-0.38748</d>
+<d Excluded="1">-0.54758</d>
+</Subcolumn>
+</YColumn>
+</Table>
+<Table ID="Table7" XFormat="none" YFormat="replicates" Replicates="9" TableType="TwoWay" EVFormat="AsteriskAfterNumber">
+<Title>KO: House Second</Title>
+<RowTitlesColumn Width="70">
+<Subcolumn>
+<d>-4</d>
+<d>-3</d>
+<d>-2</d>
+<d>-1</d>
+<d>0</d>
+<d>1</d>
+<d>2</d>
+<d>3</d>
+<d>4</d>
+<d>5</d>
+<d>6</d>
+<d>7</d>
+<d>8</d>
+<d>9</d>
+<d>10</d>
+<d>11</d>
+<d>12</d>
+<d>13</d>
+<d>14</d>
+<d>15</d>
+</Subcolumn>
+</RowTitlesColumn>
+<YColumn Width="684" Decimals="9" Subcolumns="9">
+<Title><TextAlign align="Center">First</TextAlign></Title>
+<Subcolumn>
+<d Excluded="1">0.02682</d>
+<d Excluded="1">-0.019095</d>
+<d Excluded="1">-0.04967</d>
+<d Excluded="1">0.015095</d>
+<d Excluded="1">0.00705</d>
+<d Excluded="1">0.05621375</d>
+<d Excluded="1">0.159005</d>
+<d Excluded="1">0.19268</d>
+<d Excluded="1">0.191795</d>
+<d Excluded="1">0.18538</d>
+<d Excluded="1">0.138245</d>
+<d Excluded="1">0.13255</d>
+<d Excluded="1">0.098175</d>
+<d Excluded="1">0.065225</d>
+<d Excluded="1">0.10332</d>
+<d Excluded="1">0.075245</d>
+<d Excluded="1">0.06434</d>
+<d Excluded="1">0.027845</d>
+<d Excluded="1">-0.068345</d>
+<d Excluded="1">-0.04343</d>
+</Subcolumn>
+<Subcolumn>
+<d Excluded="1">-0.020995</d>
+<d Excluded="1">-0.03239</d>
+<d Excluded="1">-0.02381</d>
+<d Excluded="1">-0.047925</d>
+<d Excluded="1">0.005845</d>
+<d Excluded="1">0.061815</d>
+<d Excluded="1">0.066225</d>
+<d Excluded="1">0.03602</d>
+<d Excluded="1">0.02361</d>
+<d Excluded="1">0.018435</d>
+<d Excluded="1">-0.00802</d>
+<d Excluded="1">-0.028755</d>
+<d Excluded="1">-0.071065</d>
+<d Excluded="1">-0.071915</d>
+<d Excluded="1">-0.077205</d>
+<d Excluded="1">-0.09689</d>
+<d Excluded="1">-0.18204</d>
+<d Excluded="1">-0.18306</d>
+<d Excluded="1">-0.196195</d>
+<d Excluded="1">-0.199575</d>
+</Subcolumn>
+<Subcolumn>
+<d Excluded="1">0.02959</d>
+<d Excluded="1">-0.00066</d>
+<d Excluded="1">-0.003195</d>
+<d Excluded="1">-0.005095</d>
+<d Excluded="1">-0.0074</d>
+<d Excluded="1">0.2213</d>
+<d Excluded="1">0.57447375</d>
+<d Excluded="1">0.48292</d>
+<d Excluded="1">0.44017</d>
+<d Excluded="1">0.42634375</d>
+<d Excluded="1">0.32229</d>
+<d Excluded="1">0.29648</d>
+<d Excluded="1">0.270885</d>
+<d Excluded="1">0.21698</d>
+<d Excluded="1">0.28026</d>
+<d Excluded="1">0.43169</d>
+<d Excluded="1">0.562715</d>
+<d Excluded="1">0.4567975</d>
+<d Excluded="1">0.358534583</d>
+<d Excluded="1">0.13829</d>
+</Subcolumn>
+<Subcolumn>
+<d Excluded="1">0.022305</d>
+<d Excluded="1">-0.03517</d>
+<d Excluded="1">-0.008045</d>
+<d Excluded="1">0.01805</d>
+<d Excluded="1">-0.00466</d>
+<d Excluded="1">0.214405</d>
+<d Excluded="1">0.387045</d>
+<d Excluded="1">0.49921</d>
+<d Excluded="1">0.498965</d>
+<d Excluded="1">0.271745</d>
+<d Excluded="1">0.11146375</d>
+<d Excluded="1">0.111615</d>
+<d Excluded="1">0.003799167</d>
+<d Excluded="1">-0.052729487</d>
+<d Excluded="1">0.033878095</d>
+<d Excluded="1">-0.22565</d>
+<d Excluded="1">-0.231138333</d>
+<d Excluded="1">-0.289278333</d>
+<d Excluded="1">-0.341360417</d>
+<d Excluded="1">-0.28305</d>
+</Subcolumn>
+<Subcolumn>
+<d Excluded="1">-0.0058</d>
+<d Excluded="1">0.00284</d>
+<d Excluded="1">0.02048</d>
+<d Excluded="1">0.016716667</d>
+<d Excluded="1">-0.01542</d>
+<d Excluded="1">0.174646667</d>
+<d Excluded="1">0.407866667</d>
+<d Excluded="1">0.43862</d>
+<d Excluded="1">0.423986667</d>
+<d Excluded="1">0.328553333</d>
+<d Excluded="1">0.238866667</d>
+<d Excluded="1">0.193753333</d>
+<d Excluded="1">0.155566667</d>
+<d Excluded="1">0.12894</d>
+<d Excluded="1">0.035633333</d>
+<d Excluded="1">0.001246667</d>
+<d Excluded="1">-0.136313333</d>
+<d Excluded="1">-0.100673333</d>
+<d Excluded="1">-0.005096667</d>
+<d Excluded="1">-0.098133333</d>
+</Subcolumn>
+<Subcolumn>
+<d Excluded="1">0.07022875</d>
+<d Excluded="1">-0.001135</d>
+<d Excluded="1">0.03689</d>
+<d Excluded="1">0.022995</d>
+<d Excluded="1">-0.016455</d>
+<d Excluded="1">0.76641</d>
+<d Excluded="1">1.49603</d>
+<d Excluded="1">1.214315</d>
+<d Excluded="1">1.109975</d>
+<d Excluded="1">0.900705</d>
+<d Excluded="1">0.61475</d>
+<d Excluded="1">0.566195</d>
+<d Excluded="1">0.570505</d>
+<d Excluded="1">0.60003</d>
+<d Excluded="1">0.569155</d>
+<d Excluded="1">0.485605</d>
+<d Excluded="1">0.397775</d>
+<d Excluded="1">0.24071</d>
+<d Excluded="1">0.1175525</d>
+<d Excluded="1">-0.021422083</d>
+</Subcolumn>
+<Subcolumn>
+<d Excluded="1">-0.01716</d>
+<d Excluded="1">0.00545</d>
+<d Excluded="1">-0.034105</d>
+<d Excluded="1">-0.02237</d>
+<d Excluded="1">0.001185</d>
+<d Excluded="1">0.607855</d>
+<d Excluded="1">0.988475</d>
+<d Excluded="1">0.85257625</d>
+<d Excluded="1">0.674715</d>
+<d Excluded="1">0.709375</d>
+<d Excluded="1">0.73243</d>
+<d Excluded="1">0.623705</d>
+<d Excluded="1">0.565785</d>
+<d Excluded="1">0.559825</d>
+<d Excluded="1">0.487346667</d>
+<d Excluded="1">0.40456125</d>
+<d Excluded="1">0.16166</d>
+<d Excluded="1">-0.10602</d>
+<d Excluded="1">-0.10896</d>
+<d Excluded="1">-0.20178</d>
+</Subcolumn>
+<Subcolumn>
+<d Excluded="1">0.09797</d>
+<d Excluded="1">0.076435</d>
+<d Excluded="1">0.04849</d>
+<d Excluded="1">0.06152875</d>
+<d Excluded="1">0.008525</d>
+<d Excluded="1">0.15039</d>
+<d Excluded="1">0.208885</d>
+<d Excluded="1">0.22274</d>
+<d Excluded="1">0.152875</d>
+<d Excluded="1">0.12694</d>
+<d Excluded="1">0.09499</d>
+<d Excluded="1">0.06998</d>
+<d Excluded="1">0.011295</d>
+<d Excluded="1">-0.01703</d>
+<d Excluded="1">0.02644</d>
+<d Excluded="1">-0.03135</d>
+<d Excluded="1">-0.057705</d>
+<d Excluded="1">-0.1006875</d>
+<d Excluded="1">-0.2204325</d>
+<d Excluded="1">-0.23353</d>
+</Subcolumn>
+<Subcolumn>
+<d Excluded="1">0.3003575</d>
+<d Excluded="1">0.18808</d>
+<d Excluded="1">0.17225</d>
+<d Excluded="1">-0.01412125</d>
+<d Excluded="1">0.014445</d>
+<d Excluded="1">0.17156875</d>
+<d Excluded="1">0.17039</d>
+<d Excluded="1">0.069445</d>
+<d Excluded="1">-0.105355</d>
+<d Excluded="1">-0.121495</d>
+<d Excluded="1">-0.19159</d>
+<d Excluded="1">-0.160425</d>
+<d Excluded="1">-0.2136475</d>
+<d Excluded="1">-0.2739</d>
+<d Excluded="1">-0.17604</d>
+<d Excluded="1">-0.27296</d>
+<d Excluded="1">-0.39850875</d>
+<d Excluded="1">-0.3590125</d>
+<d Excluded="1">-0.555115</d>
+<d Excluded="1">-0.44001</d>
+</Subcolumn>
+</YColumn>
+<YColumn Width="684" Decimals="7" Subcolumns="9">
+<Title><TextAlign align="Center">Same</TextAlign></Title>
+<Subcolumn>
+<d>0.00704</d>
+<d>0.00111</d>
+<d>0.02681</d>
+<d>-0.02782</d>
+<d>-0.0061525</d>
+<d>0.02934</d>
+<d>0.14823</d>
+<d>0.09061</d>
+<d>0.04587</d>
+<d>0.04651</d>
+<d>0.07091</d>
+<d>0.05817</d>
+<d>0.14937</d>
+<d>0.08136</d>
+<d>0.03718</d>
+<d>0.03614</d>
+<d>-0.01382</d>
+<d>-0.014</d>
+<d>-0.04975</d>
+<d>-0.04249</d>
+</Subcolumn>
+<Subcolumn>
+<d>-0.0497</d>
+<d>-0.0662</d>
+<d>-0.07143</d>
+<d>-0.01852</d>
+<d>0.0031</d>
+<d>0.0367</d>
+<d>0.19754</d>
+<d>0.1965</d>
+<d>0.19078</d>
+<d>0.13903</d>
+<d>0.06777</d>
+<d>0.10106</d>
+<d>0.10209</d>
+<d>0.09252</d>
+<d>0.02814</d>
+<d>-0.0231</d>
+<d>-0.04368</d>
+<d>-0.02616</d>
+<d>-0.06111</d>
+<d>0.07096</d>
+</Subcolumn>
+<Subcolumn>
+<d>0.0671</d>
+<d>-0.0263</d>
+<d>-0.00249</d>
+<d>0.08974</d>
+<d>0.0057</d>
+<d>0.28784</d>
+<d>0.5753</d>
+<d>0.6200225</d>
+<d>0.48728</d>
+<d>0.52894</d>
+<d>0.44169</d>
+<d>0.36719</d>
+<d>0.28244</d>
+<d>0.35109</d>
+<d>0.31024</d>
+<d>0.41609</d>
+<d>0.332935</d>
+<d>0.20838</d>
+<d>0.125505</d>
+<d>0.06196</d>
+</Subcolumn>
+<Subcolumn>
+<d>0.16568</d>
+<d>-0.02378</d>
+<d>0.0028</d>
+<d>0.00858</d>
+<d>0.02928</d>
+<d>0.47728</d>
+<d>0.89456</d>
+<d>0.66836</d>
+<d>0.80838</d>
+<d>0.7671</d>
+<d>0.694275</d>
+<d>0.55266</d>
+<d>0.43608</d>
+<d>0.25048</d>
+<d>0.43226</d>
+<d>0.38182</d>
+<d>0.31738</d>
+<d>0.12028</d>
+<d>0.26948</d>
+<d>0.13416</d>
+</Subcolumn>
+<Subcolumn>
+<d>-0.05396</d>
+<d>-0.07243</d>
+<d>-0.07535</d>
+<d>-0.14857</d>
+<d>-0.00442</d>
+<d>0.12971</d>
+<d>0.44723</d>
+<d>0.37946</d>
+<d>0.30729</d>
+<d>0.26281</d>
+<d>0.21235</d>
+<d>0.15573</d>
+<d>0.04124</d>
+<d>0.00097</d>
+<d>-0.02491</d>
+<d>-0.03433</d>
+<d>0.036155</d>
+<d>-0.0712925</d>
+<d>-0.1227725</d>
+<d>-0.16821</d>
+</Subcolumn>
+<Subcolumn>
+<d>-0.07428</d>
+<d>-0.08199</d>
+<d>0.08761</d>
+<d>-0.00297</d>
+<d>0.02802</d>
+<d>0.87462</d>
+<d>1.30326</d>
+<d>1.19293</d>
+<d>0.99118</d>
+<d>0.82917</d>
+<d>0.7946</d>
+<d>0.85307</d>
+<d>0.77394</d>
+<d>0.72859</d>
+<d>0.59693</d>
+<d>0.55596</d>
+<d>0.44794</d>
+<d>0.37017</d>
+<d>0.26142</d>
+<d>0.21145</d>
+</Subcolumn>
+<Subcolumn>
+<d>-0.05942</d>
+<d>-0.00909</d>
+<d>0.04434</d>
+<d>-0.07617</d>
+<d>0.01186</d>
+<d>0.54919</d>
+<d>0.62481</d>
+<d>0.5087</d>
+<d>0.46583</d>
+<d>0.23086</d>
+<d>0.23144</d>
+<d>0.25808</d>
+<d>0.09829</d>
+<d>0.05742</d>
+<d>0.09402</d>
+<d>0.06729</d>
+<d>-0.08517</d>
+<d>-0.28242</d>
+<d>-0.23844</d>
+<d>-0.23891</d>
+</Subcolumn>
+<Subcolumn>
+<d>0.09202</d>
+<d>0.06307</d>
+<d>0.03138</d>
+<d>0.04379</d>
+<d>0.00964</d>
+<d>0.1663</d>
+<d>0.1923</d>
+<d>0.22774</d>
+<d>0.22629</d>
+<d>0.23568</d>
+<d>0.18668</d>
+<d>0.19328</d>
+<d>0.07942</d>
+<d>-0.02092</d>
+<d>0.00214</d>
+<d>-0.00077</d>
+<d>0.03157</d>
+<d>-0.02273</d>
+<d>-0.08757</d>
+<d>-0.04162</d>
+</Subcolumn>
+<Subcolumn>
+<d>0.02706</d>
+<d>-0.05975</d>
+<d>0.0044</d>
+<d>0.01625</d>
+<d>0.00246</d>
+<d>0.15008</d>
+<d>0.15583</d>
+<d>0.2008</d>
+<d>0.11906</d>
+<d>0.13084</d>
+<d>0.10811</d>
+<d>-0.16444</d>
+<d>-0.24102</d>
+<d>-0.48815</d>
+<d>-0.4395125</d>
+<d>-0.41498</d>
+<d>-0.24351</d>
+<d>-0.39076</d>
+<d>-0.51228</d>
+<d>-0.42708</d>
+</Subcolumn>
+</YColumn>
+<YColumn Width="684" Decimals="9" Subcolumns="9">
+<Title><TextAlign align="Center">Different</TextAlign></Title>
+<Subcolumn>
+<d>0.02454</d>
+<d>0.01176</d>
+<d>-0.00464</d>
+<d>-0.04937</d>
+<d>-0.01378</d>
+<d>-0.02175</d>
+<d>0.08962</d>
+<d>0.07912</d>
+<d>0.10045</d>
+<d>0.06018</d>
+<d>0.06808</d>
+<d>0.13814</d>
+<d>0.07172</d>
+<d>0.09972</d>
+<d>0.07148</d>
+<d>0.1605</d>
+<d>0.072645</d>
+<d>0.03597</d>
+<d>0.03508</d>
+<d>0.01462</d>
+</Subcolumn>
+<Subcolumn>
+<d>-0.04647</d>
+<d>-0.05472</d>
+<d>-0.07761</d>
+<d>-0.00789</d>
+<d>-0.00696</d>
+<d>0.0486</d>
+<d>0.11249</d>
+<d>0.12942</d>
+<d>0.13124</d>
+<d>0.09948</d>
+<d>0.10467</d>
+<d>0.15121</d>
+<d>0.15213</d>
+<d>0.09488</d>
+<d>0.05949</d>
+<d>0.13257</d>
+<d>0.07393</d>
+<d>0.00722</d>
+<d>0.00432</d>
+<d>0.0069</d>
+</Subcolumn>
+<Subcolumn>
+<d>0.07755</d>
+<d>0.1083</d>
+<d>0.15029</d>
+<d>0.11474</d>
+<d>-0.02276</d>
+<d>0.32064</d>
+<d>0.96526</d>
+<d>0.80004</d>
+<d>0.6333075</d>
+<d>0.6374</d>
+<d>0.70188</d>
+<d>0.6764</d>
+<d>0.47187</d>
+<d>0.40836</d>
+<d>0.3799</d>
+<d>0.28913</d>
+<d>0.26071</d>
+<d>0.13363</d>
+<d>0.111155</d>
+<d>-0.026785</d>
+</Subcolumn>
+<Subcolumn>
+<d>0.13571</d>
+<d>0.06728</d>
+<d>0.02798</d>
+<d>0.05599</d>
+<d>0.0102</d>
+<d>0.21074</d>
+<d>0.4786</d>
+<d>0.62706</d>
+<d>0.55557</d>
+<d>0.51772</d>
+<d>0.642745</d>
+<d>0.47854</d>
+<d>0.3487225</d>
+<d>0.428</d>
+<d>0.44275</d>
+<d>0.36866</d>
+<d>0.41945</d>
+<d>0.35211</d>
+<d>0.19238</d>
+<d>0.1195</d>
+</Subcolumn>
+<Subcolumn>
+<d>0.06129</d>
+<d>0.09335</d>
+<d>0.17927</d>
+<d>0.08021</d>
+<d>0.00405</d>
+<d>0.24565</d>
+<d>0.42361</d>
+<d>0.31711</d>
+<d>0.30311</d>
+<d>0.2755875</d>
+<d>0.2729175</d>
+<d>0.33021</d>
+<d>0.28144</d>
+<d>0.16795</d>
+<d>0.12558</d>
+<d>0.06609</d>
+<d>0.07423</d>
+<d>-0.08369</d>
+<d>-0.1244975</d>
+<d>-0.20399</d>
+</Subcolumn>
+<Subcolumn>
+<d>0.0904625</d>
+<d>0.0783</d>
+<d>0.01698</d>
+<d>0.00283</d>
+<d>-0.00118</d>
+<d>0.52233</d>
+<d>0.91514</d>
+<d>0.79356</d>
+<d>0.68784</d>
+<d>0.76933</d>
+<d>0.77749</d>
+<d>0.67089</d>
+<d>0.45991</d>
+<d>0.32458</d>
+<d>0.344</d>
+<d>0.41567</d>
+<d>0.25556</d>
+<d>0.06359</d>
+<d>-0.00814</d>
+<d>-0.1001525</d>
+</Subcolumn>
+<Subcolumn>
+<d>0.13192</d>
+<d>0.18944</d>
+<d>0.09344</d>
+<d>-0.00357</d>
+<d>0.01711</d>
+<d>0.96092</d>
+<d>1.57211</d>
+<d>1.2666</d>
+<d>0.99454</d>
+<d>0.9410375</d>
+<d>0.8141975</d>
+<d>0.82071</d>
+<d>0.56389</d>
+<d>0.40064</d>
+<d>0.29544</d>
+<d>0.31417</d>
+<d>0.1516</d>
+<d>0.019</d>
+<d>-0.12114</d>
+<d>-0.25327</d>
+</Subcolumn>
+<Subcolumn>
+<d>0.01456</d>
+<d>-0.08376</d>
+<d>0.06836</d>
+<d>0.0708</d>
+<d>-0.01225</d>
+<d>0.12685</d>
+<d>0.03994</d>
+<d>0.12507</d>
+<d>0.15924</d>
+<d>0.06237</d>
+<d>0.0565</d>
+<d>0.04512</d>
+<d>0.08241</d>
+<d>-0.06701</d>
+<d>-0.09853</d>
+<d>-0.11116</d>
+<d>-0.18505</d>
+<d>-0.23242</d>
+<d>-0.21652</d>
+<d>-0.308735</d>
+</Subcolumn>
+<Subcolumn>
+<d>-0.21718</d>
+<d>-0.24089</d>
+<d>-0.12733</d>
+<d>-0.069385</d>
+<d>-0.03527</d>
+<d>0.02916</d>
+<d>-0.14969</d>
+<d>-0.05491</d>
+<d>-0.07708</d>
+<d>-0.15107</d>
+<d>-0.05572</d>
+<d>-0.30428</d>
+<d>-0.04027</d>
+<d>-0.3149525</d>
+<d>-0.3772175</d>
+<d>-0.48964</d>
+<d>-0.51696</d>
+<d>-0.5005325</d>
+<d>-0.38748</d>
+<d>-0.54758</d>
+</Subcolumn>
+</YColumn>
+</Table>
+<Table ID="Table8" XFormat="none" YFormat="replicates" Replicates="9" TableType="TwoWay" EVFormat="AsteriskAfterNumber">
+<Title>KO: WT First</Title>
+<RowTitlesColumn Width="70">
+<Subcolumn>
+<d>-4</d>
+<d>-3</d>
+<d>-2</d>
+<d>-1</d>
+<d>0</d>
+<d>1</d>
+<d>2</d>
+<d>3</d>
+<d>4</d>
+<d>5</d>
+<d>6</d>
+<d>7</d>
+<d>8</d>
+<d>9</d>
+<d>10</d>
+<d>11</d>
+<d>12</d>
+<d>13</d>
+<d>14</d>
+<d>15</d>
+</Subcolumn>
+</RowTitlesColumn>
+<YColumn Width="684" Decimals="9" Subcolumns="9">
+<Title><TextAlign align="Center">First</TextAlign></Title>
+<Subcolumn>
+<d>-0.035853333</d>
+<d>-0.01392</d>
+<d>0.051753333</d>
+<d>0.07614</d>
+<d>-0.007053333</d>
+<d>0.03592</d>
+<d>0.116833333</d>
+<d>0.13106</d>
+<d>0.12846</d>
+<d>0.118233333</d>
+<d>0.05726</d>
+<d>0.074766667</d>
+<d>0.040673333</d>
+<d>0.029373333</d>
+<d>0.080733333</d>
+<d>0.075113333</d>
+<d>0.040331667</d>
+<d>0.009353333</d>
+<d>-0.0267</d>
+<d>-0.025135</d>
+</Subcolumn>
+<Subcolumn>
+<d>-0.02579</d>
+<d>-0.03677</d>
+<d>0.000185</d>
+<d>-0.00774</d>
+<d>0.01413</d>
+<d>0.244575</d>
+<d>0.29666</d>
+<d>0.29835</d>
+<d>0.337405</d>
+<d>0.27319</d>
+<d>0.18903</d>
+<d>0.15531</d>
+<d>0.130685</d>
+<d>0.180245</d>
+<d>0.15389</d>
+<d>0.056705</d>
+<d>-0.00006</d>
+<d>-0.03877</d>
+<d>-0.09798</d>
+<d>-0.08474</d>
+</Subcolumn>
+<Subcolumn>
+<d>0.251773333</d>
+<d>0.160613333</d>
+<d>0.1091</d>
+<d>0.03844</d>
+<d>-0.018906667</d>
+<d>0.04628</d>
+<d>0.389593333</d>
+<d>0.446046667</d>
+<d>0.407406667</d>
+<d>0.480646667</d>
+<d>0.565333333</d>
+<d>0.494383333</d>
+<d>0.536756667</d>
+<d>0.496873333</d>
+<d>0.437288333</d>
+<d>0.371191667</d>
+<d>0.31286</d>
+<d>0.173413333</d>
+<d>0.000231111</d>
+<d>-0.043443333</d>
+</Subcolumn>
+<Subcolumn>
+<d>-0.21538</d>
+<d>-0.10992</d>
+<d>-0.032593333</d>
+<d>0.023746667</d>
+<d>0.00002</d>
+<d>0.173673333</d>
+<d>0.468793333</d>
+<d>0.61158</d>
+<d>0.598826667</d>
+<d>0.50546</d>
+<d>0.471046667</d>
+<d>0.399936667</d>
+<d>0.331233333</d>
+<d>0.342422222</d>
+<d>0.231548889</d>
+<d>0.16476</d>
+<d>0.11182</d>
+<d>0.43804</d>
+<d>0.412335</d>
+<d>0.302886667</d>
+</Subcolumn>
+<Subcolumn>
+<d>0.00678</d>
+<d>0.03164</d>
+<d>0.007713333</d>
+<d>-0.043366667</d>
+<d>-0.003413333</d>
+<d>0.1999</d>
+<d>0.4063</d>
+<d>0.456166667</d>
+<d>0.506846667</d>
+<d>0.587333333</d>
+<d>0.500026667</d>
+<d>0.478066667</d>
+<d>0.502553333</d>
+<d>0.485326667</d>
+<d>0.39622</d>
+<d>0.29714</d>
+<d>0.246673333</d>
+<d>0.06478</d>
+<d>0.035986667</d>
+<d>-0.04122</d>
+</Subcolumn>
+<Subcolumn>
+<d>0.40547</d>
+<d>0.288245</d>
+<d>0.174915</d>
+<d>0.052245</d>
+<d>0.012705</d>
+<d>0.7383625</d>
+<d>1.25504</d>
+<d>1.145385</d>
+<d>1.02949</d>
+<d>0.994675</d>
+<d>0.841475</d>
+<d>0.747395</d>
+<d>0.724105</d>
+<d>0.674245</d>
+<d>0.46091</d>
+<d>0.462645</d>
+<d>0.215845</d>
+<d>0.010995</d>
+<d>-0.09368625</d>
+<d>-0.27973125</d>
+</Subcolumn>
+<Subcolumn>
+<d>0.0708625</d>
+<d>0.150215</d>
+<d>0.15952</d>
+<d>0.08111</d>
+<d>-0.003965</d>
+<d>0.6449</d>
+<d>1.12071</d>
+<d>0.98164</d>
+<d>0.800195</d>
+<d>0.762265</d>
+<d>0.54615</d>
+<d>0.364025</d>
+<d>0.34296</d>
+<d>0.244585</d>
+<d>0.10526</d>
+<d>0.11878625</d>
+<d>-0.0582275</d>
+<d>-0.269925</d>
+<d>-0.39387</d>
+<d>-0.50807125</d>
+</Subcolumn>
+<Subcolumn>
+<d>0.08532</d>
+<d>0.098033333</d>
+<d>0.047566667</d>
+<d>0.060886667</d>
+<d>-0.012706667</d>
+<d>0.1511</d>
+<d>0.36994</d>
+<d>0.288966667</d>
+<d>0.311833333</d>
+<d>0.416693333</d>
+<d>0.396145</d>
+<d>0.352386667</d>
+<d>0.271226667</d>
+<d>0.190666667</d>
+<d>0.097673333</d>
+<d>0.1777</d>
+<d>0.096893333</d>
+<d>0.044053333</d>
+<d>-0.020186667</d>
+<d>-0.02204</d>
+</Subcolumn>
+<Subcolumn>
+<d>0.318013333</d>
+<d>0.274733333</d>
+<d>0.174746667</d>
+<d>0.089736667</d>
+<d>0.076648333</d>
+<d>0.30372</d>
+<d>0.450113333</d>
+<d>0.492926667</d>
+<d>0.453546667</d>
+<d>0.353636667</d>
+<d>0.342318333</d>
+<d>0.390046667</d>
+<d>0.251926667</d>
+<d>0.21396</d>
+<d>0.1868</d>
+<d>0.23005</d>
+<d>0.221118333</d>
+<d>0.1961</d>
+<d>0.213754444</d>
+<d>0.16008</d>
+</Subcolumn>
+</YColumn>
+<YColumn Width="684" Decimals="7" Subcolumns="9">
+<Title><TextAlign align="Center">Same</TextAlign></Title>
+<Subcolumn>
+<d Excluded="1">-0.02608</d>
+<d Excluded="1">0.01708</d>
+<d Excluded="1">-0.00356</d>
+<d Excluded="1">0.04318</d>
+<d Excluded="1">0.00114</d>
+<d Excluded="1">0.06977</d>
+<d Excluded="1">0.17243</d>
+<d Excluded="1">0.27415</d>
+<d Excluded="1">0.3448</d>
+<d Excluded="1">0.40002</d>
+<d Excluded="1">0.39194</d>
+<d Excluded="1">0.37807</d>
+<d Excluded="1">0.35518</d>
+<d Excluded="1">0.30397</d>
+<d Excluded="1">0.27454</d>
+<d Excluded="1">0.22973</d>
+<d Excluded="1">0.20954</d>
+<d Excluded="1">0.14921</d>
+<d Excluded="1">0.05699</d>
+<d Excluded="1">-0.0499</d>
+</Subcolumn>
+<Subcolumn>
+<d Excluded="1">-0.18114</d>
+<d Excluded="1">-0.13448</d>
+<d Excluded="1">-0.09001</d>
+<d Excluded="1">0.05238</d>
+<d Excluded="1">-0.0083</d>
+<d Excluded="1">-0.00809</d>
+<d Excluded="1">-0.05366</d>
+<d Excluded="1">-0.11331</d>
+<d Excluded="1">-0.13813</d>
+<d Excluded="1">-0.06722</d>
+<d Excluded="1">-0.0545</d>
+<d Excluded="1">-0.12318</d>
+<d Excluded="1">-0.14969</d>
+<d Excluded="1">-0.09002</d>
+<d Excluded="1">-0.14407</d>
+<d Excluded="1">-0.17313</d>
+<d Excluded="1">-0.21356</d>
+<d Excluded="1">-0.26263</d>
+<d Excluded="1">-0.32511</d>
+<d Excluded="1">-0.29677</d>
+</Subcolumn>
+<Subcolumn>
+<d Excluded="1">0.2492</d>
+<d Excluded="1">0.26054</d>
+<d Excluded="1">0.32376</d>
+<d Excluded="1">0.13096</d>
+<d Excluded="1">0.00656</d>
+<d Excluded="1">0.26854</d>
+<d Excluded="1">0.55922</d>
+<d Excluded="1">0.54182</d>
+<d Excluded="1">0.4934</d>
+<d Excluded="1">0.42506</d>
+<d Excluded="1">0.113945</d>
+<d Excluded="1">-0.1501</d>
+<d Excluded="1">0.03174</d>
+<d Excluded="1">0.08818</d>
+<d Excluded="1">-0.0875</d>
+<d Excluded="1">-0.36898</d>
+<d Excluded="1">-0.746825</d>
+<d Excluded="1">-0.8195</d>
+<d Excluded="1">-0.845371667</d>
+<d Excluded="1">-0.85657</d>
+</Subcolumn>
+<Subcolumn>
+<d Excluded="1">-0.08664</d>
+<d Excluded="1">0.0806</d>
+<d Excluded="1">-0.05166</d>
+<d Excluded="1">-0.1383</d>
+<d Excluded="1">-0.01116</d>
+<d Excluded="1">0.24844</d>
+<d Excluded="1">0.56722</d>
+<d Excluded="1">0.54362</d>
+<d Excluded="1">0.385445</d>
+<d Excluded="1">0.504205</d>
+<d Excluded="1">0.26462</d>
+<d Excluded="1">0.4888</d>
+<d Excluded="1">0.52252</d>
+<d Excluded="1">0.39674</d>
+<d Excluded="1">0.27672</d>
+<d Excluded="1">0.26796</d>
+<d Excluded="1">0.10534</d>
+<d Excluded="1">0.05602</d>
+<d Excluded="1">-0.03692</d>
+<d Excluded="1">-0.20482</d>
+</Subcolumn>
+<Subcolumn>
+<d Excluded="1">-0.03274</d>
+<d Excluded="1">-0.10212</d>
+<d Excluded="1">-0.0674</d>
+<d Excluded="1">-0.0676</d>
+<d Excluded="1">-0.01282</d>
+<d Excluded="1">0.11234</d>
+<d Excluded="1">0.34908</d>
+<d Excluded="1">0.39834</d>
+<d Excluded="1">0.4466</d>
+<d Excluded="1">0.38416</d>
+<d Excluded="1">0.32158</d>
+<d Excluded="1">0.38976</d>
+<d Excluded="1">0.39942</d>
+<d Excluded="1">0.52898</d>
+<d Excluded="1">0.48372</d>
+<d Excluded="1">0.6506</d>
+<d Excluded="1">0.37024</d>
+<d Excluded="1">0.05032</d>
+<d Excluded="1">-0.00536</d>
+<d Excluded="1">0.01516</d>
+</Subcolumn>
+<Subcolumn>
+<d Excluded="1">0.18637</d>
+<d Excluded="1">0.16126</d>
+<d Excluded="1">0.11649</d>
+<d Excluded="1">0.05797</d>
+<d Excluded="1">0.01849</d>
+<d Excluded="1">0.70562</d>
+<d Excluded="1">1.12346</d>
+<d Excluded="1">1.01253</d>
+<d Excluded="1">0.92237</d>
+<d Excluded="1">0.96162</d>
+<d Excluded="1">0.91374</d>
+<d Excluded="1">0.88135</d>
+<d Excluded="1">0.88953</d>
+<d Excluded="1">0.88869</d>
+<d Excluded="1">0.85326</d>
+<d Excluded="1">0.78649</d>
+<d Excluded="1">0.46085</d>
+<d Excluded="1">0.33738</d>
+<d Excluded="1">0.08941</d>
+<d Excluded="1">0.05958</d>
+</Subcolumn>
+<Subcolumn>
+<d Excluded="1">-0.56278</d>
+<d Excluded="1">-0.5489675</d>
+<d Excluded="1">-0.1075375</d>
+<d Excluded="1">0.27139</d>
+<d Excluded="1">0.00826</d>
+<d Excluded="1">-0.01256</d>
+<d Excluded="1">0.12249</d>
+<d Excluded="1">0.10866</d>
+<d Excluded="1">0.05376</d>
+<d Excluded="1">-0.12351</d>
+<d Excluded="1">-0.17957</d>
+<d Excluded="1">-0.18412</d>
+<d Excluded="1">-0.4424</d>
+<d Excluded="1">-0.3454</d>
+<d Excluded="1">-0.45873</d>
+<d Excluded="1">-0.59103</d>
+<d Excluded="1">-0.74731</d>
+<d Excluded="1">-0.8441825</d>
+<d Excluded="1">-0.93233</d>
+<d Excluded="1">-1.01422</d>
+</Subcolumn>
+<Subcolumn>
+<d Excluded="1">0.0566</d>
+<d Excluded="1">0.01704</d>
+<d Excluded="1">0.01629</d>
+<d Excluded="1">0.08851</d>
+<d Excluded="1">0.00429</d>
+<d Excluded="1">0.05778</d>
+<d Excluded="1">0.33262</d>
+<d Excluded="1">0.33453</d>
+<d Excluded="1">0.27221</d>
+<d Excluded="1">0.26588</d>
+<d Excluded="1">0.27983</d>
+<d Excluded="1">0.21357</d>
+<d Excluded="1">0.14114</d>
+<d Excluded="1">0.31016</d>
+<d Excluded="1">0.18221</d>
+<d Excluded="1">0.1697</d>
+<d Excluded="1">0.05616</d>
+<d Excluded="1">0.03857</d>
+<d Excluded="1">-0.05157</d>
+<d Excluded="1">-0.07023</d>
+</Subcolumn>
+<Subcolumn>
+<d Excluded="1">0.25577</d>
+<d Excluded="1">0.2999725</d>
+<d Excluded="1">0.48761</d>
+<d Excluded="1">0.4517925</d>
+<d Excluded="1">0.038015</d>
+<d Excluded="1">0.17812</d>
+<d Excluded="1">0.33114</d>
+<d Excluded="1">0.39563</d>
+<d Excluded="1">0.0834675</d>
+<d Excluded="1">0.15731</d>
+<d Excluded="1">0.1618</d>
+<d Excluded="1">0.01319</d>
+<d Excluded="1">-0.13486</d>
+<d Excluded="1">0.14044</d>
+<d Excluded="1">0.02425</d>
+<d Excluded="1">-0.17541</d>
+<d Excluded="1">-0.2824925</d>
+<d Excluded="1">-0.33372</d>
+<d Excluded="1">-0.378843333</d>
+<d Excluded="1">-0.35763</d>
+</Subcolumn>
+</YColumn>
+<YColumn Width="684" Decimals="9" Subcolumns="9">
+<Title><TextAlign align="Center">Different</TextAlign></Title>
+<Subcolumn>
+<d Excluded="1">-0.0417</d>
+<d Excluded="1">-0.06672</d>
+<d Excluded="1">-0.00764</d>
+<d Excluded="1">0.03325</d>
+<d Excluded="1">-0.00063</d>
+<d Excluded="1">0.00987</d>
+<d Excluded="1">-0.0003</d>
+<d Excluded="1">-0.01897</d>
+<d Excluded="1">-0.01533</d>
+<d Excluded="1">0.04998</d>
+<d Excluded="1">0.00092</d>
+<d Excluded="1">0.00547</d>
+<d Excluded="1">-0.01008</d>
+<d Excluded="1">-0.02644</d>
+<d Excluded="1">-0.10025</d>
+<d Excluded="1">-0.10838</d>
+<d Excluded="1">-0.11944</d>
+<d Excluded="1">-0.13702</d>
+<d Excluded="1">-0.16193</d>
+<d Excluded="1">-0.13575</d>
+</Subcolumn>
+<Subcolumn>
+<d Excluded="1">-0.02648</d>
+<d Excluded="1">0.01613</d>
+<d Excluded="1">0.03626</d>
+<d Excluded="1">0.02182</d>
+<d Excluded="1">-0.01651</d>
+<d Excluded="1">-0.0101</d>
+<d Excluded="1">0.0536</d>
+<d Excluded="1">0.15359</d>
+<d Excluded="1">0.25314</d>
+<d Excluded="1">0.21514</d>
+<d Excluded="1">0.19726</d>
+<d Excluded="1">0.18828</d>
+<d Excluded="1">0.19958</d>
+<d Excluded="1">0.18203</d>
+<d Excluded="1">0.14597</d>
+<d Excluded="1">0.12612</d>
+<d Excluded="1">0.13586</d>
+<d Excluded="1">0.12693</d>
+<d Excluded="1">0.11025</d>
+<d Excluded="1">0.05648</d>
+</Subcolumn>
+<Subcolumn>
+<d Excluded="1">-0.12356</d>
+<d Excluded="1">-0.08914</d>
+<d Excluded="1">-0.06732</d>
+<d Excluded="1">-0.10619</d>
+<d Excluded="1">-0.03139</d>
+<d Excluded="1">0.11806</d>
+<d Excluded="1">0.56638</d>
+<d Excluded="1">0.5629925</d>
+<d Excluded="1">0.5436425</d>
+<d Excluded="1">0.45565</d>
+<d Excluded="1">0.4973</d>
+<d Excluded="1">0.615905</d>
+<d Excluded="1">0.70248</d>
+<d Excluded="1">0.62131</d>
+<d Excluded="1">0.653835</d>
+<d Excluded="1">0.45728</d>
+<d Excluded="1">0.37853</d>
+<d Excluded="1">0.26204</d>
+<d Excluded="1">0.090265</d>
+<d Excluded="1">-0.0465</d>
+</Subcolumn>
+<Subcolumn>
+<d Excluded="1">0.20016</d>
+<d Excluded="1">0.15253</d>
+<d Excluded="1">0.0827</d>
+<d Excluded="1">0.04969</d>
+<d Excluded="1">0.00992</d>
+<d Excluded="1">0.30185</d>
+<d Excluded="1">0.70848</d>
+<d Excluded="1">0.69792</d>
+<d Excluded="1">0.77124</d>
+<d Excluded="1">0.90367</d>
+<d Excluded="1">0.95988</d>
+<d Excluded="1">0.98184</d>
+<d Excluded="1">1.00436</d>
+<d Excluded="1">0.87718</d>
+<d Excluded="1">0.6204</d>
+<d Excluded="1">0.5622775</d>
+<d Excluded="1">0.47948</d>
+<d Excluded="1">0.26499</d>
+<d Excluded="1">0.14673</d>
+<d Excluded="1">0.13232</d>
+</Subcolumn>
+<Subcolumn>
+<d Excluded="1">0.10021</d>
+<d Excluded="1">0.21017</d>
+<d Excluded="1">0.10099</d>
+<d Excluded="1">-0.02272</d>
+<d Excluded="1">0.00989</d>
+<d Excluded="1">0.04238</d>
+<d Excluded="1">0.01663</d>
+<d Excluded="1">-0.0046625</d>
+<d Excluded="1">-0.0864475</d>
+<d Excluded="1">-0.15095</d>
+<d Excluded="1">-0.0561</d>
+<d Excluded="1">0.04731</d>
+<d Excluded="1">0.00802</d>
+<d Excluded="1">0.0087</d>
+<d Excluded="1">-0.01178</d>
+<d Excluded="1">-0.13715</d>
+<d Excluded="1">-0.27441</d>
+<d Excluded="1">-0.3787775</d>
+<d Excluded="1">-0.40508</d>
+<d Excluded="1">-0.5911475</d>
+</Subcolumn>
+<Subcolumn>
+<d Excluded="1">-0.19021</d>
+<d Excluded="1">-0.30061</d>
+<d Excluded="1">-0.16995</d>
+<d Excluded="1">-0.27388</d>
+<d Excluded="1">0.035705</d>
+<d Excluded="1">0.69731</d>
+<d Excluded="1">1.18415</d>
+<d Excluded="1">0.93911</d>
+<d Excluded="1">0.88763</d>
+<d Excluded="1">0.77597</d>
+<d Excluded="1">0.58078</d>
+<d Excluded="1">0.37283</d>
+<d Excluded="1">0.36577</d>
+<d Excluded="1">0.46566</d>
+<d Excluded="1">0.32924</d>
+<d Excluded="1">0.31181</d>
+<d Excluded="1">0.03049</d>
+<d Excluded="1">-0.22794</d>
+<d Excluded="1">-0.30844</d>
+<d Excluded="1">-0.34997</d>
+</Subcolumn>
+<Subcolumn>
+<d Excluded="1">0.0245</d>
+<d Excluded="1">0.12512</d>
+<d Excluded="1">0.06161</d>
+<d Excluded="1">0.08615</d>
+<d Excluded="1">-0.00087</d>
+<d Excluded="1">0.62567</d>
+<d Excluded="1">0.80481</d>
+<d Excluded="1">0.6133</d>
+<d Excluded="1">0.6316</d>
+<d Excluded="1">0.59156</d>
+<d Excluded="1">0.42801</d>
+<d Excluded="1">0.39594</d>
+<d Excluded="1">0.3452775</d>
+<d Excluded="1">0.19956</d>
+<d Excluded="1">0.15616</d>
+<d Excluded="1">0.13856</d>
+<d Excluded="1">-0.14588</d>
+<d Excluded="1">-0.14128</d>
+<d Excluded="1">-0.250555</d>
+<d Excluded="1">-0.35497</d>
+</Subcolumn>
+<Subcolumn>
+<d Excluded="1">0.0141</d>
+<d Excluded="1">0.09402</d>
+<d Excluded="1">0.04061</d>
+<d Excluded="1">0.03765</d>
+<d Excluded="1">0.00551</d>
+<d Excluded="1">0.17301</d>
+<d Excluded="1">0.28164</d>
+<d Excluded="1">0.3224</d>
+<d Excluded="1">0.46174</d>
+<d Excluded="1">0.39534</d>
+<d Excluded="1">0.34374</d>
+<d Excluded="1">0.28663</d>
+<d Excluded="1">0.46824</d>
+<d Excluded="1">0.32322</d>
+<d Excluded="1">0.30991</d>
+<d Excluded="1">0.27424</d>
+<d Excluded="1">0.13887</d>
+<d Excluded="1">0.00675</d>
+<d Excluded="1">-0.04507</d>
+<d Excluded="1">-0.14746</d>
+</Subcolumn>
+<Subcolumn>
+<d Excluded="1">0.06974</d>
+<d Excluded="1">0.07572</d>
+<d Excluded="1">-0.00379</d>
+<d Excluded="1">-0.0852</d>
+<d Excluded="1">0.01912</d>
+<d Excluded="1">0.12731</d>
+<d Excluded="1">0.12319</d>
+<d Excluded="1">0.15659</d>
+<d Excluded="1">0.52469</d>
+<d Excluded="1">0.14945</d>
+<d Excluded="1">0.11323</d>
+<d Excluded="1">-0.06105</d>
+<d Excluded="1">-0.10108</d>
+<d Excluded="1">-0.23431</d>
+<d Excluded="1">-0.31075</d>
+<d Excluded="1">-0.2816</d>
+<d Excluded="1">-0.53124</d>
+<d Excluded="1">-0.7046525</d>
+<d Excluded="1">-0.63843</d>
+<d Excluded="1">-0.75068</d>
+</Subcolumn>
+</YColumn>
+</Table>
+<Table ID="Table9" XFormat="none" YFormat="replicates" Replicates="9" TableType="TwoWay" EVFormat="AsteriskAfterNumber">
+<Title>KO: LED Second</Title>
+<RowTitlesColumn Width="70">
+<Subcolumn>
+<d>-4</d>
+<d>-3</d>
+<d>-2</d>
+<d>-1</d>
+<d>0</d>
+<d>1</d>
+<d>2</d>
+<d>3</d>
+<d>4</d>
+<d>5</d>
+<d>6</d>
+<d>7</d>
+<d>8</d>
+<d>9</d>
+<d>10</d>
+<d>11</d>
+<d>12</d>
+<d>13</d>
+<d>14</d>
+<d>15</d>
+</Subcolumn>
+</RowTitlesColumn>
+<YColumn Width="684" Decimals="9" Subcolumns="9">
+<Title><TextAlign align="Center">First</TextAlign></Title>
+<Subcolumn>
+<d Excluded="1">-0.035853333</d>
+<d Excluded="1">-0.01392</d>
+<d Excluded="1">0.051753333</d>
+<d Excluded="1">0.07614</d>
+<d Excluded="1">-0.007053333</d>
+<d Excluded="1">0.03592</d>
+<d Excluded="1">0.116833333</d>
+<d Excluded="1">0.13106</d>
+<d Excluded="1">0.12846</d>
+<d Excluded="1">0.118233333</d>
+<d Excluded="1">0.05726</d>
+<d Excluded="1">0.074766667</d>
+<d Excluded="1">0.040673333</d>
+<d Excluded="1">0.029373333</d>
+<d Excluded="1">0.080733333</d>
+<d Excluded="1">0.075113333</d>
+<d Excluded="1">0.040331667</d>
+<d Excluded="1">0.009353333</d>
+<d Excluded="1">-0.0267</d>
+<d Excluded="1">-0.025135</d>
+</Subcolumn>
+<Subcolumn>
+<d Excluded="1">-0.02579</d>
+<d Excluded="1">-0.03677</d>
+<d Excluded="1">0.000185</d>
+<d Excluded="1">-0.00774</d>
+<d Excluded="1">0.01413</d>
+<d Excluded="1">0.244575</d>
+<d Excluded="1">0.29666</d>
+<d Excluded="1">0.29835</d>
+<d Excluded="1">0.337405</d>
+<d Excluded="1">0.27319</d>
+<d Excluded="1">0.18903</d>
+<d Excluded="1">0.15531</d>
+<d Excluded="1">0.130685</d>
+<d Excluded="1">0.180245</d>
+<d Excluded="1">0.15389</d>
+<d Excluded="1">0.056705</d>
+<d Excluded="1">-0.00006</d>
+<d Excluded="1">-0.03877</d>
+<d Excluded="1">-0.09798</d>
+<d Excluded="1">-0.08474</d>
+</Subcolumn>
+<Subcolumn>
+<d Excluded="1">0.251773333</d>
+<d Excluded="1">0.160613333</d>
+<d Excluded="1">0.1091</d>
+<d Excluded="1">0.03844</d>
+<d Excluded="1">-0.018906667</d>
+<d Excluded="1">0.04628</d>
+<d Excluded="1">0.389593333</d>
+<d Excluded="1">0.446046667</d>
+<d Excluded="1">0.407406667</d>
+<d Excluded="1">0.480646667</d>
+<d Excluded="1">0.565333333</d>
+<d Excluded="1">0.494383333</d>
+<d Excluded="1">0.536756667</d>
+<d Excluded="1">0.496873333</d>
+<d Excluded="1">0.437288333</d>
+<d Excluded="1">0.371191667</d>
+<d Excluded="1">0.31286</d>
+<d Excluded="1">0.173413333</d>
+<d Excluded="1">0.000231111</d>
+<d Excluded="1">-0.043443333</d>
+</Subcolumn>
+<Subcolumn>
+<d Excluded="1">-0.21538</d>
+<d Excluded="1">-0.10992</d>
+<d Excluded="1">-0.032593333</d>
+<d Excluded="1">0.023746667</d>
+<d Excluded="1">0.00002</d>
+<d Excluded="1">0.173673333</d>
+<d Excluded="1">0.468793333</d>
+<d Excluded="1">0.61158</d>
+<d Excluded="1">0.598826667</d>
+<d Excluded="1">0.50546</d>
+<d Excluded="1">0.471046667</d>
+<d Excluded="1">0.399936667</d>
+<d Excluded="1">0.331233333</d>
+<d Excluded="1">0.342422222</d>
+<d Excluded="1">0.231548889</d>
+<d Excluded="1">0.16476</d>
+<d Excluded="1">0.11182</d>
+<d Excluded="1">0.43804</d>
+<d Excluded="1">0.412335</d>
+<d Excluded="1">0.302886667</d>
+</Subcolumn>
+<Subcolumn>
+<d Excluded="1">0.00678</d>
+<d Excluded="1">0.03164</d>
+<d Excluded="1">0.007713333</d>
+<d Excluded="1">-0.043366667</d>
+<d Excluded="1">-0.003413333</d>
+<d Excluded="1">0.1999</d>
+<d Excluded="1">0.4063</d>
+<d Excluded="1">0.456166667</d>
+<d Excluded="1">0.506846667</d>
+<d Excluded="1">0.587333333</d>
+<d Excluded="1">0.500026667</d>
+<d Excluded="1">0.478066667</d>
+<d Excluded="1">0.502553333</d>
+<d Excluded="1">0.485326667</d>
+<d Excluded="1">0.39622</d>
+<d Excluded="1">0.29714</d>
+<d Excluded="1">0.246673333</d>
+<d Excluded="1">0.06478</d>
+<d Excluded="1">0.035986667</d>
+<d Excluded="1">-0.04122</d>
+</Subcolumn>
+<Subcolumn>
+<d Excluded="1">0.40547</d>
+<d Excluded="1">0.288245</d>
+<d Excluded="1">0.174915</d>
+<d Excluded="1">0.052245</d>
+<d Excluded="1">0.012705</d>
+<d Excluded="1">0.7383625</d>
+<d Excluded="1">1.25504</d>
+<d Excluded="1">1.145385</d>
+<d Excluded="1">1.02949</d>
+<d Excluded="1">0.994675</d>
+<d Excluded="1">0.841475</d>
+<d Excluded="1">0.747395</d>
+<d Excluded="1">0.724105</d>
+<d Excluded="1">0.674245</d>
+<d Excluded="1">0.46091</d>
+<d Excluded="1">0.462645</d>
+<d Excluded="1">0.215845</d>
+<d Excluded="1">0.010995</d>
+<d Excluded="1">-0.09368625</d>
+<d Excluded="1">-0.27973125</d>
+</Subcolumn>
+<Subcolumn>
+<d Excluded="1">0.0708625</d>
+<d Excluded="1">0.150215</d>
+<d Excluded="1">0.15952</d>
+<d Excluded="1">0.08111</d>
+<d Excluded="1">-0.003965</d>
+<d Excluded="1">0.6449</d>
+<d Excluded="1">1.12071</d>
+<d Excluded="1">0.98164</d>
+<d Excluded="1">0.800195</d>
+<d Excluded="1">0.762265</d>
+<d Excluded="1">0.54615</d>
+<d Excluded="1">0.364025</d>
+<d Excluded="1">0.34296</d>
+<d Excluded="1">0.244585</d>
+<d Excluded="1">0.10526</d>
+<d Excluded="1">0.11878625</d>
+<d Excluded="1">-0.0582275</d>
+<d Excluded="1">-0.269925</d>
+<d Excluded="1">-0.39387</d>
+<d Excluded="1">-0.50807125</d>
+</Subcolumn>
+<Subcolumn>
+<d Excluded="1">0.08532</d>
+<d Excluded="1">0.098033333</d>
+<d Excluded="1">0.047566667</d>
+<d Excluded="1">0.060886667</d>
+<d Excluded="1">-0.012706667</d>
+<d Excluded="1">0.1511</d>
+<d Excluded="1">0.36994</d>
+<d Excluded="1">0.288966667</d>
+<d Excluded="1">0.311833333</d>
+<d Excluded="1">0.416693333</d>
+<d Excluded="1">0.396145</d>
+<d Excluded="1">0.352386667</d>
+<d Excluded="1">0.271226667</d>
+<d Excluded="1">0.190666667</d>
+<d Excluded="1">0.097673333</d>
+<d Excluded="1">0.1777</d>
+<d Excluded="1">0.096893333</d>
+<d Excluded="1">0.044053333</d>
+<d Excluded="1">-0.020186667</d>
+<d Excluded="1">-0.02204</d>
+</Subcolumn>
+<Subcolumn>
+<d Excluded="1">0.318013333</d>
+<d Excluded="1">0.274733333</d>
+<d Excluded="1">0.174746667</d>
+<d Excluded="1">0.089736667</d>
+<d Excluded="1">0.076648333</d>
+<d Excluded="1">0.30372</d>
+<d Excluded="1">0.450113333</d>
+<d Excluded="1">0.492926667</d>
+<d Excluded="1">0.453546667</d>
+<d Excluded="1">0.353636667</d>
+<d Excluded="1">0.342318333</d>
+<d Excluded="1">0.390046667</d>
+<d Excluded="1">0.251926667</d>
+<d Excluded="1">0.21396</d>
+<d Excluded="1">0.1868</d>
+<d Excluded="1">0.23005</d>
+<d Excluded="1">0.221118333</d>
+<d Excluded="1">0.1961</d>
+<d Excluded="1">0.213754444</d>
+<d Excluded="1">0.16008</d>
+</Subcolumn>
+</YColumn>
+<YColumn Width="684" Decimals="7" Subcolumns="9">
+<Title><TextAlign align="Center">Same</TextAlign></Title>
+<Subcolumn>
+<d>-0.02608</d>
+<d>0.01708</d>
+<d>-0.00356</d>
+<d>0.04318</d>
+<d>0.00114</d>
+<d>0.06977</d>
+<d>0.17243</d>
+<d>0.27415</d>
+<d>0.3448</d>
+<d>0.40002</d>
+<d>0.39194</d>
+<d>0.37807</d>
+<d>0.35518</d>
+<d>0.30397</d>
+<d>0.27454</d>
+<d>0.22973</d>
+<d>0.20954</d>
+<d>0.14921</d>
+<d>0.05699</d>
+<d>-0.0499</d>
+</Subcolumn>
+<Subcolumn>
+<d>-0.18114</d>
+<d>-0.13448</d>
+<d>-0.09001</d>
+<d>0.05238</d>
+<d>-0.0083</d>
+<d>-0.00809</d>
+<d>-0.05366</d>
+<d>-0.11331</d>
+<d>-0.13813</d>
+<d>-0.06722</d>
+<d>-0.0545</d>
+<d>-0.12318</d>
+<d>-0.14969</d>
+<d>-0.09002</d>
+<d>-0.14407</d>
+<d>-0.17313</d>
+<d>-0.21356</d>
+<d>-0.26263</d>
+<d>-0.32511</d>
+<d>-0.29677</d>
+</Subcolumn>
+<Subcolumn>
+<d>0.2492</d>
+<d>0.26054</d>
+<d>0.32376</d>
+<d>0.13096</d>
+<d>0.00656</d>
+<d>0.26854</d>
+<d>0.55922</d>
+<d>0.54182</d>
+<d>0.4934</d>
+<d>0.42506</d>
+<d>0.113945</d>
+<d>-0.1501</d>
+<d>0.03174</d>
+<d>0.08818</d>
+<d>-0.0875</d>
+<d>-0.36898</d>
+<d>-0.746825</d>
+<d>-0.8195</d>
+<d>-0.845371667</d>
+<d>-0.85657</d>
+</Subcolumn>
+<Subcolumn>
+<d>-0.08664</d>
+<d>0.0806</d>
+<d>-0.05166</d>
+<d>-0.1383</d>
+<d>-0.01116</d>
+<d>0.24844</d>
+<d>0.56722</d>
+<d>0.54362</d>
+<d>0.385445</d>
+<d>0.504205</d>
+<d>0.26462</d>
+<d>0.4888</d>
+<d>0.52252</d>
+<d>0.39674</d>
+<d>0.27672</d>
+<d>0.26796</d>
+<d>0.10534</d>
+<d>0.05602</d>
+<d>-0.03692</d>
+<d>-0.20482</d>
+</Subcolumn>
+<Subcolumn>
+<d>-0.03274</d>
+<d>-0.10212</d>
+<d>-0.0674</d>
+<d>-0.0676</d>
+<d>-0.01282</d>
+<d>0.11234</d>
+<d>0.34908</d>
+<d>0.39834</d>
+<d>0.4466</d>
+<d>0.38416</d>
+<d>0.32158</d>
+<d>0.38976</d>
+<d>0.39942</d>
+<d>0.52898</d>
+<d>0.48372</d>
+<d>0.6506</d>
+<d>0.37024</d>
+<d>0.05032</d>
+<d>-0.00536</d>
+<d>0.01516</d>
+</Subcolumn>
+<Subcolumn>
+<d>0.18637</d>
+<d>0.16126</d>
+<d>0.11649</d>
+<d>0.05797</d>
+<d>0.01849</d>
+<d>0.70562</d>
+<d>1.12346</d>
+<d>1.01253</d>
+<d>0.92237</d>
+<d>0.96162</d>
+<d>0.91374</d>
+<d>0.88135</d>
+<d>0.88953</d>
+<d>0.88869</d>
+<d>0.85326</d>
+<d>0.78649</d>
+<d>0.46085</d>
+<d>0.33738</d>
+<d>0.08941</d>
+<d>0.05958</d>
+</Subcolumn>
+<Subcolumn>
+<d>-0.56278</d>
+<d>-0.5489675</d>
+<d>-0.1075375</d>
+<d>0.27139</d>
+<d>0.00826</d>
+<d>-0.01256</d>
+<d>0.12249</d>
+<d>0.10866</d>
+<d>0.05376</d>
+<d>-0.12351</d>
+<d>-0.17957</d>
+<d>-0.18412</d>
+<d>-0.4424</d>
+<d>-0.3454</d>
+<d>-0.45873</d>
+<d>-0.59103</d>
+<d>-0.74731</d>
+<d>-0.8441825</d>
+<d>-0.93233</d>
+<d>-1.01422</d>
+</Subcolumn>
+<Subcolumn>
+<d>0.0566</d>
+<d>0.01704</d>
+<d>0.01629</d>
+<d>0.08851</d>
+<d>0.00429</d>
+<d>0.05778</d>
+<d>0.33262</d>
+<d>0.33453</d>
+<d>0.27221</d>
+<d>0.26588</d>
+<d>0.27983</d>
+<d>0.21357</d>
+<d>0.14114</d>
+<d>0.31016</d>
+<d>0.18221</d>
+<d>0.1697</d>
+<d>0.05616</d>
+<d>0.03857</d>
+<d>-0.05157</d>
+<d>-0.07023</d>
+</Subcolumn>
+<Subcolumn>
+<d>0.25577</d>
+<d>0.2999725</d>
+<d>0.48761</d>
+<d>0.4517925</d>
+<d>0.038015</d>
+<d>0.17812</d>
+<d>0.33114</d>
+<d>0.39563</d>
+<d>0.0834675</d>
+<d>0.15731</d>
+<d>0.1618</d>
+<d>0.01319</d>
+<d>-0.13486</d>
+<d>0.14044</d>
+<d>0.02425</d>
+<d>-0.17541</d>
+<d>-0.2824925</d>
+<d>-0.33372</d>
+<d>-0.378843333</d>
+<d>-0.35763</d>
+</Subcolumn>
+</YColumn>
+<YColumn Width="684" Decimals="9" Subcolumns="9">
+<Title><TextAlign align="Center">Different</TextAlign></Title>
+<Subcolumn>
+<d>-0.0417</d>
+<d>-0.06672</d>
+<d>-0.00764</d>
+<d>0.03325</d>
+<d>-0.00063</d>
+<d>0.00987</d>
+<d>-0.0003</d>
+<d>-0.01897</d>
+<d>-0.01533</d>
+<d>0.04998</d>
+<d>0.00092</d>
+<d>0.00547</d>
+<d>-0.01008</d>
+<d>-0.02644</d>
+<d>-0.10025</d>
+<d>-0.10838</d>
+<d>-0.11944</d>
+<d>-0.13702</d>
+<d>-0.16193</d>
+<d>-0.13575</d>
+</Subcolumn>
+<Subcolumn>
+<d>-0.02648</d>
+<d>0.01613</d>
+<d>0.03626</d>
+<d>0.02182</d>
+<d>-0.01651</d>
+<d>-0.0101</d>
+<d>0.0536</d>
+<d>0.15359</d>
+<d>0.25314</d>
+<d>0.21514</d>
+<d>0.19726</d>
+<d>0.18828</d>
+<d>0.19958</d>
+<d>0.18203</d>
+<d>0.14597</d>
+<d>0.12612</d>
+<d>0.13586</d>
+<d>0.12693</d>
+<d>0.11025</d>
+<d>0.05648</d>
+</Subcolumn>
+<Subcolumn>
+<d>-0.12356</d>
+<d>-0.08914</d>
+<d>-0.06732</d>
+<d>-0.10619</d>
+<d>-0.03139</d>
+<d>0.11806</d>
+<d>0.56638</d>
+<d>0.5629925</d>
+<d>0.5436425</d>
+<d>0.45565</d>
+<d>0.4973</d>
+<d>0.615905</d>
+<d>0.70248</d>
+<d>0.62131</d>
+<d>0.653835</d>
+<d>0.45728</d>
+<d>0.37853</d>
+<d>0.26204</d>
+<d>0.090265</d>
+<d>-0.0465</d>
+</Subcolumn>
+<Subcolumn>
+<d>0.20016</d>
+<d>0.15253</d>
+<d>0.0827</d>
+<d>0.04969</d>
+<d>0.00992</d>
+<d>0.30185</d>
+<d>0.70848</d>
+<d>0.69792</d>
+<d>0.77124</d>
+<d>0.90367</d>
+<d>0.95988</d>
+<d>0.98184</d>
+<d>1.00436</d>
+<d>0.87718</d>
+<d>0.6204</d>
+<d>0.5622775</d>
+<d>0.47948</d>
+<d>0.26499</d>
+<d>0.14673</d>
+<d>0.13232</d>
+</Subcolumn>
+<Subcolumn>
+<d>0.10021</d>
+<d>0.21017</d>
+<d>0.10099</d>
+<d>-0.02272</d>
+<d>0.00989</d>
+<d>0.04238</d>
+<d>0.01663</d>
+<d>-0.0046625</d>
+<d>-0.0864475</d>
+<d>-0.15095</d>
+<d>-0.0561</d>
+<d>0.04731</d>
+<d>0.00802</d>
+<d>0.0087</d>
+<d>-0.01178</d>
+<d>-0.13715</d>
+<d>-0.27441</d>
+<d>-0.3787775</d>
+<d>-0.40508</d>
+<d>-0.5911475</d>
+</Subcolumn>
+<Subcolumn>
+<d>-0.19021</d>
+<d>-0.30061</d>
+<d>-0.16995</d>
+<d>-0.27388</d>
+<d>0.035705</d>
+<d>0.69731</d>
+<d>1.18415</d>
+<d>0.93911</d>
+<d>0.88763</d>
+<d>0.77597</d>
+<d>0.58078</d>
+<d>0.37283</d>
+<d>0.36577</d>
+<d>0.46566</d>
+<d>0.32924</d>
+<d>0.31181</d>
+<d>0.03049</d>
+<d>-0.22794</d>
+<d>-0.30844</d>
+<d>-0.34997</d>
+</Subcolumn>
+<Subcolumn>
+<d>0.0245</d>
+<d>0.12512</d>
+<d>0.06161</d>
+<d>0.08615</d>
+<d>-0.00087</d>
+<d>0.62567</d>
+<d>0.80481</d>
+<d>0.6133</d>
+<d>0.6316</d>
+<d>0.59156</d>
+<d>0.42801</d>
+<d>0.39594</d>
+<d>0.3452775</d>
+<d>0.19956</d>
+<d>0.15616</d>
+<d>0.13856</d>
+<d>-0.14588</d>
+<d>-0.14128</d>
+<d>-0.250555</d>
+<d>-0.35497</d>
+</Subcolumn>
+<Subcolumn>
+<d>0.0141</d>
+<d>0.09402</d>
+<d>0.04061</d>
+<d>0.03765</d>
+<d>0.00551</d>
+<d>0.17301</d>
+<d>0.28164</d>
+<d>0.3224</d>
+<d>0.46174</d>
+<d>0.39534</d>
+<d>0.34374</d>
+<d>0.28663</d>
+<d>0.46824</d>
+<d>0.32322</d>
+<d>0.30991</d>
+<d>0.27424</d>
+<d>0.13887</d>
+<d>0.00675</d>
+<d>-0.04507</d>
+<d>-0.14746</d>
+</Subcolumn>
+<Subcolumn>
+<d>0.06974</d>
+<d>0.07572</d>
+<d>-0.00379</d>
+<d>-0.0852</d>
+<d>0.01912</d>
+<d>0.12731</d>
+<d>0.12319</d>
+<d>0.15659</d>
+<d>0.52469</d>
+<d>0.14945</d>
+<d>0.11323</d>
+<d>-0.06105</d>
+<d>-0.10108</d>
+<d>-0.23431</d>
+<d>-0.31075</d>
+<d>-0.2816</d>
+<d>-0.53124</d>
+<d>-0.7046525</d>
+<d>-0.63843</d>
+<d>-0.75068</d>
+</Subcolumn>
+</YColumn>
+</Table>
+
+<!--Analyses, graphs and layouts as compressed binary. Don't edit this part of the file.-->
+
+<Template xmlns:dt="urn:schemas-microsoft-com:datatypes" dt:dt="bin.base64">eNrsnQdc1OYbx3PHcXe5HHAMRUAFNyqKe6LitiJUxW2rIGKlCiiigijDVXGPOqlbW63aWql7
+oLXVOqr+1da9tVrFjXvwz5u8d3kTkoM7jlPwffzEN0/yXkjyPr/kffO++aZjyzZt2nZuXkeW
+rCUIYqZspkxO/9+f6CFfTpSnl2TJCJ7tkrMpWKwtSRDAlSd3rEQQCnpOTU8D6ckW/pKk02za
+VMgW1EgqhxMBUwX8rZKeVDAPSWDDhg0bNmzYsGHDhg0bNmzYrGUy2Ea3EWmnY8OGDRs2bNgK
+z/0cGzZs2LBhw4bv59iwYcOGDRu2D2dgDJ0N0YL+/wclQTyxIYjO9NRBQRA6gp2c4CT0ZYa6
+QHZ2NvEnPWfLLlMQ39H/B3X8rG7tmg1qNvfybtfRq2X04OgYrw6hw8Jj2ofHegXSP1TYKL8j
+JtVpmSGTy+gf3tVEq/vTqQPRQy6n0x5y8Pi/Q3hsbHiMqRUTfQdCGRk7KLDtZ8F10HzKZHYI
+oIo5cNaax0SEDjZy4GCIoj2yjZnsH7ORy8rC7bB/NTg+sl/0YEJyO5Xo/51Ft+MEt8MOVewe
+EfVVf3oaZmR/SopuRw63Y8Ms6BIRGT7MKyh8pFfn6MjQqBzbKUf/byexP0r/MUwHDBh+mWiY
++9YwsBKcW9aT8Tw5z7PheQroTWHmkulpLnFaxZWb+XuLB3Viw4YNGzZsH9pAHSCNuSMDO0CM
+kOtrJNiwWTUS/dXJ7Ks/JFOL7N6lkVe76OHDwr3aRMQMiyU0hJeMa/agBuqpBK5/MueBImrA
+96fAUYFXuJrAuv0AOO1VcFMInj66yQtGJpjX2vJbzKBMveECr+UqQ3vuHT0p6bwHSK5VB9Yf
+IL2WT7T3Wq6PEB3cFnqFB/PTiQ5wrg3SLm+C5ADTe/BXBG14sRh0YCKvBLK0DZzAWv8k/VqZ
+0bVyo2ttjK5VGF1ra3St0uhaldG1aqNrSaNrNUbXUkbXao2utTO61t7oWgeJtXbEUaR8QVz5
+xxOEG4wSMK+PBv8RyHycxPL4PCxH50dKLI/Lw28l5tkjksGJOSJ6TzzFjmh4HuZN/Ot52uZI
+ieUjjB2R/pVafRlV1x+R1BaGW+hIpbY/Ig/lKFHWDsl+iPZlyL0/HM7L4QqtyJWOrVvI2IBV
+GhY9ZU6NHHl2CmwGUQdeKvQPxsAPSyPVZrFLIPPONLx0zTZchrYQWfT/LoJqtwwpHP27zvrx
+1Epkmf7BnS28hMjgeg2cV8HLgwy56ctgXjs4r4FCl8G8DnBei9wUQF5HOG8Pq1NymNcFOUPF
+4TzIq79Qg7zucN4ZPvJkfuvPFhl6sxEWmX6/m8Dt5ywycLRsJZAtN5nJ5UYg504nUm5NDOUm
+M+yzDJ5/V7P2GexBcGhkeL52WW3iLuvvmebtMgiSVhEDBoTHhEfl71Tb5Xm/U+E+LzSIRQ3b
+ATJ6j8rQaceY6K/Dw2K9IqIGRHvV9BocMSzWK3qAV1h01LDY0KjYYbBhcMeGnfS2SnB7EtsN
+tEOiMKorr1VK8YaBFhbcZ8jUBk8f7UTAyPxMJJqFDQO9+AlDw08mugxVgAypOBNJrM82DPS/
+zIamFfx1fcNAK3FXVCANg9sGJkgbgxfB877meYN43mCeF8nzonheNM8bwvOG8rwYnjeM58Xy
+vOE8bwTPG8nz4nhePM8bxfMSeN5onjeG5yXyvCSel8zzUnjeWJ43jueN53kTeN5EnvcNz5vE
+81J53mSeN4XnTeV503jedJ43g+fN5HmzeN5snjeH533L8+byvHk8bz7PW8DzFvK8RTwvjed9
+x/MW87wlPG8pz1vG85bzvBU8byXPW8XzVvO873neDzxvDc9by/N+5HnreN56nreB5/3E837m
+eRt53i88bxPPS+d5v/K8zTxvC8/byvO28bztPG8Hz9vJ83bxvN08bw/Py+B5e3nePp73G8/b
+z/N+53l/8LwDPO8gz/uT5x3ieYd53hGed5Tn/cXzjvG84zzvBM/7H887yfNO8bzTPO9vnvcP
+zzvD887yvHM87zzPu8DzLvK8SzzvMs+7wvOu8rxrPO86z7vB827yvFs871+ed5vn3eF5//G8
+uzzvHs/L5Hn3ed4DnveQ5z3ieY953hOe95TnZfG8ZzzvOc97wfNe8rxXPO81z3vD897yvHc8
+7z3Py4Ye/0Gjvh7LPabSr7WFdROwtBFcxjaaFEitRd+IQR8nKJCajSJHowm0A1rCtohJjxXA
+5vV/ugXB4c9MeazQAXleSSANDwfY4JDDxgIFq/qVYIMGbKE63C7Yl0bw7+vbkba5nBK10VMC
+9qhb6ODh4WafDxIuM/V86AT5SeaYpNuYcjqHI6+vKTicblj2l+hsUiB1YandQufRU1vUWiO4
+s6modTbl1qYkkM4mEAFKW+4CAda3oXMpbXN2NpGinU0k0qolcGcT7mzKU2eTssh1NqmKXGeT
+ukh1NpGCzia5kc4mMv+dTSTubMp3Z5NS0HEjN9ILQlqos4nMZ2eT/lJf1ax9NquzicxnZ5M6
+X7tsfmcTWQCdTTbGGwK4cwl3LuHOpfx2LmkMnUtyQeeSDHcu4c4l3LmEO5dw5xLuXMKdS7hz
+qZB1LlGSnUsaweNKGyOdSxrLdi5pPtLOJSqXU6I2ekrM71zSWLlzSUHnsIdtyg6tWxl9jQn3
+LOGeJfwak6mvMTmI9iw54NeYcM+SyT1LWlN6lvKyPC+9QwXas2SnP6KRJvYsxedjPj89SyNz
+61myt0TP0sh8HLVFe5YckO4Z/eAXqZ4lh/z3LDngnqV89yxpBdU1hZEuDwcL9Sw55LNnyQ7u
+r49Z+2xWz5JDPnuW9Ndy83bZ/J4lhwLoWbKl98gBaQUYHWBGIM0A3K+EmwFFqxlQQ1YwA8yc
+RZsBzniAGW4GmNwM0BW5ZoBjkWsGOBWpZoCzoBlga6QZ4Jz/ZoAzbgbkuxmgE1SpbY3UT50t
+1AxwzmczwFFQpzZtn81qBjjnsxnglK9dNr8Z4FwAzQAlpJoFfG4q1Qy3A/LSDlgv56YRePro
+Jn07YIQ89/FlaHfAEzr/Elt+d8ASug3QXs21A/SR7yraDnDF3QEF1A6wI2AFlbkGkMZqzQUw
+z/51cLaL6f+6VA13ZD7qa0b/uhxe80hjtdGR+ZiX+Ovs/dEVieRsGMVSNUfX/NccXXHNMd81
+RxdkqK2wyNAqDSlaZObVHF0lao5kHqthxeD5b2HWPgtqjoRZu6w2cZeLw3Xm7bJYzdG8/bbL
+835L1xxV8NUEruaY53eUySJadcxrpQNXHXHVMW9VRw/RqqMHrjoWeNWxxAetOrp90Kqj+wer
+OnoIqo4qI1VHj/xXHT1w1THfVUe9jN1FikxYp/GwUNXRI59VRze4rptZ+2xW1dEjn1VH93zt
+svlVR48CqDqq6V/bwapj9y55HoCMq4242oirjXmpNnqKVhs9cbWxwKuNJT9otbFUbtXG+IKs
+Npb+YNVGT8HdQm2k2uiZ/2qjJ6425rvaWBK55AmLTFif8bRQtdEzn9XGUvD89zBrn83qq/bM
+Z7VRH57m7bL51UbPAqg2knDIKqg25jpkFVccccXx0604CoesPpHnHLL6RJ6z4lhOtOJYDg9Z
+LfCKo9cHrTiW+aAVx7IfrOJYTnC3II1UHMvlv+JYDlcc811x9ILH4itSZMIaTTkLVRzL5bPi
+WAau627WPptVcSyXz4pj2XztsvkVx3IWrTg6mfDpVhkS+LjmyNUcnYkaYFgkuUQ1UBek1Z8b
+JVGLvry40P9KEVoFeyHqj9QAlhB9kGP+kj4BI/Q3QSQaFCr7kg2G1PDnzqiSV2Pg8G1KwzUa
+WH/6r9ei/7YauXgWJyoa7v9yeBeRwfPyHl7P9fPLGBibHKkv6H+B/mW9oVsRWy/PZf0sw4fN
+ZMhUjPe5M/0l3JXgvkv3qBmb1oHn5yrrJ6O+WsX+Wga3IodbqFGj767MrRcz4lpvSJquvNms
+NmM3MhYtBPZfM+42sxGWHvtZQgUdz+g+6K2nP8/d2w/x2S3YQAWo6FJZzQxxURDGDeQPCVqp
+vN4jbfjLsSmJOXNw29EaOm3Msbztj7DccubYkCzE/a1lhoGjrc3cbA1zC5Pnkitv29WYtF2Q
+e4M//xhkef5bMpP+Vt63S5m0XUrkGOR5/ltyk/5W3rerNWm7WsExyIpALMmKQCzJikAsyYtA
+LMmLQCzJC20sVUgehSzj6hyug/cVH7xvYjOdXF/r4Oq3dH2DwdTy6y369GozOfJ3XXi3XPQ6
+ztaKRxru05WYyPAgysNaEusPZ3yZwT/O+HKDX1kGfBuDnyorwdRr9P4Nxrc1+E3kwFca/PmM
+rzL4jxlfbfADbEowXG69v5rxNQY/m/Epg99TAXytwU9nfDuDL7OtQfv2Br834zsY/M2MrzP4
+DkrgOxr8CMZ3Mvj7GR/U9icYRo0ghpTkRFgq38B0Ekw3MD0dYL66VKhUgGEik6wmJjNh0stI
+mJT3zxnYcvGHiJJhUk3qMJE9ycNhZkuY/jDln8Zh2hDCZkLHNtFHepUKbsZV83MeJpv3kKGJ
+wV1qZSYeJiF2mII9MSNoyx84RSxTc0GrMNq22agwrTQtdJiWL03bT+MwlYR4y3Sv0aBl7TNJ
+bRL5P0xkTyxwpVVZtDRNvwRZqTTVRf0wSyTrK2V6JkhZpnIAq8wMDrYcczvX5Kgkl+Heukb4
+Ul7JpZn1/dX2qv6OMdpJ6loqf8cgLffI7hExHu7iBYZib0vwP54tEzTiwPQIqTALp/5qLs2P
+lYEPgcGu6PfHhYjjdRHmrQEiM9L16OXPniGS8COraMeTMfSZCWKmdmQ9bRw5QCujw8j0M1SD
+KHjzTp5paEyAh3sK0csT96Cw3UG/cpNqXcpYuF7ecqX2ejMf2JiSEV2XvQGHQiQnJzPkfeCD
+CTys19H/1ER/Olc7pqosU3Mdy2KPwCsbpPIdw7l2QRptChnhhT5AU8DHkkYeu8FJcF92yUNb
+SeoJHgkFoxJ5hg9OgLEnfvRJAdGYBPNm0ycrGywDE/Cz2ZPIzHv712D2+oLyZ6ImrKl5yM0J
+YOlnjkUhgGUwCHMP4BVuw8Ofnbmcobp94U6lhzfoAOakvZcJlGXLVhEzM15Bf6/FAlhmNIBl
+lgtgWT4DGJwA44+s99IpG8B03mz6ZGWzy/ZmAx9kAymYrB3AEaSjuq/uETWNrKturDtKDSdL
+qYN1N6mPPYAJQ/cKGsCnssfmCGBhx4s98tXiZOL06dP6y5BhQgOY0AcwYXoAE0YCOGdrIB8B
+bGskT14COPc+oORs+kRlcHuXjExcVIDJugFMF5HaW9PfUUdNUnfQ+DtmakLIDpqBuk4a4qMN
+YLYySfLOOPCqwL1lq59y5O5aUBUwNRFBV1FT6fvXNLqKGk6yVVSQygvs7AXRhzqVDsKRSBqi
+ZZeHaPN79mysePbkRKaml/KifTeVjkpUbrOvpfKm5imX2burAMISnj1vE86ejB0yWJBW03BF
+KUtopSv/2dzVxJc5jtHZrKon0euGMm3COjBH1WQnw+MIB7YKwJiPgWaLjPCoBm/s+kagPaHv
+6K4OdwcMWlASg+j/q/oXXMH5af/UzLbbRIVoMzVRdtOpOK2C6mY3gkIKzsukgvP6WAvuV4It
+OPCtLbGCkzH/FOxH2GDBgfxdIiLDhaWl/UCllaFKIH9WD9XcUC0lp6gDNW9UW8lh6roa80sr
+g5boUPr3IE2grx4/q7kULL9BLw+E6VJ6+RQ1l4Llb+jldWG6lV4+TM2lYDlbWuNtTC2t4lBm
+ZSVkJoeVdrS0wO+imldjHpHIYMcMWlZKZj8sWWLsFo2V2HrH0uR3Tsc0JxxbkHFOP2ruOPYi
+Q5xm02emlg1bYgoTLoy1bBTe39GHX5o+wyA9Rm9nvSOXguVx9PIWMP2RXn7CkUvB8hB6eS+Y
+gv2448ilYDlbYlM1ppbYCqivHRL6smFKTEXIkQsjqIL1rNklInZwuLFiAztj2WKbqjFWbFoi
+nhxBzaIviovJRVQk5aedq9lEdaXK07tQRmF6baAMvRPBL7Oz39pIp4vpU7+IvuxGUlzqp2WX
+gzS335t7WSRgsXEFpWAKCq1J+zAevG/Z8564a5lrIPvsz4b5OmgkEcB8+9O84iHycB20J1LI
+yuoM3R1qNRmoTtP9zrTZ0nUX6VMml5tePHI5UeDGneTFxDb492wEjZXWBPu1zsa0LGQKfRuL
+34AhYL7nMvYLpM1F9h18y/KmjP1qn688Z6fSK6armb6a0FN1ueDBNv23g2Xs+qlwvVZQOBvo
+6To9/Y+eqslz8jZV9LJ39FSVntrZ8BtiYERiKD1toZdPkLPHiUYJGNq5k56W0uuv0OldG+6F
+PP36YvSyrvTUkJ6W2RC8KgdYH00vK05Pc+gplJ7KC9Yfopedp9P7dFrBhuDVNcH6cvQ+LaDT
+tnR6Q87SVNH1Y+jl3eh0OZ0ul/Mr+8y3ExXsOXhDp53l3HUQGHjdpSYdlL/R5y6eTu1ovwGy
+HlTgp9DLh9LrT9HpLjoVDnm8RS8vBc69kiAG0qmwb6GZkv3y4jd0Wole30qwfqGS/a7nNSX7
+Fb92gvVPlVwcgm9EdkDWmaNpfWwb17TUA8TCo2kZwQ2lNfaQQkrTP0FNv5LlvCYCTZ+GmvaU
+51zPPHSEmqaE66Gm70BN1xauh5q+BTVdQ2T7IJ4vQE1XtBE8noCaXgA1fUOwXq/pr6CmN4ms
+B5quCjU9QmQ90DQJNd1FZD3Q9HaoaYXIeqDp8VDTx+U51wNNe0FNDxKs12v6iYzVdBPBer2m
+l0FN3xOUn17T9aCmU0TKF2gafL0UaNpXZD3Q9K9Q09ki90yg6SlQ0/+IrAeaHgU1/Ydgvbma
+Jj4BTesH4svN1PQhqGkXubimL0NNV5bQ9Bmo6bISmr4MNV1ZQtOXoaYrS2j6BNS0h4Smx0BN
+/ymh6QCo6XkSmpZBTXeQ0PRuOatptYSmJ0BNn5CLa7oR1PQECU07Q033kdD0Oajp8hKazoCa
+1sjFNf011PRmCU0Xh/fpUAlNH4GaLi4T1/R2qGmFTFzT06Cmzxa4pkv4JzOvLE2SpTBD/Kq0
+GBwaNsgrNKq/V/eBEbHhxHfMBsGJGUt4KY0/tc7LyF+06x10LIHeUdBJERISwvggvXPnjqHT
+qbDkKYqGywcbNmymWGay/mXw+4S/DddsqqPv8sWGDVue7T6hU/A7krKL4N0Z58F5cJ685+Hu
+rXLk3orPFM6D85ijIhusIpwH58mnihS4nYcNm5ntPL2KbLGKsGHLp4qUWEXYsOVTRSqsImzY
+zLJM/2T/cYaBRxwldqWB2Mo+0V9loKcK31skeWvVBP9ddOB3Vn9DL+o1InTwSDDkpzRBxJ2/
+3+N41KkaJUe4DfEfF3j3/UBtHPF7qcrXZ1ePbdFr8+SxycHfbrk84Ovrh3/pcWSCn3zGCZuH
+v3y2M+i71+5+xHVdZoXqUXN2BNp/qZrepcL7p+8yr7x4s6d84P30bx4SxIilxNXYkOymGYld
+r2xN8B4S2X73nv2VTr98WN2zR2/ZXvsTronyLSeznVe9aX3itpd9r3nNPR6d3VQi85fi+8Yf
+PlGh6WiPL0p1snsdeVv96vquVcsrtnCXv+8tn52u3vxHpb9f/Nh15NJRl5yPfD1i+rsRA371
+npzcam72io5viFc17m93JdO3ugyYO23Duu2rX8+1i5q0ukboQ13jtc4307VJfccOTmoW8DrA
++d26zzJ6nPhnzY1ej9o/GDR61+OTDQcnjq82LyghoZL905AWuz4P+KVD6SNVuqojW54PGaON
+n/Cz+6h9Qx5NV3R3PEBmTeobdOqA+qW3zdlnJcadXrp23SXt4BPZp8vHvX+naVix41HfYWnr
+d20a+LxLiOz5ikFhM2wePj7wxuG3ZVF/3WukmeGaqmnrlvrZvK6PB07IqnIqQru/RvtLi/sN
+Dp7Sfp13m82TjjuHBp+Kb/yySa8hw0pqKleIrTgwrGSd3cc6ZXXtt+VgzR1ODptuOu6/fvdA
+/we3ygevnNop5kmf/oM3xdZz0+5x3Ui2LbaZJG6/ilwx9t8tpHf/OdFfZWgutGr5fTe32wcq
+BkQ51339tp5j29C08a0HO/275dCQBn5VQ5yHr91V738z13Zt0+BUxSlJ4bt/qVcz81Lc89MZ
+fvHngl3rZro91yZMbLL/8vVzb0KXbG/YJ/NM/I26DceMKzFR5d1u9+UXs30vONySx8Ts3Z7V
+q9TI75dsmnn9yLbG3cMDJ4B/2bM0n/+aTfw47d2QXuFR/Z0g/lgGv9TLvRwn+uUMMf6xlH0q
+g+9y8o9lOfjH5QitC9jZD8k/ZgnELP9YSXA0YlBfqALn1cg8n3+M/gL9y3pDtyK2Xp3L+tz4
+xzbwWRX7qWpz+Mdq+F6uhqDgFoQcidz4xyTkbtsR9mbyjzXMFhzoo3I0g388MBXzjwmTt4v5
+xwSB+ceYf2yZWML8Y8w/tlQsFXb+sb7tV9D845y1VjH+MYn4wxmfzz8mBfxjUsA/JgX8Y1LA
+PyYF/GNSwD8mBfxjUsA/JgX8Y1LAPyYF/GNSwD8mBfxjUsA/JgX8Y1LAPyYF/GPSWvxjjWQ1
+0bJgYKkwsRIYmPo0DlNrJf6xMdFbgX9sZ7RtYzkwsEmHafnStP80DtOBEG+ZWpp/bPJhWpZ/
+rLNoaZp+CbJSaToW9cMsYagi6gMX84+txT+OIFur++peUNPICHVj3SlqONlJHay799HTN23h
+Iz6Wvqn/MOep7IQcDwqF/GN78/jHSKdOXumbesqnVfjHUvALU/nHYk8g9fxjkC/v/ONNBvrm
+A1lB4mOd6QC2004j69MB/B8dwJ50AMs+ev6xgimLnAEcniOAhc+t7c3jH5sRwArCivzj/AQw
+yj8Wf4TO8o9Bvrzzj5caAviUDAO8hQHMdhMJA5gQ6aoR8o99zOMfmwHwNlCBrME/luXSh5JX
+/rF4n4vp/GNgHJ2uoPnHLpB//AjhH5dJNoPZl5x7AIJ+U0AS7OzIpV0odnkXKvffGyf4klbl
+Hw+B/ONvc/KP1WbIPw/Vz4LlH2utyj9eoOmlrOfQTbVLk6h0cqilOq2Zp3z9SfKPVcwdWcfj
+H/O/cM0O8fh4AMjHNLPttlEh2ieaKLtvqTithupmN7oIApB3QLjVT4Q4oFVdCADIR1QJ5E71
+UM1D1VJyvjpQo1JvJZMYALIep2tKadWyIbyOQADyEQhA3qnmUrD8IQQgP4QA5PlqLgXLVRB0
+rILg4yQkzQ8AuSTUmbeEzkgMQC5kAGRNYQIg9ybfaH6mblFJpCc1hdpHjdTUp4ZRa+nLopcZ
+AGQveifqvszOBqQ4qTSJPvWe9PanUFy6j2KXgzS335t7WVTAYlMZCkqrvxAm8y+EwaHgQvjh
++cegdBZT1bTfaJPIfRSpDdOO1JyjHlMB2oItHVAKpJZLw7TscpAWVOnYwtJRG0rHjjn7JK90
+QLWvVcSAAeEx4VEfCaK68KMvbWB92iaXNmdeENVio29RRLXY6FsUUS02+hZFVPPW0/NCRLXY
+6FsUUS02+hZFVIuhL1FEtRj6EkVUi6EvUUS1GPoSRVSLoS9RRLUY+hJFVIuhL1FEtRj6EkVU
+i6EvUUS1GPoSRVSLoS9RRLUY+hJFVIuhL1FEtXVwtilkW3WG7iW1mhykTtOdpqaRwep0XWYh
+ws7rCZ0K5LiBVvVo4Bs2xjWNIqqFJkRUi2HnUUS1GHYeRVRrBQ+jhIhqMew8iqgWw86jiGox
+7DyKqBbDzqOIai/BeiGiWgw7jyKqxbDzKKJaDDuPIqrFsPMooloMO48iqsWw8yiiWgw7jyKq
+hV26QkS1GHYeRVSLYedRRLV1sPMpZD9a07doTU+kNb2P1nQUrelzhUjTtrD8bAXHrUcD/5mL
+ptG3ZMQ0jb4lI6Zp9C0ZMU2jb8mIaRp9S0ZM0+hbMmKaRt+SEdM0iqgW0zSKqBbTNIqoFtM0
+iqgW0zSKqBbTNIqoFtM0iqgW0zSKqBbTNIqoFtM0iqgW0zSKqBbTNIqoFtM0iqguWE1jRDVG
+IEsaLh9s2LCZYhhRjQ2b5QwjqnEenAfnwYhqnAfnwYhqnAfnwYhqbNiKWjsPI6qxYbOUijCi
+Ghu2/KoII6qxYTPPrIOongQR1XF0GuHJIKp76hHVC/wXn973O3F/+rZyrb84OSGo3bo13Spu
+MSCql91qUTql7Z2UF2fL/zTwhz1Kh+QGioTUKRdWRc3Z/8/Ycq1Ts0c3e/Pi3R7f9t++butw
+RUaUfEhcjb12tWlG0qWz6W8YRHXK/kqnX8XPd/j2DLHRJmth3+QNWdmK/xIds2wnjevW/0RF
+v80+yjfrA2ssrxWb6nBF2b1tl28SDzZsvmdb9Yg1a2dOTM6el3yzSosmN+e479y8aGfb3ZcX
+hm/e8UNipdq9XFr7r6iS1GlN+ozRC55fPDL+XG9N+uED9U5f7PzusLL+H50XbBw5aXFd9ZOe
+EzOSkgcnNfv8dUDwuxezE39ZtqHTwWlX5148MnrXq8Pxp0Y5XPBZ/PzaiJLf+1W4/NXqHhU/
+D5/74/gRXpGbZBN3/dbdbndIg5ezFGd0B8is8VeOnTxQ4mV5m7NPAaJ63bqDbmdDHi1v/ej6
+m2IxHZYtuPJvvZ7h93ecC06xPTslamoT+y9uT1sZFtpx64NnJSccfJiqOcggqp8NnJu1Lp1B
+VDdZ3G9wAIuoTj3uHFr7VMOS70v7vgxxAojq6gOHOdXZeaxTVut+WyoCRHW6HlH9L0BUD415
+0pNFVNtnFIOIaleAqC7OIKp/vq1HVLtCRPV1FFE9sE4jXxRRfabimezDOzbVq5m5wS/hbqXP
++zw/3doO4KmXhB7f+NXZ3tWeV//LI2D68RV2lxt4Lb1cduK1pprOnm3f3czYu+UL/yD7BvP7
+7Lx37O/g4p3fdh/i+uP6tRvpf4+adb629rlneP0vq6GMajlEwIEXGDu0buXVJiJmWKwEoBoM
+bzMXUC20wj70Lieg2iYHoLo0oVWAQZgfElAN1ukB1Vr49BTgogGKrCqct0fm+YBq9BcyIudL
+8+hWxNbb57I+N0C1EtZrwNGYB6h2YLboRDjT54Tdwh5Pt/gsxzMZFf5t92Wn9HO5Aqp1cJ+K
+0783D1DtyGyhBOFGuJsBqJ70LQZUEyZvFwOqCQIDqjGg2jKxhAHVGFBtqVgq7IBqJ0JY5yg4
+QDX/viwEVJNEO4hjZP0wxucA1bsZnwNUu8qAzwGqx8hq0D4HqD7D+ByguqYc+Bygegrjc4Dq
+W4zPAaqb2QCfA1QvZHwOUP2U8TlAdaAC+Byg+gfG5wDV/ylCaJ8DVLe0BT4HqF7M+Byg+gXj
+c4DqTkrgc4DqdYxvJUC1s2Q10fLkZrEwsRK52eXTOMxiVgRUS4neCoDq4kbbNpYlN+f5MC1f
+mq6fxmEKXkArUEC1SYdpWUC1m0VL0/RLkJVK072oHyYLqAbVEz1AHgOqrQWoLqx4VDUTLXnB
+owoB1T7mAarNwKPqH8US1gBUy3N5gpdXQLXYEz/zANW2Mj3ft6sc832FAQzKwS5PASwEVPuY
+B6g2I4BVRgPYwoDq/AQwCqgWf2RtDqDaOgEcQf5P3Ve3mppGPlM31qVQw8lL6mDdwo/+EwFK
+gkXKCQnrf+UIYGHHi715gGrC9ABWEtKEdYsDquUSeUwFVIv3AZkOqLZOABsDVH+sAWwcsez0
+sQCqC+jsFSyguphVAdXeVC/lMvtuqg5UonK0fS1Vf2qesv8nCai2Z+7IdjxANXiiyhvfgenU
+1i623OjUDoWaTm1uaRVWOrUO06kLGZ3asTDRqePJEdQs+qK4mFxERVJ+2rmaTVRXqjy9C2XM
+4B+XoXci+GV29lsb6XQxfeoX0ZfdSIpL/bTscpDm9ntzL4tKWGxaQ0E5MQVly+Mfg6OE962P
+gX2cQh5VZ+jmU6vJR+o03TC6xXZWna6bUoiYikr4mFSJNFVaM3vNsuz65MJUBIMmU+g0SWJg
+p0LObquHxMBOwDauS0/1JQZ23qWnGfTUVDiwk14GBnaegQM7q0oM7DwMB3aWlhjYqYEDO/tI
+MBXPyFmmYlUJpmKanGUqPpSLMxUnQ6biZbk4UzEaMhX3SzAVwyFTcbsEU7EYZCpGSDAVX0Km
+YgcJpuI1yFSsK8FUXAuZiu8kmIq9IFPxJwmmoquMZSoOkmAq3iNYpmIzCaaiPg4Bh9U6nNTC
+zzNXQU2rcnlEkRf2sRjPHGUfi/HMUfaxGM8cZR/z1kNNo+xjMZ45yj4W45mj7GMxnjnKPhbj
+maPsYzGeOco+FuOZo+xjMZ45yj4W45mj7GMxnjnKPhbjmaPsYzGeOco+FuOZo+xjMZ45yj4W
+45mj7GMxnjnKPrYOz7zwa1oNNa02U9PoCxhimkZfwBDTNPoChpim0RcwxDSNvoAhpmn0BQwx
+TaMvYIhpGmUfi2kaZR+LaRplH4tpGmUfi2kaZR+LaRplH4tpGmUfi2kaZR+LaRplH4tpGmUf
+i2kaZR+LaRplH4tpGmUfF6ymMfsYs3UlDZcPNmzYTDHMPsaGzXKG2cc4D86D82D2Mc6D82D2
+Mc6D82D2MTZsRa2dh9nH2LBZSkWYfYwNW35VhNnH2LCZZ9ZhH38D2ccjwZCf0gz7uIeefew/
+LvDu+4HaOOL3UpWvz64e26LX5sljkw3s4x5HJvjJZ5ywefjLZzuDvnvt7kdc12VWqB41Z0eg
+/Zeq6V0qvH/6LvPKizd7ygfeT//mIUGMWEpcjQ3JbpqR2PXK1gSGfbxnf6XTLx9W9+zRW7bX
+/oRronzLyWznVW9an7jtZd9rXnOPR2c3lcj8pfi+8YdPVGg62uOLUp3sXkfeVr+6vmvV8oot
+3OXve8tnp6s3/1Hp7xc/dh25dNQl5yNfj5j+bsSAX70nJ7eam72i4xviVY37213J9K0uA+ZO
+27Bu++rXc+2iJq2uEfpQ13it8810bVLfsYOTmgW8DnB+t+6zjB4n/llzo9ej9g8Gjd71+GTD
+wYnjq80LSkioZP80pMWuzwN+6VD6SJWu6siW50PGaOMn/Ow+at+QR9MV3R0PkFmT+gadOqB+
+6W1z9hlgH69dd0k7+ET26fJx799pGlbseNR3WNr6XZsGPu8SInu+YlDYDJuHjw+8cfhtWdRf
+9xppZrimatoy7OPHAydkVTnFsI8vLe43OJhlH0867hwafCq+8csmvYYMKwnYxxUHhpWss/tY
+p6yu/bYcBOzjTXr28S3APu4U86QPyz7W7nGF7OPbgH38L8M+jv5Kzz6+DdnHb1H28ZAGflVR
+9vGpilOSwnf/Uq9m5qW456cz/OLPBbvWzXR7rgX848vXz70JXbK9YZ/MM/E36jYcM67ERJV3
+u92XX8z2veBwSx4Ts3d7Vq9SI79fsmnm9SPbGncPD5wA/mXP0nz+azbx47R3Q1D0sQ0duGB0
+nf7VuODwsOio/hLsYxDF5rKPi9rQu5zsY9sc7OPyhNYFQNA+JPsYtFD17GPwmoCeROyIzDsR
+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
+vU5a2S9D/dpldfN18SeKN/3FZ7pqV8sxh5+cKFZiz/RjM1aljPtpWAf50D6nOgaXsZNlV5Od
+6zl+h2rOItWzHQl/7nq/NnxzQqXmW+v0ml3eu21X346rElrJv8i6mD713CCn9JMHtty8qHl3
+Urn1j85Nb0Wrm0V2dnrklJTd6tb7xNnPun//Ovqrd/2a914+PWBfwPbo3+LubX+66V3pkXE1
+71/aXefopcqPm/60qlb8gu5r2/R0TS/u+bpEldGXO1LKvQkNtwWNbjau9P5bPpFTUxzaJ4+Z
+Mezo2O07zvvum7jfIfKu756+ZQ5q7+6/dbLiuqj1i5q4rdnXJyYiU/aoeJ3Le5yVwz36XJkV
+93bW2iHfzVrQv2fdGX/fWVYv7YD35Nm/Xar8x5a5a1ZM7tzlG+VM9dKFQU5frkqvTf4xtVM9
+11+bkIvuz374v/kl0xundprboPqctpqAdWmz4zeWX6gJnzrnyMPWByoO+mpOg/ffhzr7R1xQ
+/HdWEXFWUaZU2ugmb1ZGOtsurJLmFTZn+NbUkmOGpk1qeariL9MD+9mlTW2zsrZd2t7azS9U
+1NQqdniS68ZDd/v2/Hl9oDah+5Imr3yPb8o8NMX9uZaFH0c/y3xX6/jFCn0yty57PDlxVOC2
+GTPa9Yjb7dm/75aHt6mbc1pePXkv6+L2UVVaTva98aDF3LrF6tH/3ret4vf3e+pFg3cJKPnY
+lo5ZMIyIey8uODwsOqq/hdDHRXncXU70sToH+rgeoXUBL358SPQxqBLo0cfg0gQwuQBEDNKu
+cN4dmeejj9FfiKGL0a2IrXfPZX1u6GPwKgxA1YFRceahj8syW6xGVCd84RaEDJTc0Mfl4MvE
+Nenzah76uDyzhdp01ayuGejjgakYfUyYvF2MPiYIjD7G6GPLxBJGH2P0saViqbCjj6sRwjpH
+waCPc9aKxdDHHog/nPH56GMPAfrYQ4A+9hCgjz0E6GMPAfrYQ4A+9hCgjz0E6GMPAfrYQ4A+
+9hCgjz0E6GMPAfrYQ4A+9hCgjz0E6GMPAfrYw1ro4+qS1UTLMoGlwsRKTGDfT+Mwa1gJfWxM
+9FZAH9c02raxHBPYpMO0fGnW+jQOszYh3jK1NPrY5MO0LPq4jkVL0/RLkJVKs25RP0wWfQyq
+E3p6MUYfWwt9HEFeV/XVVaKmkUp1Y50NNZx8oArWeXz04E1QZXYXAW8G5ABvCh/72VsNfexC
+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
+AJQcbp2vARR+TbtCTbuaqWmUHC6maZQcLqZplBwupmn0/QsxTaPvX4hpGn3/QkzT6PsX5mga
+JYeLaRolh4tpGiWHi2kaJYeLaRolh4tpGiWHi2kaJYeLaRolh4tpGiWHi2kaJYeLaRolh4tp
+GiWHF6ymMfgYg3UlDZcPNmzYTDEMPsaGzXKGwcc4D86D82DwMc6D82DwMc6D82DwMTZsRa2d
+h8HH2LBZSkUYfIwNW35VhMHH2LCZZ9YBH4+F4GMwvKxqaRZ8HBh1yr/E4o4hKcnd2gd01ZQk
+fmm76WyDumtnujs6lg8Jb3jo11L9/P4XpyA9RiumX7V94e3U+/cqZ64S64/W37w4qN9Xs4+W
+DQz1af387a7ofxOuJGy5caDt8YwU3fmk8TNP7d/feMi7FfEDHdrdOT81vqWqYp2rI52V9err
+NrV84hb057zXSSv7Zahfu6xuvi7+RPGmv/hMV+1qOebwkxPFSuyZfmzGqpRxPw3rIB/a51TH
+YI58rJqzSPVsR8Kfu96vDd+cUKn51jq9Zpf3btvVt+OqhFbyL7Iupk89N8gp/eSBLTcvat6d
+VG79o3PTW9HqZpGdnR45JWW3uvU+cfaz7t+/jv7qXb/mvZdPD9gXsD36t7h7259ueld6ZFzN
++5d21zl6qfLjpj+tqhW/oPvaNj1d04t7vi5RZfTljpRyb0LDbUGjm40rvf+WT+TUFIf2yWNm
+DDs6dvuO8777Ju53iLzru6cvSz4+WXFd1PpFTdwA+TgiU/aoeJ3Le5yVwz36XJkV93bW2iHf
+zVrQv2fdGX/fWVYv7YD35Nm/Xar8x5a5a1ZM7tzlG0A+Xhjk9OWq9NrkH1M71XP9tQm56P7s
+h/+bXzK9cWqnuQ2qz2mrCViXNjt+Y/mFmvCpc448bH2g4qCv5jR4/32os3/EBcV/ZxURZxVl
+SqWNbvJmZaSz7cIqaV5hc4ZvTS05ZmjapJanKv4yPbCfXdrUNitr26Xtrd38QkVNrWKHJ7lu
+PHS3b8+f1wdqE7ovafLK9/imzENT3J9rEyY22b8kNPpZ5rtaxy9W6JO5ddnjyYmjArfNmNGu
+R9xuz/59tzy8Td2c0/LqyXtZF7ePqtJysu+NBy3m1i1Wj/73vm0Vv7/fUy8avEtAmccqOmYB
+JgS8FNehdSuv4PCw6Kj+EtRjEMC5DRn6VEbd5aQea3NQj+sTWhfwrvGHpB6DS5KeeuxFsAwh
+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</Template></GraphPadPrismFile>

@@ -173,9 +173,9 @@ avgTrials_SameDiff = avgTrials(SameDifftrialFilter,:);
 
 
 %% Save data to excel file
-  writetable(avgTrials, 'C:\Users\mpanagi\Documents\GitHub\Marios-temp\TB1_SandersonData\TB1DataLongFormat_Reward5sPre10spost_NaN10pre10post_FullData.xlsx');
+  %writetable(avgTrials, 'C:\Users\mpanagi\Documents\GitHub\Marios-temp\TB1_SandersonData\TB1DataLongFormat_Reward5sPre10spost_NaN10pre10post_FullData.xlsx');
 
-  %writetable(filteredData, 'C:\Users\mpanagi\Documents\GitHub\Marios-temp\TB1_SandersonData\TB1DataLongFormat_Reward0sPre10spost_NaN10pre10post_dAVIDdATA.xlsx');
+writetable(data, 'C:\Users\mpanagi\Documents\GitHub\Marios-temp\TB1_SandersonData\TB1DataLongFormat_NoFilters.xlsx');
 
 
 
