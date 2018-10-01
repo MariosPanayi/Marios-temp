@@ -45,7 +45,7 @@ Reset = 1;
 
 
 %% Load data
-data = readtable('C:\Users\mpanagi\Documents\GitHub\Marios-temp\TB1_SandersonData\TB1_Reward_DataForPeakAnalysis.xlsx');
+data = readtable('C:\Users\Marios\Documents\GitHub\Marios-temp\TB1_SandersonData\TB1_Reward_DataForPeakAnalysis.xlsx');
 
 %%
 % Find groups
@@ -69,6 +69,6 @@ data_3s.smooth3 = smoothed;
 [peaks.smoothPeakVal, peaks.smoothPeakTime] = splitapply(@max, data_3s.smooth3, G_peaks);
 
 
-writetable(peaks, 'C:\Users\mpanagi\Documents\GitHub\Marios-temp\TB1_SandersonData\TB1_Rewards_PeaksAnalysis.xlsx');
+writetable(peaks, 'C:\Users\Marios\Documents\GitHub\Marios-temp\TB1_SandersonData\TB1_Rewards_PeaksAnalysis.xlsx');
 
 
