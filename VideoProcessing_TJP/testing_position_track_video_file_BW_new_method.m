@@ -26,11 +26,7 @@ bg_frame_time = 375; %eddie- arena A [175 bg 1, 375 other bg]
 
 
 %Position tracking from video
-file = 'g:\video_veronika.mp4';
-path = 'F:\GluA1 LFP\AAB\video\Eddie\';
-%path = 'E:\AAB video\video\Eddie AAB\';
-%path = 'E:\AAB video\video\Corleone\';
-file = [path 'camera12018-07-19T19_05_58.mp4'];
+file = 'E:\SKR113_ORIENTING_VIDEOS\ACQUISITION DAY 1\BOX 1\Rat1_Record_Day_2012_09_04_Time_10_15_30_BOX1001_PAVTRAIN1_vid1.avi';
 %file = 'example.mp4';
 
 rat_thresh = 0.8; 
