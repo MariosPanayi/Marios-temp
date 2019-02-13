@@ -11,26 +11,15 @@
 clear
 close all
 
-bg_frame = 420; %farooq - arena
-bg_frame = 320; %gangrel - arena
-bg_frame = 1330; %corleone - arena
+bg_frame = 1; %farooq - arena
 led_on = 1;
 %bg_frame = 1;
-bg_frame_time = 455; %bossman - arena A
-bg_frame_time = 673; %bossman - arena B
 bg_frame_time = 1; %farooq - arena A
-%bg_frame_time = 424; %faqrooq - arena B
-bg_frame_time = 375; %eddie- arena A [175 bg 1, 375 other bg]
-%bg_frame_time = 547; %gangrel - arena A [9min 47s 547]
-%bg_frame_time = 521; %house- arena B 64[8min 41s 521]
+
 
 
 %Position tracking from video
-file = 'g:\video_veronika.mp4';
-path = 'F:\GluA1 LFP\AAB\video\Eddie\';
-%path = 'E:\AAB video\video\Eddie AAB\';
-%path = 'E:\AAB video\video\Corleone\';
-file = [path 'camera12018-07-19T19_05_58.mp4'];
+file = ['E:\SKR113_ORIENTING_VIDEOS\ACQUISITION DAY 1\BOX 1\Rat1_Record_Day_2012_09_04_Time_10_15_30_BOX1001_PAVTRAIN1_vid1.avi'];
 %file = 'example.mp4';
 
 rat_thresh = 0.8; 
