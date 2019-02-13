@@ -19,7 +19,7 @@ bg_frame_time = 1; %farooq - arena A
 
 
 %Position tracking from video
-file = ['E:\SKR113_ORIENTING_VIDEOS\ACQUISITION DAY 1\BOX 1\Rat1_Record_Day_2012_09_04_Time_10_15_30_BOX1001_PAVTRAIN1_vid1.avi'];
+file = 'E:\SKR113_ORIENTING_VIDEOS\ACQUISITION DAY 1\BOX 1\Rat1_Record_Day_2012_09_04_Time_10_15_30_BOX1001_PAVTRAIN1_vid1.avi';
 %file = 'example.mp4';
 
 rat_thresh = 0.8; 

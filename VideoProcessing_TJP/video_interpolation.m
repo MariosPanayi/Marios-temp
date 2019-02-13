@@ -13,6 +13,9 @@ end
 % ts_interval (in seconds)
 
 samp = ts_interval*sample_rate;
+if samp(1) == 0
+    samp(1) = 1;
+end
 pos_interp = pos(samp(1):samp(2),:);
 
 not_done = 0;

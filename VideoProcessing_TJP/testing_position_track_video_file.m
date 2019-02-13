@@ -12,7 +12,7 @@
 clear
 close all
 %Position tracking from video
-file = 'E:\SKR113_ORIENTING_VIDEOS\ACQUISITION DAY 1\BOX 1\Rat1_Record_Day_2012_09_04_Time_10_15_30_BOX1001_PAVTRAIN1_vid1.avi'
+file = 'E:\SKR113_ORIENTING_VIDEOS\ACQUISITION DAY 1\BOX 1\Rat1_Record_Day_2012_09_04_Time_10_15_30_BOX1001_PAVTRAIN1_vid1.avi';
 rat_thresh = 0.95;
 rat_size = 50;
 % Tracking objects -----------------------------
@@ -42,6 +42,10 @@ progressbar_v2(0, 0, images)
 %no_frames = 1200;
 no_frames = vidObj.Duration*vidObj.FrameRate;
 for k = 1:no_frames %for the first k number of frames - input the frame data into the struct
+no_frames = 3000;
+%no_frames = vidObj.Duration*vidObj.FrameRate;
+startFrame = 300;
+for k = startFrame:no_frames %for the first k number of frames - input the frame data into the struct
     progressbar_v2(k/no_frames, 0, images,'Loading video')
     s(k).cdata = readFrame(vidObj);
     grey = grey + double(rgb2gray(s(k).cdata));
@@ -74,8 +78,8 @@ lad_frame = grey/no_frames;
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % background the video
-%% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-for j = 1:length(s)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+for j = startFrame:length(s)
     j;
     bg(j).cdata = s(j).cdata-uint8(lad_frame);
 end
@@ -85,7 +89,7 @@ plotfigs = 0; %turn on/off plotting
 visualiseoutput = 0;
 stelparam = 5;
 lastxy = [];
-for i = 1:length(bg)
+for i = startFrame:length(bg)
     new_frame = image(bg(i).cdata);
     xy = FindPosition(s(i).cdata, bg(i).cdata, rat_thresh, min_pixels,hBlobRat,plotfigs, stelparam, 0, lastxy);
     if ~isempty(xy)
