@@ -213,31 +213,76 @@ avg_DA_KO = [];
 avg_DA_cal_WT = [];
 avg_DA_cal_KO = [];
 for i = 1: size(data,2)
-%convert data to numeric matrix, rows 1,3,5... are DA, rows 2,4,6.... are pH
-temp = cell2mat(data(i).processed.c_predicted(1,:)');
-%DA data picker for even rows
-temp = temp(1:2:size(temp,1),:);
-temp_mean = mean(temp);
-avg_DA(i,:) = temp_mean;
-
-temp_mean_cal = temp_mean/data(i).calibrationFactor;
-avg_DA_cal(i,:) = temp_mean_cal;
-
-if strcmp([data(i).genotype], 'WT');
-    avg_DA_WT = [avg_DA_WT;  temp_mean];
-    avg_DA_cal_WT = [avg_DA_cal_WT;  temp_mean_cal];
-elseif strcmp([data(i).genotype], 'KO');
-    avg_DA_KO = [avg_DA_KO; temp_mean];
-    avg_DA_cal_KO = [avg_DA_cal_KO; temp_mean_cal];
-end
+    %convert data to numeric matrix, rows 1,3,5... are DA, rows 2,4,6.... are pH
+    tempData = cell2mat(data(i).processed.c_predicted(1,:)');
+    %DA data picker for even rows
+    tempData = tempData(1:2:size(tempData,1),:);
+    temp_mean = mean(tempData);
+    avg_DA(i,:) = temp_mean;
+    
+    temp_Data_Cal = temp_mean/data(i).calibrationFactor;
+    avg_DA_cal(i,:) = temp_Data_Cal;
+    
+    if strcmp([data(i).genotype], 'WT');
+        avg_DA_WT = [avg_DA_WT;  temp_mean];
+        avg_DA_cal_WT = [avg_DA_cal_WT;  temp_Data_Cal];
+    elseif strcmp([data(i).genotype], 'KO');
+        avg_DA_KO = [avg_DA_KO; temp_mean];
+        avg_DA_cal_KO = [avg_DA_cal_KO; temp_Data_Cal];
+    end
 end
 
 
 %%
 save('F:\Marios aFCV\GLRA_002\DataAnalysis\GLRA002_06DrugPeriodData', 'data', 'summary', 'avg_DA_WT','avg_DA_cal_WT' , 'avg_DA_KO','avg_DA_cal_KO')
 
+%%
+%Save all the Traces for Each Trial/Animal
+
+%initialisevars
+traces  = [];
+calbratedTraces = [];
+geno = [];
+sex = [];
+subj = [];
+
+for i = 1: size(data,2)
+%convert data to numeric matrix, rows 1,3,5... are DA, rows 2,4,6.... are pH
+tempData = cell2mat(data(i).processed.c_predicted(1,:)');
+%DA data picker for even rows
+tempData = tempData(1:2:size(tempData,1),:);
+%Prune to 18 traces where expt. happened
+tempData = tempData(1:18,:);
+
+%Apply calibration factor to DA data
+temp_Data_Cal = tempData./data(i).calibrationFactor;
+
+% Genotype
+temp_geno = cell(1, size(tempData,2));
+temp_geno(:) = data(i).genotype;
+
+% Sex
+temp_sex = cell(1, size(tempData,2));
+temp_sex(:) = data(i).sex;
+
+% Subject Name
+temp_subj = cell(1, size(tempData,2));
+temp_subj(:) = cellstr(data(i).subject);
 
 
+traces  = [traces; tempData'];
+calbratedTraces = [calbratedTraces; temp_Data_Cal'];
+geno = [geno; temp_geno'];
+sex = [sex; temp_sex'];
+subj = [subj; temp_subj'];
+
+
+end
+
+ts = repmat([data(1).processed.ts{1,1}], 1, size(data,2));
+savetraces = {geno, sex, subj, ts', traces, calbratedTraces};
+
+%%
 
 
 
