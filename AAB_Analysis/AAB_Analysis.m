@@ -171,13 +171,17 @@ groupLabels = {'wt same','wt diff','het same','het diff','ko same','ko diff'};
 figLabels = reordercats(categorical(groupLabels),groupLabels);
 
 AABplot(Mean,SEM,limits,figLabels,YaxisLabel,trials,plotpanel)
-%% Plot Data over timew
+%% Plot Data over time
 range = [1:6]';
 
+data1_C = cumsum(data1,1);
+data2_C = cumsum(data2,1);
+data3_C = cumsum(data3,1);
+
 for i = 1:size(range,1)
-   [MeanT1(i,:), MedianT1(i,:), SEMT1(i,:), ~] = aggregate(sum(data1(i,:),1), groups);
-      [MeanT2(i,:), MedianT2(i,:), SEMT2(i,:), ~] = aggregate(sum(data2(i,:),1), groups); 
-         [MeanT3(i,:), MedianT3(i,:), SEMT3(i,:), ~] = aggregate(sum(data3(i,:),1), groups);    
+   [MeanT1(i,:), MedianT1(i,:), SEMT1(i,:), ~] = aggregate(sum(data1_C(i,:),1), groups);
+      [MeanT2(i,:), MedianT2(i,:), SEMT2(i,:), ~] = aggregate(sum(data2_C(i,:),1), groups); 
+         [MeanT3(i,:), MedianT3(i,:), SEMT3(i,:), ~] = aggregate(sum(data3_C(i,:),1), groups);    
 end
 
 Means{1,:,:} = MeanT1;
@@ -189,8 +193,8 @@ SEMs{2,:,:} = SEMT2;
 SEMs{3,:,:} = SEMT3;
 
 
-limits = [0 1]; %y axis limits
-YaxisLabel = 'Distance (30s)';
+limits = [0 4]; %y axis limits
+YaxisLabel = 'Distance (5s)';
 trials = 3; %number of trials in the test
 plotpanel = [3 2]; %how to panel plots of separate groups/conditions
 groupLabels = {'wt same','wt diff','het same','het diff','ko same','ko diff'};
@@ -199,16 +203,33 @@ figLabels = reordercats(categorical(groupLabels),groupLabels);
 figure
 for i = 1:trials
     hold off
-    subplot(1,trials,i)    
+    subplot(1,trials,i)
     for j = 1:size(Means{i},2)
-    plot(range,Means{i}(:,j))
-    hold on
-    errorbar(range', Means{i}(:,j), SEMs{i}(:,j), '.')
+        hold on
+        errorbar(range', Means{i}(:,j), SEMs{i}(:,j), '-s','CapSize',0)
+    end
     title(sprintf('Trial %d', i))
     ylabel(YaxisLabel)
     ylim(limits)
-    end
+    legend(groupLabels)
 end
+
+figure
+for i = 1:size(groups,2)
+    hold off
+    subplot(plotpanel(1), plotpanel(2),i)
+    for j = 1:trials
+        hold on
+        errorbar(range', Means{j}(:,i), SEMs{j}(:,i), '-s','CapSize',0)
+        legend_temp{j} =  sprintf('Trial %d', j);
+    end
+    title(groupLabels{i})
+    ylabel(YaxisLabel)
+    ylim(limits)
+    legend(legend_temp)
+end
+
+
 
 
 

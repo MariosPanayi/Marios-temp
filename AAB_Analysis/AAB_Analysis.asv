@@ -174,6 +174,8 @@ AABplot(Mean,SEM,limits,figLabels,YaxisLabel,trials,plotpanel)
 %% Plot Data over timew
 range = [1:6]';
 
+cumsum(data1(i,:))
+
 for i = 1:size(range,1)
    [MeanT1(i,:), MedianT1(i,:), SEMT1(i,:), ~] = aggregate(sum(data1(i,:),1), groups);
       [MeanT2(i,:), MedianT2(i,:), SEMT2(i,:), ~] = aggregate(sum(data2(i,:),1), groups); 
@@ -189,8 +191,8 @@ SEMs{2,:,:} = SEMT2;
 SEMs{3,:,:} = SEMT3;
 
 
-limits = [0 4]; %y axis limits
-YaxisLabel = 'Distance (30s)';
+limits = [0 1]; %y axis limits
+YaxisLabel = 'Distance (5s)';
 trials = 3; %number of trials in the test
 plotpanel = [3 2]; %how to panel plots of separate groups/conditions
 groupLabels = {'wt same','wt diff','het same','het diff','ko same','ko diff'};
@@ -198,17 +200,34 @@ figLabels = reordercats(categorical(groupLabels),groupLabels);
 
 figure
 for i = 1:trials
+    hold off
     subplot(1,trials,i)
-    for j = 1:size(Means{i,:,:},3)
-    plot(figLabels, Means{i,:,j})
-    hold on
-    errorbar(figLabels, Means(i,:), SEMs(i,:), '.')
+    for j = 1:size(Means{i},2)
+        hold on
+        errorbar(range', Means{i}(:,j), SEMs{i}(:,j), '-s','CapSize',0)
+    end
     title(sprintf('Trial %d', i))
     ylabel(YaxisLabel)
     ylim(limits)
-    hold off
-    end
+    legend(groupLabels)
 end
+
+figure
+for i = 1:size(groups,2)
+    hold off
+    subplot(plotpanel(1), plotpanel(2),i)
+    for j = 1:trials
+        hold on
+        errorbar(range', Means{j}(:,i), SEMs{j}(:,i), '-s','CapSize',0)
+        legend_temp{j} =  sprintf('Trial %d', j);
+    end
+    title(groupLabels{i})
+    ylabel(YaxisLabel)
+    ylim(limits)
+    legend(legend_temp)
+end
+
+
 
 
 
