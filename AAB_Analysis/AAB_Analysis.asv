@@ -176,21 +176,15 @@ figLabels = reordercats(categorical(groupLabels),groupLabels);
 
 AABplot(Mean,SEM,limits,figLabels,YaxisLabel,trials,plotpanel)
 %% Plot Data over time
-clear Means SEMs MeanT1 MeanT2 MeanT3 SEMT1 SEMT2 SEMT3;
-
-range = [1:12]';
+range = [1:59]';
 
 % data1_C = cumsum(data1,1);
 % data2_C = cumsum(data2,1);
 % data3_C = cumsum(data3,1);
 
-% data1_C = diff(data1,1);
-% data2_C = diff(data2,1);
-% data3_C = diff(data3,1);
-
-data1_C = data1;
-data2_C = data2;
-data3_C = data3;
+data1_C = diff(data1,1);
+data2_C = diff(data2,1);
+data3_C = diff(data3,1);
 
 
 for i = 1:size(range,1)
@@ -208,7 +202,7 @@ SEMs{2,:,:} = SEMT2;
 SEMs{3,:,:} = SEMT3;
 
 
-limits = [0 1]; %y axis limits
+limits = [0 30]; %y axis limits
 YaxisLabel = 'Cumualtive Distance (m)';
 XaxisLabel = 'Time Bin (5s)';
 trials = 3; %number of trials in the test
