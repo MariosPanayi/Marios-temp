@@ -2,7 +2,7 @@
 
 
 path = 'C:\Users\mpanagi\Documents\GitHub\Marios-temp\AAB_Analysis\';
-filename = 'Test 1DeepCut_resnet50_AABFeb18shuffle1_225000.csv';
+filename = 'Test 1DeepCut_resnet50_AABFeb18shuffle1_300000.csv';
 startRow = 4;
 data = csvread([path,filename],startRow);
 
@@ -13,7 +13,7 @@ data = csvread([path,filename],startRow);
 % coords	x	y	likelihood	x	y	likelihood	x	y	likelihood	x	y	likelihood
 
 
-
+figure
 plot(data(:,2),data(:,3))
 hold on
 plot(data(:,5),data(:,6))
@@ -36,6 +36,9 @@ LEar_dist = sqrt(LEar(:,1).^2 + LEar(:,1).^2);
 REar = [diff(data(:,11)),diff(data(:,12))];
 REar_dist = sqrt(REar(:,1).^2 + REar(:,1).^2);
 
+Distance_300 = [nose_dist, tail_dist, LEar_dist, REar_dist];
+Confidence_300 = [data(:,4),data(:,7),data(:,10),data(:,13)];
+
 smoothing = 400;
 figure
 plot(smooth(nose_dist(180:end,:),smoothing))
@@ -49,3 +52,4 @@ hold off
 
 all_parts = [nose_dist,tail_dist,LEar_dist,REar_dist];
 corr(all_parts)
+
