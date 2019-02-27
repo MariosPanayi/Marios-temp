@@ -2,7 +2,8 @@
 
 
 path = 'C:\Users\mpanagi\Documents\GitHub\Marios-temp\AAB_Analysis\';
-filename = 'Test 1DeepCut_resnet50_AABFeb18shuffle1_300000.csv';
+filename = 'Test 1DeepCut_resnet50_AABFeb18shuffle1_84600.csv';
+
 startRow = 4;
 data = csvread([path,filename],startRow);
 
@@ -39,7 +40,11 @@ REar_dist = sqrt(REar(:,1).^2 + REar(:,1).^2);
 Distance_300 = [nose_dist, tail_dist, LEar_dist, REar_dist];
 Confidence_300 = [data(:,4),data(:,7),data(:,10),data(:,13)];
 
-smoothing = 400;
+all_parts = [nose_dist,tail_dist,LEar_dist,REar_dist];
+corr(all_parts)
+
+
+smoothing = 500;
 figure
 plot(smooth(nose_dist(180:end,:),smoothing))
 hold on
@@ -50,6 +55,6 @@ plot(smooth(mean(all_parts(180:end,:),2),smoothing))
 legend({'Nose', 'Tail', 'Left ear', 'Right ear','Average'})
 hold off
 
-all_parts = [nose_dist,tail_dist,LEar_dist,REar_dist];
-corr(all_parts)
+
+
 
