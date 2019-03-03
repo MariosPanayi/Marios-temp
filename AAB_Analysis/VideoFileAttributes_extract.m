@@ -1,5 +1,5 @@
 % Quick video file information extraction
-cd 'F:\Marios 2017\MP003_SameDiff1_VideoConversion'
+cd 'F:\Marios 2017\MP004_MK801_SameDiff_02mgkg\MP004_SameDiff_videosconverted'
 videolist = dir( '*.mp4');
 for i = 1:size(videolist,1)
     obj = VideoReader(videolist(i).name);
@@ -12,5 +12,5 @@ end
 
 writetable(struct2table(video), 'videoattributes.csv')
 
-%'F:\Marios 2017\MP003_SameDiff1_VideoConversion\videoattributes.csv'
+% 'F:\Marios 2017\MP004_MK801_SameDiff_02mgkg\MP004_SameDiff_videosconverted\videoattributes.csv'
 

@@ -1,15 +1,23 @@
 %% AAB MP003 Deep Lab Cut Analysis
+% MP003 Test 1
 % For 524 x 520 videos 342 px/40cm
 % For 576 x 768 videos 328 px/40cm
+% MP004_SameDiff_02mgkg
+% For 576 x 768 videos 315 px/40cm
+
 %% Load in files contining video params
 % videoattributes.csv from VideoFileAttributes_extract.m function
 % {'name'}    {'fps'}    {'height'}    {'width'}    {'Duration'}
-vid = readtable('F:\Marios 2017\MP003_SameDiff1_VideoConversion\videoattributes.csv');
 
+% vid = readtable('F:\Marios 2017\MP003_SameDiff1_VideoConversion\videoattributes.csv');
+
+vid = readtable('F:\Marios 2017\MP004_MK801_SameDiff_02mgkg\MP004_SameDiff_videosconverted\videoattributes.csv');
 % Video_SubjNumbers.csv created from excel output from ANYMaze containing
 % video file numbers and subsequent animal name/genotype/grouping
 % {'x___Test'}    {'Animal'}    {'Treatment'}    {'Stage'}
-id = readtable('F:\Marios 2017\MP003_SameDiff1_VideoConversion\Video_SubjNumbers.csv','Delimiter',',');
+
+% id = readtable('F:\Marios 2017\MP003_SameDiff1_VideoConversion\Video_SubjNumbers.csv','Delimiter',',');
+id = readtable('F:\Marios 2017\MP004_MK801_SameDiff_02mgkg\MP004_SameDiff_videosconverted\Video_SubjNumbers.csv','Delimiter',',');
 
 
 
@@ -21,7 +29,7 @@ k = 0;
 for i = 1: size(vid.name,1)
     if sum(strcmp(id.x___Test,vid.name(i)))
         k = k+1;
-        path = 'F:\Marios 2017\MP003_SameDiff1_VideoConversion\DLC_Tracking_FullNetwork\';
+        path = 'F:\Marios 2017\MP004_MK801_SameDiff_02mgkg\MP004_SameDiff_videosconverted\DLC Tracking_FullNetwork\';
         filename = vid.name(i);
         filename = char(filename);
         filename = filename(1:(length(filename)-4));
@@ -40,11 +48,12 @@ for i = 1: size(vid.name,1)
     end
 end
 
-%save('C:\Users\mpanagi\Documents\GitHub\Marios-temp\AAB_Analysis\MP003_Data',RawData)
+save('C:\Users\mpanagi\Documents\GitHub\Marios-temp\AAB_Analysis\MK801_Data','RawData')
 %% Once above steps have been run once, just run from this point onwards to minimise analysis time
 
 
-load('C:\Users\mpanagi\Documents\GitHub\Marios-temp\AAB_Analysis\MP003_Data.mat')
+% load('C:\Users\mpanagi\Documents\GitHub\Marios-temp\AAB_Analysis\MP003_Data.mat')
+ load('C:\Users\mpanagi\Documents\GitHub\Marios-temp\AAB_Analysis\MK801_Data.mat')
 full_labels = {};
 full_data = [];
 
@@ -61,23 +70,25 @@ for i = 1:size(RawData,2)
     [data, cutoff_frame] = DLC_prunestart(dataraw);
     
     % Convert xy co-ordinates into distance travelled (pixels)
-    smoothxy = 5;
+    smoothxy = 24;
     [Distance, Confidence, framenum, Distance_labels] = distanceTravelled(data, smoothxy);
     
-    % convert pixels into cm
-    % For 524 x 520 videos 342 px/40cm
-    % For 576 x 768 videos 328 px/40cm
+   % MP003 Test 1
+% For 524 x 520 videos 342 px/40cm
+% For 576 x 768 videos 328 px/40cm
+% MP004_SameDiff_02mgkg
+% For 576 x 768 videos 315 px/40cm
     if RawData(1).vidwidth == 520
         Distance = Distance./(342/40);
     elseif RawData(1).vidwidth == 768
-        Distance = Distance./(328/40);
+        Distance = Distance./(315/40);
     end
     
     % Discretize the data into time bins (need to know the frame rate of the video for this)
     
     fps = RawData(1).fps; %frame rate of video in frames per second
     bin_duration = 5; %in seconds
-    framesSmoothing = 10*fps;
+    framesSmoothing = 20*fps;
     
     [Distance_Bins] = distanceBins(Distance, fps, bin_duration, framesSmoothing);
     
