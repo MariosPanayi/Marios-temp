@@ -1,4 +1,4 @@
-function [Distance, Confidence, framenum, Distance_labels] = distanceTravelled(data, smoothxy)
+function [Distance, Confidence, framenum, Distance_labels, XY_Smoothed] = distanceTravelled(data, smoothxy)
 
 % No smoothing of xy co-ordinates, set smoothxy = 1
 
@@ -23,9 +23,19 @@ head_xy  = [mean([data(:,2),data(:,8),data(:,11)],2), mean([data(:,3),data(:,9),
 head = [diff(smooth(head_xy(:,1),smoothxy)),smooth(diff(head_xy(:,2)),smoothxy)];
 head_dist = sqrt(head(:,1).^2 + head(:,1).^2);
 
+avg2pts_xy = [mean([data(:,5),head_xy(:,1)],2), mean([data(:,6),head_xy(:,2)],2)];
+avg2pts = [diff(smooth(avg2pts_xy(:,1),smoothxy)),smooth(diff(avg2pts_xy(:,2)),smoothxy)];
+avg2pts_dist = sqrt(avg2pts(:,1).^2 + avg2pts(:,1).^2);
+
+
+XY_Smoothed = [data(:, [2,3,5,6,8,9,11,12]), avg_xy, head_xy, avg2pts_xy];
+
+for i = 1: size(XY_Smoothed, 2)
+XY_Smoothed(:,i) = smooth(XY_Smoothed(:,i), smoothxy);
+end
 
 framenum = data(2:end,1);
 
-Distance = [nose_dist, tail_dist, LEar_dist, REar_dist, avg_dist, head_dist];
+Distance = [nose_dist, tail_dist, LEar_dist, REar_dist, avg_dist, head_dist, avg2pts_dist];
 Confidence = [data(:,4),data(:,7),data(:,10),data(:,13)];
-Distance_labels = {'nose', 'tail', 'LEar', 'REar', 'avg', 'head'};
+Distance_labels = {'nose', 'tail', 'LEar', 'REar', 'avg', 'head', 'avg2pts'};
