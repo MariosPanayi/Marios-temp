@@ -1,6 +1,26 @@
-function [Distance, Confidence, framenum, Distance_labels, XY_Smoothed] = distanceTravelled(data, smoothxy)
+function [Distance, Confidence, framenum, Distance_labels, XY_Smoothed] = distanceTravelled(data, smoothxy, vars, var_names)
+
+x = 1;
+y = 2;
+likelihood = 3;
 
 % No smoothing of xy co-ordinates, set smoothxy = 1
+
+temp_x = [];
+temp_y = [];
+
+for i = vars
+    temp_x = data(:,((vars(i)-1)*3 + x +1));
+    temp_y = data(:,((vars(i)-1)*3 + y +1));
+
+end
+temp_xy_smooth = [diff(smooth(temp_x(:),smoothxy)),smooth(diff(temp_y,smoothxy)];
+temp_dist = sqrt(temp_xy_smooth(:,1).^2 + temp_xy_smooth(:,1).^2);
+
+XY_Smoothed
+
+
+
 
 
 nose = [diff(smooth(data(:,2),smoothxy)),smooth(diff(data(:,3)),smoothxy)];

@@ -1,4 +1,4 @@
-function [data, cutoff_frame] = DLC_prunestart(dataraw)
+function [data, cutoff_frame] = DLC_prunestart(dataraw, points, likelihood)
 
 % Prune first ~5s of anymaze video when it contains empty frames
 % This function uses the confidence measure from deep lab cut to identify
@@ -10,18 +10,25 @@ function [data, cutoff_frame] = DLC_prunestart(dataraw)
 % training criteria
 
 % pcutoff = 0.9;
-% 
+%
 % a = find(dataraw(:,4) > pcutoff , 1, 'first');
 % b = find(dataraw(:,7) > pcutoff , 1, 'first');
 % c = find(dataraw(:,10) > pcutoff , 1, 'first');
 % d = find(dataraw(:,13) > pcutoff , 1, 'first');
 % cutoff_frame = max([a b c d]);
 
-a = find(dataraw(:,4) == 1 , 1, 'first');
-b = find(dataraw(:,7) == 1 , 1, 'first');
-c = find(dataraw(:,10) == 1 , 1, 'first');
-d = find(dataraw(:,13) == 1 , 1, 'first');
-cutoff_frame = max([a b c d]);
+
+for i = 1:length(points)
+    index = ((points(i)-1)*3 + likelihood + 1);
+    a(i) = find(dataraw(:,index) == 1, 1, 'first');
+end
+cutoff_frame = max(a);
+
+% a = find(dataraw(:,4) == 1 , 1, 'first');
+% b = find(dataraw(:,7) == 1 , 1, 'first');
+% c = find(dataraw(:,10) == 1 , 1, 'first');
+% d = find(dataraw(:,13) == 1 , 1, 'first');
+% cutoff_frame = max([a b c d]);
 
 
-data = dataraw((cutoff_frame+1):end,:);
+data = dataraw((cutoff_frame):end,:);

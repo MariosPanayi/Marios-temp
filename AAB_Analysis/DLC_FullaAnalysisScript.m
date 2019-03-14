@@ -11,13 +11,13 @@
 
 % vid = readtable('F:\Marios 2017\MP003_SameDiff1_VideoConversion\videoattributes.csv');
 
-vid = readtable('F:\Marios 2017\MP004_MK801_SameDiff_02mgkg\MP004_SameDiff_videosconverted\videoattributes.csv');
+vid = readtable('F:\DLC_AllVideos_Analysis\MP004_MK801\videoattributes.csv');
 % Video_SubjNumbers.csv created from excel output from ANYMaze containing
 % video file numbers and subsequent animal name/genotype/grouping
 % {'x___Test'}    {'Animal'}    {'Treatment'}    {'Stage'}
 
 % id = readtable('F:\Marios 2017\MP003_SameDiff1_VideoConversion\Video_SubjNumbers.csv','Delimiter',',');
-id = readtable('F:\Marios 2017\MP004_MK801_SameDiff_02mgkg\MP004_SameDiff_videosconverted\Video_SubjNumbers.csv','Delimiter',',');
+id = readtable('F:\DLC_AllVideos_Analysis\MP004_MK801\Video_SubjNumbers.csv','Delimiter',',');
 
 
 
@@ -29,11 +29,11 @@ k = 0;
 for i = 1: size(vid.name,1)
     if sum(strcmp(id.x___Test,vid.name(i)))
         k = k+1;
-        path = 'F:\Marios 2017\MP004_MK801_SameDiff_02mgkg\MP004_SameDiff_videosconverted\DLC Tracking_FullNetwork\';
+        path = 'F:\DLC_AllVideos_Analysis\MP004_MK801\';
         filename = vid.name(i);
         filename = char(filename);
         filename = filename(1:(length(filename)-4));
-        fileextension = 'DeepCut_resnet50_AABFeb18shuffle1_1030000.csv';
+        fileextension = 'DeepCut_resnet50_AABFeb18shuffle1_870000.csv';
         [dataraw, bodyparts]  = DLC_RawRead([path,filename,fileextension]);
         RawData(k).filename = filename;
         RawData(k).data = dataraw;
@@ -48,7 +48,7 @@ for i = 1: size(vid.name,1)
     end
 end
 
-save('C:\Users\mpanagi\Documents\GitHub\Marios-temp\AAB_Analysis\MK801_Data','RawData')
+%save('C:\Users\mpanagi\Documents\GitHub\Marios-temp\AAB_Analysis\MK801_Data','RawData')
 %% Once above steps have been run once, just run from this point onwards to minimise analysis time
 
 
@@ -59,11 +59,56 @@ load('C:\Users\mpanagi\Documents\GitHub\Marios-temp\AAB_Analysis\MK801_Data.mat'
 % Options
 interpolate = 1; % Interpolate between co-ordinates with low confidence i.e. < 100%
 anymazeEmpty = 1; % If the first 5s of the video has an empty image from anymaze
-plotDiagnostics_path = 1; % Diagnostic plots of each video to assess tracking
+plotDiagnostics_path = 0; % Diagnostic plots of each video to assess tracking
 plotDiagnostics_corr = 0; % Diagnostic plots of each video to assess outliers
 
 crop = 0;
+crop_fromtracking = 1;
 crop_xy = [200,200,570,570; 125,480,125,480]; %xy co-ordinates of a rectangle in the pixel space of the video. Any values outside of this will be considered NaNs
+
+
+% Order of labeled body part columns in raw data
+nose = 1;
+tail = 2;
+rightear = 3;
+leftear = 4;
+boxTopLeft = 5;
+boxTopRight = 6;
+boxBottomLeft = 7;
+boxBottomRight = 8;
+innerTopLeft = 9;
+innerTopRight = 10;
+innerBottomLeft = 11;
+innerBottomRight = 12;
+%composite parts - number to continue from last DLC part above
+avg = 13;
+head = 14;
+midear = 15;
+avg2pts = 16;
+
+%summary of all var names
+var_names = {'nose', 'tail', 'rightear', 'leftear', 'boxTopLeft', 'boxTopRight', 'boxBottomLeft', 'boxBottomRight', 'innerTopLeft', 'innerTopRight', 'innerBottomLeft', 'innerBottomRight', 'avg', 'head', 'midear', 'avg2pts'};
+vars = [nose tail rightear leftear boxTopLeft boxTopRight boxBottomLeft boxBottomRight innerTopLeft innerTopRight innerBottomLeft innerBottomRight avg head midear avg2pts];
+
+% composite parts - components to average
+avg_comp = [nose tail rightear leftear];
+head_comp = [nose rightear leftear];
+midear_comp = [rightear leftear];
+avg2pts_comp = [head tail];
+%list any composites here in separate rows
+composites_comp = {avg_comp; head_comp; midear_comp; avg2pts_comp};
+
+%
+parts = [nose tail rightear leftear];
+boxlimits = [boxTopLeft boxTopRight boxBottomLeft boxBottomRight];
+composites = [avg, head, midear, avg2pts];
+
+
+
+% Order of sub columns from Raw data
+x = 1;
+y = 2;
+likelihood = 3;
 
 % initialise vars
 full_labels = {};
@@ -84,19 +129,31 @@ full_data = [];
     end
     % Additional step to ensure tracking starts at the first moment DLC is
     % 100% certain of the presence of a mouse
-    [data, cutoff_frame] = DLC_prunestart(dataraw);
+    [data, cutoff_frame] = DLC_prunestart(dataraw, parts, likelihood);
     
     
+    % Determine crop co-ordinates from tracking or manual input values    
+    if crop_fromtracking
+        
+        for k = 1:length(boxlimits)
+            crop_xy(:,k) = [median(smooth(data(:,[(boxlimits(k)-1)*3 + x + 1])));median(smooth(data(:,[(boxlimits(k)-1)*3 + y + 1])))];
+        end
+        min_xy = [min(crop_xy(x,:)),min(crop_xy(y,:))];
+        max_xy = [max(crop_xy(x,:)),max(crop_xy(y,:))];
+    else
+        min_xy = [min(crop_xy(x,:)),min(crop_xy(y,:))];
+        max_xy = [max(crop_xy(x,:)),max(crop_xy(y,:))];
+    end
+    
+    % Use cropping values to identify points outside the box and label as nan
     if crop
-      min_xy = [min(crop_xy(1,:)),min(crop_xy(2,:))];
-      max_xy = [max(crop_xy(1,:)),max(crop_xy(2,:))];
-      for j = [2,5,8,11]
-          data(find(data(:,j) < min_xy(1)),j) = nan;
-          data(find(data(:,j) > max_xy(1)),j) = nan;
+      for j = [(parts-1)*3 + x + 1]
+          data(find(data(:,j) < min_xy(x)),j) = nan;
+          data(find(data(:,j) > max_xy(x)),j) = nan;
       end
-      for j = [3,6,9,12]
-          data(find(data(:,j) < min_xy(2)),j) = nan;
-          data(find(data(:,j) > max_xy(2)),j)= nan;
+      for j = [(parts-1)*3 + y + 1]
+          data(find(data(:,j) < min_xy(y)),j) = nan;
+          data(find(data(:,j) > max_xy(y)),j)= nan;
       end      
     end
     
@@ -106,7 +163,9 @@ full_data = [];
         [data] = interpolateLowConfidence(data,criterion);
     end
     
-    
+        
+     % Create composite scores out fof body parts
+    [data] = appendcomposites(data, composites, composites_comp);
     
     
     
@@ -147,7 +206,7 @@ full_data = [];
         hold off              
     end
     
-    
+ 
     
     % Convert xy co-ordinates into distance travelled (pixels)
     smoothxy = 1*fps;
@@ -215,16 +274,16 @@ testnum = vertcat(dummy{:,1});
 animal = vertcat(dummy{:,2});
 treatment = vertcat(dummy{:,3});
 stage = vertcat(dummy{:,4});
-nose = full_data(:,1);
-tail = full_data(:,2);
+nosey = full_data(:,1);
+taily = full_data(:,2);
 LEar = full_data(:,3);
 REar = full_data(:,4);
 avg = full_data(:,5);
-head = full_data(:,6);
-avg2pts = full_data(:,7);
+heady = full_data(:,6);
+avg2ptsy = full_data(:,7);
 Bins = full_data(:,8);
 
-T1 = table(testnum,animal,treatment,stage,Bins,nose,tail,LEar,REar,avg,head,avg2pts);
+T1 = table(testnum,animal,treatment,stage,Bins,nosey,taily,LEar,REar,avg,heady,avg2ptsy);
 
 
 
