@@ -1,10 +1,6 @@
 function [data] = appendcomposites(data, composites, composites_comp)
-% append composite body parts to end of data.
-% e.g. adding a composite that si the average of 4 body parts (avg)
-% 
-% avg = 13;
+% append composite body parts to
 % composites = [avg, head, midear, avg2pts];
-% avg_comp = [nose tail rightear leftear];
 % composites_comp = {avg_comp; head_comp; midear_comp; avg2pts_comp};
 
 x = 1;

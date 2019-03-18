@@ -1,0 +1,11 @@
+function [polar, angleChange] = angles2bodypart(target,pivot)
+% input 2 matrices (col1,col2 -> x,y, rows = time) of a target body part and another pivot body part you want to
+% analyse the rotation around.
+
+% center target relative to pivot
+centered = target-pivot;
+% figure out the polar co-ordinates of the target relative tot he pivot
+polar = atan2(centered(:,1),centered(:,2));
+angleChange = diff(unwrap(polar));
+
+

@@ -115,7 +115,6 @@ likelihood = 3;
 % initialise vars
 full_labels = {};
 full_data = [];
-Smooth_data = RawData;
     for i = 1:size(RawData,2) 
     
     dataraw = RawData(i).data;
@@ -172,8 +171,9 @@ Smooth_data = RawData;
     
         
     % Convert xy co-ordinates into distance travelled (pixels)
-    smoothxy = .25*fps;
-    [Distance, Confidence, framenum, Distance_labels, X_raw, Y_raw, X_Smoothed, Y_Smoothed] = distanceTravelled(data, smoothxy, vars, var_names);
+    smoothxy = 1*fps;
+    [Distance, Confidence, framenum, Distance_labels, X_Smoothed, Y_Smoothed] = distanceTravelled(data, smoothxy, vars, var_names);
+  
     
 % Manual override of auto conversion?
     % MP003 Test 1
@@ -228,12 +228,9 @@ Smooth_data = RawData;
     full_labels(i,:) = {templabels};
     full_data = [full_data; tempdata];
     
-    Smooth_data(i).rawX = X_raw;
-    Smooth_data(i).rawY = Y_raw;
+    Smooth_data(i) = RawData(i);
+    Smooth_data(i).smoothX = 
     
-    Smooth_data(i).smoothX = X_Smoothed;
-    Smooth_data(i).smoothY = Y_Smoothed;
- 
 end
 %
 
