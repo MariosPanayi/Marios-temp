@@ -198,7 +198,7 @@ Smooth_data = RawData;
     
     % Discretize the data into time bins (need to know the frame rate of the video for this)
     
-    fps = RawData(1).fps; %frame rate of video in frames per second
+    fps = RawData(i).fps; %frame rate of video in frames per second
     bin_duration = 5; %in seconds
     framesSmoothing = 1;
     
@@ -252,7 +252,29 @@ table_names(end+1) = {'Bins'};
 T1 = addvars(T1, full_data);
 T1 = splitvars(T1, 'full_data','NewVariableNames', table_names);
 
+%% Angle analysis
 
+parts = [nose tail rightear leftear];
+boxlimits = [boxTopLeft boxTopRight boxBottomLeft boxBottomRight];
+composites = [avg, head, midear, avg2pts];
+
+Smooth_data(i).rawX
+
+
+% Identify average location in 30s bins
+bin_duration = 30;
+fps = RawData(1).fps;
+binwidth = fps*bin_duration;
+bins = ceil([1:size(Distance,1)]/binwidth)';
+
+
+
+
+%  hist3([Smooth_data(8).rawX(:,avg),Smooth_data(8).rawY(:,avg)], 'CDataMode','auto','FaceColor','interp');
+%  view(2)
+
+% histogram2(Smooth_data(8).rawX(:,avg),Smooth_data(8).rawY(:,avg), 'FaceColor', 'flat');
+% view(2)
 
 %% Optional plotting - removed from main loop
 % plotDiagnostics_path = 0; % Diagnostic plots of each video to assess tracking
