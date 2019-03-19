@@ -276,6 +276,11 @@ bins = ceil([1:size(Distance,1)]/binwidth)';
 % histogram2(Smooth_data(8).rawX(:,avg),Smooth_data(8).rawY(:,avg), 'FaceColor', 'flat');
 % view(2)
 
+% [N,c] = hist3([Smooth_data(8).rawX(:,avg),Smooth_data(8).rawY(:,avg)],'Nbins',[20 20]);
+% imagesc(N)
+pcolor(N)
+shading interp
+
 %% Optional plotting - removed from main loop
 % plotDiagnostics_path = 0; % Diagnostic plots of each video to assess tracking
 % plotDiagnostics_corr = 0; % Diagnostic plots of each video to assess outliers
