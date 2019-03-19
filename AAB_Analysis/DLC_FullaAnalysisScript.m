@@ -254,19 +254,25 @@ T1 = splitvars(T1, 'full_data','NewVariableNames', table_names);
 
 %% Angle analysis
 
+i = 1;
 parts = [nose tail rightear leftear];
 boxlimits = [boxTopLeft boxTopRight boxBottomLeft boxBottomRight];
 composites = [avg, head, midear, avg2pts];
 
-Smooth_data(i).rawX
-
+Xdata = Smooth_data(i).rawX;
+Ydata = Smooth_data(i).rawY;
 
 % Identify average location in 30s bins
 bin_duration = 30;
-fps = RawData(1).fps;
-binwidth = fps*bin_duration;
-bins = ceil([1:size(Distance,1)]/binwidth)';
+fps = RawData(i).fps;
 
+[avgXLocations, avgYLocations, bins] = averageXYlocations(Xdata,Ydata,fps, bin_duration);
+
+target = [Xdata(:, avg), Ydata(:, avg)];
+pivot = [avgXLocations(:, avg), avgYLocations(:, avg)];
+
+[polar, angleChange] = angles2bodypart(target,pivot);
+total_angleChange = accumarray(bins(2:end), abs(angleChange), [], @sum);
 
 
 
@@ -276,8 +282,8 @@ bins = ceil([1:size(Distance,1)]/binwidth)';
 % histogram2(Smooth_data(8).rawX(:,avg),Smooth_data(8).rawY(:,avg), 'FaceColor', 'flat');
 % view(2)
 
-% [N,c] = hist3([Smooth_data(8).rawX(:,avg),Smooth_data(8).rawY(:,avg)],'Nbins',[20 20]);
-% imagesc(N)
+[N,c] = hist3([Smooth_data(i).rawX(:,avg),Smooth_data(i).rawY(:,avg)],'Nbins',[10 10]);
+imagesc(N)
 pcolor(N)
 shading interp
 
