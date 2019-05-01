@@ -1,13 +1,13 @@
 %Find all the .avi files: N.B.  file number 32,216, 400 throw up errors
 %when reading by VideoReader function - need to install 64 bit h.264 codecs
 
-containingfolder = 'G:\SKR113_ORIENTING_VIDEOS\**\**\*.avi';
-Filelist = dir('G:\SKR113_ORIENTING_VIDEOS\**\*.avi');
+% containingfolder = 'E:\SKR113_ORIENTING_VIDEOS\**\**\*.avi';
+Filelist = dir('E:\SKR113_ORIENTING_VIDEOS\**\*.avi');
 %Filelist(i).name
 %Filelist(i).folder
 
-
-for i = 180:size(Filelist,1)
+luminance = 90;
+for i = 1:size(Filelist,1)
     file = strcat(Filelist(i).folder, '\',Filelist(i).name)
     
 %     vidObj = VideoReader(file);

@@ -53,9 +53,9 @@ end
 
 
 % load('C:\Users\mpanagi\Documents\GitHub\Marios-temp\AAB_Analysis\MP003_Data.mat')
-% load('C:\Users\mpanagi\Documents\GitHub\Marios-temp\AAB_Analysis\MK801_Data.mat')
+load('C:\Users\mpanagi\Documents\GitHub\Marios-temp\AAB_Analysis\MK801_Data.mat')
 % SP3 path
-load('C:\Users\Marios\Documents\GitHub\Marios-temp\AAB_Analysis\MK801_Data.mat')
+% load('C:\Users\Marios\Documents\GitHub\Marios-temp\AAB_Analysis\MK801_Data.mat')
 
 
 % Options
@@ -116,7 +116,7 @@ likelihood = 3;
 full_labels = {};
 full_data = [];
 Smooth_data = RawData;
-    for i = 1:size(RawData,2) 
+for i = 1:size(RawData,2)
     
     dataraw = RawData(i).data;
     
@@ -135,7 +135,7 @@ Smooth_data = RawData;
     [data, cutoff_frame] = DLC_prunestart(dataraw, parts, likelihood);
     
     
-    % Determine crop co-ordinates from tracking or manual input values    
+    % Determine crop co-ordinates from tracking or manual input values
     if crop_fromtracking
         
         for k = 1:length(boxlimits)
@@ -150,14 +150,14 @@ Smooth_data = RawData;
     
     % Use cropping values to identify points outside the box and label as nan
     if crop
-      for j = [(parts-1)*3 + x + 1]
-          data(find(data(:,j) < min_xy(x)),j) = nan;
-          data(find(data(:,j) > max_xy(x)),j) = nan;
-      end
-      for j = [(parts-1)*3 + y + 1]
-          data(find(data(:,j) < min_xy(y)),j) = nan;
-          data(find(data(:,j) > max_xy(y)),j)= nan;
-      end      
+        for j = [(parts-1)*3 + x + 1]
+            data(find(data(:,j) < min_xy(x)),j) = nan;
+            data(find(data(:,j) > max_xy(x)),j) = nan;
+        end
+        for j = [(parts-1)*3 + y + 1]
+            data(find(data(:,j) < min_xy(y)),j) = nan;
+            data(find(data(:,j) > max_xy(y)),j)= nan;
+        end
     end
     
     % Interpolate any time points during session that do not have 100 certainty
@@ -166,16 +166,16 @@ Smooth_data = RawData;
         [data] = interpolateLowConfidence(data,criterion);
     end
     
-        
-     % Create composite scores out fof body parts
+    
+    % Create composite scores out fof body parts
     [data] = appendcomposites(data, composites, composites_comp);
     
-        
+    
     % Convert xy co-ordinates into distance travelled (pixels)
     smoothxy = .25*fps;
     [Distance, Confidence, framenum, Distance_labels, X_raw, Y_raw, X_Smoothed, Y_Smoothed] = distanceTravelled(data, smoothxy, vars, var_names);
     
-% Manual override of auto conversion?
+    % Manual override of auto conversion?
     % MP003 Test 1
     % For 524 x 520 videos 342 px/40cm
     % For 576 x 768 videos 328 px/40cm
@@ -233,13 +233,13 @@ Smooth_data = RawData;
     
     Smooth_data(i).smoothX = X_Smoothed;
     Smooth_data(i).smoothY = Y_Smoothed;
- 
+    
 end
 %
 
 % Exapnd cell array of labels into rows
 dummy = vertcat(full_labels{:});
-% split individual columns of labels 
+% split individual columns of labels
 testnum = vertcat(dummy{:,1});
 animal = vertcat(dummy{:,2});
 treatment = vertcat(dummy{:,3});
@@ -254,7 +254,7 @@ T1 = splitvars(T1, 'full_data','NewVariableNames', table_names);
 
 %% Angle analysis
 
-i = 1;
+i = 34;
 parts = [nose tail rightear leftear];
 boxlimits = [boxTopLeft boxTopRight boxBottomLeft boxBottomRight];
 composites = [avg, head, midear, avg2pts];
@@ -263,34 +263,46 @@ Xdata = Smooth_data(i).rawX;
 Ydata = Smooth_data(i).rawY;
 
 % Identify average location in 30s bins
-bin_duration = 30;
+bin_duration = 5;
 fps = RawData(i).fps;
 
 [avgXLocations, avgYLocations, bins] = averageXYlocations(Xdata,Ydata,fps, bin_duration);
 
 target = [Xdata(:, avg), Ydata(:, avg)];
+% pivot = [Xdata(:, midear), Ydata(:, midear)];
 pivot = [avgXLocations(:, avg), avgYLocations(:, avg)];
 
 [polar, angleChange] = angles2bodypart(target,pivot);
 total_angleChange = accumarray(bins(2:end), abs(angleChange), [], @sum);
 
-
+figure;
+plot(radtodeg(angleChange));
+figure;
+scatter(X(2:end),Y(2:end),[],abs(radtodeg(angleChange)));
+colormap jet
+caxis([0 20])
 
 %  hist3([Smooth_data(8).rawX(:,avg),Smooth_data(8).rawY(:,avg)], 'CDataMode','auto','FaceColor','interp');
 %  view(2)
 
 % histogram2(Smooth_data(8).rawX(:,avg),Smooth_data(8).rawY(:,avg), 'FaceColor', 'flat');
 % view(2)
+X = Smooth_data(i).rawX(:,avg);
+Y = Smooth_data(i).rawY(:,avg);
 
-[N,c] = hist3([Smooth_data(i).rawX(:,avg),Smooth_data(i).rawY(:,avg)],'Nbins',[10 10]);
-imagesc(N)
-pcolor(N)
+H = densityplot(Smooth_data(i).rawX(:,avg),Smooth_data(i).rawY(:,avg),[100 100]);
+figure
+[N,c] = hist3([Smooth_data(i).rawX(:,avg),Smooth_data(i).rawY(:,avg)],'Nbins',[100 100]);
+% imagesc(N)
+pcolor(N')
 shading interp
+colorbar
+caxis([0 50])
 
 %% Optional plotting - removed from main loop
 % plotDiagnostics_path = 0; % Diagnostic plots of each video to assess tracking
 % plotDiagnostics_corr = 0; % Diagnostic plots of each video to assess outliers
-%     
+%
 %     % Tracking Diagnostic Plots
 %     if plotDiagnostics_path
 %         figure;
@@ -303,7 +315,7 @@ shading interp
 %         title({char({RawData(i).filename, char(RawData(i).treatment), char(RawData(i).animal), char(RawData(i).stage)})});
 %         hold off
 %     end
-%     
+%
 %     if plotDiagnostics_corr
 %         figure;
 %         title({char({RawData(i).filename, char(RawData(i).treatment), char(RawData(i).animal), char(RawData(i).stage)})});
@@ -314,9 +326,9 @@ shading interp
 %         scatter(data(:,2), data(:,11));
 %         scatter(data(:,5), data(:,8));
 %         scatter(data(:,5), data(:,11));
-%         scatter(data(:,8), data(:,11)); 
+%         scatter(data(:,8), data(:,11));
 %         hold off
-% 
+%
 %         subplot(1,2,2)
 %         scatter(data(:,3), data(:,6));
 %         hold on
@@ -325,7 +337,7 @@ shading interp
 %         scatter(data(:,6), data(:,9));
 %         scatter(data(:,6), data(:,12));
 %         scatter(data(:,9), data(:,12));
-%         hold off              
+%         hold off
 %     end
-%     
-%  
+%
+%

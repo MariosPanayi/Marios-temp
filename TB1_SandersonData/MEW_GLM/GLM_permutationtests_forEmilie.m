@@ -6,8 +6,8 @@
 %             DAglm = Data_base(3:end,:);
 
 %Import sample data
-            temp = dlmread('C:\Users\mario\Documents\GitHub\Marios-temp\TB1_SandersonData\MEW_GLM\temp_Table_for_marios.txt');
-            DAglm = dlmread('C:\Users\mario\Documents\GitHub\Marios-temp\TB1_SandersonData\MEW_GLM\DAglm_DAdata_for_marios.txt');
+            temp = dlmread('C:\Users\mpanagi\Documents\GitHub\Marios-temp\TB1_SandersonData\MEW_GLM\temp_Table_for_marios.txt');
+            DAglm = dlmread('C:\Users\mpanagi\Documents\GitHub\Marios-temp\TB1_SandersonData\MEW_GLM\DAglm_DAdata_for_marios.txt');
 
             p = 1;
             
