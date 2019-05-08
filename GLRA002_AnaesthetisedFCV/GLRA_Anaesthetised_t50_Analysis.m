@@ -1,6 +1,6 @@
 
 %% Load Data
-load('C:\Users\Marios\Documents\GitHub\Marios-temp\GLRA002_AnaesthetisedFCV\GLRA002_BaselinePreDrugData_t50Analysis.mat')
+load('C:\Users\mpanagi\Documents\GitHub\Marios-temp\GLRA002_AnaesthetisedFCV\GLRA002_BaselinePreDrugData_t50Analysis.mat')
 
 %% Plot Data
 figure;
@@ -67,9 +67,10 @@ hold on
 for  i = 1:size(WT, 2)
 % (2) set min value of post peak data = 0
 %Truncate data from peak
-Y = WT(WTpklocs(i):end,i);
+Y = WT(WTpklocs(i):WTpklocs(i)+50,i);
 %Set min value to 0
 Y = Y- min(Y);
+Y = (Y/max(Y)) *100
 % [~, minloc] = min(Y);
 % Y = Y(1:minloc)
 X = [0:length(Y)-1]';
@@ -100,7 +101,8 @@ for  i = 1:size(KO, 2)
 Y = KO(KOpklocs(i):end,i);
 %Set min value to 0
 Y = Y- min(Y);
-Y0 = Y(1);
+Y = (Y/max(Y)) *100
+
 X = [0:length(Y)-1]';
 
 % (3) model negative exponential

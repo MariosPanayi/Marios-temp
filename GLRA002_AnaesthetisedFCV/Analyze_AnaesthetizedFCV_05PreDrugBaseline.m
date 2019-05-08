@@ -252,7 +252,7 @@ for i = 1: size(data,2)
 tempData = cell2mat(data(i).processed.c_predicted(1,:)');
 %DA data picker for even rows
 tempData = tempData(1:2:size(tempData,1),:);
-%Save last 3 trials only [recoridngs vary from 5 - 7 trials depending on the animal
+%Save last 3 trials only [recordings vary from 5 - 7 trials depending on the animal
 tempData = tempData([end-2]:end,:);
 
 %Apply calibration factor to DA data
