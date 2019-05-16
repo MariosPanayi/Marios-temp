@@ -1,6 +1,6 @@
 
 %% Load Data
-load('C:\Users\mario\Documents\GitHub\Marios-temp\GLRA002_AnaesthetisedFCV\GLRA002_BaselinePreDrugData_t50Analysis.mat')
+load('C:\Users\mpanagi\Documents\GitHub\Marios-temp\GLRA002_AnaesthetisedFCV\GLRA002_BaselinePreDrugData_t50Analysis.mat')
 
 %% Plot Data
 figure;
@@ -95,11 +95,13 @@ if (WTpklocs(i)+endpoints(MaxFitIndex)) > length(WT(WTpklocs(i):end,i))
     Y = WT(WTpklocs(i):end,i);
 else
 Y = WT(WTpklocs(i):WTpklocs(i)+endpoints(MaxFitIndex),i);
+
 end
 %Set min value to 0
 Y = Y- min(Y);
+Y = smooth(Y)
 % Change metric to percentage to easily compare slopes in figure if desired
-Y = (Y/max(Y)) *100;
+%Y = (Y/max(Y)) *100;
 % (3) model negative exponential
 X = [0:length(Y)-1]';
 % function is y = a*e^(bX)
@@ -149,8 +151,9 @@ Y = KO(KOpklocs(i):KOpklocs(i)+endpoints(MaxFitIndex),i);
 end
 %Set min value to 0
 Y = Y- min(Y);
+Y = smooth(Y)
 % Change metric to percentage to easily compare slopes in figure if desired
-Y = (Y/max(Y)) *100;
+%Y = (Y/max(Y)) *100;
 % (3) model negative exponential
 X = [0:length(Y)-1]';
 % function is y = a*e^(bX)
