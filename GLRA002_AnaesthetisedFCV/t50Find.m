@@ -1,4 +1,4 @@
-function [t50, rsq, a, b, Y, pks, pklocs, MaxFitIndex] = t50Find(data)
+function [t50, rsq, a, b, Y, pklocs, MaxFitIndex] = t50Find(data, peak)
 % Input a vector of dopamine response data - Function finds the t50 rate
 % index of rate of decay post-peak response
 
@@ -15,12 +15,20 @@ function [t50, rsq, a, b, Y, pks, pklocs, MaxFitIndex] = t50Find(data)
 %       pks = location of peak DA in raw data 
 %       pklocs = time at which the peak DA occurred
 %       MaxFitIndex = Time (from peak) at which data was truncated (to remove additional noise/rebound effects) 
-%% 1. Find Peak value
 
+if nargin < 1
+    error('No data, please provide vector of FCV trace');
+end
+if nargin < 2
+    peak = 0;
+end
+%% 1. Find Peak value if not provided
+
+if ~peak
 [pks,pklocs] = findpeaks(data, 'MinPeakProminence',max(data)*.85, 'NPeaks', 1);
-% Code hangs up here because some traces do not threshold their peaks well
-% here... need new decision criterion for peak location - consider current
-% identification of peak data in original analysis
+else
+    pklocs = peak;
+end
 
 %% 2. Determine how much data to fit post peak
 
@@ -37,7 +45,7 @@ Y = Y- min(Y);
 
 % Assess fit with different lengths of data. Important since a number of
 % traces show weird rebound effects.
-endpoints = 5:1:length(Y);
+endpoints = 15:1:length(Y);
 data_Fit = zeros(length(endpoints),1);
 for j = 1:length(endpoints)
     Ytemp = Y(1:endpoints(j));
