@@ -31,7 +31,7 @@ else
 end
 
 %% 2. Determine how much data to fit post peak
-
+try
 % Truncate data from peak to end of file
 Y = data(pklocs:end);
 % If any data goes below baseline (by 10%), remove end of data
@@ -66,7 +66,7 @@ end
 Y = Y- min(Y);
 Y = Y';
 
-%% (3) model negative exponential
+% (3) model negative exponential
 X = [0:length(Y)-1]';
 % function is y = a*e^(bX)
 % a = Y value at t = 0
@@ -78,4 +78,13 @@ rsq = gof.rsquare;
 a = coeffs(1);
 b = coeffs(2);
 t50 = -1*(log(2)/b);
+catch
+   t50 = NaN;
+   rsq  = NaN;
+   a  = NaN;
+   b  = NaN;
+   Y  = NaN;
+   pklocs = NaN;
+   MaxFitIndex = NaN;
+end
 

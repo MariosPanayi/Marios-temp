@@ -2,22 +2,14 @@
 clear all
 %% 01Baseline1
  
-DataFilenames = {'F:\Marios aFCV\GLRA_002\DataAnalysis\GLRA002_01BaselineData.mat',
-'F:\Marios aFCV\GLRA_002\DataAnalysis\GLRA002_02StimResponse.mat',
-'F:\Marios aFCV\GLRA_002\DataAnalysis\GLRA002_03PulseResponse.mat',
-'F:\Marios aFCV\GLRA_002\DataAnalysis\GLRA002_04BaselineData.mat',
-'F:\Marios aFCV\GLRA_002\DataAnalysis\GLRA002_05BaselinePreDrugData.mat',
-'F:\Marios aFCV\GLRA_002\DataAnalysis\GLRA002_06DrugPeriodData.mat'};
+ {load('F:\Marios aFCV\GLRA_002\DataAnalysis\GLRA002_01BaselineData.mat');
+ load('F:\Marios aFCV\GLRA_002\DataAnalysis\GLRA002_02StimResponse.mat');
+ load('F:\Marios aFCV\GLRA_002\DataAnalysis\GLRA002_03PulseResponse.mat');
+ load('F:\Marios aFCV\GLRA_002\DataAnalysis\GLRA002_04BaselineData.mat');
+ load('F:\Marios aFCV\GLRA_002\DataAnalysis\GLRA002_05BaselinePreDrugData.mat');
+ load('F:\Marios aFCV\GLRA_002\DataAnalysis\GLRA002_06DrugPeriodData.mat'};
 
-SheetSaveName = {'01Baseline',
-'02StimResponse',
-'03PulseResponse',
-'04Baseline',
-'05BaselinePreDrug',
-'06DrugPeriod'};
 
-for period = 1:size(DataFilenames,1)
-load(DataFilenames{period});
 
 experimentParams = readtable('F:\Marios aFCV\GLRA_002\DataAnalysis\GLRA002_params.xlsx');
 tempData = [];
@@ -152,8 +144,12 @@ saveData1 = table(geno, sex, subj, CalibrationFactor, StimStrength, StimPulse,St
 
 
 
-writetable(saveData1,'C:\Users\mpanagi\Documents\GitHub\Marios-temp\GLRA002_AnaesthetisedFCV\GLRA002_t50Modeling1.xlsx', 'sheet', SheetSaveName{period});
+% writetable(saveData1,'C:\Users\mpanagi\Documents\GitHub\Marios-temp\GLRA002_AnaesthetisedFCV\GLRA002_t50Modeling.xlsx', 'sheet','01Baseline');
+ writetable(saveData1,'C:\Users\mpanagi\Documents\GitHub\Marios-temp\GLRA002_AnaesthetisedFCV\GLRA002_t50Modeling.xlsx', 'sheet','02StimResponse');
+% writetable(saveData1,'C:\Users\mpanagi\Documents\GitHub\Marios-temp\GLRA002_AnaesthetisedFCV\GLRA002_t50Modeling.xlsx', 'sheet','03PulseResponse');
+% writetable(saveData1,'C:\Users\mpanagi\Documents\GitHub\Marios-temp\GLRA002_AnaesthetisedFCV\GLRA002_t50Modeling.xlsx', 'sheet','04Baseline');
+% writetable(saveData1,'C:\Users\mpanagi\Documents\GitHub\Marios-temp\GLRA002_AnaesthetisedFCV\GLRA002_t50Modeling.xlsx', 'sheet','05BaselinePreDrug');
+% writetable(saveData1,'C:\Users\mpanagi\Documents\GitHub\Marios-temp\GLRA002_AnaesthetisedFCV\GLRA002_t50Modeling.xlsx', 'sheet','06DrugPeriod');
 
-clearvars -except DataFilenames SheetSaveName period
-end
+
 

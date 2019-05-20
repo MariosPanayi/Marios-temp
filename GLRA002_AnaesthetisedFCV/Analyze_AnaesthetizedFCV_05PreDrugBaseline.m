@@ -5,6 +5,11 @@ clear all
 
 %list of experiment specific params
 experimentParams = readtable('F:\Marios aFCV\GLRA_002\DataAnalysis\GLRA002_params.xlsx');
+GLRA002_01BaselineData
+GLRA002_02StimResponse
+GLRA002_03PulseResponse
+GLRA002_04BaselineData
+GLRA002_05BaselinePreDrugData
 
 %Set number of channels
 no_of_channels = 1;
