@@ -1,7 +1,7 @@
 % GLRA002_Fit 250 to all traces
 clear all
 %% 01Baseline1
- 
+
 DataFilenames = {'F:\Marios aFCV\GLRA_002\DataAnalysis\GLRA002_01BaselineData.mat',
 'F:\Marios aFCV\GLRA_002\DataAnalysis\GLRA002_02StimResponse.mat',
 'F:\Marios aFCV\GLRA_002\DataAnalysis\GLRA002_03PulseResponse.mat',
@@ -16,7 +16,8 @@ SheetSaveName = {'01Baseline',
 '05BaselinePreDrug',
 '06DrugPeriod'};
 
-for period = 1:size(DataFilenames,1)
+%for period = 1:size(DataFilenames,1)
+for period = 1
 load(DataFilenames{period});
 
 experimentParams = readtable('F:\Marios aFCV\GLRA_002\DataAnalysis\GLRA002_params.xlsx');

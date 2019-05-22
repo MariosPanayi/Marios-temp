@@ -5,11 +5,6 @@ clear all
 
 %list of experiment specific params
 experimentParams = readtable('F:\Marios aFCV\GLRA_002\DataAnalysis\GLRA002_params.xlsx');
-GLRA002_01BaselineData
-GLRA002_02StimResponse
-GLRA002_03PulseResponse
-GLRA002_04BaselineData
-GLRA002_05BaselinePreDrugData
 
 %Set number of channels
 no_of_channels = 1;
@@ -242,8 +237,7 @@ end
 save('F:\Marios aFCV\GLRA_002\DataAnalysis\GLRA002_05BaselinePreDrugData', 'data', 'summary', 'avg_DA_WT','avg_DA_cal_WT' , 'avg_DA_KO','avg_DA_cal_KO')
 
 %%
-%%
-%Save all the Traces for Each Trial/Animal
+%% Save all the Traces for Each Trial/Animal
 
 %initialisevars
 traces  = [];
@@ -258,7 +252,7 @@ tempData = cell2mat(data(i).processed.c_predicted(1,:)');
 %DA data picker for even rows
 tempData = tempData(1:2:size(tempData,1),:);
 %Save last 3 trials only [recordings vary from 5 - 7 trials depending on the animal
-tempData = tempData([end-2]:end,:);
+tempData = tempData(end-4:end,:);
 
 %Apply calibration factor to DA data
 temp_Data_Cal = tempData./data(i).calibrationFactor;
@@ -286,7 +280,10 @@ subj = [subj; temp_subj'];
 end
 
 ts = repmat([data(1).processed.ts{1,1}], 1, size(data,2));
-savetraces = {geno, sex, subj, ts', traces, calbratedTraces};
+savetraces = table(geno, sex, subj, ts', traces, calbratedTraces);
+writetable(savetraces,'C:\Users\mpanagi\Documents\GitHub\Marios-temp\GLRA002_AnaesthetisedFCV\GLRA002_Traces.xlsx', 'sheet', '05BaselinePreDrug');
+
+
 
 
 
