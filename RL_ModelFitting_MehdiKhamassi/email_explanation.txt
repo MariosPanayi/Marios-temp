@@ -1,0 +1,135 @@
+Dear Marios,
+Here are some scripts with which you can play to simulate a basic RL model with various parameter values on the Pavlovian Blocking Task.
+
+A few points before you play with it:
+- I like very much the idea that muscimol in OFC has blocked some model-based offline consolidation process, which could be a type of offline inference/planning that happens during hippocampal replay/preplay, as we propose in our hippocampal model, and which could thus involve some ventralHpc-latOFC interaction (if this exists anatomically speaking). Thus muscimol, by blocking this offline consolidation, would lead to a sort of day-to-day forgetting of what has been learned during the day, even if learning during the day is not impaired and is thus as rapid as controls. This would also be consistent with your 2014 paper.
+- Nevertheless, as you originally thought, as we discussed, and as you can see with the (basic RL) model simulations, adding a day-to-day forgetting mechanism (alpha2 parameter) during muscimol injection is good to explain the Stage 2 data, but not the Test data. Because with this only additional mechanism (muscimol->forgetting), magazine entries for B during Test under muscimol conditions are nearly as high as those for D. See for instance the figure entitled "PavlovianBlocking_init_00514alpha_0062alpha2_0999999alpha3_0000001alpha4_01418alpha5_0062motiv2_00476factor_44703.pdf" where the model's basic parameters (init, alpha, alpha4, motiv2, factor ; see the comments in the code for explanations) have been fitted to the curves in the saline conditions, and are thus the best possible parameters given the considered constraints for fitting, and then the 2 remaining parameters alpha2 (forgetting) and alpha3 (learning for no-reward during pre-exposure and test) have been fitted to the muscimol curves, giving a nearly 1 (max) value for alpha2 and nearly 0 (min) value for alpha3.
+- We can find other parameter values so that the test data are well fitted. But then, this produces to large number of magazine entries for AB during day 12 in the muscimol condition. See figure entitled "PavlovianBlocking_init_001alpha_012alpha2_093alpha3_012alpha4_012alpha5_012motiv2_00027factor_44.pdf".
+- I think something which is striking, is not one of your effects of interest, but which is of importance, is the very large number of magazine entries (3 or 4) in most conditions at day 12, while it was small (max 2) at day 10. So there is something happening here, either in terms of boosted motivation, increased speed of learning, or something.
+
+So at leasts this code is a good starting point to test more complex models. Which I will think of and work on after a week of vacation.
+
+How to run the code:
+
+SINGLE EXPERIMENT SIMULATION
+The most important function for you to play with, which runs a single simulation experiment with a set of parameter values is:
+[distanceToData, LL, DATA] = launchSimRLonPavlovianBlockingTask(plotFigure, condition, init, alpha, alpha2, alpha3, alpha4, alpha5, motiv2, factorVtoMagEntries);
+Set plotFigure = true; condition = 1 (saline). Then choose other parameter values (like those above, to start with).
+Then set condition = 0 (muscimol). And rerun the function. This will add the muscimol curves to the same figure.
+
+I recommend starting by fixing alpha3, alpha4 and alpha5 to the same value as alpha, to reduce the number of parameters.
+factorVtoMagEntries is just a conversion of a proba of mag entry learned by the model, this proba being itself a sum of learned values over those stimuli that are currently present, into a number of magazine entries, so as to fit the figures you sent in your pdf. I think this factor should optimally be between 4 and 6. Hence the values of 4.4703 or 4.4 obtained above.
+
+OPTIMIZING PARAMETERS TO FIT YOUR EXPERIMENTAL DATA FIGURES
+If you want to run some optimization, you can use the function:
+results = fmsFitToCurvePavlovianBlockingTask( methode, conditions );
+methode is either fmc (fmincon function in matlab) or fms (fminsearch function in matlab). This could be further improved. But I don't think it's a key problem here. At least for the moment.
+conditions are the conditions on which you want to fit the model. conditions = [1 0] only fits on saline. [0 1] only fits muscimol. [1 1] fits both.
+And then, in the function fmsFitToCurvePavlovianBlockingTaskPerCondition, you can choose which parameters you want as free. You can let it as is for the moment.
+The result is a matrix called "results" where each line is one optimization result, the first columns are the values obtained for each free parameter, and the last column is the distance to the points of the experimental data curves (your powerpoint).
+The distance itself is computed at the bottom of the function launchSimRLonPavlovianBlockingTask. You can see there that I commented some lines so that only some points are considered. Otherwise, the fitting procedure gives too little importance to other points which are key here (like test data, and stage 2 data).
+The goal is of course to minimize this distance.
+And then you can sort the "results" matrix on the last column (the distance), in order to better visualize ensembles of similar solutions.
+
+Let's continue this soon after my vacation.
+I wish you a nice week-end and a nice week.
+
+Best wishes
+
+mehdi
+
+
+Le 15/08/2019 à 01:45, Marios Panagi a écrit :
+Hi Mehdi,
+That sounds great!
+Short answer, 16 cues per session during acqusition.  
+Loooong  description of the parameters in this experiment below. Hope this helps. 
+Marios
+
+
+Pre-Exposure + Magazine Training
+One day prior to pre-training, all animals were pre-exposed to the pellets by placing a small glass dish containing 40 g of pellets in each home cage (5 g per rat). On the first day of pre-training, all rats received one magazine training session to learn to retrieve pellets from the magazine. The session duration was approximately 32 mins with two pellets delivered randomly, approximately every 120 s (RT 120s). The house light was permanently illuminated in the chamber during all sessions in this experiment unless otherwise stated. Any animals who failed to consume at least 50% of the pellets delivered within the session were given additional sessions until they met this criterion. 
+Acquisition - General
+Following magazine training, all rats received one Pavlovian acquisition training session per day. During each of these sessions rats experienced 16 10s cue presentations (CS) presented on a variable interval (VI) 200 s schedule ( ±50%). Two pellets (US) were delivered at the termination of each CS (inter reinforcer interval was .5 s). The session duration was 56 mins and animals were left in the chamber for an additional 2 mins before being removed.
+The visual cues used in this experiment were flashing panel lights (5 Hz) or darkness by extinguishing the house light. The auditory cues were an 80 dB white noise or a 5 Hz train of clicks. The visual cues were always designated cues A or C (counterbalanced) and the auditory cues were always designated B or D (counterbalanced). See following for explanation of design.
+ 
+Stage 1- Blocking
+ 
+Stage 1 acquisition involved 10 sessions in which a single visual cue acted as the CS (cue A). On the 3rd and 4th days of training animals were given mock infusions prior to each session which were identical to infusions except that no liquids were infused. On days 5-10 animals received an infusion of either Saline or Muscimol immediately prior to the session.
+ 
+Stage 2 - Blocking
+The day after stage 1, all animals were pre-exposed to the auditory cues (Cue B and D) within the chambers. This involved 4 non-reinforced presentations of each cue to minimise the effects of novelty on the following days of compound training.
+Stage 2 of blocking involved compound training for 3 days. The cues presented were audio-visual compounds AB and CD and were both reinforced with two pellets as per stage 1. There were 8 presentations of each compound within the session.
+ 
+Stage 3 -Blocking Test
+Following stage 2 blocking, the target auditory cues B (blocked cue) and D (overshadowing control cue) were tested in extinction. The session parameters were the same as stage 2 blocking except that no reinforcement was delivered and only the auditory cues were presented i.e. no visual cues were presented.
+
+________________________________________
+From: Mehdi Khamassi <mehdi.khamassi@upmc.fr>
+Sent: 14 August 2019 14:56
+To: Marios Panagi <marios.panagi@psy.ox.ac.uk>
+Subject: follow-up 
+ 
+Dear Marios,
+Following up on our discussion of yesterday, I am currently simulating your Palvovian blocking experiment.
+Could you please tell me how many trials per day there are? I think it's a key factor.
+Best wishes
+mehdi
+-- 
+Mehdi Khamassi, PhD, HDR
+Permanent research scientist (CRCN) at the Centre National de la Recherche Scientifique,
+Institute of Intelligent Systems and Robotics
+Sorbonne Université, Paris, France
+http://www.isir.upmc.fr
+
+Co-director of studies for the Cogmaster program
+Ecole Normale Supérieure, EHESS, Univ. Paris Descartes
+http://sapience.dec.ens.fr/cogmaster/www/
+
+Visiting Researcher at the Institute of Communication and Computer Systems
+National Technical University of Athens, Greece
+https://www.iccs.gr/en/?noredirect=en_US
+
+Visiting Researcher at the Department of Experimental Psychology
+University of Oxford, UK
+https://www.psy.ox.ac.uk
+
+Main contact details:
+Mehdi Khamassi
+Sorbonne Université, Campus Pierre et Marie Curie - ISIR - BC 173
+4 place Jussieu, 75005 Paris, France
+tel: + 33 1 44 27 28 85
+cell: +33 6 50 76 44 92
+email: mehdi.khamassi@upmc.fr
+http://people.isir.upmc.fr/khamassi
+ISIR - Institut des Systèmes Intelligents et de Robotique
+www.isir.upmc.fr
+Identité de l’ISIR. L'Institut des Systèmes Intelligents et de Robotique (ISIR) est un laboratoire de recherche pluridisciplinaire qui rassemble des chercheurs et enseignants-chercheurs relevant de différentes disciplines des Sciences de l’Ingénieur et de l’Information ainsi que des Sciences du Vivant.
+
+-- 
+Mehdi Khamassi, PhD, HDR
+Permanent research scientist (CRCN) at the Centre National de la Recherche Scientifique,
+Institute of Intelligent Systems and Robotics
+Sorbonne Université, Paris, France
+http://www.isir.upmc.fr
+
+Co-director of studies for the Cogmaster program
+Ecole Normale Supérieure, EHESS, Univ. Paris Descartes
+http://sapience.dec.ens.fr/cogmaster/www/
+
+Visiting Researcher at the Institute of Communication and Computer Systems
+National Technical University of Athens, Greece
+https://www.iccs.gr/en/?noredirect=en_US
+
+Visiting Researcher at the Department of Experimental Psychology
+University of Oxford, UK
+https://www.psy.ox.ac.uk
+
+Main contact details:
+Mehdi Khamassi
+Sorbonne Université, Campus Pierre et Marie Curie - ISIR - BC 173
+4 place Jussieu, 75005 Paris, France
+tel: + 33 1 44 27 28 85
+cell: +33 6 50 76 44 92
+email: mehdi.khamassi@upmc.fr
+http://people.isir.upmc.fr/khamassi

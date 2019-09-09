@@ -7,11 +7,11 @@ clc
 %Wagner SOP - Based on trial list
 % step 1 create trial list
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-length = 50;
-ISI = 200;
-list = [1];
+length = 500;
+ISI = 60;
+list = [1, 1, 2];
 timeUnits = 1;
-types = 1;
+types = 2;
 
 [timeList, stimulus] = createTrialList(length,ISI,list,timeUnits,types);
 

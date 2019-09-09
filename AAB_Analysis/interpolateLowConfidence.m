@@ -1,5 +1,8 @@
 function [Data] = interpolateLowConfidence(data,criterion)
 
+
+
+
 % Nose
 Nose = data(:,4) < criterion;
 data(Nose, [2,3]) = nan;

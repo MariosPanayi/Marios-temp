@@ -166,7 +166,7 @@ for t = 2:totalTime
     %(2) A1->A2
     %%%%%(i) Calculate elements to remove from A1 based on p1 and capacity of A1
     p_d1(1:num_stimuli,t) = pd1 + sum(delta_I_A1)/C1; % Common decay
-    %p_d1(1:num_stimuli,t) = pd1 + delta_I_A1./C1;   % Individual decay
+    %     p_d1(1:num_stimuli,t) = pd1 + delta_I_A1./C1;   % Individual decay
     delta_A1_A2(1:num_stimuli,t) = p_d1(1:num_stimuli,t).*nodes(1:num_stimuli,A1,t);
     %%%%%(i) Update A1
     nodes(1:num_stimuli,A1,t) = nodes(1:num_stimuli,A1,t) - delta_A1_A2(1:num_stimuli,t);
