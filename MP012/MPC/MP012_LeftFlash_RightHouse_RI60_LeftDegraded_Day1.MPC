@@ -1,0 +1,371 @@
+\~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+\###################################### Header ######################################
+\~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+\Name:
+\Title:
+\Description:
+\Author: Marios Panayi
+\Date: 19/07/2016
+\~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+\###################################### VALUES ######################################
+\~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+\~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+\CONTROL CONSTANTS:
+\ Inputs    
+    ^Llr        = 1 \ Leftlever response
+    ^RLr        = 2 \ Right lever response      
+    ^Mag        = 3 \ magazine beam broken
+    ^LNP        = 5 \Left Nose Poke response
+    ^RNP        = 6 \Right Nose Poke response
+\ Outputs
+    ^LLOn            = 1 \ Insert Left Lever
+    ^RLon            = 2 \Insert Right Lever
+    ^Pel            = 16 \Operate pellet dispenser Mag
+    ^LeftLight        = 4 \operate Left stimulus light
+    ^RightLight        = 5 \operate right stimulus light
+    ^MagLight        = 6 \ Operate magazine light
+    ^House            = 7 \ Operate House light
+    ^Click            = 8 \operate clicker
+    ^LeftNPLight      = 9 \operate left nosepoke light
+    ^RightNPLight   = 10 \operate right nosepoke light
+    ^Fan            = 12 \operate fan
+    ^Sucrose        = 13 \ operate sucrose pump
+    ^IRLed        = 16 \ operate sucrose pump
+
+\SESSION CONSTANTS:
+    ^Trials     = 1    \Total number of lever presentations in the session
+    ^LeftReward     = 1    \reward type for left lever [0 = Nothing, 1 = PanelLights, 2 = HouseLight]
+    ^RightReward    = 2    \reward type for Right lever [0 = Nothing, 1 = PanelLights, 2 = HouseLight]
+    ^FI        = 5     \FIxed interval schedule in seconds
+    ^RI        = 60    \Random interval schedule in seconds
+    ^triallength        = 1800 \Trial length in seconds
+    ^IntervalLength        = 60 \Trial length in seconds
+    ^ScheduleOfReinforcement    = 2 \[1 = FI schedule, 2 = RI schedule input probability]
+    ^DegradedLever    = 1 \[1 = left, 2 = right]
+    ^DegradedRewardID = 0 \reward type for Right lever [0 = Nothing, 1 = PanelLights, 2 = HouseLight]
+    
+
+\~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+\VARIABLES:
+\    a =  ###DIM ARRAY### ---> Time stamp event identity
+\    b =  ###DIM ARRAY### ---> Time stamp event time
+\    c = reward type [1 = Pellet, 2 = Sucrose]
+\    d = 5s bin counter
+\    e = time stamp event counter
+\    f = flag trial peropd [ 0 = lever out, 1 = lever in]
+\    g = reward availability flag [0 = no reward, 1 = reward available]
+\    h = RI timout counter
+\    i = current IRI
+\    j = current lever type flag [selected from list, 1 = left, 2 = right]
+\    k = reward counter
+\    l = lever flag
+\    m = array of values for lp reward schedule
+\    n
+\    o
+\    p
+\    q = ###DIM ARRAY### Right Reward in 5s bins
+\    r = ###DIM ARRAY### NonContingent Reward delivery
+\    s = ###DIM ARRAY### rewarded lever Activity
+\    t = session timer
+\    u = ###DIM ARRAY### Session parameters - Also Left Reward in 5s bins
+\    v = ###DIM ARRAY### Left lever Activity
+\    w = ###DIM ARRAY### Right Lever Activity                                                 
+\    x = ###DIM ARRAY### Magazine Activity
+\    y = ###DIM ARRAY### Left NP Activity
+\    z = ###DIM ARRAY### Right NP Activity
+\~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+\DATA ARRAYS:
+    DIM A = 100000 
+    DIM B = 100000 
+    DIM M = 20  \2LP flags (m(1) = Left Reward ID, m(2) = Right Reward ID, m(3)/m(4) left and right reward availability flag m(5) noncontingent lever ID, m(6) = degraded reward ID
+    DIM Q = 8000 \Right lever rewards
+    DIM R = 3000 \NonContingent rewards for contingency degradation 
+    DIM S = 3000 \rewarded lever presses  
+    DIM U = 8000 \Session parameters: IRI values per trial (1-20)
+    DIM V = 3000 \Left Lever: frq per trial (1-21), dur per trial (201-221), frq 5s bins (501-743), dur 5s bins (1001-1243)
+    DIM W = 3000 \Right Lever: frq per trial (1-21), dur per trial (201-221), frq 5s bins (501-743), dur 5s bins (1001-1243)
+    DIM X = 3000 \MagEntries: frq per trial (1-21), dur per trial (201-221), frq 5s bins (501-743), dur 5s bins (1001-1243)
+    DIM Y = 3000 \Left NP: frq per trial (1-21), dur per trial (201-221), frq 5s bins (501-743), dur 5s bins (1001-1243)
+    DIM Z = 3000 \Right NP: frq per trial (1-21), dur per trial (201-221), frq 5s bins (501-743), dur 5s bins (1001-1243)        
+\~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+\LIST DATA:
+    List L = 1            \Rewarded LP list [1 = left, 2 = right]
+\~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+\GENERALLY FREE VARIABLE NAMES:
+\    a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t, u, v, w, x, y, z
+\
+\~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+\Z-SIGNALS
+    ^begin        = 1  
+    ^reward     = 2
+    ^LeftRewardTest = 3
+    ^RightRewardTest = 4
+    ^FlashReward = 5
+    ^HouseReward = 6
+    ^OffReward = 7
+    ^NonContingentReward = 8
+    ^ContingentReward = 9
+\~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+DISKVARS = a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t, u, v, w, x, y, z \The data from these variables will be stored for analyses.
+\
+\~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+\#################################### THE PROGRAM ###################################
+\~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+s.s.1,
+s1,
+    0": LockOn^Fan; randd j = L; set e = 0, k = 1, u(500+k)=k;  Show 2, Trial, k; set m(1) = ^LeftReward, m(2) = ^RightReward, m(5) = ^DegradedLever, m(6) = ^DegradedRewardID ---> s2
+    
+s2,
+    #START: z^begin; SET A(e)=1, B(e)=T; ADD E;  ON^IRLed;
+        SET A(e)=-987.987, B(e)=-987.987; set g = 0;
+        IF j = 1 [@Left, @Right]
+            @Left: set f = 0; ON^LLOn, ^RLOn   ---> s3
+            @Right: set f = 0; ON^LLOn, ^RLOn  ---> s3
+            
+            
+            
+s3,
+    ^Triallength": set f = 1; SET A(e)=17, B(e)=T; ADD E; 
+            SET A(e)=-987.987, B(e)=-987.987; ; OFF^LLOn, ^RLOn---> s4
+
+s4,
+    ^IntervalLength": If k = ^Trials [@End, @Continue]
+                    @End: show 5, End, 0 ---> STOPABORTFLUSH
+                    @Continue: add k; set u(500+k)=k; Show 2, Trial, k; 
+                        randd j = L; SET A(e)=1, B(e)=T; ADD E; 
+                        SET A(e)=-987.987, B(e)=-987.987; set g = 0; IF j = 1 [@Left, @Right]
+                            @Left: set c = ^LeftReward; set u(1000+k) = j; set f = 0; ON^LLOn, ^RLOn  ---> s3
+                            @Right: set c = ^RightReward; set u(1000+k) = j; set f = 0; ON^LLOn, ^RLOn ---> s3
+\~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+\####################################    Timer    ###################################
+\~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+s.s.2,
+s1,
+    #z^begin: set t = 0; show 1, Session, t---> s2
+s2,
+    0.01": set t = (t + 0.01); show 1, Session, t; ---> sx
+\~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+\~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~Reward Sequence~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+\~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+s.s.3,
+    s1,
+
+     #Z^LeftRewardTest: if (f = 0) AND (m(3) = 1) [@Reward, @Nothing]
+        @Reward: add u(k); add u(3000+d); SET A(e)=13, B(e)=T; ADD E; Show 10, LeftRewards, u(k);
+            SET A(e)=-987.987, B(e)=-987.987; set m(3) = 0; z^ContingentReward;
+            if m(1) = 1 [@Flash, @Other]
+                @Flash: z^FlashReward ---> s2
+                @Other: if m(1) = 2 [@House, @Nothing]
+                    @House: z^HouseReward ---> s2
+                    @Nothing: ---> s1
+        @Nothing: ---> s1
+
+    #Z^RightRewardTest: if (f = 0) AND (m(4) = 1) [@Reward, @Nothing]
+        @Reward: add Q(k); add Q(3000+d); SET A(e)=15, B(e)=T; ADD E; Show 11, RighttRewards, Q(k);
+            SET A(e)=-987.987, B(e)=-987.987; set m(4) = 0; z^ContingentReward;
+            if m(2) = 1 [@Flash, @Other]
+                @Flash: z^FlashReward ---> s2
+                @Other: if m(2) = 2 [@House, @Nothing]
+                    @House: z^HouseReward ---> s2
+                    @Nothing: ---> s1
+        @Nothing: ---> s1
+
+    #Z^NonContingentReward: If ^DegradedLever = 1 [@Left, @Right]
+                        @Left: add r(k); add r(1000+d); SET A(e)=20, B(e)=T; ADD E; Show 10, NonContRewards, r(k);
+                                SET A(e)=-987.987, B(e)=-987.987; 
+                        if m(6) = 1 [@Flash, @Other]
+                                @Flash: z^FlashReward ---> s2
+                                @Other: if m(6) = 2 [@House, @Nothing]
+                                        @House: z^HouseReward ---> s2
+                                        @Nothing: ---> s1
+                        @Right: add r(k); add r(1000+d); SET A(e)=20, B(e)=T; ADD E; Show 10, NonContRewards, r(k);
+                                SET A(e)=-987.987, B(e)=-987.987;
+                        if m(6) = 1 [@Flash, @Other]
+                                @Flash: z^FlashReward ---> s2
+                                @Other: if m(6) = 2 [@House, @Nothing]
+                                        @House: z^HouseReward ---> s2
+                                        @Nothing: ---> s1
+
+    s2,
+        5": z^OffReward ---> s1                  
+\~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+\################################      MagCounter     ###############################
+\~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+s.s.4,
+s1,
+    #z^begin: ---> s2
+s2,                                         
+    #R^Mag:  add x(0), x(k+(2000*f)), x(500+d);               
+    set x(200) = x(200)+.01, x(k+200+(2000*f)) = x(k+200+(2000*f)) +.01, x(1000+d) = x(1000+d) +.01;
+    show 3, MagEntry, x(0); show 4, MagDuration, x(200);  
+    SET A(e)=3, B(e)=T; ADD E; 
+    SET A(e)=-987.987, B(e)=-987.987; ---> s3
+s3,                                                           
+    #R^Mag: set x(200) = x(200)+.01, x(k+200+(2000*f)) = x(k+200+(2000*f)) +.01, x(1000+d) = x(1000+d) +.01; show 4, MagDuration, x(200);  ---> s3
+    0.01": SET A(e)=4, B(e)=T; ADD E; 
+    SET A(e)=-987.987, B(e)=-987.987; ---> s2
+\~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+\################################     5s Bin Counter    #############################
+\~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+s.s.5,
+s1,
+   #z^begin: set d = 1; set u(2000+d) = j, u(4000+d) = k, u(5000+d) = f, u(6000+d) = d ---> s2
+s2,   
+   5": add d; set u(2000+d) = j, u(4000+d) = k, u(5000+d) = f, u(6000+d) = d ---> sx
+\~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+\################################     LeftLever Counter    #############################
+\~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+s.s.6,
+s1,
+    #z^begin: ---> s2
+s2,                                         
+    #R^LLr:  add v(0), v(k+(2000*f)), v(500+d);
+    SET A(e)=5, B(e)=T; ADD E; 
+    SET A(e)=-987.987, B(e)=-987.987; Z^LeftRewardTest---> s2
+\~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+\################################     RightLever Counter   #############################
+\~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+s.s.7,
+s1,
+    #z^begin: ---> s2
+s2,                                         
+    #R^RLr:  add w(0), w(k+(2000*f)), w(500+d);
+    SET A(e)=7, B(e)=T; ADD E; 
+    SET A(e)=-987.987, B(e)=-987.987; Z^RightRewardTest ---> s2
+
+\~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+\~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+\~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+\~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+\################################     LeftNP Counter    #############################
+\~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+s.s.8,
+s1,
+    #z^begin: ---> s2
+s2,                                         
+    #R^LNP:  add y(0), y(k+(2000*f)), y(500+d); Show 8, LeftNP, y(0);              
+    SET A(e)=9, B(e)=T; ADD E; 
+    SET A(e)=-987.987, B(e)=-987.987; ---> s2
+\~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+\################################     RightNP Counter   #############################
+\~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+s.s.9,
+s1,
+    #z^begin: ---> s2
+s2,                                         
+    #R^RNP:  add z(0), z(k+(2000*f)), z(500+d); Show 9, RightNP, z(0); 
+    SET A(e)=11, B(e)=T; ADD E; 
+    SET A(e)=-987.987, B(e)=-987.987; ---> s2
+
+\~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+\################################     Rewarded NP Counter   ######################
+\~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+s.s.10,
+s1,
+    #z^begin: ---> s2
+s2,                                         
+    #Rj:  add s(0), s(k+(2000*f)), s(500+d); show 6, RewardedNP, s(0); z^reward ---> s2
+\~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+\################################        Reward Schedule       ######################
+\~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+s.s.11,
+s1,
+    0.01": IF ^ScheduleOfReinforcement = 1 [@FI, @RI]
+                @FI: ---> s2
+                @RI: ---> s5
+s2,
+    #z^begin: ---> s3
+s3,
+    #z^reward: set g = 1 ---> s4
+s4,
+     
+    ^FI": ---> s4
+s5,
+    #z^begin:  set m(3) = 1; set m(4) = 1; ---> s6
+s6,
+
+    0.01": WITHPI = 10000/(^RI*100) [@RewardLeft, @Other]
+                @Reward: set m(3) = 1; ---> sx
+                @Other: WITHPI = 10000/(^RI*100) [@RewardRight, @Other]
+                    @RewardRight: set m(4) = 1; ---> sx
+                    @Other: ---> sx
+\~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+\################################           Initialise         ######################
+\~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+s.s.12,
+s1,
+    0.1": LOCKON^Fan;---> s2
+s2,
+    #start:    ~InitANL926;~;
+            ~SetFreq(MG,BOX,3000);~;
+            ~SetAmp(MG,BOX,85);~;
+            ~SetRF(MG,BOX,10);~;--->sx
+\~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+\################################          LightRewards        ######################
+\~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+s.s.13,
+s1,
+    #Z^HouseReward: On^House ---> s2
+    #Z^FlashReward: On^LeftLight, ^RightLight ---> s3
+
+s2,
+    #Z^OffReward: OFF^House ---> s1
+
+s3,
+    0.2": Off^LeftLight, ^RightLight ---> s4
+    #Z^OffReward: Off^LeftLight, ^RightLight ---> s1
+s4,
+    0.1": On^LeftLight, ^RightLight ---> s3
+    #Z^OffReward: Off^LeftLight, ^RightLight ---> s1
+\~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+\#####################           Contingency Degradation         ####################
+\~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+S.S.14,
+s1,
+    #z^begin:  ---> s2
+s2,
+
+    1": WITHPI = 10000/(^RI) [@Reward, @NoReward]
+                @Reward:  ---> s3
+                @NoReward: ---> s2 
+s3,
+    1":  z^NonContingentReward; ---> s2
+    #z^ContingentReward: WITHPI = 10000/(^RI) [@Reward, @NoReward]
+                @Reward:  ---> s3
+                @NoReward: ---> s2 
+
+\~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+\~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Time Stamp Event Flags ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+\~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+\1 = TrialChange
+\2 = RewardDelivery
+\3 = MagazineEntry
+\4 = MagazineExit
+\5 = LeftLeverResponse
+\6 = LeftLeverResponseEnd
+\7 = RightLeverResponse
+\8 = RightLeverResponseEnd
+\9 = LeftNP
+\10 = LeftNPEnd
+\11 = RightNP
+\12 = RightNPEnd
+\13 = CS1On
+\14 = CS1Off
+\15 = CS2On
+\16 = CS2Off
+\17 = ITI start
+\18 = NonContingent Cue
+\~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+\~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+\~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+
+
+
+
+
+
+
+
