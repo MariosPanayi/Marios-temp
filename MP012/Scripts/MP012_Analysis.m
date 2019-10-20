@@ -59,9 +59,16 @@ end
 %%
 
 for subj = 1:size(data,2)
+    %Total LP for the session
     data(subj).LPr_total = sum(data(subj).event == data(subj).LPr);
     data(subj).LPnr_total = sum(data(subj).event == data(subj).LPnr);
+    %Inter LP interval on a given lever
     data(subj).ILPrI = diff(data(subj).ts((data(subj).event == data(subj).LPr)));
+    data(subj).ILPnrI = diff(data(subj).ts((data(subj).event == data(subj).LPnr)));
+    %LP in 5s bins across the session
+    sessionLength = 1800;
+    binwidth = 5;
+    [N,edges,bin] = histcounts(data(subj).ts((data(subj).event == data(subj).LPr)), [0:binwidth:sessionLength]);
     
 end
 
