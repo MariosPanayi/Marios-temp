@@ -1,7 +1,8 @@
+clear all
 tic
 %% Extract Raw Data
 filepath = "C:\Users\Marios\Documents\GitHub\Marios-temp\MP012\RawData\";
-filename = "MP_LPCD_1Lever_Degraded_Day1";
+filename = "MP_LPCD_1Lever_Degraded_Day9";
 data_raw = mpc_read_multiple_data(strcat(filepath,filename));
 
 %% List of relevant Event IDs array A = Event, array B = Time
@@ -86,29 +87,70 @@ for subj = 1:size(data,2)
         for i = 1:size(contingentRewardTimes,2)
             [data(subj).contingentCuePeriod.LPr(i,:)] = histcounts(data(subj).ts((data(subj).event == data(subj).LPr)),[contingentRewardTimes(i)-prepostTime:binwidth:contingentRewardTimes(i)+cueDuration+prepostTime]);
             [data(subj).contingentCuePeriod.LPnr(i,:)] = histcounts(data(subj).ts((data(subj).event == data(subj).LPnr)),[contingentRewardTimes(i)-prepostTime:binwidth:contingentRewardTimes(i)+cueDuration+prepostTime]);
-            
         end
     else
         data(subj).contingentCuePeriod.LPr = [];
         data(subj).contingentCuePeriod.LPnr = [];
     end
     
-    figure
-plot(mean(data(subj).contingentCuePeriod.LPr))
-title(["Subject "; num2str(subj)]);
-hold on
-plot(mean(data(subj).contingentCuePeriod.LPnr))
-hold off
+    
+    %LP during noncontingent cue
+    binwidth = 1;
+    prepostTime = 30;
+    cueDuration = 5;
+    noncontingentRewardTimes = data(subj).ts(data(subj).event == data(subj).noncontRewardID);
+    if noncontingentRewardTimes
+        for i = 1:size(noncontingentRewardTimes,2)
+            [data(subj).noncontingentCuePeriod.LPr(i,:)] = histcounts(data(subj).ts((data(subj).event == data(subj).LPr)),[noncontingentRewardTimes(i)-prepostTime:binwidth:noncontingentRewardTimes(i)+cueDuration+prepostTime]);
+            [data(subj).noncontingentCuePeriod.LPnr(i,:)] = histcounts(data(subj).ts((data(subj).event == data(subj).LPnr)),[noncontingentRewardTimes(i)-prepostTime:binwidth:noncontingentRewardTimes(i)+cueDuration+prepostTime]);
+        end
+    else
+        data(subj).contingentCuePeriod.LPr = [];
+        data(subj).contingentCuePeriod.LPnr = [];
+    end
 
+   
     
 end
 %%
 toc
 
 %%
-% figure
-% plot(mean(data(subj).contingentCuePeriod.LPr))
-% title(["Subject "; num2str(subj)]);
-% hold on
-% plot(mean(data(subj).contingentCuePeriod.LPnr))
-% hold off
+
+figure
+
+subj =1;
+subplot(2,2,1)
+plot(mean(data(subj).contingentCuePeriod.LPr))
+title(["Subject "; num2str(subj);": Contingent"]);
+hold on
+plot(mean(data(subj).contingentCuePeriod.LPnr))
+ylim([0 1])
+hold off
+
+subplot(2,2,2)
+plot(mean(data(subj).noncontingentCuePeriod.LPr))
+title(["Subject "; num2str(subj);": NonContingent"]);
+hold on
+plot(mean(data(subj).noncontingentCuePeriod.LPnr))
+ylim([0 1])
+hold off
+
+subj =10;
+subplot(2,2,3)
+plot(mean(data(subj).contingentCuePeriod.LPr))
+title(["Subject "; num2str(subj);": Contingent"]);
+hold on
+plot(mean(data(subj).contingentCuePeriod.LPnr))
+ylim([0 1])
+hold off
+
+subplot(2,2,4)
+plot(mean(data(subj).noncontingentCuePeriod.LPr))
+title(["Subject "; num2str(subj);": NonContingent"]);
+hold on
+plot(mean(data(subj).noncontingentCuePeriod.LPnr))
+ylim([0 1])
+hold off
+
+
