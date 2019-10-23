@@ -1,7 +1,7 @@
 clear all
 tic
 %% Extract Raw Data
-filepath = "C:\Users\Marios\Documents\GitHub\Marios-temp\MP012\RawData\";
+filepath = "C:\Users\mpanagi\Documents\GitHub\Marios-temp\MP012\RawData\";
 filename = "MP_LPCD_1Lever_Degraded_Day9";
 data_raw = mpc_read_multiple_data(strcat(filepath,filename));
 
@@ -108,8 +108,8 @@ for subj = 1:size(data,2)
         data(subj).contingentCuePeriod.LPr = [];
         data(subj).contingentCuePeriod.LPnr = [];
     end
-
-   
+    
+    
     
 end
 %%
@@ -117,40 +117,83 @@ toc
 
 %%
 
+%Summarise data within each mouse and then average across each mouse
 figure
+for subj = 1:size(data,2)
+    
+    if subj < 11
+        subplot(2,2,1)
+        plot(mean(data(subj).contingentCuePeriod.LPr))
+        title(["Degraded: Contingent"]);
+        hold on
+        plot(mean(data(subj).contingentCuePeriod.LPnr))
+        ylim([0 1])
+        xlim([0 65])
 
-subj =1;
-subplot(2,2,1)
-plot(mean(data(subj).contingentCuePeriod.LPr))
-title(["Subject "; num2str(subj);": Contingent"]);
-hold on
-plot(mean(data(subj).contingentCuePeriod.LPnr))
-ylim([0 1])
-hold off
+        
+        subplot(2,2,2)
+        plot(mean(data(subj).noncontingentCuePeriod.LPr))
+        title(["Degraded: NonContingent"]);
+        hold on
+        plot(mean(data(subj).noncontingentCuePeriod.LPnr))
+        ylim([0 1])
+        xlim([0 65])
+        
+    else
+        
+        subplot(2,2,3)
+        plot(mean(data(subj).contingentCuePeriod.LPr))
+        title(["NonDegraded: Contingent"]);
+        hold on
+        plot(mean(data(subj).contingentCuePeriod.LPnr))
+        ylim([0 1])
+        xlim([0 65])
+        
+        subplot(2,2,4)
+        plot(mean(data(subj).noncontingentCuePeriod.LPr))
+        title(["NonDegraded: NonContingent"]);
+        hold on
+        plot(mean(data(subj).noncontingentCuePeriod.LPnr))
+        ylim([0 1])
+        xlim([0 65])
+    end     
+    
+end
 
-subplot(2,2,2)
-plot(mean(data(subj).noncontingentCuePeriod.LPr))
-title(["Subject "; num2str(subj);": NonContingent"]);
-hold on
-plot(mean(data(subj).noncontingentCuePeriod.LPnr))
-ylim([0 1])
-hold off
-
-subj =10;
-subplot(2,2,3)
-plot(mean(data(subj).contingentCuePeriod.LPr))
-title(["Subject "; num2str(subj);": Contingent"]);
-hold on
-plot(mean(data(subj).contingentCuePeriod.LPnr))
-ylim([0 1])
-hold off
-
-subplot(2,2,4)
-plot(mean(data(subj).noncontingentCuePeriod.LPr))
-title(["Subject "; num2str(subj);": NonContingent"]);
-hold on
-plot(mean(data(subj).noncontingentCuePeriod.LPnr))
-ylim([0 1])
-hold off
-
-
+% 
+% if subj < 11
+%     subplot(2,2,1)
+%     plot(mean(data(subj).contingentCuePeriod.LPr))
+%     title(["Subject "; num2str(subj);": Contingent"]);
+%     hold on
+%     plot(mean(data(subj).contingentCuePeriod.LPnr))
+%     ylim([0 1])
+%     hold off
+%     
+%     subplot(2,2,2)
+%     plot(mean(data(subj).noncontingentCuePeriod.LPr))
+%     title(["Subject "; num2str(subj);": NonContingent"]);
+%     hold on
+%     plot(mean(data(subj).noncontingentCuePeriod.LPnr))
+%     ylim([0 1])
+%     hold off
+%     
+% else
+%     
+%     subplot(2,2,3)
+%     plot(mean(data(subj).contingentCuePeriod.LPr))
+%     title(["Subject "; num2str(subj);": Contingent"]);
+%     hold on
+%     plot(mean(data(subj).contingentCuePeriod.LPnr))
+%     ylim([0 1])
+%     hold off
+%     
+%     subplot(2,2,4)
+%     plot(mean(data(subj).noncontingentCuePeriod.LPr))
+%     title(["Subject "; num2str(subj);": NonContingent"]);
+%     hold on
+%     plot(mean(data(subj).noncontingentCuePeriod.LPnr))
+%     ylim([0 1])
+%     hold off
+%     
+%     
