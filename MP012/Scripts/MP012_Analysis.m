@@ -2,7 +2,7 @@ clear all
 tic
 %% Extract Raw Data
 filepath = "C:\Users\mpanagi\Documents\GitHub\Marios-temp\MP012\RawData\";
-filename = "MP_LPCD_1Lever_Degraded_Day9";
+filename = "MP_LPCD_1Lever_Degraded_Day7";
 data_raw = mpc_read_multiple_data(strcat(filepath,filename));
 
 %% List of relevant Event IDs array A = Event, array B = Time

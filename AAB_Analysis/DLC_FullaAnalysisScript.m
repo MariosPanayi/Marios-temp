@@ -11,13 +11,13 @@
 
 % vid = readtable('F:\Marios 2017\MP003_SameDiff1_VideoConversion\videoattributes.csv');
 
-vid = readtable('F:\DLC_AllVideos_Analysis\MP004_MK801\videoattributes.csv');
+vid = readtable('E:\DLC_AllVideos_Analysis\MP004_MK801\videoattributes.csv');
 % Video_SubjNumbers.csv created from excel output from ANYMaze containing
 % video file numbers and subsequent animal name/genotype/grouping
 % {'x___Test'}    {'Animal'}    {'Treatment'}    {'Stage'}
 
 % id = readtable('F:\Marios 2017\MP003_SameDiff1_VideoConversion\Video_SubjNumbers.csv','Delimiter',',');
-id = readtable('F:\DLC_AllVideos_Analysis\MP004_MK801\Video_SubjNumbers.csv','Delimiter',',');
+id = readtable('E:\DLC_AllVideos_Analysis\MP004_MK801\Video_SubjNumbers.csv','Delimiter',',');
 
 
 
@@ -29,7 +29,7 @@ k = 0;
 for i = 1: size(vid.name,1)
     if sum(strcmp(id.x___Test,vid.name(i)))
         k = k+1;
-        path = 'F:\DLC_AllVideos_Analysis\MP004_MK801\';
+        path = 'E:\DLC_AllVideos_Analysis\MP004_MK801\';
         filename = vid.name(i);
         filename = char(filename);
         filename = filename(1:(length(filename)-4));
@@ -261,7 +261,7 @@ composites = [avg, head, midear, avg2pts];
 
 Xdata = Smooth_data(i).rawX;
 Ydata = Smooth_data(i).rawY;
-
+ 
 % Identify average location in 30s bins
 bin_duration = 5;
 fps = RawData(i).fps;
