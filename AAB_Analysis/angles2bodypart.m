@@ -7,7 +7,7 @@ centered = target-pivot;
 % Calculate the polar co-ordinates of the target relative to the pivot
 polar = atan2(centered(:,1),centered(:,2));
 % Calculate change in angle between successive timepoints
-% Unwrap function minimises dicontinuities in the radian/polar co-ordinate
+% Unwrap function minimises discontinuities in the radian/polar co-ordinate
 % scale
 angleChange = diff(unwrap(polar));
 
