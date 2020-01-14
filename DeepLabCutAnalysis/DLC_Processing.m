@@ -377,7 +377,8 @@ for i = 1:size(DLC,2)
     end
 end
 
-
+% Body parts in a list in the order that DLC is using
+bodyparts = {'nose','head1','head2','lear','rear','mid1','mid2','tail','frontleft','frontright','backleft','backright','magleft','magright','magcentre'};
 
 %% Create a new datastructure with the 1s, 5s, and 10s binned data and identifying information
 tic
@@ -577,7 +578,7 @@ close(writerObj);
 %% Save the processed video data and filelists to a .mat file
 %  save('E:\MK001_MK002_VideosCombinedforAnalysis\MK001_MK002_VideoProcessing.mat', 'videoproc', 'filelist', 'eventNum', 'eventID', 'med', 'DLC', 'df', '-v7.3')
 %%
-% load('E:\MK001_MK002_VideosCombinedforAnalysis\MK001_MK002_VideoProcessing.mat')
+ load('E:\MK001_MK002_VideosCombinedforAnalysis\MK001_MK002_VideoProcessing.mat')
 
 %%
 

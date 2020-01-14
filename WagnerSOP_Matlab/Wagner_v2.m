@@ -53,7 +53,7 @@ nodes(:, I, 1) = 1;
 %Mazur/Wagner: 0.6 = US; Short CS = 0.3; Long CS = 0.1;
 % default p1 for [Cxt, S1, S2]
 % p1 = [0.01;0.1;0.1];
-p1 = [0.01;0.1;0.1];
+p1 = [0.001;0.01;0.01];
 
 %probability of decay from A1->A2 and A2->I
 %pd2 = pd1/5; % Wagner Rule of Thumb [Mazur/Wagner = 0.1/0.02]
