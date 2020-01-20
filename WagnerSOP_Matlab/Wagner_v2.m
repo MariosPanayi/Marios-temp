@@ -8,15 +8,19 @@ S1 = 2;
 S2 = 3;
 
 % Order of stimuli, 1 = present,0 = not present. Note that each
-% presentation is a "unit" of stimulus change e.g. when only the context is
+% presentation is a 'unit' of stimulus change e.g. when only the context is
 % present vs when a stimulus is present. rows = stimulus ID, cols = trial/time
-S.order =    [1,1,1,1,1,1,1;
-              0,1,0,1,0,1,0;
-              0,0,0,0,0,0,0];
+S.order =    [0,0,0;
+              0,1,1;
+              0,0,1];
+
 S.id = [Cxt, S1, S2];
 %The duration of each column of S.order in arbitrary time slices
-S.dur = [60,600,60,600,60,600,60];
+S.dur = [100,5,1];
 
+repeats = 20;
+S.order = repmat(S.order,1,repeats);
+S.dur = repmat(S.dur,1,repeats);
 
 % Creates a trial_structure variable in time slices where each
 trial_structure = zeros(size(S.order,1), sum(S.dur));
@@ -53,14 +57,14 @@ nodes(:, I, 1) = 1;
 %Mazur/Wagner: 0.6 = US; Short CS = 0.3; Long CS = 0.1;
 % default p1 for [Cxt, S1, S2]
 % p1 = [0.01;0.1;0.1];
-p1 = [0.05;0.1;0.1];
+p1 = [0.01;0.1;0.6];
 
 %probability of decay from A1->A2 and A2->I
 %pd2 = pd1/5; % Wagner Rule of Thumb [Mazur/Wagner = 0.1/0.02]
 % pd1 = 0.1;
 % pd2 = 0.02;
 pd1 = 0.1;
-pd2 = 0.01;
+pd2 = 0.02;
 
 %C1 = Summed proportion of elements in A1 [Mazur/Wagner = 2]
 %C2 = Summed proportion of elements in A2 [Mazur/Wagner = 10]
@@ -102,6 +106,23 @@ L_inhibitory = 0.02;
 %p2,US/CS = VCS-US(r1*pA1,CS +r2*pA2.CS), 0<= p2 <= 1,
 %Rescorla-Wagner (1972) Summation rule
 %p2,US/CS = SumVCS(i)-US(r1*pA1,CS(i) +r2*pA2.CS(i)), 0<= p2 <= 1,
+
+% choose direction of learning i.e. CS-> US only or CS <-> US associations
+% possible etc....
+% This will be applied to the V_Total variable
+% Matrix of all combinaitons of stimuli
+% set up such that direction of associations is S1->S2, in rows,cols (S1,S2)
+% permissible_assoc  = [0, 1, 1;
+%                       1, 0, 1;
+%                       1, 1, 0];
+% %                   
+permissible_assoc  = [0, 1, 1;
+                      0, 0, 1;
+                      0, 0, 0];
+                  
+                  
+
+
 %% Create Matrices to represent Changing states/values over time
 
 %Learning rules
@@ -146,13 +167,13 @@ for t = 2:total_time
     %%%%% Calculate the sum V for all stimuli based on all other stimuli. N.B.
     %%%%% removal of diagonals prior to summation is to remove influence of
     %%%%% self cueing
-    V_Total_noDiag = V_Total(:,1:num_stimuli,t-1);
-    V_Total_noDiag(1:num_stimuli+1:end) = 0;
+    V_Total_learn = V_Total(:,1:num_stimuli,t-1);
+    V_Total_learn = V_Total_learn.*permissible_assoc;
     
     %calculate contribution of sumV Total to p2 i.e. multiply SumV by
     %proportion of elements in A1 and A2
     for i = 1:num_stimuli
-        SumV_Total_p2(:,i) = (r1.*nodes(1:num_stimuli,A1,t).*V_Total_noDiag(:,i)) + (r2.*nodes(1:num_stimuli,A2,t).*V_Total_noDiag(:,i));
+        SumV_Total_p2(:,i) = (r1.*nodes(1:num_stimuli,A1,t-1).*V_Total_learn(:,i)) + (r2.*nodes(1:num_stimuli,A2,t-1).*V_Total_learn(:,i));
     end
     %sum the values for all stimuli to create p2. Ensure 0< p2 <1
     p2_S1_S2 = sum(SumV_Total_p2,1)';
@@ -205,8 +226,8 @@ for t = 2:total_time
     
     
     %(5) Update associative weights:
-    DeltaV_Excitatory(1:num_stimuli,1:num_stimuli,t) = L_excitatory * nodes(1:num_stimuli,A1,t)*nodes(1:num_stimuli,A1,t)';
-    DeltaV_Inhibitory(1:num_stimuli,1:num_stimuli,t) = L_inhibitory * nodes(1:num_stimuli,A1,t)*nodes(1:num_stimuli,A2,t)';
+    DeltaV_Excitatory(1:num_stimuli,1:num_stimuli,t) = L_excitatory * ((nodes(1:num_stimuli,A1,t)*nodes(1:num_stimuli,A1,t)').*permissible_assoc);
+    DeltaV_Inhibitory(1:num_stimuli,1:num_stimuli,t) = L_inhibitory * ((nodes(1:num_stimuli,A1,t)*nodes(1:num_stimuli,A2,t)').*permissible_assoc);
     
     V_Excitatory(1:num_stimuli,1:num_stimuli,t) = V_Excitatory(1:num_stimuli,1:num_stimuli,t-1) + DeltaV_Excitatory(1:num_stimuli,1:num_stimuli,t);
     V_Inhibitory(1:num_stimuli,1:num_stimuli,t) = V_Inhibitory(1:num_stimuli,1:num_stimuli,t-1) + DeltaV_Inhibitory(1:num_stimuli,1:num_stimuli,t);
@@ -220,30 +241,30 @@ toc
 figure
 
 subplot(1,3,1)
-plot(squeeze(nodes(Cxt,A1,:)));
+% plot(squeeze(nodes(Cxt,A1,:)));
+title('A1')
 hold on
-plot(squeeze(nodes(Cxt,A2,:)));
+% plot(squeeze(nodes(S1,A1,:)));
+plot(squeeze(nodes(S2,A1,:)));
+legend('Cxt', 'S1', 'S2')
 hold off
-
 
 subplot(1,3,2)
-plot(squeeze(nodes(S1,A1,:)));
+% plot(squeeze(nodes(Cxt,A2,:)));
+title('A2')
 hold on
-plot(squeeze(nodes(S1,A2,:)));
+% plot(squeeze(nodes(S1,A2,:)));
+plot(squeeze(nodes(S2,A2,:)));
+legend('Cxt', 'S1', 'S2')
 hold off
-
 
 subplot(1,3,3)
-plot(squeeze(nodes(S2,A1,:)));
+plot(squeeze(V_Total(S1,S2,:)))
+title('SumV')
 hold on
-plot(squeeze(nodes(S2,A2,:)));
+plot(squeeze(V_Excitatory(S1,S2,:)))
+plot(squeeze(V_Inhibitory(S1,S2,:)))
+legend('VTotal', 'VExc', 'VInh')
 hold off
 
-figure
-subplot(2,2,1)
-plot(squeeze(V_Total(Cxt,S1,:)))
-subplot(2,2,2)
-plot(squeeze(V_Total(Cxt,S2,:)))
-
-
-
+% findpeaks(squeeze(nodes(S2,A2,:)))
