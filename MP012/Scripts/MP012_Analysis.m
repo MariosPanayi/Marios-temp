@@ -1,16 +1,16 @@
 clear all
 tic
 %% Extract Raw Data
-<<<<<<< HEAD
+
 filepath = "C:\Users\mpanagi\Documents\GitHub\Marios-temp\MP012\RawData\";
 filename = "MP_LPCD_1Lever_Degraded_Day7";
-=======
+
 %FilepathSurfacePro
 filepath = "C:\Users\Marios\Documents\GitHub\Marios-temp\MP012\RawData\";
 %FilePathTinsleyPC
 %filepath = "C:\Users\mpanagi\Documents\GitHub\Marios-temp\MP012\RawData\";
 filename = "MP_LPCD_1Lever_Degraded_Day9";
->>>>>>> 55ccd531a63486300431a729175d58d7df402c13
+
 data_raw = mpc_read_multiple_data(strcat(filepath,filename));
 
 %% List of relevant Event IDs array A = Event, array B = Time
