@@ -1,6 +1,6 @@
 %% It is best to have all your videos in a single folder (since this is the format you need to keep your videos in for the Deep Lab Cut analysis
 % a list of the .avi files in the specified folder is accessed using dir()
-videofolder = 'E:\MK001_MK002_VideosCombinedforAnalysis';
+videofolder = 'K:\MK001_MK002_VideosCombinedforAnalysis';
 filelist = dir(strcat(videofolder, '\*.avi'));
 
 %% Process the average luminance of the videos - this can be used to align to light based events in the box

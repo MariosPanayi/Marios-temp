@@ -2,14 +2,14 @@ clear all
 tic
 %% Extract Raw Data
 
-filepath = "C:\Users\mpanagi\Documents\GitHub\Marios-temp\MP012\RawData\";
-filename = "MP_LPCD_1Lever_Degraded_Day7";
+filepath = 'C:\Users\mpanagi\Documents\GitHub\Marios-temp\MP012\RawData\';
+filename = 'MP_LPCD_1Lever_Degraded_Day7';
 
 %FilepathSurfacePro
-filepath = "C:\Users\Marios\Documents\GitHub\Marios-temp\MP012\RawData\";
+% filepath = 'C:\Users\Marios\Documents\GitHub\Marios-temp\MP012\RawData\';
 %FilePathTinsleyPC
-%filepath = "C:\Users\mpanagi\Documents\GitHub\Marios-temp\MP012\RawData\";
-filename = "MP_LPCD_1Lever_Degraded_Day9";
+%filepath = 'C:\Users\mpanagi\Documents\GitHub\Marios-temp\MP012\RawData\';
+filename = 'MP_LPCD_1Lever_Degraded_Day9';
 
 data_raw = mpc_read_multiple_data(strcat(filepath,filename));
 
@@ -56,9 +56,9 @@ for subj = 1:size(data_raw,2)
     end
     
     if data(subj).contingentReward == data(subj).noncontingentReward
-        data(subj).condition = "Degraded";
+        data(subj).condition = 'Degraded';
     else
-        data(subj).condition = "NonDegraded";
+        data(subj).condition = 'NonDegraded';
     end
     
     data(subj).event = data_raw{1,subj}.A;
@@ -129,10 +129,10 @@ toc
 figure
 for subj = 1:size(data,2)
     
-    if data(subj).condition == "Degraded"
+    if data(subj).condition == 'Degraded'
         subplot(2,2,1)
         plot(mean(data(subj).contingentCuePeriod.LPr))
-        title(["Degraded: Contingent"]);
+        title(['Degraded: Contingent']);
         hold on
         plot(mean(data(subj).contingentCuePeriod.LPnr))
         ylim([0 1])
@@ -141,17 +141,17 @@ for subj = 1:size(data,2)
         
         subplot(2,2,2)
         plot(mean(data(subj).noncontingentCuePeriod.LPr))
-        title(["Degraded: NonContingent"]);
+        title(['Degraded: NonContingent']);
         hold on
         plot(mean(data(subj).noncontingentCuePeriod.LPnr))
         ylim([0 1])
         xlim([0 65])
         
-    elseif data(subj).condition == "NonDegraded"
+    elseif data(subj).condition == 'NonDegraded'
         
         subplot(2,2,3)
         plot(mean(data(subj).contingentCuePeriod.LPr))
-        title(["NonDegraded: Contingent"]);
+        title(['NonDegraded: Contingent']);
         hold on
         plot(mean(data(subj).contingentCuePeriod.LPnr))
         ylim([0 1])
@@ -159,7 +159,7 @@ for subj = 1:size(data,2)
         
         subplot(2,2,4)
         plot(mean(data(subj).noncontingentCuePeriod.LPr))
-        title(["NonDegraded: NonContingent"]);
+        title(['NonDegraded: NonContingent']);
         hold on
         plot(mean(data(subj).noncontingentCuePeriod.LPnr))
         ylim([0 1])
@@ -173,12 +173,12 @@ i = 0;
 j = 0;
 for subj = 1:size(data,2)
     
-    if strcmp(data(subj).condition, "Degraded")
+    if strcmp(data(subj).condition, 'Degraded')
         i = i+1;        
         Degraded_Cont(i,:) = mean(data(subj).contingentCuePeriod.LPr);
         Degraded_NonCont(i,:) = mean(data(subj).noncontingentCuePeriod.LPr);
     end
-    if strcmp(data(subj).condition, "NonDegraded")
+    if strcmp(data(subj).condition, 'NonDegraded')
         j=j+1;
         NonDegraded_Cont(j,:) = mean(data(subj).contingentCuePeriod.LPr);
         NonDegraded_NonCont(j,:) = mean(data(subj).noncontingentCuePeriod.LPr);
@@ -192,26 +192,26 @@ figure
 
         subplot(2,2,1)
         plot(nanmean(Degraded_Cont))
-        title(["Degraded: Contingent"]);
+        title(['Degraded: Contingent']);
         ylim([0 1])
         xlim([0 65])
 
         
         subplot(2,2,2)
         plot(nanmean(Degraded_NonCont))
-        title(["Degraded: NonContingent"]);
+        title(['Degraded: NonContingent']);
         ylim([0 1])
         xlim([0 65])
     
         subplot(2,2,3)
         plot(nanmean(NonDegraded_Cont))
-        title(["NonDegraded: Contingent"]);
+        title(['NonDegraded: Contingent']);
         ylim([0 1])
         xlim([0 65])
         
         subplot(2,2,4)
         plot(nanmean(NonDegraded_NonCont))
-        title(["NonDegraded: NonContingent"]);
+        title(['NonDegraded: NonContingent']);
         ylim([0 1])
         xlim([0 65])
 
@@ -221,10 +221,10 @@ figure
 figure
 for subj = 1:size(data,2)
     
-    if data(subj).condition == "Degraded"
+    if data(subj).condition == 'Degraded'
         subplot(2,2,1)
         plot(mean(data(subj).contingentCuePeriod.LPr))
-        title(["Degraded: LP+"]);
+        title(['Degraded: LP+']);
         hold on
         plot(mean(data(subj).contingentCuePeriod.LPnr))
         ylim([0 1])
@@ -233,17 +233,17 @@ for subj = 1:size(data,2)
         
         subplot(2,2,2)
         plot(mean(data(subj).noncontingentCuePeriod.LPr))
-        title(["Degraded: LP-"]);
+        title(['Degraded: LP-']);
         hold on
         plot(mean(data(subj).noncontingentCuePeriod.LPnr))
         ylim([0 1])
         xlim([0 65])
         
-    elseif data(subj).condition == "NonDegraded"
+    elseif data(subj).condition == 'NonDegraded'
         
         subplot(2,2,3)
         plot(mean(data(subj).contingentCuePeriod.LPr))
-        title(["NonDegraded: LP+"]);
+        title(['NonDegraded: LP+']);
         hold on
         plot(mean(data(subj).contingentCuePeriod.LPnr))
         ylim([0 1])
@@ -251,7 +251,7 @@ for subj = 1:size(data,2)
         
         subplot(2,2,4)
         plot(mean(data(subj).noncontingentCuePeriod.LPr))
-        title(["NonDegraded: LP-"]);
+        title(['NonDegraded: LP-']);
         hold on
         plot(mean(data(subj).noncontingentCuePeriod.LPnr))
         ylim([0 1])

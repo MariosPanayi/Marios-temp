@@ -22,7 +22,7 @@ modelvars = {'pd1', 'pd2', 'w1', 'L+', 'L+ self', 'L-', 'L- self','p1 Cxt', 'p1 
 % x0 = zeros(size(modelvars))';
 % x0 = ones(size(modelvars))';
 % x0 = [ones(size(modelvars))/2';
-  x0 = rand(size(modelvars))';
+ x0 = rand(size(modelvars))';
 
 % Get WT_AAA data
 run('C:\Users\mpanagi\Documents\GitHub\Marios-temp\WagnerSOP_Matlab\ModelFitting_Dataset_GluA1.m');
@@ -30,7 +30,7 @@ run('C:\Users\mpanagi\Documents\GitHub\Marios-temp\WagnerSOP_Matlab\ModelFitting
 tic
 %Define a function to generate sums of squares betweent he model sim and
 %actual data
-rawdata = WT_AAA;
+rawdata = KO_AAA;
 
 Fsumsquares = @(x)sum((SOP_fit_SSQ_AAA(x) - rawdata).^2);
 % fminunc(Fsumsquares,x0)
@@ -39,8 +39,8 @@ A = [];
 b = [];
 Aeq = [];
 beq = [];
-lb = [0,0,0,0,0,0,0,0,0,0,0,0];
-ub = [1,1,1,1,1,1,1,1,1,1,1,1];
+lb = [0,0,0,0,0,0,0,0,0,0.5,0.1,0];
+ub = [1,1,1,1,1,1,1,1,1,.5,.1,1];
 [x, fval, ~, ~, ~, grad, hess] = fmincon(Fsumsquares,x0,A,b,Aeq,beq,lb,ub);
 
 toc
