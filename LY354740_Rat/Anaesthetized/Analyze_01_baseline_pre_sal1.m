@@ -4,7 +4,7 @@ clear all
 %Move these inside data processing loop if you want to setup individual parameters for each animal/session
 
 %list of experiment specific params
-experimentParams = readtable('F:\Marios aFCV\GLRA_002\DataAnalysis\GLRA002_params.xlsx');
+experimentParams = readtable('C:\Users\mario\Documents\GitHub\Marios-temp\LY354740_Rat\Anaesthetized\LYAnaesthetized_params.xlsx');
 
 %Set number of channels
 no_of_channels = 1;
@@ -15,8 +15,8 @@ bg_params.sample_freq = 58820;
 
 
 %chemometric variables
-chemo_params.cv_matrix = dlmread('F:\Marios aFCV\chemoset1\cvmatrix1.txt');
-chemo_params.conc_matrix = dlmread('F:\Marios aFCV\chemoset1\concmatrix1.txt');
+chemo_params.cv_matrix = dlmread('C:\Users\mario\Documents\GitHub\fcv_data_processing\chemoset\cvmatrix1.txt');
+chemo_params.conc_matrix = dlmread('C:\Users\mario\Documents\GitHub\fcv_data_processing\chemoset\concmatrix1.txt');
 chemo_params.pcs = [];
 chemo_params.alpha = 0.05;
 chemo_params.plotfigs = 0;
@@ -36,35 +36,58 @@ params.plot_all_IvT = 0;
 params.apply_chemometrics = 1; %do chemometrics
 params.fig_title = 'Amplitude Response Curve';
 
+
+
 %% Set up data path and subfolder structure
 
 %Directory containing all files
-directory = 'F:\Marios aFCV\GLRA_002\';
+directory = 'F:\EmilFristedMScDBMEW\Anaesthetised data\Expt001\';
 %Pull out all folders within the directory, i.e. individual subjects
 folderlist = dir(directory);
 folders = {folderlist.name};
 isfolder = cell2mat({folderlist.isdir});
 folders(~isfolder)=[];
 
-%find list of relevant folders starting with GLRA002 and update folders variable
-relevantFolders  = strfind([folders], 'GLRA002');
+%find list of relevant folders starting with EXPT001 and update folders variable
+relevantFolders  = strfind([folders], 'EXPT001');
 folders = folders(~cellfun(@isempty, relevantFolders));
-%Manual Override
-%folders = {'GLRA002_20170524_GLRA50.6d','GLRA002_20170524_GLRA51.6c','GLRA002_20170524_GLRA64.1e','GLRA002_20170601_GLRA64.1c','GLRA002_20170606_GLRA52.4d','GLRA002_20170606_GLRA53.5f','GLRA002_20170920_GLRA56.2a','GLRA002_20170920_GLRA62.4b','GLRA002_20170922_GLRA65.1a','GLRA002_20170925_GLRA58.3c','GLRA002_20170925_GLRA58.3d','GLRA002_20170927_GLRA58.3b','GLRA002_20170927_GLRA65.2a'};
 
 
-
-
-%list of important subfolders containing session specific data
-subfolder1 = '\01_Stabilization\';
-subfolder2 = '\02_STIMRESPONSE_VARY_AMPLITUDE\';
-subfolder3 = '\03_STIMRESPONSE_VARY_PULSES\';
-subfolder4 = '\04_Stabilization_Period2\';
-subfolder5 = '\05_Baseline_PreDrug\';
-subfolder6 = '\06_DrugPeriod\';
+subfolder1 = '01_baseline_pre';
+% subfolder2 = '02_stim_intensity';
+% subfolder3 = '03_stim_pulse';
+% subfolder4 = '04_baseline_post';
+% subfolder5 = '05_baseline_pre';
+% subfolder6 = '06_stim_intensity';
+% subfolder7 = '07_stim_pulse';
+% subfolder8 = '08_baseline_post';
+% 
+% subfolders = {subfolder1,subfolder2,subfolder3,subfolder4,subfolder5,subfolder6,subfolder7,subfolder8};
 subfolders = {subfolder1};
-% subfolders = {subfolder1,subfolder2,subfolder3,subfolder4,subfolder5,subfolder6};
-a
+
+% Find relevant subfolder
+fullpaths = {};
+for i = 1:size(folders,2)
+    %Find subfolders for each animal in foders variable
+    subfolderstemp = dir(strcat(directory,folders{i}));
+    subfolderstemp = subfolderstemp(~startsWith({subfolderstemp.name}, '.'));
+    subfolderstemp_name = {subfolderstemp.name};
+    isfolder = cell2mat({subfolderstemp.isdir});
+    subfolderstemp_name(isfolder) = []; 
+    for j = 1:size(subfolders,2)
+    %Find the cell index within the subfolder that matches each of the subfolder naming conventions using regexp    
+    subfolder_index = find(~cellfun(@isempty,regexp({subfolderstemp_name{:}},subfolders{j})));
+    %create a list of all the subfolders such that each {animal,
+    %experimental stage} is saved
+    subfolder_paths{i,j} = subfolderstemp_name;
+    end
+end
+
+
+folderlist = dir(directory);
+folders = {folderlist.name};
+isfolder = cell2mat({folderlist.isdir});
+folders(~isfolder)=[];
 
 %% Main Loop
 %loop through each folder (subject) and each subfolder (protocol)
@@ -74,6 +97,7 @@ for i= 1:length(folders)
     experiment{i} = sessionDetails{1};
     date{i} = sessionDetails{2};
     subject{i} = sessionDetails{3};
+    drug{i} = sessionDetails{4};
     
     
     %Identify subject and update parameters accordingly
@@ -83,12 +107,12 @@ for i= 1:length(folders)
     cut_params.bg_pos = experimentParams.Baseline(varindex);
     cut_params.target_pos = experimentParams.TargetPos(varindex);
     max_end = experimentParams.PeakPeriod(varindex);
-    Genotype{i} = experimentParams.Genotype(varindex);
+    Drug{i} = experimentParams.Drug(varindex);
     Sex{i} = experimentParams.Sex(varindex);
     CalibrationFactor{i} = experimentParams.CalibrationFactor(varindex); 
     
     for j = 1:length(subfolders)
-        datapath = [directory folders{i} subfolders{j}];
+        datapath = [directory folders{i} '\' subfolder_paths{i,j} '\'];
         
         %% Process data
         
@@ -152,7 +176,7 @@ for i= 1:length(folders)
     data(i).experiment = experiment{i};
     data(i).subject = subject{i};
     data(i).date = date{i};
-    data(i).genotype = Genotype{i};
+    data(i).genotype = Drug{i};
     data(i).sex = Sex{i};
     data(i).calibrationFactor = CalibrationFactor{i};
     
@@ -178,122 +202,5 @@ for i= 1:length(folders)
     
 end
 %%
-  summaryDA_max = [];
-  summaryDA_latency = [];
-  subjectcol = {};
-for i = 1:size(data,2)
-
-   temp_max  = groupstats([data(i).stim_params.stimPulses]', [data(i).summary.DA_max]',@mean);
-   temp_latency = groupstats([data(i).stim_params.stimPulses]', [data(i).summary.DA_latency]',@mean);
-  
-   
-   newrows = size(temp_max,1);
-   oldpos =  size(subjectcol,1);
-   subjectcol((oldpos+1): (oldpos+newrows),1)= {data(i).subject};
-   genotypecol((oldpos+1): (oldpos+newrows),1)= {data(i).genotype};
-   sexcol((oldpos+1): (oldpos+newrows),1)= {data(i).sex};
-   calibrationcol((oldpos+1): (oldpos+newrows),1)= {data(i).calibrationFactor};
-   summaryDA_max = [summaryDA_max; temp_max];
-   summaryDA_latency = [summaryDA_latency; temp_latency];
-end
-
-    summary = {subjectcol genotypecol sexcol calibrationcol summaryDA_max summaryDA_latency};
-% xlswrite('C:\Users\mario\Documents\GitHub\Marios-temp\GLRA002_IntensitySTimResponseCurve.xlsx', summary)
-% ans = cellfind('WT', [data.genotype])
-% {data(ans).subject}
-
-%save('F:\Marios aFCV\GLRA_002\DataAnalysis\GLRA002_PulseResponse', 'data', 'summary' )
-
-%%
-%Average responses during baseline period
-%data stored in data(i).processed.c_predicted
-
-
-%initialisevars
-avg_DA_WT = [];
-avg_DA_KO = [];
-avg_DA_cal_WT = [];
-avg_DA_cal_KO = [];
-for i = 1: size(data,2)
-%convert data to numeric matrix, rows 1,3,5... are DA, rows 2,4,6.... are pH
-temp = cell2mat(data(i).processed.c_predicted(1,:)');
-%DA data picker for even rows
-temp = temp(1:2:size(temp,1),:);
-temp_mean = mean(temp);
-avg_DA(i,:) = temp_mean;
-
-temp_mean_cal = temp_mean/data(i).calibrationFactor;
-avg_DA_cal(i,:) = temp_mean_cal;
-
-if strcmp([data(i).genotype], 'WT');
-    avg_DA_WT = [avg_DA_WT;  temp_mean];
-    avg_DA_cal_WT = [avg_DA_cal_WT;  temp_mean_cal];
-elseif strcmp([data(i).genotype], 'KO');
-    avg_DA_KO = [avg_DA_KO; temp_mean];
-    avg_DA_cal_KO = [avg_DA_cal_KO; temp_mean_cal];
-end
-end
-
-
-%%
-% save('F:\Marios aFCV\GLRA_002\DataAnalysis\GLRA002_01BaselineData', 'data', 'summary', 'avg_DA_WT','avg_DA_cal_WT' , 'avg_DA_KO','avg_DA_cal_KO')
-
-%%
-%Save all the Traces for Each Trial/Animal
-
-%initialisevars
-traces  = [];
-calbratedTraces = [];
-geno = [];
-sex = [];
-subj = [];
-
-for i = 1: size(data,2)
-%convert data to numeric matrix, rows 1,3,5... are DA, rows 2,4,6.... are pH
-tempData = cell2mat(data(i).processed.c_predicted(1,:)');
-%DA data picker for even rows
-tempData = tempData(1:2:size(tempData,1),:);
-%Save last 3 trials only [recordings vary from 5 - 7 trials depending on the animal
-tempData = tempData(end-:end,:);
-
-%Apply calibration factor to DA data
-temp_Data_Cal = tempData./data(i).calibrationFactor;
-
-% Genotype
-temp_geno = cell(1, size(tempData,2));
-temp_geno(:) = data(i).genotype;
-
-% Sex
-temp_sex = cell(1, size(tempData,2));
-temp_sex(:) = data(i).sex;
-
-% Subject Name
-temp_subj = cell(1, size(tempData,2));
-temp_subj(:) = cellstr(data(i).subject);
-
-
-traces  = [traces; tempData'];
-calbratedTraces = [calbratedTraces; temp_Data_Cal'];
-geno = [geno; temp_geno'];
-sex = [sex; temp_sex'];
-subj = [subj; temp_subj'];
-
-
-end
-
-ts = repmat([data(1).processed.ts{1,1}], 1, size(data,2));
-savetraces = table(geno, sex, subj, ts', traces, calbratedTraces);
-writetable(savetraces,'C:\Users\mpanagi\Documents\GitHub\Marios-temp\GLRA002_AnaesthetisedFCV\GLRA002_Traces.xlsx', 'sheet', '01Stabilization');
-
-
-
-
-
-
-
-
-
-
-
 
 

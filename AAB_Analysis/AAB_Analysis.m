@@ -1,6 +1,7 @@
 
 %% Load data
 path = 'C:\Users\mpanagi\Documents\GitHub\Marios-temp\AAB_Analysis\';
+path = 'C:\Users\mario\Documents\GitHub\Marios-temp\AAB_Analysis\';
 filename = 'MP003_AAB_Sess1_Raw.xlsx';
 
 %Extract header containing group/trial/subject info

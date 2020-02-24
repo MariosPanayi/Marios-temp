@@ -53,7 +53,14 @@ folders = folders(~cellfun(@isempty, relevantFolders));
 %folders = {'GLRA002_20170524_GLRA50.6d','GLRA002_20170524_GLRA51.6c','GLRA002_20170524_GLRA64.1e','GLRA002_20170601_GLRA64.1c','GLRA002_20170606_GLRA52.4d','GLRA002_20170606_GLRA53.5f','GLRA002_20170920_GLRA56.2a','GLRA002_20170920_GLRA62.4b','GLRA002_20170922_GLRA65.1a','GLRA002_20170925_GLRA58.3c','GLRA002_20170925_GLRA58.3d','GLRA002_20170927_GLRA58.3b','GLRA002_20170927_GLRA65.2a'};
 
 
-
+'01_' % '01_' baseline_pre11
+'02_' % '02_' stim_instensity_curve1
+'03_' % '03_' stim_pulse_curve1
+'04_' % '04_' baseline_post1
+'05_' % '05_' baseline_pre2
+'06_' % '06_' stim_instensity_curve2
+'07_' % '07_' stim_pulse_curve2
+'08_' % '08_' baseline_post2
 
 %list of important subfolders containing session specific data
 subfolder1 = '\01_Stabilization\';
@@ -64,7 +71,7 @@ subfolder5 = '\05_Baseline_PreDrug\';
 subfolder6 = '\06_DrugPeriod\';
 subfolders = {subfolder1};
 % subfolders = {subfolder1,subfolder2,subfolder3,subfolder4,subfolder5,subfolder6};
-a
+
 
 %% Main Loop
 %loop through each folder (subject) and each subfolder (protocol)
