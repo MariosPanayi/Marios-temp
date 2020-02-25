@@ -1,10 +1,12 @@
 close all
 clear all
+tic
 %% Parameters
 %Move these inside data processing loop if you want to setup individual parameters for each animal/session
 
 %list of experiment specific params
-experimentParams = readtable('F:\Marios aFCV\GLRA_002\DataAnalysis\GLRA002_params.xlsx');
+% experimentParams = readtable('C:\Users\mario\Documents\GitHub\Marios-temp\LY354740_Rat\Anaesthetized\LYAnaesthetized_params.xlsx');
+experimentParams = readtable('C:\Users\mpanagi\Documents\GitHub\Marios-temp\LY354740_Rat\Anaesthetized\LYAnaesthetized_params.xlsx');
 
 %Set number of channels
 no_of_channels = 1;
@@ -15,8 +17,8 @@ bg_params.sample_freq = 58820;
 
 
 %chemometric variables
-chemo_params.cv_matrix = dlmread('F:\Marios aFCV\chemoset1\cvmatrix1.txt');
-chemo_params.conc_matrix = dlmread('F:\Marios aFCV\chemoset1\concmatrix1.txt');
+chemo_params.cv_matrix = dlmread('C:\Users\mpanagi\Documents\GitHub\fcv_data_processing\chemoset\cvmatrix1.txt');
+chemo_params.conc_matrix = dlmread('C:\Users\mpanagi\Documents\GitHub\fcv_data_processing\chemoset\concmatrix1.txt');
 chemo_params.pcs = [];
 chemo_params.alpha = 0.05;
 chemo_params.plotfigs = 0;
@@ -36,41 +38,47 @@ params.plot_all_IvT = 0;
 params.apply_chemometrics = 1; %do chemometrics
 params.fig_title = 'Amplitude Response Curve';
 
+
+
 %% Set up data path and subfolder structure
 
 %Directory containing all files
-directory = 'F:\Marios aFCV\GLRA_002\';
+directory = 'E:\EmilFristedMScDBMEW\Anaesthetised data\Expt001';
 %Pull out all folders within the directory, i.e. individual subjects
-folderlist = dir(directory);
-folders = {folderlist.name};
-isfolder = cell2mat({folderlist.isdir});
-folders(~isfolder)=[];
-
-%find list of relevant folders starting with GLRA002 and update folders variable
-relevantFolders  = strfind([folders], 'GLRA002');
-folders = folders(~cellfun(@isempty, relevantFolders));
-%Manual Override
-%folders = {'GLRA002_20170524_GLRA50.6d','GLRA002_20170524_GLRA51.6c','GLRA002_20170524_GLRA64.1e','GLRA002_20170601_GLRA64.1c','GLRA002_20170606_GLRA52.4d','GLRA002_20170606_GLRA53.5f','GLRA002_20170920_GLRA56.2a','GLRA002_20170920_GLRA62.4b','GLRA002_20170922_GLRA65.1a','GLRA002_20170925_GLRA58.3c','GLRA002_20170925_GLRA58.3d','GLRA002_20170927_GLRA58.3b','GLRA002_20170927_GLRA65.2a'};
+%find list of relevant folders starting with EXPT001 and update folders variable
+folders  = getFCVfoldersAnaesthetized(directory, 'EXPT001');
+folders = {folders.name};
 
 
-'01_' % '01_' baseline_pre11
-'02_' % '02_' stim_instensity_curve1
-'03_' % '03_' stim_pulse_curve1
-'04_' % '04_' baseline_post1
-'05_' % '05_' baseline_pre2
-'06_' % '06_' stim_instensity_curve2
-'07_' % '07_' stim_pulse_curve2
-'08_' % '08_' baseline_post2
+subfolder1 = '01_baseline_pre';
+subfolder2 = '02_stim_intensity';
+subfolder3 = '03_stim_pulse';
+subfolder4 = '04_baseline_post';
+subfolder5 = '05_baseline_pre';
+subfolder6 = '06_stim_intensity';
+subfolder7 = '07_stim_pulse';
+subfolder8 = '08_baseline_post';
+%% Run individual experimental periods here 1 by 1 to ensure no issues arise! 
+subfolders_fulllist = {subfolder1,subfolder2,subfolder3,subfolder4,subfolder5,subfolder6,subfolder7,subfolder8};
 
-%list of important subfolders containing session specific data
-subfolder1 = '\01_Stabilization\';
-subfolder2 = '\02_STIMRESPONSE_VARY_AMPLITUDE\';
-subfolder3 = '\03_STIMRESPONSE_VARY_PULSES\';
-subfolder4 = '\04_Stabilization_Period2\';
-subfolder5 = '\05_Baseline_PreDrug\';
-subfolder6 = '\06_DrugPeriod\';
-subfolders = {subfolder1};
-% subfolders = {subfolder1,subfolder2,subfolder3,subfolder4,subfolder5,subfolder6};
+for list = 1:length(subfolders_fulllist)
+
+subfolders = {subfolders_fulllist{list}};
+
+% Find relevant subfolder
+
+for i = 1:size(folders,2)
+    %Find subfolders for each animal in folders variable  
+    for j = 1:size(subfolders,2)
+    %Find the cell index within the subfolder that matches each of the subfolder naming conventions using regexp    
+    %create a list of all the subfolders such that each {animal,
+    %experimental stage} is saved
+    subfolderstemp  = getFCVfoldersAnaesthetized(strcat(directory,'\',folders{i}, '\'), subfolders{j});
+    subfolderstemp_name = {subfolderstemp.name};
+    subfolder_paths{i,j} = subfolderstemp_name;
+    end
+end
+
 
 
 %% Main Loop
@@ -81,6 +89,7 @@ for i= 1:length(folders)
     experiment{i} = sessionDetails{1};
     date{i} = sessionDetails{2};
     subject{i} = sessionDetails{3};
+    drug{i} = sessionDetails{4};
     
     
     %Identify subject and update parameters accordingly
@@ -89,14 +98,16 @@ for i= 1:length(folders)
     cut_params.trimData = [experimentParams.TrimStart(varindex) experimentParams.TrimEnd(varindex)];
     cut_params.bg_pos = experimentParams.Baseline(varindex);
     cut_params.target_pos = experimentParams.TargetPos(varindex);
-    max_end = experimentParams.PeakPeriod(varindex);
-    Genotype{i} = experimentParams.Genotype(varindex);
+    max_end = experimentParams.PeakPeriod(varindex)*cut_params.sample_rate;
+    Drug{i} = experimentParams.Drug(varindex);
     Sex{i} = experimentParams.Sex(varindex);
     CalibrationFactor{i} = experimentParams.CalibrationFactor(varindex); 
     
     for j = 1:length(subfolders)
-        datapath = [directory folders{i} subfolders{j}];
-        
+        %Errors can occur here if the format of the datapaths is nto
+        %correct and not provided as a string
+        datapath = strcat(directory, '\', folders{i}, '\', subfolder_paths{i,j}, '\');
+        datapath = datapath{1};
         %% Process data
         
         %Read in separate files for analysis
@@ -129,13 +140,17 @@ for i= 1:length(folders)
         % check for peak dopamine between baseline and max_end seconds later
         % (important to avoid large values caused by post-stim drift
 %         max_end = 5;
-        max_end = max_end*cut_params.sample_rate;
+
         DA_max = [];
         DA_latency = [];
+        DA_AUC_baseline = [];
+        DA_AUC = [];
         for k = 1: size(c_predicted, 2)
             [max_val, max_index] = max(c_predicted{k}(1,baseline:baseline+max_end),[], 2);
             DA_max(k) = max_val;
             DA_latency(k) = max_index; %N.b. this is latency from baseline in scan number
+            DA_AUC_baseline(k) = sum(c_predicted{k}(1,1:baseline));
+            DA_AUC(k) = sum(c_predicted{k}(1,baseline+1:baseline+baseline));
         end
         
         
@@ -159,7 +174,7 @@ for i= 1:length(folders)
     data(i).experiment = experiment{i};
     data(i).subject = subject{i};
     data(i).date = date{i};
-    data(i).genotype = Genotype{i};
+    data(i).drug = Drug{i};
     data(i).sex = Sex{i};
     data(i).calibrationFactor = CalibrationFactor{i};
     
@@ -178,12 +193,15 @@ for i= 1:length(folders)
     
     data(i).summary.DA_max = DA_max;
     data(i).summary.DA_latency = DA_latency;
+    data(i).summary.DA_AUC_baseline = DA_AUC_baseline;
+    data(i).summary.DA_AUC = DA_AUC;
     
     data(i).stim_params.stimFreq = stimFreq;
     data(i).stim_params.stimPulses = stimPulses;
     data(i).stim_params.stimStrength = stimStrength;
     
 end
+
 %%
   summaryDA_max = [];
   summaryDA_latency = [];
@@ -197,30 +215,30 @@ for i = 1:size(data,2)
    newrows = size(temp_max,1);
    oldpos =  size(subjectcol,1);
    subjectcol((oldpos+1): (oldpos+newrows),1)= {data(i).subject};
-   genotypecol((oldpos+1): (oldpos+newrows),1)= {data(i).genotype};
+   drugcol((oldpos+1): (oldpos+newrows),1)= {data(i).drug};
    sexcol((oldpos+1): (oldpos+newrows),1)= {data(i).sex};
    calibrationcol((oldpos+1): (oldpos+newrows),1)= {data(i).calibrationFactor};
    summaryDA_max = [summaryDA_max; temp_max];
    summaryDA_latency = [summaryDA_latency; temp_latency];
 end
 
-    summary = {subjectcol genotypecol sexcol calibrationcol summaryDA_max summaryDA_latency};
-% xlswrite('C:\Users\mario\Documents\GitHub\Marios-temp\GLRA002_IntensitySTimResponseCurve.xlsx', summary)
-% ans = cellfind('WT', [data.genotype])
-% {data(ans).subject}
+    summary = {subjectcol drugcol sexcol calibrationcol summaryDA_max summaryDA_latency};
+%    savesummary = table(subjectcol, drugcol, sexcol, calibrationcol, summaryDA_max, summaryDA_latency);
+%     xlswrite('C:\Users\mpanagi\Documents\GitHub\Marios-temp\LY354740_Rat\Anaesthetized\LY354740_01_baseline_summaryDA.xlsx', summary)
 
-%save('F:\Marios aFCV\GLRA_002\DataAnalysis\GLRA002_PulseResponse', 'data', 'summary' )
-
+    
+    
+    %save('F:\Marios aFCV\GLRA_002\DataAnalysis\LY354740_PulseResponse', 'data', 'summary' )
 %%
 %Average responses during baseline period
 %data stored in data(i).processed.c_predicted
 
 
 %initialisevars
-avg_DA_WT = [];
-avg_DA_KO = [];
-avg_DA_cal_WT = [];
-avg_DA_cal_KO = [];
+avg_DA_SAL = [];
+avg_DA_LY = [];
+avg_DA_cal_SAL = [];
+avg_DA_cal_LY = [];
 for i = 1: size(data,2)
 %convert data to numeric matrix, rows 1,3,5... are DA, rows 2,4,6.... are pH
 temp = cell2mat(data(i).processed.c_predicted(1,:)');
@@ -232,18 +250,20 @@ avg_DA(i,:) = temp_mean;
 temp_mean_cal = temp_mean/data(i).calibrationFactor;
 avg_DA_cal(i,:) = temp_mean_cal;
 
-if strcmp([data(i).genotype], 'WT');
-    avg_DA_WT = [avg_DA_WT;  temp_mean];
-    avg_DA_cal_WT = [avg_DA_cal_WT;  temp_mean_cal];
-elseif strcmp([data(i).genotype], 'KO');
-    avg_DA_KO = [avg_DA_KO; temp_mean];
-    avg_DA_cal_KO = [avg_DA_cal_KO; temp_mean_cal];
+if strcmp([data(i).drug], 'SAL');
+    avg_DA_SAL = [avg_DA_SAL;  temp_mean];
+    avg_DA_cal_SAL = [avg_DA_cal_SAL;  temp_mean_cal];
+elseif strcmp([data(i).drug], 'LY');
+    avg_DA_LY = [avg_DA_LY; temp_mean];
+    avg_DA_cal_LY = [avg_DA_cal_LY; temp_mean_cal];
 end
 end
+
+
 
 
 %%
-% save('F:\Marios aFCV\GLRA_002\DataAnalysis\GLRA002_01BaselineData', 'data', 'summary', 'avg_DA_WT','avg_DA_cal_WT' , 'avg_DA_KO','avg_DA_cal_KO')
+save(strcat('C:\Users\mpanagi\Documents\GitHub\Marios-temp\LY354740_Rat\Anaesthetized\',subfolders{1}), 'data', 'summary', 'avg_DA_SAL','avg_DA_cal_SAL' , 'avg_DA_LY','avg_DA_cal_LY')
 
 %%
 %Save all the Traces for Each Trial/Animal
@@ -251,9 +271,10 @@ end
 %initialisevars
 traces  = [];
 calbratedTraces = [];
-geno = [];
+drugs = [];
 sex = [];
 subj = [];
+
 
 for i = 1: size(data,2)
 %convert data to numeric matrix, rows 1,3,5... are DA, rows 2,4,6.... are pH
@@ -261,14 +282,14 @@ tempData = cell2mat(data(i).processed.c_predicted(1,:)');
 %DA data picker for even rows
 tempData = tempData(1:2:size(tempData,1),:);
 %Save last 3 trials only [recordings vary from 5 - 7 trials depending on the animal
-tempData = tempData(end-:end,:);
+% tempData = tempData(end-:end,:);
 
 %Apply calibration factor to DA data
 temp_Data_Cal = tempData./data(i).calibrationFactor;
 
-% Genotype
-temp_geno = cell(1, size(tempData,2));
-temp_geno(:) = data(i).genotype;
+% drug
+temp_drugs = cell(1, size(tempData,2));
+temp_drugs(:) = data(i).drug;
 
 % Sex
 temp_sex = cell(1, size(tempData,2));
@@ -281,7 +302,7 @@ temp_subj(:) = cellstr(data(i).subject);
 
 traces  = [traces; tempData'];
 calbratedTraces = [calbratedTraces; temp_Data_Cal'];
-geno = [geno; temp_geno'];
+drugs = [drugs; temp_drugs'];
 sex = [sex; temp_sex'];
 subj = [subj; temp_subj'];
 
@@ -289,18 +310,73 @@ subj = [subj; temp_subj'];
 end
 
 ts = repmat([data(1).processed.ts{1,1}], 1, size(data,2));
-savetraces = table(geno, sex, subj, ts', traces, calbratedTraces);
-writetable(savetraces,'C:\Users\mpanagi\Documents\GitHub\Marios-temp\GLRA002_AnaesthetisedFCV\GLRA002_Traces.xlsx', 'sheet', '01Stabilization');
+savetraces = table(drugs, sex, subj, ts', traces, calbratedTraces);
+writetable(savetraces,'C:\Users\mpanagi\Documents\GitHub\Marios-temp\LY354740_Rat\Anaesthetized\LYLY354740_Traces.xlsx', 'sheet', subfolders{1});
+%% Save full summary data into a table
+%initialisevars
+DA_max  = [];
+DA_latency = [];
+drugs = [];
+sex = [];
+subj = [];
+stimFreq = [];
+stimPulses = [];
+stimStrength = [];
+stimNum = [];
+DA_AUC_baseline = [];
+DA_AUC = [];
 
 
+for i = 1: size(data,2)
+
+% Data of interest
+tempData_DAMax = data(i).summary.DA_max(1,:)';
+tempData_DAlatency = data(i).summary.DA_latency(1,:)';
+tempDA_AUC_baseline = data(i).summary.DA_AUC_baseline(1,:)';
+tempDA_AUC = data(i).summary.DA_AUC(1,:)';
+
+% Stim Params
+tempstimFreq = data(i).stim_params.stimFreq(1,:)';
+tempstimPulses = data(i).stim_params.stimPulses(1,:)';
+tempstimStrength = data(i).stim_params.stimStrength(1,:)';
+
+% Countup of stimulation number/order
+tempstimNum = [1:size(tempData_DAMax,1)];
+
+% drug
+temp_drugs = cell(1, size(tempData_DAMax,1));
+temp_drugs(:) = data(i).drug;
+
+% Sex
+temp_sex = cell(1, size(tempData_DAMax,1));
+temp_sex(:) = data(i).sex;
+
+% Subject Name
+temp_subj = cell(1, size(tempData_DAMax,1));
+temp_subj(:) = cellstr(data(i).subject);
 
 
+DA_max = [DA_max; tempData_DAMax];
+DA_latency  = [DA_latency; tempData_DAlatency];
 
+DA_AUC_baseline = [DA_AUC_baseline; tempDA_AUC_baseline];
+DA_AUC = [DA_AUC; tempDA_AUC];
 
+stimFreq = [stimFreq; tempstimFreq];
+stimPulses = [stimPulses; tempstimPulses];
+stimStrength = [stimStrength; tempstimStrength];
 
+drugs = [drugs; temp_drugs'];
+sex = [sex; temp_sex'];
+subj = [subj; temp_subj'];
 
+stimNum = [stimNum; tempstimNum'];
 
+end
 
+savesummary = table(drugs, sex, subj, stimFreq, stimPulses, stimStrength,stimNum, DA_max, DA_latency, DA_AUC_baseline, DA_AUC);
+writetable(savesummary,'C:\Users\mpanagi\Documents\GitHub\Marios-temp\LY354740_Rat\Anaesthetized\LY354740_summaryDA.xlsx',  'sheet', subfolders{1})
 
+end
 
-
+toc
