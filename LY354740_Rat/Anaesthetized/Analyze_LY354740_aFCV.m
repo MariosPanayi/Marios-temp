@@ -59,7 +59,8 @@ subfolder6 = '06_stim_intensity';
 subfolder7 = '07_stim_pulse';
 subfolder8 = '08_baseline_post';
 %% Run individual experimental periods here 1 by 1 to ensure no issues arise! 
-subfolders_fulllist = {subfolder1,subfolder2,subfolder3,subfolder4,subfolder5,subfolder6,subfolder7,subfolder8};
+% subfolders_fulllist = {subfolder1,subfolder2,subfolder3,subfolder4,subfolder5,subfolder6,subfolder7,subfolder8};
+subfolders_fulllist = {subfolder2,subfolder3,subfolder4,subfolder5,subfolder6,subfolder7,subfolder8};
 
 for list = 1:length(subfolders_fulllist)
 
@@ -312,6 +313,22 @@ end
 ts = repmat([data(1).processed.ts{1,1}], 1, size(data,2));
 savetraces = table(drugs, sex, subj, ts', traces, calbratedTraces);
 writetable(savetraces,'C:\Users\mpanagi\Documents\GitHub\Marios-temp\LY354740_Rat\Anaesthetized\LYLY354740_Traces.xlsx', 'sheet', subfolders{1});
+%
+%% Anaylze traces for t50
+
+plotfigs = 0;
+pk_threshold = .85;
+for subjnum = 1:length(data)
+    t50_data = [];
+    for tracenum = 1:length(data(1).processed.c_predicted)
+        %aggregate all the predicted DA trials into an array and process
+        %them all using t50 analysis function
+    t50_data = [t50_data; data(subjnum).processed.c_predicted{tracenum}(1,:)];
+    end
+    t50_data = t50_data';
+    [data(subjnum).decayanalysis.t50, data(subjnum).decayanalysis.rsq, data(subjnum).decayanalysis.pks, data(subjnum).decayanalysis.pklocs, data(subjnum).decayanalysis.peak_intercepts] = aFCV_Analyze_t50(t50_data, plotfigs, pk_threshold );
+end
+
 %% Save full summary data into a table
 %initialisevars
 DA_max  = [];
@@ -326,6 +343,12 @@ stimNum = [];
 DA_AUC_baseline = [];
 DA_AUC = [];
 
+t50 = [];
+rsq = [];
+pks = [];
+pkloks = [];
+pk_intercepts = [];
+
 
 for i = 1: size(data,2)
 
@@ -334,6 +357,13 @@ tempData_DAMax = data(i).summary.DA_max(1,:)';
 tempData_DAlatency = data(i).summary.DA_latency(1,:)';
 tempDA_AUC_baseline = data(i).summary.DA_AUC_baseline(1,:)';
 tempDA_AUC = data(i).summary.DA_AUC(1,:)';
+
+tempt50 = data(i).decayanalysis.t50(1,:)';
+temprsq = data(i).decayanalysis.rsq(1,:)';
+temppks = data(i).decayanalysis.pks(1,:)';
+temppkloks = data(i).decayanalysis.pklocs(1,:)';
+temppk_intercepts = data(i).decayanalysis.peak_intercepts(1,:)';
+
 
 % Stim Params
 tempstimFreq = data(i).stim_params.stimFreq(1,:)';
@@ -362,6 +392,14 @@ DA_latency  = [DA_latency; tempData_DAlatency];
 DA_AUC_baseline = [DA_AUC_baseline; tempDA_AUC_baseline];
 DA_AUC = [DA_AUC; tempDA_AUC];
 
+t50 = [t50; tempt50];
+rsq = [rsq; temprsq];
+pks = [pks; temppks];
+pkloks = [pkloks; temppkloks];
+pk_intercepts = [pk_intercepts; temppk_intercepts];
+
+
+
 stimFreq = [stimFreq; tempstimFreq];
 stimPulses = [stimPulses; tempstimPulses];
 stimStrength = [stimStrength; tempstimStrength];
@@ -374,8 +412,8 @@ stimNum = [stimNum; tempstimNum'];
 
 end
 
-savesummary = table(drugs, sex, subj, stimFreq, stimPulses, stimStrength,stimNum, DA_max, DA_latency, DA_AUC_baseline, DA_AUC);
-writetable(savesummary,'C:\Users\mpanagi\Documents\GitHub\Marios-temp\LY354740_Rat\Anaesthetized\LY354740_summaryDA.xlsx',  'sheet', subfolders{1})
+savesummary = table(drugs, sex, subj, stimFreq, stimPulses, stimStrength,stimNum, DA_max, DA_latency, DA_AUC_baseline, DA_AUC, t50, rsq, pks, pkloks, pk_intercepts);
+%writetable(savesummary,'C:\Users\mpanagi\Documents\GitHub\Marios-temp\LY354740_Rat\Anaesthetized\LY354740_summaryDA.xlsx',  'sheet', subfolders{1})
 
 end
 
