@@ -16,11 +16,9 @@ end
 
 %%
 
-if plotfigs
+
 title('Peak locaitons DA - Individual Traces')
 hold on
-end
-
 for i = 1:size(data, 2)
     %Plot
     if plotfigs
@@ -28,37 +26,34 @@ for i = 1:size(data, 2)
     end
     
     
-    % Find Peaks
+    % Save data
     [datapks_temp,datapklocs_temp] = findpeaks(data(:,i), 'MinPeakProminence',max(data(:,i))*pk_threshold);
     
    
-    % If no peaks found, lower threshold
-    if isempty(datapklocs_temp)
-    [datapks_temp,datapklocs_temp] = findpeaks(data(:,i), 'MinPeakProminence',max(data(:,i))*(pk_threshold/2));
-    end    
-    
-    % If peaks still not found, just use max value
-    if isempty(datapklocs_temp)
-        [datapks_temp, datapklocs_temp] = max(data(:,i));
-    end
-    
-    % If there are multiple peaks, take the largest peak
+    %if there are multiple peaks, take the largest peak
     if length(datapklocs_temp) > 1
         [maxpk, maxpkloc] = max(datapks_temp);
         datapks_temp = datapks_temp(maxpkloc);
         datapklocs_temp = datapklocs_temp(maxpkloc);
     end
     
-    %assign values to array
+    % If no peaks found, lower threshold
+    if isempty(datapklocs_temp)
+    [datapks_temp,datapklocs_temp] = findpeaks(data(:,i), 'MinPeakProminence',max(data(:,i))*(pk_threshold/2));
+    end    
+    
+    % If peaks still not found, lower threshold
+    if isempty(datapklocs_temp)
+    
+    
     datapks(i) = datapks_temp;
     datapklocs(i) = datapklocs_temp;
     
 end
-if plotfigs
 ylabel('nM DA')
 xlabel('Time in deci-seconds')
 hold off
-end
+
 %%
 
 if plotfigs

@@ -264,7 +264,7 @@ end
 
 
 %%
-%save(strcat('C:\Users\mpanagi\Documents\GitHub\Marios-temp\LY354740_Rat\Anaesthetized\',subfolders{1}), 'data', 'summary', 'avg_DA_SAL','avg_DA_cal_SAL' , 'avg_DA_LY','avg_DA_cal_LY')
+save(strcat('C:\Users\mpanagi\Documents\GitHub\Marios-temp\LY354740_Rat\Anaesthetized\',subfolders{1}), 'data', 'summary', 'avg_DA_SAL','avg_DA_cal_SAL' , 'avg_DA_LY','avg_DA_cal_LY')
 
 %%
 %Save all the Traces for Each Trial/Animal
@@ -413,7 +413,7 @@ stimNum = [stimNum; tempstimNum'];
 end
 
 savesummary = table(drugs, sex, subj, stimFreq, stimPulses, stimStrength,stimNum, DA_max, DA_latency, DA_AUC_baseline, DA_AUC, t50, rsq, pks, pkloks, pk_intercepts);
-writetable(savesummary,'C:\Users\mpanagi\Documents\GitHub\Marios-temp\LY354740_Rat\Anaesthetized\LY354740_summaryDA.xlsx',  'sheet', subfolders{1})
+%writetable(savesummary,'C:\Users\mpanagi\Documents\GitHub\Marios-temp\LY354740_Rat\Anaesthetized\LY354740_summaryDA.xlsx',  'sheet', subfolders{1})
 
 end
 
