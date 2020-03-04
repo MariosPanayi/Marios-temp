@@ -1,4 +1,4 @@
-function [filtered] = DLC_interpolateLowConfidence(data,criterion)
+function [filtered, percentNaNs] = DLC_interpolateLowConfidence(data,criterion)
 %% Interpolates values in DLC tracking if confidence in the estimate is below a threshold
 % data = data in DLC format i.e. numeric matrix with no headers,
 %   first column is frame number,
@@ -23,6 +23,9 @@ for i = 1:numparts
     %Indices of rows with sub-threshold confidence
     lowConfidence = find(data(1:numrows,confidence) < criterion);
     filtered(lowConfidence, x:y) = nan;
+
+    %Calculate percent NaNs in each column
+    percentNaNs(i) = (sum(isnan(filtered(:,x)))/length(filtered(:,x)))*100;
 end
 
 

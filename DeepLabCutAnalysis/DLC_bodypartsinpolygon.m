@@ -3,7 +3,7 @@ function [occupancy] = DLC_bodypartsinpolygon(DLC_data, polygonx, polygony)
 % DLC_data = data in DLC format i.e. numeric matrix with no headers,
 %   first column is frame number,
 %   then groups of 3 columns for each tracked part (x,y,confidence)
-% polygon, polygony are the x and y co-ordinates for the polygon of interest
+% polygonx, polygony are the x and y co-ordinates for the polygon of interest
 numparts = (size(DLC_data, 2) - 1)/3;
 numrows = size(DLC_data,1);
 

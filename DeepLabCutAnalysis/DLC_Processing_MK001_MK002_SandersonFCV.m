@@ -388,7 +388,6 @@ for i = 1:size(DLC,2)
         %Time within each trial (s) - S1 starts at 30 and S2 starts at 70
         %Timebins of varying lengths also created as variables for
         %summarising data later
-        bin_02s
         bin_1s = ceil(DLC(i).trials(k).ts(2:end)- DLC(i).trials(k).ts(1));
         bin_5s = ceil(bin_1s/5);
         bin_10s = ceil(bin_1s/10);
