@@ -29,8 +29,13 @@ for i = 1:size(data, 2)
     
 
     % Find Peaks
+    %if data is all negative i.e. poor signal, then set as NaN\
+    try
     [datapks_temp,datapklocs_temp] = findpeaks(data(:,i), 'MinPeakProminence',max(data(:,i))*pk_threshold);
-    
+    catch
+   % If peaks still not found, just use max value
+        [datapks_temp, datapklocs_temp] = max(data(:,i));
+    end
    
     % If no peaks found, lower threshold
     if isempty(datapklocs_temp)
