@@ -27,7 +27,7 @@ for i = 1:size(data, 2)
     findpeaks(data(:,i), 'MinPeakProminence',max(data(:,i))*pk_threshold)
     end
     
-
+    
     % Find Peaks
     [datapks_temp,datapklocs_temp] = findpeaks(data(:,i), 'MinPeakProminence',max(data(:,i))*pk_threshold);
     
@@ -103,18 +103,13 @@ X = [0:length(Y)-1]';
 % Half life = ln(2)/b
 try
 [f, gof] = fit(X,Y,'exp1');
+catch
 coeffs = coeffvalues(f);
 rsq_data(i) = gof.rsquare;
 a_data(i) = coeffs(1);
 b_data(i) = coeffs(2);
 t50_data(i) = log(2)/b_data(i);
 
-catch %catch errors in fit and return NaNs
-rsq_data(i) = NaN;
-a_data(i) = NaN;
-b_data(i) = NaN;
-t50_data(i) = NaN;
-end
 if plotfigs
 plot(f,X,Y)
 end 

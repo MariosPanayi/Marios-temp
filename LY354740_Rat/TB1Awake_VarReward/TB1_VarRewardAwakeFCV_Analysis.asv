@@ -295,11 +295,8 @@ for i = 1:length(data)
             %Convert latency to seconds
         data(i).analysis.latency2peak5s(j) = data(i).analysis.latency2peak5s(j)/cut_params.sample_rate;
     
-        %t50 analysis when possible
-        t50plotfigs = 0;
-        t50pk_threshold = 0.85;
-        [data(i).analysis.t50.t50_data(j), data(i).analysis.t50.rsq_data(j), data(i).analysis.t50.datapks(j), data(i).analysis.t50.datapklocs(j), data(i).analysis.t50.peak_intercepts(j)] = aFCV_Analyze_t50(data(i).analysis.traces{j}(cutAUC), t50plotfigs, t50pk_threshold );
-
+    %t50 analysis when possible
+    function [data(i).analysis.t50.t50_data, data(i).analysis.t50.rsq_data, data(i).analysis.t50.datapks, datapklocs, peak_intercepts] = aFCV_Analyze_t50(data, plotfigs, pk_threshold )
     end
 end
 
