@@ -1,0 +1,291 @@
+---
+title: "LY354740_WM_TMaze_Expts12"
+author: "Marios Panayi"
+date: "4/28/2020"
+output: word_document
+---
+
+```{r setup, include=FALSE, message = FALSE, warning=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+## Packages for data organisation and plotting
+library(tidyverse)
+# Package for relative file paths
+library(here)
+# library(ggpubr)
+library(cowplot)
+library(ggsignif)
+################################################################################
+## Packages for Data analysis
+library(afex)
+afex_options(emmeans_model = "multivariate")# use multivariate model for all follow-up tests.
+library(emmeans)
+# install.packages("devtools")
+# devtools::install_github("crsh/papaja")
+library(papaja)
+library(knitr)
+
+```
+
+
+# Experiment 1 - LY354740 impairs spatial working memory
+
+
+```{r Expt. 1 LY354740 impairs spatial working memory, include=FALSE, message = FALSE, warning=FALSE}
+
+full_data <- read_csv(here("rawdata", "/LY354740_TMaze_Expt1_rawdata.csv")) 
+# # Analysis of Both periods - however 40s delay is uninteresting So is ignored for the sake of parsimony  
+# # Stats - Accuracy
+# anova <- aov_4(Accuracy ~ (Drug*Delay|Subj), data = full_data, anova_table = list(correction = "none", es = "pes"))
+# anova_print <- apa_print(anova, mse = "FALSE",correction = "none",es = "pes")
+# 
+# simpledrug <- emmeans(anova, ~Drug)
+# simpledrug_print <- apa_print.emmGrid(contrast(simpledrug, method = "pairwise", simple = "Drug", adjust = "sidak"))
+# 
+# # Stats - Latency Sample
+# anova_latencySample <- aov_4(Latency_Sample ~ (Drug*Delay|Subj), data = full_data, anova_table = list(correction = "none", es = "pes"))
+# anova_latencySample_print <- apa_print(anova_latencySample, mse = "FALSE",correction = "none",es = "pes")
+# 
+# simpledrug_latencySample <- emmeans(anova_latencySample, ~Drug)
+# simpledrug_latencySample_print <- apa_print.emmGrid(contrast(simpledrug_latencySample, method = "pairwise", simple = "Drug", adjust = "sidak"))
+# 
+# # Stats - Latency Choice
+# # Stats - Latency Choice
+# anova_latencyChoice <- aov_4(Latency_Choice ~ (Drug*Delay|Subj), data = full_data, anova_table = list(correction = "none", es = "pes"))
+# anova_latencyChoice_print <- apa_print(anova_latencyChoice, mse = "FALSE",correction = "none",es = "pes")
+# 
+# simpledrug_latencyChoice <- emmeans(anova_latencyChoice, ~Drug)
+# simpledrug_latencyChoice_print <- apa_print.emmGrid(contrast(simpledrug_latencyChoice, method = "pairwise", simple = "Drug", adjust = "sidak"))
+# 
+# 
+# anova_print$table
+# simpledrug_print$table
+# 
+# anova_latencySample_print$table
+# simpledrug_latencySample_print$table
+# 
+# anova_latencyChoice_print$table
+# simpledrug_latencyChoice_print$table
+
+
+
+
+
+
+short_data <- full_data %>% 
+  filter(Delay == "0")
+
+
+# Stats - Accuracy
+anova <- aov_4(Accuracy ~ (Drug|Subj), data = short_data, anova_table = list(correction = "none", es = "pes"))
+anova_print <- apa_print(anova, mse = "FALSE",correction = "none",es = "pes")
+
+simpledrug <- emmeans(anova, ~Drug)
+simpledrug_print <- apa_print.emmGrid(contrast(simpledrug, method = "pairwise", simple = "Drug", adjust = "tukey"))
+
+# Stats - Latency Sample
+anova_latencySample <- aov_4(Latency_Sample ~ (Drug|Subj), data = short_data, anova_table = list(correction = "none", es = "pes"))
+anova_latencySample_print <- apa_print(anova_latencySample, mse = "FALSE",correction = "none",es = "pes")
+
+simpledrug_latencySample <- emmeans(anova_latencySample, ~Drug)
+simpledrug_latencySample_print <- apa_print.emmGrid(contrast(simpledrug_latencySample, method = "pairwise", simple = "Drug", adjust = "tukey"))
+
+# Stats - Latency Choice
+# Stats - Latency Choice
+anova_latencyChoice <- aov_4(Latency_Choice ~ (Drug|Subj), data = short_data, anova_table = list(correction = "none", es = "pes"))
+anova_latencyChoice_print <- apa_print(anova_latencyChoice, mse = "FALSE",correction = "none",es = "pes")
+
+simpledrug_latencyChoice <- emmeans(anova_latencyChoice, ~Drug)
+simpledrug_latencyChoice_print <- apa_print.emmGrid(contrast(simpledrug_latencyChoice, method = "pairwise", simple = "Drug", adjust = "tukey"))
+
+anova_print$table
+simpledrug_print$table
+
+anova_latencySample_print$table
+simpledrug_latencySample_print$table
+
+anova_latencyChoice_print$table
+simpledrug_latencyChoice_print$table
+
+
+```
+
+Accuracy and latency during the sample and choice phase were significantly affected by LY354740 injections (Accuracy `r anova_print$statistic$Drug`, Sample Latency `r anova_latencySample_print$statistic$Drug`, Choice Latency `r anova_latencyChoice_print$statistic$Drug`). This was mainly due to a significant reduction in accuracy at the 10 mg/kg dose (No Inj vs 10 mg/kg `r simpledrug_print$statistic$NoInj_X10mgkg`, Veh vs 10 mg/kg `r simpledrug_print$statistic$Veh_X10mgkg`), and an increase in latency at the 10 mg/kg dose during the sample (No Inj vs 10 mg/kg `r simpledrug_latencySample_print$statistic$NoInj_X10mgkg`, Veh vs 10 mg/kg `r simpledrug_latencySample_print$statistic$Veh_X10mgkg`, 1 vs 10 mg/kg `r simpledrug_latencySample_print$statistic$x1mgkg_X10mgkg`) and choice phases (No Inj vs 10 mg/kg `r simpledrug_latencyChoice_print$statistic$NoInj_X10mgkg`).
+
+
+
+```{r Expt. 1 LY354740 impairs spatial working memory Plots,  results='hide', fig.height=7.5, fig.width=1.5}
+# reload data in case of multiple use
+short_data <- full_data %>% 
+  filter(Delay == "0")
+# Re order and rename levels for plotting
+short_data$Drug <- fct_relevel(short_data$Drug, c("NoInj", "Veh", "1mgkg", "10mgkg"))
+levels <- c("No Inj" = "NoInj", "Veh" = "Veh", "1 mg/kg" = "1mgkg", "10 mg/kg" = "10mgkg")
+short_data$Drug <- fct_recode(short_data$Drug, !!!levels)
+
+fillcolours <- c("No Inj" = "gray50", "Veh" = "steelblue4", "1 mg/kg" = "darksalmon" , "10 mg/kg" = "darkred")
+
+# Plots Experiment 1
+accuracyplot <- short_data %>%   
+  ggplot(mapping = aes(x = as.factor(Drug), y = Accuracy, group = Drug,  fill = Drug)) +
+  stat_summary_bin(fun.data = "mean_se", geom = "bar", position = "dodge",  colour="black", size = .5) +
+  stat_summary(fun.data = "mean_se", geom = "errorbar", position = position_dodge(width = 0.9), width = 0,  size = .5) +
+  # Make Pretty
+  scale_y_continuous( expand = expansion(mult = c(0, 0))) +
+  ggtitle("Accuracy") + xlab("") + ylab("Accuracy") +
+  theme_cowplot(10) +
+  theme(legend.position = "none") +
+  theme(plot.title = element_text(hjust = 0.5)) +
+  theme(plot.title = element_text(size=8)) +
+  coord_cartesian(ylim = c(0.5,1)) +
+  theme(axis.title.x=element_text(face = "bold")) +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
+  scale_colour_manual(values = fillcolours, aesthetics = c("fill")) +
+  geom_signif(y_position = 0.9, xmin = "Veh", xmax ="10 mg/kg", annotation = "**", tip_length = c(.01, 0.01), size = .5,  vjust = 0.5 ) +
+  geom_signif(y_position = 0.85, xmin = "No Inj" , xmax ="10 mg/kg", annotation = "*", tip_length = c(.01, 0.01), size = .5, vjust = 0.5  )
+
+
+
+latencySampleplot <- short_data %>%   
+  ggplot(mapping = aes(x = as.factor(Drug), y = Latency_Sample, group = Drug,  fill = Drug)) +
+  stat_summary_bin(fun.data = "mean_se", geom = "bar", position = "dodge",  colour="black", size = .5) +
+  stat_summary(fun.data = "mean_se", geom = "errorbar", position = position_dodge(width = 0.9), width = 0,  size = .5) +
+  # Make Pretty
+  scale_y_continuous( expand = expansion(mult = c(0, 0))) +
+  ggtitle("Sample latency") + xlab("Drug - LY354740") + ylab("Latency (s)") +
+  theme_cowplot(10) +
+  theme(legend.position = "none") +
+  theme(plot.title = element_text(hjust = 0.5)) +
+  theme(plot.title = element_text(size=8)) +
+  coord_cartesian(ylim = c(0,5)) +
+  theme(axis.title.x=element_text(face = "bold")) +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
+  scale_colour_manual(values = fillcolours, aesthetics = c("fill")) +
+  geom_signif(y_position = c(3.7,4.15,4.65),xmin = c("No Inj", "Veh", "1 mg/kg"), xmax = c("10 mg/kg","10 mg/kg","10 mg/kg"), annotation = c("**", "*", "**"), tip_length = c(.01, 0.01), size = .5, vjust = .5)
+
+
+
+latencyChoiceplot <- short_data %>%   
+  ggplot(mapping = aes(x = as.factor(Drug), y = Latency_Choice, group = Drug,  fill = Drug)) +
+  stat_summary_bin(fun.data = "mean_se", geom = "bar", position = "dodge",  colour="black", size = .5) +
+  stat_summary(fun.data = "mean_se", geom = "errorbar", position = position_dodge(width = 0.9), width = 0,  size = .5) +
+  # Make Pretty
+  scale_y_continuous( expand = expansion(mult = c(0, 0))) +
+  ggtitle("Choice latency") + xlab("") + ylab("Latency (s)") +
+  theme_cowplot(10) +
+  theme(legend.position = "none") +
+  theme(plot.title = element_text(hjust = 0.5)) +
+  theme(plot.title = element_text(size=8)) +
+  coord_cartesian(ylim = c(0,5)) +
+  theme(axis.title.x=element_text(face = "bold")) +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
+  scale_colour_manual(values = fillcolours, aesthetics = c("fill")) +
+  geom_signif(y_position = 4, xmin = "No Inj" , xmax ="10 mg/kg", annotation = "*", tip_length = c(.01, 0.01), size = .5, vjust = 0.5  )
+
+
+plots <- list(accuracyplot, latencySampleplot, latencyChoiceplot)
+plotlabels <- c('A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P')
+plot_Expt1 <- plot_grid(plotlist = plots, labels = plotlabels, label_size = 12, nrow = 1)
+
+
+filename = here("figures", "Expt1.png")
+save_plot(filename, plot_Expt1, ncol = 3, nrow = 1, base_width = 3.34/3, base_height = 2, dpi = 1200)
+filename = here("figures", "Expt1.pdf")
+save_plot(filename, plot_Expt1, ncol = 3, nrow = 1, base_width = 3.34/3, base_height = 2)
+
+
+# 85 mm; 1.5 column, 114 mm; and 2 column, 174 mm
+# column_1 = 3.34
+# column_15 = 4.48
+# column_2 = 6.85
+#height - 9 inches max
+
+```
+
+![Figure 1. Title and Caption](../figures/Expt1.png)
+
+
+
+# Experiment 2 - LY354740 exacerbates amphetamine-induced working memeory deficits
+
+```{r Expt. 2 LY354740 exacerbates amphetamine induced deficits in spatial working memory, include=FALSE, message = FALSE, warning=FALSE}
+
+short_data <- read_csv(here("rawdata", "/LY354740_Amph_TMaze_Expt2_rawdata.csv")) 
+
+
+# Stats - Accuracy
+anova <- aov_4(Accuracy ~ (Drug|Subj), data = short_data, anova_table = list(correction = "none", es = "pes"))
+anova_print <- apa_print(anova, mse = "FALSE",correction = "none",es = "pes")
+
+simpledrug <- emmeans(anova, ~Drug)
+simpledrug_print <- apa_print.emmGrid(contrast(simpledrug, method = "pairwise", simple = "Drug", adjust = "tukey"))
+
+# Stats - Latency Sample
+anova_latencySample <- aov_4(Latency_Sample ~ (Drug|Subj), data = short_data, anova_table = list(correction = "none", es = "pes"))
+anova_latencySample_print <- apa_print(anova_latencySample, mse = "FALSE",correction = "none",es = "pes")
+
+simpledrug_latencySample <- emmeans(anova_latencySample, ~Drug)
+simpledrug_latencySample_print <- apa_print.emmGrid(contrast(simpledrug_latencySample, method = "pairwise", simple = "Drug", adjust = "tukey"))
+
+# Stats - Latency Choice
+# Stats - Latency Choice
+anova_latencyChoice <- aov_4(Latency_Choice ~ (Drug|Subj), data = short_data, anova_table = list(correction = "none", es = "pes"))
+anova_latencyChoice_print <- apa_print(anova_latencyChoice, mse = "FALSE",correction = "none",es = "pes")
+
+simpledrug_latencyChoice <- emmeans(anova_latencyChoice, ~Drug)
+simpledrug_latencyChoice_print <- apa_print.emmGrid(contrast(simpledrug_latencyChoice, method = "pairwise", simple = "Drug", adjust = "tukey"))
+
+#Accuracy
+anova_print$table
+simpledrug_print$table
+#Sample - Latency
+anova_latencySample_print$table
+simpledrug_latencySample_print$table
+#Choice - Latency
+anova_latencyChoice_print$table
+simpledrug_latencyChoice_print$table
+
+```
+
+Drug injections significantly disrupted all three performance measures on the spatial working memory task (Drug: accuracy `r anova_print$statistic$Drug`, sample latency `r anova_latencySample_print$statistic$Drug`, choice latency `r anova_latencyChoice_print$statistic$Drug`). Compared to vehicle injections, amphetamine disrupted performance on the spatial working memory task, surprisingly this effect was only statistically robust for response latencies during the choice period (veh/veh vs Amph/veh: accuracy `r simpledrug_print$statistic$Veh_Veh_Amph_Veh`), sample latency `r simpledrug_latencySample_print$statistic$Veh_Veh_Amph_Veh`, choice latency `r simpledrug_latencyChoice_print$statistic$Veh_Veh_Amph_Veh`). However, combining LY354740 and amphetamine significantly impaired accuracy (veh/veh vs Amph/LY354740 `r simpledrug_print$statistic$Veh_Veh_Amph_LY`, Amph/veh vs Amph/LY354740 `r simpledrug_print$statistic$Amph_Veh_Amph_LY`), and increased response latencies during both the sample (veh/veh vs Amph/LY354740 `r simpledrug_latencySample_print$statistic$Veh_Veh_Amph_LY`, Amph/veh vs Amph/LY354740 `r simpledrug_latencySample_print$statistic$Amph_Veh_Amph_LY`) and choice periods veh/veh vs Amph/LY354740 `r simpledrug_latencyChoice_print$statistic$Veh_Veh_Amph_LY`, Amph/veh vs Amph/LY354740 `r simpledrug_latencyChoice_print$statistic$Amph_Veh_Amph_LY`). 
+
+
+
+
+
+
+
+```{r Expt. 2 LY354740 exacerbates amphetamine induced deficits in spatial working memoryy Plots,  results='show', fig.height=6, fig.width=3, message = FALSE, warning=FALSE}
+# Plot for fun
+accuracyplot <- short_data %>%   
+  ggplot(mapping = aes(x = as.factor(Drug), y = Accuracy, group = Drug,  fill = Drug)) +
+  stat_summary_bin(fun.data = "mean_se", geom = "bar", position = "dodge") +
+  stat_summary(fun.data = "mean_se", geom = "errorbar", position = position_dodge(width = 0.9), width = 0.01) +
+  scale_y_continuous( expand = expansion(mult = c(0, 0.1))) +
+  ggtitle("Expt.1 Accuracy") + xlab("Drug") + ylab("Accuracy") +
+  theme_cowplot(12) +
+  theme(legend.position = "none") 
+
+
+latencySampleplot <- short_data %>%   
+  ggplot(mapping = aes(x = as.factor(Drug), y = Latency_Sample, group = Drug,  fill = Drug)) +
+  stat_summary_bin(fun.data = "mean_se", geom = "bar", position = "dodge") +
+  stat_summary(fun.data = "mean_se", geom = "errorbar", position = position_dodge(width = 0.9), width = 0.01) +
+  scale_y_continuous( expand = expansion(mult = c(0, 0.1))) +
+  ggtitle("Expt.1 Latency - Sample") + xlab("Drug") + ylab("Latency (s)") +
+  theme_cowplot(12) +
+  theme(legend.position = "none") 
+
+latencyChoiceplot <- short_data %>%   
+  ggplot(mapping = aes(x = as.factor(Drug), y = Latency_Choice, group = Drug,  fill = Drug)) +
+  stat_summary_bin(fun.data = "mean_se", geom = "bar", position = "dodge") +
+  stat_summary(fun.data = "mean_se", geom = "errorbar", position = position_dodge(width = 0.9), width = 0.01) +
+  scale_y_continuous( expand = expansion(mult = c(0, 0.1))) +
+  ggtitle("Expt.1 latency = Choice") + xlab("Drug") + ylab("Latency (s)") +
+  theme_cowplot(12) +
+  theme(legend.position = "none") 
+
+plot_Expt2 <- plot_grid(accuracyplot, latencySampleplot, latencyChoiceplot, labels = c('A', 'B', 'C', 'D'), label_size = 12, ncol = 1)
+plot_Expt2
+
+
+```

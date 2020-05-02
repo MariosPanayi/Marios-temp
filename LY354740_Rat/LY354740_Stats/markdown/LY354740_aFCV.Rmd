@@ -1,0 +1,604 @@
+---
+title: "LY354740_aFCV_stats"
+author: "Marios Panayi"
+date: "4/16/2020"
+output: word_document
+---
+
+```{r setup, include=FALSE, message = FALSE, include=FALSE, warning=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+## Packages for data organisation and plotting
+library(tidyverse)
+#library(ggpubr)
+library(cowplot)
+################################################################################
+## Packages for Data analysis
+library(afex)
+afex_options(emmeans_model = "multivariate") # use multivariate model for all follow-up tests.
+library(emmeans)
+# install.packages("devtools")
+# devtools::install_github("crsh/papaja")
+library(papaja)
+library(knitr)
+#Read in the data as global variable
+full_data <- read_csv("../rawdata/Anaesthetized_rawdata.csv")
+
+```
+
+# Statistical Analysis
+
+Standard Repeated measures ANOVA (Drug between groups, stimulation paramaters within subjects). Note that no correction is applied to the simple main effects used to test the follow up main effect of stimulation intensity/pulse number. This is because only 2 tests are conducted (1 vs 2 & 2 vs 3) to avoid linearly dependent contrasts. However, all the follow up tests survive unnecessary correction for multiple comparisons (i.e. assuming 3 tests were conducted).
+
+# Raw Data 
+ 
+## Pre vs Post Drug analysis - Baseline periods
+
+```{r Pre vs post injection DA_Max, echo=FALSE,message = FALSE, include=FALSE, warning=FALSE}
+
+#Filter the relevant stage of data for analysis
+data_subset <- full_data %>% 
+  filter(ExperimentalStage == "04_Baseline2_Pre" | ExperimentalStage == "05_Baseline_Post") %>% 
+  separate(ExperimentalStage, c("stagenumber", "stagename", "injectiontime"))
+
+anova <- aov_4(DA_max ~ drugs + (injectiontime|subj), data = data_subset, anova_table = list(correction = "none", es = "pes"))
+
+anova_print <- apa_print(anova, mse = "FALSE",correction = "none",es = "pes")
+
+```
+
+Peak DA decreased from pre- to post-injection (Period `r anova_print$statistic$injectiontime`), however this was not significantly modulated by LY3454740 or Saline (Drug `r anova_print$statistic$drugs`; Drug x Period `r anova_print$statistic$drugs_injectiontime`).
+
+```{r Pre vs post injection DA_AUC, echo=FALSE,message = FALSE, include=FALSE, warning=FALSE}
+
+#Filter the relevant stage of data for analysis
+data_subset <- full_data %>% 
+  filter(ExperimentalStage == "04_Baseline2_Pre" | ExperimentalStage == "05_Baseline_Post") %>% 
+  separate(ExperimentalStage, c("stagenumber", "stagename", "injectiontime"))
+
+anova <- aov_4(DA_AUC ~ drugs + (injectiontime|subj), data = data_subset, anova_table = list(correction = "none", es = "pes"))
+
+anova_print <- apa_print(anova, mse = "FALSE",correction = "none",es = "pes")
+
+```
+
+AUC was not significantly modulated by LY3454740 or Saline (Drug `r anova_print$statistic$drugs`; Period `r anova_print$statistic$injectiontime`; Drug x Period `r anova_print$statistic$drugs_injectiontime`).
+
+
+```{r Pre vs post injection DA_Latency_s, echo=FALSE,message = FALSE, include=FALSE, warning=FALSE}
+
+#Filter the relevant stage of data for analysis
+data_subset <- full_data %>% 
+  filter(ExperimentalStage == "04_Baseline2_Pre" | ExperimentalStage == "05_Baseline_Post") %>% 
+  separate(ExperimentalStage, c("stagenumber", "stagename", "injectiontime"))
+
+anova <- aov_4(DA_Latency_s ~ drugs + (injectiontime|subj), data = data_subset, anova_table = list(correction = "none", es = "pes"))
+
+anova_print <- apa_print(anova, mse = "FALSE",correction = "none",es = "pes")
+
+```
+
+Latency to peak DA was not significantly modulated by LY3454740 or Saline (Drug `r anova_print$statistic$drugs`; Period `r anova_print$statistic$injectiontime`; Drug x Period `r anova_print$statistic$drugs_injectiontime`).
+
+
+
+```{r Pre vs post injection t50_s, echo=FALSE,message = FALSE, include=FALSE, warning=FALSE}
+#Load t50 data - only including extimates where Rsquared > 0.8
+data_subset <- read_csv("../rawdata/Anaesthetized_rawdata_t50.csv")
+#Filter the relevant stage of data for analysis
+data_subset <- data_subset %>% 
+  filter(ExperimentalStage == "04_Baseline2_Pre" | ExperimentalStage == "05_Baseline_Post") %>% 
+  separate(ExperimentalStage, c("stagenumber", "stagename", "injectiontime"))
+
+anova <- aov_4(t50_s ~ drugs + (injectiontime|subj), data = data_subset, anova_table = list(correction = "none", es = "pes"))
+
+anova_print <- apa_print(anova, mse = "FALSE",correction = "none",es = "pes")
+
+```
+
+DA reuptake (as indexed by t50 point)  was not significantly modulated by LY3454740 or Saline ( Period `r anova_print$statistic$injectiontime`; Drug x Period `r anova_print$statistic$drugs_injectiontime`). Overall, DA reuptake was slower overall in animals asigned to the Saline group, but this failed to reach significance (Drug `r anova_print$statistic$drugs`).
+
+
+## Pre Drug
+
+### Stimulation Intensity Response Curve
+
+```{r 02_StimIntensity_Pre DA_Max, echo=FALSE,message = FALSE, include=FALSE, warning=FALSE}
+
+#Filter the relevant stage of data for analysis
+data_subset <- full_data %>% 
+  filter(ExperimentalStage == "02_StimIntensity_Pre")
+
+anova <- aov_4(DA_max ~ drugs + (stimStrength|subj), data = data_subset, anova_table = list(correction = "none", es = "pes"))
+
+anova_print <- apa_print(anova, mse = "FALSE",correction = "none",es = "pes")
+
+
+simple <- emmeans(anova, ~stimStrength)
+simple_print <- apa_print.emmGrid(pairs(simple, adjust = "tukey"))
+
+
+```
+
+Peak DA increased with stimulation intensity (Intensity: `r anova_print$statistic$stimStrength`; 100 vs 200 `r simple_print$statistic$X100_X200`, 200 vs 300 `r simple_print$statistic$X200_X300`), but was not modulated by drug condition (Drug: `r anova_print$statistic$drugs`, Drug x Intensity: `r anova_print$statistic$drugs_stimStrength`).
+
+```{r 02_StimIntensity_Pre DA_AUC, echo=FALSE,message = FALSE, include=FALSE, warning=FALSE}
+
+#Filter the relevant stage of data for analysis
+data_subset <- full_data %>% 
+  filter(ExperimentalStage == "02_StimIntensity_Pre")
+
+anova <- aov_4(DA_AUC ~ drugs + (stimStrength|subj), data = data_subset, anova_table = list(correction = "none", es = "pes"))
+
+anova_print <- apa_print(anova, mse = "FALSE",correction = "none",es = "pes")
+
+
+simple <- emmeans(anova, ~stimStrength)
+simple_print <- apa_print.emmGrid(pairs(simple, adjust = "tukey"))
+
+
+```
+
+Similarly, AUC increased with stimulation intensity (Intensity: `r anova_print$statistic$stimStrength`; 100 vs 200 `r simple_print$statistic$X100_X200`, 200 vs 300 `r simple_print$statistic$X200_X300`), but was not modulated by drug condition (Drug: `r anova_print$statistic$drugs`, Drug x Intensity: `r anova_print$statistic$drugs_stimStrength`).
+
+```{r 02_StimIntensity_Pre DA_Latency_s, echo=FALSE,message = FALSE, include=FALSE, warning=FALSE}
+
+#Filter the relevant stage of data for analysis
+data_subset <- full_data %>% 
+  filter(ExperimentalStage == "02_StimIntensity_Pre")
+
+anova <- aov_4(DA_Latency_s ~ drugs + (stimStrength|subj), data = data_subset, anova_table = list(correction = "none", es = "pes"))
+
+anova_print <- apa_print(anova, mse = "FALSE",correction = "none",es = "pes")
+
+
+simple <- emmeans(anova, ~stimStrength)
+simple_print <- apa_print.emmGrid(pairs(simple, adjust = "tukey"))
+
+
+```
+
+Latency to peak was not modulated by stimulation intensity (Intensity: `r anova_print$statistic$stimStrength`, or by drug condition (Drug: `r anova_print$statistic$drugs`, Drug x Intensity: `r anova_print$statistic$drugs_stimStrength`).
+
+
+
+### Stimulation Pulse Number Response Curve
+
+
+```{r 03_StimPulse_Pre DA_Max, echo=FALSE,message = FALSE, include=FALSE, warning=FALSE}
+
+#Filter the relevant stage of data for analysis
+data_subset <- full_data %>% 
+  filter(ExperimentalStage == "03_StimPulse_Pre")
+
+anova <- aov_4(DA_max ~ drugs + (stimPulses|subj), data = data_subset, anova_table = list(correction = "none", es = "pes"))
+
+anova_print <- apa_print(anova, mse = "FALSE",correction = "none",es = "pes")
+
+
+simple <- emmeans(anova, ~stimPulses)
+simple_print <- apa_print.emmGrid(pairs(simple, adjust = "tukey"))
+
+
+```
+
+Peak DA increased with pulse number (Pulses: `r anova_print$statistic$stimPulses`; 12 vs 24 `r simple_print$statistic$X12_X24`, 24 vs 36 `r simple_print$statistic$X24_X36`), but was not modulated by drug condition (Drug: `r anova_print$statistic$drugs`, Drug x Intensity: `r anova_print$statistic$drugs_stimPulses`).
+
+```{r 03_StimPulse_Pre DA_AUC, echo=FALSE,message = FALSE, include=FALSE, warning=FALSE}
+
+#Filter the relevant stage of data for analysis
+data_subset <- full_data %>% 
+  filter(ExperimentalStage == "03_StimPulse_Pre")
+
+anova <- aov_4(DA_AUC ~ drugs + (stimPulses|subj), data = data_subset, anova_table = list(correction = "none", es = "pes"))
+
+anova_print <- apa_print(anova, mse = "FALSE",correction = "none",es = "pes")
+
+
+simple <- emmeans(anova, ~stimPulses)
+simple_print <- apa_print.emmGrid(pairs(simple, adjust = "tukey"))
+simple_print$table
+
+```
+
+Similarly, AUC increased with stimulation intensity (Pulses: `r anova_print$statistic$stimPulses`; 12 vs 24 `r simple_print$statistic$X12_X24`, 24 vs 36 `r simple_print$statistic$X24_X36`), but was not modulated by drug condition (Drug: `r anova_print$statistic$drugs`, Drug x Intensity: `r anova_print$statistic$drugs_stimPulses`).
+
+```{r 03_StimPulse_Pre DA_Latency_s, echo=FALSE,message = FALSE, include=FALSE, warning=FALSE}
+
+#Filter the relevant stage of data for analysis
+data_subset <- full_data %>% 
+  filter(ExperimentalStage == "03_StimPulse_Pre")
+
+anova <- aov_4(DA_Latency_s ~ drugs + (stimPulses|subj), data = data_subset, anova_table = list(correction = "none", es = "pes"))
+
+anova_print <- apa_print(anova, mse = "FALSE",correction = "none",es = "pes")
+
+
+simple <- emmeans(anova, ~stimPulses)
+simple_print <- apa_print.emmGrid(pairs(simple, adjust = "tukey"))
+simple_print$table
+
+
+```
+
+Latency to peak was also modulated by stimulation intensity (Pulses: `r anova_print$statistic$stimPulses`; 12 vs 24 `r simple_print$statistic$X12_X24`, 24 vs 36 `r simple_print$statistic$X24_X36`), but was not modulated by drug condition (Drug: `r anova_print$statistic$drugs`, Drug x Intensity: `r anova_print$statistic$drugs_stimPulses`).
+
+
+
+## Post Drug
+
+### Stimulation Intensity Response Curve
+
+```{r 06_StimIntensity_Post DA_Max, echo=FALSE,message = FALSE, include=FALSE, warning=FALSE}
+
+#Filter the relevant stage of data for analysis
+data_subset <- full_data %>% 
+  filter(ExperimentalStage == "06_StimIntensity_Post")
+
+anova <- aov_4(DA_max ~ drugs + (stimStrength|subj), data = data_subset, anova_table = list(correction = "none", es = "pes"))
+
+anova_print <- apa_print(anova, mse = "FALSE",correction = "none",es = "pes")
+
+
+simple <- emmeans(anova, ~stimStrength)
+simple_print <- apa_print.emmGrid(pairs(simple, adjust = "tukey"))
+
+simple_print$table
+
+```
+
+Peak DA increased with stimulation intensity (Intensity: `r anova_print$statistic$stimStrength`; 100 vs 200 `r simple_print$statistic$X100_X200`, 200 vs 300 `r simple_print$statistic$X200_X300`), but was not modulated by drug condition (Drug: `r anova_print$statistic$drugs`, Drug x Intensity: `r anova_print$statistic$drugs_stimStrength`).
+
+```{r 06_StimIntensity_Post DA_AUC, echo=FALSE,message = FALSE, include=FALSE, warning=FALSE}
+
+#Filter the relevant stage of data for analysis
+data_subset <- full_data %>% 
+  filter(ExperimentalStage == "06_StimIntensity_Post")
+
+anova <- aov_4(DA_AUC ~ drugs + (stimStrength|subj), data = data_subset, anova_table = list(correction = "none", es = "pes"))
+
+anova_print <- apa_print(anova, mse = "FALSE",correction = "none",es = "pes")
+
+
+simple <- emmeans(anova, ~stimStrength)
+simple_print <- apa_print.emmGrid(pairs(simple, adjust = "tukey"))
+simple_print$table
+
+
+```
+
+Similarly, AUC increased with stimulation intensity (Intensity: `r anova_print$statistic$stimStrength`; 100 vs 200 `r simple_print$statistic$X100_X200`, 200 vs 300 `r simple_print$statistic$X200_X300`), but was not modulated by drug condition (Drug: `r anova_print$statistic$drugs`, Drug x Intensity: `r anova_print$statistic$drugs_stimStrength`).
+
+```{r 06_StimIntensity_Post DA_Latency_s, echo=FALSE,message = FALSE, include=FALSE, warning=FALSE}
+
+#Filter the relevant stage of data for analysis
+data_subset <- full_data %>% 
+  filter(ExperimentalStage == "06_StimIntensity_Post")
+
+anova <- aov_4(DA_Latency_s ~ drugs + (stimStrength|subj), data = data_subset, anova_table = list(correction = "none", es = "pes"))
+
+anova_print <- apa_print(anova, mse = "FALSE",correction = "none",es = "pes")
+
+
+simple <- emmeans(anova, ~stimStrength)
+simple_print <- apa_print.emmGrid(pairs(simple, adjust = "tukey"))
+
+
+```
+
+Latency to peak was not modulated by stimulation intensity (Intensity: `r anova_print$statistic$stimStrength`, or by drug condition (Drug: `r anova_print$statistic$drugs`, Drug x Intensity: `r anova_print$statistic$drugs_stimStrength`).
+
+
+
+### Stimulation Pulse Number Response Curve
+
+
+```{r 07_StimPulses_Post DA_Max, echo=FALSE,message = FALSE, include=FALSE, warning=FALSE}
+
+#Filter the relevant stage of data for analysis
+data_subset <- full_data %>% 
+  filter(ExperimentalStage == "07_StimPulses_Post")
+
+anova <- aov_4(DA_max ~ drugs + (stimPulses|subj), data = data_subset, anova_table = list(correction = "none", es = "pes"))
+
+anova_print <- apa_print(anova, mse = "FALSE",correction = "none",es = "pes")
+
+
+simple <- emmeans(anova, ~stimPulses)
+simple_print <- apa_print.emmGrid(pairs(simple, adjust = "tukey"))
+
+
+```
+
+Peak DA increased with pulse number (Pulses: `r anova_print$statistic$stimPulses`; 12 vs 24 `r simple_print$statistic$X12_X24`, 24 vs 36 `r simple_print$statistic$X24_X36`), but was not modulated by drug condition (Drug: `r anova_print$statistic$drugs`, Drug x Intensity: `r anova_print$statistic$drugs_stimPulses`).
+
+```{r 07_StimPulses_Post DA_AUC, echo=FALSE,message = FALSE, include=FALSE, warning=FALSE}
+
+#Filter the relevant stage of data for analysis
+data_subset <- full_data %>% 
+  filter(ExperimentalStage == "07_StimPulses_Post")
+
+anova <- aov_4(DA_AUC ~ drugs + (stimPulses|subj), data = data_subset, anova_table = list(correction = "none", es = "pes"))
+
+anova_print <- apa_print(anova, mse = "FALSE",correction = "none",es = "pes")
+
+
+simple <- emmeans(anova, ~stimPulses)
+simple_print <- apa_print.emmGrid(pairs(simple, adjust = "tukey"))
+
+
+```
+
+Similarly, AUC increased with stimulation intensity (Pulses: `r anova_print$statistic$stimPulses`; 12 vs 24 `r simple_print$statistic$X12_X24`, 24 vs 36 `r simple_print$statistic$X24_X36`), but was not modulated by drug condition (Drug: `r anova_print$statistic$drugs`, Drug x Intensity: `r anova_print$statistic$drugs_stimPulses`).
+
+```{r 07_StimPulses_Post DA_Latency_s, echo=FALSE,message = FALSE, include=FALSE, warning=FALSE}
+
+#Filter the relevant stage of data for analysis
+data_subset <- full_data %>% 
+  filter(ExperimentalStage == "07_StimPulses_Post")
+
+anova <- aov_4(DA_Latency_s ~ drugs + (stimPulses|subj), data = data_subset, anova_table = list(correction = "none", es = "pes"))
+
+anova_print <- apa_print(anova, mse = "FALSE",correction = "none",es = "pes")
+
+
+simple <- emmeans(anova, ~stimPulses)
+simple_print <- apa_print.emmGrid(pairs(simple, adjust = "tukey"))
+
+
+```
+
+Latency to peak was also modulated by stimulation intensity (Pulses: `r anova_print$statistic$stimPulses`; 12 vs 24 `r simple_print$statistic$X12_X24`, 24 vs 36 `r simple_print$statistic$X24_X36`), but was not modulated by drug condition (Drug: `r anova_print$statistic$drugs`, Drug x Intensity: `r anova_print$statistic$drugs_stimPulses`).
+
+
+
+# Percent Baseline Data
+
+## Pre Drug
+
+### Stimulation Intensity Response Curve
+
+```{r 02_StimIntensity_Pre DA_Max_PercBaseline, echo=FALSE,message = FALSE, include=FALSE, warning=FALSE}
+
+#Filter the relevant stage of data for analysis
+data_subset <- full_data %>% 
+  filter(ExperimentalStage == "02_StimIntensity_Pre")
+
+anova <- aov_4(DA_max_PercBaseline ~ drugs + (stimStrength|subj), data = data_subset, anova_table = list(correction = "none", es = "pes"))
+
+anova_print <- apa_print(anova, mse = "FALSE",correction = "none",es = "pes")
+
+
+simple <- emmeans(anova, ~stimStrength)
+simple_print <- apa_print.emmGrid(pairs(simple, adjust = "tukey"))
+
+
+```
+
+Peak DA increased with stimulation intensity (Intensity: `r anova_print$statistic$stimStrength`; 100 vs 200 `r simple_print$statistic$X100_X200`, 200 vs 300 `r simple_print$statistic$X200_X300`), but was not modulated by drug condition (Drug: `r anova_print$statistic$drugs`, Drug x Intensity: `r anova_print$statistic$drugs_stimStrength`).
+
+```{r 02_StimIntensity_Pre DA_AUC_PercBaseline, echo=FALSE,message = FALSE, include=FALSE, warning=FALSE}
+
+#Filter the relevant stage of data for analysis
+data_subset <- full_data %>% 
+  filter(ExperimentalStage == "02_StimIntensity_Pre")
+
+anova <- aov_4(DA_AUC_PercBaseline ~ drugs + (stimStrength|subj), data = data_subset, anova_table = list(correction = "none", es = "pes"))
+
+anova_print <- apa_print(anova, mse = "FALSE",correction = "none",es = "pes")
+
+
+simple <- emmeans(anova, ~stimStrength)
+simple_print <- apa_print.emmGrid(pairs(simple, adjust = "tukey"))
+
+
+```
+
+Similarly, AUC increased with stimulation intensity (Intensity: `r anova_print$statistic$stimStrength`; 100 vs 200 `r simple_print$statistic$X100_X200`, 200 vs 300 `r simple_print$statistic$X200_X300`), but was not modulated by drug condition (Drug: `r anova_print$statistic$drugs`, Drug x Intensity: `r anova_print$statistic$drugs_stimStrength`).
+
+```{r 02_StimIntensity_Pre DA_Latency_s_PercBaseline, echo=FALSE,message = FALSE, include=FALSE, warning=FALSE}
+
+#Filter the relevant stage of data for analysis
+data_subset <- full_data %>% 
+  filter(ExperimentalStage == "02_StimIntensity_Pre")
+
+anova <- aov_4(DA_Latency_s_PercBaseline ~ drugs + (stimStrength|subj), data = data_subset, anova_table = list(correction = "none", es = "pes"))
+
+anova_print <- apa_print(anova, mse = "FALSE",correction = "none",es = "pes")
+
+
+simple <- emmeans(anova, ~stimStrength)
+simple_print <- apa_print.emmGrid(pairs(simple, adjust = "tukey"))
+
+
+```
+
+Latency to peak was not modulated by stimulation intensity (Intensity: `r anova_print$statistic$stimStrength`, or by drug condition (Drug: `r anova_print$statistic$drugs`, Drug x Intensity: `r anova_print$statistic$drugs_stimStrength`).
+
+
+
+### Stimulation Pulse Number Response Curve
+
+
+```{r 03_StimPulse_Pre DA_Max_PercBaseline, echo=FALSE,message = FALSE, include=FALSE, warning=FALSE}
+
+#Filter the relevant stage of data for analysis
+data_subset <- full_data %>% 
+  filter(ExperimentalStage == "03_StimPulse_Pre")
+
+anova <- aov_4(DA_max_PercBaseline ~ drugs + (stimPulses|subj), data = data_subset, anova_table = list(correction = "none", es = "pes"))
+
+anova_print <- apa_print(anova, mse = "FALSE",correction = "none",es = "pes")
+
+
+simple <- emmeans(anova, ~stimPulses)
+simple_print <- apa_print.emmGrid(pairs(simple, adjust = "tukey"))
+
+
+```
+
+Peak DA increased with pulse number (Pulses: `r anova_print$statistic$stimPulses`; 12 vs 24 `r simple_print$statistic$X12_X24`, 24 vs 36 `r simple_print$statistic$X24_X36`), but was not modulated by drug condition (Drug: `r anova_print$statistic$drugs`, Drug x Intensity: `r anova_print$statistic$drugs_stimPulses`).
+
+```{r 03_StimPulse_Pre DA_AUC_PercBaseline, echo=FALSE,message = FALSE, include=FALSE, warning=FALSE}
+
+#Filter the relevant stage of data for analysis
+data_subset <- full_data %>% 
+  filter(ExperimentalStage == "03_StimPulse_Pre")
+
+anova <- aov_4(DA_AUC_PercBaseline ~ drugs + (stimPulses|subj), data = data_subset, anova_table = list(correction = "none", es = "pes"))
+
+anova_print <- apa_print(anova, mse = "FALSE",correction = "none",es = "pes")
+
+
+simple <- emmeans(anova, ~stimPulses)
+simple_print <- apa_print.emmGrid(pairs(simple, adjust = "tukey"))
+
+
+```
+
+Similarly, AUC increased with stimulation intensity (Pulses: `r anova_print$statistic$stimPulses`; 12 vs 24 `r simple_print$statistic$X12_X24`, 24 vs 36 `r simple_print$statistic$X24_X36`), but was not modulated by drug condition (Drug: `r anova_print$statistic$drugs`, Drug x Intensity: `r anova_print$statistic$drugs_stimPulses`).
+
+```{r 03_StimPulse_Pre DA_Latency_s_PercBaseline, echo=FALSE,message = FALSE, include=FALSE, warning=FALSE}
+
+#Filter the relevant stage of data for analysis
+data_subset <- full_data %>% 
+  filter(ExperimentalStage == "03_StimPulse_Pre")
+
+anova <- aov_4(DA_Latency_s_PercBaseline ~ drugs + (stimPulses|subj), data = data_subset, anova_table = list(correction = "none", es = "pes"))
+
+anova_print <- apa_print(anova, mse = "FALSE",correction = "none",es = "pes")
+
+
+simple <- emmeans(anova, ~stimPulses)
+simple_print <- apa_print.emmGrid(pairs(simple, adjust = "tukey"))
+
+
+```
+
+Latency to peak was also modulated by stimulation intensity (Pulses: `r anova_print$statistic$stimPulses`; 12 vs 24 `r simple_print$statistic$X12_X24`, 24 vs 36 `r simple_print$statistic$X24_X36`), but was not modulated by drug condition (Drug: `r anova_print$statistic$drugs`, Drug x Intensity: `r anova_print$statistic$drugs_stimPulses`).
+
+
+
+## Post Drug
+
+### Stimulation Intensity Response Curve
+
+```{r 06_StimIntensity_Post DA_Max_PercBaseline, echo=FALSE,message = FALSE, include=FALSE, warning=FALSE}
+
+#Filter the relevant stage of data for analysis
+data_subset <- full_data %>% 
+  filter(ExperimentalStage == "06_StimIntensity_Post")
+
+anova <- aov_4(DA_max_PercBaseline ~ drugs + (stimStrength|subj), data = data_subset, anova_table = list(correction = "none", es = "pes"))
+
+anova_print <- apa_print(anova, mse = "FALSE",correction = "none",es = "pes")
+
+
+simple <- emmeans(anova, ~stimStrength)
+simple_print <- apa_print.emmGrid(pairs(simple, adjust = "tukey"))
+
+
+```
+
+Peak DA increased with stimulation intensity (Intensity: `r anova_print$statistic$stimStrength`; 100 vs 200 `r simple_print$statistic$X100_X200`, 200 vs 300 `r simple_print$statistic$X200_X300`), but was not modulated by drug condition (Drug: `r anova_print$statistic$drugs`, Drug x Intensity: `r anova_print$statistic$drugs_stimStrength`).
+
+```{r 06_StimIntensity_Post DA_AUC_PercBaseline, echo=FALSE,message = FALSE, include=FALSE, warning=FALSE}
+
+#Filter the relevant stage of data for analysis
+data_subset <- full_data %>% 
+  filter(ExperimentalStage == "06_StimIntensity_Post")
+
+anova <- aov_4(DA_AUC_PercBaseline ~ drugs + (stimStrength|subj), data = data_subset, anova_table = list(correction = "none", es = "pes"))
+
+anova_print <- apa_print(anova, mse = "FALSE",correction = "none",es = "pes")
+
+
+simple <- emmeans(anova, ~stimStrength)
+simple_print <- apa_print.emmGrid(pairs(simple, adjust = "tukey"))
+
+
+```
+
+Similarly, AUC increased with stimulation intensity (Intensity: `r anova_print$statistic$stimStrength`; 100 vs 200 `r simple_print$statistic$X100_X200`, 200 vs 300 `r simple_print$statistic$X200_X300`), but was not modulated by drug condition (Drug: `r anova_print$statistic$drugs`, Drug x Intensity: `r anova_print$statistic$drugs_stimStrength`).
+
+```{r 06_StimIntensity_Post DA_Latency_s_PercBaseline, echo=FALSE,message = FALSE, include=FALSE, warning=FALSE}
+
+#Filter the relevant stage of data for analysis
+data_subset <- full_data %>% 
+  filter(ExperimentalStage == "06_StimIntensity_Post")
+
+anova <- aov_4(DA_Latency_s_PercBaseline ~ drugs + (stimStrength|subj), data = data_subset, anova_table = list(correction = "none", es = "pes"))
+
+anova_print <- apa_print(anova, mse = "FALSE",correction = "none",es = "pes")
+
+
+simple <- emmeans(anova, ~stimStrength)
+simple_print <- apa_print.emmGrid(pairs(simple, adjust = "tukey"))
+
+
+```
+
+Latency to peak was not modulated by stimulation intensity (Intensity: `r anova_print$statistic$stimStrength`, or by drug condition (Drug: `r anova_print$statistic$drugs`, Drug x Intensity: `r anova_print$statistic$drugs_stimStrength`).
+
+
+
+### Stimulation Pulse Number Response Curve
+
+
+```{r 07_StimPulses_Post DA_Max_PercBaseline, echo=FALSE,message = FALSE, include=FALSE, warning=FALSE}
+
+#Filter the relevant stage of data for analysis
+data_subset <- full_data %>% 
+  filter(ExperimentalStage == "07_StimPulses_Post")
+
+anova <- aov_4(DA_max_PercBaseline ~ drugs + (stimPulses|subj), data = data_subset, anova_table = list(correction = "none", es = "pes"))
+
+anova_print <- apa_print(anova, mse = "FALSE",correction = "none",es = "pes")
+
+
+simple <- emmeans(anova, ~stimPulses)
+simple_print <- apa_print.emmGrid(pairs(simple, adjust = "tukey"))
+
+
+```
+
+Peak DA increased with pulse number (Pulses: `r anova_print$statistic$stimPulses`; 12 vs 24 `r simple_print$statistic$X12_X24`, 24 vs 36 `r simple_print$statistic$X24_X36`), but was not modulated by drug condition (Drug: `r anova_print$statistic$drugs`, Drug x Intensity: `r anova_print$statistic$drugs_stimPulses`).
+
+```{r 07_StimPulses_Post DA_AUC_PercBaseline, echo=FALSE,message = FALSE, include=FALSE, warning=FALSE}
+
+#Filter the relevant stage of data for analysis
+data_subset <- full_data %>% 
+  filter(ExperimentalStage == "07_StimPulses_Post")
+
+anova <- aov_4(DA_AUC_PercBaseline ~ drugs + (stimPulses|subj), data = data_subset, anova_table = list(correction = "none", es = "pes"))
+
+anova_print <- apa_print(anova, mse = "FALSE",correction = "none",es = "pes")
+
+
+simple <- emmeans(anova, ~stimPulses)
+simple_print <- apa_print.emmGrid(pairs(simple, adjust = "tukey"))
+
+
+```
+
+Similarly, AUC increased with stimulation intensity (Pulses: `r anova_print$statistic$stimPulses`; 12 vs 24 `r simple_print$statistic$X12_X24`, 24 vs 36 `r simple_print$statistic$X24_X36`), but was not modulated by drug condition (Drug: `r anova_print$statistic$drugs`, Drug x Intensity: `r anova_print$statistic$drugs_stimPulses`).
+
+```{r 07_StimPulses_Post DA_Latency_s_PercBaseline, echo=FALSE,message = FALSE, include=FALSE, warning=FALSE}
+
+#Filter the relevant stage of data for analysis
+data_subset <- full_data %>% 
+  filter(ExperimentalStage == "07_StimPulses_Post")
+
+anova <- aov_4(DA_Latency_s_PercBaseline ~ drugs + (stimPulses|subj), data = data_subset, anova_table = list(correction = "none", es = "pes"))
+
+anova_print <- apa_print(anova, mse = "FALSE",correction = "none",es = "pes")
+
+
+simple <- emmeans(anova, ~stimPulses)
+simple_print <- apa_print.emmGrid(pairs(simple, adjust = "tukey"))
+
+
+```
+
+Latency to peak was also modulated by stimulation intensity (Pulses: `r anova_print$statistic$stimPulses`; 12 vs 24 `r simple_print$statistic$X12_X24`, 24 vs 36 `r simple_print$statistic$X24_X36`), but was not modulated by drug condition (Drug: `r anova_print$statistic$drugs`, Drug x Intensity: `r anova_print$statistic$drugs_stimPulses`).
+
+

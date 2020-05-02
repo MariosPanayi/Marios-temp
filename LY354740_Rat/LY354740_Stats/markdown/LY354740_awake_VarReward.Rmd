@@ -1,0 +1,137 @@
+---
+title: "LY354740_Awake_VarReward"
+author: "Marios Panayi"
+date: "4/17/2020"
+output: word_document
+---
+
+```{r setup, include=FALSE, message = FALSE, warning=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+## Packages for data organisation and plotting
+library(tidyverse)
+#library(ggpubr)
+library(cowplot)
+################################################################################
+## Packages for Data analysis
+library(afex)
+afex_options(emmeans_model = "multivariate")# use multivariate model for all follow-up tests.
+library(emmeans)
+# install.packages("devtools")
+# devtools::install_github("crsh/papaja")
+library(papaja)
+library(knitr)
+#Read in the data as global variable
+full_data <- read_csv("../rawdata/AwakeVarReward_rawdata.csv")
+#Pre filter data for any exclusions
+full_data <- full_data %>% 
+  filter(include == TRUE)
+
+```
+
+# Statistical Analysis
+
+A total of N = 18 electrodes recorded from N = 11 subjects (n = 7 contributed bilateral recordings). Each electrode contributed to a saline and a drug recording session i.e. balanced data.
+Data processing: 
+
+* Pre and post session DA to unexpected rewards analyzed to find evidence of DA sensitivity for each electrode. An electrode was included if DA was observed contingent upon reward delivery and a cyclic voltammogram from this period had an R2 > .75 with a DA template.
+* Session data were then sorted into trials spanning the 5s before, and the 10s after reward delivery.
+* Background subtracted 0.5s from reward delivery.
+* Data filtered with a 2000 Hz Butterworth filter.
+* Chemometric analysis was then performed on these data: A principal components regression was conducted on the data using a standardized training set with a range of DA and pH examples.
+* Trials where then excluded if the chemometric model did not fit either 10% of the data, or 5% of consecutive data points in the trial.
+* The predicted DA from these trials were then averaged within each session for each reward magnitude.
+* The average signal for each reward magnitude was then smoothed with a 0.5s moving average.
+* This smoothed data was then plotted (average traces) and analyzed for three measures of DA kinetics in the period between reward delivery and 5s post reward delivery.
+  + Area under the curve (AUC; arbitrary units), a proxy of total DA release and reuptake, was measured by integration of the signal (trapezoidal method used, MATLAB trapz() function).
+  + Peak DA release (in nA) was measured by finding the highest point in the signal (MATLAB max() function).
+  + Latency to peak (in seconds) was defined as the time from reward delivery to peak DA release.
+
+
+A repeated measures ANOVA with factors of Drug(Saline, LY354740) and Reward Size (Small, Medium, Large) was run on a range of complementary measures of DA release dynamics within the first 5s post reward delivery: Area under the curve (arbitrary units), peak DA release (nA), and latency to peak (s). Simple effects following significant interactions are tukey corrected for family-wise error rate control.
+
+
+# Peak
+
+```{r Peak, echo=FALSE,message = FALSE, warning=FALSE}
+
+#Filter the relevant stage of data for analysis
+data_subset <- full_data 
+
+anova <- aov_4(peak ~ (drug*rewardMagnitude|Subj), data = data_subset, anova_table = list(correction = "none", es = "pes"))
+
+anova_print <- apa_print(anova, mse = "FALSE",correction = "none",es = "pes")
+
+simple <- emmeans(anova, ~rewardMagnitude)
+simple_print <- apa_print.emmGrid(pairs(simple, adjust = "tukey"))
+
+simple2 <- emmeans(anova, ~drug*rewardMagnitude)
+simple2_print <- apa_print.emmGrid(contrast(simple2, by = "rewardMagnitude", interaction = "pairwise", adjust = "tukey"))
+```
+
+Peak DA increased with reward size (Size: `r anova_print$statistic$rewardMagnitude`; small vs medium `r simple_print$statistic$X1_X2`, medium vs large `r simple_print$statistic$X2_X3`), and was significantly higher following LY354740 (Drug: `r anova_print$statistic$drug`, Drug x Size: `r anova_print$statistic$drug_rewardMagnitude`).
+
+# AUC
+
+```{r AUC, echo=FALSE,message = FALSE, warning=FALSE}
+
+#Filter the relevant stage of data for analysis
+data_subset <- full_data 
+
+anova <- aov_4(AUC ~ (drug*rewardMagnitude|Subj), data = data_subset, anova_table = list(correction = "none", es = "pes"))
+
+anova_print <- apa_print(anova, mse = "FALSE",correction = "none",es = "pes")
+
+simple <- emmeans(anova, ~rewardMagnitude)
+simple_print <- apa_print.emmGrid(pairs(simple, adjust = "tukey"))
+
+simple2 <- emmeans(anova, ~drug*rewardMagnitude)
+simple2_print <- apa_print.emmGrid(contrast(simple2, by = "rewardMagnitude", interaction = "pairwise", adjust = "tukey"))
+```
+
+AUC DA increased with reward size (Size: `r anova_print$statistic$rewardMagnitude`; small vs medium `r simple_print$statistic$X1_X2`, medium vs large `r simple_print$statistic$X2_X3`), and was significantly higher following LY354740 (Drug: `r anova_print$statistic$drug`). Furthermore, the LY354740 increase was greater as reward size increased (Drug x Size: `r anova_print$statistic$drug_rewardMagnitude`; Sal vs LY: Small `r simple2_print$statistic$SAL_LY_X1`, Medium `r simple2_print$statistic$SAL_LY_X2`, Large `r simple2_print$statistic$SAL_LY_X3`).
+
+
+
+
+# latency to peak
+
+```{r latency2peak, echo=FALSE,message = FALSE, warning=FALSE}
+
+#Filter the relevant stage of data for analysis
+data_subset <- full_data 
+
+anova <- aov_4(latency2peak ~ (drug*rewardMagnitude|Subj), data = data_subset, anova_table = list(correction = "none", es = "pes"))
+
+anova_print <- apa_print(anova, mse = "FALSE",correction = "none",es = "pes")
+
+simple <- emmeans(anova, ~rewardMagnitude)
+simple_print <- apa_print.emmGrid(pairs(simple, adjust = "tukey"))
+
+simple2 <- emmeans(anova, ~drug*rewardMagnitude)
+simple2_print <- apa_print.emmGrid(contrast(simple2, by = "rewardMagnitude", interaction = "pairwise", adjust = "tukey"))
+```
+
+Latency to peak DA increased with reward size (Size: `r anova_print$statistic$rewardMagnitude`; small vs medium `r simple_print$statistic$X1_X2`, medium vs large `r simple_print$statistic$X2_X3`), and was not affected by LY354740 (Drug: `r anova_print$statistic$drug`, Drug x Size: `r anova_print$statistic$drug_rewardMagnitude`).
+
+
+# Behaviour
+
+``` {r Behaviour, echo=FALSE,message = FALSE, warning=FALSE}
+
+# Load in raw data for behaviour separately
+data_subset <- read_csv("../rawdata/AwakeVarReward_behaviour_rawdata.csv")
+#Pre filter data for any exclusions
+data_subset <- data_subset %>% 
+  filter(include == TRUE) %>% 
+  group_by(subject, drug) %>% 
+  summarise(MagEntry = mean(MagFrequency))
+
+
+# tstats <- compare.2.vectors(data_subset$MagEntry[data_subset$drug == "SAL"], data_subset$MagEntry[data_subset$drug == "LY"], paired = TRUE)
+
+tstats <- with(data_subset, t.test(MagEntry[drug == "SAL"], MagEntry[drug == "LY"], paired = TRUE, tests = "parametric"))
+
+tstats_print <- apa_print(tstats)
+```
+
+Total magazine appriach behaviour did not differ between Saline and LY354740 sessions (Sal vs LY paired t-test, `r tstats_print$statistic`).

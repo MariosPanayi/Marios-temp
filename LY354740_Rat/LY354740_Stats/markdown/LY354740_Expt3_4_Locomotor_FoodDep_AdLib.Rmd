@@ -1,0 +1,539 @@
+---
+title: "LY354740_Expt3_4_Locomotor_FoodDep_AdLib"
+author: "Marios Panayi"
+date: "4/22/2020"
+output: word_document
+---
+
+```{r setup, include=FALSE, message = FALSE, warning=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+## Packages for data organisation and plotting
+library(tidyverse)
+# Package for relative file paths
+library(here)
+#library(ggpubr)
+library(cowplot)
+################################################################################
+## Packages for Data analysis
+library(afex)
+afex_options(emmeans_model = "multivariate")# use multivariate model for all follow-up tests.
+library(emmeans)
+# install.packages("devtools")
+# devtools::install_github("crsh/papaja")
+library(papaja)
+library(knitr)
+
+```
+
+# Experiment 3. Locomotor Activity Food Dep LY & Amph
+
+```{r Expt. 3 Locomotor Activity Food Dep LY & Amph - 10 mins, include=FALSE, message = FALSE, warning=FALSE}
+full_data <- read_csv(here("rawdata", "/LY354740_Expt3_Locomotor_FoodDep.csv"))
+
+#####
+## Baseline data
+baseline_data_10mins <- full_data %>% 
+  group_by(Subj, Drug, Amph, LY, Period, bin10mins) %>% 
+  summarise(activity = sum(activity)) %>%
+    ungroup() %>% 
+    group_by(Subj) %>% 
+        mutate(activity_perc = activity/activity[bin10mins=="0"]) %>% 
+  ungroup() %>% 
+  filter(bin10mins < 1) %>% 
+  mutate(bin10mins = as.factor(bin10mins))
+
+# Stats - 10 mins
+anova_baseline <- aov_4(activity ~ Amph*LY + (bin10mins|Subj), data = baseline_data_10mins, anova_table = list(correction = "none", es = "pes"))
+anova_baselineprint <- apa_print(anova_baseline, mse = "FALSE",correction = "none",es = "pes")
+
+#####
+
+data_10mins <- full_data %>% 
+  group_by(Subj, Drug, Amph, LY, Period, bin10mins) %>% 
+  summarise(activity = sum(activity)) %>%
+    ungroup() %>% 
+    group_by(Subj) %>% 
+        mutate(activity_perc = activity/activity[bin10mins=="0"]) %>% 
+  ungroup() %>% 
+  filter(bin10mins < 13 &
+           bin10mins > 0) %>% 
+  mutate(bin10mins = as.factor(bin10mins))
+
+data_60mins <- full_data %>% 
+  group_by(Subj, Drug, Amph, LY, Period, bin60mins) %>% 
+  summarise(activity = sum(activity)) %>%
+    ungroup() %>% 
+    group_by(Subj) %>% 
+        mutate(activity_perc = activity/activity[bin60mins=="0"]) %>% 
+  ungroup() %>% 
+  filter(bin60mins < 3 &
+           bin60mins > 0) %>% 
+  mutate(bin60mins = as.factor(bin60mins))
+
+
+# Stats - 10 mins
+anova <- aov_4(activity ~ Amph*LY + (bin10mins|Subj), data = data_10mins, anova_table = list(correction = "none", es = "pes"))
+anova_print <- apa_print(anova, mse = "FALSE",correction = "none",es = "pes")
+
+simple <- emmeans(anova, ~Amph*LY*bin10mins)
+simple_print <- apa_print.emmGrid(contrast(simple, by = "bin10mins", interaction = "pairwise", adjust = "tukey"))
+
+simple2 <- emmeans(anova, ~Amph*LY*bin10mins)
+simple2_print <- apa_print.emmGrid(contrast(simple2, by = c("Amph","bin10mins"), interaction = "pairwise", adjust = "tukey"))
+
+
+# Stats - 60 mins follow up tests
+anova_60 <- aov_4(activity ~ Amph*LY + (bin60mins|Subj), data = data_60mins, anova_table = list(correction = "none", es = "pes"))
+anova_60_print <- apa_print(anova_60, mse = "FALSE",correction = "none",es = "pes")
+
+simple_60 <- emmeans(anova_60, ~Amph*LY*bin60mins)
+simple_60_print <- apa_print.emmGrid(contrast(simple_60, by = "bin60mins", interaction = "pairwise", adjust = "tukey"))
+
+simple2_60 <- emmeans(anova_60, ~Amph*LY*bin60mins)
+simple2_60_print <- apa_print.emmGrid(contrast(simple2_60, by = c("Amph","bin60mins"), interaction = "pairwise", adjust = "tukey"))
+
+
+
+#####
+#
+anova_baselineprint$table
+#
+anova_print$table
+# 
+simple_60_print$table
+# 
+simple2_60_print$table
+
+
+
+```
+
+Following injections, Amphetamine significantly increased locomotor activity (Amph `r anova_print$statistic$Amph`, Amph x Time `r anova_print$statistic$Amph_bin10mins`). However, in contrast to previous reports, LY354740 significantly enhanced this hyperactivity over time rather than reduce it (Amph x LY354740 x Time `r anova_print$statistic$Amph_LY_bin10mins`, Amph x LY354740 `r anova_print$statistic$Amph_LY_bin10mins`). LY354740 significantly increased Amph induced hyperactivity 61-120 mins post injection (Amph/LY354740 vs Amph/Veh `r simple2_60_print$statistic$LY_Veh_Amph_X2`) but not 1-60 mins post injection (`r simple2_60_print$statistic$LY_Veh_Amph_X1`). In contrast, LY354740 alone did not affect locomotor activity (Veh/LY354740 vs Veh/Veh, 1-60 mins `r simple2_60_print$statistic$LY_Veh_Veh_X1`, 61-120 mins `r simple2_60_print$statistic$LY_Veh_Veh_X2`).
+
+
+```{r Expt 3 Plot10 mins,  results='show', fig.height=6, fig.width=9}
+# Plot for fun
+baselineplot_10mins <- baseline_data_10mins %>%   
+  ggplot(mapping = aes(x = bin10mins, y = activity, group = Drug, colour = Drug)) +
+  stat_summary_bin(fun.data = "mean_se", geom = "point") +
+  stat_summary_bin(fun.data = "mean_se", geom = "line") +
+  stat_summary(fun.data = "mean_se", geom = "errorbar", width = 0.01) +
+  scale_y_continuous( expand = expansion(mult = c(0, 0.1))) +
+  ggtitle("Expt.3 Food Dep - Baseline") + xlab("10 mins") + ylab("Total beam breaks") +
+  theme_cowplot(12) 
+
+testplot_10mins <- data_10mins %>%   
+  ggplot(mapping = aes(x = bin10mins, y = activity, group = Drug, colour = Drug)) +
+  stat_summary_bin(fun.data = "mean_se", geom = "point") +
+  stat_summary_bin(fun.data = "mean_se", geom = "line") +
+  stat_summary(fun.data = "mean_se", geom = "errorbar", width = 0.01) +
+  scale_y_continuous( expand = expansion(mult = c(0, 0.1))) +
+  ggtitle("Expt.3 Food Dep - Test") + xlab("10 mins") + ylab("Total beam breaks") +
+  theme_cowplot(12) 
+
+baselineplot_1mins <- full_data %>%  filter(bin60mins == 0 ) %>%  
+  ggplot(mapping = aes(x = time_mins, y = activity, group = Drug, colour = Drug)) +
+  stat_summary_bin(fun.data = "mean_se", geom = "point") +
+  stat_summary_bin(fun.data = "mean_se", geom = "line") +
+  stat_summary(fun.data = "mean_se", geom = "errorbar", width = 0.01) +
+  scale_y_continuous( expand = expansion(mult = c(0, 0.1))) +
+  ggtitle("Expt.3 Food Dep - Baseline") + xlab("Mins") + ylab("Total beam breaks") +
+  theme_cowplot(12) 
+
+testplot_1mins <- full_data %>%  filter(bin60mins > 0 &  bin60mins < 3) %>%  
+  ggplot(mapping = aes(x = time_mins, y = activity, group = Drug, colour = Drug)) +
+  stat_summary_bin(fun.data = "mean_se", geom = "point") +
+  stat_summary_bin(fun.data = "mean_se", geom = "line") +
+  stat_summary(fun.data = "mean_se", geom = "errorbar", width = 0.01) +
+  ggtitle("Expt.3 Food Dep - Test") + xlab("Mins") + ylab("Total beam breaks") +
+  theme_cowplot(12) 
+
+
+plot_Expt3 <- plot_grid(baselineplot_10mins, testplot_10mins,baselineplot_1mins,testplot_1mins, labels = c('A', 'B', 'C', 'D'), label_size = 12)
+
+plot_Expt3
+
+```
+
+
+
+# Experiment 4. Locomotor Activity Food Dep LY & Amph
+
+```{r Expt. 4 Locomotor Activity AdLib LY & Amph - 10 mins, include=FALSE, message = FALSE, warning=FALSE}
+full_data <- read_csv(here("rawdata", "/LY354740_Expt4_Locomotor_AdLib.csv"))
+
+#####
+## Baseline data
+baseline_data_10mins <- full_data %>% 
+  group_by(Subj, Drug, Amph, LY, Period, bin10mins) %>% 
+  summarise(activity = sum(activity)) %>%
+    ungroup() %>% 
+    group_by(Subj) %>% 
+        mutate(activity_perc = activity/activity[bin10mins=="0"]) %>% 
+  ungroup() %>% 
+  filter(bin10mins < 1) %>% 
+  mutate(bin10mins = as.factor(bin10mins))
+
+# Stats - 10 mins
+anova_baseline <- aov_4(activity ~ Amph*LY + (bin10mins|Subj), data = baseline_data_10mins, anova_table = list(correction = "none", es = "pes"))
+anova_baselineprint <- apa_print(anova_baseline, mse = "FALSE",correction = "none",es = "pes")
+
+#####
+
+data_10mins <- full_data %>% 
+  group_by(Subj, Drug, Amph, LY, Period, bin10mins) %>% 
+  summarise(activity = sum(activity)) %>%
+    ungroup() %>% 
+    group_by(Subj) %>% 
+        mutate(activity_perc = activity/activity[bin10mins=="0"]) %>% 
+  ungroup() %>% 
+  filter(bin10mins < 13 &
+           bin10mins > 0) %>% 
+  mutate(bin10mins = as.factor(bin10mins))
+
+data_60mins <- full_data %>% 
+  group_by(Subj, Drug, Amph, LY, Period, bin60mins) %>% 
+  summarise(activity = sum(activity)) %>%
+    ungroup() %>% 
+    group_by(Subj) %>% 
+        mutate(activity_perc = activity/activity[bin60mins=="0"]) %>% 
+  ungroup() %>% 
+  filter(bin60mins < 3 &
+           bin60mins > 0) %>% 
+  mutate(bin60mins = as.factor(bin60mins))
+
+
+# Stats - 10 mins
+anova <- aov_4(activity ~ Amph*LY + (bin10mins|Subj), data = data_10mins, anova_table = list(correction = "none", es = "pes"))
+anova_print <- apa_print(anova, mse = "FALSE",correction = "none",es = "pes")
+
+simple <- emmeans(anova, ~Amph*LY*bin10mins)
+simple_print <- apa_print.emmGrid(contrast(simple, by = "bin10mins", interaction = "pairwise", adjust = "tukey"))
+
+simple2 <- emmeans(anova, ~Amph*LY*bin10mins)
+simple2_print <- apa_print.emmGrid(contrast(simple2, by = c("Amph","bin10mins"), interaction = "pairwise", adjust = "tukey"))
+
+
+# Stats - 60 mins follow up tests
+anova_60 <- aov_4(activity ~ Amph*LY + (bin60mins|Subj), data = data_60mins, anova_table = list(correction = "none", es = "pes"))
+anova_60_print <- apa_print(anova_60, mse = "FALSE",correction = "none",es = "pes")
+
+simple_60 <- emmeans(anova_60, ~Amph*LY*bin60mins)
+simple_60_print <- apa_print.emmGrid(contrast(simple_60, by = "bin60mins", interaction = "pairwise", adjust = "tukey"))
+
+simple2_60 <- emmeans(anova_60, ~Amph*LY*bin60mins)
+simple2_60_print <- apa_print.emmGrid(contrast(simple2_60, by = c("Amph","bin60mins"), interaction = "pairwise", adjust = "tukey"))
+
+
+
+#####
+#
+anova_baselineprint$table
+#
+anova_print$table
+# 
+simple_60_print$table
+# 
+simple2_60_print$table
+
+
+
+```
+
+
+Following injections, Amphetamine significantly increased locomotor activity (Amph `r anova_print$statistic$Amph`, Amph x Time `r anova_print$statistic$Amph_bin10mins`).Furthermore, LY354740 significantly enhanced this reduced this hyperactivity (Amph x LY354740 x Time `r anova_print$statistic$Amph_LY_bin10mins`, Amph x LY354740 `r anova_print$statistic$Amph_LY_bin10mins`). LY354740 significantly reduced Amph induced hyperactivity 1-60 mins post injection (Amph/LY354740 vs Amph/Veh `r simple2_60_print$statistic$LY_Veh_Amph_X1`) but not 61-120 mins post injection (`r simple2_60_print$statistic$LY_Veh_Amph_X2`). In contrast, LY354740 alone did not affect locomotor activity (Veh/LY354740 vs Veh/Veh, 1-60 mins `r simple2_60_print$statistic$LY_Veh_Veh_X1`, 61-120 mins `r simple2_60_print$statistic$LY_Veh_Veh_X2`).
+
+
+```{r Expt 4 Plot10 mins,  results='show', fig.height=6, fig.width=9, message = FALSE, warning=FALSE}
+# Plot for fun
+baselineplot_10mins <- baseline_data_10mins %>%   
+  ggplot(mapping = aes(x = bin10mins, y = activity, group = Drug, colour = Drug)) +
+  stat_summary_bin(fun.data = "mean_se", geom = "point") +
+  stat_summary_bin(fun.data = "mean_se", geom = "line") +
+  stat_summary(fun.data = "mean_se", geom = "errorbar", width = 0.01) +
+  scale_y_continuous( expand = expansion(mult = c(0, 0.1))) +
+  ggtitle("Expt.4 AdLib - Baseline") + xlab("10 mins") + ylab("Total beam breaks") +
+  theme_cowplot(12) 
+
+testplot_10mins <- data_10mins %>%   
+  ggplot(mapping = aes(x = bin10mins, y = activity, group = Drug, colour = Drug)) +
+  stat_summary_bin(fun.data = "mean_se", geom = "point") +
+  stat_summary_bin(fun.data = "mean_se", geom = "line") +
+  stat_summary(fun.data = "mean_se", geom = "errorbar", width = 0.01) +
+  scale_y_continuous( expand = expansion(mult = c(0, 0.1))) +
+  ggtitle("Expt.4 AdLib - Test") + xlab("10 mins") + ylab("Total beam breaks") +
+  theme_cowplot(12) 
+
+baselineplot_1mins <- full_data %>%  filter(bin60mins == 0 ) %>%  
+  ggplot(mapping = aes(x = time_mins, y = activity, group = Drug, colour = Drug)) +
+  stat_summary_bin(fun.data = "mean_se", geom = "point") +
+  stat_summary_bin(fun.data = "mean_se", geom = "line") +
+  stat_summary(fun.data = "mean_se", geom = "errorbar", width = 0.01) +
+  scale_y_continuous( expand = expansion(mult = c(0, 0.1))) +
+  ggtitle("Expt.4 AdLib - Baseline") + xlab("Mins") + ylab("Total beam breaks") +
+  theme_cowplot(12) 
+
+testplot_1mins <- full_data %>%  filter(bin60mins > 0 &  bin60mins < 3) %>%  
+  ggplot(mapping = aes(x = time_mins, y = activity, group = Drug, colour = Drug)) +
+  stat_summary_bin(fun.data = "mean_se", geom = "point") +
+  stat_summary_bin(fun.data = "mean_se", geom = "line") +
+  stat_summary(fun.data = "mean_se", geom = "errorbar", width = 0.01) +
+  ggtitle("Expt.4 AdLib - Test") + xlab("Mins") + ylab("Total beam breaks") +
+  theme_cowplot(12) 
+
+
+plot_Expt3 <- plot_grid(baselineplot_10mins, testplot_10mins,baselineplot_1mins,testplot_1mins, labels = c('A', 'B', 'C', 'D'), label_size = 12)
+
+plot_Expt3
+
+```
+
+
+
+#####
+
+
+```{r Expt. 5 Locomotor Activity AdLib Food Dep & Amph - 10 mins, include=FALSE, message = FALSE, warning=FALSE}
+full_data <- read_csv(here("rawdata", "/LY354740_Expt5_Locomotor_FoodDepAmphDose.csv"))
+
+#####
+## Baseline data
+baseline_data_10mins <- full_data %>% 
+  group_by(Subj, Feeding, Amph, bin10mins) %>% 
+  summarise(activity = sum(activity)) %>%
+    ungroup() %>% 
+    group_by(Subj) %>% 
+        mutate(activity_perc = activity/activity[bin10mins=="0"]) %>% 
+  ungroup() %>% 
+  filter(bin10mins < 1) %>% 
+  mutate(bin10mins = as.factor(bin10mins))
+
+
+
+# Stats - 10 mins
+anova_baseline <- aov_4(activity ~ Amph*Feeding + (bin10mins|Subj), data = baseline_data_10mins, anova_table = list(correction = "none", es = "pes"))
+anova_baselineprint <- apa_print(anova_baseline, mse = "FALSE",correction = "none",es = "pes")
+
+#####
+
+data_10mins <- full_data %>% 
+    group_by(Subj, Feeding, Amph, bin10mins) %>% 
+  summarise(activity = sum(activity)) %>%
+    ungroup() %>% 
+    group_by(Subj) %>% 
+        mutate(activity_perc = activity/activity[bin10mins=="0"]) %>% 
+  ungroup() %>% 
+  filter(bin10mins < 13 &
+           bin10mins > 0) %>% 
+  mutate(bin10mins = as.factor(bin10mins))
+
+
+data_60mins <- full_data %>%
+      group_by(Subj, Feeding, Amph, bin60mins) %>% 
+  summarise(activity = sum(activity)) %>%
+    ungroup() %>% 
+    group_by(Subj) %>% 
+        mutate(activity_perc = activity/activity[bin60mins=="0"]) %>% 
+  ungroup() %>% 
+  filter(bin60mins < 3 &
+           bin60mins > 0) %>% 
+  mutate(bin60mins = as.factor(bin60mins))
+
+
+# Stats - 10 mins
+anova <- aov_4(activity ~ Amph*Feeding + (bin10mins|Subj), data = data_10mins, anova_table = list(correction = "none", es = "pes"))
+anova_print <- apa_print(anova, mse = "FALSE",correction = "none",es = "pes")
+
+simple <- emmeans(anova, ~ Amph)
+simple_print <- apa_print.emmGrid(contrast(simple, method = "pairwise", adjust = "tukey"))
+
+simple2 <- emmeans(anova, ~Amph*Feeding*bin10mins)
+simple2_print <- apa_print.emmGrid(contrast(simple2, by = c("Amph","bin10mins"), interaction = "pairwise", adjust = "tukey"))
+
+
+# Stats - 60 mins follow up tests
+anova_60 <- aov_4(activity ~ Amph*Feeding + (bin60mins|Subj), data = data_60mins, anova_table = list(correction = "none", es = "pes"))
+anova_60_print <- apa_print(anova_60, mse = "FALSE",correction = "none",es = "pes")
+
+simple_60 <- emmeans(anova_60, ~Amph*bin60mins)
+simple_60_print <- apa_print.emmGrid(contrast(simple_60, by = "Amph", interaction = "pairwise", adjust = "tukey"))
+
+simple2_60 <- emmeans(anova_60, ~Feeding*bin60mins)
+simple2_60_print <- apa_print.emmGrid(contrast(simple2_60, by = c("Feeding"), interaction = "pairwise", adjust = "tukey"))
+
+
+
+#####
+#
+anova_baselineprint$table
+#
+anova_print$table
+#
+simple_print$table
+# 
+simple_60_print$table
+# 
+simple2_60_print$table
+
+```
+
+# Eperiment 5 Locomotor Activity Dose Amphetamine Feeding Manipulation
+
+Prior to Amph administration, locomotor activity was significantly lower following food restriction than Ad libitum food access (Feeding `r anova_baselineprint$statistic$Feeding`, Feeding x Time `r anova_baselineprint$statistic$Feeding_bin10mins`). 
+
+Following injections, both food restriction (Feeding `r anova_print$statistic$Feeding`, Feeding x Time `r anova_print$statistic$Feeding_bin10mins`) and amphetamine (Amph `r anova_print$statistic$Amph`, Amph x Time `r anova_print$statistic$Amph_bin10mins`) independently enhanced locomotor activity, however they did not significantly interact with each other (Amph x Feeding x Time `r anova_print$statistic$Amph_Feeding_bin10mins`, Amph x Feeding `r anova_print$statistic$Amph_Feeding`, ). Varying doses of amphetamine produced a dose response curve such that all doses of amphetamine increased activity relative to vehicle injections (0 vs 1.0 mg/kg `r simple_print$statistic$'0_1'`, 0 vs 2.5 mg/kg `r simple_print$statistic$'0_25'`, 0 vs 5.0 mg/kg `r simple_print$statistic$'0_5'`), and 2.5 mg/kg produced the highest response (1.0 vs 2.5 mg/kg `r simple_print$statistic$'1_25'`, 2.5 vs 5.0 mg/kg `r simple_print$statistic$'25_5'`, 1.0 vs 5.0 mg/kg `r simple_print$statistic$'1_5'`).
+
+
+
+```{r Expt 5 Plot10 mins,  results='show', fig.height=4, fig.width=9, message = FALSE, warning=FALSE}
+# Plot for fun
+baselineplot_10mins <- baseline_data_10mins %>%   
+  ggplot(mapping = aes(x = as.factor(bin10mins), y = activity, group = interaction(Amph, Feeding), colour = interaction(Amph, Feeding))) +
+  stat_summary_bin(fun.data = "mean_se", geom = "point") +
+  stat_summary_bin(fun.data = "mean_se", geom = "line") +
+  stat_summary(fun.data = "mean_se", geom = "errorbar", width = 0.01) +
+  scale_y_continuous( expand = expansion(mult = c(0, 0.1))) +
+  ggtitle("Expt.5 Amph response - Baseline") + xlab("10 mins") + ylab("Total beam breaks") +
+  theme_cowplot(12) 
+
+testplot_10mins <- data_10mins %>%   
+  ggplot(mapping = aes(x = as.factor(bin10mins), y = activity, group = interaction(Amph, Feeding), colour = interaction(Amph, Feeding))) +
+  stat_summary_bin(fun.data = "mean_se", geom = "point") +
+  stat_summary_bin(fun.data = "mean_se", geom = "line") +
+  stat_summary(fun.data = "mean_se", geom = "errorbar", width = 0.01) +
+  scale_y_continuous( expand = expansion(mult = c(0, 0.1))) +
+  ggtitle("Expt.5 Amph response - Test") + xlab("10 mins") + ylab("Total beam breaks") +
+  theme_cowplot(12) 
+
+
+
+data_60mins <- full_data %>%
+      group_by(Subj, Feeding, Amph, bin60mins) %>% 
+  summarise(activity = sum(activity)) %>%
+    ungroup() %>% 
+    group_by(Subj) %>% 
+        mutate(activity_perc = activity/activity[bin60mins=="0"]) %>% 
+  ungroup() %>% 
+  mutate(bin60mins = as.factor(bin60mins))
+
+BarPlot_baseline <- data_60mins %>%  filter(bin60mins == 0 ) %>% 
+  ggplot(mapping = aes(x = Feeding, y = activity, group = Feeding, fill =  Feeding)) +
+  stat_summary_bin(fun.data = "mean_se", geom = "bar", position = "dodge") +
+  stat_summary(fun.data = "mean_se", geom = "errorbar", width = 0.01, position = position_dodge(width =0.9)) +
+  scale_y_continuous( expand = expansion(mult = c(0, 0.1))) +
+  ggtitle("Expt.5 Amph response - Baseline") + xlab("60 mins") + ylab("Total beam breaks") +
+  theme_cowplot(12) 
+
+data_120mins <- full_data %>%
+  filter(bin60mins > 0) %>% 
+      group_by(Subj, Feeding, Amph) %>% 
+  summarise(activity = sum(activity)) %>%
+    ungroup()
+
+BarPlot_Test <- data_120mins %>%  
+  ggplot(mapping = aes(x = Feeding, y = activity, group = as.factor(Amph), fill =  as.factor(Amph))) +
+  stat_summary_bin(fun.data = "mean_se", geom = "bar", position = "dodge") +
+  stat_summary(fun.data = "mean_se", geom = "errorbar", width = 0.01, position = position_dodge(width =0.9)) +
+  scale_y_continuous( expand = expansion(mult = c(0, 0.1))) +
+  ggtitle("Expt.5 Amph response - Test") + xlab("120 mins") + ylab("Total beam breaks") +
+  theme_cowplot(12) 
+
+
+
+plot_Expt5 <- plot_grid(baselineplot_10mins, testplot_10mins, BarPlot_baseline,BarPlot_Test, labels = c('A', 'B', 'C', 'D'), label_size = 12)
+
+plot_Expt5
+
+
+```
+
+# Blood Serum levels of Amph
+
+```{r Expt. 5 DBS AdLib Food Dep & Amph - 10 mins, include=FALSE, message = FALSE, warning=FALSE}
+full_data <- read_csv(here("rawdata", "/LY354740_Expt5_DBS_FoodDepAmphDose.csv"))
+
+full_data <- full_data %>% 
+  group_by(Subj) %>% 
+  mutate(perc = nM/nM[Time_hrs== '0.25']) %>% 
+  ungroup()
+
+#####
+## 1st half data
+
+data_1sthalf <- full_data %>% 
+  filter(
+    Time_hrs < 1
+  )
+
+ 
+
+
+# Stats - Full ANOVA
+anova_full <- aov_4(nM ~ Amph*Feeding + (Time_hrs|Subj), data = full_data, anova_table = list(correction = "none", es = "pes"))
+anova_fullprint <- apa_print(anova_full, mse = "FALSE",correction = "none",es = "pes")
+# First Half ANOVA Only
+anova_1sthalf <- aov_4(nM ~ Amph*Feeding + (Time_hrs|Subj), data = data_1sthalf, anova_table = list(correction = "none", es = "pes"))
+anova_1sthalfprint <- apa_print(anova_1sthalf, mse = "FALSE",correction = "none",es = "pes")
+
+
+# Simple effects
+simple <- emmeans(anova_1sthalf, ~ Amph)
+simple_print <- apa_print.emmGrid(contrast(simple, method = "pairwise", adjust = "tukey"))
+
+# Only use data from the first half of the measurements since the measurements are very variable at 1-2 hours making the data hard to interpret.
+
+anova_1sthalfprint$table
+simple_print$table
+
+```
+
+One potential account for the differential effects of feeding state on amphetamine-induced locomotor activity could be differential metabolism resulting in different blood levels of amphetamine. This was tested by sampling blood amphetamine levels in ad libitum and food deprived rats injected with either 1.0, 2.5, or 5.0 mg/kg of amphetamine. During the first our after injection (15 & 30 mins), blood levels of amphetamine increased with injection dose (Amph `r anova_1sthalfprint$statistic$Amph`, 1.0 vs 2.5 mg/kg `r simple_print$statistic$'1_25'`, 1.0 vs 5.0 mg/kg `r simple_print$statistic$'1_5'`, 2.5 vs 5.0 mg/kg `r simple_print$statistic$'25_5'`), and reduced over time (Time `r anova_1sthalfprint$statistic$Time_hrs`, Amph x Time `r anova_1sthalfprint$statistic$Amph_Time_hrs`). However, feeding state did not signficantly affect blood levels of amphetamine (Feeding `r anova_1sthalfprint$statistic$Feeding`, Feeding x Time `r anova_1sthalfprint$statistic$Feeding_Time_hrs`), or interact with amphetamine dose (Amph x Feeding `r anova_1sthalfprint$statistic$Amph_Feeding`, Feeding x Amph x Time `r anova_1sthalfprint$statistic$Amph_Feeding_Time_hrs`). 
+
+
+```{r Expt 5 Blood Amphetamine,  results='show', fig.height=4, fig.width=9, message = FALSE, warning=FALSE}
+# Plot for fun
+Fulldataplot <- full_data %>%   
+  ggplot(mapping = aes(x = as.factor(Time_hrs), y = nM, group = interaction(Amph, Feeding), colour = interaction(Amph, Feeding))) +
+  stat_summary_bin(fun.data = "mean_se", geom = "point") +
+  stat_summary_bin(fun.data = "mean_se", geom = "line") +
+  stat_summary(fun.data = "mean_se", geom = "errorbar", width = 0.01) +
+  scale_y_continuous( expand = expansion(mult = c(0, 0.1))) +
+  ggtitle("Expt.5 Amph Blood Levels ") + xlab("10 mins") + ylab("Total beam breaks") +
+  theme_cowplot(12) 
+
+# Percentagedataplot <- full_data %>%   
+#   ggplot(mapping = aes(x = as.factor(Time_hrs), y = perc, group = interaction(Amph, Feeding), colour = interaction(Amph, Feeding))) +
+#   stat_summary_bin(fun.data = "mean_se", geom = "point") +
+#   stat_summary_bin(fun.data = "mean_se", geom = "line") +
+#   stat_summary(fun.data = "mean_se", geom = "errorbar", width = 0.01) +
+#   scale_y_continuous( expand = expansion(mult = c(0, 0.1))) +
+#   ggtitle("Expt.5 Amph Blood Levels - Percentage ") + xlab("10 mins") + ylab("Total beam breaks") +
+#   theme_cowplot(12) 
+
+
+Halfdataplot <- data_1sthalf %>%   
+  ggplot(mapping = aes(x = as.factor(Time_hrs), y = nM, group = interaction(Amph, Feeding), colour = interaction(Amph, Feeding))) +
+  stat_summary_bin(fun.data = "mean_se", geom = "point") +
+  stat_summary_bin(fun.data = "mean_se", geom = "line") +
+  stat_summary(fun.data = "mean_se", geom = "errorbar", width = 0.01) +
+  scale_y_continuous( expand = expansion(mult = c(0, 0.1))) +
+  ggtitle("Expt.5 Amph Blood Levels ") + xlab("10 mins") + ylab("Total beam breaks") +
+  theme_cowplot(12) 
+
+# HalfPercentagedataplot <- data_1sthalf %>%   
+#   ggplot(mapping = aes(x = as.factor(Time_hrs), y = perc, group = interaction(Amph, Feeding), colour = interaction(Amph, Feeding))) +
+#   stat_summary_bin(fun.data = "mean_se", geom = "point") +
+#   stat_summary_bin(fun.data = "mean_se", geom = "line") +
+#   stat_summary(fun.data = "mean_se", geom = "errorbar", width = 0.01) +
+#   scale_y_continuous( expand = expansion(mult = c(0, 0.1))) +
+#   ggtitle("Expt.5 Amph Blood Levels - Percentage ") + xlab("10 mins") + ylab("Total beam breaks") +
+#   theme_cowplot(12) 
+
+
+
+
+plot_Expt5 <- plot_grid(Fulldataplot,Halfdataplot, labels = c('A', 'B', 'C', 'D'), label_size = 12)
+
+plot_Expt5
+
+```
