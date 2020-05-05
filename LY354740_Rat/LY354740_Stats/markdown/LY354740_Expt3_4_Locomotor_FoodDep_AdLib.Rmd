@@ -328,16 +328,16 @@ data_10mins <- full_data %>%
   mutate(bin10mins = as.factor(bin10mins))
 
 
-data_60mins <- full_data %>%
-      group_by(Subj, Feeding, Amph, bin60mins) %>% 
-  summarise(activity = sum(activity)) %>%
-    ungroup() %>% 
-    group_by(Subj) %>% 
-        mutate(activity_perc = activity/activity[bin60mins=="0"]) %>% 
-  ungroup() %>% 
-  filter(bin60mins < 3 &
-           bin60mins > 0) %>% 
-  mutate(bin60mins = as.factor(bin60mins))
+# data_60mins <- full_data %>%
+#       group_by(Subj, Feeding, Amph, bin60mins) %>% 
+#   summarise(activity = sum(activity)) %>%
+#     ungroup() %>% 
+#     group_by(Subj) %>% 
+#         mutate(activity_perc = activity/activity[bin60mins=="0"]) %>% 
+#   ungroup() %>% 
+#   filter(bin60mins < 3 &
+#            bin60mins > 0) %>% 
+#   mutate(bin60mins = as.factor(bin60mins))
 
 
 # Stats - 10 mins
@@ -351,15 +351,15 @@ simple2 <- emmeans(anova, ~Amph*Feeding*bin10mins)
 simple2_print <- apa_print.emmGrid(contrast(simple2, by = c("Amph","bin10mins"), interaction = "pairwise", adjust = "tukey"))
 
 
-# Stats - 60 mins follow up tests
-anova_60 <- aov_4(activity ~ Amph*Feeding + (bin60mins|Subj), data = data_60mins, anova_table = list(correction = "none", es = "pes"))
-anova_60_print <- apa_print(anova_60, mse = "FALSE",correction = "none",es = "pes")
-
-simple_60 <- emmeans(anova_60, ~Amph*bin60mins)
-simple_60_print <- apa_print.emmGrid(contrast(simple_60, by = "Amph", interaction = "pairwise", adjust = "tukey"))
-
-simple2_60 <- emmeans(anova_60, ~Feeding*bin60mins)
-simple2_60_print <- apa_print.emmGrid(contrast(simple2_60, by = c("Feeding"), interaction = "pairwise", adjust = "tukey"))
+# # Stats - 60 mins follow up tests
+# anova_60 <- aov_4(activity ~ Amph*Feeding + (bin60mins|Subj), data = data_60mins, anova_table = list(correction = "none", es = "pes"))
+# anova_60_print <- apa_print(anova_60, mse = "FALSE",correction = "none",es = "pes")
+# 
+# simple_60 <- emmeans(anova_60, ~Amph*bin60mins)
+# simple_60_print <- apa_print.emmGrid(contrast(simple_60, by = "Amph", interaction = "pairwise", adjust = "tukey"))
+# 
+# simple2_60 <- emmeans(anova_60, ~Feeding*bin60mins)
+# simple2_60_print <- apa_print.emmGrid(contrast(simple2_60, by = c("Feeding"), interaction = "pairwise", adjust = "tukey"))
 
 
 
@@ -370,10 +370,10 @@ anova_baselineprint$table
 anova_print$table
 #
 simple_print$table
-# 
-simple_60_print$table
-# 
-simple2_60_print$table
+# # 
+# simple_60_print$table
+# # 
+# simple2_60_print$table
 
 ```
 
@@ -458,11 +458,11 @@ full_data <- full_data %>%
   ungroup()
 
 #####
-## 1st half data
+## 1st hour data
 
 data_1sthalf <- full_data %>% 
   filter(
-    Time_hrs < 1
+    Time_hrs < 2
   )
 
  
@@ -471,7 +471,7 @@ data_1sthalf <- full_data %>%
 # Stats - Full ANOVA
 anova_full <- aov_4(nM ~ Amph*Feeding + (Time_hrs|Subj), data = full_data, anova_table = list(correction = "none", es = "pes"))
 anova_fullprint <- apa_print(anova_full, mse = "FALSE",correction = "none",es = "pes")
-# First Half ANOVA Only
+# First hour ANOVA Only
 anova_1sthalf <- aov_4(nM ~ Amph*Feeding + (Time_hrs|Subj), data = data_1sthalf, anova_table = list(correction = "none", es = "pes"))
 anova_1sthalfprint <- apa_print(anova_1sthalf, mse = "FALSE",correction = "none",es = "pes")
 
@@ -480,14 +480,14 @@ anova_1sthalfprint <- apa_print(anova_1sthalf, mse = "FALSE",correction = "none"
 simple <- emmeans(anova_1sthalf, ~ Amph)
 simple_print <- apa_print.emmGrid(contrast(simple, method = "pairwise", adjust = "tukey"))
 
-# Only use data from the first half of the measurements since the measurements are very variable at 1-2 hours making the data hard to interpret.
+# Only use data from the first hour of the measurements since the measurements are very variable at 2 hours making the data hard to interpret.
 
 anova_1sthalfprint$table
 simple_print$table
 
 ```
 
-One potential account for the differential effects of feeding state on amphetamine-induced locomotor activity could be differential metabolism resulting in different blood levels of amphetamine. This was tested by sampling blood amphetamine levels in ad libitum and food deprived rats injected with either 1.0, 2.5, or 5.0 mg/kg of amphetamine. During the first our after injection (15 & 30 mins), blood levels of amphetamine increased with injection dose (Amph `r anova_1sthalfprint$statistic$Amph`, 1.0 vs 2.5 mg/kg `r simple_print$statistic$'1_25'`, 1.0 vs 5.0 mg/kg `r simple_print$statistic$'1_5'`, 2.5 vs 5.0 mg/kg `r simple_print$statistic$'25_5'`), and reduced over time (Time `r anova_1sthalfprint$statistic$Time_hrs`, Amph x Time `r anova_1sthalfprint$statistic$Amph_Time_hrs`). However, feeding state did not signficantly affect blood levels of amphetamine (Feeding `r anova_1sthalfprint$statistic$Feeding`, Feeding x Time `r anova_1sthalfprint$statistic$Feeding_Time_hrs`), or interact with amphetamine dose (Amph x Feeding `r anova_1sthalfprint$statistic$Amph_Feeding`, Feeding x Amph x Time `r anova_1sthalfprint$statistic$Amph_Feeding_Time_hrs`). 
+One potential account for the differential effects of feeding state on amphetamine-induced locomotor activity could be differential metabolism resulting in different blood levels of amphetamine. This was tested by sampling blood amphetamine levels in ad libitum and food deprived rats injected with either 1.0, 2.5, or 5.0 mg/kg of amphetamine. During the first hour after injection (15, 30, and 60 mins), blood levels of amphetamine increased with injection dose (Amph `r anova_1sthalfprint$statistic$Amph`, 1.0 vs 2.5 mg/kg `r simple_print$statistic$'1_25'`, 1.0 vs 5.0 mg/kg `r simple_print$statistic$'1_5'`, 2.5 vs 5.0 mg/kg `r simple_print$statistic$'25_5'`; No main effect of Time `r anova_1sthalfprint$statistic$Time_hrs`, or Amph x Time interaction `r anova_1sthalfprint$statistic$Amph_Time_hrs`). However, feeding state did not signficantly affect blood levels of amphetamine (Feeding `r anova_1sthalfprint$statistic$Feeding`, Feeding x Time `r anova_1sthalfprint$statistic$Feeding_Time_hrs`), or interact with amphetamine dose (Amph x Feeding `r anova_1sthalfprint$statistic$Amph_Feeding`, Feeding x Amph x Time `r anova_1sthalfprint$statistic$Amph_Feeding_Time_hrs`).
 
 
 ```{r Expt 5 Blood Amphetamine,  results='show', fig.height=4, fig.width=9, message = FALSE, warning=FALSE}

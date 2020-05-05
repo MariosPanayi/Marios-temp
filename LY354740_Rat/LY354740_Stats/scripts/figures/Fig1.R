@@ -6,6 +6,7 @@ library(here)
 library(cowplot)
 library(ggsignif)
 library(patchwork)
+library(RColorBrewer)
 ################################################################################
 ## Packages for Data analysis
 library(afex)
@@ -24,12 +25,36 @@ full_data <- read_csv(here("rawdata", "/LY354740_TMaze_Expt1_rawdata.csv"))
 short_data <- full_data %>% 
   filter(Delay == "0")
 
+
+
+# 
+# # R Brewer colour package
+# # Display all colour blind friendly palettes
+# display.brewer.all(colorblindFriendly = TRUE)
+# # Display a specific palette
+# display.brewer.pal(n = 11, name = "RdBu")
+# # Display hexadecimal colour code of the palette
+# brewer.pal(n = 11, name = "RdBu")
+# # Red-Blue Palette 
+# "#67001F" "#B2182B" "#D6604D" "#F4A582" "#FDDBC7" "#F7F7F7" "#D1E5F0" "#92C5DE" "#4393C3" "#2166AC" "#053061"
+# 
+# # Grey Palette
+# display.brewer.pal(n = 6, name = "Greys")
+# brewer.pal(n = 6, name = "Greys")
+# "#F7F7F7" "#D9D9D9" "#BDBDBD" "#969696" "#636363" "#252525"
+
+# # Blue-Purple Palette
+# display.brewer.pal(n = 6, name = "Purples")
+# brewer.pal(n = 6, name = "Purples")
+# "#F2F0F7" "#DADAEB" "#BCBDDC" "#9E9AC8" "#756BB1" "#54278F"
+
+
 # Re order and rename levels for plotting
 short_data$Drug <- fct_relevel(short_data$Drug, c("NoInj", "Veh", "1mgkg", "10mgkg"))
 levels <- c("No Inj" = "NoInj", "Veh" = "Veh", "1 mg/kg" = "1mgkg", "10 mg/kg" = "10mgkg")
 short_data$Drug <- fct_recode(short_data$Drug, !!!levels)
 
-fillcolours <- c("No Inj" = "gray90", "Veh" = "steelblue4", "1 mg/kg" = "darksalmon" , "10 mg/kg" = "darkred")
+fillcolours <- c("No Inj" = "#FFFFFF", "Veh" = "#D9D9D9", "1 mg/kg" = "#F4A582" , "10 mg/kg" = "#B2182B")
 
 # Plots Experiment 1
 accuracyplot <- short_data %>%   
@@ -93,7 +118,7 @@ short_data$Drug <- fct_relevel(short_data$Drug, c("Veh_Veh","Amph_Veh", "Amph_LY
 levels <- c("Veh/Veh" = "Veh_Veh", "Amph/Veh" = "Amph_Veh", "Amph/LY354740" = "Amph_LY")
 short_data$Drug <- fct_recode(short_data$Drug, !!!levels)
 
-fillcolours <- c("Veh/Veh" =  "steelblue4", "Amph/Veh" = "gray10", "Amph/LY354740" = "darkorchid4")
+fillcolours <- c("Veh/Veh" =  "#FFFFFF", "Amph/Veh" = "#4393C3", "Amph/LY354740" = "#252525")
 
 
 accuracyplot2 <- short_data %>%   
@@ -299,7 +324,7 @@ C1 <- latencyChoiceplot +
   labs(fill = "LY354740") + 
   theme(legend.title = element_text(size = 8),legend.text = element_text(size = 8),  legend.key.size = unit(.5, "lines"))
 
-gridplot <- (A1 + B1 + C1) + plot_annotation(tag_levels = 'A') 
+gridplot <- (A1 + B1 + C1) + plot_annotation(tag_levels = 'A')
 
 filename = here("figures", "FigS1.png")
 ggsave(filename, gridplot, width = 4.48, height = 4/2, units = "in", dpi = 1200)
