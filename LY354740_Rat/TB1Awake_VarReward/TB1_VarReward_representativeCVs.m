@@ -1,7 +1,7 @@
 % Load Processed data first if necessary, or re-extract from raw data
 tic
 reExtractData = 0;
-reLoadData = 0;
+reLoadData = 1;
 
 if reExtractData
     TB1_VarRewardAwakeFCV_ExtractData
@@ -106,12 +106,13 @@ plotts = [1:length(plotlims)] - [rewarddeliveryscan-plotlims(1)+1];
 
 voltagesweep = [[-.4:(1.7/249):1.3] flip([-.4:(1.7/249):1.3])];
 
+figure;
 
 % Saline
 i = 20;
 j = 1;
 plotdata = smoothdata(data(i).cut.processed_data{j},2);
-plot_fcvdata_Publication(plotdata(:, plotlims),plotts,lines, limits)
+plot_fcvdata_Publication(plotdata(:, plotlims),plotts/10,lines, limits)
 xticks = [0:10:length(plotts)];
             c = colorbar('eastoutside');
             ylabel(c,'Current(nA)')
@@ -123,7 +124,7 @@ Saline_cpredicted = Saline_cpredicted(plotlims);
 Saline_CVmax = smooth(plotdata(:,59));
             
 savefolder = 'C:\Users\mario\Documents\GitHub\Marios-temp\LY354740_Rat\TB1Awake_VarReward';
-filename = 'LY354740_Rat69_Ch0_SAL_Colourplot.png';
+filename = 'LY354740_Rat69_Ch0_SAL_Colourplot.svg';
 
 
 ax = gca;
@@ -136,7 +137,7 @@ figure;
 i = 19;
 j = 1;
 plotdata = smoothdata(data(i).cut.processed_data{j},2);
-plot_fcvdata_Publication(plotdata(:, plotlims),plotts,lines, limits)
+plot_fcvdata_Publication(plotdata(:, plotlims),plotts/10,lines, limits)
 xticks = [0:10:length(plotts)];
             c = colorbar('eastoutside');
             ylabel(c,'Current(nA)')
@@ -149,7 +150,7 @@ LY_CVmax = smooth(plotdata(:,61));
  
             
 savefolder = 'C:\Users\mario\Documents\GitHub\Marios-temp\LY354740_Rat\TB1Awake_VarReward';
-filename = 'LY354740_Rat69_Ch0_LY_Colourplot.png';
+filename = 'LY354740_Rat69_Ch0_LY_Colourplot.svg';
 
 
 ax = gca;

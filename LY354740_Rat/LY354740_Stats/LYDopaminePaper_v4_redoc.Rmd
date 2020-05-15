@@ -1,0 +1,692 @@
+---
+title: LYDopaminePaper\_v4
+author: Marios Panayi
+date: 4/28/2020
+output: redoc::redoc
+---
+
+```{r setup, include=FALSE, message = FALSE, warning=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+## Packages for data organisation and plotting
+library(tidyverse)
+# Package for relative file paths
+library(here)
+# library(ggpubr)
+library(cowplot)
+library(ggsignif)
+library(patchwork)
+################################################################################
+## Packages for Data analysis
+library(afex)
+afex_options(emmeans_model = "multivariate")# use multivariate model for all follow-up tests.
+library(emmeans)
+# install.packages("devtools")
+# devtools::install_github("crsh/papaja")
+library(papaja)
+library(knitr)
+# remotes::install_github("noamross/redoc")
+library(redoc)
+```
+
+Results
+=======
+
+Experiment 1: LY354740 impaired spatial working memory in rats
+--------------------------------------------------------------
+
+```{r Expt. 1 LY354740 impairs spatial working memory, include=FALSE, message = FALSE, warning=FALSE}
+
+#Load Data
+full_data <- read_csv(here("rawdata", "/LY354740_TMaze_Expt1_rawdata.csv")) 
+# Delay 0s data only
+short_data <- full_data %>% 
+  filter(Delay == "0")
+
+# Stats - Accuracy
+anova <- aov_4(Accuracy ~ (Drug|Subj), data = short_data, anova_table = list(correction = "none", es = "pes"))
+anova_print <- apa_print(anova, mse = "FALSE",correction = "none",es = "pes")
+
+simpledrug <- emmeans(anova, ~Drug)
+simpledrug_print <- apa_print.emmGrid(contrast(simpledrug, method = "pairwise", simple = "Drug", adjust = "tukey"))
+
+# Stats - Latency Sample
+anova_latencySample <- aov_4(Latency_Sample ~ (Drug|Subj), data = short_data, anova_table = list(correction = "none", es = "pes"))
+anova_latencySample_print <- apa_print(anova_latencySample, mse = "FALSE",correction = "none",es = "pes")
+
+simpledrug_latencySample <- emmeans(anova_latencySample, ~Drug)
+simpledrug_latencySample_print <- apa_print.emmGrid(contrast(simpledrug_latencySample, method = "pairwise", simple = "Drug", adjust = "tukey"))
+
+# Stats - Latency Choice
+# Stats - Latency Choice
+anova_latencyChoice <- aov_4(Latency_Choice ~ (Drug|Subj), data = short_data, anova_table = list(correction = "none", es = "pes"))
+anova_latencyChoice_print <- apa_print(anova_latencyChoice, mse = "FALSE",correction = "none",es = "pes")
+
+simpledrug_latencyChoice <- emmeans(anova_latencyChoice, ~Drug)
+simpledrug_latencyChoice_print <- apa_print.emmGrid(contrast(simpledrug_latencyChoice, method = "pairwise", simple = "Drug", adjust = "tukey"))
+
+# anova_print$table
+# simpledrug_print$table
+# 
+# anova_latencySample_print$table
+# simpledrug_latencySample_print$table
+# 
+# anova_latencyChoice_print$table
+# simpledrug_latencyChoice_print$table
+
+```
+
+We first established an active dose of the group II metabotropic agonist in our
+testing environment. Rats were injected with LY354740 intraperitoneally (i.p.)
+at a dose of either 1 mg/kg or 10 mg/kg, 45-50 min before behavioural testing.
+Two control conditions consisted of a no injection (No Inj) control and a
+distilled water (Veh) injected condition (1 ml/kg). Rewarded alternation a
+T-maze was used to assess spatial working memory, and was conducted as a
+within-subject design.
+
+In agreement with previous reports \[{== REF ==}{>> Which reference? <<}\], an
+i.p dose of 10 mg/kg LY354740 decreased spatial working memory performance (Fig.
+1A-C; main effect of Drug on Accuracy $F(3,81) = 4.10$`r anova_print$statistic$Drug`
+$p = .009$, Sample Latency $F(3,81) = 6.42$`r anova_latencySample_print$statistic$Drug` $p = .001$,
+Choice Latency $F(3,81) = 6.21$`r anova_latencyChoice_print$statistic$Drug` $p = .001$). This dose
+significantly reduced accuracy (Fig. 1A; No Inj vs 10 mg/kg
+$t(27) = 2.76$`r simpledrug_print$statistic$NoInj_X10mgkg` $p = .047$, Veh vs 10 mg/kg
+$t(27) = 3.54$`r simpledrug_print$statistic$Veh_X10mgkg` $p = .007$), and an increased latencies
+during the sample (Fig. 1B; No Inj vs 10 mg/kg
+$t(27) = - 4.04$`r simpledrug_latencySample_print$statistic$NoInj_X10mgkg` $p = .002$, Veh vs 10 mg/kg
+$t(27) = - 3.01$`r simpledrug_latencySample_print$statistic$Veh_X10mgkg` $p = .027$, 1 vs 10 mg/kg
+`r simpledrug_latencySample_print$statistic$x1mgkg_X10mgkg`) and choice phases (Fig. 1C; No Inj vs 10 mg/kg
+$t(27) = - 3.40$`r simpledrug_latencyChoice_print$statistic$NoInj_X10mgkg` $p = .011$).
+
+Experiment 2: LY354740 enhanced the effects of amphetamine on spatial working memory
+------------------------------------------------------------------------------------
+
+```{r Expt. 2 LY354740 exacerbates amphetamine induced deficits in spatial working memory, include=FALSE, message = FALSE, warning=FALSE}
+
+short_data <- read_csv(here("rawdata", "/LY354740_Amph_TMaze_Expt2_rawdata.csv")) 
+
+# Stats - Accuracy
+anova <- aov_4(Accuracy ~ (Drug|Subj), data = short_data, anova_table = list(correction = "none", es = "pes"))
+anova_print <- apa_print(anova, mse = "FALSE",correction = "none",es = "pes")
+
+simpledrug <- emmeans(anova, ~Drug)
+simpledrug_print <- apa_print.emmGrid(contrast(simpledrug, method = "pairwise", simple = "Drug", adjust = "tukey"))
+
+# Stats - Latency Sample
+anova_latencySample <- aov_4(Latency_Sample ~ (Drug|Subj), data = short_data, anova_table = list(correction = "none", es = "pes"))
+anova_latencySample_print <- apa_print(anova_latencySample, mse = "FALSE",correction = "none",es = "pes")
+
+simpledrug_latencySample <- emmeans(anova_latencySample, ~Drug)
+simpledrug_latencySample_print <- apa_print.emmGrid(contrast(simpledrug_latencySample, method = "pairwise", simple = "Drug", adjust = "tukey"))
+
+# Stats - Latency Choice
+# Stats - Latency Choice
+anova_latencyChoice <- aov_4(Latency_Choice ~ (Drug|Subj), data = short_data, anova_table = list(correction = "none", es = "pes"))
+anova_latencyChoice_print <- apa_print(anova_latencyChoice, mse = "FALSE",correction = "none",es = "pes")
+
+simpledrug_latencyChoice <- emmeans(anova_latencyChoice, ~Drug)
+simpledrug_latencyChoice_print <- apa_print.emmGrid(contrast(simpledrug_latencyChoice, method = "pairwise", simple = "Drug", adjust = "tukey"))
+
+#Accuracy
+anova_print$table
+simpledrug_print$table
+#Sample - Latency
+anova_latencySample_print$table
+simpledrug_latencySample_print$table
+#Choice - Latency
+anova_latencyChoice_print$table
+simpledrug_latencyChoice_print$table
+
+```
+
+Having established an active dose of LY354740, we next investigated whether the
+metabotropic agonist could rescue spatial working memory deficits induced by
+amphetamine \[REF\]. The same cohort of rats tested on the T-maze in experiment
+1 was used in this rewarded alternation experiment with amphetamine. Rats
+received two consecutive i.p. injections 45-50 min before behavioural testing.
+They received either Veh/Veh, Amph (2.5 mg/kg)/Veh, or Amph (2.5mg/kg)/LY354740
+(10 mg/kg) in a within-subjects design. *One rat had to be excluded because it
+failed to run on the maze in the LY354740/AMPH condition.*
+
+Overall, drug injections significantly disrupted all three performance measures
+on the spatial working memory task (Fig. 1D-F; main effect of Drug on Accuracy
+$F(2,52) = 8.15$`r anova_print$statistic$Drug` $p = .001$, Sample Latency
+$F(2,52) = 8.83$`r anova_latencySample_print$statistic$Drug` $p < .001$, Choice Latency
+$F(2,52) = 21.17$`r anova_latencyChoice_print$statistic$Drug` $p < .001$). Compared to vehicle
+injections, amphetamine disrupted performance on the spatial working memory
+task, surprisingly given previous findings \[REF\] (Aultman and Moghaddam, 2001)
+this effect was only statistically robust for response latencies during the
+choice period (Veh/Veh vs Amph/veh: Accuracy
+$t(26) = 1.64$`r simpledrug_print$statistic$Veh_Veh_Amph_Veh` $p = .249$), Sample Latency
+$t(26) = - 2.45$`r simpledrug_latencySample_print$statistic$Veh_Veh_Amph_Veh` $p = .054$, Choice Latency
+$t(26) = - 3.15$`r simpledrug_latencyChoice_print$statistic$Veh_Veh_Amph_Veh` $p = .011$). This deficit, at least in
+part, reflected an increase in undirected exploratory behaviours (e.g. sniffing
+and rearing) in the start arm, at the expense of performing the appetitively
+motivated memory task. However, rather than ameliorating these effects of
+amphetamine as might have been expected based on previous studies \[REF\],
+combining LY354740 and amphetamine significantly impaired accuracy (Fig. 1D;
+Veh/Veh vs Amph/LY354740 $t(26) = 4.03$`r simpledrug_print$statistic$Veh_Veh_Amph_LY` $p = .001$,
+Amph/Veh vs Amph/LY354740 $t(26) = 2.82$`r simpledrug_print$statistic$Amph_Veh_Amph_LY` $p = .024$),
+and increased response latencies during both the sample (Fig. 1E; Veh/Veh vs
+Amph/LY354740 $t(26) = - 5.27$`r simpledrug_latencySample_print$statistic$Veh_Veh_Amph_LY` $p < .001$, Amph/Veh vs
+Amph/LY354740 $t(26) = - 1.54$`r simpledrug_latencySample_print$statistic$Amph_Veh_Amph_LY` $p = .291$) and choice
+periods (Fig. 1F;Veh/Veh vs Amph/LY354740
+$t(26) = - 7.42$`r simpledrug_latencyChoice_print$statistic$Veh_Veh_Amph_LY` $p < .001$, Amph/Veh vs Amph/LY354740
+$t(26) = - 3.00$`r simpledrug_latencyChoice_print$statistic$Amph_Veh_Amph_LY` $p = .016$). Thus, rather than
+ameliorating the effects of amphetamine as predicted, LY354740 actually
+potentiated the effects of the dopaminergic psychomimetic during testing on the
+T-maze.
+
+```{r Expt. 1/2  Plots - Fig. 1,  results='hide', include=FALSE, message = FALSE, warning=FALSE}
+# Run script to generate figure
+# Script run separately to minimize clutter
+source(here("scripts","figures", "Fig1.R"))
+
+```
+
+![](media/image1.png){width="4.483735783027122in" height="4.00333552055993in"}
+
+**Figure 1**. The effect of LY354740 and amphetamine on spatial working memory
+in rewarded alternation T-maze assay. Experiment 1 **(A-C)** compared the
+effects of no injection (No Inj), distilled water (Veh), 1 mg/kg LY354740, and
+10 mg/kg LY354740 injected 45-50 mins prior to testing (within-subjects design).
+Experiment 2 **(D-F)** compared the effects of 2.5 mg/kg amphetamine alone
+(Amph/Veh) or in combination with 10 mg/kg of LY354740 (Amph/LY354740) injected
+45-50 mins prior to testing (within-subjects design). The same cohort of rats
+was used in Experiment 1 and Experiment 2. **(A,D)** Performance accuracy
+measured as the proportion of trials with a correct side alternation from sample
+to choice. Latency (s) to enter the left or right arm of the T-maze during the
+sample **(B,E)** and choice **(C,F)** periods. Error bars represent +/- SEM.
+Statitsical significance of post-hoc simple effects (Tukey corrected) following
+a significant main effect of Drug: \* = *p* \< .05, \*\* = *p* \< .001.
+
+Experiment 3: LY354740 enhanced amphetamine-induced hyperlocomotion in food restricted rats
+-------------------------------------------------------------------------------------------
+
+```{r Expt. 3 Locomotor Activity Food Dep LY & Amph - 10 mins, include=FALSE, message = FALSE, warning=FALSE}
+full_data <- read_csv(here("rawdata", "/LY354740_Expt3_Locomotor_FoodDep.csv"))
+
+#####
+## Baseline data
+baseline_data_10mins <- full_data %>% 
+  group_by(Subj, Drug, Amph, LY, Period, bin10mins) %>% 
+  summarise(activity = sum(activity)) %>%
+    ungroup() %>% 
+    group_by(Subj) %>% 
+        mutate(activity_perc = activity/activity[bin10mins=="0"]) %>% 
+  ungroup() %>% 
+  filter(bin10mins < 1) %>% 
+  mutate(bin10mins = as.factor(bin10mins))
+
+# Stats - 10 mins
+anova_baseline <- aov_4(activity ~ Amph*LY + (bin10mins|Subj), data = baseline_data_10mins, anova_table = list(correction = "none", es = "pes"))
+anova_baselineprint <- apa_print(anova_baseline, mse = "FALSE",correction = "none",es = "pes")
+
+#####
+
+data_10mins <- full_data %>% 
+  group_by(Subj, Drug, Amph, LY, Period, bin10mins) %>% 
+  summarise(activity = sum(activity)) %>%
+    ungroup() %>% 
+    group_by(Subj) %>% 
+        mutate(activity_perc = activity/activity[bin10mins=="0"]) %>% 
+  ungroup() %>% 
+  filter(bin10mins < 13 &
+           bin10mins > 0) %>% 
+  mutate(bin10mins = as.factor(bin10mins))
+
+data_60mins <- full_data %>% 
+  group_by(Subj, Drug, Amph, LY, Period, bin60mins) %>% 
+  summarise(activity = sum(activity)) %>%
+    ungroup() %>% 
+    group_by(Subj) %>% 
+        mutate(activity_perc = activity/activity[bin60mins=="0"]) %>% 
+  ungroup() %>% 
+  filter(bin60mins < 3 &
+           bin60mins > 0) %>% 
+  mutate(bin60mins = as.factor(bin60mins))
+
+# Stats - 10 mins
+anova <- aov_4(activity ~ Amph*LY + (bin10mins|Subj), data = data_10mins, anova_table = list(correction = "none", es = "pes"))
+anova_print <- apa_print(anova, mse = "FALSE",correction = "none",es = "pes")
+
+simple <- emmeans(anova, ~Amph*LY*bin10mins)
+simple_print <- apa_print.emmGrid(contrast(simple, by = "bin10mins", interaction = "pairwise", adjust = "tukey"))
+
+simple2 <- emmeans(anova, ~Amph*LY*bin10mins)
+simple2_print <- apa_print.emmGrid(contrast(simple2, by = c("Amph","bin10mins"), interaction = "pairwise", adjust = "tukey"))
+
+# Stats - 60 mins follow up tests
+anova_60 <- aov_4(activity ~ Amph*LY + (bin60mins|Subj), data = data_60mins, anova_table = list(correction = "none", es = "pes"))
+anova_60_print <- apa_print(anova_60, mse = "FALSE",correction = "none",es = "pes")
+
+simple_60 <- emmeans(anova_60, ~Amph*LY*bin60mins)
+simple_60_print <- apa_print.emmGrid(contrast(simple_60, by = "bin60mins", interaction = "pairwise", adjust = "tukey"))
+
+simple2_60 <- emmeans(anova_60, ~Amph*LY*bin60mins)
+simple2_60_print <- apa_print.emmGrid(contrast(simple2_60, by = c("Amph","bin60mins"), interaction = "pairwise", adjust = "tukey"))
+
+#####
+#
+anova_baselineprint$table
+#
+anova_print$table
+# 
+simple_60_print$table
+# 
+simple2_60_print$table
+
+```
+
+Numerous previous studies have shown that group-II metabotropic mGluR agonists,
+including LY354740, reduce the locomotor hyperactivity induced by amphetamine
+(Cartmell et al., 1999, Kim and Vezina, 2002, Galici et al., 2005, Rorick-Kehn
+et al., 2007, Woolley et al., 2008, Pehrson and Moghaddam, 2010). Given our
+unexpected findings on the T-maze, with LY354740 appearing to exacerbate the
+effects of amphetamine, we next assessed the effects of the mGluR agonist on
+amphetamine-induced hyperactivity in locomotor activity cages, in these same
+animals while still on food restriction. As expected, amphetamine (2.5 mg/kg)
+significantly increased locomotor activity (main effect of Amph
+$F(1,24) = 159.81$`r anova_print$statistic$Amph` $p < .001$, Amph x Time
+$F(11,264) = 2.29$`r anova_print$statistic$Amph_bin10mins` $p = .011$). Surprsingly, LY354740
+(10 mg/kg) significantly enhanced this amphetamine-induced hyperactivity over
+time rather than reduce it (Amph x LY354740 x Time
+$F(11,264) = 1.99$`r anova_print$statistic$Amph_LY_bin10mins` $p = .029$, Amph x LY354740
+$F(11,264) = 1.99$`r anova_print$statistic$Amph_LY_bin10mins` $p = .029$). Specifically, LY354740
+significantly increased Amph induced hyperactivity 61-120 mins post injection
+(Amph/LY354740 vs Amph/Veh $t(24) = 3.00$`r simple2_60_print$statistic$LY_Veh_Amph_X2` $p = .006$)
+but not 1-60 mins post injection ($t(24) = 1.18$`r simple2_60_print$statistic$LY_Veh_Amph_X1`
+$p = .250$). In contrast, LY354740 alone did not affect locomotor activity
+(Veh/LY354740 vs Veh/Veh, 1-60 mins $t(24) = - 0.88$`r simple2_60_print$statistic$LY_Veh_Veh_X1`
+$p = .389$, 61-120 mins $t(24) = - 0.63$`r simple2_60_print$statistic$LY_Veh_Veh_X2` $p = .534$).
+This enhancement is the effect of amphetamine is consistent with the effects on
+running latencies on the T-maze (Experiment 2, Fig. 1B), but at odds with the
+previously published results.
+
+Experiment 4: LY354740 reduced amphetamine-induced hyperlocomotion in ad libitum fed rats
+-----------------------------------------------------------------------------------------
+
+```{r Expt. 4 Locomotor Activity AdLib LY & Amph - 10 mins, include=FALSE, message = FALSE, warning=FALSE}
+full_data <- read_csv(here("rawdata", "/LY354740_Expt4_Locomotor_AdLib.csv"))
+
+#####
+## Baseline data
+baseline_data_10mins <- full_data %>% 
+  group_by(Subj, Drug, Amph, LY, Period, bin10mins) %>% 
+  summarise(activity = sum(activity)) %>%
+    ungroup() %>% 
+    group_by(Subj) %>% 
+        mutate(activity_perc = activity/activity[bin10mins=="0"]) %>% 
+  ungroup() %>% 
+  filter(bin10mins < 1) %>% 
+  mutate(bin10mins = as.factor(bin10mins))
+
+# Stats - 10 mins
+anova_baseline <- aov_4(activity ~ Amph*LY + (bin10mins|Subj), data = baseline_data_10mins, anova_table = list(correction = "none", es = "pes"))
+anova_baselineprint <- apa_print(anova_baseline, mse = "FALSE",correction = "none",es = "pes")
+
+#####
+
+data_10mins <- full_data %>% 
+  group_by(Subj, Drug, Amph, LY, Period, bin10mins) %>% 
+  summarise(activity = sum(activity)) %>%
+    ungroup() %>% 
+    group_by(Subj) %>% 
+        mutate(activity_perc = activity/activity[bin10mins=="0"]) %>% 
+  ungroup() %>% 
+  filter(bin10mins < 13 &
+           bin10mins > 0) %>% 
+  mutate(bin10mins = as.factor(bin10mins))
+
+data_60mins <- full_data %>% 
+  group_by(Subj, Drug, Amph, LY, Period, bin60mins) %>% 
+  summarise(activity = sum(activity)) %>%
+    ungroup() %>% 
+    group_by(Subj) %>% 
+        mutate(activity_perc = activity/activity[bin60mins=="0"]) %>% 
+  ungroup() %>% 
+  filter(bin60mins < 3 &
+           bin60mins > 0) %>% 
+  mutate(bin60mins = as.factor(bin60mins))
+
+# Stats - 10 mins
+anova <- aov_4(activity ~ Amph*LY + (bin10mins|Subj), data = data_10mins, anova_table = list(correction = "none", es = "pes"))
+anova_print <- apa_print(anova, mse = "FALSE",correction = "none",es = "pes")
+
+simple <- emmeans(anova, ~Amph*LY*bin10mins)
+simple_print <- apa_print.emmGrid(contrast(simple, by = "bin10mins", interaction = "pairwise", adjust = "tukey"))
+
+simple2 <- emmeans(anova, ~Amph*LY*bin10mins)
+simple2_print <- apa_print.emmGrid(contrast(simple2, by = c("Amph","bin10mins"), interaction = "pairwise", adjust = "tukey"))
+
+# Stats - 60 mins follow up tests
+anova_60 <- aov_4(activity ~ Amph*LY + (bin60mins|Subj), data = data_60mins, anova_table = list(correction = "none", es = "pes"))
+anova_60_print <- apa_print(anova_60, mse = "FALSE",correction = "none",es = "pes")
+
+simple_60 <- emmeans(anova_60, ~Amph*LY*bin60mins)
+simple_60_print <- apa_print.emmGrid(contrast(simple_60, by = "bin60mins", interaction = "pairwise", adjust = "tukey"))
+
+simple2_60 <- emmeans(anova_60, ~Amph*LY*bin60mins)
+simple2_60_print <- apa_print.emmGrid(contrast(simple2_60, by = c("Amph","bin60mins"), interaction = "pairwise", adjust = "tukey"))
+
+#####
+# #
+# anova_baselineprint$table
+# #
+# anova_print$table
+# # 
+# simple_60_print$table
+# # 
+# simple2_60_print$table
+
+```
+
+Given these surprising results, we then re-assessed the effects of LY354740 on
+amphetamine-induced locomotor hyperactivity in a separate cohort of
+experimentally naïve rats maintained with ad libitum access to food. In
+agreement with the previous reports in the literature (e.g. Cartmell et al.,
+1999), LY354740 (10 mg/kg) now did reduce the hyperactivity following
+amphetamine (2.5 mg/kg) administration in these animals (Fig. 2B).
+
+As expected, amphetamine significantly increased locomotor activity (Amph
+$F(1,32) = 169.74$`r anova_print$statistic$Amph` $p < .001$, Amph x Time
+$F(11,352) = 5.22$`r anova_print$statistic$Amph_bin10mins` $p < .001$), an effect which was
+significantly reduced by LY354740 (Amph x LY354740 x Time
+$F(11,352) = 2.86$`r anova_print$statistic$Amph_LY_bin10mins` $p = .001$, Amph x LY354740
+$F(11,352) = 2.86$`r anova_print$statistic$Amph_LY_bin10mins` $p = .001$). Specifically, LY354740
+significantly reduced Amph induced hyperactivity 1-60 mins post injection
+(Amph/LY354740 vs Amph/Veh $t(32) = - 5.00$`r simple2_60_print$statistic$LY_Veh_Amph_X1` $p < .001$)
+but not 61-120 mins post injection ($t(32) = - 0.78$`r simple2_60_print$statistic$LY_Veh_Amph_X2`
+$p = .440$). In contrast, LY354740 alone did not affect locomotor activity
+(Veh/LY354740 vs Veh/Veh, 1-60 mins $t(32) = - 0.51$`r simple2_60_print$statistic$LY_Veh_Veh_X1`
+$p = .615$, 61-120 mins $t(32) = - 0.01$`r simple2_60_print$statistic$LY_Veh_Veh_X2` $p = .990$).
+
+```{r Expt. 3/4  Plots - Fig. 2,  results='hide', include=FALSE, message = FALSE, warning=FALSE}
+# Run script to generate figure
+# Script run separately to minimize clutter
+source(here("scripts","figures", "Fig2.R"))
+
+```
+
+![](media/image2.png){width="5.833333333333333in" height="1.6194324146981627in"}
+
+**Figure 2**. The effect of LY354740 and amphetamine on locomotor activity in
+**(A)** food restricted (experiment 3) and **(B)** ad libitum fed rats
+(experiment 4). Activity was measured by the number of infra-red beam breaks in
+locomotor activity arena. Time is presented in bins of 10 minutes relative to
+the time of injection, and the pre-injection 60 min period of habituation to the
+locomotor box is indicated by light grey highlight (left). Rats received
+injections consisting of either vehicle (Veh/Veh), vehicle and 10 mg/kg LY354740
+(Veh/LY354740), vehicle and 2.5 mg/kg amphetamine (Amph/Veh), 2.5 mg/kg
+amphetamine and 10 mg/kg LY354740 (Amph/LY354740). Error bars represent +/- SEM.
+Statitsical significance of post-hoc simple effects (Tukey corrected), following
+significant interactions, were conducted on contrasts aggregating over 60 minute
+time bins (i.e. bins 1-6 and 7-12) to minimise family-wise error rate inflation
+with repeated testing: \* = *p* \< .05, \*\* = *p* \< .001.
+
+Experiment 5: LY354740 increased phasic dopamine responses in the nucleus accumbens to reward
+---------------------------------------------------------------------------------------------
+
+New Text here.
+
+Experiment 5: LY354740 did not affect phasic dopamine responses in the nucleus accumbens in anaesthetised rats
+--------------------------------------------------------------------------------------------------------------
+
+Supplementary results
+---------------------
+
+### Experiment 1 - 40s delay
+
+```{r Expt. 1 LY354740 40s Delay, include=FALSE, message = FALSE, warning=FALSE}
+
+#Load Data
+full_data <- read_csv(here("rawdata", "/LY354740_TMaze_Expt1_rawdata.csv")) 
+# Delay 0s data only
+short_data <- full_data %>% 
+  filter(Delay == "40")
+
+# Stats - Accuracy
+anova <- aov_4(Accuracy ~ (Drug|Subj), data = short_data, anova_table = list(correction = "none", es = "pes"))
+anova_print <- apa_print(anova, mse = "FALSE",correction = "none",es = "pes")
+
+simpledrug <- emmeans(anova, ~Drug)
+simpledrug_print <- apa_print.emmGrid(contrast(simpledrug, method = "pairwise", simple = "Drug", adjust = "tukey"))
+
+# Stats - Latency Sample
+anova_latencySample <- aov_4(Latency_Sample ~ (Drug|Subj), data = short_data, anova_table = list(correction = "none", es = "pes"))
+anova_latencySample_print <- apa_print(anova_latencySample, mse = "FALSE",correction = "none",es = "pes")
+
+simpledrug_latencySample <- emmeans(anova_latencySample, ~Drug)
+simpledrug_latencySample_print <- apa_print.emmGrid(contrast(simpledrug_latencySample, method = "pairwise", simple = "Drug", adjust = "tukey"))
+
+# Stats - Latency Choice
+# Stats - Latency Choice
+anova_latencyChoice <- aov_4(Latency_Choice ~ (Drug|Subj), data = short_data, anova_table = list(correction = "none", es = "pes"))
+anova_latencyChoice_print <- apa_print(anova_latencyChoice, mse = "FALSE",correction = "none",es = "pes")
+
+simpledrug_latencyChoice <- emmeans(anova_latencyChoice, ~Drug)
+simpledrug_latencyChoice_print <- apa_print.emmGrid(contrast(simpledrug_latencyChoice, method = "pairwise", simple = "Drug", adjust = "tukey"))
+
+anova_print$table
+simpledrug_print$table
+
+anova_latencySample_print$table
+simpledrug_latencySample_print$table
+
+anova_latencyChoice_print$table
+simpledrug_latencyChoice_print$table
+
+```
+
+Increasing the delay between sample and test to 40s resulted in lower accuracy
+levels (from approximately 80 to 60% in control conditions, Fig. 1A, Fig. S1A).
+While there was no significant disruption of accuracy by 10 mg/kg LY354740 (Fig.
+S1A; main effect of Drug, $F(3,81) = 0.45$`r anova_print$statistic$Drug` $p = .717$),
+response latencies were significantly increased during both the sample and
+choice periods (Fig. S1B; Sample period main effect of Drug
+$F(3,81) = 8.75$`r anova_latencySample_print$statistic$Drug` $p < .001$; No Inj vs 10 mg/kg
+$t(27) = - 3.29$`r simpledrug_latencySample_print$statistic$NoInj_X10mgkg` $p = .014$, Veh vs 10 mg/kg
+$t(27) = - 3.77$`r simpledrug_latencySample_print$statistic$Veh_X10mgkg` $p = .004$, 1 mg/kg vs 10 mg/kg
+$t(27) = - 3.52$`r simpledrug_latencySample_print$statistic$X1mgkg_X10mgkg` $p = .008$; Choice period main effect
+of Drug $F(3,81) = 10.22$`r anova_latencyChoice_print$statistic$Drug` $p < .001$; No Inj vs 10
+mg/kg $t(27) = - 3.49$`r simpledrug_latencyChoice_print$statistic$NoInj_X10mgkg` $p = .009$, Veh vs 10 mg/kg
+$t(27) = - 3.99$`r simpledrug_latencyChoice_print$statistic$Veh_X10mgkg` $p = .002$, 1 mg/kg vs 10 mg/kg
+$t(27) = - 3.76$`r simpledrug_latencyChoice_print$statistic$X1mgkg_X10mgkg` $p = .004$).
+
+![](media/image3.png){width="4.483735783027122in" height="2.001667760279965in"}
+
+**Figure S1**. The effect of LY354740 on spatial working memory in rewarded
+alternation T-maze assay on trials with a 40s delay. Trials with a 40s delay
+between sample and choice were randomly interleaved throughout Experiment 1. The
+effect of either no injection (No Inj), distilled water (Veh), 1 mg/kg LY354740,
+or 10 mg/kg LY354740 on accuracy and response latencies on these trials are
+presented here. **(A)** Performance accuracy measured as the proportion of
+trials with a correct side alternation from sample to choice. Latency (s) to
+enter the left or right arm of the T-maze during the sample **(B)** and choice
+**(C)** periods. Error bars represent +/- SEM. Statitsical significance of
+post-hoc simple effects (Tukey corrected) following a significant main effect of
+Drug: \* = *p* \< .05, \*\* = *p* \< .001.
+
+### Effect of feeding state on amphetamine hyper-locomotion and blood amphetamine levels
+
+```{r Expt. 5 Locomotor Activity AdLib Food Dep & Amph - 10 mins, include=FALSE, message = FALSE, warning=FALSE}
+full_data <- read_csv(here("rawdata", "/LY354740_Expt5_Locomotor_FoodDepAmphDose.csv"))
+
+#####
+## Baseline data
+baseline_data_10mins <- full_data %>% 
+  group_by(Subj, Feeding, Amph, bin10mins) %>% 
+  summarise(activity = sum(activity)) %>%
+    ungroup() %>% 
+    group_by(Subj) %>% 
+        mutate(activity_perc = activity/activity[bin10mins=="0"]) %>% 
+  ungroup() %>% 
+  filter(bin10mins < 1) %>% 
+  mutate(bin10mins = as.factor(bin10mins))
+
+# Stats - 10 mins
+anova_baseline <- aov_4(activity ~ Amph*Feeding + (bin10mins|Subj), data = baseline_data_10mins, anova_table = list(correction = "none", es = "pes"))
+anova_baselineprint <- apa_print(anova_baseline, mse = "FALSE",correction = "none",es = "pes")
+
+#####
+
+data_10mins <- full_data %>% 
+    group_by(Subj, Feeding, Amph, bin10mins) %>% 
+  summarise(activity = sum(activity)) %>%
+    ungroup() %>% 
+    group_by(Subj) %>% 
+        mutate(activity_perc = activity/activity[bin10mins=="0"]) %>% 
+  ungroup() %>% 
+  filter(bin10mins < 13 &
+           bin10mins > 0) %>% 
+  mutate(bin10mins = as.factor(bin10mins))
+
+# data_60mins <- full_data %>%
+#       group_by(Subj, Feeding, Amph, bin60mins) %>% 
+#   summarise(activity = sum(activity)) %>%
+#     ungroup() %>% 
+#     group_by(Subj) %>% 
+#         mutate(activity_perc = activity/activity[bin60mins=="0"]) %>% 
+#   ungroup() %>% 
+#   filter(bin60mins < 3 &
+#            bin60mins > 0) %>% 
+#   mutate(bin60mins = as.factor(bin60mins))
+
+# Stats - 10 mins
+anova <- aov_4(activity ~ Amph*Feeding + (bin10mins|Subj), data = data_10mins, anova_table = list(correction = "none", es = "pes"))
+anova_print <- apa_print(anova, mse = "FALSE",correction = "none",es = "pes")
+
+simple <- emmeans(anova, ~ Amph)
+simple_print <- apa_print.emmGrid(contrast(simple, method = "pairwise", adjust = "tukey"))
+
+simple2 <- emmeans(anova, ~Amph*Feeding*bin10mins)
+simple2_print <- apa_print.emmGrid(contrast(simple2, by = c("Amph","bin10mins"), interaction = "pairwise", adjust = "tukey"))
+
+# # Stats - 60 mins follow up tests
+# anova_60 <- aov_4(activity ~ Amph*Feeding + (bin60mins|Subj), data = data_60mins, anova_table = list(correction = "none", es = "pes"))
+# anova_60_print <- apa_print(anova_60, mse = "FALSE",correction = "none",es = "pes")
+# 
+# simple_60 <- emmeans(anova_60, ~Amph*bin60mins)
+# simple_60_print <- apa_print.emmGrid(contrast(simple_60, by = "Amph", interaction = "pairwise", adjust = "tukey"))
+# 
+# simple2_60 <- emmeans(anova_60, ~Feeding*bin60mins)
+# simple2_60_print <- apa_print.emmGrid(contrast(simple2_60, by = c("Feeding"), interaction = "pairwise", adjust = "tukey"))
+
+#####
+#
+anova_baselineprint$table
+#
+anova_print$table
+#
+simple_print$table
+# # 
+# simple_60_print$table
+# # 
+# simple2_60_print$table
+
+```
+
+Locomotor Activity Dose Amphetamine Feeding Manipulation
+========================================================
+
+One potential explanation of the differential behavioural effects of LY354740 on
+amphetamine in food restricted and ad libitum fed rats is that food restriction
+changes the absorption, distribution, metabolism, or excretion profile of
+d-amphetamine. To test this possibility a new cohort of 90 rats were tested for
+the effect of feeding state on amphetamine hyper-locomotion (food restricted or
+ad libitum food access and i.p. injection of veh, 1.0 mg/kg, 2.5 mg/kg, or 5.0
+mg/kg amphetamine; between subjects design). Prior to Amph administration (Fig.
+S2A, left), locomotor activity was significantly lower in food restricted than
+Ad libitum food access rats (Feeding $F(1,82) = 5.19$`r anova_baselineprint$statistic$Feeding`
+$p = .025$, Feeding x Time $F(5,410) = 5.45$`r anova_baselineprint$statistic$Feeding_bin10mins`
+$p < .001$) confirming the effect of feeding state on arousal or attentional
+processes that drive exploratory lcomotor activity.
+
+Following injections (Fig. S2A), both food restriction (Feeding
+$F(1,67) = 2.22$`r anova_print$statistic$Feeding` $p = .141$, Feeding x Time
+$F(11,737) = 3.13$`r anova_print$statistic$Feeding_bin10mins` $p < .001$) and amphetamine (Amph
+$F(3,67) = 21.64$`r anova_print$statistic$Amph` $p < .001$, Amph x Time
+$F(33,737) = 7.91$`r anova_print$statistic$Amph_bin10mins` $p < .001$) independently enhanced
+locomotor activity, however they did not significantly interact with each other
+(Amph x Feeding x Time $F(33,737) = 0.62$`r anova_print$statistic$Amph_Feeding_bin10mins` $p = .954$,
+Amph x Feeding $F(3,67) = 0.54$`r anova_print$statistic$Amph_Feeding` $p = .656$, ). Varying
+doses of amphetamine produced a dose response curve (Fig. S2B, total activity
+post injection) such that all doses of amphetamine increased activity relative
+to vehicle injections (0 vs 1.0 mg/kg $t(67) = - 3.77$`r simple_print$statistic$'0_1'`
+$p = .002$, 0 vs 2.5 mg/kg $t(67) = - 7.73$`r simple_print$statistic$'0_25'` $p < .001$,
+0 vs 5.0 mg/kg $t(67) = - 5.80$`r simple_print$statistic$'0_5'` $p < .001$), and 2.5
+mg/kg produced the highest response (1.0 vs 2.5 mg/kg
+$t(67) = - 4.28$`r simple_print$statistic$'1_25'` $p < .001$, 2.5 vs 5.0 mg/kg
+$t(67) = 2.09$`r simple_print$statistic$'25_5'` $p = .167$, 1.0 vs 5.0 mg/kg
+$t(67) = - 2.19$`r simple_print$statistic$'1_5'` $p = .136$).
+
+```{r Expt. 5 DBS AdLib Food Dep & Amph - 10 mins, include=FALSE, message = FALSE, warning=FALSE}
+full_data <- read_csv(here("rawdata", "/LY354740_Expt5_DBS_FoodDepAmphDose.csv"))
+
+full_data <- full_data %>% 
+  group_by(Subj) %>% 
+  mutate(perc = nM/nM[Time_hrs== '0.25']) %>% 
+  ungroup()
+
+#####
+## 1st hour data
+
+data_1sthalf <- full_data %>% 
+  filter(
+    Time_hrs < 2
+  )
+
+ 
+
+# Stats - Full ANOVA
+anova_full <- aov_4(nM ~ Amph*Feeding + (Time_hrs|Subj), data = full_data, anova_table = list(correction = "none", es = "pes"))
+anova_fullprint <- apa_print(anova_full, mse = "FALSE",correction = "none",es = "pes")
+# First hour ANOVA Only
+anova_1sthalf <- aov_4(nM ~ Amph*Feeding + (Time_hrs|Subj), data = data_1sthalf, anova_table = list(correction = "none", es = "pes"))
+anova_1sthalfprint <- apa_print(anova_1sthalf, mse = "FALSE",correction = "none",es = "pes")
+
+# Simple effects
+simple <- emmeans(anova_1sthalf, ~ Amph)
+simple_print <- apa_print.emmGrid(contrast(simple, method = "pairwise", adjust = "tukey"))
+
+# Only use data from the first hour of the measurements since the measurements are very variable at 2 hours making the data hard to interpret.
+
+anova_1sthalfprint$table
+simple_print$table
+
+```
+
+Next, blood was sampled at 15, 30, and 60 mins post injection in a cohort of 24
+rats that were either food restrcited or had ad libitum food access and an i.p.
+injection of either 1.0 mg/kg, 2.5 mg/kg, or 5.0 mg/kg amphetamine (Fig. S2C).
+Blood levels of amphetamine increased with injection dose (Fig. S2C; main effect
+of Amph $F(2,18) = 3.79$`r anova_1sthalfprint$statistic$Amph` $p = .042$, 1.0 vs 2.5 mg/kg
+$t(18) = - 0.54$`r simple_print$statistic$'1_25'` $p = .851$, 1.0 vs 5.0 mg/kg
+$t(18) = - 2.60$`r simple_print$statistic$'1_5'` $p = .045$, 2.5 vs 5.0 mg/kg
+$t(18) = - 2.10$`r simple_print$statistic$'25_5'` $p = .119$; No main effect of Time
+$F(2,36) = 0.43$`r anova_1sthalfprint$statistic$Time_hrs` $p = .654$, or Amph x Time interaction
+$F(4,36) = 1.95$`r anova_1sthalfprint$statistic$Amph_Time_hrs` $p = .124$). However, feeding state
+did not signficantly affect blood levels of amphetamine (Feeding
+$F(1,18) = 0.01$`r anova_1sthalfprint$statistic$Feeding` $p = .909$, Feeding x Time
+$F(2,36) = 0.29$`r anova_1sthalfprint$statistic$Feeding_Time_hrs` $p = .749$), or interact with
+amphetamine dose (Amph x Feeding $F(2,18) = 0.12$`r anova_1sthalfprint$statistic$Amph_Feeding`
+$p = .892$, Feeding x Amph x Time $F(4,36) = 2.06$`r anova_1sthalfprint$statistic$Amph_Feeding_Time_hrs`
+$p = .107$). This suggests that changes in amphetamine absorption, metabolism,
+or excretion are unlikely to account for the interaction between feeding state
+and hyper-locomotion or the differential effects of LY354740 in experiments 3
+and 4 (Fig. 2).
+
+![](media/image4.png){width="5.51626312335958in" height="4.00333552055993in"}
+
+**Figure S2**.**(A)** The effect of food restriction and ad libitum food access
+on amphetamine-induced locomotor activity in. Activity was measured by the
+number of infra-red beam breaks in locomotor activity arena. Time is presented
+in bins of 10 minutes relative to the time of injection, and the pre-injection
+60 min period of habituation to the locomotor box is indicated by light grey
+highlight (left). Food restricted (Food Dep) and ad libitum fed rats (Ad Lib)
+received injections consisting of either vehicle (Veh), 1.0 mg/kg, 2.5 mg/kg, or
+5 mg/kg amphetamine. **(B)** Total activity post-injection summarising data
+presented in **(A)**. Statitsical significance of post-hoc simple effects (Tukey
+corrected), following significant main effects: \* = *p* \< .05, \*\* = *p* \<
+.001. **(C)** Blood amphetamine levels (nM) sampled 15, 30, and 60 mins post
+injection of 1.0 mg/kg, 2.5 mg/kg, or 5 mg/kg amphetamine. Error bars represent
++/- SEM.

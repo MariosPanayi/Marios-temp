@@ -9,6 +9,7 @@ output: word_document
 knitr::opts_chunk$set(echo = FALSE)
 ## Packages for data organisation and plotting
 library(tidyverse)
+library(tidymodels)
 #library(ggpubr)
 library(cowplot)
 ################################################################################
@@ -118,7 +119,7 @@ Latency to peak DA increased with reward size (Size: `r anova_print$statistic$re
 
 ``` {r Behaviour, echo=FALSE,message = FALSE, warning=FALSE}
 
-# Load in raw data for behaviour separately
+# Load in raw data for Total Mag Entry behaviour separately
 data_subset <- read_csv("../rawdata/AwakeVarReward_behaviour_rawdata.csv")
 #Pre filter data for any exclusions
 data_subset <- data_subset %>% 
@@ -135,3 +136,62 @@ tstats_print <- apa_print(tstats)
 ```
 
 Total magazine appriach behaviour did not differ between Saline and LY354740 sessions (Sal vs LY paired t-test, `r tstats_print$statistic`).
+
+# Latencies
+``` {r Behaviourlatencies, echo=FALSE,message = FALSE, warning=FALSE}
+
+# Load in raw data for latency behaviour separately
+data_behaviour <- read_csv("../rawdata/LY354740_Rat_awake_behaviour_latencies.csv")
+#Pre filter data for any exclusions - convert latencies into seconds
+data_latencies <- data_behaviour %>% 
+  mutate(responselatency = responselatency/10) %>% 
+  filter(includeSubj == TRUE,
+         trialexclude == FALSE,
+         uniqueID %in% c('29_20130227_1_SAL','29_20130301_1_LY','32_20130227_1_LY','32_20130301_1_SAL','34_20130227_1_LY','34_20130301_1_SAL','52_20130911_1_SAL','52_20130913_1_LY','54_20140617_1_LY','54_20140619_1_SAL','55_20140617_1_SAL','55_20140619_1_LY','56_20140617_0_LY','56_20140619_0_SAL','57_20140618_1_SAL','57_20140620_1_LY','69_20141209_1_LY','69_20141211_1_SAL','72_20141210_1_LY','72_20141212_1_SAL'))
+
+# FIlter out repeated behavioural data from rats with more than one working channel
+
+
+
+total_latencies <- data_latencies %>% 
+  group_by(subject, drug) %>% 
+  summarise(Latency_median = median(responselatency, na.rm=TRUE),
+            MagEntry10sPre = mean(MagEntry10sPre, na.rm=TRUE),
+            MagEntry10sPost = mean(MagEntry10sPost, na.rm=TRUE))
+
+# Ttests
+
+tstats_latency <- with(total_latencies, t.test(Latency_median[drug == "SAL"], Latency_median[drug == "LY"], paired = TRUE, tests = "parametric"))
+
+tstats_latency_print <- apa_print(tstats_latency)
+
+
+tstats_MagEntry10sPost <- with(total_latencies, t.test(MagEntry10sPost[drug == "SAL"], MagEntry10sPost[drug == "LY"], paired = TRUE, tests = "parametric"))
+
+tstats_MagEntry10sPost_print <- apa_print(tstats_MagEntry10sPost)
+
+tstats_MagEntry10sPre <- with(total_latencies, t.test(MagEntry10sPre[drug == "SAL"], MagEntry10sPre[drug == "LY"], paired = TRUE, tests = "parametric"))
+
+tstats_MagEntry10sPre_print <- apa_print(tstats_MagEntry10sPre)
+
+# total_latencies %>% 
+#   group_by(drug) %>% 
+#   do(glance(cor.test(~ MagEntry10sPre + Latency_median, data = ., method = "pearson")))
+# 
+
+total_latencies %>%   
+  ggplot(mapping = aes(x = as.factor(drug), y = Latency_median, group = drug,  fill = drug)) +
+  stat_summary_bin(fun.data = "mean_se", geom = "bar", position = "dodge",  colour="black", size = .5) +
+  stat_summary(fun.data = "mean_se", geom = "errorbar", position = position_dodge(width = 0.9), width = 0,  size = .5) +
+  # Make Pretty
+  scale_y_continuous( expand = expansion(mult = c(0, 0))) +
+  ggtitle("Accuracy") + xlab("") + ylab("Accuracy") +
+  theme_cowplot(10) 
+
+```
+
+
+`r tstats_latency_print$statistic`
+`r tstats_MagEntry10sPre_print$statistic`
+
+

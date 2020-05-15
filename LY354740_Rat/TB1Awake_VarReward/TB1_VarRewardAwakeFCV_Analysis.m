@@ -323,6 +323,7 @@ for i = 1:length(data)
             catch
                 sal_hig(:,j) = NaN(1,length(data(i).analysis.c_predicted{1,1}));
             end
+            salIDs{j} = data(i).uniqueID;
             
         elseif strcmp(data(i).drug,"LY")
             k = k + 1;
@@ -341,7 +342,7 @@ for i = 1:length(data)
             catch
                 LY_hig(:,k) = NaN(1,length(data(i).analysis.c_predicted{1,1}));
             end
-            
+            LYIDs{k} = data(i).uniqueID;
         end
     end
 end
@@ -495,7 +496,7 @@ filename = 'LY354740_Rat_awake_analysisAvg.xlsx';
 writetable(dataTable,[savefolder, '\',filename])
 toc
 %% Analyze Magazine frequencies for each session
-% Reward TTL = 1
+% Reward TTL = 1/2
 % Mag Entry TTL = 6
 % mag Exit TTL = 7
 % N.B. TTLs start counting at 0 so add 1 to these for Matlab indices
@@ -514,3 +515,107 @@ behaviouraldataTable = struct2table(tempdata);
 savefolder = 'C:\Users\mario\Documents\GitHub\Marios-temp\LY354740_Rat\TB1Awake_VarReward';
 filename = 'LY354740_Rat_awake_behaviour.xlsx';
 writetable(behaviouraldataTable,[savefolder, '\',filename])
+
+
+
+
+%% Analyze Latency to reward "retrieval" 
+
+for i = 1: length(data)
+data(i).behaviour.entries = find(diff(data(i).TTLs(:,7))==1);
+data(i).behaviour.exits = find(diff(data(i).TTLs(:,8))==1);
+%Combine Head entry and exit times into a single array, col1 = ts, col2 =
+%event [1 = MagEntry, 2 = Magexit]
+data(i).behaviour.magazine = [[data(i).behaviour.entries; data(i).behaviour.exits], [ones([size(data(i).behaviour.entries,1),1]); ones([size(data(i).behaviour.exits,1),1])*2]];
+%sort by time
+data(i).behaviour.magazine = sortrows(data(i).behaviour.magazine, 1);
+% Reward starts at 5s past the starting cut point
+data(i).behaviour.rewardtimes = data(i).cut.points(:,1) + 50;
+
+%Mag Entries 10s prior and 10s post reward delivery
+for j = 1:length(data(i).behaviour.rewardtimes)
+    data(i).behaviour.MagEntry10sPre(j,1) =  sum(data(i).behaviour.rewardtimes(j)> data(i).behaviour.entries(:,1) & data(i).behaviour.entries(:,1) > (data(i).behaviour.rewardtimes(j) -100));
+    data(i).behaviour.MagEntry10sPost(j,1) =  sum(data(i).behaviour.rewardtimes(j)< data(i).behaviour.entries(:,1) & data(i).behaviour.entries(:,1) < (data(i).behaviour.rewardtimes(j) +100));
+end
+
+% Calulate latencies - requires assumptions given the imperfect TTL timing
+for j = 1:length(data(i).behaviour.rewardtimes)
+    %index of event just before event
+ eventidx =  max(find((data(i).behaviour.magazine(:,1) <= data(i).behaviour.rewardtimes(j))));
+ 
+ % test to see if there is any behaviour after this point i.e. end of session?
+ 
+ if eventidx == size(data(i).behaviour.magazine, 1)
+     %Session has ended so make assumptions about behaviour
+     if data(i).behaviour.magazine(eventidx,2) == 1
+         %Assume animal in mag so instant retrieval
+         data(i).behaviour.responselatency(j,1) = 0;
+     elseif data(i).behaviour.magazine(eventidx,2) == 2
+         %Assume sesison ends with no response, so Nan
+        data(i).behaviour.responselatency(j,1) = NaN;
+     end
+ elseif data(i).behaviour.magazine(eventidx,2) == 1 && data(i).behaviour.magazine(eventidx+1,2) == 2
+     %MagEntry prior to reward delivery and magazine exit post reward delivery
+     %assumption that head is still in magazine before reward delivery
+     %so latency to pick up reward assumed to be 0s
+     data(i).behaviour.responselatency(j,1) = 0;
+     
+     elseif data(i).behaviour.magazine(eventidx,2) == 1 && data(i).behaviour.magazine(eventidx+1,2) == 1
+         %If there are 2 entries in a row, then the first entry was
+         %performed too quickly to register an exit. So animal no longer
+         %assumed to already be in the magazine at the time of reward
+         %delivery
+          data(i).behaviour.responselatency(j,1) = data(i).behaviour.magazine(eventidx+1,1) - data(i).behaviour.rewardtimes(j);
+     
+ elseif data(i).behaviour.magazine(eventidx,2) == 2 && data(i).behaviour.magazine(eventidx+1,2) == 1
+    %MagExit prior to reward delivery, and mag entry post reward delivery
+    %Assume post reward entry is correct latency
+     data(i).behaviour.responselatency(j,1) = data(i).behaviour.magazine(eventidx+1,1) - data(i).behaviour.rewardtimes(j);
+     
+     elseif data(i).behaviour.magazine(eventidx,2) == 2 && data(i).behaviour.magazine(eventidx+1,2) == 2
+         %Two consecutive head exits registered, suggesting that the first
+         %head exit was followed by a head entry so assume animals head
+         %still in the magazine
+         %so latency to pick up reward assumed to be 0s
+     data(i).behaviour.responselatency(j,1) = 0;
+ end
+end
+end
+% data(i).cut.rewardMagnitude
+% data(i).cut.trialNum
+
+
+%% Save mag latency data per trial data
+tempdata = [];
+k = 0;
+for i = 1:length(data)
+    for j = 1:length(data(i).cut.trialNum)
+k = k +1;
+tempdata(k).subject = data(i).subject;
+tempdata(k).date = data(i).date;
+tempdata(k).drug = data(i).drug;
+tempdata(k).channel = data(i).channel;
+tempdata(k).uniqueID = data(i).uniqueID;
+tempdata(k).includeSubj = data(i).include;
+tempdata(k).trialexclude = data(i).analysis.trialexclude(j);
+tempdata(k).trialNum = data(i).cut.trialNum(j);
+tempdata(k).rewardMagnitude = data(i).cut.rewardMagnitude(j);
+tempdata(k).responselatency = data(i).behaviour.responselatency(j);
+tempdata(k).MagEntry10sPre = data(i).behaviour.MagEntry10sPre(j);
+tempdata(k).MagEntry10sPost = data(i).behaviour.MagEntry10sPost(j);
+tempdata(k).AUC5s = data(i).analysis.AUC5s(j);
+tempdata(k).peak5s = data(i).analysis.peak5s(j);
+tempdata(k).latency2peak5s = data(i).analysis.latency2peak5s(j);       
+    end
+end
+behaviouraldataTable = struct2table(tempdata);
+savefolder = 'C:\Users\mario\Documents\GitHub\Marios-temp\LY354740_Rat\TB1Awake_VarReward';
+filename = 'LY354740_Rat_awake_behaviour_latencies.xlsx';
+writetable(behaviouraldataTable,[savefolder, '\',filename])
+
+
+
+
+
+
+
