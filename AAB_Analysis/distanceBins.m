@@ -6,7 +6,7 @@ function [Distance_Bins] = distanceBins(Distance, fps, bin_duration, framesSmoot
 % give you 5s bins
 % framesSmoothing will let you mean filter across a desired number of
 % frames prior to binning the data (set fps and bin_duration to 1 if you
-% want to see the effect of justs moothing the data)
+% want to see the effect of just smoothing the data)
 
 
 binwidth = fps*bin_duration;

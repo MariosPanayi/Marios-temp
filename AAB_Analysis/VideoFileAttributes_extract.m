@@ -1,5 +1,5 @@
 % Quick video file information extraction
-cd 'F:\Marios 2017\MP004_MK801_SameDiff_02mgkg\MP004_SameDiff_videosconverted'
+cd 'F:\TB2_AnymazeVideos\Undergrdauates_WTKO_MK801\ER_NCR_001_GluA1\Week 1'
 videolist = dir( '*.mp4');
 for i = 1:size(videolist,1)
     obj = VideoReader(videolist(i).name);

@@ -237,7 +237,7 @@ for i = 1:size(RawData,2)
 end
 %
 
-% Exapnd cell array of labels into rows
+% Expand cell array of labels into rows
 dummy = vertcat(full_labels{:});
 % split individual columns of labels
 testnum = vertcat(dummy{:,1});
