@@ -9,7 +9,7 @@ function [data, bodyparts] = DLC_RawRead(filename)
 data = readmatrix(filename);
 
 % Extract header labels with DLC labeled part names
-temp_labels = readtable(filename);
+temp_labels = readtable(filename,'Format','auto');
 header = temp_labels{1,:};
 % Extract DLC part labels in order
 bodyparts = {header{2:3:size(header,2)}};

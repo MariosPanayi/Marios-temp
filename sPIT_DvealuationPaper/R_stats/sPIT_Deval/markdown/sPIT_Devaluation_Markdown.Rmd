@@ -1,0 +1,367 @@
+---
+title: "The effect of Devaluation on sensory specific Pavlovian-to-Instrumental Transfer"
+author: "Marios Panayi"
+date: "11/16/2020"
+output: word_document
+---
+
+```{r setup, include=FALSE, message = FALSE, warning=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+## Packages for data organisation and plotting
+library(tidyverse)
+# Package for relative file paths
+library(here)
+# library(ggpubr)
+library(cowplot)
+library(ggsignif)
+library(patchwork)
+################################################################################
+
+# install.packages("devtools")
+# remotes::install_github("crsh/papaja")
+# Temporary bug fix for Papaja is to install developer version
+# remotes::install_github("crsh/papaja")
+library(papaja)
+library(knitr)
+# remotes::install_github("noamross/redoc")
+# library(redoc)
+
+## Packages for Data analysis
+library(afex)
+afex_options(emmeans_model = "multivariate")# use multivariate model for all follow-up tests.
+library(emmeans)
+```
+
+```{r LoadData , include=FALSE, message = FALSE, warning=FALSE}
+SKR214_InstrumentalAcquisition <- read_csv(here("rawdata", "processed_data", "SKR214_InstrumentalAcquisition.csv"))
+SKR214_PavlovianAcquisition <- read_csv(here("rawdata", "processed_data", "SKR214_PavlovianAcquisition.csv"))
+SKR214_SatietyConsumption <- read_csv(here("rawdata", "processed_data", "SKR214_SatietyConsumption.csv"))
+SKR214_SatietyDevalTest <- read_csv(here("rawdata", "processed_data", "SKR214_SatietyDevalTest.csv"))
+SKR214_SatietysPITTest <- read_csv(here("rawdata", "processed_data", "SKR214_SatietysPITTest.csv"))
+SKR214_LiClConsumption <- read_csv(here("rawdata", "processed_data", "SKR214_LiClConsumption.csv"))
+SKR214_LiCl_DevaluationinMag <- read_csv(here("rawdata", "processed_data", "SKR214_LiCl_DevaluationinMag.csv"))
+SKR214_LiClDevalTest <- read_csv(here("rawdata", "processed_data", "SKR214_LiClDevalTest.csv"))
+SKR214_LiClsPITTest <- read_csv(here("rawdata", "processed_data", "SKR214_LiClsPITTest.csv"))
+SKR216_Satiety_InstrumentalAcquisition <- read_csv(here("rawdata", "processed_data", "SKR216_Satiety_InstrumentalAcquisition.csv"))
+SKR216_LiCL_InstrumentalAcquisition <- read_csv(here("rawdata", "processed_data", "SKR216_LiCL_InstrumentalAcquisition.csv"))
+```
+
+
+```{r SKR214_InstrumentalAcquisition Stats , include=FALSE, message = FALSE, warning=FALSE}
+
+# SKR214 Instrumental Acquisition
+data <- SKR214_InstrumentalAcquisition %>% 
+  arrange(RewardName,Day) %>% 
+   filter(Day < 7)
+
+anova <- aov_4(LP_rate_min ~ (Day*RewardName|Subject), data = data, anova_table = list(correction = "none", es = "pes"))
+anova_Fig1A <- apa_print(anova, mse = "FALSE",correction = "none",es = "pes")
+## simple effects - Block
+simple <- emmeans(anova, ~Day)
+simple_Fig1A_print <- apa_print(contrast(simple,interaction = c("poly"),adjust = "none"))
+
+anova_Fig1A$table
+simple_Fig1A_print$table
+```
+Instrumental responding for sucrose and maltodextrin outcomes significantly increased over training days (main effect of Day `r anova_Fig1A$statistic$Day`; significant positive linear trend over Day `r simple_Fig1A_print$statistic$linear`), and at comparable rates for either reward (no main effect of Reward, (`r anova_Fig1A$statistic$RewardName`), or Day*Reward interaction, (`r anova_Fig1A$statistic$Day_RewardName`).
+
+
+
+```{r SKR214_PavlovianAcquisition Stats , include=FALSE, message = FALSE, warning=FALSE}
+
+# SKR214 Instrumental Acquisition
+data <- SKR214_PavlovianAcquisition %>% 
+  arrange(Day) %>% 
+   filter(Day < 7)
+
+anova <- aov_4(CS_PreCS ~ (Day*US_Name|Subject), data = data, anova_table = list(correction = "none", es = "pes"))
+anova_Fig1B <- apa_print(anova, mse = "FALSE",correction = "none",es = "pes")
+## simple effects - Block
+simple <- emmeans(anova, ~Day)
+simple_Fig1B_print <- apa_print(contrast(simple,interaction = c("poly"),adjust = "none"))
+
+simple <- emmeans(anova, ~US_Name)
+simple_Fig1B_Reward_print <- apa_print(contrast(simple,"pairwise", adjust = "sidak"))
+simple_Fig1B_Reward_print1 <- apa_print(contrast(simple,list(Malt_Suc = c(1,-1,0), Liq_Pel = c(1/2,1/2,-1)), adjust = "sidak"))
+
+anova_Fig1B$table
+simple_Fig1B_print$table
+simple_Fig1B_Reward_print$table
+simple_Fig1B_Reward_print1$table
+
+```
+Pavlovian magazine responding for sucrose, maltodextrin, and pellets significantly increased over training days (main effect of Day, `r anova_Fig1B$statistic$Day`; significant positive linear trend over Day `r simple_Fig1B_print$statistic$linear`), however overall responding was higher for pellets than for sucrose or maltodextrin (significant main effect of Reward `r anova_Fig1B$statistic$US_Name`, but no significant interaction Day*Reward interaction `r anova_Fig1B$statistic$Day_US_Name`). Simple main effects of Reward did not support this statistical difference after family-wise error rate correction (Maltodextrin vs Pellet `r simple_Fig1B_Reward_print$statistic$Maltodextrin_Pellet`, Sucrose vs Pellet `r simple_Fig1B_Reward_print$statistic$Sucrose_Pellet`, Maltodextrin vs Sucrose `r simple_Fig1B_Reward_print$statistic$Maltodextrin_Sucrose`). The slightly elevated rate of magazine approach is likely to be due to the nature of the consummatory response (i.e. drinking liquid vs chewing pellets) which are conflated with anticipatory approach in the present design. Importantly, there were no significant differences in the rate of instrumental and Pavlovian acquisition of the to-be-devalued rewards, i.e. sucrose and maltodextrin.
+
+
+```{r SKR214_SatietyConsumption Stats , include=FALSE, message = FALSE, warning=FALSE}
+# SKR214 Satiety Consumption
+   data <- SKR214_SatietyConsumption %>% 
+   select(-Date, -TestNumber, -Pre, -Post) %>% 
+   pivot_wider(names_from = Liquid, values_from = `Consumed (g)`)
+
+tstats_Fig1_supp1 <- with(data, t.test(Sucrose, Maltodextrin, paired = TRUE, tests = "parametric",alternative = "two.sided"))
+tstats_Fig1_supp1_print <- apa_print(tstats_Fig1_supp1)
+   tstats_Fig1_supp1_print$statistic
+
+tstats_Fig1_supp1_descriptives <-data %>% 
+   summarise_all(funs(mean = mean, sd = sd))
+   
+```
+   
+After 1 hour of free consumption prior to each test session, consumption was marginally greater for sucrose (*M =* `r printnum(tstats_Fig1_supp1_descriptives$Sucrose_mean)`, *SD =* `r printnum(tstats_Fig1_supp1_descriptives$Sucrose_sd)`) than maltodextrin (*M =* `r printnum(tstats_Fig1_supp1_descriptives$Maltodextrin_mean)`, *SD =* `r printnum(tstats_Fig1_supp1_descriptives$Maltodextrin_sd)`; paired sample t-test, `r tstats_Fig1_supp1_print$statistic`).
+   
+```{r SKR214_SatietyDevalTest Stats , include=FALSE, message = FALSE, warning=FALSE}
+
+# SKR214 Satiety Deval test instrumental
+data <- SKR214_SatietyDevalTest %>% 
+   rename(MinuteCounter = `Minute Counter`,
+          leverPresses =`lever Presses`)
+#Change name of variable with spaces to work with apa_print function below
+
+anova <- aov_4(leverPresses ~ (Devaluation*MinuteCounter|Subject), data = data, anova_table = list(correction = "none", es = "pes"))
+anova_Fig1C <- apa_print(anova, mse = "FALSE",correction = "none",es = "pes")
+
+## simple effects - Minute Polynomial Trend Contrasts
+simple <- emmeans(anova, ~ MinuteCounter)
+simple_Fig1C_poly_print <- apa_print(contrast(simple,interaction = c("poly"),adjust = "none"))
+
+## simple effects - Minute by minute - for the final minute only
+simple <- emmeans(anova, ~ Devaluation*MinuteCounter)
+simple_Fig1C_print <- apa_print(contrast(simple, interaction = "pairwise", by = "MinuteCounter", adjust = "none"))
+
+anova_Fig1C$table
+simple_Fig1C_poly_print$table
+simple_Fig1C_print$table
+```
+   
+Instrumental devaluation following sensory specific satiety was assessed during the extinction period immediately prior to the transfer test. There was a significant devaluation effect such that responding on the lever associated with the devalued outcome was significantly lower than to the lever associated with the non-devalued outcome (significant main effect of Devaluation, `r  anova_Fig1C$statistic$Devaluation`, but no Devaluation*Time Bin interaction `r  anova_Fig1C$statistic$Devaluation_MinuteCounter`). While lever pressing extinguished over this period (significant main effect of Time Bin `r  anova_Fig1C$statistic$MinuteCounter`, significant linear decrease in responding over Time Bin `r simple_Fig1C_poly_print$statistic$linear`), there was still a significant difference in responding on the devalued and non-devalued levers in the final minute of this period (Minute 8: Devalued vs Non-Devalued, `r simple_Fig1C_print$statistic$Devalued_NonDevalued_X8`).
+
+
+```{r SKR214_SatietysPITTest Stats , include=FALSE, message = FALSE, warning=FALSE}   
+
+
+# SKR214 Satiety Deval sPIT test
+  data <- SKR214_SatietysPITTest %>% 
+   rename( PavDeval = `Devalued Pavlovian US?`,
+           leverPresses = `lever Presses`)
+
+   levelorder <- c("Non-Devalued", "Devalued")
+   levelorderCS <- c("PreCS", "Non-Devalued", "Devalued", "General")
+   leverlorderCS2 <- c("PreCS", "Same", "Different", "General")
+    
+   data <- data %>% 
+    mutate(Devaluation = factor(Devaluation, levels = levelorder),
+             PavDeval = factor(PavDeval, levels = levelorderCS),
+             same_diff = factor(same_diff, levels = leverlorderCS2))
+#Change name of variable with spaces to work with apa_print function below
+
+anova <- aov_4(leverPresses ~ (Devaluation*same_diff|Subject), data = data, anova_table = list(correction = "none", es = "pes"))
+anova_Fig1D <- apa_print(anova, mse = "FALSE",correction = "none",es = "pes")
+
+## simple effects - Lever x Pavlovian Same Diff
+customcontrasts = list(PreCS_Same = c(1, -1, 0, 0), 
+                       PreCS_Different = c(1, 0, -1, 0), 
+                       PreCS_General = c(1, 0, 0, -1), 
+                       Same_Different = c(0, 1, -1, 0), 
+                       Same_General = c(0, 1, 0, -1), 
+                       Different_General = c(0, 0, 1, -1))
+
+customcontrasts = list(PreCS_Same = c(1, -1, 0, 0), 
+                       Same_Different = c(0, 1, -1, 0), 
+                       Same_General = c(0, 1, 0, -1))
+
+customcontrasts = list(Same_Different = c(0, 1, -1, 0), 
+                       Same_General = c(0, 1, 0, -1), 
+                       Different_General = c(0, 0, 1, -1))
+
+simple <- emmeans(anova, ~ Devaluation*same_diff)
+simple_Fig1D_print <- apa_print(contrast(simple, interaction = "pairwise", by = "Devaluation", adjust = "tukey"))
+simple_Fig1D_print <- apa_print(contrast(simple, customcontrasts, by = "Devaluation", adjust = "tukey"))
+
+
+#Main Effect of Pav Stimulus
+simple <- emmeans(anova, ~ same_diff)
+simple_Fig1D_MainEffects_print <- apa_print(contrast(simple, interaction = "pairwise", adjust = "tukey"))
+
+anova_Fig1D$table
+simple_Fig1D_print$table
+simple_Fig1D_MainEffects_print$table
+```
+sPIT test - exact format/follow up tests pending
+                     
+                     
+```{r SKR214_Instrumental ReAcquisition Stats , include=FALSE, message = FALSE, warning=FALSE}   
+     # SKR214 Instrumental ReAcquisition
+data <- SKR214_InstrumentalAcquisition %>% 
+  arrange(RewardName,Day) %>% 
+   filter(Day > 6)
+
+anova <- aov_4(LP_rate_min ~ (Day*RewardName|Subject), data = data, anova_table = list(correction = "none", es = "pes"))
+anova_Fig1A_InstReAcq <- apa_print(anova, mse = "FALSE",correction = "none",es = "pes")
+## simple effects - Block
+simple <- emmeans(anova, ~Day)
+simple_Fig1A_InstReAcq_print <- apa_print(contrast(simple,interaction = c("poly"),adjust = "none"))
+
+anova_Fig1A_InstReAcq$table
+```                     
+
+After the completion of the specific Satiety tests, all animals were retrained for 2 sessions on each lever (significant in responding across retraining days, main effect of Day `r anova_Fig1A_InstReAcq$statistic$Day`,  no significant effects of Reward identity `r anova_Fig1A_InstReAcq$statistic$Day_RewardName`, or Reward*Day interaction  `r anova_Fig1A_InstReAcq$statistic$Day_RewardName`).               
+
+```{r SKR214_Pavlovian ReAcquisition Stats , include=FALSE, message = FALSE, warning=FALSE}   
+     # SKR214 Pavlovian ReAcquisition                     
+data <- SKR214_PavlovianAcquisition %>% 
+  arrange(Day) %>% 
+   filter(Day > 6)
+
+anova <- aov_4(CS_PreCS ~ (Day*US_Name|Subject), data = data, anova_table = list(correction = "none", es = "pes"))
+anova_Fig1B_PavReAcq <- apa_print(anova, mse = "FALSE",correction = "none",es = "pes")
+## simple effects - Block
+simple <- emmeans(anova, ~US_Name^Day)
+simple_Fig1B_PavReAcq_print <- apa_print(contrast(simple,interaction = "pairwise", by = "Day", adjust = "sidak"))
+simple <- emmeans(anova, ~US_Name)
+simple_Fig1B_PavReAcq_print1 <- apa_print(contrast(simple,"pairwise", adjust = "sidak"))
+
+
+anova_Fig1B_PavReAcq$table
+simple_Fig1B_PavReAcq_print$table
+simple_Fig1B_PavReAcq_print1$table
+```                   
+                     
+Retraining in Pavlovian sessions again suggested a bias in responding towards the CS paired with the pellet US, but importantly no differences in responding to sucrose and maltodextrin. This was supported by a significant main effect of Reward (`r anova_Fig1B_PavReAcq$statistic$US_Name`), and Reward*Day interaction (`r anova_Fig1B_PavReAcq$statistic$Day_US_Name`), but no significant effect of Day (`r anova_Fig1B_PavReAcq$statistic$US_Name`). Simple effects revealed that there were no significant differences between USs on the first day of retraining (Maltodextrin vs Sucrose `r simple_Fig1B_PavReAcq_print$statistic$Maltodextrin_Sucrose_X7`, Maltodextrin vs Pellet `r simple_Fig1B_PavReAcq_print$statistic$Maltodextrin_Pellet_X7`, Sucrose vs Pellet `r simple_Fig1B_PavReAcq_print$statistic$Sucrose_Pellet_X7`), and only a significantly elevated response for pellets compared to Maltodextrin on the second day of retraining (Maltodextrin vs Sucrose `r simple_Fig1B_PavReAcq_print$statistic$Maltodextrin_Sucrose_X8`, Maltodextrin vs Pellet `r simple_Fig1B_PavReAcq_print$statistic$Maltodextrin_Pellet_X8`, Sucrose vs Pellet `r simple_Fig1B_PavReAcq_print$statistic$Sucrose_Pellet_X8`). Importantly, there were no significant differences in the rate of instrumental and Pavlovian acquisition of the to-be-devalued rewards prior to LiCl taste aversion learning, i.e. sucrose and maltodextrin.
+                     
+```{r SKR214_LiCl Consumption Stats , include=FALSE, message = FALSE, warning=FALSE}                     
+
+# SKR214 LiCl Consumption in Mouse boxes
+
+data <- SKR214_LiClConsumption %>% 
+   rename(Consumed = `Consumed (g)`,
+          Subject = Rat)
+
+anova <- aov_4(Consumed ~ (Injection*Pairing|Subject), data = data, anova_table = list(correction = "none", es = "pes"))
+anova_Fig2A_LiClConsumption <- apa_print(anova, mse = "FALSE",correction = "none",es = "pes")
+# Simple effects
+simple <- emmeans(anova, ~Injection*Pairing)
+simple_anova_Fig2A_LiClConsumption <- apa_print(contrast(simple,interaction = "pairwise", by = "Pairing", adjust = "sidak"))
+simple_anova_Fig2A_LiClConsumption1 <- apa_print(contrast(simple,interaction = "pairwise", by = "Injection", adjust = "sidak"))
+
+
+
+
+anova_Fig2A_LiClConsumption$table
+simple_anova_Fig2A_LiClConsumption$table
+simple_anova_Fig2A_LiClConsumption1$table
+```     
+Rats successfully acquired a reward specific taste aversion such that consumption of the reward paired with i.p. injections of LiCl significantly decreased after the first pairing (LiCl: Pairing 1 vs 2, `r simple_anova_Fig2A_LiClConsumption1$statistic$X1_X2_LiCl`), whereas consumption of the reward paired with i.p. injections of saline did not significantly change (LiCl: Pairing 1 vs 2, `r simple_anova_Fig2A_LiClConsumption1$statistic$X1_X2_Saline`; supported by a significant Injection*Pairing interaction `r anova_Fig2A_LiClConsumption$statistic$Injection_Pairing`, and main effects of Injection `r anova_Fig2A_LiClConsumption$statistic$Injection`, and Pairing `r anova_Fig2A_LiClConsumption$statistic$Pairing`).                  
+                     
+```{r SKR214_LiCl Consumption in Mag Stats , include=FALSE, message = FALSE, warning=FALSE}                     
+
+# SKR214 LiCl Consumption in Magazine
+
+data <- SKR214_LiCl_DevaluationinMag
+
+anova <- aov_4(MagEntry ~ (Injection*Bin_4mins|Subject), data = data, anova_table = list(correction = "none", es = "pes"))
+anova_Fig2A_supp_LiClinMag <- apa_print(anova, mse = "FALSE",correction = "none",es = "pes")
+# Simple effects
+simple <- emmeans(anova, ~Bin_4mins)
+simple_Fig2A_supp_LiClinMag <- apa_print(contrast(simple,interaction = "poly", adjust = "sidak"))
+
+anova_Fig2A_supp_LiClinMag$table
+simple_Fig2A_supp_LiClinMag$table
+```     
+Presentation of the reward non-contingently in the operant box magazines followed by an additional injection pairing confirmed that the taste aversion successfully transferred to the test chambers (data not shown). An Injection(Saline, LiCL) x Time Bin (6 blocks of 4 mins) repeated measures ANOVA revealed that magazine entries were significantly lower for the LiCl paired reward than the saline paired reward (significant main effect of Injection, `r anova_Fig2A_supp_LiClinMag$statistic$Injection`), and magazine entries decreased within the session at similar rates for both rewards (significant main effect of Time Bin `r anova_Fig2A_supp_LiClinMag$statistic$Bin_4mins`, supported by a significant linear decrease over Time Bin `r simple_Fig2A_supp_LiClinMag$statistic$linear`; Injection*Time Bin interaction was not significant `r anova_Fig2A_supp_LiClinMag$statistic$Injection_Bin_4mins`).
+                     
+                   
+```{r SKR214_LiClDevalTest Stats , include=FALSE, message = FALSE, warning=FALSE}
+
+# SKR214 LiCl Deval test instrumental
+data <- SKR214_LiClDevalTest %>% 
+   rename(MinuteCounter = `Minute Counter`,
+          leverPresses =`lever Presses`)
+#Change name of variable with spaces to work with apa_print function below
+
+anova <- aov_4(leverPresses ~ (Devaluation*MinuteCounter|Subject), data = data, anova_table = list(correction = "none", es = "pes"))
+anova_Fig2B <- apa_print(anova, mse = "FALSE",correction = "none",es = "pes")
+
+## simple effects - Minute Polynomial Trend Contrasts
+simple <- emmeans(anova, ~ MinuteCounter)
+simple_Fig2B_poly_print <- apa_print(contrast(simple,interaction = c("poly"),adjust = "none"))
+
+## simple effects - Minute by minute - for the final minute only
+simple <- emmeans(anova, ~ Devaluation*MinuteCounter)
+simple_Fig2B_print <- apa_print(contrast(simple, interaction = "pairwise", by = "MinuteCounter", adjust = "sidak"))
+
+anova_Fig2B$table
+simple_Fig2B_poly_print$table
+simple_Fig2B_print$table
+```
+   
+Instrumental devaluation following LiCL devaluation was assessed during the extinction period immediately prior to the transfer test. There was a significant devaluation effect such that responding on the lever associated with the devalued outcome was significantly lower than to the lever associated with the non-devalued outcome (significant main effect of Devaluation, `r  anova_Fig2B$statistic$Devaluation`, and a significant Devaluation*Time Bin interaction `r  anova_Fig2B$statistic$Devaluation_MinuteCounter`). While lever pressing extinguished over this period (significant main effect of Time Bin `r  anova_Fig2B$statistic$MinuteCounter`, significant linear decrease in responding over Time Bin `r simple_Fig2B_poly_print$statistic$linear`), there was still a significant difference in responding on the devalued and non-devalued levers in the final minute of this period (Minute 8: Devalued vs Non-Devalued, `r simple_Fig2B_print$statistic$Devalued_NonDevalued_X8`).
+                     
+```{r SKR214_LiClsPITTest Stats , include=FALSE, message = FALSE, warning=FALSE}   
+
+
+# SKR214 LiCl Deval sPIT test
+  data <- SKR214_LiClsPITTest %>% 
+   rename( PavDeval = `Devalued Pavlovian US?`,
+           leverPresses = `lever Presses`)
+
+   levelorder <- c("Non-Devalued", "Devalued")
+   levelorderCS <- c("PreCS", "Non-Devalued", "Devalued", "General")
+   leverlorderCS2 <- c("PreCS", "Same", "Different", "General")
+    
+   data <- data %>% 
+    mutate(Devaluation = factor(Devaluation, levels = levelorder),
+             PavDeval = factor(PavDeval, levels = levelorderCS),
+             same_diff = factor(same_diff, levels = leverlorderCS2)) %>% 
+      filter(Subject != 6)
+#Change name of variable with spaces to work with apa_print function below
+
+anova <- aov_4(leverPresses ~ (Devaluation*same_diff|Subject), data = data, anova_table = list(correction = "none", es = "pes"))
+anova_Fig2C <- apa_print(anova, mse = "FALSE",correction = "none",es = "pes")
+
+## simple effects - Lever x Pavlovian Same Diff
+customcontrasts = list(PreCS_Same = c(1, -1, 0, 0), 
+                       PreCS_Different = c(1, 0, -1, 0), 
+                       PreCS_General = c(1, 0, 0, -1), 
+                       Same_Different = c(0, 1, -1, 0), 
+                       Same_General = c(0, 1, 0, -1), 
+                       Different_General = c(0, 0, 1, -1))
+
+customcontrasts = list(PreCS_Same = c(1, -1, 0, 0), 
+                       Same_Different = c(0, 1, -1, 0), 
+                       Same_General = c(0, 1, 0, -1))
+# 
+# customcontrasts = list(Same_Different = c(0, 1, -1, 0), 
+#                        Same_General = c(0, 1, 0, -1), 
+#                        Different_General = c(0, 0, 1, -1))
+
+simple <- emmeans(anova, ~ Devaluation*same_diff)
+simple_Fig2C_print <- apa_print(contrast(simple, interaction = "pairwise", by = "Devaluation", adjust = "tukey"))
+simple_Fig2C_print <- apa_print(contrast(simple, customcontrasts, by = "Devaluation", adjust = "tukey"))
+
+
+#Main Effect of Pav Stimulus
+simple <- emmeans(anova, ~ same_diff)
+simple_Fig2C_MainEffects_print <- apa_print(contrast(simple, interaction = "pairwise", adjust = "tukey"))
+
+anova_Fig2C$table
+simple_Fig2C_print$table
+simple_Fig2C_MainEffects_print$table
+```
+sPIT test - exact format/follow up tests pending
+                             
+                     
+                     
+                     
+                     
+                     
+                     
+                     
+                     
+                     
+                     
+                     
+                     
+                     
+                     
+                     

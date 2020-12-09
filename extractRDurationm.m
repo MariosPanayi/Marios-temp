@@ -1,4 +1,4 @@
-function [ durationData, eventData ] = extractRDuration( data, startIndex, endIndex, missingData )
+function [ durationData, eventData ] = extractRDuration(data, startIndex, endIndex, missingData )
 %UNTITLED Summary of this function goes here
 %   Detailed explanation goes here
 
@@ -15,6 +15,6 @@ function [ durationData, eventData ] = extractRDuration( data, startIndex, endIn
         end
        
        durationData = endData-startData;
-       eventdata = startdata 
+       eventData = startData; 
 end
 

@@ -12,8 +12,9 @@ for i = 1:numparts
     %identify column number for x, y, confidence for each body part (i)
     x = 1 + (i*3) - 2;
     y = 1 + (i*3) - 1;
-    confidence = 1 + (i*3);
-    %Array of distance travelled by each body part as a column
+%     confidence = 1 + (i*3);
+    
+%Array of distance travelled by each body part as a column
     distance(:,i) =  sqrt(diff(DLC_data(:,x)).^2 + diff(DLC_data(:,y)).^2);
 end
 end
