@@ -1,0 +1,327 @@
+---
+title: "ConditionedInhibition_OFC"
+author: "Marios Panayi"
+date: "6/1/2020"
+output: word_document
+---
+
+```{r setup, include=FALSE, message = FALSE, warning=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+## Packages for data organisation and plotting
+library(tidyverse)
+# Package for relative file paths
+library(here)
+# library(ggpubr)
+library(cowplot)
+library(ggsignif)
+library(patchwork)
+################################################################################
+## Packages for Data analysis
+library(afex)
+afex_options(emmeans_model = "multivariate")# use multivariate model for all follow-up tests.
+library(emmeans)
+# install.packages("devtools")
+# devtools::install_github("crsh/papaja")
+library(papaja)
+library(knitr)
+# remotes::install_github("noamross/redoc")
+# library(redoc)
+```
+
+
+```{r Fig2 Stats , include=FALSE, message = FALSE, warning=FALSE}
+data_Fig2A <- read_csv(here("figures","figure_data","data_Fig2A.csv"))
+data_Fig2B <- read_csv(here("figures","figure_data","data_Fig2B.csv"))
+data_Fig2C <- read_csv(here("figures","figure_data","data_Fig2C.csv"))
+data_Fig2D <- read_csv(here("figures","figure_data","data_Fig2D.csv"))
+data_Fig2E <- read_csv(here("figures","figure_data","data_Fig2E.csv"))
+data_Fig_S2A <- read_csv(here("figures","figure_data","data_Fig_S2A.csv"))
+data_Fig3A <- read_csv(here("figures","figure_data","data_Fig3A.csv"))
+data_Fig3B <- read_csv(here("figures","figure_data","data_Fig3B.csv"))
+data_Fig3C <- read_csv(here("figures","figure_data","data_Fig3C.csv"))
+data_Fig3D <- read_csv(here("figures","figure_data","data_Fig3D.csv"))
+data_Fig_S3A <- read_csv(here("figures","figure_data","data_Fig_S3A.csv"))
+data_Fig_S4 <- read_csv(here("figures","figure_data","data_Fig_S4.csv"))
+data_Fig4A <- read_csv(here("figures","figure_data","data_Fig4A.csv"))
+data_Fig4B <- read_csv(here("figures","figure_data","data_Fig4B.csv"))
+data_Fig4C <- read_csv(here("figures","figure_data","data_Fig4C.csv"))
+data_Fig4D <- read_csv(here("figures","figure_data","data_Fig4D.csv"))
+data_Fig_S6A_Expt2CueZ <- read_csv(here("figures","figure_data","data_Fig_S6A_Expt2CueZ.csv"))
+data_Fig_S6B_Expt2CueZ <- read_csv(here("figures","figure_data","data_Fig_S6B_Expt2CueZ.csv"))
+data_Fig_S5AB <- read_csv(here("figures","figure_data","data_Fig_S5AB.csv"))
+
+
+
+#Fig2A - Stage 1 Acquisition
+anova <- aov_4(CS_Pre ~ InfusionGroup + (Day*Cue|Subject), data = data_Fig2A, anova_table = list(correction = "none", es = "pes"))
+anova_Fig2A <- apa_print(anova, mse = "FALSE",correction = "none",es = "pes")
+## simple effects - linear trend on Day
+simple <- emmeans(anova, ~Day)
+simple_Fig2A_print <- apa_print.emmGrid(contrast(simple, interaction = c("poly"),  adjust = "none"))
+
+#Fig2B - Stage 2 Feature Negative
+anova <- aov_4(CS_Pre ~ InfusionGroup + (Day*Cue|Subject), data = data_Fig2B, anova_table = list(correction = "none", es = "pes"))
+anova_Fig2B <- apa_print(anova, mse = "FALSE",correction = "none",es = "pes")
+
+## Follow up ANOVAs for each InfusionGroup separately
+
+### Saline
+data_Fig2B_saline <- data_Fig2B %>% 
+  filter(InfusionGroup == "Saline")
+
+anova <- aov_4(CS_Pre ~ (Day*Cue|Subject), data = data_Fig2B_saline, anova_table = list(correction = "none", es = "pes"))
+anova_Fig2B_saline <- apa_print(anova, mse = "FALSE",correction = "none",es = "pes")
+
+#### simple effects - linear trend on Day
+simple <- emmeans(anova, ~Day*Cue)
+simple_Fig2B_saline_print <- apa_print.emmGrid(contrast(simple, interaction = c("poly"), by = 'Cue',  adjust = "none"))
+
+
+### Muscimol
+data_Fig2B_muscimol <- data_Fig2B %>% 
+  filter(InfusionGroup == "Muscimol")
+
+anova <- aov_4(CS_Pre ~ (Day*Cue|Subject), data = data_Fig2B_muscimol, anova_table = list(correction = "none", es = "pes"))
+anova_Fig2B_muscimol <- apa_print(anova, mse = "FALSE",correction = "none",es = "pes")
+
+#### simple effects - linear trend on Day
+simple <- emmeans(anova, ~Day)
+simple_Fig2B_muscimol_print <- apa_print.emmGrid(contrast(simple, interaction = c("poly"),  adjust = "none"))
+
+
+#Fig2C - Stage 3 Reacquisition
+anova <- aov_4(CS_Pre ~ InfusionGroup + (Day|Subject), data = data_Fig2C, anova_table = list(correction = "none", es = "pes"))
+anova_Fig2C <- apa_print(anova, mse = "FALSE",correction = "none",es = "pes")
+
+#Fig2D - Summation Test
+anova <- aov_4(CS_Pre ~ InfusionGroup + (Cue|Subject), data = data_Fig2D, anova_table = list(correction = "none", es = "pes"))
+anova_Fig2D <- apa_print(anova, mse = "FALSE",correction = "none",es = "pes")
+
+## Supplementary Fig_S2A - Summation first 2 trials
+anova <- aov_4(CS_Pre ~ InfusionGroup + (Cue|Subject), data = data_Fig_S2A, anova_table = list(correction = "none", es = "pes"))
+anova_Fig_S2A <- apa_print(anova, mse = "FALSE",correction = "none",es = "pes")
+
+#Fig2E - Retardation
+anova <- aov_4(CS_Pre ~ InfusionGroup + (Day*Cue|Subject), data = data_Fig2E, anova_table = list(correction = "none", es = "pes"))
+anova_Fig2E <- apa_print(anova, mse = "FALSE",correction = "none",es = "pes")
+
+
+
+
+
+# anova_Fig2E$table
+# simple_Fig2B_muscimol_print$table
+```
+
+
+### Stage 1: Acquisition (Days 1-4)
+
+Prior to infusions, all rats acquired conditioned responding to cues A+ and B+ (Figure 1A; main effect of Day `r anova_Fig2A$statistic$Day`, linear trend `r simple_Fig2A_print$statistic$linear`, all remaining effects and interactions *F* < 1.34, *p* > 26).
+
+
+### Stage 2: OFC inactivation abolishes selective inhibition of behaviour (days 5-10)
+
+The saline group successfully acquired the feature negative A+/AX- discrimination (Figure 2B; significant Cue\*Day interaction `r anova_Fig2B_saline$statistic$Day_Cue`, and main effects of Cue `r anova_Fig2B_saline$statistic$Cue`, and Day `r anova_Fig2B_saline$statistic$Day`) by increasing responding over days to the rewarded cue A+ (significant linear increase `r simple_Fig2B_saline_print$statistic$linear_A`), and selectively inhibiting responding to the non-rewarded compound AX- (non-significant linear trend `r simple_Fig2B_saline_print$statistic$linear_AX`). In contrast, the muscimol group did not significantly discriminate between A+ and AX- (non-significant Cue\*Day interaction`r anova_Fig2B_muscimol$statistic$Day_Cue`, or main effect of Cue `r anova_Fig2B_muscimol$statistic$Cue`, but  did show a signficant main effect of Day `r anova_Fig2B_muscimol$statistic$Day`, and a linear increase over days `r simple_Fig2B_muscimol_print$statistic$linear `). These group differences were supported by a significant Group\*Cue\*Day interaction (`r anova_Fig2B$statistic$InfusionGroup_Day_Cue`, as well as a significant Group\*Day interaction `r anova_Fig2B$statistic$InfusionGroup_Day`, and main effect of Group `r anova_Fig2B$statistic$InfusionGroup`). Therefore, the saline group showed behavioural evidence of selective inhibition during the feature negative discrimination which was abolished by intra-OFC infusions of muscimol. While this suggests that OFC function is necessary for selective inhibitory control of behaviour, it is unclear whether learning about the conditioned inhibitor X was also impaired.
+
+### Stage 3: Retraining (days 11-12)
+
+In stage 3, the overall suppression of responding observed in stage 2 persisted temporarily during retraining to cue B drug-free (Figure 2C; significant main effect of Group `r anova_Fig2C$statistic$InfusionGroup`, Day `r anova_Fig2C$statistic$Day`, but no Group\*Day interaction `r anova_Fig2C$statistic$InfusionGroup_Day`). This suggests that the effect of muscimol infusion in stage 2 temporarily and non-selectively lowered overall performance when trained drug free in stage 3. It is possible that this effect is due to the disruption of motivation for the reward or an overall suppression of motor function, however these possibilities were ruled out by the results of the consumption test administered at the end of testing (reported below).
+
+### Summation and retardation test: OFC inactivation during training does not prevent the acquisition of conditioned inhibition (days 13-16)
+
+While OFC inactivation successfully abolished the expression of selective conditioned inhibition in the feature negative discrimination (stage 2, Figure 2C), it is not clear whether this indicates a failure of acquisition of conditioned inhibition or just impaired behavioural expression. To address this question directly, summation and retardation tests of conditioned inhibition (Papini & Bitterman, 1993; Rescorla, 1969) were administered drug-free to allow for any latent learning to be expressed. 
+
+The results of the summation test (Figure 2D) revealed that both groups respond less to the compound BX- than B- (significant main effect of Cue `r anova_Fig2D$statistic$Cue`) which suggests that cue X successfully acquired inhibitory properties during the feature negative training (stage 2). The muscimol group had lower overall responding to all cues than the saline group (Group `r anova_Fig2D$statistic$InfusionGroup`), but the magnitude of the summation effect was not significantly different between groups (Group\*Cue `r anova_Fig2D$statistic$InfusionGroup_Cue`). While the plotted data suggest that the summation effect was weaker in the muscimol group, closer inspection of the data revealed that this was due to the overall lower levels of responding in the muscimol group and more rapid extinction of behaviour during the non-reinforced trials see (Supplemental Figure S2 for data from the first block of non-reinforced trials during summation test). These findings suggest that intra-OFC infusions of muscimol did not disrupt the acquisition of conditioned inhibition to cue X as assessed by a summation test. However, a reduction in responding to the BX compound could also be explained by enhanced attention to cue X, generalisation decrement, or external inhibition. 
+
+To rule out these alternative explanations a retardation test was conducted in which the rate of acquisition to X+ was compared to the relatively novel cue Y+. If cue X has acquired inhibitory properties, then acquisition should be slower to X+ than Y+. Importantly, this result would be incompatible with an account of the summation test appealing to enhanced attention to X, which would predict an increase in the rate of learning. During the retardation test (Figure 2E; days 14-16) acquisition to target cue X+ was significantly slower than to control cue Y+ in both groups (significant main effect of Cue `r anova_Fig2E$statistic$Cue`, and Day `r anova_Fig2E$statistic$Day`, all remaining *F* < 1.08, *p* > .348). Retarded acquisition to X+ relative to Y+ suggests a significant retardation effect of similar magnitude in both the saline and muscimol groups. Together, the results of the summation and retardation tests demonstrate that cue X has indeed acquired conditioned inhibition, even though OFC inactivation abolished discriminative performance during the feature negative training learning phase in stage 2.
+
+
+```{r Fig3 Stats , include=FALSE, message = FALSE, warning=FALSE}
+#Fig3A - Stage 1 Acquisition
+anova <- aov_4(CS_Pre ~ InfusionGroup + (Day|Subject), data = data_Fig3A, anova_table = list(correction = "none", es = "pes"))
+anova_Fig3A <- apa_print(anova, mse = "FALSE",correction = "none",es = "pes")
+## simple effects - linear trend on Day
+simple <- emmeans(anova, ~Day)
+simple_Fig3A_print <- apa_print.emmGrid(contrast(simple, interaction = c("poly"),  adjust = "none"))
+
+#Fig3B - Stage 2 (Infusion)
+anova <- aov_4(CS_Pre ~ InfusionGroup + (Day|Subject), data = data_Fig3B, anova_table = list(correction = "none", es = "pes"))
+anova_Fig3B <- apa_print(anova, mse = "FALSE",correction = "none",es = "pes")
+## simple effects - linear trend on Day
+simple <- emmeans(anova, ~InfusionGroup*Day)
+simple_Fig3B_trend_print <- apa_print.emmGrid(contrast(simple, interaction = c("poly"), by = "InfusionGroup",  adjust = "none"))
+### Simple effects on each day
+simple <- emmeans(anova, ~InfusionGroup*Day)
+simple_Fig3B_print <- apa_print.emmGrid(contrast(simple, interaction = c("pairwise"), by = "Day",  adjust = "tukey"))
+
+#Fig3C - Stage 3 ReAcuisition
+anova <- aov_4(CS_Pre ~ InfusionGroup + (Day|Subject), data = data_Fig3C, anova_table = list(correction = "none", es = "pes"))
+anova_Fig3C <- apa_print(anova, mse = "FALSE",correction = "none",es = "pes")
+
+#Fig3D - Stage 5 Extinction
+anova <- aov_4(CS_Pre ~ InfusionGroup + (Day|Subject), data = data_Fig3D, anova_table = list(correction = "none", es = "pes"))
+anova_Fig3D <- apa_print(anova, mse = "FALSE",correction = "none",es = "pes")
+### Simple effects on each day
+simple <- emmeans(anova, ~InfusionGroup*Day)
+simple_Fig3D_print <- apa_print.emmGrid(contrast(simple, interaction = c("pairwise"), by = "Day",  adjust = "tukey"))
+
+
+# Supplementary Figure Fig_S3A
+anova <- aov_4(MagEntries ~ InfusionGroup + (Infusion*Block5min|Subject), data = data_Fig_S3A, anova_table = list(correction = "none", es = "pes"))
+anova_Fig_S3A <- apa_print(anova, mse = "FALSE",correction = "none",es = "pes")
+
+
+
+# 
+# anova_Fig_S3A$table
+# simple_Fig3B_trend_print$table
+# simple_Fig3D_print$table
+```
+### Control cue Z: OFC inactivation disrupts Pavlovian acquisition
+
+The adverse consequences of disrupting OFC function are usually only detected when task contingencies change (Rudebeck & Murray, 2014; Wilson et al., 2014), but rarely during the initial acquisition of a task when contingencies and response requirements remain constant (M E Walton et al., 2011). Therefore, it is surprising that OFC inactivation during the feature negative discrimination also disrupted the acquisition of responding to control cue Z. Prior to infusions there were no differences in acquisition to Z+ (Figure 3A; main effect of Group `r anova_Fig3A$statistic$InfusionGroup_Day`, Group\*Day interaction `r anova_Fig3A$statistic$InfusionGroup_Day`, main effect of Day `r anova_Fig3A$statistic$Day`; significant linear increase in responding over days `r simple_Fig3A_print$statistic$linear`). During stage 2, infusion of muscimol significantly impaired acquisition (Figure 3B; significant main effect of Group `r anova_Fig3B$statistic$InfusionGroup`, Group\*Day interaction `r anova_Fig3A$statistic$InfusionGroup_Day`, and main effect of Day `r anova_Fig3A$statistic$Day`). There was evidence that the muscimol group did acquire responding over days 5-10 (significant linear increase over days, muscimol `r simple_Fig3B_trend_print$statistic$linear_Muscimol`, saline `r simple_Fig3B_trend_print$statistic$linear_Saline`), however while both groups had similar levels of responding on day 5 (`r simple_Fig3B_print$statistic$Muscimol_Saline_X5`), responding was significantly lower in the muscimol group on days 6-10 (Day 6 `r simple_Fig3B_print$statistic$Muscimol_Saline_X6`, Day 6 `r simple_Fig3B_print$statistic$Muscimol_Saline_X6`, Day 7 `r simple_Fig3B_print$statistic$Muscimol_Saline_X7`, Day 8 `r simple_Fig3B_print$statistic$Muscimol_Saline_X8`, Day 9 `r simple_Fig3B_print$statistic$Muscimol_Saline_X9`, Day 10 `r simple_Fig3B_print$statistic$Muscimol_Saline_X10`). This suggests that the OFC plays a role in Pavlovian acquisition.
+
+Suppressed responding to cue Z persisted in the muscimol group when trained drug-free in subsequent sessions (Figure 3C, days 11-12; significant main effect of Group `r anova_Fig3C$statistic$InfusionGroup`, Day `r anova_Fig3C$statistic$Day`, but no Group\*Day interaction `r anova_Fig3C$statistic$InfusionGroup_Day`). This difference was also evident when cue Z underwent extinction during the retardation test (Figure 3D, days 14-16; significant main effect of Group `r anova_Fig3D$statistic$InfusionGroup`, Day `r anova_Fig3D$statistic$Day`, and Group\*Day interaction `r anova_Fig3D$statistic$InfusionGroup_Day`; muscimol significantly lower than saline on Day 14 `r simple_Fig3D_print$statistic$Muscimol_Saline_X14` , but not 15 `r simple_Fig3D_print$statistic$Muscimol_Saline_X15`, or 16 `r simple_Fig3D_print$statistic$Muscimol_Saline_X16`). However, it is likely that this group difference in extinction is the result of the pre-existing differences in responding at the end of stage 3. Overall, the pattern of data suggests that muscimol inactivation of OFC disrupts both learning and behavioural expression of simple Pavlovian cue-outcome associations.  
+
+### OFC inactivation does not disrupt the motivation to consume food reward
+
+The significant suppression of responding to all cues following OFC inactivation observed in stage 2 (Figure 2B, 3B) may have been a consequence of reduced motivation to consume the food reward. This explanation is unlikely given the absence of uneaten rewards following sessions in stage 2, however a more direct test of this explanation was necessary to rule out the possibility that the rewards were not eaten towards the end of the session when muscimol was no longer effective. Therefore, a consumption test was conducted within the test chambers with all animals being tested 10 mins after an infusion to ensure that the muscimol was maximally effective. Prior to the consumption test one muscimol and two saline group rats lost their cannula patency and were not eligible for testing (saline n = 11, muscimol n = 14). All animals consumed all pellets by the end of the session on both days, regardless of infusion group. Similarly, there was no evidence that muscimol infusion deferentially affected the vigour or frequency of magazine approach for freely available reward (Supplemental Figure S3; no significant effect or interactions with Group, all *F* < 0.94, *p* > .343). 
+
+
+```{r Fig4 Stats , include=FALSE, message = FALSE, warning=FALSE}
+
+
+
+#Fig_S4
+anova <- aov_4(CS_Pre ~ InfusionGroup + (Day*Cue|Subject), data = data_Fig_S4, anova_table = list(correction = "none", es = "pes"))
+anova_Fig_S4 <- apa_print(anova, mse = "FALSE",correction = "none",es = "pes")
+
+
+#Fig4A
+anova <- aov_4(CS_Pre ~ InfusionGroup + (Day*Cue*trialblock6|Subject), data = data_Fig4A, anova_table = list(correction = "none", es = "pes"))
+anova_Fig4A <- apa_print(anova, mse = "FALSE",correction = "none",es = "pes")
+
+
+### Simple effects on each day
+simple <- emmeans(anova, ~Cue*Day)
+simple_Fig4A_print <- apa_print.emmGrid(contrast(simple, interaction = c("poly"), by = "Cue",  adjust = "tukey"))
+
+### Simple effects within session
+simple <- emmeans(anova, ~InfusionGroup*trialblock6)
+simple_Fig4A_withinsess_print <- apa_print.emmGrid(contrast(simple, interaction = c("pairwise"), by = "trialblock6",  adjust = "tukey"))
+
+
+
+####First block simple effects
+
+data_Fig4A_firstblock <- data_Fig4A %>% 
+  filter(trialblock6 == 1)
+
+anova <- aov_4(CS_Pre ~ InfusionGroup + (Day*Cue|Subject), data = data_Fig4A_firstblock, anova_table = list(correction = "none", es = "pes"))
+anova_Fig4A_firstblock <- apa_print(anova, mse = "FALSE",correction = "none",es = "pes")
+
+### Simple effects on each day
+simple <- emmeans(anova, ~Day*InfusionGroup)
+simple_Fig4A_firstblock_print <- apa_print.emmGrid(contrast(simple, interaction = c("poly"), by = "InfusionGroup", adjust = "none"))
+
+
+
+
+
+#Fig4B
+anova <- aov_4(CS_Pre ~ InfusionGroup + (Cue*trialblock3|Subject), data = data_Fig4B, anova_table = list(correction = "none", es = "pes"))
+anova_Fig4B <- apa_print(anova, mse = "FALSE",correction = "none",es = "pes")
+
+#Fig4C
+anova <- aov_4(CS_Pre ~ InfusionGroup + (Cue|Subject), data = data_Fig4C, anova_table = list(correction = "none", es = "pes"))
+anova_Fig4C <- apa_print(anova, mse = "FALSE",correction = "none",es = "pes")
+
+
+#Fig4D
+anova <- aov_4(CS_Pre ~ InfusionGroup + (Day*Cue|Subject), data = data_Fig4D, anova_table = list(correction = "none", es = "pes"))
+anova_Fig4D <- apa_print(anova, mse = "FALSE",correction = "none",es = "pes")
+
+#Fig_S5AB_A
+anova <- aov_4(Distance ~ InfusionGroup + (Block5mins|Subject), data = data_Fig_S5AB, anova_table = list(correction = "none", es = "pes"))
+anova_Fig_S5AB_A<- apa_print(anova, mse = "FALSE",correction = "none",es = "pes")
+
+#Fig_S5AB_B
+anova <- aov_4(`Vertical Counts` ~ InfusionGroup + (Block5mins|Subject), data = data_Fig_S5AB, anova_table = list(correction = "none", es = "pes"))
+anova_Fig_S5AB_B <- apa_print(anova, mse = "FALSE",correction = "none",es = "pes")
+
+
+# 
+# anova_Fig4C$table
+# simple_Fig4A_print$table
+# 
+# anova_Fig4A_firstblock$table
+# simple_Fig4A_firstblock_print$table
+# 
+# simple_Fig4A_withinsess_print$table
+```
+
+## Experiment 2: OFC inactivation does not disrupt Pavlovian extinction learning by impairing the acquisition of conditioned inhibition 
+
+
+### Stage 1: Acquisition (days 1-9)
+
+Acquisition of discriminative responding to cues A, B and C did not differ between (infusion) groups across stage 1 of acquisition (Supplemental Figure S4; significant main effect of Day `r anova_Fig_S4$statistic$Day`, all remaining effects  *F* < 0.83, *p* > .646; See Supplemental Figure S6 for responding to Cue Z).
+
+### Stage 2: OFC inactivation enhances within- but disrupts between session Pavlovian extinction (days 10-13)
+
+Extinction of cue C following infusions in stage 2 allowed for a replication of the findings of (Panayi & Killcross, 2014) that OFC inactivation disrupts between- but not within- session extinction (Figure 4A). Extinction to cue A in compound with cue X was designed to test whether OFC inactivation impairs Pavlovian extinction by disrupting the formation of conditioned inhibition that may form during extinction (Delamater, 2004; Rescorla, 1969). Overall, in both groups extinction to AX- was significantly slower than to C- (significant Cue\*Day interaction `r anova_Fig4A$statistic$Day_Cue`, but no interactions between Cue and Group, Day, or trial Block *F* < 2.30, *p* > .112; both cues showed significant linear decreases in responding over days, but this was faster for C- `r simple_Fig4A_print$statistic$linear_C`,  than AX- `r simple_Fig4A_print$statistic$linear_AX`). Reduced responding to the compound AX- compared to C- is consistent with external inhibition or generalisation decrement accounts of the novel presence of cue X suppressing responding. 
+
+Between-session extinction was significantly impaired in the muscimol group (Group\*Day interaction `r anova_Fig4A$statistic$InfusionGroup_Day`, main effect of Day `r anova_Fig4A$statistic$Day`). This effect was confirmed by a planned analysis looking only at the first block within each day (main effect of Group `r anova_Fig4A_firstblock$statistic$InfusionGroup`, and Day `r anova_Fig4A_firstblock$statistic$Day`) as a measure of between-session extinction retention (Panayi & Killcross, 2014). This suggests that muscimol inactivation significantly impaired but did not completely block between-session extinction.
+
+In contrast to impaired between-session extinction, muscimol significantly enhanced within-session extinction comapred to the saline group (Day\*Block interaction `r anova_Fig4A$statistic$Day_trialblock6`, main effect of Block `r anova_Fig4A$statistic$trialblock6`). Overall, muscimol responding was greater than Saline in Block 1 (`r simple_Fig4A_withinsess_print$statistic$Muscimol_Saline_X1`), but significantly lower than saline in Block 2 (`r simple_Fig4A_withinsess_print$statistic$Muscimol_Saline_X2`), and Block 3 (`r simple_Fig4A_withinsess_print$statistic$Muscimol_Saline_X3`).
+
+### Stage 3 Extinction test (Day 14)
+
+Drug free tests of A- and C- revealed that the muscimol group responded significantly higher than the saline group (Figure 4B; main effect of Group `r anova_Fig4B$statistic$InfusionGroup`) (Figure 3). Impaired retention of extinction to cue C in the muscimol group when tested drug free successfully replicates the findings of (Panayi & Killcross, 2014) showing that OFC inactivation disrupts extinction learning. Surprisingly, there was no evidence that compound extinction of cue A with cue X had “protected” cue A from extinction relative to cue C, in fact the mean responding to both cues were identical in both groups (main effect of Cue `r anova_Fig4B$statistic$Cue`, no interactions with Group, Day, and trial Block *F* < 0.13, *p* > .944). 
+
+### Stage 4 Summation test (Day 15)
+
+Responding to compound BX was lower than to cue B alone in both groups at test (Figure 4C; main effect of Cue `r anova_Fig4C$statistic$Cue`, but no effect of Group `r anova_Fig4C$statistic$InfusionGroup`, or Group\*Cue interaction `r anova_Fig4C$statistic$InfusionGroup_Cue`). Therefore, the summation test provided evidence of conditioned inhibition to cue X in both groups.
+
+### Stage 5 Retardation test (Days 16-18)
+
+Responding during the retardation test suggested that the rate of acquisition to cue Y was greater than cue X in the muscimol group but not the saline group (Figure 4D). However, this observation was not fully supported statistically (only a significant main effect of Day`r anova_Fig4D$statistic$Day`, all remaining effects *F* < 2.68, *p* > .116). Taken together, the failure to pass both the summation and retardation test indicates that there is insufficient evidence of conditioned inhibition to cue X. This suggests that conditioned inhibition does not significantly contribute to the extinction procedure employed here and previously (Panayi & Killcross, 2014).
+
+### OFC inactivation does not impair spontaneous locomotor activity
+
+One possible account of the enhanced within-session extinction observed in the muscimol group in Stage 2 is that muscimol infusions generally suppressed locomotor activity and exploration. A novel context locomotor assay was performed in these animals, again following infusion of either saline or muscimol which revealed no difference in the total levels or time course of exploratory activity (Supplemental Figure S5; significant main effect of Block `r anova_Fig_S5AB_A$statistic$Block5mins`, but no effect of Group `r anova_Fig_S5AB_A$statistic$InfusionGroup`, or Group\*Block interaction `r anova_Fig_S5AB_A$statistic$InfusionGroup_Block5mins`) or orienting behaviour between groups (significant main effect of Block `r anova_Fig_S5AB_B$statistic$Block5mins`, but no effect of Group `r anova_Fig_S5AB_B$statistic$InfusionGroup`, or Group\*Block interaction `r anova_Fig_S5AB_B$statistic$InfusionGroup_Block5mins`). This finding rules out non-specific behavioural accounts fo the effects of intra-OFC muscimol inactivation.
+
+
+```{r FigS6 Stats Supplementary Figure Caption only, include=FALSE, message = FALSE, warning=FALSE}
+
+
+
+#Fig_S6A_Expt2CueZ
+
+anova <- aov_4(CS_Pre ~ InfusionGroup + (Day|Subject), data = data_Fig_S6A_Expt2CueZ, anova_table = list(correction = "none", es = "pes"))
+anova_S6A_Expt2CueZ <- apa_print(anova, mse = "FALSE",correction = "none",es = "pes")
+
+
+#data_Fig_S6B_Expt2CueZ
+anova <- aov_4(CS_Pre ~ InfusionGroup + (Day|Subject), data = data_Fig_S6B_Expt2CueZ, anova_table = list(correction = "none", es = "pes"))
+anova_S6B_Expt2CueZ <- apa_print(anova, mse = "FALSE",correction = "none",es = "pes")
+
+
+anova_S6B_Expt2CueZ$table
+anova_S6A_Expt2CueZ$statistic$InfusionGroup_Day
+
+
+```
+### Supplemental Figure S6
+
+Rats in both groups acquired responding to Z+ in Stage 1 at a similar rate (significant main effect of Day `r anova_S6A_Expt2CueZ$statistic$Day`, but no effect of Group `r anova_S6A_Expt2CueZ$statistic$InfusionGroup`, or Group\*Day interaction `r anova_S6A_Expt2CueZ$statistic$InfusionGroup_Day`). During the retardation test, responding to Z- also decreased at a similar rate in both groups (significant main effect of Day `r anova_S6B_Expt2CueZ$statistic$Day`, but no effect of Group `r anova_S6B_Expt2CueZ$statistic$InfusionGroup`, or Group\*Day interaction `r anova_S6B_Expt2CueZ$statistic$InfusionGroup_Day`).
+
+
+
+
+
+
+
+
+
+

@@ -1817,7 +1817,7 @@ scalelims_breaks = 5
     
     SKR216_Satiety_sPITTest_sPITIndex <- summary %>%
       filter(Subject  != 29 & Subject  != 31) %>% 
-      ggplot(mapping = aes(x = Deval_index, y = `same_vs_diff_Devalued`)) +
+      ggplot(mapping = aes(x = Deval_index, y = `Diff_NDev_vs_Dev`)) +
       # stat_summary(fun = "mean", geom = "bar", size = 1, position = position_dodge(width = .9)) +
       # stat_summary(fun.data = "mean_se", geom = "errorbar", width = 0, size = 0.2, position = position_dodge(width = 0.9), colour = "black", linetype = 1, show.legend = FALSE) +
       geom_point() +
