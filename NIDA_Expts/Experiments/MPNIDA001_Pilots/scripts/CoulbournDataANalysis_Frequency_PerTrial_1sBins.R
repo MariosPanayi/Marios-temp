@@ -91,6 +91,9 @@ rawdata <- cbind(rawdata,trialNum)
 
 ## Set up new dataframe
 
+A1_times <- 
+
+
 for (i in c(1:totalTrials)) {
   trialIdx = c(trialTimes[i]:(trialTimes[i+1]-1))
   
@@ -107,7 +110,7 @@ for (i in c(1:totalTrials)) {
   
 }
 
-
+rawdata$Time[which(rawdata[,14] == 1)]
 
 
 
