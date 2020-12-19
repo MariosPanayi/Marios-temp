@@ -60,7 +60,7 @@ bin = c(S["Pre"], S["Pel"])
 
 # Change time units to seconds --------------------------------------------
 
-rawdata %>% 
+rawdata <- rawdata %>% 
   mutate(Time = Time*timebase/1000)
 
 # Calculate Trials --------------------------------------------------------
@@ -91,26 +91,38 @@ rawdata <- cbind(rawdata,trialNum)
 
 ## Set up new dataframe
 
-A1_times <- 
+## get all times of interest to bin
+## 
 
 
-for (i in c(1:totalTrials)) {
-  trialIdx = c(trialTimes[i]:(trialTimes[i+1]-1))
-  
-  ## Find row values for the tranisition state entries that are in the "bin" list
-  
-  statechange_start = which(!is.na(match(rawdata$`Transition State`, bin)))
-  
-  
-  statechange_idx = which(rawdata$`Transition State` !=0)
-  statechange_ID = rawdata$`Transition State`[statechange_idx]
-  statechange_trialNUm = rawdata$trialNum[statechange_idx]
-  
-  # data.frame(statechange_idx,statechange_ID,statechange_trialNUm)
-  
-}
 
-rawdata$Time[which(rawdata[,14] == 1)]
+
+
+## State change info
+statechange_idx = which(rawdata$`Transition State` !=0)
+statechange_ID = rawdata$`Transition State`[statechange_idx]
+statechange_Time = rawdata$Time[statechange_idx]
+statechange_Time = rawdata$trialNum[statechange_idx]
+## Target bin state info
+binstates_idx =  which(!is.na(match(statechange_ID, bin)))
+binstart_Time = statechange_Time[binstates_idx]
+binend_Time = statechange_Time[binstates_idx+1]
+binwidth = binend_Time - binstart_Time
+binTrialNum = statechange_Time[binstates_idx]
+
+# 
+# statechange_start = which(!is.na(match(rawdata$`Transition State`, bin)))
+
+# 
+# statechange_idx = which(rawdata$`Transition State` !=0)
+# for (i in c(1:length(statechange_idx))) {
+# 
+#   if 
+#   
+#   
+# }
+# 
+# rawdata$Time[which(rawdata[,14] == 1)]
 
 
 
