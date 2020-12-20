@@ -26,13 +26,25 @@ library(emmeans)
 # library(redoc)
 
 
-# Read in data file -------------------------------------------------------
+# Specify file path-------------------------------------------------------
 
 filename <- "CRF_MagTrain_Sess1.txt"
-folderpath <- here("rawdata", "Marios",'2_ConditionedReinforcement')
-filepath <- here(folderpath, filename)
+folderpath <- here("rawdata", "Marios",'2_ConditionedReinforcement', 'MagTrain_Day1')
+
+
+
+
+
+# Function: Data splitter -------------------------------------------------
+
+coulbourn_rawdatasplit <- function(filename,folderpath) {
+  
+  filepath <- here(folderpath, filename)
+
 # Coulbourn files are tab separated value .txt files
 rawdata <- read_tsv(filepath)
+
+# Clean up variable names -------------------------------------------------
 
 # Clean up column naming conventions - Assumes 4 response options on Coulbourn setup
 names(rawdata)[12] <- "A1_On"
@@ -45,12 +57,10 @@ names(rawdata)[18] <- "A3_Off"
 names(rawdata)[19] <- "A4_Off"
 
 
-# Separate subjects -------------------------------------------------------
+# Separate subjects and save individual CSV files -------------------------------------------------------
 # Coulbourn will put all the data you have asked for in a long format stack with subjects changing after a variable number of columns
 ## Note that if you try and extract by identifying unique subjects you might accidentally ignore that a subject was run multiple times
 ## Instead, Coulbourn timetsamps always start at t = 0, so this can be used to identify the indices of every new subject
-
-
 
 # Start and end indices of each subject
 start = which(rawdata$Time == 0)
@@ -71,13 +81,24 @@ for (i in c(1:length(start))) {
   SubjectNum = paste(c("Rat", temp$Subject[1]), collapse = "")
   SubjectNum = str_replace_all(SubjectNum, "_", "")
   
-  RunNumber = paste(c("Run", temp$Run[1]), collapse = "")
+  containingfoldername <- strsplit(folderpath, '/')
+  containingfoldername <- containingfoldername[[1]][length(containingfoldername[[1]])]
+  containingfoldername <- str_replace_all(containingfoldername, "_", "")
+
   # Clean RUn number
-  tempfilename <- paste(c(prefix, SubjectNum,RunNumber), collapse = "_")
+  tempfilename <- paste(c(prefix, SubjectNum, containingfoldername), collapse = "_")
   tempfilename <- paste(tempfilename, ".csv", sep = "")
   
   filepath <- here(folderpath, tempfilename)
  write_csv(temp, filepath)
   
 }
+
+
+
+# end function
+}
+
+
+coulbourn_rawdatasplit(filename,folderpath) 
 
