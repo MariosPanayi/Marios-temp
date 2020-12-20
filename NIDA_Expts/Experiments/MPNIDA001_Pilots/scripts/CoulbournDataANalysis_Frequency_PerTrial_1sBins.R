@@ -30,7 +30,7 @@ library(emmeans)
 # Load Individual File ----------------------------------------------------
 
 ## Set file path
-filename <- "CRFMagTrainSess1_Rat10_Run1.csv"
+filename <- "CRFMagTrainSess1_Rat11_Run1.csv"
 folderpath <- here("rawdata", "Marios",'2_ConditionedReinforcement')
 filepath <- here(folderpath, filename)
 
@@ -137,61 +137,73 @@ bin_trial <- bin_trial[-1]
 
 # Count Frequency of events in bins ---------------------------------------
 
+
+#### Change this into a function so you can pass each action into it and append the output
+
 # Extract data
+#Check data for errors
 A3_on <- rawdata$Time[rawdata$A3_On == 1]
 A3_off <- rawdata$Time[rawdata$A3_Off == 1]
 
+# First action initiated before recording started
+# Set an action initiation at time = 0. This will artificially inflate the number of actions, but start of session is not interesting
+if (A3_on[1] > A3_off[1]) {
+  A3_on <- c(0, A3_on)
+}
+
+# If last value of action_start is greater than the last value of action ending, then recording stopped while action still in process
+# Set an action ending at the final session end time
+if (tail(A3_on,1) > tail(A3_off,1)) {
+  A3_off <- c(A3_off, tail(rawdata$Time,1))
+}
+
+# Check for any actions that don't have an exit recorded. Assumption = action ended faster than time resolution of the system
+# Check for any actions that don't have a start. Assumption = action started after last action ended, but within time resolution of the system
+for (i in c(1:(length(A3_on)-1))) {
+  if (A3_on[i+1] < A3_off[i]) {
+    A3_off <- c(A3_off[c(1:(i-1))], (A3_on[i+1] + timebase/1000) , A3_off[c(i:length(A3_off))])
+    print("Check timestamps: actions happened without an end signal")
+  }
+}
+
+for (i in c(1:(length(A3_off)-1))) {
+  if (A3_off[i+1] < A3_on[i]) {
+    A3_on <- c(A3_on[c(1:(i-1))], (A3_off[i+1] + timebase/1000) , A3_on[c(i:length(A3_on))])
+    print("Check timestamps: actions ended without a corresponding enrty signal")
+  }
+}
+
+
+
+## Calculate frequency and duration of actions
 # Initialise variable
 bin_A3_freq <- replicate(length(bin_time), 0)
 bin_A3_dur <- replicate(length(bin_time), 0)
 for (i in c(1:length(bin_time))){
   bin_A3_freq[i] = sum(A3_on >= bin_time[i] & A3_on < (bin_time[i] + timebinwidth))
   
-  
+  bin_start <- bin_time[i]
+  bin_end <- bin_time[i] + timebinwidth
   for (j in c(1:length(A3_on))){
     # action starts before timebin and ends within timebin
-    if ( A3_on[j] <= bin_time[i] & A3_off[j] < (bin_time[i] + timebinwidth) ) {
-      bin_A3_dur[i] <- bin_A3_dur[i] + (A3_off[j] - bin_time[i])
-    # action within timebin  
-    } else if ( A3_on[j] >= bin_time[i] & A3_off[j] < (bin_time[i] + timebinwidth) ) {
+    if ( A3_on[j] < bin_start & A3_off[j] >= bin_start & A3_off[j] < bin_end) {
+      bin_A3_dur[i] <- bin_A3_dur[i] + (A3_off[j] - bin_start)
+    # action after timebin starts and before timebin ends
+    } else if ( A3_on[j] >= bin_start & A3_off[j] < bin_end ) {
       bin_A3_dur[i] <- bin_A3_dur[i] + (A3_off[j] - A3_on[j])
-    # action before bin ends and continues throughout the bin
-    } else if ( A3_on[j] < (bin_time[i] + timebinwidth) & A3_off[j] >= (bin_time[i] + timebinwidth) ) {
-      bin_A3_dur[i] <- bin_A3_dur[i] + ((bin_time[i] + timebinwidth) - timebinwidth)
+    # action starts within the timebin , and ends after timebin
+    } else if ( A3_on[j] >= bin_start & A3_on[j] < bin_end & A3_off[j] >= bin_end ) {
+      bin_A3_dur[i] <- bin_A3_dur[i] + bin_end - A3_on[j]
       # action before bin starts and continues until after bin
-    } else if ( A3_on[j] <= bin_time[i] & A3_off[j] > (bin_time[i] + timebinwidth) ) {
+    } else if ( A3_on[j] <= bin_start & A3_off[j] > bin_end ) {
       bin_A3_dur[i] <- bin_A3_dur[i] + timebinwidth
-    } else { bin_A3_dur[i] = bin_A3_dur[i]}
+    } else {bin_A3_dur[i] <- bin_A3_dur[i]}
   }
 }
 
 
-#Check data for errors
-A3_on <- rawdata$Time[rawdata$A3_On == 1]
-A3_off <- rawdata$Time[rawdata$A3_Off == 1]
-
-# Action initiated before recording started
-# Set an action initiation at time = 0. This will artificially inflate the number of actions, but start of session is not interesting
-if (A3_on[1] > A3_off[1]) {
-  A3_on <- c(0, A3_on)
-}
-
-# If last value of action start is greater than the last value of action ending, then recording stopped while action still in process
-# Set an action ending at the final session end time
-if (tail(A3_on,1) > tail(A3_off,1)) {
-  A3_off <- c(A3_off, tail(rawdata$Time,1))
-}
 
 
-
-
-# # If there is n
-# for (i in c(1:(length(A3_on)-1))) {
-#   if A3_on[i+1] < A3_off[i]{
-#     
-#   }
-#   
-# }
 
 # names(rawdata)[12] <- "A1_On"
 # names(rawdata)[13] <- "A2_On"
