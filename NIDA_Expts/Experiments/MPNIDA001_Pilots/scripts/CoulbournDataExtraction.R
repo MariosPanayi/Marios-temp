@@ -29,20 +29,21 @@ library(emmeans)
 # Read in data file -------------------------------------------------------
 
 filename <- "CRF_MagTrain_Sess1.txt"
-folderpath <- here("rawdata", "Marios",'ConditionedReinforcement')
+folderpath <- here("rawdata", "Marios",'2_ConditionedReinforcement')
 filepath <- here(folderpath, filename)
 # Coulbourn files are tab separated value .txt files
 rawdata <- read_tsv(filepath)
 
 # Clean up column naming conventions - Assumes 4 response options on Coulbourn setup
-names(rawdata)[12] <- "LLR_On"
-names(rawdata)[13] <- "RLR_On"
-names(rawdata)[14] <- "Mag_On"
+names(rawdata)[12] <- "A1_On"
+names(rawdata)[13] <- "A2_On"
+names(rawdata)[14] <- "A3_On"
 names(rawdata)[15] <- "A4_On"
-names(rawdata)[16] <- "LLR_Off"
-names(rawdata)[17] <- "RLR_Off"
-names(rawdata)[18] <- "Mag_Off"
+names(rawdata)[16] <- "A1_Off"
+names(rawdata)[17] <- "A2_Off"
+names(rawdata)[18] <- "A3_Off"
 names(rawdata)[19] <- "A4_Off"
+
 
 # Separate subjects -------------------------------------------------------
 # Coulbourn will put all the data you have asked for in a long format stack with subjects changing after a variable number of columns

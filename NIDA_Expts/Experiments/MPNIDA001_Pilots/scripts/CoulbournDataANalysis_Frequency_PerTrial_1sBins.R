@@ -31,7 +31,7 @@ library(emmeans)
 
 ## Set file path
 filename <- "CRFMagTrainSess1_Rat10_Run1.csv"
-folderpath <- here("rawdata", "Marios",'ConditionedReinforcement')
+folderpath <- here("rawdata", "Marios",'2_ConditionedReinforcement')
 filepath <- here(folderpath, filename)
 
 ## Read in data
@@ -56,6 +56,17 @@ timebinwidth = 1
 nobin = S["ITI"]
 
 bin = c(S["Pre"], S["Pel"])
+
+## Key to convert actions
+
+key_actions <- c("LLR_On" = "A1_On",
+  "RLR_On" = "A2_On",
+  "Mag_On" = "A3_On",
+  "A4_On" = "A4_On",
+  "LLR_Off" = "A1_Off",
+  "RLR_Off" = "A2_Off",
+  "Mag_Off" = "A3_Off",
+  "A4_Off" = "A4_Off")
 
 
 # Change time units to seconds --------------------------------------------
@@ -88,42 +99,108 @@ rawdata <- cbind(rawdata,trialNum)
 
 
 # Create time-binned data - Frequency --------------------------------------
-
-## Set up new dataframe
-
-## get all times of interest to bin
-## 
-
-
-
-
-
 ## State change info
 statechange_idx = which(rawdata$`Transition State` !=0)
 statechange_ID = rawdata$`Transition State`[statechange_idx]
 statechange_Time = rawdata$Time[statechange_idx]
-statechange_Time = rawdata$trialNum[statechange_idx]
+statechange_TrialNum = rawdata$trialNum[statechange_idx]
 ## Target bin state info
 binstates_idx =  which(!is.na(match(statechange_ID, bin)))
+binstate_ID = statechange_ID[binstates_idx]
 binstart_Time = statechange_Time[binstates_idx]
 binend_Time = statechange_Time[binstates_idx+1]
-binwidth = binend_Time - binstart_Time
-binTrialNum = statechange_Time[binstates_idx]
+binTrialNum = statechange_TrialNum[binstates_idx]
 
-# 
-# statechange_start = which(!is.na(match(rawdata$`Transition State`, bin)))
+# Calculate a new variable with interval units for each state (e.g. 1s bins)
+bin_time <- 0
+bin_state <- 0
+bin_trial <- 0
+for (i in  c(1:length(binstates_idx))) {
+  
+  # Timebin intervals
+  Temp <- seq(from = binstart_Time[i], to = binend_Time[i] - timebinwidth, by = timebinwidth)
+  bin_time <- c(bin_time, Temp)
+  # State IDS
+  Temp <- replicate(length(Temp),binstate_ID[i])
+  bin_state <- c(bin_state, Temp)
+  # Trial Number
+  Temp <- replicate(length(Temp),binTrialNum[i])
+  bin_trial <- c(bin_trial, Temp)
+  #
+}
+# Clear initialised value from position 1 of vars
+bin_time <- bin_time[-1] 
+bin_state <- bin_state[-1] 
+bin_trial <- bin_trial[-1] 
 
-# 
-# statechange_idx = which(rawdata$`Transition State` !=0)
-# for (i in c(1:length(statechange_idx))) {
-# 
-#   if 
-#   
+
+
+# Count Frequency of events in bins ---------------------------------------
+
+# Extract data
+A3_on <- rawdata$Time[rawdata$A3_On == 1]
+A3_off <- rawdata$Time[rawdata$A3_Off == 1]
+
+# Initialise variable
+bin_A3_freq <- replicate(length(bin_time), 0)
+bin_A3_dur <- replicate(length(bin_time), 0)
+for (i in c(1:length(bin_time))){
+  bin_A3_freq[i] = sum(A3_on >= bin_time[i] & A3_on < (bin_time[i] + timebinwidth))
+  
+  
+  for (j in c(1:length(A3_on))){
+    # action starts before timebin and ends within timebin
+    if ( A3_on[j] <= bin_time[i] & A3_off[j] < (bin_time[i] + timebinwidth) ) {
+      bin_A3_dur[i] <- bin_A3_dur[i] + (A3_off[j] - bin_time[i])
+    # action within timebin  
+    } else if ( A3_on[j] >= bin_time[i] & A3_off[j] < (bin_time[i] + timebinwidth) ) {
+      bin_A3_dur[i] <- bin_A3_dur[i] + (A3_off[j] - A3_on[j])
+    # action before bin ends and continues throughout the bin
+    } else if ( A3_on[j] < (bin_time[i] + timebinwidth) & A3_off[j] >= (bin_time[i] + timebinwidth) ) {
+      bin_A3_dur[i] <- bin_A3_dur[i] + ((bin_time[i] + timebinwidth) - timebinwidth)
+      # action before bin starts and continues until after bin
+    } else if ( A3_on[j] <= bin_time[i] & A3_off[j] > (bin_time[i] + timebinwidth) ) {
+      bin_A3_dur[i] <- bin_A3_dur[i] + timebinwidth
+    } else { bin_A3_dur[i] = bin_A3_dur[i]}
+  }
+}
+
+
+#Check data for errors
+A3_on <- rawdata$Time[rawdata$A3_On == 1]
+A3_off <- rawdata$Time[rawdata$A3_Off == 1]
+
+# Action initiated before recording started
+# Set an action initiation at time = 0. This will artificially inflate the number of actions, but start of session is not interesting
+if (A3_on[1] > A3_off[1]) {
+  A3_on <- c(0, A3_on)
+}
+
+# If last value of action start is greater than the last value of action ending, then recording stopped while action still in process
+# Set an action ending at the final session end time
+if (tail(A3_on,1) > tail(A3_off,1)) {
+  A3_off <- c(A3_off, tail(rawdata$Time,1))
+}
+
+
+
+
+# # If there is n
+# for (i in c(1:(length(A3_on)-1))) {
+#   if A3_on[i+1] < A3_off[i]{
+#     
+#   }
 #   
 # }
+
+# names(rawdata)[12] <- "A1_On"
+# names(rawdata)[13] <- "A2_On"
+# names(rawdata)[14] <- "A3_On"
+# names(rawdata)[15] <- "A4_On"
+# names(rawdata)[16] <- "A1_Off"
+# names(rawdata)[17] <- "A2_Off"
+# names(rawdata)[18] <- "A3_Off"
+# names(rawdata)[19] <- "A4_Off"
 # 
-# rawdata$Time[which(rawdata[,14] == 1)]
-
-
-
+# 
 
