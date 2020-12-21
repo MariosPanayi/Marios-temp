@@ -47,17 +47,24 @@ coulbourn_rawdatasplit <- function(filename,folderpath) {
   # for each subject 
   for (i in c(1:length(start))) {
     temp <- rawdata[start[i]:end[i], ]
+    
+    containingfoldername <- strsplit(folderpath, '/')
+    containingfoldername <- containingfoldername[[1]][length(containingfoldername[[1]])]
+    # containingfoldername <- str_replace_all(containingfoldername, "_", "")
+    
+    ## Add a new column with the containing folder name
+    ## Add a new column with the containing filename
+    temp$folder <- replicate(nrow(temp), containingfoldername)
+      temp$file <- replicate(nrow(temp), prefix)
+    
     # save temp data with appropriate filename
     # Clean SubjNumber
     SubjectNum = paste(c("Rat", temp$Subject[1]), collapse = "")
     SubjectNum = str_replace_all(SubjectNum, "_", "")
-    
-    containingfoldername <- strsplit(folderpath, '/')
-    containingfoldername <- containingfoldername[[1]][length(containingfoldername[[1]])]
-    containingfoldername <- str_replace_all(containingfoldername, "_", "")
+  
     
     # Clean RUn number
-    tempfilename <- paste(c(prefix, SubjectNum, containingfoldername), collapse = "_")
+    tempfilename <- paste(c(prefix, SubjectNum), collapse = "_")
     tempfilename <- paste(tempfilename, ".csv", sep = "")
     
     filepath <- here(folderpath, tempfilename)
@@ -183,6 +190,9 @@ coulbourn_processdata_Pavlovian_timebin <- function(filename,folderpath,S,timeba
     # Time within the State
     Temp <- seq(from = timebinwidth, to = length(Temp), by = timebinwidth)
     bin_timewithin <- c(bin_timewithin, Temp)
+    
+    
+    
   }
   # Clear initialised value from position 1 of vars
   bin_time <- bin_time[-1] 
@@ -304,6 +314,8 @@ coulbourn_processdata_Pavlovian_timebin <- function(filename,folderpath,S,timeba
   
   
   ## Add session/program/subject information
+  folder <- replicate(length(bin_trial), rawdata$folder[1])
+  file <- replicate(length(bin_trial), rawdata$file[1])
   savename <- replicate(length(bin_trial), filename)
   subject <- replicate(length(bin_trial), rawdata$Subject[1])
   protocol <- replicate(length(bin_trial), rawdata$Protocol[1])
@@ -314,7 +326,7 @@ coulbourn_processdata_Pavlovian_timebin <- function(filename,folderpath,S,timeba
   session <- replicate(length(bin_trial), rawdata$Session[1])
   
   ## Combine all the data together
-  data_bin <- cbind(savename, subject, protocol, station, run, project, userID, session, bin_trial, bin_state, bin_time, bin_timewithin, data_bin)
+  data_bin <- cbind(folder, file, savename, subject, protocol, station, run, project, userID, session, bin_trial, bin_state, bin_time, bin_timewithin, data_bin)
   # convert to dataframe for saving
   data_bin <- as.data.frame(data_bin)
   
