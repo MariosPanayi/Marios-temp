@@ -20,7 +20,9 @@ projectdatafolder <- c("1_SpecificCI")
 
 ## Final level of folders contianing the relevant .txt Coulbourn files
 listofdatafolders <- c("Acquisition_Stage1_Day1",
-                       "Acquisition_Stage1_Day2")
+                       "Acquisition_Stage1_Day2",
+                       "Acquisition_Stage1_Day3",
+                       "Acquisition_Stage1_Day4")
 
 
 #  extract data filenames, only .txt --------------------------------------
@@ -272,6 +274,6 @@ rawdata <- rawdata %>%
 # Save as CSV -------------------------------------------------------------
 
 savefolderpath <- here("rawdata","Marios","1_SpecificCI","CombinedData")
-savefilename <- "CRF_ProcessedData_pertrial_1sbins.csv"
-
+savefilename <- "CI_ProcessedData_pertrial_1sbins.csv"
+dir.create(savefolderpath)
 write_csv(rawdata,here(savefolderpath,savefilename))
