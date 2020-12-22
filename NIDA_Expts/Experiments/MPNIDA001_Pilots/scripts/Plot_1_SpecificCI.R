@@ -68,14 +68,38 @@ filename <- "CI_ProcessedData_pertrial_1sbins.csv"
 
 rawdata <- read_csv(here(folderpath,filename))
 
-data_averagepersession <- rawdata %>% 
+data_PerSession <- rawdata %>% 
   group_by(Day, subject, CS_name, Period) %>% 
   summarise(MagEntries = mean(A3_freq)*10,
             MagDuration = mean(A3_dur)*10) %>%
   ungroup()
 
+data_PerSession_CSPre <- data_PerSession %>% 
+  pivot_wider(names_from = Period,values_from = c(MagEntries, MagDuration)) %>% 
+  mutate(MagEntries_CSPre = MagEntries_CS - MagEntries_Pre,
+         MagDuration_CSPre = MagDuration_CS - MagDuration_Pre) %>% 
+  pivot_longer(c(MagEntries_CS, MagEntries_Post, MagEntries_Pre, MagDuration_CS, MagDuration_Post, MagDuration_Pre, MagEntries_CSPre, MagDuration_CSPre), names_to = c("Measure", "Period"), names_sep = "_", values_to = "Mag") %>% 
+  pivot_wider(names_from = Measure, values_from = Mag)
+  
 
-Acqsuisition_Stage1_MagFreq <- data_averagepersession %>% 
+data_PerSession_last5s <- rawdata %>% 
+  filter(bin_timewithin > 5) %>% 
+  group_by(Day, subject, CS_name, Period) %>% 
+  summarise(MagEntries = mean(A3_freq)*5,
+            MagDuration = mean(A3_dur)*5) %>%
+  ungroup()
+
+
+data_PerSession_last5s_CSPre <- data_PerSession_last5s %>% 
+  pivot_wider(names_from = Period,values_from = c(MagEntries, MagDuration)) %>% 
+  mutate(MagEntries_CSPre = MagEntries_CS - MagEntries_Pre,
+         MagDuration_CSPre = MagDuration_CS - MagDuration_Pre) %>% 
+  pivot_longer(c(MagEntries_CS, MagEntries_Post, MagEntries_Pre, MagDuration_CS, MagDuration_Post, MagDuration_Pre, MagEntries_CSPre, MagDuration_CSPre), names_to = c("Measure", "Period"), names_sep = "_", values_to = "Mag") %>% 
+  pivot_wider(names_from = Measure, values_from = Mag)
+
+
+
+Acqsuisition_Stage1_MagFreq <- data_PerSession_last5s_CSPre %>% 
   filter(Period == "CS") %>%
   ggplot(mapping = aes(x = as.factor(Day), y = MagEntries, group = CS_name, colour = CS_name, fill = CS_name, shape = CS_name,linetype = CS_name)) +
   stat_summary_bin(fun.data = "mean_se", geom = "line", size = .5) +
@@ -83,15 +107,16 @@ Acqsuisition_Stage1_MagFreq <- data_averagepersession %>%
   stat_summary_bin(fun.data = "mean_se", geom = "point", size = 2) +
   # Make Pretty
   scale_y_continuous( expand = expansion(mult = c(0, 0)), breaks=seq(-100,100,1)) +
-  ggtitle("Acquisition") + xlab("Day") + ylab("Magazine Entry (CS)") +
+  ggtitle("Acquisition") + xlab("Day") + ylab("Magazine Entry 5s (CS-Pre)") +
   theme_cowplot(11) +
   theme(plot.title = element_text(hjust = 0.5)) +
   theme(plot.title = element_text(size=10)) +
-  coord_cartesian(ylim = c(0,6.0001)) +
-  theme(axis.title.x=element_text(face = "bold")) 
+  coord_cartesian(ylim = c(-1,3.0001)) +
+  theme(axis.title.x=element_text(face = "bold")) +
   # scale_linetype_manual(name = "", values = linetypes)  +
   # scale_colour_manual(name = "", values = linecolours, aesthetics = c("colour")) +
   # scale_shape_manual(name = "", values = pointshapes) +
   # scale_fill_manual(name = "", values = fillcolours) +
-  # theme(legend.key.width=unit(1,"line"))
+  theme(legend.key.width=unit(1,"line"))
 
+Acqsuisition_Stage1_MagFreq
