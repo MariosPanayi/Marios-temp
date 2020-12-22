@@ -1,0 +1,2 @@
+folder,file,savename,subject,protocol,station,run,project,userID,session,bin_trial,bin_state,bin_time,bin_timewithin,A1_freq,A1_dur,A2_freq,A2_dur,A3_freq,A3_dur,A4_freq,A4_dur
+LPL_Acquisition_RR2_Day3,LPLAcquisitionRR2Day3B,LPLAcquisitionRR2Day3B_Rat18.csv,18____,17,9,1,C,Marios,100,0,0,0,0,0,0,0,0,0,0,0,0

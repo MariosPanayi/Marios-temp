@@ -1,0 +1,12 @@
+Project,UserID,Protocol,Session,Station,Run,Subject,Time,Current State,Transition State,Transition Event,A1_On,A2_On,A3_On,A4_On,A1_Off,A2_Off,A3_Off,A4_Off,folder,file
+C,Marios,16,90,4,1,21____,0,0,1,0,0,0,0,0,0,0,0,0,LPL_Acquisition_RR2_Day2,LPLAcquisitionRR2Day2A
+C,Marios,16,90,4,1,21____,1309,1,2,1,1,0,0,0,0,0,0,0,LPL_Acquisition_RR2_Day2,LPLAcquisitionRR2Day2A
+C,Marios,16,90,4,1,21____,1329,2,0,0,0,0,0,0,1,0,0,0,LPL_Acquisition_RR2_Day2,LPLAcquisitionRR2Day2A
+C,Marios,16,90,4,1,21____,1559,2,1,0,0,0,0,0,0,0,0,0,LPL_Acquisition_RR2_Day2,LPLAcquisitionRR2Day2A
+C,Marios,16,90,4,1,21____,4024,1,0,0,0,1,0,0,0,0,0,0,LPL_Acquisition_RR2_Day2,LPLAcquisitionRR2Day2A
+C,Marios,16,90,4,1,21____,4175,1,0,0,0,0,0,0,0,1,0,0,LPL_Acquisition_RR2_Day2,LPLAcquisitionRR2Day2A
+C,Marios,16,90,4,1,21____,61679,1,3,2,0,1,0,0,0,0,0,0,LPL_Acquisition_RR2_Day2,LPLAcquisitionRR2Day2A
+C,Marios,16,90,4,1,21____,61682,3,0,0,0,0,0,0,0,1,0,0,LPL_Acquisition_RR2_Day2,LPLAcquisitionRR2Day2A
+C,Marios,16,90,4,1,21____,61929,3,1,0,0,0,0,0,0,0,0,0,LPL_Acquisition_RR2_Day2,LPLAcquisitionRR2Day2A
+C,Marios,16,90,4,1,21____,90000,1,4,0,0,0,0,0,0,0,0,0,LPL_Acquisition_RR2_Day2,LPLAcquisitionRR2Day2A
+C,Marios,16,90,4,1,21____,90250,4,-1,0,0,0,0,0,0,0,0,0,LPL_Acquisition_RR2_Day2,LPLAcquisitionRR2Day2A

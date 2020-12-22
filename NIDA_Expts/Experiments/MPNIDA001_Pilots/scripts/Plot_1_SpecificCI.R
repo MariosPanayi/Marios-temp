@@ -80,7 +80,7 @@ data_PerSession_CSPre <- data_PerSession %>%
          MagDuration_CSPre = MagDuration_CS - MagDuration_Pre) %>% 
   pivot_longer(c(MagEntries_CS, MagEntries_Post, MagEntries_Pre, MagDuration_CS, MagDuration_Post, MagDuration_Pre, MagEntries_CSPre, MagDuration_CSPre), names_to = c("Measure", "Period"), names_sep = "_", values_to = "Mag") %>% 
   pivot_wider(names_from = Measure, values_from = Mag)
-  
+
 
 data_PerSession_last5s <- rawdata %>% 
   filter(bin_timewithin > 5) %>% 
@@ -99,19 +99,19 @@ data_PerSession_last5s_CSPre <- data_PerSession_last5s %>%
 
 
 
-Acqsuisition_Stage1_MagFreq <- data_PerSession_last5s_CSPre %>% 
-  filter(Period == "CS") %>%
+Acqsuisition_Stage1_MagFreq <- data_PerSession_CSPre %>% 
+  filter(Period == "CSPre") %>%
   ggplot(mapping = aes(x = as.factor(Day), y = MagEntries, group = CS_name, colour = CS_name, fill = CS_name, shape = CS_name,linetype = CS_name)) +
   stat_summary_bin(fun.data = "mean_se", geom = "line", size = .5) +
   stat_summary(fun.data = "mean_se", geom = "errorbar", width = 0.0, size = .3, linetype = 1, show.legend = FALSE) +
   stat_summary_bin(fun.data = "mean_se", geom = "point", size = 2) +
   # Make Pretty
   scale_y_continuous( expand = expansion(mult = c(0, 0)), breaks=seq(-100,100,1)) +
-  ggtitle("Acquisition") + xlab("Day") + ylab("Magazine Entry 5s (CS-Pre)") +
+  ggtitle("Acquisition") + xlab("Day") + ylab("Magazine Entry 10s (CS-Pre)") +
   theme_cowplot(11) +
   theme(plot.title = element_text(hjust = 0.5)) +
   theme(plot.title = element_text(size=10)) +
-  coord_cartesian(ylim = c(-1,3.0001)) +
+  coord_cartesian(ylim = c(-1,6.0001)) +
   theme(axis.title.x=element_text(face = "bold")) +
   # scale_linetype_manual(name = "", values = linetypes)  +
   # scale_colour_manual(name = "", values = linecolours, aesthetics = c("colour")) +
@@ -120,3 +120,41 @@ Acqsuisition_Stage1_MagFreq <- data_PerSession_last5s_CSPre %>%
   theme(legend.key.width=unit(1,"line"))
 
 Acqsuisition_Stage1_MagFreq
+
+
+Acqsuisition_Stage1_MagDur <- data_PerSession_CSPre %>% 
+  filter(Period == "CSPre") %>%
+  ggplot(mapping = aes(x = as.factor(Day), y = MagDuration, group = CS_name, colour = CS_name, fill = CS_name, shape = CS_name,linetype = CS_name)) +
+  stat_summary_bin(fun.data = "mean_se", geom = "line", size = .5) +
+  stat_summary(fun.data = "mean_se", geom = "errorbar", width = 0.0, size = .3, linetype = 1, show.legend = FALSE) +
+  stat_summary_bin(fun.data = "mean_se", geom = "point", size = 2) +
+  # Make Pretty
+  scale_y_continuous( expand = expansion(mult = c(0, 0)), breaks=seq(-100,100,1)) +
+  ggtitle("Acquisition") + xlab("Day") + ylab("Magazine Durations 10s (CS-Pre)") +
+  theme_cowplot(11) +
+  theme(plot.title = element_text(hjust = 0.5)) +
+  theme(plot.title = element_text(size=10)) +
+  coord_cartesian(ylim = c(-1,6.0001)) +
+  theme(axis.title.x=element_text(face = "bold")) +
+  # scale_linetype_manual(name = "", values = linetypes)  +
+  # scale_colour_manual(name = "", values = linecolours, aesthetics = c("colour")) +
+  # scale_shape_manual(name = "", values = pointshapes) +
+  # scale_fill_manual(name = "", values = fillcolours) +
+  theme(legend.key.width=unit(1,"line"))
+
+Acqsuisition_Stage1_MagDur
+
+# #Inspect individual animals
+# 
+# data_PerSession_CSPre %>% 
+#   filter(Period == "CS") %>% 
+#   select(-MagEntries, -Period) %>%
+#   pivot_wider(names_from = subject, values_from = MagDuration) %>% 
+#   kable()
+# 
+# data_PerSession_CSPre %>% 
+#   filter(Period == "CS") %>% 
+#   select(-MagDuration, -Period) %>%
+#   pivot_wider(names_from = subject, values_from = MagEntries) %>% 
+#   kable()
+# 
