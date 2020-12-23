@@ -189,12 +189,12 @@ lookup_stateIDs <- data.frame(bin_state, Period, state_ID)
 rawdata <- left_join(rawdata, lookup_stateIDs, by =c("bin_state"))
 
 ### 
-CS_name <- c("Flash",
+state_ID <- c("Flash",
              "Steady",
              "Flash",
              "Steady")
 
-state_ID <- c("Left",
+CS_name <- c("Left",
               "Right",
               "Right",
               "Left")
@@ -221,8 +221,7 @@ rawdata <- rawdata %>%
 
 rawdata <- rawdata %>%
   mutate(folder1 = folder) %>% 
-  separate(folder1, c(NA,"Stage","Day"))
-
+  separate(folder1, c(NA,"Stage","Schedule","Day"))
 
 
 # Save as CSV -------------------------------------------------------------
