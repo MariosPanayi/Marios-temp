@@ -23,7 +23,9 @@ listofdatafolders <- c("Acquisition_Day1",
                        "Acquisition_Day2",
                        "Acquisition_Day3",
                        "Acquisition_Day4",
-                       "Acquisition_Day5")
+                       "Acquisition_Day5",
+                       "Acquisition_Day6",
+                       "Acquisition_Day7")
 
 
 #  extract data filenames, only .txt --------------------------------------
