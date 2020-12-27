@@ -1,46 +1,39 @@
 
+library(tidyverse)
+library(knitr)
+# Package for relative file paths
+library(here)
 
+# # Operant_SessionTimeBinAnalysis -----------------------------------------
+# 
+# # Example Inputs:
+# 
+# ########## Set parameters ############
+# 
+# 
+# filename <- "LPLAcquisitionRR2Day1B_Rat43.csv"
+# 
+# filepath <-here("rawdata", "Marios", "3_LeverPressingForLights", "LPL_Acquisition_RR2_Day1", filename)
+# 
+# ## List of states
+# S = c("IRI" = 1,
+#       "Flash" = 2,
+#       "Steady" = 3,
+#       "End" = 4)
+# 
+# ## Time base the linc was set to, in ms
+# timebase = 20
+# 
+# ## Time bins to analyze each state in, in s
+# timebinwidth = 60
+# 
+# ## Count the frequency and duration of these states
+# bin = c(S["Flash"], S["Steady"])
+# 
+# ## state that should be considered the end of the session. For the absolute end of recording specify the number -1 [the state_ID of the finished state in Coulbourn]
+# sessionendstate <- S["End"]
 
-# Operant_BinPrePostEventAnalysis -----------------------------------------
-
-# Example Inputs:
-
-########## Set parameters ############
-
-
-filename <- "LPLAcquisitionRR2Day1B_Rat43.csv"
-
-filepath <-here("rawdata", "Marios", "3_LeverPressingForLights", "LPL_Acquisition_RR2_Day1", filename)
-
-## List of states
-S = c("IRI" = 1,
-      "Flash" = 2,
-      "Steady" = 3,
-      "End" = 4)
-
-## Time base the linc was set to, in ms
-timebase = 20
-
-## Time bins to analyze each state in, in s
-timebinwidth = 60
-
-## States to count the occurence of
-bin = c(S["Flash"], S["Steady"])
-
-## state that should be considered the end of the session. For the absolute end of recording specify the number -1 [the state_ID of the finished state in Coulbourn]
-sessionendstate <- S["End"]
-
-
-## Read in data
-rawdata <- read_csv(filepath)
-## Key to convert actions
-
-
-
-
-
-
-# coulbourn_processdata_Instrumental_PrePosttimebin <- function(filename,folderpath,S,timebase, timebinwidth, nobin, bin) {
+coulbourn_processdata_Operant_SessionTimeBinAnalysis <- function(filename,folderpath,S,timebase, timebinwidth, nobin, bin) {
 #   
   # filepath <- here(folderpath, filename)
   # 
@@ -193,10 +186,25 @@ rawdata <- read_csv(filepath)
   A4_bin <- coulbourn_actionbin(A4_on, A4_off, rawdata, timebin_start, timebin_end, timebin_start, timebase, timebinwidth)
   
   
+  # Loop through all the states you want to bin
+  statebins = 0
+  statebinnames <- "0"
+  for (i in 1:length(bin)) {
+    statei_on <- rawdata$Time[rawdata$`Transition State` == bin[i]]
+    statei_off <- rawdata$Time[rawdata$`Transition State` > 0 & rawdata$`Current State`== bin[i]]
+    
+    temp <- coulbourn_actionbin(statei_on, statei_off, rawdata, timebin_start, timebin_end, timebin_start, timebase, timebinwidth)
+    statebins <- cbind(statebins, temp)
+    
+    statebinnames <- c(statebinnames, paste(names(bin[i]), "freq", sep = "_"), paste(names(bin[i]), "dur", sep = "_"))
+  }
+  #Drop redundant initialised column
+  statebins <-subset(statebins, select = -1)
+  statebinnames <- statebinnames[-1]
   
   ## Combine into a dataframe and rename variables appropriately
-  data_bin <- cbind(A1_bin,A2_bin,A3_bin,A4_bin)
-  colnames(data_bin) <- c("A1_freq", "A1_dur","A2_freq", "A2_dur","A3_freq", "A3_dur","A4_freq", "A4_dur")
+  data_bin <- cbind(A1_bin,A2_bin,A3_bin,A4_bin, statebins)
+  colnames(data_bin) <- c("A1_freq", "A1_dur","A2_freq", "A2_dur","A3_freq", "A3_dur","A4_freq", "A4_dur", statebinnames)
   
   
   ## Add session/program/subject information
@@ -228,4 +236,4 @@ rawdata <- read_csv(filepath)
   write_csv(data_bin, savefilepath)
   
   # Function end
-
+}
