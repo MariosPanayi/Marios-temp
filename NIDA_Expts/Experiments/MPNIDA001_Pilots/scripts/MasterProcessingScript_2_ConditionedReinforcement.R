@@ -25,7 +25,9 @@ listofdatafolders <- c("Acquisition_Day1",
                        "Acquisition_Day4",
                        "Acquisition_Day5",
                        "Acquisition_Day6",
-                       "Acquisition_Day7")
+                       "Acquisition_Day7",
+                       "Acquisition_Day8",
+                       "Acquisition_Day9")
 
 
 #  extract data filenames, only .txt --------------------------------------
@@ -162,9 +164,25 @@ subject <- c("9_____",
                       "D",
                       "C",
                       "D")
-
+  sex <- c("F",
+             "F",
+             "F",
+             "F",
+             "F",
+             "F",
+             "M",
+             "M",
+             "M",
+             "M",
+             "M",
+             "M",
+             "F",
+             "F",
+             "M",
+             "M")
+  
   # Create counterbalancing lookup table
-lookup_counterbalancing <- data.frame(subject, counterbalancing)
+lookup_counterbalancing <- data.frame(subject, counterbalancing, sex)
   # Combine with rawdata
 rawdata <- left_join(rawdata, lookup_counterbalancing, by = "subject")
 

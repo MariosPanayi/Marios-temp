@@ -61,6 +61,56 @@ shift_xaxis <- function(p, y=0){
 
 
 
+# Plot Style Parameters ---------------------------------------------------
+
+## Define Colours to be used
+DarkRed     = "#67001F" 
+MediumRed   = "#B2182B"
+LightRed    = "#D6604D"
+DarkBlue    = "#053061"
+MediumBlue  = "#2166AC"
+LightBlue   = "#4393C3"  
+Black       = "#000000"
+White       = "#ffffff"
+LightGrey   = "#F0F0F0"
+MediumGrey  = "#BDBDBD"
+DarkGrey    = "#252525"
+
+## Shapes for Geom_point
+circle            = 21
+square            = 22
+diamond           = 23
+triangleUp        = 24
+triangleDown      = 25
+
+c("A++--" = DarkRed,
+  "B+-" = MediumRed,
+  "C++" = DarkBlue,
+  "D+" = MediumBlue)
+
+fillcolours <- c("A++--" = DarkRed,
+                 "B+-" = LightRed,
+                 "C++" = DarkBlue,
+                 "D+" = LightBlue)
+
+linecolours <- c("A++--" = DarkRed,
+                 "B+-" = MediumRed,
+                 "C++" = DarkBlue,
+                 "D+" = MediumBlue)
+
+
+linetypes <- c("A++--" = "dotted",
+               "B+-" = "dotted",
+               "C++" = "solid",
+               "D+" = "solid")
+
+
+pointshapes <- c("A++--" = circle,
+                 "B+-" = circle,
+                 "C++" = square,
+                 "D+" = square)
+
+
 # Load Data ---------------------------------------------------------------
 
 folderpath <- here("rawdata","Marios","2_ConditionedReinforcement","CombinedData")
@@ -68,8 +118,33 @@ filename <- "CRF_ProcessedData_pertrial_1sbins.csv"
 
 rawdata <- read_csv(here(folderpath,filename))
 
+# Fix Day factor to numeric
+rawdata <- rawdata %>% 
+  mutate(Day = as.numeric(str_remove(Day, "Day")))
+
+# Add factor separating probability and reward magnitude 
+CS_name <- c("A++--",
+             "B+-",
+             "C++",
+             "D+")
+
+probability <- c(50,
+                 50,
+                 100,
+                 100)
+
+magnitude <- c("High",
+     "Low",
+     "High",
+     "Low")
+
+factorlookup <- data.frame(CS_name, probability, magnitude)
+rawdata <- left_join(rawdata, factorlookup, by = "CS_name")
+  
+
+
 data_PerSession <- rawdata %>% 
-  group_by(Day, subject, CS_name, Period) %>% 
+  group_by(Day, subject, probability, magnitude, sex, CS_name, Period) %>% 
   summarise(MagEntries = mean(A3_freq)*10,
             MagDuration = mean(A3_dur)*10) %>%
   ungroup()
@@ -84,7 +159,7 @@ data_PerSession_CSPre <- data_PerSession %>%
 
 data_PerSession_last5s <- rawdata %>% 
   filter(bin_timewithin > 5) %>% 
-  group_by(Day, subject, CS_name, Period) %>% 
+  group_by(Day, subject,probability, magnitude, sex, CS_name, Period) %>% 
   summarise(MagEntries = mean(A3_freq)*5,
             MagDuration = mean(A3_dur)*5) %>%
   ungroup()
@@ -102,6 +177,7 @@ data_PerSession_last5s_CSPre <- data_PerSession_last5s %>%
 Acqsuisition_Stage1_MagFreq <- data_PerSession_CSPre %>% 
   filter(Period == "CSPre") %>%
   ggplot(mapping = aes(x = as.factor(Day), y = MagEntries, group = CS_name, colour = CS_name, fill = CS_name, shape = CS_name,linetype = CS_name)) +
+  # facet_wrap(~ sex) +
   stat_summary_bin(fun.data = "mean_se", geom = "line", size = .5) +
   stat_summary(fun.data = "mean_se", geom = "errorbar", width = 0.0, size = .3, linetype = 1, show.legend = FALSE) +
   stat_summary_bin(fun.data = "mean_se", geom = "point", size = 2) +
@@ -113,10 +189,10 @@ Acqsuisition_Stage1_MagFreq <- data_PerSession_CSPre %>%
   theme(plot.title = element_text(size=10)) +
   coord_cartesian(ylim = c(-1,6.0001)) +
   theme(axis.title.x=element_text(face = "bold")) +
-  # scale_linetype_manual(name = "", values = linetypes)  +
-  # scale_colour_manual(name = "", values = linecolours, aesthetics = c("colour")) +
-  # scale_shape_manual(name = "", values = pointshapes) +
-  # scale_fill_manual(name = "", values = fillcolours) +
+  scale_linetype_manual(name = "", values = linetypes)  +
+  scale_colour_manual(name = "", values = linecolours, aesthetics = c("colour")) +
+  scale_shape_manual(name = "", values = pointshapes) +
+  scale_fill_manual(name = "", values = fillcolours) +
   theme(legend.key.width=unit(1,"line"))
 
 Acqsuisition_Stage1_MagFreq
@@ -125,6 +201,7 @@ Acqsuisition_Stage1_MagFreq
 Acqsuisition_Stage1_MagDur <- data_PerSession_CSPre %>% 
   filter(Period == "CSPre") %>%
   ggplot(mapping = aes(x = as.factor(Day), y = MagDuration, group = CS_name, colour = CS_name, fill = CS_name, shape = CS_name,linetype = CS_name)) +
+  # facet_wrap(~ sex) +
   stat_summary_bin(fun.data = "mean_se", geom = "line", size = .5) +
   stat_summary(fun.data = "mean_se", geom = "errorbar", width = 0.0, size = .3, linetype = 1, show.legend = FALSE) +
   stat_summary_bin(fun.data = "mean_se", geom = "point", size = 2) +
@@ -136,13 +213,62 @@ Acqsuisition_Stage1_MagDur <- data_PerSession_CSPre %>%
   theme(plot.title = element_text(size=10)) +
   coord_cartesian(ylim = c(-1,6.0001)) +
   theme(axis.title.x=element_text(face = "bold")) +
-  # scale_linetype_manual(name = "", values = linetypes)  +
-  # scale_colour_manual(name = "", values = linecolours, aesthetics = c("colour")) +
-  # scale_shape_manual(name = "", values = pointshapes) +
-  # scale_fill_manual(name = "", values = fillcolours) +
+  scale_linetype_manual(name = "", values = linetypes)  +
+  scale_colour_manual(name = "", values = linecolours, aesthetics = c("colour")) +
+  scale_shape_manual(name = "", values = pointshapes) +
+  scale_fill_manual(name = "", values = fillcolours) +
   theme(legend.key.width=unit(1,"line"))
 
 Acqsuisition_Stage1_MagDur
+
+
+Acqsuisition_Stage1_MagFreq_last5s <- data_PerSession_last5s_CSPre %>% 
+  filter(Period == "CSPre") %>%
+  ggplot(mapping = aes(x = as.factor(Day), y = MagEntries, group = CS_name, colour = CS_name, fill = CS_name, shape = CS_name,linetype = CS_name)) +
+  # facet_wrap(~ sex) +
+  stat_summary_bin(fun.data = "mean_se", geom = "line", size = .5) +
+  stat_summary(fun.data = "mean_se", geom = "errorbar", width = 0.0, size = .3, linetype = 1, show.legend = FALSE) +
+  stat_summary_bin(fun.data = "mean_se", geom = "point", size = 2) +
+  # Make Pretty
+  scale_y_continuous( expand = expansion(mult = c(0, 0)), breaks=seq(-100,100,1)) +
+  ggtitle("Acquisition") + xlab("Day") + ylab("Magazine Entry 5s (CS-Pre)") +
+  theme_cowplot(11) +
+  theme(plot.title = element_text(hjust = 0.5)) +
+  theme(plot.title = element_text(size=10)) +
+  coord_cartesian(ylim = c(-1,6.0001)) +
+  theme(axis.title.x=element_text(face = "bold")) +
+  scale_linetype_manual(name = "", values = linetypes)  +
+  scale_colour_manual(name = "", values = linecolours, aesthetics = c("colour")) +
+  scale_shape_manual(name = "", values = pointshapes) +
+  scale_fill_manual(name = "", values = fillcolours) +
+  theme(legend.key.width=unit(1,"line"))
+
+Acqsuisition_Stage1_MagFreq_last5s
+
+
+Acqsuisition_Stage1_MagDur_last5s <- data_PerSession_last5s_CSPre %>% 
+  filter(Period == "CSPre") %>%
+  ggplot(mapping = aes(x = as.factor(Day), y = MagDuration, group = CS_name, colour = CS_name, fill = CS_name, shape = CS_name,linetype = CS_name)) +
+  # facet_wrap(~ sex) +
+  stat_summary_bin(fun.data = "mean_se", geom = "line", size = .5) +
+  stat_summary(fun.data = "mean_se", geom = "errorbar", width = 0.0, size = .3, linetype = 1, show.legend = FALSE) +
+  stat_summary_bin(fun.data = "mean_se", geom = "point", size = 2) +
+  # Make Pretty
+  scale_y_continuous( expand = expansion(mult = c(0, 0)), breaks=seq(-100,100,1)) +
+  ggtitle("Acquisition") + xlab("Day") + ylab("Magazine Durations 5s (CS-Pre)") +
+  theme_cowplot(11) +
+  theme(plot.title = element_text(hjust = 0.5)) +
+  theme(plot.title = element_text(size=10)) +
+  coord_cartesian(ylim = c(-1,6.0001)) +
+  theme(axis.title.x=element_text(face = "bold")) +
+  scale_linetype_manual(name = "", values = linetypes)  +
+  scale_colour_manual(name = "", values = linecolours, aesthetics = c("colour")) +
+  scale_shape_manual(name = "", values = pointshapes) +
+  scale_fill_manual(name = "", values = fillcolours) +
+  theme(legend.key.width=unit(1,"line"))
+
+Acqsuisition_Stage1_MagDur_last5s
+
 
 # #Inspect individual animals
 # 
@@ -154,7 +280,27 @@ Acqsuisition_Stage1_MagDur
 # 
 data_PerSession_CSPre %>%
   filter(Period == "CS") %>%
-  select(-MagDuration, -Period) %>%
+  select(-MagDuration, -Period, -sex) %>%
   pivot_wider(names_from = subject, values_from = MagEntries) %>%
   kable()
+
+data_PerSession_CSPre %>%
+  filter(Period == "CS") %>%
+  select(-MagEntries, -Period, -sex) %>%
+  pivot_wider(names_from = subject, values_from = MagDuration) %>%
+  kable()
+
+
+
+
+# Save Stage 1 Data for analysis ------------------------------------------
+
+
+savefile <- "CRF_Acquisition_CSPre.csv"
+write_csv(data_PerSession_CSPre, here("figures", "figure_data", savefile))
+
+
+savefile <- "CRF_Acquisition_CSPre_Last5s.csv"
+write_csv(data_PerSession_last5s_CSPre, here("figures", "figure_data", savefile))
+
 

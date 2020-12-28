@@ -1,0 +1,91 @@
+---
+title: "Specific Conditioned Inhibition"
+author: "Marios Panayi"
+date: "12/28/2020"
+output: word_document
+---
+
+```{r setup, include=FALSE, message = FALSE, warning=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+## Packages for data organisation and plotting
+library(tidyverse)
+# Package for relative file paths
+library(here)
+# library(ggpubr)
+library(cowplot)
+library(ggsignif)
+library(patchwork)
+################################################################################
+## Packages for Data analysis
+library(afex)
+afex_options(emmeans_model = "multivariate")# use multivariate model for all follow-up tests.
+library(emmeans)
+# install.packages("devtools")
+# devtools::install_github("crsh/papaja")
+library(papaja)
+library(knitr)
+# remotes::install_github("noamross/redoc")
+# library(redoc)
+```
+
+
+
+```{r Load data from figures for Stats , include=FALSE, message = FALSE, warning=FALSE}
+CI_Stage1_CSPre <- read_csv(here("figures","figure_data","CI_Stage1_CSPre.csv"))
+CI_Stage2_CSPre <- read_csv(here("figures","figure_data","CI_Stage2_CSPre.csv"))
+```
+
+
+
+```{r Stage 1 Acquisition STats , include=FALSE, message = FALSE, warning=FALSE}
+rawdata <- CI_Stage1_CSPre %>% 
+  filter(Period == "CSPre")
+# Stage 1 Acquisition Frequency
+anova <- aov_4(MagEntries ~ (Day*CS_name|subject), data = rawdata, anova_table = list(correction = "none", es = "pes"))
+anova_Stg1_Freq <- apa_print(anova, mse = "FALSE",correction = "none",es = "pes")
+## simple effects - linear trend on Day
+simple <- emmeans(anova, ~CS_name)
+simple_Stg1_Freq <- apa_print(contrast(simple, interaction = "pairwise", adjust = "tukey"))
+
+anova_Stg1_Freq$table
+simple_Stg1_Freq$table
+
+
+# Stage 1 Acquisition Duration
+anova <- aov_4(MagDuration ~ (Day*CS_name|subject), data = rawdata, anova_table = list(correction = "none", es = "pes"))
+anova_Stg1_Dur <- apa_print(anova, mse = "FALSE",correction = "none",es = "pes")
+## simple effects - linear trend on Day
+simple <- emmeans(anova, ~CS_name)
+simple_Stg1_Dur <- apa_print(contrast(simple, interaction = "pairwise", adjust = "tukey"))
+
+anova_Stg1_Dur$table
+simple_Stg1_Dur$table
+```
+
+
+
+
+```{r Stage 2 Acquisition STats , include=FALSE, message = FALSE, warning=FALSE}
+rawdata <- CI_Stage2_CSPre %>% 
+  filter(Period == "CSPre")
+# Stage 2 Acquisition Frequency
+anova <- aov_4(MagEntries ~ (Day*CS_name|subject), data = rawdata, anova_table = list(correction = "none", es = "pes"))
+anova_Stg2_Freq <- apa_print(anova, mse = "FALSE",correction = "none",es = "pes")
+## simple effects - linear trend on Day
+simple <- emmeans(anova, ~CS_name)
+simple_Stg2_Freq <- apa_print(contrast(simple, interaction = "pairwise", adjust = "tukey"))
+
+anova_Stg2_Freq$table
+simple_Stg2_Freq$table
+
+# Stage 2 Acquisition Duration
+anova <- aov_4(MagDuration ~ (Day*CS_name|subject), data = rawdata, anova_table = list(correction = "none", es = "pes"))
+anova_Stg2_Dur <- apa_print(anova, mse = "FALSE",correction = "none",es = "pes")
+## simple effects - linear trend on Day
+simple <- emmeans(anova, ~CS_name)
+simple_Stg2_Dur <- apa_print(contrast(simple, interaction = "pairwise", adjust = "tukey"))
+
+anova_Stg2_Dur$table
+simple_Stg2_Dur$table
+
+```
