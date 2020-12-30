@@ -32,7 +32,7 @@ Subjects received 2 additional days of Pavlovian training with just cues C and D
 A summation test was performed to test whether cues X and Y had been established as conditioned inhibitors specific to O1 and O2 (respectively). Each session involved 4 blocks of trials. Each block started with a single rewarded presentation of cue C and D (randomised order) followed by a single non-reinforced presentation of each of the novel audio-visual compounds CX, CY, DX, and DY (randomised order). Thus each block started with 2 reinforced trials followed by 4 non-reinforced probe trials. All remaining session parameters were identical to stage 1. If cues X and Y have been established as specific conditioned inhibitors, then they should selectively inhibit responding when presented in compound with the cue that predicts the same outcome targeted in stage 2 i.e. responding to CX and DY will be significantly lower than responding to CY and DX.
 
 ### Retardation Test
-An outcome specific retardation test was conducted to assess whether cues X and Y had become specific inhibitors of O1 and O2 (respectively). Subjects received 12 presentations each of cue X and Y followed by delivery of O1. Subjects received 6 days (1 session/day) of retardation testing. All remaining session parameters were identical to stage 1. If cue X has been established a conditioned inhibitor specific to O1, then learning that cue X predicts O1 will be significantly impaired (either in rate or asymptotic performance) relative to learning that cue Y predicts O1 (if Y has also been established as an inhibitor of O2).
+An outcome specific retardation test was conducted to assess whether cues X and Y had become specific inhibitors of O1 and O2 (respectively). Subjects received 12 presentations each of cue X and Y followed by delivery of O1. Subjects received 8 days (1 session/day) of retardation testing. All remaining session parameters were identical to stage 1. If cue X has been established a conditioned inhibitor specific to O1, then learning that cue X predicts O1 will be significantly impaired (either in rate or asymptotic performance) relative to learning that cue Y predicts O1 (if Y has also been established as an inhibitor of O2).
 
 ## Data analysis
 Magazine entry and duration in the 10s CS period minus the immediately preceding 10s PreCS period are presented and analyzed for all reported analyses. Analyses of the PreCS baseline levels did not reveal any significant differences between cue types which justified the use of this difference score to index CS specific elevations in magazine activity. All stages were analyzed with repeated measures ANOVA [##PACKAGE IN R##], and follow up simple effects are reported with a Tukey family-wise error rate correction. All analyses were run with a between subjects factor of sex, but these did not reveal any significant main effects or interactions between the sex of the subjects and performance in the task. Therefore, sex was not included as a factor in the reported statistics.
@@ -105,12 +105,12 @@ rawdata <- CI_Stage2_CSPre %>%
 # Stage 2 Acquisition Frequency
 anova <- aov_4(MagEntries ~ (Day*CSPair*Outcome|subject), data = rawdata, anova_table = list(correction = "none", es = "pes"))
 anova_Stg2_Freq <- apa_print(anova, mse = "FALSE",correction = "none",es = "pes")
-# ## simple effects - 
-# simple <- emmeans(anova, ~CS_name)
-# simple_Stg2_Freq <- apa_print(contrast(simple, interaction = "pairwise", adjust = "tukey"))
+## simple effects - Rate of acquisition different between CS types, CI estimates of linear trend show this clearly
+simple <- emmeans(anova, ~Day*CSPair)
+simple_Stg2_Freq <- apa_print(contrast(simple, interaction = c("poly"), by = "CSPair", adjust = "none"))
 
 anova_Stg2_Freq$table
-# simple_Stg2_Freq$table
+simple_Stg2_Freq$table
 
 # Stage 2 Acquisition Duration
 anova <- aov_4(MagDuration ~ (Day*CSPair*Outcome|subject), data = rawdata, anova_table = list(correction = "none", es = "pes"))

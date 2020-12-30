@@ -63,7 +63,7 @@ simple_Stg1_Dur$table
 
 ```
 
-
+`r apa_table(within(anova_Stg1_Freq$table, rm(pes)),caption = "Magazine Frequency ANOVA")`
 
 `r apa_table(within(anova_Stg1_Dur$table, rm(pes)),caption = "Magazine Duration ANOVA")`
  
@@ -77,7 +77,7 @@ anova <- aov_4(MagEntries ~ (Day*magnitude*probability|subject), data = rawdata,
 anova_Stg1_Freq <- apa_print(anova, mse = "FALSE",correction = "none",es = "pes")
 ## simple effects - linear trend on Day
 simple <- emmeans(anova, ~Day*probability)
-simple_Stg1_Freq <- apa_print(contrast(simple, interaction = "pairwise", by = "Day", adjust = "tukey"))
+simple_Stg1_Freq <- apa_print(contrast(simple, interaction = "poly", by = "probability", adjust = "tukey"))
 
 anova_Stg1_Freq$table
 simple_Stg1_Freq$table
@@ -97,7 +97,9 @@ simple_Stg1_Dur$table
 `r apa_table(within(anova_Stg1_Dur$table, rm(pes)),caption = "Magazine Duration ANOVA")`
 
 
+`r apa_table(within(anova_Stg1_Freq$table, rm(pes)),caption = "Magazine Frequency ANOVA")`
 
+`r apa_table(within(anova_Stg1_Dur$table, rm(pes)),caption = "Magazine Duration ANOVA")`
 
 
 ```{r Stage 1 Acquisition Last 5s Stats , include=FALSE, message = FALSE, warning=FALSE}
@@ -125,6 +127,10 @@ anova_Stg1_Dur_5s$table
 simple_Stg1_Dur_5s$table
 ```
 
+`r apa_table(within(anova_Stg1_Freq_5s$table, rm(pes)),caption = "Magazine Frequency ANOVA - 5s")`
+
+`r apa_table(within(anova_Stg1_Dur_5s$table, rm(pes)),caption = "Magazine Duration ANOVA - 5s")`
+
 
 ```{r Stage 1 Acquisition Last 5s Stats mag*prob , include=FALSE, message = FALSE, warning=FALSE}
 rawdata <- CRF_Acquisition_CSPre_Last5s %>% 
@@ -150,3 +156,8 @@ simple_Stg1_Dur_5s <- apa_print(contrast(simple, interaction = "pairwise",  by =
 anova_Stg1_Dur_5s$table
 simple_Stg1_Dur_5s$table
 ```
+
+
+`r apa_table(within(anova_Stg1_Freq_5s$table, rm(pes)),caption = "Magazine Frequency ANOVA - 5s")`
+
+`r apa_table(within(anova_Stg1_Dur_5s$table, rm(pes)),caption = "Magazine Duration ANOVA - 5s")`

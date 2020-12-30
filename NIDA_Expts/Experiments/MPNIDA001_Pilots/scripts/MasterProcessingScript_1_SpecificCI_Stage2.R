@@ -23,7 +23,8 @@ listofdatafolders <- c("FeatureNegative_Stage2_Day5",
                        "FeatureNegative_Stage2_Day6",
                        "FeatureNegative_Stage2_Day7",
                        "FeatureNegative_Stage2_Day8",
-                       "FeatureNegative_Stage2_Day9")
+                       "FeatureNegative_Stage2_Day9",
+                       "FeatureNegative_Stage2_Day10")
 
 
 #  extract data filenames, only .txt --------------------------------------

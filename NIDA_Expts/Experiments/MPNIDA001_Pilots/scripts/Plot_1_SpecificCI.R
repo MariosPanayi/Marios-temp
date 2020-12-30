@@ -486,6 +486,116 @@ FeatureNegative_Stage2_MagDur_5s <- data_PerSession_last5s_CSPre %>%
 
 CI_Stage2_5s_Dur <- shift_xaxis(FeatureNegative_Stage2_MagDur_5s)
 
+
+# Stage2_PostCS period ----------------------------------------------------
+
+
+
+## 10s Data
+### Frequency
+
+FeatureNegative_Stage2_MagFreq_Post <- data_PerSession_CSPre %>% 
+  filter(Period == "Post") %>%
+  ggplot(mapping = aes(x = as.factor(Day), y = MagEntries, group = CS_name, colour = CS_name, fill = CS_name, shape = CS_name,linetype = CS_name)) +
+  stat_summary_bin(fun.data = "mean_se", geom = "line", size = .5) +
+  stat_summary(fun.data = "mean_se", geom = "errorbar", width = 0.0, size = .3, linetype = 1, show.legend = FALSE) +
+  stat_summary_bin(fun.data = "mean_se", geom = "point", size = 2) +
+  # Make Pretty
+  scale_y_continuous( expand = expansion(mult = c(0, 0)), breaks=seq(-100,100,1)) +
+  ggtitle("Stage 2") + xlab("Day") + ylab("Magazine Entry 10s (Post)") +
+  theme_cowplot(11) +
+  theme(plot.title = element_text(hjust = 0.5)) +
+  theme(plot.title = element_text(size=10)) +
+  coord_cartesian(ylim = c(-1,6.0001)) +
+  theme(axis.title.x=element_text(face = "bold")) +
+  scale_linetype_manual(name = "", values = linetypes)  +
+  scale_colour_manual(name = "", values = linecolours, aesthetics = c("colour")) +
+  scale_shape_manual(name = "", values = pointshapes) +
+  scale_fill_manual(name = "", values = fillcolours) +
+  theme(legend.key.width=unit(1,"line"))
+
+CI_Stage2_10s_Freq_Post <- shift_xaxis(FeatureNegative_Stage2_MagFreq_Post)
+
+## 10s Data
+### Duration
+
+FeatureNegative_Stage2_MagDur_Post <- data_PerSession_CSPre %>% 
+  filter(Period == "Post") %>%
+  ggplot(mapping = aes(x = as.factor(Day), y = MagDuration, group = CS_name, colour = CS_name, fill = CS_name, shape = CS_name,linetype = CS_name)) +
+  stat_summary_bin(fun.data = "mean_se", geom = "line", size = .5) +
+  stat_summary(fun.data = "mean_se", geom = "errorbar", width = 0.0, size = .3, linetype = 1, show.legend = FALSE) +
+  stat_summary_bin(fun.data = "mean_se", geom = "point", size = 2) +
+  # Make Pretty
+  scale_y_continuous( expand = expansion(mult = c(0, 0)), breaks=seq(-100,100,1)) +
+  ggtitle("Stage 2") + xlab("Day") + ylab("Magazine Duration 10s (Post)") +
+  theme_cowplot(11) +
+  theme(plot.title = element_text(hjust = 0.5)) +
+  theme(plot.title = element_text(size=10)) +
+  coord_cartesian(ylim = c(-1,6.0001)) +
+  theme(axis.title.x=element_text(face = "bold")) +
+  scale_linetype_manual(name = "", values = linetypes)  +
+  scale_colour_manual(name = "", values = linecolours, aesthetics = c("colour")) +
+  scale_shape_manual(name = "", values = pointshapes) +
+  scale_fill_manual(name = "", values = fillcolours) +
+  theme(legend.key.width=unit(1,"line"))
+
+CI_Stage2_10s_Dur_Post <- shift_xaxis(FeatureNegative_Stage2_MagDur_Post)
+
+## 5s Data
+### Frequency
+
+FeatureNegative_Stage2_MagFreq_5s_Post <- data_PerSession_last5s_CSPre %>% 
+  filter(Period == "Post") %>%
+  ggplot(mapping = aes(x = as.factor(Day), y = MagEntries, group = CS_name, colour = CS_name, fill = CS_name, shape = CS_name,linetype = CS_name)) +
+  stat_summary_bin(fun.data = "mean_se", geom = "line", size = .5) +
+  stat_summary(fun.data = "mean_se", geom = "errorbar", width = 0.0, size = .3, linetype = 1, show.legend = FALSE) +
+  stat_summary_bin(fun.data = "mean_se", geom = "point", size = 2) +
+  # Make Pretty
+  scale_y_continuous( expand = expansion(mult = c(0, 0)), breaks=seq(-100,100,1)) +
+  ggtitle("Stage 2") + xlab("Day") + ylab("Magazine Entry 5s (Post)") +
+  theme_cowplot(11) +
+  theme(plot.title = element_text(hjust = 0.5)) +
+  theme(plot.title = element_text(size=10)) +
+  coord_cartesian(ylim = c(-1,6.0001)) +
+  theme(axis.title.x=element_text(face = "bold")) +
+  scale_linetype_manual(name = "", values = linetypes)  +
+  scale_colour_manual(name = "", values = linecolours, aesthetics = c("colour")) +
+  scale_shape_manual(name = "", values = pointshapes) +
+  scale_fill_manual(name = "", values = fillcolours) +
+  theme(legend.key.width=unit(1,"line"))
+
+CI_Stage2_5s_Freq_Post <- shift_xaxis(FeatureNegative_Stage2_MagFreq_5s_Post)
+
+## 5s Data
+### Duration
+
+FeatureNegative_Stage2_MagDur_5s_Post <- data_PerSession_last5s_CSPre %>% 
+  filter(Period == "Post") %>%
+  ggplot(mapping = aes(x = as.factor(Day), y = MagDuration, group = CS_name, colour = CS_name, fill = CS_name, shape = CS_name,linetype = CS_name)) +
+  stat_summary_bin(fun.data = "mean_se", geom = "line", size = .5) +
+  stat_summary(fun.data = "mean_se", geom = "errorbar", width = 0.0, size = .3, linetype = 1, show.legend = FALSE) +
+  stat_summary_bin(fun.data = "mean_se", geom = "point", size = 2) +
+  # Make Pretty
+  scale_y_continuous( expand = expansion(mult = c(0, 0)), breaks=seq(-100,100,1)) +
+  ggtitle("Stage 2") + xlab("Day") + ylab("Magazine Duration 5s (Post)") +
+  theme_cowplot(11) +
+  theme(plot.title = element_text(hjust = 0.5)) +
+  theme(plot.title = element_text(size=10)) +
+  coord_cartesian(ylim = c(-1,6.0001)) +
+  theme(axis.title.x=element_text(face = "bold")) +
+  scale_linetype_manual(name = "", values = linetypes)  +
+  scale_colour_manual(name = "", values = linecolours, aesthetics = c("colour")) +
+  scale_shape_manual(name = "", values = pointshapes) +
+  scale_fill_manual(name = "", values = fillcolours) +
+  theme(legend.key.width=unit(1,"line"))
+
+CI_Stage2_5s_Dur_Post <- shift_xaxis(FeatureNegative_Stage2_MagDur_5s_Post)
+
+CI_Stage2_10s_Freq_Post
+CI_Stage2_10s_Dur_Post
+CI_Stage2_5s_Freq_Post
+CI_Stage2_5s_Dur_Post
+
 # Save Stage 2 Figures ----------------------------------------------------
 
 # CI_Stage2_10s_Freq
