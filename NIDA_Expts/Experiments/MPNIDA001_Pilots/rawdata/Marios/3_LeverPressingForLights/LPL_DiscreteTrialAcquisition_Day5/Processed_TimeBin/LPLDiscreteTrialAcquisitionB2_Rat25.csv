@@ -1,0 +1,5 @@
+folder,file,savename,subject,protocol,station,run,project,userID,session,timebins,timebin_start,timebin_end,A1_freq,A1_dur,A2_freq,A2_dur,A3_freq,A3_dur,A4_freq,A4_dur,Flash_freq,Flash_dur,Steady_freq,Steady_dur
+LPL_DiscreteTrialAcquisition_Day5,LPLDiscreteTrialAcquisitionB2,LPLDiscreteTrialAcquisitionB2_Rat25.csv,25____,29,2,1,C,Marios,138,1,0,450,0,0,0,0,0,0,0,0,0,0,0,0
+LPL_DiscreteTrialAcquisition_Day5,LPLDiscreteTrialAcquisitionB2,LPLDiscreteTrialAcquisitionB2_Rat25.csv,25____,29,2,1,C,Marios,138,2,450,900,0,0,0,0,0,0,0,0,0,0,0,0
+LPL_DiscreteTrialAcquisition_Day5,LPLDiscreteTrialAcquisitionB2,LPLDiscreteTrialAcquisitionB2_Rat25.csv,25____,29,2,1,C,Marios,138,3,900,1350,0,0,0,0,0,0,0,0,0,0,0,0
+LPL_DiscreteTrialAcquisition_Day5,LPLDiscreteTrialAcquisitionB2,LPLDiscreteTrialAcquisitionB2_Rat25.csv,25____,29,2,1,C,Marios,138,4,1350,1800,4,1.44000000000028,0,0,0,0,0,0,0,0,0,0

@@ -76,7 +76,7 @@ for (i in c(1:length(listofdatafolders))){
   datafilepaths <- list.files(path = lookup, pattern = ".csv")
   for (j in c(1:length(datafilepaths))) {
     
-    # For each raw.txt file split up the data into indivudal subjects .csv files for subsequent analysis
+    # For each raw.txt file split up the data into individudal subjects .csv files for subsequent analysis
     folderpath <- here(datafoldersinproject1, datafoldersinproject2,projectdatafolder,listofdatafolders[i])
     filename <- datafilepaths[j]
     ## Run Function - N.B. Warnings will appear to tell you that the new directory for data storage already exists. Safe to ignore.
