@@ -192,7 +192,7 @@ Acqsuisition_Stage1_MagFreq <- data_PerSession_CSPre %>%
   theme_cowplot(11) +
   theme(plot.title = element_text(hjust = 0.5)) +
   theme(plot.title = element_text(size=10)) +
-  coord_cartesian(ylim = c(-1,6.0001)) +
+  coord_cartesian(ylim = c(-1,8.0001)) +
   theme(axis.title.x=element_text(face = "bold")) +
   scale_linetype_manual(name = "", values = linetypes)  +
   scale_colour_manual(name = "", values = linecolours, aesthetics = c("colour")) +
@@ -217,7 +217,7 @@ Acqsuisition_Stage1_MagDur <- data_PerSession_CSPre %>%
   theme_cowplot(11) +
   theme(plot.title = element_text(hjust = 0.5)) +
   theme(plot.title = element_text(size=10)) +
-  coord_cartesian(ylim = c(-1,6.0001)) +
+  coord_cartesian(ylim = c(-1,8.0001)) +
   theme(axis.title.x=element_text(face = "bold")) +
   scale_linetype_manual(name = "", values = linetypes)  +
   scale_colour_manual(name = "", values = linecolours, aesthetics = c("colour")) +
@@ -243,7 +243,7 @@ Acqsuisition_Stage1_MagFreq_5s <- data_PerSession_last5s_CSPre %>%
   theme_cowplot(11) +
   theme(plot.title = element_text(hjust = 0.5)) +
   theme(plot.title = element_text(size=10)) +
-  coord_cartesian(ylim = c(-1,6.0001)) +
+  coord_cartesian(ylim = c(-1,8.0001)) +
   theme(axis.title.x=element_text(face = "bold")) +
   scale_linetype_manual(name = "", values = linetypes)  +
   scale_colour_manual(name = "", values = linecolours, aesthetics = c("colour")) +
@@ -268,7 +268,7 @@ Acqsuisition_Stage1_MagDur_5s <- data_PerSession_last5s_CSPre %>%
   theme_cowplot(11) +
   theme(plot.title = element_text(hjust = 0.5)) +
   theme(plot.title = element_text(size=10)) +
-  coord_cartesian(ylim = c(-1,6.0001)) +
+  coord_cartesian(ylim = c(-1,8.0001)) +
   theme(axis.title.x=element_text(face = "bold")) +
   scale_linetype_manual(name = "", values = linetypes)  +
   scale_colour_manual(name = "", values = linecolours, aesthetics = c("colour")) +
@@ -401,7 +401,7 @@ FeatureNegative_Stage2_MagFreq <- data_PerSession_CSPre %>%
   theme_cowplot(11) +
   theme(plot.title = element_text(hjust = 0.5)) +
   theme(plot.title = element_text(size=10)) +
-  coord_cartesian(ylim = c(-1,6.0001)) +
+  coord_cartesian(ylim = c(-1,8.0001)) +
   theme(axis.title.x=element_text(face = "bold")) +
   scale_linetype_manual(name = "", values = linetypes)  +
   scale_colour_manual(name = "", values = linecolours, aesthetics = c("colour")) +
@@ -426,7 +426,7 @@ FeatureNegative_Stage2_MagDur <- data_PerSession_CSPre %>%
   theme_cowplot(11) +
   theme(plot.title = element_text(hjust = 0.5)) +
   theme(plot.title = element_text(size=10)) +
-  coord_cartesian(ylim = c(-1,6.0001)) +
+  coord_cartesian(ylim = c(-1,8.0001)) +
   theme(axis.title.x=element_text(face = "bold")) +
   scale_linetype_manual(name = "", values = linetypes)  +
   scale_colour_manual(name = "", values = linecolours, aesthetics = c("colour")) +
@@ -451,7 +451,7 @@ FeatureNegative_Stage2_MagFreq_5s <- data_PerSession_last5s_CSPre %>%
   theme_cowplot(11) +
   theme(plot.title = element_text(hjust = 0.5)) +
   theme(plot.title = element_text(size=10)) +
-  coord_cartesian(ylim = c(-1,6.0001)) +
+  coord_cartesian(ylim = c(-1,8.0001)) +
   theme(axis.title.x=element_text(face = "bold")) +
   scale_linetype_manual(name = "", values = linetypes)  +
   scale_colour_manual(name = "", values = linecolours, aesthetics = c("colour")) +
@@ -476,7 +476,7 @@ FeatureNegative_Stage2_MagDur_5s <- data_PerSession_last5s_CSPre %>%
   theme_cowplot(11) +
   theme(plot.title = element_text(hjust = 0.5)) +
   theme(plot.title = element_text(size=10)) +
-  coord_cartesian(ylim = c(-1,6.0001)) +
+  coord_cartesian(ylim = c(-1,8.0001)) +
   theme(axis.title.x=element_text(face = "bold")) +
   scale_linetype_manual(name = "", values = linetypes)  +
   scale_colour_manual(name = "", values = linecolours, aesthetics = c("colour")) +
@@ -506,7 +506,7 @@ FeatureNegative_Stage2_MagFreq_Post <- data_PerSession_CSPre %>%
   theme_cowplot(11) +
   theme(plot.title = element_text(hjust = 0.5)) +
   theme(plot.title = element_text(size=10)) +
-  coord_cartesian(ylim = c(-1,6.0001)) +
+  coord_cartesian(ylim = c(-1,8.0001)) +
   theme(axis.title.x=element_text(face = "bold")) +
   scale_linetype_manual(name = "", values = linetypes)  +
   scale_colour_manual(name = "", values = linecolours, aesthetics = c("colour")) +
@@ -531,7 +531,7 @@ FeatureNegative_Stage2_MagDur_Post <- data_PerSession_CSPre %>%
   theme_cowplot(11) +
   theme(plot.title = element_text(hjust = 0.5)) +
   theme(plot.title = element_text(size=10)) +
-  coord_cartesian(ylim = c(-1,6.0001)) +
+  coord_cartesian(ylim = c(-1,8.0001)) +
   theme(axis.title.x=element_text(face = "bold")) +
   scale_linetype_manual(name = "", values = linetypes)  +
   scale_colour_manual(name = "", values = linecolours, aesthetics = c("colour")) +
@@ -556,7 +556,7 @@ FeatureNegative_Stage2_MagFreq_5s_Post <- data_PerSession_last5s_CSPre %>%
   theme_cowplot(11) +
   theme(plot.title = element_text(hjust = 0.5)) +
   theme(plot.title = element_text(size=10)) +
-  coord_cartesian(ylim = c(-1,6.0001)) +
+  coord_cartesian(ylim = c(-1,8.0001)) +
   theme(axis.title.x=element_text(face = "bold")) +
   scale_linetype_manual(name = "", values = linetypes)  +
   scale_colour_manual(name = "", values = linecolours, aesthetics = c("colour")) +
@@ -581,7 +581,7 @@ FeatureNegative_Stage2_MagDur_5s_Post <- data_PerSession_last5s_CSPre %>%
   theme_cowplot(11) +
   theme(plot.title = element_text(hjust = 0.5)) +
   theme(plot.title = element_text(size=10)) +
-  coord_cartesian(ylim = c(-1,6.0001)) +
+  coord_cartesian(ylim = c(-1,8.0001)) +
   theme(axis.title.x=element_text(face = "bold")) +
   scale_linetype_manual(name = "", values = linetypes)  +
   scale_colour_manual(name = "", values = linecolours, aesthetics = c("colour")) +
