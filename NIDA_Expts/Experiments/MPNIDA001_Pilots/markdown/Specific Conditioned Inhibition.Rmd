@@ -63,6 +63,7 @@ library(knitr)
 ```{r Load data from figures for Stats , include=FALSE, message = FALSE, warning=FALSE}
 CI_Stage1_CSPre <- read_csv(here("figures","figure_data","CI_Stage1_CSPre.csv"))
 CI_Stage2_CSPre <- read_csv(here("figures","figure_data","CI_Stage2_CSPre.csv"))
+CI_Stage3_CSPre <- read_csv(here("figures","figure_data","CI_Stage3_CSPre.csv"))
 ```
 
 ## Stage 1: Acquisition
@@ -108,6 +109,7 @@ anova_Stg2_Freq <- apa_print(anova, mse = "FALSE",correction = "none",es = "pes"
 ## simple effects - Rate of acquisition different between CS types, CI estimates of linear trend show this clearly
 simple <- emmeans(anova, ~Day*CSPair)
 simple_Stg2_Freq <- apa_print(contrast(simple, interaction = c("poly"), by = "CSPair", adjust = "none"))
+# simple_Stg2_Freq <- apa_print(contrast(simple, interaction = c("pairwise"), by = "Day", adjust = "tukey"))
 
 anova_Stg2_Freq$table
 simple_Stg2_Freq$table
@@ -126,6 +128,7 @@ anova_Stg2_Dur$table
 # Stage 2
 
 ## Magazine Frequency
+Subjects responded significntly lower to the non-reinforced compound cues AX- and BY-
 
 `r apa_table(within(anova_Stg2_Freq$table, rm(pes)),caption = "Magazine Frequency ANOVA", label = "NULL")`
 
