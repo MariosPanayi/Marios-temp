@@ -361,6 +361,14 @@ data_PerSession <- rawdata %>%
             MagDuration = mean(A3_dur)*10) %>%
   ungroup()
 
+# WithinCS data
+data_PerSession_within <- rawdata %>% 
+  group_by(Day, subject, sex, Outcome, CSPair, CS_name, Period, bin_timewithin) %>% 
+  summarise(MagEntries = mean(A3_freq)*1,
+            MagDuration = mean(A3_dur)*1) %>%
+  ungroup()
+#
+
 data_PerSession_CSPre <- data_PerSession %>% 
   pivot_wider(names_from = Period,values_from = c(MagEntries, MagDuration)) %>% 
   mutate(MagEntries_CSPre = MagEntries_CS - MagEntries_Pre,
@@ -385,6 +393,50 @@ data_PerSession_last5s_CSPre <- data_PerSession_last5s %>%
   pivot_wider(names_from = Measure, values_from = Mag)
 
 #  Plots Stage 2 ----------------------------------------------------------
+
+FeatureNegative_Stage2_MagFreq_within <- data_PerSession_within %>% 
+  filter(Period == "CS") %>%
+  ggplot(mapping = aes(x = as.factor(bin_timewithin), y = MagEntries, group = CS_name, colour = CS_name, fill = CS_name, shape = CS_name,linetype = CS_name)) +
+  stat_summary_bin(fun.data = "mean_se", geom = "line", size = .5) +
+  stat_summary(fun.data = "mean_se", geom = "errorbar", width = 0.0, size = .3, linetype = 1, show.legend = FALSE) +
+  stat_summary_bin(fun.data = "mean_se", geom = "point", size = 2) +
+  facet_wrap(vars(Day), ncol = 8) +
+  # Make Pretty
+  scale_y_continuous( expand = expansion(mult = c(0, 0)), breaks=seq(-100,100,.2)) +
+  ggtitle("Stage 2") + xlab("Time (s)") + ylab("Magazine Entry 1s (CS-Pre)") +
+  theme_cowplot(11) +
+  theme(plot.title = element_text(hjust = 0.5)) +
+  theme(plot.title = element_text(size=10)) +
+  coord_cartesian(ylim = c(0,1.4001)) +
+  theme(axis.title.x=element_text(face = "bold")) +
+  scale_linetype_manual(name = "", values = linetypes)  +
+  scale_colour_manual(name = "", values = linecolours, aesthetics = c("colour")) +
+  scale_shape_manual(name = "", values = pointshapes) +
+  scale_fill_manual(name = "", values = fillcolours) +
+  theme(legend.key.width=unit(1,"line"))
+FeatureNegative_Stage2_MagFreq_within
+
+FeatureNegative_Stage2_MagDur_within <- data_PerSession_within %>% 
+  filter(Period == "CS") %>%
+  ggplot(mapping = aes(x = as.factor(bin_timewithin), y = MagDuration, group = CS_name, colour = CS_name, fill = CS_name, shape = CS_name,linetype = CS_name)) +
+  stat_summary_bin(fun.data = "mean_se", geom = "line", size = .5) +
+  stat_summary(fun.data = "mean_se", geom = "errorbar", width = 0.0, size = .3, linetype = 1, show.legend = FALSE) +
+  stat_summary_bin(fun.data = "mean_se", geom = "point", size = 2) +
+  facet_wrap(vars(Day), ncol = 8) +
+   # Make Pretty
+  scale_y_continuous( expand = expansion(mult = c(0, 0)), breaks=seq(-100,100,.2)) +
+  ggtitle("Stage 2") + xlab("Time (s)") + ylab("Magazine Entry 1s (CS-Pre)") +
+  theme_cowplot(11) +
+  theme(plot.title = element_text(hjust = 0.5)) +
+  theme(plot.title = element_text(size=10)) +
+  coord_cartesian(ylim = c(0,1.4001)) +
+  theme(axis.title.x=element_text(face = "bold")) +
+  scale_linetype_manual(name = "", values = linetypes)  +
+  scale_colour_manual(name = "", values = linecolours, aesthetics = c("colour")) +
+  scale_shape_manual(name = "", values = pointshapes) +
+  scale_fill_manual(name = "", values = fillcolours) +
+  theme(legend.key.width=unit(1,"line"))
+FeatureNegative_Stage2_MagDur_within
 
 ## 10s Data
 ### Frequency
@@ -591,10 +643,6 @@ FeatureNegative_Stage2_MagDur_5s_Post <- data_PerSession_last5s_CSPre %>%
 
 CI_Stage2_5s_Dur_Post <- shift_xaxis(FeatureNegative_Stage2_MagDur_5s_Post)
 
-CI_Stage2_10s_Freq_Post
-CI_Stage2_10s_Dur_Post
-CI_Stage2_5s_Freq_Post
-CI_Stage2_5s_Dur_Post
 
 # Save Stage 2 Figures ----------------------------------------------------
 
@@ -614,6 +662,21 @@ filename = here("figures", "CI_Stage2_5s_Dur.png")
 ggsave(filename, CI_Stage2_5s_Dur, width = 80, height = 80, units = "mm", dpi = 1200)
 
 
+# CI_Stage2_10s_Freq_Post
+# CI_Stage2_10s_Dur_Post
+# CI_Stage2_5s_Freq_Post
+# CI_Stage2_5s_Dur_Post
+
+
+
+filename = here("figures", "CI_Stage2_10s_Freq_Post.png")
+ggsave(filename, CI_Stage2_10s_Freq_Post, width = 80, height = 80, units = "mm", dpi = 1200)
+filename = here("figures", "CI_Stage2_10s_Dur_Post.png")
+ggsave(filename, CI_Stage2_10s_Dur_Post, width = 80, height = 80, units = "mm", dpi = 1200)
+filename = here("figures", "CI_Stage2_5s_Freq_Post.png")
+ggsave(filename, CI_Stage2_5s_Freq_Post, width = 80, height = 80, units = "mm", dpi = 1200)
+filename = here("figures", "CI_Stage2_5s_Dur_Post.png")
+ggsave(filename, CI_Stage2_5s_Dur_Post, width = 80, height = 80, units = "mm", dpi = 1200)
 
 # Save Stage 2 Data for analysis ------------------------------------------
 
@@ -626,35 +689,260 @@ savefile <- "CI_Stage2_CSPre_last5s.csv"
 write_csv(data_PerSession_last5s_CSPre, here("figures", "figure_data", savefile))
 
 
+# Stage 3 -----------------------------------------------------------------
 
-# Combined Figure Panels ---------------------------------------------------
 
-## 10s Frequency
-A <- CI_Stage1_10s_Freq + theme(legend.position= c(0.05,.90), 
-                                legend.justification='left',
-                                legend.direction='vertical')
-
-B <- CI_Stage2_10s_Freq + theme(legend.position= c(0.05,.90), 
-                                legend.justification='left',
-                                legend.direction='vertical', 
-                                axis.title.y = element_blank())
-
-CI_10s_Freq_Combined <- (A + B) + plot_annotation(tag_levels = 'A') + plot_layout(nrow = 1, widths = c(1, 1))
-
-filename = here("figures", "CI_10s_Freq_Combined.png")
-ggsave(filename, CI_10s_Freq_Combined, width = 120, height = 80, units = "mm", dpi = 1200)
-
-## 10s Duration
-  A <- CI_Stage1_10s_Dur + theme(legend.position= c(0.05,.90), 
+  # Load Data - Stage 3 ---------------------------------------------------------------
+  
+  folderpath <- here("rawdata","Marios","1_SpecificCI","CombinedData")
+  filename <- "CI_Stage3_ProcessedData_pertrial_1sbins.csv"
+  
+  rawdata <- read_csv(here(folderpath,filename))
+  
+  # Fix Day factor to numeric
+  rawdata <- rawdata %>% 
+    mutate(Day = as.numeric(str_remove(Day, "Day")))
+  
+  # Add new factors to represent predicted outcome identity and Cue pairs
+  
+  CS_name <- c("A_O1",
+               "B_O2",
+               "C_O1",
+               "D_O2")
+  
+  Outcome <- c("O1",
+               "O2",
+               "O1",
+               "O2")
+  CSPair <- c("AB",
+              "AB",
+              "CD",
+              "CD")
+  
+  newfactorlookup <- data.frame(CS_name, Outcome, CSPair)
+  rawdata <- left_join(rawdata, newfactorlookup, by = "CS_name")
+  
+  data_PerSession <- rawdata %>% 
+    group_by(Day, subject, Outcome, CSPair, CS_name, Period) %>% 
+    summarise(MagEntries = mean(A3_freq)*10,
+              MagDuration = mean(A3_dur)*10) %>%
+    ungroup()
+  
+  data_PerSession_CSPre <- data_PerSession %>% 
+    pivot_wider(names_from = Period,values_from = c(MagEntries, MagDuration)) %>% 
+    mutate(MagEntries_CSPre = MagEntries_CS - MagEntries_Pre,
+           MagDuration_CSPre = MagDuration_CS - MagDuration_Pre) %>% 
+    pivot_longer(c(MagEntries_CS, MagEntries_Post, MagEntries_Pre, MagDuration_CS, MagDuration_Post, MagDuration_Pre, MagEntries_CSPre, MagDuration_CSPre), names_to = c("Measure", "Period"), names_sep = "_", values_to = "Mag") %>% 
+    pivot_wider(names_from = Measure, values_from = Mag)
+  
+  
+  data_PerSession_last5s <- rawdata %>% 
+    filter(bin_timewithin > 5) %>% 
+    group_by(Day, subject, Outcome, CSPair, CS_name, Period) %>% 
+    summarise(MagEntries = mean(A3_freq)*5,
+              MagDuration = mean(A3_dur)*5) %>%
+    ungroup()
+  
+  
+  data_PerSession_last5s_CSPre <- data_PerSession_last5s %>% 
+    pivot_wider(names_from = Period,values_from = c(MagEntries, MagDuration)) %>% 
+    mutate(MagEntries_CSPre = MagEntries_CS - MagEntries_Pre,
+           MagDuration_CSPre = MagDuration_CS - MagDuration_Pre) %>% 
+    pivot_longer(c(MagEntries_CS, MagEntries_Post, MagEntries_Pre, MagDuration_CS, MagDuration_Post, MagDuration_Pre, MagEntries_CSPre, MagDuration_CSPre), names_to = c("Measure", "Period"), names_sep = "_", values_to = "Mag") %>% 
+    pivot_wider(names_from = Measure, values_from = Mag)
+  
+  
+  #  Plots Stage 3 ----------------------------------------------------------
+  
+  ## 10s Data
+  ### Frequency
+  
+  Acqsuisition_Stage3_MagFreq <- data_PerSession_CSPre %>% 
+    filter(Period == "CSPre") %>%
+    ggplot(mapping = aes(x = as.factor(Day), y = MagEntries, group = CS_name, colour = CS_name, fill = CS_name, shape = CS_name,linetype = CS_name)) +
+    stat_summary_bin(fun.data = "mean_se", geom = "line", size = .5) +
+    stat_summary(fun.data = "mean_se", geom = "errorbar", width = 0.0, size = .3, linetype = 1, show.legend = FALSE) +
+    stat_summary_bin(fun.data = "mean_se", geom = "point", size = 2) +
+    # Make Pretty
+    scale_y_continuous( expand = expansion(mult = c(0, 0)), breaks=seq(-100,100,1)) +
+    ggtitle("Stage 3") + xlab("Day") + ylab("Magazine Entry 10s (CS-Pre)") +
+    theme_cowplot(11) +
+    theme(plot.title = element_text(hjust = 0.5)) +
+    theme(plot.title = element_text(size=10)) +
+    coord_cartesian(ylim = c(-1,8.0001)) +
+    theme(axis.title.x=element_text(face = "bold")) +
+    scale_linetype_manual(name = "", values = linetypes)  +
+    scale_colour_manual(name = "", values = linecolours, aesthetics = c("colour")) +
+    scale_shape_manual(name = "", values = pointshapes) +
+    scale_fill_manual(name = "", values = fillcolours) +
+    theme(legend.key.width=unit(1,"line"))
+  
+  CI_Stage3_10s_Freq <- shift_xaxis(Acqsuisition_Stage3_MagFreq)
+  
+  ## 10s Data
+  ### Duration
+  
+  Acqsuisition_Stage3_MagDur <- data_PerSession_CSPre %>% 
+    filter(Period == "CSPre") %>%
+    ggplot(mapping = aes(x = as.factor(Day), y = MagDuration, group = CS_name, colour = CS_name, fill = CS_name, shape = CS_name,linetype = CS_name)) +
+    stat_summary_bin(fun.data = "mean_se", geom = "line", size = .5) +
+    stat_summary(fun.data = "mean_se", geom = "errorbar", width = 0.0, size = .3, linetype = 1, show.legend = FALSE) +
+    stat_summary_bin(fun.data = "mean_se", geom = "point", size = 2) +
+    # Make Pretty
+    scale_y_continuous( expand = expansion(mult = c(0, 0)), breaks=seq(-100,100,1)) +
+    ggtitle("Stage 3") + xlab("Day") + ylab("Magazine Duration 10s (CS-Pre)") +
+    theme_cowplot(11) +
+    theme(plot.title = element_text(hjust = 0.5)) +
+    theme(plot.title = element_text(size=10)) +
+    coord_cartesian(ylim = c(-1,8.0001)) +
+    theme(axis.title.x=element_text(face = "bold")) +
+    scale_linetype_manual(name = "", values = linetypes)  +
+    scale_colour_manual(name = "", values = linecolours, aesthetics = c("colour")) +
+    scale_shape_manual(name = "", values = pointshapes) +
+    scale_fill_manual(name = "", values = fillcolours) +
+    theme(legend.key.width=unit(1,"line"))
+  
+  CI_Stage3_10s_Dur <- shift_xaxis(Acqsuisition_Stage3_MagDur)
+  
+  
+  ## 5s Data
+  ### Frequency
+  
+  Acqsuisition_Stage3_MagFreq_5s <- data_PerSession_last5s_CSPre %>% 
+    filter(Period == "CSPre") %>%
+    ggplot(mapping = aes(x = as.factor(Day), y = MagEntries, group = CS_name, colour = CS_name, fill = CS_name, shape = CS_name,linetype = CS_name)) +
+    stat_summary_bin(fun.data = "mean_se", geom = "line", size = .5) +
+    stat_summary(fun.data = "mean_se", geom = "errorbar", width = 0.0, size = .3, linetype = 1, show.legend = FALSE) +
+    stat_summary_bin(fun.data = "mean_se", geom = "point", size = 2) +
+    # Make Pretty
+    scale_y_continuous( expand = expansion(mult = c(0, 0)), breaks=seq(-100,100,1)) +
+    ggtitle("Stage 3") + xlab("Day") + ylab("Magazine Entry 5s (CS-Pre)") +
+    theme_cowplot(11) +
+    theme(plot.title = element_text(hjust = 0.5)) +
+    theme(plot.title = element_text(size=10)) +
+    coord_cartesian(ylim = c(-1,8.0001)) +
+    theme(axis.title.x=element_text(face = "bold")) +
+    scale_linetype_manual(name = "", values = linetypes)  +
+    scale_colour_manual(name = "", values = linecolours, aesthetics = c("colour")) +
+    scale_shape_manual(name = "", values = pointshapes) +
+    scale_fill_manual(name = "", values = fillcolours) +
+    theme(legend.key.width=unit(1,"line"))
+  
+  CI_Stage3_5s_Freq <- shift_xaxis(Acqsuisition_Stage3_MagFreq_5s)
+  
+  ## 5s Data
+  ### Duration
+  
+  Acqsuisition_Stage3_MagDur_5s <- data_PerSession_last5s_CSPre %>% 
+    filter(Period == "CSPre") %>%
+    ggplot(mapping = aes(x = as.factor(Day), y = MagDuration, group = CS_name, colour = CS_name, fill = CS_name, shape = CS_name,linetype = CS_name)) +
+    stat_summary_bin(fun.data = "mean_se", geom = "line", size = .5) +
+    stat_summary(fun.data = "mean_se", geom = "errorbar", width = 0.0, size = .3, linetype = 1, show.legend = FALSE) +
+    stat_summary_bin(fun.data = "mean_se", geom = "point", size = 2) +
+    # Make Pretty
+    scale_y_continuous( expand = expansion(mult = c(0, 0)), breaks=seq(-100,100,1)) +
+    ggtitle("Stage 3") + xlab("Day") + ylab("Magazine Duration 5s (CS-Pre)") +
+    theme_cowplot(11) +
+    theme(plot.title = element_text(hjust = 0.5)) +
+    theme(plot.title = element_text(size=10)) +
+    coord_cartesian(ylim = c(-1,8.0001)) +
+    theme(axis.title.x=element_text(face = "bold")) +
+    scale_linetype_manual(name = "", values = linetypes)  +
+    scale_colour_manual(name = "", values = linecolours, aesthetics = c("colour")) +
+    scale_shape_manual(name = "", values = pointshapes) +
+    scale_fill_manual(name = "", values = fillcolours) +
+    theme(legend.key.width=unit(1,"line"))
+  
+  CI_Stage3_5s_Dur <- shift_xaxis(Acqsuisition_Stage3_MagDur_5s)
+  
+  
+  
+  # #Inspect individual animals
+  # 
+  # data_PerSession_CSPre %>% 
+  #   filter(Period == "CS") %>% 
+  #   select(-MagEntries, -Period) %>%
+  #   pivot_wider(names_from = subject, values_from = MagDuration) %>% 
+  #   kable()
+  # 
+  # data_PerSession_CSPre %>% 
+  #   filter(Period == "CS") %>% 
+  #   select(-MagDuration, -Period) %>%
+  #   pivot_wider(names_from = subject, values_from = MagEntries) %>% 
+  #   kable()
+  # 
+  
+  
+  # Save Stage 3 Figures ----------------------------------------------------
+  
+  # CI_Stage3_10s_Freq
+  # CI_Stage3_10s_Dur
+  # CI_Stage3_5s_Freq
+  # CI_Stage3_5s_Dur
+  
+  
+  filename = here("figures", "CI_Stage3_10s_Freq.png")
+  ggsave(filename, CI_Stage3_10s_Freq, width = 80, height = 80, units = "mm", dpi = 1200)
+  filename = here("figures", "CI_Stage3_10s_Dur.png")
+  ggsave(filename, CI_Stage3_10s_Dur, width = 80, height = 80, units = "mm", dpi = 1200)
+  filename = here("figures", "CI_Stage3_5s_Freq.png")
+  ggsave(filename, CI_Stage3_5s_Freq, width = 80, height = 80, units = "mm", dpi = 1200)
+  filename = here("figures", "CI_Stage3_5s_Dur.png")
+  ggsave(filename, CI_Stage3_5s_Dur, width = 80, height = 80, units = "mm", dpi = 1200)
+  
+  
+  
+  # Save Stage 3 Data for analysis ------------------------------------------
+  
+  
+  savefile <- "CI_Stage3_CSPre.csv"
+  write_csv(data_PerSession_CSPre, here("figures", "figure_data",savefile))
+  
+  
+  savefile <- "CI_Stage3_CSPre_last5s.csv"
+  write_csv(data_PerSession_last5s_CSPre, here("figures", "figure_data",savefile))
+  
+  
+  
+  
+  # Combined Figure Panels ---------------------------------------------------
+  
+  ## 10s Frequency
+  A <- CI_Stage1_10s_Freq + theme(legend.position= c(0.05,.90), 
                                   legend.justification='left',
                                   legend.direction='vertical')
   
-  B <- CI_Stage2_10s_Dur + theme(legend.position= c(0.05,.90), 
+  B <- CI_Stage2_10s_Freq + theme(legend.position= c(0.05,.90), 
                                   legend.justification='left',
                                   legend.direction='vertical', 
                                   axis.title.y = element_blank())
   
-  CI_10s_Dur_Combined <- (A + B) + plot_annotation(tag_levels = 'A') + plot_layout(nrow = 1, widths = c(1, 1))
+  C <- CI_Stage3_10s_Freq + theme(legend.position= c(0.05,.90), 
+                                  legend.justification='left',
+                                  legend.direction='vertical', 
+                                  axis.title.y = element_blank())
+  
+  CI_10s_Freq_Combined <- (A + B + C) + plot_annotation(tag_levels = 'A') + plot_layout(nrow = 1, widths = c(1, 2, .5))
+  
+  filename = here("figures", "CI_10s_Freq_Combined.png")
+  ggsave(filename, CI_10s_Freq_Combined, width = 120, height = 80, units = "mm", dpi = 1200)
+  
+  ## 10s Duration
+  A <- CI_Stage1_10s_Dur + theme(legend.position= c(0.05,.90), 
+                                 legend.justification='left',
+                                 legend.direction='vertical')
+  
+  B <- CI_Stage2_10s_Dur + theme(legend.position= c(0.05,.90), 
+                                 legend.justification='left',
+                                 legend.direction='vertical', 
+                                 axis.title.y = element_blank())
+  
+  C <- CI_Stage3_10s_Dur + theme(legend.position= c(0.05,.90), 
+                                 legend.justification='left',
+                                 legend.direction='vertical', 
+                                 axis.title.y = element_blank())
+  
+  CI_10s_Dur_Combined <- (A + B + C) + plot_annotation(tag_levels = 'A') + plot_layout(nrow = 1, widths = c(1, 2, .5))
   
   filename = here("figures", "CI_10s_Dur_Combined.png")
   ggsave(filename, CI_10s_Dur_Combined, width = 120, height = 80, units = "mm", dpi = 1200)
@@ -670,7 +958,12 @@ ggsave(filename, CI_10s_Freq_Combined, width = 120, height = 80, units = "mm", d
                                  legend.direction='vertical', 
                                  axis.title.y = element_blank())
   
-  CI_5s_Freq_Combined <- (A + B) + plot_annotation(tag_levels = 'A') + plot_layout(nrow = 1, widths = c(1, 1))
+  C <- CI_Stage3_5s_Freq + theme(legend.position= c(0.05,.90), 
+                                 legend.justification='left',
+                                 legend.direction='vertical', 
+                                 axis.title.y = element_blank())
+  
+  CI_5s_Freq_Combined <- (A + B + C) + plot_annotation(tag_levels = 'A') + plot_layout(nrow = 1, widths = c(1, 2, .5))
   
   filename = here("figures", "CI_5s_Freq_Combined.png")
   ggsave(filename, CI_5s_Freq_Combined, width = 120, height = 80, units = "mm", dpi = 1200)
@@ -685,9 +978,15 @@ ggsave(filename, CI_10s_Freq_Combined, width = 120, height = 80, units = "mm", d
                                 legend.direction='vertical', 
                                 axis.title.y = element_blank())
   
-  CI_5s_Dur_Combined <- (A + B) + plot_annotation(tag_levels = 'A') + plot_layout(nrow = 1, widths = c(1, 1))
+  C <- CI_Stage3_5s_Dur + theme(legend.position= c(0.05,.90), 
+                                legend.justification='left',
+                                legend.direction='vertical', 
+                                axis.title.y = element_blank())
+  
+  CI_5s_Dur_Combined <- (A + B + C) + plot_annotation(tag_levels = 'A') + plot_layout(nrow = 1, widths = c(1, 2, .5))
   
   filename = here("figures", "CI_5s_Dur_Combined.png")
   ggsave(filename, CI_5s_Dur_Combined, width = 120, height = 80, units = "mm", dpi = 1200)
+  
   
 

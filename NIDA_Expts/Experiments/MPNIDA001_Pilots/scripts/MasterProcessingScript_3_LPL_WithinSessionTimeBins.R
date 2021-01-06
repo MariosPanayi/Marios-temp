@@ -146,12 +146,29 @@ subject <- c("17____",
                         "B",
                         "B")
 
+  
+  
   # Create counterbalancing lookup table
 lookup_counterbalancing <- data.frame(subject, counterbalancing)
   # Combine with rawdata
 rawdata <- left_join(rawdata, lookup_counterbalancing, by = "subject")
 
+# Add counterbalancing associated with lever->light IDs
 
+counterbalancing <-  c("A",
+                        "B")
+
+
+leftleverCbx <-  c("Flash",
+                   "Steady")
+
+rightlevercbx <-  c("Steady",
+                    "Flash")
+
+# Create counterbalancing lookup table
+lookup_counterbalancing <- data.frame(counterbalancing, leftleverCbx, rightlevercbx)
+# Combine with rawdata
+rawdata <- left_join(rawdata, lookup_counterbalancing, by = "counterbalancing")
 
 # Calculate Session/Day number --------------------------------------------
 
