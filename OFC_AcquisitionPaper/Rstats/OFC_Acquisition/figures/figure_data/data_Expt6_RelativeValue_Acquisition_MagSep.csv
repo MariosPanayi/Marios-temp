@@ -1,0 +1,289 @@
+Subject,Period,Stage,Magazine,Probability,MagEntries
+1,PreCS,Acquisition,Sucrose,Low,0.4166667
+1,PreCS,Acquisition,Sucrose,Medium,1.076923
+1,PreCS,Acquisition,Sucrose,High,1.53125
+1,PreCS,Thirst,Sucrose,Low,1.111111
+1,PreCS,Thirst,Sucrose,Medium,1.465116
+1,PreCS,Thirst,Sucrose,High,2.241379
+1,PreCS,4x Sucrose,Sucrose,Low,0.8333333
+1,PreCS,4x Sucrose,Sucrose,Medium,1.465116
+1,PreCS,4x Sucrose,Sucrose,High,2.818182
+1,PreCS,Acquisition,Pellet,Low,0
+1,PreCS,Acquisition,Pellet,Medium,0
+1,PreCS,Acquisition,Pellet,High,0.125
+1,PreCS,Thirst,Pellet,Low,0
+1,PreCS,Thirst,Pellet,Medium,0.04651163
+1,PreCS,Thirst,Pellet,High,0
+1,PreCS,4x Sucrose,Pellet,Low,0.04761905
+1,PreCS,4x Sucrose,Pellet,Medium,0.04651163
+1,PreCS,4x Sucrose,Pellet,High,0.03030303
+1,CS,Acquisition,Sucrose,Low,1.630435
+1,CS,Acquisition,Sucrose,Medium,1.75
+1,CS,Acquisition,Sucrose,High,2.033333
+1,CS,Thirst,Sucrose,Low,2.318182
+1,CS,Thirst,Sucrose,Medium,2.380952
+1,CS,Thirst,Sucrose,High,2.666667
+1,CS,4x Sucrose,Sucrose,Low,2.375
+1,CS,4x Sucrose,Sucrose,Medium,2.588235
+1,CS,4x Sucrose,Sucrose,High,2.83871
+1,CS,Acquisition,Pellet,Low,2.543478
+1,CS,Acquisition,Pellet,Medium,2.4
+1,CS,Acquisition,Pellet,High,2.133333
+1,CS,Thirst,Pellet,Low,1.863636
+1,CS,Thirst,Pellet,Medium,1.166667
+1,CS,Thirst,Pellet,High,1.466667
+1,CS,4x Sucrose,Pellet,Low,1.45
+1,CS,4x Sucrose,Pellet,Medium,1.823529
+1,CS,4x Sucrose,Pellet,High,0.7419355
+2,PreCS,Acquisition,Sucrose,Low,0.4444445
+2,PreCS,Acquisition,Sucrose,Medium,0.8108108
+2,PreCS,Acquisition,Sucrose,High,0.7096774
+2,PreCS,Thirst,Sucrose,Low,0.4146341
+2,PreCS,Thirst,Sucrose,Medium,1.04878
+2,PreCS,Thirst,Sucrose,High,0.9705882
+2,PreCS,4x Sucrose,Sucrose,Low,0.5681818
+2,PreCS,4x Sucrose,Sucrose,Medium,1.128205
+2,PreCS,4x Sucrose,Sucrose,High,1.1
+2,PreCS,Acquisition,Pellet,Low,0.1333333
+2,PreCS,Acquisition,Pellet,Medium,0.1351351
+2,PreCS,Acquisition,Pellet,High,0
+2,PreCS,Thirst,Pellet,Low,0.1219512
+2,PreCS,Thirst,Pellet,Medium,0
+2,PreCS,Thirst,Pellet,High,0.02941177
+2,PreCS,4x Sucrose,Pellet,Low,0
+2,PreCS,4x Sucrose,Pellet,Medium,0.2051282
+2,PreCS,4x Sucrose,Pellet,High,0.06666667
+2,CS,Acquisition,Sucrose,Low,0.5681818
+2,CS,Acquisition,Sucrose,Medium,0.5384616
+2,CS,Acquisition,Sucrose,High,0.575
+2,CS,Thirst,Sucrose,Low,0.4130435
+2,CS,Thirst,Sucrose,Medium,0.6153846
+2,CS,Thirst,Sucrose,High,0.7857143
+2,CS,4x Sucrose,Sucrose,Low,0.7857143
+2,CS,4x Sucrose,Sucrose,Medium,0.6904762
+2,CS,4x Sucrose,Sucrose,High,1.064516
+2,CS,Acquisition,Pellet,Low,3.659091
+2,CS,Acquisition,Pellet,Medium,3.025641
+2,CS,Acquisition,Pellet,High,3.5
+2,CS,Thirst,Pellet,Low,2.565218
+2,CS,Thirst,Pellet,Medium,1.897436
+2,CS,Thirst,Pellet,High,2.928572
+2,CS,4x Sucrose,Pellet,Low,2.261905
+2,CS,4x Sucrose,Pellet,Medium,2.928572
+2,CS,4x Sucrose,Pellet,High,1.870968
+3,PreCS,Acquisition,Sucrose,Low,0.2142857
+3,PreCS,Acquisition,Sucrose,Medium,0.4705882
+3,PreCS,Acquisition,Sucrose,High,0.6578947
+3,PreCS,Thirst,Sucrose,Low,0.8536586
+3,PreCS,Thirst,Sucrose,Medium,0.4878049
+3,PreCS,Thirst,Sucrose,High,1.027027
+3,PreCS,4x Sucrose,Sucrose,Low,0.3829787
+3,PreCS,4x Sucrose,Sucrose,Medium,0.6052632
+3,PreCS,4x Sucrose,Sucrose,High,1.085714
+3,PreCS,Acquisition,Pellet,Low,0.2142857
+3,PreCS,Acquisition,Pellet,Medium,0.2058824
+3,PreCS,Acquisition,Pellet,High,0.02631579
+3,PreCS,Thirst,Pellet,Low,0.07317073
+3,PreCS,Thirst,Pellet,Medium,0.02439025
+3,PreCS,Thirst,Pellet,High,0.3783784
+3,PreCS,4x Sucrose,Pellet,Low,0.106383
+3,PreCS,4x Sucrose,Pellet,Medium,0.05263158
+3,PreCS,4x Sucrose,Pellet,High,0
+3,CS,Acquisition,Sucrose,Low,0.6818182
+3,CS,Acquisition,Sucrose,Medium,0.9459459
+3,CS,Acquisition,Sucrose,High,1.3125
+3,CS,Thirst,Sucrose,Low,1
+3,CS,Thirst,Sucrose,Medium,1
+3,CS,Thirst,Sucrose,High,1.096774
+3,CS,4x Sucrose,Sucrose,Low,0.7826087
+3,CS,4x Sucrose,Sucrose,Medium,1.136364
+3,CS,4x Sucrose,Sucrose,High,1.558824
+3,CS,Acquisition,Pellet,Low,1.977273
+3,CS,Acquisition,Pellet,Medium,1.135135
+3,CS,Acquisition,Pellet,High,1.1875
+3,CS,Thirst,Pellet,Low,1.622222
+3,CS,Thirst,Pellet,Medium,1.690476
+3,CS,Thirst,Pellet,High,1.806452
+3,CS,4x Sucrose,Pellet,Low,2.326087
+3,CS,4x Sucrose,Pellet,Medium,1.75
+3,CS,4x Sucrose,Pellet,High,1.205882
+4,PreCS,Acquisition,Sucrose,Low,0.6511628
+4,PreCS,Acquisition,Sucrose,Medium,0.55
+4,PreCS,Acquisition,Sucrose,High,1.075
+4,PreCS,Thirst,Sucrose,Low,0.6739131
+4,PreCS,Thirst,Sucrose,Medium,1.636364
+4,PreCS,Thirst,Sucrose,High,1.769231
+4,PreCS,4x Sucrose,Sucrose,Low,1.348837
+4,PreCS,4x Sucrose,Sucrose,Medium,1.611111
+4,PreCS,4x Sucrose,Sucrose,High,2.8
+4,PreCS,Acquisition,Pellet,Low,0.1395349
+4,PreCS,Acquisition,Pellet,Medium,0.15
+4,PreCS,Acquisition,Pellet,High,0.35
+4,PreCS,Thirst,Pellet,Low,0.2173913
+4,PreCS,Thirst,Pellet,Medium,0.1363636
+4,PreCS,Thirst,Pellet,High,0
+4,PreCS,4x Sucrose,Pellet,Low,0.2093023
+4,PreCS,4x Sucrose,Pellet,Medium,0
+4,PreCS,4x Sucrose,Pellet,High,0.05
+4,CS,Acquisition,Sucrose,Low,1.068182
+4,CS,Acquisition,Sucrose,Medium,0.8421053
+4,CS,Acquisition,Sucrose,High,1.384615
+4,CS,Thirst,Sucrose,Low,1.5
+4,CS,Thirst,Sucrose,Medium,1.382353
+4,CS,Thirst,Sucrose,High,1.741936
+4,CS,4x Sucrose,Sucrose,Low,0.4444445
+4,CS,4x Sucrose,Sucrose,Medium,1.285714
+4,CS,4x Sucrose,Sucrose,High,2.15625
+4,CS,Acquisition,Pellet,Low,2.954546
+4,CS,Acquisition,Pellet,Medium,3.631579
+4,CS,Acquisition,Pellet,High,3.461539
+4,CS,Thirst,Pellet,Low,3.181818
+4,CS,Thirst,Pellet,Medium,3.676471
+4,CS,Thirst,Pellet,High,3
+4,CS,4x Sucrose,Pellet,Low,4.688889
+4,CS,4x Sucrose,Pellet,Medium,3.5
+4,CS,4x Sucrose,Pellet,High,2.4375
+5,PreCS,Acquisition,Sucrose,Low,0.04347826
+5,PreCS,Acquisition,Sucrose,Medium,0.4054054
+5,PreCS,Acquisition,Sucrose,High,0.5454546
+5,PreCS,Thirst,Sucrose,Low,0.2666667
+5,PreCS,Thirst,Sucrose,Medium,0.3846154
+5,PreCS,Thirst,Sucrose,High,0.8846154
+5,PreCS,4x Sucrose,Sucrose,Low,0.4090909
+5,PreCS,4x Sucrose,Sucrose,Medium,0.4242424
+5,PreCS,4x Sucrose,Sucrose,High,0.7
+5,PreCS,Acquisition,Pellet,Low,0
+5,PreCS,Acquisition,Pellet,Medium,0.02702703
+5,PreCS,Acquisition,Pellet,High,0.09090909
+5,PreCS,Thirst,Pellet,Low,0
+5,PreCS,Thirst,Pellet,Medium,0.02564103
+5,PreCS,Thirst,Pellet,High,0
+5,PreCS,4x Sucrose,Pellet,Low,0.1590909
+5,PreCS,4x Sucrose,Pellet,Medium,0
+5,PreCS,4x Sucrose,Pellet,High,0.06666667
+5,CS,Acquisition,Sucrose,Low,0.8913044
+5,CS,Acquisition,Sucrose,Medium,1.047619
+5,CS,Acquisition,Sucrose,High,0.9259259
+5,CS,Thirst,Sucrose,Low,0.8913044
+5,CS,Thirst,Sucrose,Medium,1.02381
+5,CS,Thirst,Sucrose,High,1.65625
+5,CS,4x Sucrose,Sucrose,Low,1.692308
+5,CS,4x Sucrose,Sucrose,Medium,1.953488
+5,CS,4x Sucrose,Sucrose,High,1.142857
+5,CS,Acquisition,Pellet,Low,0.8913044
+5,CS,Acquisition,Pellet,Medium,0.952381
+5,CS,Acquisition,Pellet,High,0.7777778
+5,CS,Thirst,Pellet,Low,0.8478261
+5,CS,Thirst,Pellet,Medium,0.7857143
+5,CS,Thirst,Pellet,High,0.46875
+5,CS,4x Sucrose,Pellet,Low,0.5384616
+5,CS,4x Sucrose,Pellet,Medium,0.8372093
+5,CS,4x Sucrose,Pellet,High,0.4285714
+6,PreCS,Acquisition,Sucrose,Low,0.5348837
+6,PreCS,Acquisition,Sucrose,Medium,0.9761905
+6,PreCS,Acquisition,Sucrose,High,1.16129
+6,PreCS,Thirst,Sucrose,Low,0.4090909
+6,PreCS,Thirst,Sucrose,Medium,0.6764706
+6,PreCS,Thirst,Sucrose,High,0.8571429
+6,PreCS,4x Sucrose,Sucrose,Low,0.2682927
+6,PreCS,4x Sucrose,Sucrose,Medium,0.5641026
+6,PreCS,4x Sucrose,Sucrose,High,0.875
+6,PreCS,Acquisition,Pellet,Low,0.2093023
+6,PreCS,Acquisition,Pellet,Medium,0.3333333
+6,PreCS,Acquisition,Pellet,High,0.1290323
+6,PreCS,Thirst,Pellet,Low,0
+6,PreCS,Thirst,Pellet,Medium,0
+6,PreCS,Thirst,Pellet,High,0.2
+6,PreCS,4x Sucrose,Pellet,Low,0.04878049
+6,PreCS,4x Sucrose,Pellet,Medium,0
+6,PreCS,4x Sucrose,Pellet,High,0.0625
+6,CS,Acquisition,Sucrose,Low,0.5777778
+6,CS,Acquisition,Sucrose,Medium,0.952381
+6,CS,Acquisition,Sucrose,High,1.125
+6,CS,Thirst,Sucrose,Low,0.8536586
+6,CS,Thirst,Sucrose,Medium,1.31579
+6,CS,Thirst,Sucrose,High,1.102564
+6,CS,4x Sucrose,Sucrose,Low,0.952381
+6,CS,4x Sucrose,Sucrose,Medium,0.85
+6,CS,4x Sucrose,Sucrose,High,1.636364
+6,CS,Acquisition,Pellet,Low,2.266667
+6,CS,Acquisition,Pellet,Medium,2.261905
+6,CS,Acquisition,Pellet,High,1.75
+6,CS,Thirst,Pellet,Low,1.756098
+6,CS,Thirst,Pellet,Medium,1.236842
+6,CS,Thirst,Pellet,High,1.230769
+6,CS,4x Sucrose,Pellet,Low,3.119048
+6,CS,4x Sucrose,Pellet,Medium,2.55
+6,CS,4x Sucrose,Pellet,High,1.212121
+7,PreCS,Acquisition,Sucrose,Low,0.3043478
+7,PreCS,Acquisition,Sucrose,Medium,0.8333333
+7,PreCS,Acquisition,Sucrose,High,1.933333
+7,PreCS,Thirst,Sucrose,Low,0.30232560000000003
+7,PreCS,Thirst,Sucrose,Medium,0.9302326
+7,PreCS,Thirst,Sucrose,High,1.138889
+7,PreCS,4x Sucrose,Sucrose,Low,0.2666667
+7,PreCS,4x Sucrose,Sucrose,Medium,0.75
+7,PreCS,4x Sucrose,Sucrose,High,1.361111
+7,PreCS,Acquisition,Pellet,Low,0.4565218
+7,PreCS,Acquisition,Pellet,Medium,0
+7,PreCS,Acquisition,Pellet,High,0.1
+7,PreCS,Thirst,Pellet,Low,0.04651163
+7,PreCS,Thirst,Pellet,Medium,0.04651163
+7,PreCS,Thirst,Pellet,High,0.5555556
+7,PreCS,4x Sucrose,Pellet,Low,0
+7,PreCS,4x Sucrose,Pellet,Medium,0
+7,PreCS,4x Sucrose,Pellet,High,0.05555556
+7,CS,Acquisition,Sucrose,Low,0.5348837
+7,CS,Acquisition,Sucrose,Medium,0.75
+7,CS,Acquisition,Sucrose,High,1.411765
+7,CS,Thirst,Sucrose,Low,0.6136364
+7,CS,Thirst,Sucrose,Medium,0.8529412
+7,CS,Thirst,Sucrose,High,1.323529
+7,CS,4x Sucrose,Sucrose,Low,1.44186
+7,CS,4x Sucrose,Sucrose,Medium,1.238095
+7,CS,4x Sucrose,Sucrose,High,1.527778
+7,CS,Acquisition,Pellet,Low,4.302326
+7,CS,Acquisition,Pellet,Medium,3.125
+7,CS,Acquisition,Pellet,High,3.147059
+7,CS,Thirst,Pellet,Low,5.681818
+7,CS,Thirst,Pellet,Medium,5.382353
+7,CS,Thirst,Pellet,High,4.529412
+7,CS,4x Sucrose,Pellet,Low,2.790698
+7,CS,4x Sucrose,Pellet,Medium,4.761905
+7,CS,4x Sucrose,Pellet,High,3.222222
+8,PreCS,Acquisition,Sucrose,Low,1.355556
+8,PreCS,Acquisition,Sucrose,Medium,1.585366
+8,PreCS,Acquisition,Sucrose,High,2.580645
+8,PreCS,Thirst,Sucrose,Low,1.568182
+8,PreCS,Thirst,Sucrose,Medium,1.883721
+8,PreCS,Thirst,Sucrose,High,2.794118
+8,PreCS,4x Sucrose,Sucrose,Low,1.560976
+8,PreCS,4x Sucrose,Sucrose,Medium,2.162162
+8,PreCS,4x Sucrose,Sucrose,High,3.111111
+8,PreCS,Acquisition,Pellet,Low,0.08888889
+8,PreCS,Acquisition,Pellet,Medium,0.02439025
+8,PreCS,Acquisition,Pellet,High,0
+8,PreCS,Thirst,Pellet,Low,0.09090909
+8,PreCS,Thirst,Pellet,Medium,0.255814
+8,PreCS,Thirst,Pellet,High,0
+8,PreCS,4x Sucrose,Pellet,Low,0
+8,PreCS,4x Sucrose,Pellet,Medium,0.05405406
+8,PreCS,4x Sucrose,Pellet,High,0
+8,CS,Acquisition,Sucrose,Low,0.8372093
+8,CS,Acquisition,Sucrose,Medium,1.027027
+8,CS,Acquisition,Sucrose,High,1.179487
+8,CS,Thirst,Sucrose,Low,0.9347826
+8,CS,Thirst,Sucrose,Medium,1.368421
+8,CS,Thirst,Sucrose,High,1.344828
+8,CS,4x Sucrose,Sucrose,Low,1.2
+8,CS,4x Sucrose,Sucrose,Medium,1.736842
+8,CS,4x Sucrose,Sucrose,High,1.628571
+8,CS,Acquisition,Pellet,Low,6.465117
+8,CS,Acquisition,Pellet,Medium,5.864865
+8,CS,Acquisition,Pellet,High,3.820513
+8,CS,Thirst,Pellet,Low,6.630435
+8,CS,Thirst,Pellet,Medium,3.605263
+8,CS,Thirst,Pellet,High,4.068965
+8,CS,4x Sucrose,Pellet,Low,4.933333
+8,CS,4x Sucrose,Pellet,Medium,2.473684
+8,CS,4x Sucrose,Pellet,High,2.571429

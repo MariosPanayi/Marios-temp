@@ -1,0 +1,443 @@
+Group,Subject,Stage,Condition,Day,MagEntries
+SHAM,3,Acquisition,Devalued,Day 1,0.875
+SHAM,3,Acquisition,Devalued,Day 2,-0.6875
+SHAM,3,Acquisition,Devalued,Day 3,-0.0625
+SHAM,3,Acquisition,Devalued,Day 4,-1.125
+SHAM,3,Acquisition,Devalued,Day 5,-0.5
+SHAM,3,Acquisition,Devalued,Day 6,0.375
+SHAM,3,Acquisition,Devalued,Day 7,2.4375
+SHAM,3,Acquisition,Devalued,Day 8,3.3125
+SHAM,3,Acquisition,Devalued,Day 9,4.125
+SHAM,3,Acquisition,Devalued,Day 10,4
+SHAM,3,Acquisition,Devalued,Day 11,2.125
+SHAM,3,Acquisition,Devalued,Day 12,1.875
+SHAM,3,Acquisition,Devalued,Day 13,-0.4375
+SHAM,3,Acquisition,Devalued,Day 14,-0.5625
+SHAM,3,Acquisition,NonDevalued,Day 1,0.0625
+SHAM,3,Acquisition,NonDevalued,Day 2,0
+SHAM,3,Acquisition,NonDevalued,Day 3,-0.5625
+SHAM,3,Acquisition,NonDevalued,Day 4,0.4375
+SHAM,3,Acquisition,NonDevalued,Day 5,-1.25
+SHAM,3,Acquisition,NonDevalued,Day 6,-0.375
+SHAM,3,Acquisition,NonDevalued,Day 7,1.4375
+SHAM,3,Acquisition,NonDevalued,Day 8,4
+SHAM,3,Acquisition,NonDevalued,Day 9,4.1875
+SHAM,3,Acquisition,NonDevalued,Day 10,2.5
+SHAM,3,Acquisition,NonDevalued,Day 11,3.25
+SHAM,3,Acquisition,NonDevalued,Day 12,2.9375
+SHAM,3,Acquisition,NonDevalued,Day 13,3.125
+SHAM,3,Acquisition,NonDevalued,Day 14,1.375
+SHAM,3,TasteAversion,Saline,Pairing1,10
+SHAM,3,TasteAversion,Saline,Pairing2,19.5
+SHAM,3,TasteAversion,LiCl,Pairing1,5.02
+SHAM,3,TasteAversion,LiCl,Pairing2,0.14
+SHAM,3,DevalTest,Devalued,FirstTrial,6
+SHAM,3,DevalTest,NonDevalued,FirstTrial,9
+SHAM,7,Acquisition,Devalued,Day 1,12.9375
+SHAM,7,Acquisition,Devalued,Day 2,12.875
+SHAM,7,Acquisition,Devalued,Day 3,12.125
+SHAM,7,Acquisition,Devalued,Day 4,9.3125
+SHAM,7,Acquisition,Devalued,Day 5,7.375
+SHAM,7,Acquisition,Devalued,Day 6,9.625
+SHAM,7,Acquisition,Devalued,Day 7,10.5625
+SHAM,7,Acquisition,Devalued,Day 8,10.875
+SHAM,7,Acquisition,Devalued,Day 9,8.6875
+SHAM,7,Acquisition,Devalued,Day 10,9.4375
+SHAM,7,Acquisition,Devalued,Day 11,12.875
+SHAM,7,Acquisition,Devalued,Day 12,11.375
+SHAM,7,Acquisition,Devalued,Day 13,11.4375
+SHAM,7,Acquisition,Devalued,Day 14,10.0625
+SHAM,7,Acquisition,NonDevalued,Day 1,2.25
+SHAM,7,Acquisition,NonDevalued,Day 2,8.4375
+SHAM,7,Acquisition,NonDevalued,Day 3,3.125
+SHAM,7,Acquisition,NonDevalued,Day 4,7.6875
+SHAM,7,Acquisition,NonDevalued,Day 5,7.4375
+SHAM,7,Acquisition,NonDevalued,Day 6,7.5
+SHAM,7,Acquisition,NonDevalued,Day 7,8.25
+SHAM,7,Acquisition,NonDevalued,Day 8,5.0625
+SHAM,7,Acquisition,NonDevalued,Day 9,5.1875
+SHAM,7,Acquisition,NonDevalued,Day 10,4.75
+SHAM,7,Acquisition,NonDevalued,Day 11,7.1875
+SHAM,7,Acquisition,NonDevalued,Day 12,8.5625
+SHAM,7,Acquisition,NonDevalued,Day 13,8.0625
+SHAM,7,Acquisition,NonDevalued,Day 14,6.8125
+SHAM,7,TasteAversion,Saline,Pairing1,9
+SHAM,7,TasteAversion,Saline,Pairing2,22
+SHAM,7,TasteAversion,LiCl,Pairing1,6.13
+SHAM,7,TasteAversion,LiCl,Pairing2,0.71
+SHAM,7,DevalTest,Devalued,FirstTrial,12
+SHAM,7,DevalTest,NonDevalued,FirstTrial,15
+SHAM,10,Acquisition,Devalued,Day 1,5.0625
+SHAM,10,Acquisition,Devalued,Day 2,3.375
+SHAM,10,Acquisition,Devalued,Day 3,1.3125
+SHAM,10,Acquisition,Devalued,Day 4,1.625
+SHAM,10,Acquisition,Devalued,Day 5,2.125
+SHAM,10,Acquisition,Devalued,Day 6,1.75
+SHAM,10,Acquisition,Devalued,Day 7,0.9375
+SHAM,10,Acquisition,Devalued,Day 8,1
+SHAM,10,Acquisition,Devalued,Day 9,0.0625
+SHAM,10,Acquisition,Devalued,Day 10,0.625
+SHAM,10,Acquisition,Devalued,Day 11,0.625
+SHAM,10,Acquisition,Devalued,Day 12,-0.9375
+SHAM,10,Acquisition,Devalued,Day 13,0.8125
+SHAM,10,Acquisition,Devalued,Day 14,0.4375
+SHAM,10,Acquisition,NonDevalued,Day 1,3.0625
+SHAM,10,Acquisition,NonDevalued,Day 2,2.4375
+SHAM,10,Acquisition,NonDevalued,Day 3,1.5625
+SHAM,10,Acquisition,NonDevalued,Day 4,2.3125
+SHAM,10,Acquisition,NonDevalued,Day 5,2.6875
+SHAM,10,Acquisition,NonDevalued,Day 6,2.8125
+SHAM,10,Acquisition,NonDevalued,Day 7,0.5625
+SHAM,10,Acquisition,NonDevalued,Day 8,0.125
+SHAM,10,Acquisition,NonDevalued,Day 9,-0.1875
+SHAM,10,Acquisition,NonDevalued,Day 10,0.625
+SHAM,10,Acquisition,NonDevalued,Day 11,0.4375
+SHAM,10,Acquisition,NonDevalued,Day 12,-1.375
+SHAM,10,Acquisition,NonDevalued,Day 13,-0.625
+SHAM,10,Acquisition,NonDevalued,Day 14,0.0625
+SHAM,10,TasteAversion,Saline,Pairing1,11
+SHAM,10,TasteAversion,Saline,Pairing2,18
+SHAM,10,TasteAversion,LiCl,Pairing1,3.82
+SHAM,10,TasteAversion,LiCl,Pairing2,-0.22
+SHAM,10,DevalTest,Devalued,FirstTrial,-2
+SHAM,10,DevalTest,NonDevalued,FirstTrial,1
+SHAM,14,Acquisition,Devalued,Day 1,1.0625
+SHAM,14,Acquisition,Devalued,Day 2,3.8125
+SHAM,14,Acquisition,Devalued,Day 3,10.8125
+SHAM,14,Acquisition,Devalued,Day 4,12.4375
+SHAM,14,Acquisition,Devalued,Day 5,18.875
+SHAM,14,Acquisition,Devalued,Day 6,19.5
+SHAM,14,Acquisition,Devalued,Day 7,18.5
+SHAM,14,Acquisition,Devalued,Day 8,11.625
+SHAM,14,Acquisition,Devalued,Day 9,12.8125
+SHAM,14,Acquisition,Devalued,Day 10,13.1875
+SHAM,14,Acquisition,Devalued,Day 11,13.3125
+SHAM,14,Acquisition,Devalued,Day 12,15.5625
+SHAM,14,Acquisition,Devalued,Day 13,10.75
+SHAM,14,Acquisition,Devalued,Day 14,10.0625
+SHAM,14,Acquisition,NonDevalued,Day 1,4.6875
+SHAM,14,Acquisition,NonDevalued,Day 2,9.25
+SHAM,14,Acquisition,NonDevalued,Day 3,11
+SHAM,14,Acquisition,NonDevalued,Day 4,16.875
+SHAM,14,Acquisition,NonDevalued,Day 5,20.8125
+SHAM,14,Acquisition,NonDevalued,Day 6,19.25
+SHAM,14,Acquisition,NonDevalued,Day 7,20
+SHAM,14,Acquisition,NonDevalued,Day 8,11.75
+SHAM,14,Acquisition,NonDevalued,Day 9,13.125
+SHAM,14,Acquisition,NonDevalued,Day 10,16.8125
+SHAM,14,Acquisition,NonDevalued,Day 11,20.125
+SHAM,14,Acquisition,NonDevalued,Day 12,18.25
+SHAM,14,Acquisition,NonDevalued,Day 13,16.25
+SHAM,14,Acquisition,NonDevalued,Day 14,21.375
+SHAM,14,TasteAversion,Saline,Pairing1,10
+SHAM,14,TasteAversion,Saline,Pairing2,18
+SHAM,14,TasteAversion,LiCl,Pairing1,4.29
+SHAM,14,TasteAversion,LiCl,Pairing2,0.88
+SHAM,14,DevalTest,Devalued,FirstTrial,17
+SHAM,14,DevalTest,NonDevalued,FirstTrial,29
+SHAM,19,Acquisition,Devalued,Day 1,2.8125
+SHAM,19,Acquisition,Devalued,Day 2,3.9375
+SHAM,19,Acquisition,Devalued,Day 3,6.3125
+SHAM,19,Acquisition,Devalued,Day 4,7.875
+SHAM,19,Acquisition,Devalued,Day 5,7.75
+SHAM,19,Acquisition,Devalued,Day 6,6
+SHAM,19,Acquisition,Devalued,Day 7,6.6875
+SHAM,19,Acquisition,Devalued,Day 8,6.75
+SHAM,19,Acquisition,Devalued,Day 9,8.25
+SHAM,19,Acquisition,Devalued,Day 10,4.0625
+SHAM,19,Acquisition,Devalued,Day 11,6
+SHAM,19,Acquisition,Devalued,Day 12,2.6875
+SHAM,19,Acquisition,Devalued,Day 13,5.6875
+SHAM,19,Acquisition,Devalued,Day 14,7.1875
+SHAM,19,Acquisition,NonDevalued,Day 1,3.375
+SHAM,19,Acquisition,NonDevalued,Day 2,10.3125
+SHAM,19,Acquisition,NonDevalued,Day 3,11.5
+SHAM,19,Acquisition,NonDevalued,Day 4,9.125
+SHAM,19,Acquisition,NonDevalued,Day 5,10.25
+SHAM,19,Acquisition,NonDevalued,Day 6,6.5
+SHAM,19,Acquisition,NonDevalued,Day 7,8.4375
+SHAM,19,Acquisition,NonDevalued,Day 8,11.375
+SHAM,19,Acquisition,NonDevalued,Day 9,6.9375
+SHAM,19,Acquisition,NonDevalued,Day 10,7.0625
+SHAM,19,Acquisition,NonDevalued,Day 11,8.875
+SHAM,19,Acquisition,NonDevalued,Day 12,5.0625
+SHAM,19,Acquisition,NonDevalued,Day 13,7.125
+SHAM,19,Acquisition,NonDevalued,Day 14,7.25
+SHAM,19,TasteAversion,Saline,Pairing1,4.73
+SHAM,19,TasteAversion,Saline,Pairing2,9.64
+SHAM,19,TasteAversion,LiCl,Pairing1,11
+SHAM,19,TasteAversion,LiCl,Pairing2,4
+SHAM,19,DevalTest,Devalued,FirstTrial,9
+SHAM,19,DevalTest,NonDevalued,FirstTrial,17
+SHAM,23,Acquisition,Devalued,Day 1,-1.4375
+SHAM,23,Acquisition,Devalued,Day 2,0.25
+SHAM,23,Acquisition,Devalued,Day 3,0.1875
+SHAM,23,Acquisition,Devalued,Day 4,1
+SHAM,23,Acquisition,Devalued,Day 5,2.75
+SHAM,23,Acquisition,Devalued,Day 6,1.5
+SHAM,23,Acquisition,Devalued,Day 7,0.6875
+SHAM,23,Acquisition,Devalued,Day 8,0.25
+SHAM,23,Acquisition,Devalued,Day 9,0.25
+SHAM,23,Acquisition,Devalued,Day 10,0.6875
+SHAM,23,Acquisition,Devalued,Day 11,0.3125
+SHAM,23,Acquisition,Devalued,Day 12,-1.8125
+SHAM,23,Acquisition,Devalued,Day 13,1.0625
+SHAM,23,Acquisition,Devalued,Day 14,1.625
+SHAM,23,Acquisition,NonDevalued,Day 1,-0.4375
+SHAM,23,Acquisition,NonDevalued,Day 2,-0.375
+SHAM,23,Acquisition,NonDevalued,Day 3,-0.125
+SHAM,23,Acquisition,NonDevalued,Day 4,1.875
+SHAM,23,Acquisition,NonDevalued,Day 5,1.5625
+SHAM,23,Acquisition,NonDevalued,Day 6,2.5
+SHAM,23,Acquisition,NonDevalued,Day 7,0.3125
+SHAM,23,Acquisition,NonDevalued,Day 8,-0.125
+SHAM,23,Acquisition,NonDevalued,Day 9,0.625
+SHAM,23,Acquisition,NonDevalued,Day 10,0.0625
+SHAM,23,Acquisition,NonDevalued,Day 11,0.1875
+SHAM,23,Acquisition,NonDevalued,Day 12,0.4375
+SHAM,23,Acquisition,NonDevalued,Day 13,-0.3125
+SHAM,23,Acquisition,NonDevalued,Day 14,-0.9375
+SHAM,23,TasteAversion,Saline,Pairing1,4.1
+SHAM,23,TasteAversion,Saline,Pairing2,6.5
+SHAM,23,TasteAversion,LiCl,Pairing1,24
+SHAM,23,TasteAversion,LiCl,Pairing2,3
+SHAM,23,DevalTest,Devalued,FirstTrial,0
+SHAM,23,DevalTest,NonDevalued,FirstTrial,3
+SHAM,26,Acquisition,Devalued,Day 1,2
+SHAM,26,Acquisition,Devalued,Day 2,3.25
+SHAM,26,Acquisition,Devalued,Day 3,1.75
+SHAM,26,Acquisition,Devalued,Day 4,2.6875
+SHAM,26,Acquisition,Devalued,Day 5,3
+SHAM,26,Acquisition,Devalued,Day 6,12
+SHAM,26,Acquisition,Devalued,Day 7,11.875
+SHAM,26,Acquisition,Devalued,Day 8,15
+SHAM,26,Acquisition,Devalued,Day 9,15.75
+SHAM,26,Acquisition,Devalued,Day 10,15.375
+SHAM,26,Acquisition,Devalued,Day 11,20.625
+SHAM,26,Acquisition,Devalued,Day 12,16.8125
+SHAM,26,Acquisition,Devalued,Day 13,11.75
+SHAM,26,Acquisition,Devalued,Day 14,13.4375
+SHAM,26,Acquisition,NonDevalued,Day 1,1.5
+SHAM,26,Acquisition,NonDevalued,Day 2,1.875
+SHAM,26,Acquisition,NonDevalued,Day 3,1.5625
+SHAM,26,Acquisition,NonDevalued,Day 4,3.625
+SHAM,26,Acquisition,NonDevalued,Day 5,3.5625
+SHAM,26,Acquisition,NonDevalued,Day 6,4.375
+SHAM,26,Acquisition,NonDevalued,Day 7,5.5
+SHAM,26,Acquisition,NonDevalued,Day 8,6
+SHAM,26,Acquisition,NonDevalued,Day 9,6.875
+SHAM,26,Acquisition,NonDevalued,Day 10,4.625
+SHAM,26,Acquisition,NonDevalued,Day 11,7.3125
+SHAM,26,Acquisition,NonDevalued,Day 12,8.125
+SHAM,26,Acquisition,NonDevalued,Day 13,5.375
+SHAM,26,Acquisition,NonDevalued,Day 14,5.875
+SHAM,26,TasteAversion,Saline,Pairing1,1.45
+SHAM,26,TasteAversion,Saline,Pairing2,2.72
+SHAM,26,TasteAversion,LiCl,Pairing1,4
+SHAM,26,TasteAversion,LiCl,Pairing2,3.5
+SHAM,26,DevalTest,Devalued,FirstTrial,7
+SHAM,26,DevalTest,NonDevalued,FirstTrial,6
+SHAM,30,Acquisition,Devalued,Day 1,0.6875
+SHAM,30,Acquisition,Devalued,Day 2,-0.3125
+SHAM,30,Acquisition,Devalued,Day 3,1.875
+SHAM,30,Acquisition,Devalued,Day 4,1.375
+SHAM,30,Acquisition,Devalued,Day 5,3
+SHAM,30,Acquisition,Devalued,Day 6,-5.25
+SHAM,30,Acquisition,Devalued,Day 7,-2.4375
+SHAM,30,Acquisition,Devalued,Day 8,1.9375
+SHAM,30,Acquisition,Devalued,Day 9,-1.75
+SHAM,30,Acquisition,Devalued,Day 10,2.0625
+SHAM,30,Acquisition,Devalued,Day 11,2.4375
+SHAM,30,Acquisition,Devalued,Day 12,-3.6875
+SHAM,30,Acquisition,Devalued,Day 13,0.9375
+SHAM,30,Acquisition,Devalued,Day 14,-0.8125
+SHAM,30,Acquisition,NonDevalued,Day 1,-0.25
+SHAM,30,Acquisition,NonDevalued,Day 2,3.375
+SHAM,30,Acquisition,NonDevalued,Day 3,4.9375
+SHAM,30,Acquisition,NonDevalued,Day 4,2.1875
+SHAM,30,Acquisition,NonDevalued,Day 5,1
+SHAM,30,Acquisition,NonDevalued,Day 6,1.0625
+SHAM,30,Acquisition,NonDevalued,Day 7,1.8125
+SHAM,30,Acquisition,NonDevalued,Day 8,1.375
+SHAM,30,Acquisition,NonDevalued,Day 9,1.125
+SHAM,30,Acquisition,NonDevalued,Day 10,0.3125
+SHAM,30,Acquisition,NonDevalued,Day 11,2.125
+SHAM,30,Acquisition,NonDevalued,Day 12,0.125
+SHAM,30,Acquisition,NonDevalued,Day 13,0.9375
+SHAM,30,Acquisition,NonDevalued,Day 14,1.375
+SHAM,30,TasteAversion,Saline,Pairing1,4.3
+SHAM,30,TasteAversion,Saline,Pairing2,4.75
+SHAM,30,TasteAversion,LiCl,Pairing1,12
+SHAM,30,TasteAversion,LiCl,Pairing2,5.5
+SHAM,30,DevalTest,Devalued,FirstTrial,2
+SHAM,30,DevalTest,NonDevalued,FirstTrial,3
+LESION,4,Acquisition,Devalued,Day 1,7.8125
+LESION,4,Acquisition,Devalued,Day 2,6.6875
+LESION,4,Acquisition,Devalued,Day 3,12.3125
+LESION,4,Acquisition,Devalued,Day 4,17.375
+LESION,4,Acquisition,Devalued,Day 5,19.5
+LESION,4,Acquisition,Devalued,Day 6,16.375
+LESION,4,Acquisition,Devalued,Day 7,20.375
+LESION,4,Acquisition,Devalued,Day 8,19.5625
+LESION,4,Acquisition,Devalued,Day 9,25.875
+LESION,4,Acquisition,Devalued,Day 10,22.25
+LESION,4,Acquisition,Devalued,Day 11,27.1875
+LESION,4,Acquisition,Devalued,Day 12,27
+LESION,4,Acquisition,Devalued,Day 13,29.0625
+LESION,4,Acquisition,Devalued,Day 14,20.3125
+LESION,4,Acquisition,NonDevalued,Day 1,7.75
+LESION,4,Acquisition,NonDevalued,Day 2,6.75
+LESION,4,Acquisition,NonDevalued,Day 3,14.625
+LESION,4,Acquisition,NonDevalued,Day 4,13.25
+LESION,4,Acquisition,NonDevalued,Day 5,19.375
+LESION,4,Acquisition,NonDevalued,Day 6,18
+LESION,4,Acquisition,NonDevalued,Day 7,13.75
+LESION,4,Acquisition,NonDevalued,Day 8,16.5625
+LESION,4,Acquisition,NonDevalued,Day 9,22.25
+LESION,4,Acquisition,NonDevalued,Day 10,17.75
+LESION,4,Acquisition,NonDevalued,Day 11,16.0625
+LESION,4,Acquisition,NonDevalued,Day 12,19.1875
+LESION,4,Acquisition,NonDevalued,Day 13,15.9375
+LESION,4,Acquisition,NonDevalued,Day 14,14.6875
+LESION,4,TasteAversion,Saline,Pairing1,11
+LESION,4,TasteAversion,Saline,Pairing2,18
+LESION,4,TasteAversion,LiCl,Pairing1,6.75
+LESION,4,TasteAversion,LiCl,Pairing2,1.44
+LESION,4,DevalTest,Devalued,FirstTrial,29
+LESION,4,DevalTest,NonDevalued,FirstTrial,27
+LESION,13,Acquisition,Devalued,Day 1,3.8125
+LESION,13,Acquisition,Devalued,Day 2,0.4375
+LESION,13,Acquisition,Devalued,Day 3,5.75
+LESION,13,Acquisition,Devalued,Day 4,5.1875
+LESION,13,Acquisition,Devalued,Day 5,10.5
+LESION,13,Acquisition,Devalued,Day 6,8.625
+LESION,13,Acquisition,Devalued,Day 7,7.875
+LESION,13,Acquisition,Devalued,Day 8,6.25
+LESION,13,Acquisition,Devalued,Day 9,9.8125
+LESION,13,Acquisition,Devalued,Day 10,7.25
+LESION,13,Acquisition,Devalued,Day 11,11.9375
+LESION,13,Acquisition,Devalued,Day 12,1.0625
+LESION,13,Acquisition,Devalued,Day 13,0.625
+LESION,13,Acquisition,Devalued,Day 14,-0.0625
+LESION,13,Acquisition,NonDevalued,Day 1,5.875
+LESION,13,Acquisition,NonDevalued,Day 2,8.625
+LESION,13,Acquisition,NonDevalued,Day 3,9
+LESION,13,Acquisition,NonDevalued,Day 4,11.5625
+LESION,13,Acquisition,NonDevalued,Day 5,13.875
+LESION,13,Acquisition,NonDevalued,Day 6,7.0625
+LESION,13,Acquisition,NonDevalued,Day 7,11.6875
+LESION,13,Acquisition,NonDevalued,Day 8,13.9375
+LESION,13,Acquisition,NonDevalued,Day 9,11.125
+LESION,13,Acquisition,NonDevalued,Day 10,9.875
+LESION,13,Acquisition,NonDevalued,Day 11,11.125
+LESION,13,Acquisition,NonDevalued,Day 12,3.875
+LESION,13,Acquisition,NonDevalued,Day 13,5.4375
+LESION,13,Acquisition,NonDevalued,Day 14,3.375
+LESION,13,TasteAversion,Saline,Pairing1,1.92
+LESION,13,TasteAversion,Saline,Pairing2,3.55
+LESION,13,TasteAversion,LiCl,Pairing1,6
+LESION,13,TasteAversion,LiCl,Pairing2,3
+LESION,13,DevalTest,Devalued,FirstTrial,6
+LESION,13,DevalTest,NonDevalued,FirstTrial,6
+LESION,20,Acquisition,Devalued,Day 1,0.375
+LESION,20,Acquisition,Devalued,Day 2,1.8125
+LESION,20,Acquisition,Devalued,Day 3,3.9375
+LESION,20,Acquisition,Devalued,Day 4,0.8125
+LESION,20,Acquisition,Devalued,Day 5,0.5
+LESION,20,Acquisition,Devalued,Day 6,-0.1875
+LESION,20,Acquisition,Devalued,Day 7,0.8125
+LESION,20,Acquisition,Devalued,Day 8,1.0625
+LESION,20,Acquisition,Devalued,Day 9,0.25
+LESION,20,Acquisition,Devalued,Day 10,0.625
+LESION,20,Acquisition,Devalued,Day 11,0.5625
+LESION,20,Acquisition,Devalued,Day 12,-1.6875
+LESION,20,Acquisition,Devalued,Day 13,-0.375
+LESION,20,Acquisition,Devalued,Day 14,1.0625
+LESION,20,Acquisition,NonDevalued,Day 1,0.5
+LESION,20,Acquisition,NonDevalued,Day 2,0.5
+LESION,20,Acquisition,NonDevalued,Day 3,1.625
+LESION,20,Acquisition,NonDevalued,Day 4,1.125
+LESION,20,Acquisition,NonDevalued,Day 5,-0.125
+LESION,20,Acquisition,NonDevalued,Day 6,0.0625
+LESION,20,Acquisition,NonDevalued,Day 7,0.75
+LESION,20,Acquisition,NonDevalued,Day 8,0.1875
+LESION,20,Acquisition,NonDevalued,Day 9,-0.0625
+LESION,20,Acquisition,NonDevalued,Day 10,0.9375
+LESION,20,Acquisition,NonDevalued,Day 11,-0.625
+LESION,20,Acquisition,NonDevalued,Day 12,-0.875
+LESION,20,Acquisition,NonDevalued,Day 13,0.5
+LESION,20,Acquisition,NonDevalued,Day 14,-0.3125
+LESION,20,TasteAversion,Saline,Pairing1,4.83
+LESION,20,TasteAversion,Saline,Pairing2,5.84
+LESION,20,TasteAversion,LiCl,Pairing1,16
+LESION,20,TasteAversion,LiCl,Pairing2,4
+LESION,20,DevalTest,Devalued,FirstTrial,7
+LESION,20,DevalTest,NonDevalued,FirstTrial,2
+LESION,24,Acquisition,Devalued,Day 1,6.0625
+LESION,24,Acquisition,Devalued,Day 2,10.25
+LESION,24,Acquisition,Devalued,Day 3,10.75
+LESION,24,Acquisition,Devalued,Day 4,8.125
+LESION,24,Acquisition,Devalued,Day 5,9.5625
+LESION,24,Acquisition,Devalued,Day 6,8.8125
+LESION,24,Acquisition,Devalued,Day 7,7.75
+LESION,24,Acquisition,Devalued,Day 8,10.9375
+LESION,24,Acquisition,Devalued,Day 9,8
+LESION,24,Acquisition,Devalued,Day 10,6.625
+LESION,24,Acquisition,Devalued,Day 11,10.5625
+LESION,24,Acquisition,Devalued,Day 12,9.5625
+LESION,24,Acquisition,Devalued,Day 13,4.1875
+LESION,24,Acquisition,Devalued,Day 14,4.8125
+LESION,24,Acquisition,NonDevalued,Day 1,2
+LESION,24,Acquisition,NonDevalued,Day 2,1.125
+LESION,24,Acquisition,NonDevalued,Day 3,6.8125
+LESION,24,Acquisition,NonDevalued,Day 4,5.875
+LESION,24,Acquisition,NonDevalued,Day 5,4.25
+LESION,24,Acquisition,NonDevalued,Day 6,3
+LESION,24,Acquisition,NonDevalued,Day 7,6.875
+LESION,24,Acquisition,NonDevalued,Day 8,5.0625
+LESION,24,Acquisition,NonDevalued,Day 9,5.1875
+LESION,24,Acquisition,NonDevalued,Day 10,4.75
+LESION,24,Acquisition,NonDevalued,Day 11,5.625
+LESION,24,Acquisition,NonDevalued,Day 12,6.125
+LESION,24,Acquisition,NonDevalued,Day 13,3.875
+LESION,24,Acquisition,NonDevalued,Day 14,6.0625
+LESION,24,TasteAversion,Saline,Pairing1,11
+LESION,24,TasteAversion,Saline,Pairing2,20
+LESION,24,TasteAversion,LiCl,Pairing1,3.38
+LESION,24,TasteAversion,LiCl,Pairing2,0.15
+LESION,24,DevalTest,Devalued,FirstTrial,3
+LESION,24,DevalTest,NonDevalued,FirstTrial,5
+LESION,29,Acquisition,Devalued,Day 1,2.5
+LESION,29,Acquisition,Devalued,Day 2,4.75
+LESION,29,Acquisition,Devalued,Day 3,7.6875
+LESION,29,Acquisition,Devalued,Day 4,7.4375
+LESION,29,Acquisition,Devalued,Day 5,10.5
+LESION,29,Acquisition,Devalued,Day 6,10.125
+LESION,29,Acquisition,Devalued,Day 7,8.75
+LESION,29,Acquisition,Devalued,Day 8,10.75
+LESION,29,Acquisition,Devalued,Day 9,13.125
+LESION,29,Acquisition,Devalued,Day 10,10.9375
+LESION,29,Acquisition,Devalued,Day 11,12.25
+LESION,29,Acquisition,Devalued,Day 12,12.25
+LESION,29,Acquisition,Devalued,Day 13,13.0625
+LESION,29,Acquisition,Devalued,Day 14,12.75
+LESION,29,Acquisition,NonDevalued,Day 1,3.4375
+LESION,29,Acquisition,NonDevalued,Day 2,3.125
+LESION,29,Acquisition,NonDevalued,Day 3,5.1875
+LESION,29,Acquisition,NonDevalued,Day 4,6.0625
+LESION,29,Acquisition,NonDevalued,Day 5,11.8125
+LESION,29,Acquisition,NonDevalued,Day 6,8.25
+LESION,29,Acquisition,NonDevalued,Day 7,8.5625
+LESION,29,Acquisition,NonDevalued,Day 8,6.4375
+LESION,29,Acquisition,NonDevalued,Day 9,9.125
+LESION,29,Acquisition,NonDevalued,Day 10,9.25
+LESION,29,Acquisition,NonDevalued,Day 11,12.625
+LESION,29,Acquisition,NonDevalued,Day 12,9.25
+LESION,29,Acquisition,NonDevalued,Day 13,11.6875
+LESION,29,Acquisition,NonDevalued,Day 14,9.3125
+LESION,29,TasteAversion,Saline,Pairing1,5.41
+LESION,29,TasteAversion,Saline,Pairing2,4.12
+LESION,29,TasteAversion,LiCl,Pairing1,14
+LESION,29,TasteAversion,LiCl,Pairing2,3
+LESION,29,DevalTest,Devalued,FirstTrial,20
+LESION,29,DevalTest,NonDevalued,FirstTrial,16

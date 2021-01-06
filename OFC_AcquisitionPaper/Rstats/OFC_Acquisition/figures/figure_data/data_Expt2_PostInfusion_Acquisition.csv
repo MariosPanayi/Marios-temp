@@ -1,0 +1,1153 @@
+Group,Subj,Period,Stage,ExptStage,DayPeriod,MagEntries
+Muscimol,6,CS,Acquisition,Acquisition,1,3.625
+Muscimol,6,CS,Acquisition,Acquisition,2,4.5625
+Muscimol,6,CS,Acquisition,Acquisition,3,4.6875
+Muscimol,6,CS,Acquisition,Acquisition,4,3.3125
+Muscimol,6,CS,Acquisition,Acquisition,5,4.375
+Muscimol,6,CS,Acquisition,Acquisition,6,4
+Muscimol,6,CS,Acquisition,Acquisition,7,5
+Muscimol,6,CS,Acquisition,Acquisition,8,5.5
+Muscimol,6,CS,Acquisition,Acquisition,9,5.625
+Muscimol,6,CS,Infusion,Infusion,12,5.25
+Muscimol,6,CS,Infusion,Infusion,13,4.4375
+Muscimol,6,CS,Infusion,Infusion,14,5.125
+Muscimol,6,CS,Infusion,Infusion,15,4.75
+Muscimol,6,CS,No Infusion,NoInfusion,16,4.4375
+Muscimol,6,CS,No Infusion,NoInfusion,17,6.1875
+Muscimol,6,CS,Post,PostAcquisition,Post,6.0625
+Muscimol,6,CSPre,Acquisition,Acquisition,1,1.5625
+Muscimol,6,CSPre,Acquisition,Acquisition,2,3.5625
+Muscimol,6,CSPre,Acquisition,Acquisition,3,4.0625
+Muscimol,6,CSPre,Acquisition,Acquisition,4,1.5
+Muscimol,6,CSPre,Acquisition,Acquisition,5,3.9375
+Muscimol,6,CSPre,Acquisition,Acquisition,6,0.8125
+Muscimol,6,CSPre,Acquisition,Acquisition,7,4.0625
+Muscimol,6,CSPre,Acquisition,Acquisition,8,3.875
+Muscimol,6,CSPre,Acquisition,Acquisition,9,4.9375
+Muscimol,6,CSPre,Infusion,Infusion,12,3.8125
+Muscimol,6,CSPre,Infusion,Infusion,13,3.5625
+Muscimol,6,CSPre,Infusion,Infusion,14,4.25
+Muscimol,6,CSPre,Infusion,Infusion,15,3.5
+Muscimol,6,CSPre,No Infusion,NoInfusion,16,2.375
+Muscimol,6,CSPre,No Infusion,NoInfusion,17,4.625
+Muscimol,6,CSPre,Post,PostAcquisition,Post,5.53125
+Muscimol,6,PreCS,Acquisition,Acquisition,1,2.0625
+Muscimol,6,PreCS,Acquisition,Acquisition,2,1
+Muscimol,6,PreCS,Acquisition,Acquisition,3,0.625
+Muscimol,6,PreCS,Acquisition,Acquisition,4,1.8125
+Muscimol,6,PreCS,Acquisition,Acquisition,5,0.4375
+Muscimol,6,PreCS,Acquisition,Acquisition,6,3.1875
+Muscimol,6,PreCS,Acquisition,Acquisition,7,0.9375
+Muscimol,6,PreCS,Acquisition,Acquisition,8,1.625
+Muscimol,6,PreCS,Acquisition,Acquisition,9,0.6875
+Muscimol,6,PreCS,Infusion,Infusion,12,1.4375
+Muscimol,6,PreCS,Infusion,Infusion,13,0.875
+Muscimol,6,PreCS,Infusion,Infusion,14,0.875
+Muscimol,6,PreCS,Infusion,Infusion,15,1.25
+Muscimol,6,PreCS,No Infusion,NoInfusion,16,2.0625
+Muscimol,6,PreCS,No Infusion,NoInfusion,17,1.5625
+Muscimol,6,PreCS,Post,PostAcquisition,Post,0.53125
+Muscimol,7,CS,Acquisition,Acquisition,1,2.625
+Muscimol,7,CS,Acquisition,Acquisition,2,4.375
+Muscimol,7,CS,Acquisition,Acquisition,3,3.5
+Muscimol,7,CS,Acquisition,Acquisition,4,3.375
+Muscimol,7,CS,Acquisition,Acquisition,5,4.25
+Muscimol,7,CS,Acquisition,Acquisition,6,4.625
+Muscimol,7,CS,Acquisition,Acquisition,7,5.125
+Muscimol,7,CS,Acquisition,Acquisition,8,5.25
+Muscimol,7,CS,Acquisition,Acquisition,9,6.1875
+Muscimol,7,CS,Infusion,Infusion,12,5.9375
+Muscimol,7,CS,Infusion,Infusion,13,5.0625
+Muscimol,7,CS,Infusion,Infusion,14,4.75
+Muscimol,7,CS,Infusion,Infusion,15,7.25
+Muscimol,7,CS,No Infusion,NoInfusion,16,4.6875
+Muscimol,7,CS,No Infusion,NoInfusion,17,5.5
+Muscimol,7,CS,Post,PostAcquisition,Post,5.5
+Muscimol,7,CSPre,Acquisition,Acquisition,1,-0.75
+Muscimol,7,CSPre,Acquisition,Acquisition,2,1.125
+Muscimol,7,CSPre,Acquisition,Acquisition,3,2.5
+Muscimol,7,CSPre,Acquisition,Acquisition,4,1.9375
+Muscimol,7,CSPre,Acquisition,Acquisition,5,3.5
+Muscimol,7,CSPre,Acquisition,Acquisition,6,3.75
+Muscimol,7,CSPre,Acquisition,Acquisition,7,4.375
+Muscimol,7,CSPre,Acquisition,Acquisition,8,3.6875
+Muscimol,7,CSPre,Acquisition,Acquisition,9,5.625
+Muscimol,7,CSPre,Infusion,Infusion,12,5.3125
+Muscimol,7,CSPre,Infusion,Infusion,13,4.4375
+Muscimol,7,CSPre,Infusion,Infusion,14,3.875
+Muscimol,7,CSPre,Infusion,Infusion,15,5.875
+Muscimol,7,CSPre,No Infusion,NoInfusion,16,3.875
+Muscimol,7,CSPre,No Infusion,NoInfusion,17,4.5
+Muscimol,7,CSPre,Post,PostAcquisition,Post,4.46875
+Muscimol,7,PreCS,Acquisition,Acquisition,1,3.375
+Muscimol,7,PreCS,Acquisition,Acquisition,2,3.25
+Muscimol,7,PreCS,Acquisition,Acquisition,3,1
+Muscimol,7,PreCS,Acquisition,Acquisition,4,1.4375
+Muscimol,7,PreCS,Acquisition,Acquisition,5,0.75
+Muscimol,7,PreCS,Acquisition,Acquisition,6,0.875
+Muscimol,7,PreCS,Acquisition,Acquisition,7,0.75
+Muscimol,7,PreCS,Acquisition,Acquisition,8,1.5625
+Muscimol,7,PreCS,Acquisition,Acquisition,9,0.5625
+Muscimol,7,PreCS,Infusion,Infusion,12,0.625
+Muscimol,7,PreCS,Infusion,Infusion,13,0.625
+Muscimol,7,PreCS,Infusion,Infusion,14,0.875
+Muscimol,7,PreCS,Infusion,Infusion,15,1.375
+Muscimol,7,PreCS,No Infusion,NoInfusion,16,0.8125
+Muscimol,7,PreCS,No Infusion,NoInfusion,17,1
+Muscimol,7,PreCS,Post,PostAcquisition,Post,1.03125
+Muscimol,9,CS,Acquisition,Acquisition,1,5.8125
+Muscimol,9,CS,Acquisition,Acquisition,2,8.5
+Muscimol,9,CS,Acquisition,Acquisition,3,7.8125
+Muscimol,9,CS,Acquisition,Acquisition,4,8.3125
+Muscimol,9,CS,Acquisition,Acquisition,5,12.625
+Muscimol,9,CS,Acquisition,Acquisition,6,14.1875
+Muscimol,9,CS,Acquisition,Acquisition,7,11.8125
+Muscimol,9,CS,Acquisition,Acquisition,8,16.0625
+Muscimol,9,CS,Acquisition,Acquisition,9,16.875
+Muscimol,9,CS,Infusion,Infusion,12,20.4375
+Muscimol,9,CS,Infusion,Infusion,13,10.5625
+Muscimol,9,CS,Infusion,Infusion,14,6.1875
+Muscimol,9,CS,Infusion,Infusion,15,11.4375
+Muscimol,9,CS,No Infusion,NoInfusion,16,23.5625
+Muscimol,9,CS,No Infusion,NoInfusion,17,29.5
+Muscimol,9,CS,Post,PostAcquisition,Post,10.28125
+Muscimol,9,CSPre,Acquisition,Acquisition,1,2.25
+Muscimol,9,CSPre,Acquisition,Acquisition,2,6.0625
+Muscimol,9,CSPre,Acquisition,Acquisition,3,5.75
+Muscimol,9,CSPre,Acquisition,Acquisition,4,7.75
+Muscimol,9,CSPre,Acquisition,Acquisition,5,7.8125
+Muscimol,9,CSPre,Acquisition,Acquisition,6,10.5625
+Muscimol,9,CSPre,Acquisition,Acquisition,7,8.8125
+Muscimol,9,CSPre,Acquisition,Acquisition,8,13.875
+Muscimol,9,CSPre,Acquisition,Acquisition,9,10.3125
+Muscimol,9,CSPre,Infusion,Infusion,12,20.0625
+Muscimol,9,CSPre,Infusion,Infusion,13,9.5
+Muscimol,9,CSPre,Infusion,Infusion,14,4.75
+Muscimol,9,CSPre,Infusion,Infusion,15,10.8125
+Muscimol,9,CSPre,No Infusion,NoInfusion,16,17.875
+Muscimol,9,CSPre,No Infusion,NoInfusion,17,19.6875
+Muscimol,9,CSPre,Post,PostAcquisition,Post,10.03125
+Muscimol,9,PreCS,Acquisition,Acquisition,1,3.5625
+Muscimol,9,PreCS,Acquisition,Acquisition,2,2.4375
+Muscimol,9,PreCS,Acquisition,Acquisition,3,2.0625
+Muscimol,9,PreCS,Acquisition,Acquisition,4,0.5625
+Muscimol,9,PreCS,Acquisition,Acquisition,5,4.8125
+Muscimol,9,PreCS,Acquisition,Acquisition,6,3.625
+Muscimol,9,PreCS,Acquisition,Acquisition,7,3
+Muscimol,9,PreCS,Acquisition,Acquisition,8,2.1875
+Muscimol,9,PreCS,Acquisition,Acquisition,9,6.5625
+Muscimol,9,PreCS,Infusion,Infusion,12,0.375
+Muscimol,9,PreCS,Infusion,Infusion,13,1.0625
+Muscimol,9,PreCS,Infusion,Infusion,14,1.4375
+Muscimol,9,PreCS,Infusion,Infusion,15,0.625
+Muscimol,9,PreCS,No Infusion,NoInfusion,16,5.6875
+Muscimol,9,PreCS,No Infusion,NoInfusion,17,9.8125
+Muscimol,9,PreCS,Post,PostAcquisition,Post,0.25
+Muscimol,13,CS,Acquisition,Acquisition,1,2.5
+Muscimol,13,CS,Acquisition,Acquisition,2,3.0625
+Muscimol,13,CS,Acquisition,Acquisition,3,4.1875
+Muscimol,13,CS,Acquisition,Acquisition,4,5
+Muscimol,13,CS,Acquisition,Acquisition,5,4.8125
+Muscimol,13,CS,Acquisition,Acquisition,6,4.75
+Muscimol,13,CS,Acquisition,Acquisition,7,5.75
+Muscimol,13,CS,Acquisition,Acquisition,8,5.8125
+Muscimol,13,CS,Acquisition,Acquisition,9,5.4375
+Muscimol,13,CS,Infusion,Infusion,12,2.9375
+Muscimol,13,CS,Infusion,Infusion,13,3.9375
+Muscimol,13,CS,Infusion,Infusion,14,3.8125
+Muscimol,13,CS,Infusion,Infusion,15,2.6875
+Muscimol,13,CS,No Infusion,NoInfusion,16,5.5
+Muscimol,13,CS,No Infusion,NoInfusion,17,5.25
+Muscimol,13,CS,Post,PostAcquisition,Post,4.59375
+Muscimol,13,CSPre,Acquisition,Acquisition,1,1.0625
+Muscimol,13,CSPre,Acquisition,Acquisition,2,1.5
+Muscimol,13,CSPre,Acquisition,Acquisition,3,2.5625
+Muscimol,13,CSPre,Acquisition,Acquisition,4,4
+Muscimol,13,CSPre,Acquisition,Acquisition,5,3.25
+Muscimol,13,CSPre,Acquisition,Acquisition,6,3.6875
+Muscimol,13,CSPre,Acquisition,Acquisition,7,5.375
+Muscimol,13,CSPre,Acquisition,Acquisition,8,5.625
+Muscimol,13,CSPre,Acquisition,Acquisition,9,4.5
+Muscimol,13,CSPre,Infusion,Infusion,12,2.6875
+Muscimol,13,CSPre,Infusion,Infusion,13,3.3125
+Muscimol,13,CSPre,Infusion,Infusion,14,3
+Muscimol,13,CSPre,Infusion,Infusion,15,1.6875
+Muscimol,13,CSPre,No Infusion,NoInfusion,16,4.9375
+Muscimol,13,CSPre,No Infusion,NoInfusion,17,4.8125
+Muscimol,13,CSPre,Post,PostAcquisition,Post,4.5625
+Muscimol,13,PreCS,Acquisition,Acquisition,1,1.4375
+Muscimol,13,PreCS,Acquisition,Acquisition,2,1.5625
+Muscimol,13,PreCS,Acquisition,Acquisition,3,1.625
+Muscimol,13,PreCS,Acquisition,Acquisition,4,1
+Muscimol,13,PreCS,Acquisition,Acquisition,5,1.5625
+Muscimol,13,PreCS,Acquisition,Acquisition,6,1.0625
+Muscimol,13,PreCS,Acquisition,Acquisition,7,0.375
+Muscimol,13,PreCS,Acquisition,Acquisition,8,0.1875
+Muscimol,13,PreCS,Acquisition,Acquisition,9,0.9375
+Muscimol,13,PreCS,Infusion,Infusion,12,0.25
+Muscimol,13,PreCS,Infusion,Infusion,13,0.625
+Muscimol,13,PreCS,Infusion,Infusion,14,0.8125
+Muscimol,13,PreCS,Infusion,Infusion,15,1
+Muscimol,13,PreCS,No Infusion,NoInfusion,16,0.5625
+Muscimol,13,PreCS,No Infusion,NoInfusion,17,0.4375
+Muscimol,13,PreCS,Post,PostAcquisition,Post,0.03125
+Muscimol,14,CS,Acquisition,Acquisition,1,3.5625
+Muscimol,14,CS,Acquisition,Acquisition,2,6.3125
+Muscimol,14,CS,Acquisition,Acquisition,3,7
+Muscimol,14,CS,Acquisition,Acquisition,4,6
+Muscimol,14,CS,Acquisition,Acquisition,5,8.0625
+Muscimol,14,CS,Acquisition,Acquisition,6,6.75
+Muscimol,14,CS,Acquisition,Acquisition,7,5.4375
+Muscimol,14,CS,Acquisition,Acquisition,8,5.8125
+Muscimol,14,CS,Acquisition,Acquisition,9,6.125
+Muscimol,14,CS,Infusion,Infusion,12,6
+Muscimol,14,CS,Infusion,Infusion,13,7.8125
+Muscimol,14,CS,Infusion,Infusion,14,4.75
+Muscimol,14,CS,Infusion,Infusion,15,6
+Muscimol,14,CS,No Infusion,NoInfusion,16,11.3125
+Muscimol,14,CS,No Infusion,NoInfusion,17,17.3125
+Muscimol,14,CS,Post,PostAcquisition,Post,6.625
+Muscimol,14,CSPre,Acquisition,Acquisition,1,0.6875
+Muscimol,14,CSPre,Acquisition,Acquisition,2,3.625
+Muscimol,14,CSPre,Acquisition,Acquisition,3,5.5625
+Muscimol,14,CSPre,Acquisition,Acquisition,4,3.75
+Muscimol,14,CSPre,Acquisition,Acquisition,5,6.5625
+Muscimol,14,CSPre,Acquisition,Acquisition,6,4.125
+Muscimol,14,CSPre,Acquisition,Acquisition,7,3.75
+Muscimol,14,CSPre,Acquisition,Acquisition,8,4.0625
+Muscimol,14,CSPre,Acquisition,Acquisition,9,4.625
+Muscimol,14,CSPre,Infusion,Infusion,12,5.9375
+Muscimol,14,CSPre,Infusion,Infusion,13,7.75
+Muscimol,14,CSPre,Infusion,Infusion,14,4.1875
+Muscimol,14,CSPre,Infusion,Infusion,15,5.5
+Muscimol,14,CSPre,No Infusion,NoInfusion,16,10.0625
+Muscimol,14,CSPre,No Infusion,NoInfusion,17,12.8125
+Muscimol,14,CSPre,Post,PostAcquisition,Post,6.21875
+Muscimol,14,PreCS,Acquisition,Acquisition,1,2.875
+Muscimol,14,PreCS,Acquisition,Acquisition,2,2.6875
+Muscimol,14,PreCS,Acquisition,Acquisition,3,1.4375
+Muscimol,14,PreCS,Acquisition,Acquisition,4,2.25
+Muscimol,14,PreCS,Acquisition,Acquisition,5,1.5
+Muscimol,14,PreCS,Acquisition,Acquisition,6,2.625
+Muscimol,14,PreCS,Acquisition,Acquisition,7,1.6875
+Muscimol,14,PreCS,Acquisition,Acquisition,8,1.75
+Muscimol,14,PreCS,Acquisition,Acquisition,9,1.5
+Muscimol,14,PreCS,Infusion,Infusion,12,0.0625
+Muscimol,14,PreCS,Infusion,Infusion,13,0.0625
+Muscimol,14,PreCS,Infusion,Infusion,14,0.5625
+Muscimol,14,PreCS,Infusion,Infusion,15,0.5
+Muscimol,14,PreCS,No Infusion,NoInfusion,16,1.25
+Muscimol,14,PreCS,No Infusion,NoInfusion,17,4.5
+Muscimol,14,PreCS,Post,PostAcquisition,Post,0.40625
+Muscimol,16,CS,Acquisition,Acquisition,1,5.3125
+Muscimol,16,CS,Acquisition,Acquisition,2,5.1875
+Muscimol,16,CS,Acquisition,Acquisition,3,5.4375
+Muscimol,16,CS,Acquisition,Acquisition,4,5.625
+Muscimol,16,CS,Acquisition,Acquisition,5,6.6875
+Muscimol,16,CS,Acquisition,Acquisition,6,7.5625
+Muscimol,16,CS,Acquisition,Acquisition,7,7.375
+Muscimol,16,CS,Acquisition,Acquisition,8,6.25
+Muscimol,16,CS,Acquisition,Acquisition,9,5.75
+Muscimol,16,CS,Infusion,Infusion,12,6.25
+Muscimol,16,CS,Infusion,Infusion,13,5.125
+Muscimol,16,CS,Infusion,Infusion,14,4.1875
+Muscimol,16,CS,Infusion,Infusion,15,4.25
+Muscimol,16,CS,No Infusion,NoInfusion,16,6.9375
+Muscimol,16,CS,No Infusion,NoInfusion,17,7.3125
+Muscimol,16,CS,Post,PostAcquisition,Post,7.34375
+Muscimol,16,CSPre,Acquisition,Acquisition,1,1.75
+Muscimol,16,CSPre,Acquisition,Acquisition,2,3.9375
+Muscimol,16,CSPre,Acquisition,Acquisition,3,4.625
+Muscimol,16,CSPre,Acquisition,Acquisition,4,4.8125
+Muscimol,16,CSPre,Acquisition,Acquisition,5,5.5625
+Muscimol,16,CSPre,Acquisition,Acquisition,6,7.125
+Muscimol,16,CSPre,Acquisition,Acquisition,7,6.75
+Muscimol,16,CSPre,Acquisition,Acquisition,8,5.5625
+Muscimol,16,CSPre,Acquisition,Acquisition,9,5.375
+Muscimol,16,CSPre,Infusion,Infusion,12,6.125
+Muscimol,16,CSPre,Infusion,Infusion,13,5.125
+Muscimol,16,CSPre,Infusion,Infusion,14,4
+Muscimol,16,CSPre,Infusion,Infusion,15,4.1875
+Muscimol,16,CSPre,No Infusion,NoInfusion,16,6.5
+Muscimol,16,CSPre,No Infusion,NoInfusion,17,7.0625
+Muscimol,16,CSPre,Post,PostAcquisition,Post,6.90625
+Muscimol,16,PreCS,Acquisition,Acquisition,1,3.5625
+Muscimol,16,PreCS,Acquisition,Acquisition,2,1.25
+Muscimol,16,PreCS,Acquisition,Acquisition,3,0.8125
+Muscimol,16,PreCS,Acquisition,Acquisition,4,0.8125
+Muscimol,16,PreCS,Acquisition,Acquisition,5,1.125
+Muscimol,16,PreCS,Acquisition,Acquisition,6,0.4375
+Muscimol,16,PreCS,Acquisition,Acquisition,7,0.625
+Muscimol,16,PreCS,Acquisition,Acquisition,8,0.6875
+Muscimol,16,PreCS,Acquisition,Acquisition,9,0.375
+Muscimol,16,PreCS,Infusion,Infusion,12,0.125
+Muscimol,16,PreCS,Infusion,Infusion,13,0
+Muscimol,16,PreCS,Infusion,Infusion,14,0.1875
+Muscimol,16,PreCS,Infusion,Infusion,15,0.0625
+Muscimol,16,PreCS,No Infusion,NoInfusion,16,0.4375
+Muscimol,16,PreCS,No Infusion,NoInfusion,17,0.25
+Muscimol,16,PreCS,Post,PostAcquisition,Post,0.4375
+Muscimol,19,CS,Acquisition,Acquisition,1,2.8125
+Muscimol,19,CS,Acquisition,Acquisition,2,4.625
+Muscimol,19,CS,Acquisition,Acquisition,3,6.9375
+Muscimol,19,CS,Acquisition,Acquisition,4,7.375
+Muscimol,19,CS,Acquisition,Acquisition,5,6.875
+Muscimol,19,CS,Acquisition,Acquisition,6,7.125
+Muscimol,19,CS,Acquisition,Acquisition,7,4.3125
+Muscimol,19,CS,Acquisition,Acquisition,8,4.5625
+Muscimol,19,CS,Acquisition,Acquisition,9,5.4375
+Muscimol,19,CS,Infusion,Infusion,12,11.25
+Muscimol,19,CS,Infusion,Infusion,13,10.875
+Muscimol,19,CS,Infusion,Infusion,14,8.6875
+Muscimol,19,CS,Infusion,Infusion,15,9.75
+Muscimol,19,CS,No Infusion,NoInfusion,16,13.5625
+Muscimol,19,CS,No Infusion,NoInfusion,17,22
+Muscimol,19,CS,Post,PostAcquisition,Post,12.15625
+Muscimol,19,CSPre,Acquisition,Acquisition,1,1.25
+Muscimol,19,CSPre,Acquisition,Acquisition,2,1.25
+Muscimol,19,CSPre,Acquisition,Acquisition,3,5.125
+Muscimol,19,CSPre,Acquisition,Acquisition,4,6.6875
+Muscimol,19,CSPre,Acquisition,Acquisition,5,5.25
+Muscimol,19,CSPre,Acquisition,Acquisition,6,5.125
+Muscimol,19,CSPre,Acquisition,Acquisition,7,3.75
+Muscimol,19,CSPre,Acquisition,Acquisition,8,4.25
+Muscimol,19,CSPre,Acquisition,Acquisition,9,5
+Muscimol,19,CSPre,Infusion,Infusion,12,10.1875
+Muscimol,19,CSPre,Infusion,Infusion,13,10.8125
+Muscimol,19,CSPre,Infusion,Infusion,14,7.4375
+Muscimol,19,CSPre,Infusion,Infusion,15,9.0625
+Muscimol,19,CSPre,No Infusion,NoInfusion,16,13.375
+Muscimol,19,CSPre,No Infusion,NoInfusion,17,16.25
+Muscimol,19,CSPre,Post,PostAcquisition,Post,11.5
+Muscimol,19,PreCS,Acquisition,Acquisition,1,1.5625
+Muscimol,19,PreCS,Acquisition,Acquisition,2,3.375
+Muscimol,19,PreCS,Acquisition,Acquisition,3,1.8125
+Muscimol,19,PreCS,Acquisition,Acquisition,4,0.6875
+Muscimol,19,PreCS,Acquisition,Acquisition,5,1.625
+Muscimol,19,PreCS,Acquisition,Acquisition,6,2
+Muscimol,19,PreCS,Acquisition,Acquisition,7,0.5625
+Muscimol,19,PreCS,Acquisition,Acquisition,8,0.3125
+Muscimol,19,PreCS,Acquisition,Acquisition,9,0.4375
+Muscimol,19,PreCS,Infusion,Infusion,12,1.0625
+Muscimol,19,PreCS,Infusion,Infusion,13,0.0625
+Muscimol,19,PreCS,Infusion,Infusion,14,1.25
+Muscimol,19,PreCS,Infusion,Infusion,15,0.6875
+Muscimol,19,PreCS,No Infusion,NoInfusion,16,0.1875
+Muscimol,19,PreCS,No Infusion,NoInfusion,17,5.75
+Muscimol,19,PreCS,Post,PostAcquisition,Post,0.65625
+Muscimol,21,CS,Acquisition,Acquisition,1,2.5
+Muscimol,21,CS,Acquisition,Acquisition,2,2.9375
+Muscimol,21,CS,Acquisition,Acquisition,3,6.125
+Muscimol,21,CS,Acquisition,Acquisition,4,7.625
+Muscimol,21,CS,Acquisition,Acquisition,5,4.75
+Muscimol,21,CS,Acquisition,Acquisition,6,4.75
+Muscimol,21,CS,Acquisition,Acquisition,7,6.875
+Muscimol,21,CS,Acquisition,Acquisition,8,6.625
+Muscimol,21,CS,Acquisition,Acquisition,9,8.0625
+Muscimol,21,CS,Infusion,Infusion,12,2.75
+Muscimol,21,CS,Infusion,Infusion,13,4.3125
+Muscimol,21,CS,Infusion,Infusion,14,4.25
+Muscimol,21,CS,Infusion,Infusion,15,2.5625
+Muscimol,21,CS,No Infusion,NoInfusion,16,7.4375
+Muscimol,21,CS,No Infusion,NoInfusion,17,7.5625
+Muscimol,21,CS,Post,PostAcquisition,Post,5.34375
+Muscimol,21,CSPre,Acquisition,Acquisition,1,0.0625
+Muscimol,21,CSPre,Acquisition,Acquisition,2,0.375
+Muscimol,21,CSPre,Acquisition,Acquisition,3,4.8125
+Muscimol,21,CSPre,Acquisition,Acquisition,4,6
+Muscimol,21,CSPre,Acquisition,Acquisition,5,3.6875
+Muscimol,21,CSPre,Acquisition,Acquisition,6,3.8125
+Muscimol,21,CSPre,Acquisition,Acquisition,7,6.3125
+Muscimol,21,CSPre,Acquisition,Acquisition,8,4.125
+Muscimol,21,CSPre,Acquisition,Acquisition,9,7.4375
+Muscimol,21,CSPre,Infusion,Infusion,12,2.0625
+Muscimol,21,CSPre,Infusion,Infusion,13,3.6875
+Muscimol,21,CSPre,Infusion,Infusion,14,2.6875
+Muscimol,21,CSPre,Infusion,Infusion,15,1.5
+Muscimol,21,CSPre,No Infusion,NoInfusion,16,7.3125
+Muscimol,21,CSPre,No Infusion,NoInfusion,17,7.125
+Muscimol,21,CSPre,Post,PostAcquisition,Post,5.25
+Muscimol,21,PreCS,Acquisition,Acquisition,1,2.4375
+Muscimol,21,PreCS,Acquisition,Acquisition,2,2.5625
+Muscimol,21,PreCS,Acquisition,Acquisition,3,1.3125
+Muscimol,21,PreCS,Acquisition,Acquisition,4,1.625
+Muscimol,21,PreCS,Acquisition,Acquisition,5,1.0625
+Muscimol,21,PreCS,Acquisition,Acquisition,6,0.9375
+Muscimol,21,PreCS,Acquisition,Acquisition,7,0.5625
+Muscimol,21,PreCS,Acquisition,Acquisition,8,2.5
+Muscimol,21,PreCS,Acquisition,Acquisition,9,0.625
+Muscimol,21,PreCS,Infusion,Infusion,12,0.6875
+Muscimol,21,PreCS,Infusion,Infusion,13,0.625
+Muscimol,21,PreCS,Infusion,Infusion,14,1.5625
+Muscimol,21,PreCS,Infusion,Infusion,15,1.0625
+Muscimol,21,PreCS,No Infusion,NoInfusion,16,0.125
+Muscimol,21,PreCS,No Infusion,NoInfusion,17,0.4375
+Muscimol,21,PreCS,Post,PostAcquisition,Post,0.09375
+Muscimol,23,CS,Acquisition,Acquisition,1,2.3125
+Muscimol,23,CS,Acquisition,Acquisition,2,3.6875
+Muscimol,23,CS,Acquisition,Acquisition,3,5
+Muscimol,23,CS,Acquisition,Acquisition,4,5.5
+Muscimol,23,CS,Acquisition,Acquisition,5,5.125
+Muscimol,23,CS,Acquisition,Acquisition,6,4.4375
+Muscimol,23,CS,Acquisition,Acquisition,7,5.125
+Muscimol,23,CS,Acquisition,Acquisition,8,4.5
+Muscimol,23,CS,Acquisition,Acquisition,9,3.75
+Muscimol,23,CS,Infusion,Infusion,12,6.4375
+Muscimol,23,CS,Infusion,Infusion,13,5.3125
+Muscimol,23,CS,Infusion,Infusion,14,5.5625
+Muscimol,23,CS,Infusion,Infusion,15,4.8125
+Muscimol,23,CS,No Infusion,NoInfusion,16,9.1875
+Muscimol,23,CS,No Infusion,NoInfusion,17,13.5625
+Muscimol,23,CS,Post,PostAcquisition,Post,6.90625
+Muscimol,23,CSPre,Acquisition,Acquisition,1,1.125
+Muscimol,23,CSPre,Acquisition,Acquisition,2,1.0625
+Muscimol,23,CSPre,Acquisition,Acquisition,3,3.9375
+Muscimol,23,CSPre,Acquisition,Acquisition,4,4.1875
+Muscimol,23,CSPre,Acquisition,Acquisition,5,3.875
+Muscimol,23,CSPre,Acquisition,Acquisition,6,3.5625
+Muscimol,23,CSPre,Acquisition,Acquisition,7,4.3125
+Muscimol,23,CSPre,Acquisition,Acquisition,8,2.75
+Muscimol,23,CSPre,Acquisition,Acquisition,9,1.625
+Muscimol,23,CSPre,Infusion,Infusion,12,6.3125
+Muscimol,23,CSPre,Infusion,Infusion,13,4.75
+Muscimol,23,CSPre,Infusion,Infusion,14,4.125
+Muscimol,23,CSPre,Infusion,Infusion,15,3.8125
+Muscimol,23,CSPre,No Infusion,NoInfusion,16,7.6875
+Muscimol,23,CSPre,No Infusion,NoInfusion,17,9.8125
+Muscimol,23,CSPre,Post,PostAcquisition,Post,6.09375
+Muscimol,23,PreCS,Acquisition,Acquisition,1,1.1875
+Muscimol,23,PreCS,Acquisition,Acquisition,2,2.625
+Muscimol,23,PreCS,Acquisition,Acquisition,3,1.0625
+Muscimol,23,PreCS,Acquisition,Acquisition,4,1.3125
+Muscimol,23,PreCS,Acquisition,Acquisition,5,1.25
+Muscimol,23,PreCS,Acquisition,Acquisition,6,0.875
+Muscimol,23,PreCS,Acquisition,Acquisition,7,0.8125
+Muscimol,23,PreCS,Acquisition,Acquisition,8,1.75
+Muscimol,23,PreCS,Acquisition,Acquisition,9,2.125
+Muscimol,23,PreCS,Infusion,Infusion,12,0.125
+Muscimol,23,PreCS,Infusion,Infusion,13,0.5625
+Muscimol,23,PreCS,Infusion,Infusion,14,1.4375
+Muscimol,23,PreCS,Infusion,Infusion,15,1
+Muscimol,23,PreCS,No Infusion,NoInfusion,16,1.5
+Muscimol,23,PreCS,No Infusion,NoInfusion,17,3.75
+Muscimol,23,PreCS,Post,PostAcquisition,Post,0.8125
+Muscimol,25,CS,Acquisition,Acquisition,1,3.8125
+Muscimol,25,CS,Acquisition,Acquisition,2,5.625
+Muscimol,25,CS,Acquisition,Acquisition,3,6.0625
+Muscimol,25,CS,Acquisition,Acquisition,4,7.1875
+Muscimol,25,CS,Acquisition,Acquisition,5,6.25
+Muscimol,25,CS,Acquisition,Acquisition,6,6.5
+Muscimol,25,CS,Acquisition,Acquisition,7,7.75
+Muscimol,25,CS,Acquisition,Acquisition,8,8.8125
+Muscimol,25,CS,Acquisition,Acquisition,9,10.0625
+Muscimol,25,CS,Infusion,Infusion,12,5.5
+Muscimol,25,CS,Infusion,Infusion,13,3.5625
+Muscimol,25,CS,Infusion,Infusion,14,8.5
+Muscimol,25,CS,Infusion,Infusion,15,6.75
+Muscimol,25,CS,No Infusion,NoInfusion,16,4.75
+Muscimol,25,CS,No Infusion,NoInfusion,17,10
+Muscimol,25,CS,Post,PostAcquisition,Post,4.71875
+Muscimol,25,CSPre,Acquisition,Acquisition,1,1.625
+Muscimol,25,CSPre,Acquisition,Acquisition,2,3.5
+Muscimol,25,CSPre,Acquisition,Acquisition,3,3.4375
+Muscimol,25,CSPre,Acquisition,Acquisition,4,5.9375
+Muscimol,25,CSPre,Acquisition,Acquisition,5,4.6875
+Muscimol,25,CSPre,Acquisition,Acquisition,6,5.0625
+Muscimol,25,CSPre,Acquisition,Acquisition,7,6.875
+Muscimol,25,CSPre,Acquisition,Acquisition,8,8.0625
+Muscimol,25,CSPre,Acquisition,Acquisition,9,8.625
+Muscimol,25,CSPre,Infusion,Infusion,12,5.25
+Muscimol,25,CSPre,Infusion,Infusion,13,2.1875
+Muscimol,25,CSPre,Infusion,Infusion,14,7.6875
+Muscimol,25,CSPre,Infusion,Infusion,15,4.6875
+Muscimol,25,CSPre,No Infusion,NoInfusion,16,4.1875
+Muscimol,25,CSPre,No Infusion,NoInfusion,17,8.4375
+Muscimol,25,CSPre,Post,PostAcquisition,Post,4.21875
+Muscimol,25,PreCS,Acquisition,Acquisition,1,2.1875
+Muscimol,25,PreCS,Acquisition,Acquisition,2,2.125
+Muscimol,25,PreCS,Acquisition,Acquisition,3,2.625
+Muscimol,25,PreCS,Acquisition,Acquisition,4,1.25
+Muscimol,25,PreCS,Acquisition,Acquisition,5,1.5625
+Muscimol,25,PreCS,Acquisition,Acquisition,6,1.4375
+Muscimol,25,PreCS,Acquisition,Acquisition,7,0.875
+Muscimol,25,PreCS,Acquisition,Acquisition,8,0.75
+Muscimol,25,PreCS,Acquisition,Acquisition,9,1.4375
+Muscimol,25,PreCS,Infusion,Infusion,12,0.25
+Muscimol,25,PreCS,Infusion,Infusion,13,1.375
+Muscimol,25,PreCS,Infusion,Infusion,14,0.8125
+Muscimol,25,PreCS,Infusion,Infusion,15,2.0625
+Muscimol,25,PreCS,No Infusion,NoInfusion,16,0.5625
+Muscimol,25,PreCS,No Infusion,NoInfusion,17,1.5625
+Muscimol,25,PreCS,Post,PostAcquisition,Post,0.5
+Muscimol,29,CS,Acquisition,Acquisition,1,2.375
+Muscimol,29,CS,Acquisition,Acquisition,2,2.6875
+Muscimol,29,CS,Acquisition,Acquisition,3,3.375
+Muscimol,29,CS,Acquisition,Acquisition,4,1.875
+Muscimol,29,CS,Acquisition,Acquisition,5,4.0625
+Muscimol,29,CS,Acquisition,Acquisition,6,5.1875
+Muscimol,29,CS,Acquisition,Acquisition,7,4.8125
+Muscimol,29,CS,Acquisition,Acquisition,8,5.5625
+Muscimol,29,CS,Acquisition,Acquisition,9,6
+Muscimol,29,CS,Infusion,Infusion,12,4.4375
+Muscimol,29,CS,Infusion,Infusion,13,4.25
+Muscimol,29,CS,Infusion,Infusion,14,4.375
+Muscimol,29,CS,Infusion,Infusion,15,5.4375
+Muscimol,29,CS,No Infusion,NoInfusion,16,4.125
+Muscimol,29,CS,No Infusion,NoInfusion,17,5.875
+Muscimol,29,CS,Post,PostAcquisition,Post,4.9375
+Muscimol,29,CSPre,Acquisition,Acquisition,1,-0.0625
+Muscimol,29,CSPre,Acquisition,Acquisition,2,1.375
+Muscimol,29,CSPre,Acquisition,Acquisition,3,2.5
+Muscimol,29,CSPre,Acquisition,Acquisition,4,0.6875
+Muscimol,29,CSPre,Acquisition,Acquisition,5,3.125
+Muscimol,29,CSPre,Acquisition,Acquisition,6,4.4375
+Muscimol,29,CSPre,Acquisition,Acquisition,7,4.5
+Muscimol,29,CSPre,Acquisition,Acquisition,8,3.875
+Muscimol,29,CSPre,Acquisition,Acquisition,9,5.375
+Muscimol,29,CSPre,Infusion,Infusion,12,3.75
+Muscimol,29,CSPre,Infusion,Infusion,13,4.1875
+Muscimol,29,CSPre,Infusion,Infusion,14,3.8125
+Muscimol,29,CSPre,Infusion,Infusion,15,5
+Muscimol,29,CSPre,No Infusion,NoInfusion,16,3.8125
+Muscimol,29,CSPre,No Infusion,NoInfusion,17,5
+Muscimol,29,CSPre,Post,PostAcquisition,Post,4.375
+Muscimol,29,PreCS,Acquisition,Acquisition,1,2.4375
+Muscimol,29,PreCS,Acquisition,Acquisition,2,1.3125
+Muscimol,29,PreCS,Acquisition,Acquisition,3,0.875
+Muscimol,29,PreCS,Acquisition,Acquisition,4,1.1875
+Muscimol,29,PreCS,Acquisition,Acquisition,5,0.9375
+Muscimol,29,PreCS,Acquisition,Acquisition,6,0.75
+Muscimol,29,PreCS,Acquisition,Acquisition,7,0.3125
+Muscimol,29,PreCS,Acquisition,Acquisition,8,1.6875
+Muscimol,29,PreCS,Acquisition,Acquisition,9,0.625
+Muscimol,29,PreCS,Infusion,Infusion,12,0.6875
+Muscimol,29,PreCS,Infusion,Infusion,13,0.0625
+Muscimol,29,PreCS,Infusion,Infusion,14,0.5625
+Muscimol,29,PreCS,Infusion,Infusion,15,0.4375
+Muscimol,29,PreCS,No Infusion,NoInfusion,16,0.3125
+Muscimol,29,PreCS,No Infusion,NoInfusion,17,0.875
+Muscimol,29,PreCS,Post,PostAcquisition,Post,0.5625
+Muscimol,31,CS,Acquisition,Acquisition,1,3.625
+Muscimol,31,CS,Acquisition,Acquisition,2,5.125
+Muscimol,31,CS,Acquisition,Acquisition,3,5.25
+Muscimol,31,CS,Acquisition,Acquisition,4,4.5625
+Muscimol,31,CS,Acquisition,Acquisition,5,6.375
+Muscimol,31,CS,Acquisition,Acquisition,6,7.5
+Muscimol,31,CS,Acquisition,Acquisition,7,8.0625
+Muscimol,31,CS,Acquisition,Acquisition,8,12.5625
+Muscimol,31,CS,Acquisition,Acquisition,9,11.3125
+Muscimol,31,CS,Infusion,Infusion,12,5.6875
+Muscimol,31,CS,Infusion,Infusion,13,5.875
+Muscimol,31,CS,Infusion,Infusion,14,7
+Muscimol,31,CS,Infusion,Infusion,15,6.625
+Muscimol,31,CS,No Infusion,NoInfusion,16,10.4375
+Muscimol,31,CS,No Infusion,NoInfusion,17,16.8125
+Muscimol,31,CS,Post,PostAcquisition,Post,5.0625
+Muscimol,31,CSPre,Acquisition,Acquisition,1,1.25
+Muscimol,31,CSPre,Acquisition,Acquisition,2,2.8125
+Muscimol,31,CSPre,Acquisition,Acquisition,3,4.3125
+Muscimol,31,CSPre,Acquisition,Acquisition,4,3.75
+Muscimol,31,CSPre,Acquisition,Acquisition,5,4.0625
+Muscimol,31,CSPre,Acquisition,Acquisition,6,6.1875
+Muscimol,31,CSPre,Acquisition,Acquisition,7,7.375
+Muscimol,31,CSPre,Acquisition,Acquisition,8,11
+Muscimol,31,CSPre,Acquisition,Acquisition,9,9.3125
+Muscimol,31,CSPre,Infusion,Infusion,12,4.6875
+Muscimol,31,CSPre,Infusion,Infusion,13,5.375
+Muscimol,31,CSPre,Infusion,Infusion,14,6.1875
+Muscimol,31,CSPre,Infusion,Infusion,15,6.3125
+Muscimol,31,CSPre,No Infusion,NoInfusion,16,10.4375
+Muscimol,31,CSPre,No Infusion,NoInfusion,17,12.875
+Muscimol,31,CSPre,Post,PostAcquisition,Post,4.6875
+Muscimol,31,PreCS,Acquisition,Acquisition,1,2.375
+Muscimol,31,PreCS,Acquisition,Acquisition,2,2.3125
+Muscimol,31,PreCS,Acquisition,Acquisition,3,0.9375
+Muscimol,31,PreCS,Acquisition,Acquisition,4,0.8125
+Muscimol,31,PreCS,Acquisition,Acquisition,5,2.3125
+Muscimol,31,PreCS,Acquisition,Acquisition,6,1.3125
+Muscimol,31,PreCS,Acquisition,Acquisition,7,0.6875
+Muscimol,31,PreCS,Acquisition,Acquisition,8,1.5625
+Muscimol,31,PreCS,Acquisition,Acquisition,9,2
+Muscimol,31,PreCS,Infusion,Infusion,12,1
+Muscimol,31,PreCS,Infusion,Infusion,13,0.5
+Muscimol,31,PreCS,Infusion,Infusion,14,0.8125
+Muscimol,31,PreCS,Infusion,Infusion,15,0.3125
+Muscimol,31,PreCS,No Infusion,NoInfusion,16,0
+Muscimol,31,PreCS,No Infusion,NoInfusion,17,3.9375
+Muscimol,31,PreCS,Post,PostAcquisition,Post,0.375
+Saline,3,CS,Acquisition,Acquisition,1,3.875
+Saline,3,CS,Acquisition,Acquisition,2,7.6875
+Saline,3,CS,Acquisition,Acquisition,3,7.5
+Saline,3,CS,Acquisition,Acquisition,4,10.5625
+Saline,3,CS,Acquisition,Acquisition,5,6.3125
+Saline,3,CS,Acquisition,Acquisition,6,7.5
+Saline,3,CS,Acquisition,Acquisition,7,8.0625
+Saline,3,CS,Acquisition,Acquisition,8,13.375
+Saline,3,CS,Acquisition,Acquisition,9,20
+Saline,3,CS,Infusion,Infusion,12,5
+Saline,3,CS,Infusion,Infusion,13,8.625
+Saline,3,CS,Infusion,Infusion,14,8
+Saline,3,CS,Infusion,Infusion,15,10
+Saline,3,CS,No Infusion,NoInfusion,16,15.125
+Saline,3,CS,No Infusion,NoInfusion,17,18.375
+Saline,3,CS,Post,PostAcquisition,Post,3.1875
+Saline,3,CSPre,Acquisition,Acquisition,1,2.5625
+Saline,3,CSPre,Acquisition,Acquisition,2,7.1875
+Saline,3,CSPre,Acquisition,Acquisition,3,4.125
+Saline,3,CSPre,Acquisition,Acquisition,4,8.75
+Saline,3,CSPre,Acquisition,Acquisition,5,4.375
+Saline,3,CSPre,Acquisition,Acquisition,6,6.125
+Saline,3,CSPre,Acquisition,Acquisition,7,7.625
+Saline,3,CSPre,Acquisition,Acquisition,8,11.875
+Saline,3,CSPre,Acquisition,Acquisition,9,16.0625
+Saline,3,CSPre,Infusion,Infusion,12,4.4375
+Saline,3,CSPre,Infusion,Infusion,13,8.625
+Saline,3,CSPre,Infusion,Infusion,14,7.375
+Saline,3,CSPre,Infusion,Infusion,15,9.6875
+Saline,3,CSPre,No Infusion,NoInfusion,16,15.0625
+Saline,3,CSPre,No Infusion,NoInfusion,17,16.4375
+Saline,3,CSPre,Post,PostAcquisition,Post,2.625
+Saline,3,PreCS,Acquisition,Acquisition,1,1.3125
+Saline,3,PreCS,Acquisition,Acquisition,2,0.5
+Saline,3,PreCS,Acquisition,Acquisition,3,3.375
+Saline,3,PreCS,Acquisition,Acquisition,4,1.8125
+Saline,3,PreCS,Acquisition,Acquisition,5,1.9375
+Saline,3,PreCS,Acquisition,Acquisition,6,1.375
+Saline,3,PreCS,Acquisition,Acquisition,7,0.4375
+Saline,3,PreCS,Acquisition,Acquisition,8,1.5
+Saline,3,PreCS,Acquisition,Acquisition,9,3.9375
+Saline,3,PreCS,Infusion,Infusion,12,0.5625
+Saline,3,PreCS,Infusion,Infusion,13,0
+Saline,3,PreCS,Infusion,Infusion,14,0.625
+Saline,3,PreCS,Infusion,Infusion,15,0.3125
+Saline,3,PreCS,No Infusion,NoInfusion,16,0.0625
+Saline,3,PreCS,No Infusion,NoInfusion,17,1.9375
+Saline,3,PreCS,Post,PostAcquisition,Post,0.5625
+Saline,4,CS,Acquisition,Acquisition,1,2.125
+Saline,4,CS,Acquisition,Acquisition,2,4.0625
+Saline,4,CS,Acquisition,Acquisition,3,4.875
+Saline,4,CS,Acquisition,Acquisition,4,6.9375
+Saline,4,CS,Acquisition,Acquisition,5,7
+Saline,4,CS,Acquisition,Acquisition,6,10.5
+Saline,4,CS,Acquisition,Acquisition,7,10.875
+Saline,4,CS,Acquisition,Acquisition,8,10.5625
+Saline,4,CS,Acquisition,Acquisition,9,8.3125
+Saline,4,CS,Infusion,Infusion,12,5.8125
+Saline,4,CS,Infusion,Infusion,13,7.6875
+Saline,4,CS,Infusion,Infusion,14,6.1875
+Saline,4,CS,Infusion,Infusion,15,6.5
+Saline,4,CS,No Infusion,NoInfusion,16,7.125
+Saline,4,CS,No Infusion,NoInfusion,17,5.6875
+Saline,4,CS,Post,PostAcquisition,Post,4.65625
+Saline,4,CSPre,Acquisition,Acquisition,1,0.8125
+Saline,4,CSPre,Acquisition,Acquisition,2,2.375
+Saline,4,CSPre,Acquisition,Acquisition,3,3.6875
+Saline,4,CSPre,Acquisition,Acquisition,4,5.6875
+Saline,4,CSPre,Acquisition,Acquisition,5,6.5625
+Saline,4,CSPre,Acquisition,Acquisition,6,9.625
+Saline,4,CSPre,Acquisition,Acquisition,7,8.6875
+Saline,4,CSPre,Acquisition,Acquisition,8,8.875
+Saline,4,CSPre,Acquisition,Acquisition,9,6.125
+Saline,4,CSPre,Infusion,Infusion,12,5.75
+Saline,4,CSPre,Infusion,Infusion,13,6.9375
+Saline,4,CSPre,Infusion,Infusion,14,4.4375
+Saline,4,CSPre,Infusion,Infusion,15,4.75
+Saline,4,CSPre,No Infusion,NoInfusion,16,6.1875
+Saline,4,CSPre,No Infusion,NoInfusion,17,4.5625
+Saline,4,CSPre,Post,PostAcquisition,Post,3.9375
+Saline,4,PreCS,Acquisition,Acquisition,1,1.3125
+Saline,4,PreCS,Acquisition,Acquisition,2,1.6875
+Saline,4,PreCS,Acquisition,Acquisition,3,1.1875
+Saline,4,PreCS,Acquisition,Acquisition,4,1.25
+Saline,4,PreCS,Acquisition,Acquisition,5,0.4375
+Saline,4,PreCS,Acquisition,Acquisition,6,0.875
+Saline,4,PreCS,Acquisition,Acquisition,7,2.1875
+Saline,4,PreCS,Acquisition,Acquisition,8,1.6875
+Saline,4,PreCS,Acquisition,Acquisition,9,2.1875
+Saline,4,PreCS,Infusion,Infusion,12,0.0625
+Saline,4,PreCS,Infusion,Infusion,13,0.75
+Saline,4,PreCS,Infusion,Infusion,14,1.75
+Saline,4,PreCS,Infusion,Infusion,15,1.75
+Saline,4,PreCS,No Infusion,NoInfusion,16,0.9375
+Saline,4,PreCS,No Infusion,NoInfusion,17,1.125
+Saline,4,PreCS,Post,PostAcquisition,Post,0.71875
+Saline,8,CS,Acquisition,Acquisition,1,3.9375
+Saline,8,CS,Acquisition,Acquisition,2,5.625
+Saline,8,CS,Acquisition,Acquisition,3,6.8125
+Saline,8,CS,Acquisition,Acquisition,4,6.1875
+Saline,8,CS,Acquisition,Acquisition,5,4.6875
+Saline,8,CS,Acquisition,Acquisition,6,7.375
+Saline,8,CS,Acquisition,Acquisition,7,6.375
+Saline,8,CS,Acquisition,Acquisition,8,5.5625
+Saline,8,CS,Acquisition,Acquisition,9,4.3125
+Saline,8,CS,Infusion,Infusion,12,4.75
+Saline,8,CS,Infusion,Infusion,13,5.125
+Saline,8,CS,Infusion,Infusion,14,5.9375
+Saline,8,CS,Infusion,Infusion,15,6.75
+Saline,8,CS,No Infusion,NoInfusion,16,6.8125
+Saline,8,CS,No Infusion,NoInfusion,17,6.5625
+Saline,8,CS,Post,PostAcquisition,Post,6.21875
+Saline,8,CSPre,Acquisition,Acquisition,1,2.8125
+Saline,8,CSPre,Acquisition,Acquisition,2,3.75
+Saline,8,CSPre,Acquisition,Acquisition,3,5.5625
+Saline,8,CSPre,Acquisition,Acquisition,4,5.5
+Saline,8,CSPre,Acquisition,Acquisition,5,4.1875
+Saline,8,CSPre,Acquisition,Acquisition,6,6.9375
+Saline,8,CSPre,Acquisition,Acquisition,7,6
+Saline,8,CSPre,Acquisition,Acquisition,8,5.4375
+Saline,8,CSPre,Acquisition,Acquisition,9,3.875
+Saline,8,CSPre,Infusion,Infusion,12,4.3125
+Saline,8,CSPre,Infusion,Infusion,13,4.6875
+Saline,8,CSPre,Infusion,Infusion,14,5.5625
+Saline,8,CSPre,Infusion,Infusion,15,6.75
+Saline,8,CSPre,No Infusion,NoInfusion,16,6.8125
+Saline,8,CSPre,No Infusion,NoInfusion,17,5.8125
+Saline,8,CSPre,Post,PostAcquisition,Post,5.84375
+Saline,8,PreCS,Acquisition,Acquisition,1,1.125
+Saline,8,PreCS,Acquisition,Acquisition,2,1.875
+Saline,8,PreCS,Acquisition,Acquisition,3,1.25
+Saline,8,PreCS,Acquisition,Acquisition,4,0.6875
+Saline,8,PreCS,Acquisition,Acquisition,5,0.5
+Saline,8,PreCS,Acquisition,Acquisition,6,0.4375
+Saline,8,PreCS,Acquisition,Acquisition,7,0.375
+Saline,8,PreCS,Acquisition,Acquisition,8,0.125
+Saline,8,PreCS,Acquisition,Acquisition,9,0.4375
+Saline,8,PreCS,Infusion,Infusion,12,0.4375
+Saline,8,PreCS,Infusion,Infusion,13,0.4375
+Saline,8,PreCS,Infusion,Infusion,14,0.375
+Saline,8,PreCS,Infusion,Infusion,15,0
+Saline,8,PreCS,No Infusion,NoInfusion,16,0
+Saline,8,PreCS,No Infusion,NoInfusion,17,0.75
+Saline,8,PreCS,Post,PostAcquisition,Post,0.375
+Saline,10,CS,Acquisition,Acquisition,1,3.375
+Saline,10,CS,Acquisition,Acquisition,2,5.5
+Saline,10,CS,Acquisition,Acquisition,3,4.8125
+Saline,10,CS,Acquisition,Acquisition,4,9.625
+Saline,10,CS,Acquisition,Acquisition,5,15.75
+Saline,10,CS,Acquisition,Acquisition,6,10.1875
+Saline,10,CS,Acquisition,Acquisition,7,13.6875
+Saline,10,CS,Acquisition,Acquisition,8,15.5
+Saline,10,CS,Acquisition,Acquisition,9,17.375
+Saline,10,CS,Infusion,Infusion,12,9.8125
+Saline,10,CS,Infusion,Infusion,13,8.75
+Saline,10,CS,Infusion,Infusion,14,17.25
+Saline,10,CS,Infusion,Infusion,15,16.125
+Saline,10,CS,No Infusion,NoInfusion,16,16.75
+Saline,10,CS,No Infusion,NoInfusion,17,21.875
+Saline,10,CS,Post,PostAcquisition,Post,12.3125
+Saline,10,CSPre,Acquisition,Acquisition,1,-0.125
+Saline,10,CSPre,Acquisition,Acquisition,2,3.125
+Saline,10,CSPre,Acquisition,Acquisition,3,2.875
+Saline,10,CSPre,Acquisition,Acquisition,4,7.75
+Saline,10,CSPre,Acquisition,Acquisition,5,15.0625
+Saline,10,CSPre,Acquisition,Acquisition,6,7.625
+Saline,10,CSPre,Acquisition,Acquisition,7,11
+Saline,10,CSPre,Acquisition,Acquisition,8,12.5
+Saline,10,CSPre,Acquisition,Acquisition,9,13.9375
+Saline,10,CSPre,Infusion,Infusion,12,9.25
+Saline,10,CSPre,Infusion,Infusion,13,8
+Saline,10,CSPre,Infusion,Infusion,14,13.375
+Saline,10,CSPre,Infusion,Infusion,15,11.8125
+Saline,10,CSPre,No Infusion,NoInfusion,16,13.875
+Saline,10,CSPre,No Infusion,NoInfusion,17,19.5
+Saline,10,CSPre,Post,PostAcquisition,Post,10.5625
+Saline,10,PreCS,Acquisition,Acquisition,1,3.5
+Saline,10,PreCS,Acquisition,Acquisition,2,2.375
+Saline,10,PreCS,Acquisition,Acquisition,3,1.9375
+Saline,10,PreCS,Acquisition,Acquisition,4,1.875
+Saline,10,PreCS,Acquisition,Acquisition,5,0.6875
+Saline,10,PreCS,Acquisition,Acquisition,6,2.5625
+Saline,10,PreCS,Acquisition,Acquisition,7,2.6875
+Saline,10,PreCS,Acquisition,Acquisition,8,3
+Saline,10,PreCS,Acquisition,Acquisition,9,3.4375
+Saline,10,PreCS,Infusion,Infusion,12,0.5625
+Saline,10,PreCS,Infusion,Infusion,13,0.75
+Saline,10,PreCS,Infusion,Infusion,14,3.875
+Saline,10,PreCS,Infusion,Infusion,15,4.3125
+Saline,10,PreCS,No Infusion,NoInfusion,16,2.875
+Saline,10,PreCS,No Infusion,NoInfusion,17,2.375
+Saline,10,PreCS,Post,PostAcquisition,Post,1.75
+Saline,12,CS,Acquisition,Acquisition,1,3.75
+Saline,12,CS,Acquisition,Acquisition,2,5.4375
+Saline,12,CS,Acquisition,Acquisition,3,6.25
+Saline,12,CS,Acquisition,Acquisition,4,5.625
+Saline,12,CS,Acquisition,Acquisition,5,6.75
+Saline,12,CS,Acquisition,Acquisition,6,6.125
+Saline,12,CS,Acquisition,Acquisition,7,6.9375
+Saline,12,CS,Acquisition,Acquisition,8,5.75
+Saline,12,CS,Acquisition,Acquisition,9,6.25
+Saline,12,CS,Infusion,Infusion,12,4.5625
+Saline,12,CS,Infusion,Infusion,13,4.3125
+Saline,12,CS,Infusion,Infusion,14,4.9375
+Saline,12,CS,Infusion,Infusion,15,4.875
+Saline,12,CS,No Infusion,NoInfusion,16,6.3125
+Saline,12,CS,No Infusion,NoInfusion,17,6.8125
+Saline,12,CS,Post,PostAcquisition,Post,5.25
+Saline,12,CSPre,Acquisition,Acquisition,1,1.4375
+Saline,12,CSPre,Acquisition,Acquisition,2,3.8125
+Saline,12,CSPre,Acquisition,Acquisition,3,4.9375
+Saline,12,CSPre,Acquisition,Acquisition,4,4.625
+Saline,12,CSPre,Acquisition,Acquisition,5,5.5
+Saline,12,CSPre,Acquisition,Acquisition,6,5.5
+Saline,12,CSPre,Acquisition,Acquisition,7,5.375
+Saline,12,CSPre,Acquisition,Acquisition,8,4.625
+Saline,12,CSPre,Acquisition,Acquisition,9,3.6875
+Saline,12,CSPre,Infusion,Infusion,12,4.5
+Saline,12,CSPre,Infusion,Infusion,13,3.875
+Saline,12,CSPre,Infusion,Infusion,14,3.1875
+Saline,12,CSPre,Infusion,Infusion,15,4.1875
+Saline,12,CSPre,No Infusion,NoInfusion,16,5.1875
+Saline,12,CSPre,No Infusion,NoInfusion,17,5.3125
+Saline,12,CSPre,Post,PostAcquisition,Post,5.09375
+Saline,12,PreCS,Acquisition,Acquisition,1,2.3125
+Saline,12,PreCS,Acquisition,Acquisition,2,1.625
+Saline,12,PreCS,Acquisition,Acquisition,3,1.3125
+Saline,12,PreCS,Acquisition,Acquisition,4,1
+Saline,12,PreCS,Acquisition,Acquisition,5,1.25
+Saline,12,PreCS,Acquisition,Acquisition,6,0.625
+Saline,12,PreCS,Acquisition,Acquisition,7,1.5625
+Saline,12,PreCS,Acquisition,Acquisition,8,1.125
+Saline,12,PreCS,Acquisition,Acquisition,9,2.5625
+Saline,12,PreCS,Infusion,Infusion,12,0.0625
+Saline,12,PreCS,Infusion,Infusion,13,0.4375
+Saline,12,PreCS,Infusion,Infusion,14,1.75
+Saline,12,PreCS,Infusion,Infusion,15,0.6875
+Saline,12,PreCS,No Infusion,NoInfusion,16,1.125
+Saline,12,PreCS,No Infusion,NoInfusion,17,1.5
+Saline,12,PreCS,Post,PostAcquisition,Post,0.15625
+Saline,15,CS,Acquisition,Acquisition,1,1.6875
+Saline,15,CS,Acquisition,Acquisition,2,5.125
+Saline,15,CS,Acquisition,Acquisition,3,5.8125
+Saline,15,CS,Acquisition,Acquisition,4,8
+Saline,15,CS,Acquisition,Acquisition,5,7.1875
+Saline,15,CS,Acquisition,Acquisition,6,6.625
+Saline,15,CS,Acquisition,Acquisition,7,6.3125
+Saline,15,CS,Acquisition,Acquisition,8,8.9375
+Saline,15,CS,Acquisition,Acquisition,9,7.6875
+Saline,15,CS,Infusion,Infusion,12,5.25
+Saline,15,CS,Infusion,Infusion,13,6.8125
+Saline,15,CS,Infusion,Infusion,14,6.1875
+Saline,15,CS,Infusion,Infusion,15,9.3125
+Saline,15,CS,No Infusion,NoInfusion,16,8
+Saline,15,CS,No Infusion,NoInfusion,17,10.3125
+Saline,15,CS,Post,PostAcquisition,Post,3.25
+Saline,15,CSPre,Acquisition,Acquisition,1,-1.625
+Saline,15,CSPre,Acquisition,Acquisition,2,3.75
+Saline,15,CSPre,Acquisition,Acquisition,3,4.6875
+Saline,15,CSPre,Acquisition,Acquisition,4,7.5
+Saline,15,CSPre,Acquisition,Acquisition,5,6.4375
+Saline,15,CSPre,Acquisition,Acquisition,6,6.4375
+Saline,15,CSPre,Acquisition,Acquisition,7,5.8125
+Saline,15,CSPre,Acquisition,Acquisition,8,8.3125
+Saline,15,CSPre,Acquisition,Acquisition,9,6.75
+Saline,15,CSPre,Infusion,Infusion,12,5.1875
+Saline,15,CSPre,Infusion,Infusion,13,6.75
+Saline,15,CSPre,Infusion,Infusion,14,6
+Saline,15,CSPre,Infusion,Infusion,15,9.25
+Saline,15,CSPre,No Infusion,NoInfusion,16,7.25
+Saline,15,CSPre,No Infusion,NoInfusion,17,9.5
+Saline,15,CSPre,Post,PostAcquisition,Post,2.5625
+Saline,15,PreCS,Acquisition,Acquisition,1,3.3125
+Saline,15,PreCS,Acquisition,Acquisition,2,1.375
+Saline,15,PreCS,Acquisition,Acquisition,3,1.125
+Saline,15,PreCS,Acquisition,Acquisition,4,0.5
+Saline,15,PreCS,Acquisition,Acquisition,5,0.75
+Saline,15,PreCS,Acquisition,Acquisition,6,0.1875
+Saline,15,PreCS,Acquisition,Acquisition,7,0.5
+Saline,15,PreCS,Acquisition,Acquisition,8,0.625
+Saline,15,PreCS,Acquisition,Acquisition,9,0.9375
+Saline,15,PreCS,Infusion,Infusion,12,0.0625
+Saline,15,PreCS,Infusion,Infusion,13,0.0625
+Saline,15,PreCS,Infusion,Infusion,14,0.1875
+Saline,15,PreCS,Infusion,Infusion,15,0.0625
+Saline,15,PreCS,No Infusion,NoInfusion,16,0.75
+Saline,15,PreCS,No Infusion,NoInfusion,17,0.8125
+Saline,15,PreCS,Post,PostAcquisition,Post,0.6875
+Saline,18,CS,Acquisition,Acquisition,1,3.1875
+Saline,18,CS,Acquisition,Acquisition,2,4.125
+Saline,18,CS,Acquisition,Acquisition,3,4.125
+Saline,18,CS,Acquisition,Acquisition,4,6
+Saline,18,CS,Acquisition,Acquisition,5,6.25
+Saline,18,CS,Acquisition,Acquisition,6,6.875
+Saline,18,CS,Acquisition,Acquisition,7,7.125
+Saline,18,CS,Acquisition,Acquisition,8,7.0625
+Saline,18,CS,Acquisition,Acquisition,9,6.8125
+Saline,18,CS,Infusion,Infusion,12,5.4375
+Saline,18,CS,Infusion,Infusion,13,9.4375
+Saline,18,CS,Infusion,Infusion,14,15.4375
+Saline,18,CS,Infusion,Infusion,15,11.875
+Saline,18,CS,No Infusion,NoInfusion,16,11.25
+Saline,18,CS,No Infusion,NoInfusion,17,16.0625
+Saline,18,CS,Post,PostAcquisition,Post,7.40625
+Saline,18,CSPre,Acquisition,Acquisition,1,0.8125
+Saline,18,CSPre,Acquisition,Acquisition,2,1.4375
+Saline,18,CSPre,Acquisition,Acquisition,3,2.625
+Saline,18,CSPre,Acquisition,Acquisition,4,4.0625
+Saline,18,CSPre,Acquisition,Acquisition,5,5.4375
+Saline,18,CSPre,Acquisition,Acquisition,6,5.1875
+Saline,18,CSPre,Acquisition,Acquisition,7,6.125
+Saline,18,CSPre,Acquisition,Acquisition,8,5.3125
+Saline,18,CSPre,Acquisition,Acquisition,9,5.75
+Saline,18,CSPre,Infusion,Infusion,12,4.8125
+Saline,18,CSPre,Infusion,Infusion,13,8.625
+Saline,18,CSPre,Infusion,Infusion,14,14.25
+Saline,18,CSPre,Infusion,Infusion,15,10.3125
+Saline,18,CSPre,No Infusion,NoInfusion,16,8.875
+Saline,18,CSPre,No Infusion,NoInfusion,17,12.3125
+Saline,18,CSPre,Post,PostAcquisition,Post,6.5625
+Saline,18,PreCS,Acquisition,Acquisition,1,2.375
+Saline,18,PreCS,Acquisition,Acquisition,2,2.6875
+Saline,18,PreCS,Acquisition,Acquisition,3,1.5
+Saline,18,PreCS,Acquisition,Acquisition,4,1.9375
+Saline,18,PreCS,Acquisition,Acquisition,5,0.8125
+Saline,18,PreCS,Acquisition,Acquisition,6,1.6875
+Saline,18,PreCS,Acquisition,Acquisition,7,1
+Saline,18,PreCS,Acquisition,Acquisition,8,1.75
+Saline,18,PreCS,Acquisition,Acquisition,9,1.0625
+Saline,18,PreCS,Infusion,Infusion,12,0.625
+Saline,18,PreCS,Infusion,Infusion,13,0.8125
+Saline,18,PreCS,Infusion,Infusion,14,1.1875
+Saline,18,PreCS,Infusion,Infusion,15,1.5625
+Saline,18,PreCS,No Infusion,NoInfusion,16,2.375
+Saline,18,PreCS,No Infusion,NoInfusion,17,3.75
+Saline,18,PreCS,Post,PostAcquisition,Post,0.84375
+Saline,20,CS,Acquisition,Acquisition,1,3.1875
+Saline,20,CS,Acquisition,Acquisition,2,5.5625
+Saline,20,CS,Acquisition,Acquisition,3,6.75
+Saline,20,CS,Acquisition,Acquisition,4,7.3125
+Saline,20,CS,Acquisition,Acquisition,5,8.75
+Saline,20,CS,Acquisition,Acquisition,6,8.1875
+Saline,20,CS,Acquisition,Acquisition,7,7.3125
+Saline,20,CS,Acquisition,Acquisition,8,8.4375
+Saline,20,CS,Acquisition,Acquisition,9,8.75
+Saline,20,CS,Infusion,Infusion,12,7.0625
+Saline,20,CS,Infusion,Infusion,13,7.0625
+Saline,20,CS,Infusion,Infusion,14,8.8125
+Saline,20,CS,Infusion,Infusion,15,8.25
+Saline,20,CS,No Infusion,NoInfusion,16,6.5
+Saline,20,CS,No Infusion,NoInfusion,17,7.625
+Saline,20,CS,Post,PostAcquisition,Post,8
+Saline,20,CSPre,Acquisition,Acquisition,1,1
+Saline,20,CSPre,Acquisition,Acquisition,2,2.4375
+Saline,20,CSPre,Acquisition,Acquisition,3,5.3125
+Saline,20,CSPre,Acquisition,Acquisition,4,6.6875
+Saline,20,CSPre,Acquisition,Acquisition,5,7.3125
+Saline,20,CSPre,Acquisition,Acquisition,6,5.8125
+Saline,20,CSPre,Acquisition,Acquisition,7,6.25
+Saline,20,CSPre,Acquisition,Acquisition,8,6.6875
+Saline,20,CSPre,Acquisition,Acquisition,9,6.5625
+Saline,20,CSPre,Infusion,Infusion,12,6.875
+Saline,20,CSPre,Infusion,Infusion,13,7.0625
+Saline,20,CSPre,Infusion,Infusion,14,8.3125
+Saline,20,CSPre,Infusion,Infusion,15,7.25
+Saline,20,CSPre,No Infusion,NoInfusion,16,5.875
+Saline,20,CSPre,No Infusion,NoInfusion,17,6.4375
+Saline,20,CSPre,Post,PostAcquisition,Post,7.25
+Saline,20,PreCS,Acquisition,Acquisition,1,2.1875
+Saline,20,PreCS,Acquisition,Acquisition,2,3.125
+Saline,20,PreCS,Acquisition,Acquisition,3,1.4375
+Saline,20,PreCS,Acquisition,Acquisition,4,0.625
+Saline,20,PreCS,Acquisition,Acquisition,5,1.4375
+Saline,20,PreCS,Acquisition,Acquisition,6,2.375
+Saline,20,PreCS,Acquisition,Acquisition,7,1.0625
+Saline,20,PreCS,Acquisition,Acquisition,8,1.75
+Saline,20,PreCS,Acquisition,Acquisition,9,2.1875
+Saline,20,PreCS,Infusion,Infusion,12,0.1875
+Saline,20,PreCS,Infusion,Infusion,13,0
+Saline,20,PreCS,Infusion,Infusion,14,0.5
+Saline,20,PreCS,Infusion,Infusion,15,1
+Saline,20,PreCS,No Infusion,NoInfusion,16,0.625
+Saline,20,PreCS,No Infusion,NoInfusion,17,1.1875
+Saline,20,PreCS,Post,PostAcquisition,Post,0.75
+Saline,22,CS,Acquisition,Acquisition,1,3.25
+Saline,22,CS,Acquisition,Acquisition,2,6.5
+Saline,22,CS,Acquisition,Acquisition,3,6.0625
+Saline,22,CS,Acquisition,Acquisition,4,7.0625
+Saline,22,CS,Acquisition,Acquisition,5,4.6875
+Saline,22,CS,Acquisition,Acquisition,6,4.3125
+Saline,22,CS,Acquisition,Acquisition,7,5.0625
+Saline,22,CS,Acquisition,Acquisition,8,6.25
+Saline,22,CS,Acquisition,Acquisition,9,4.125
+Saline,22,CS,Infusion,Infusion,12,7.875
+Saline,22,CS,Infusion,Infusion,13,8
+Saline,22,CS,Infusion,Infusion,14,8.125
+Saline,22,CS,Infusion,Infusion,15,9.125
+Saline,22,CS,No Infusion,NoInfusion,16,15.625
+Saline,22,CS,No Infusion,NoInfusion,17,19.5625
+Saline,22,CS,Post,PostAcquisition,Post,6.15625
+Saline,22,CSPre,Acquisition,Acquisition,1,-0.5
+Saline,22,CSPre,Acquisition,Acquisition,2,3.1875
+Saline,22,CSPre,Acquisition,Acquisition,3,4.5
+Saline,22,CSPre,Acquisition,Acquisition,4,4
+Saline,22,CSPre,Acquisition,Acquisition,5,3.25
+Saline,22,CSPre,Acquisition,Acquisition,6,3.3125
+Saline,22,CSPre,Acquisition,Acquisition,7,2.875
+Saline,22,CSPre,Acquisition,Acquisition,8,4.3125
+Saline,22,CSPre,Acquisition,Acquisition,9,3.0625
+Saline,22,CSPre,Infusion,Infusion,12,7.5
+Saline,22,CSPre,Infusion,Infusion,13,7.0625
+Saline,22,CSPre,Infusion,Infusion,14,7.375
+Saline,22,CSPre,Infusion,Infusion,15,8.375
+Saline,22,CSPre,No Infusion,NoInfusion,16,13.5625
+Saline,22,CSPre,No Infusion,NoInfusion,17,16.9375
+Saline,22,CSPre,Post,PostAcquisition,Post,5.8125
+Saline,22,PreCS,Acquisition,Acquisition,1,3.75
+Saline,22,PreCS,Acquisition,Acquisition,2,3.3125
+Saline,22,PreCS,Acquisition,Acquisition,3,1.5625
+Saline,22,PreCS,Acquisition,Acquisition,4,3.0625
+Saline,22,PreCS,Acquisition,Acquisition,5,1.4375
+Saline,22,PreCS,Acquisition,Acquisition,6,1
+Saline,22,PreCS,Acquisition,Acquisition,7,2.1875
+Saline,22,PreCS,Acquisition,Acquisition,8,1.9375
+Saline,22,PreCS,Acquisition,Acquisition,9,1.0625
+Saline,22,PreCS,Infusion,Infusion,12,0.375
+Saline,22,PreCS,Infusion,Infusion,13,0.9375
+Saline,22,PreCS,Infusion,Infusion,14,0.75
+Saline,22,PreCS,Infusion,Infusion,15,0.75
+Saline,22,PreCS,No Infusion,NoInfusion,16,2.0625
+Saline,22,PreCS,No Infusion,NoInfusion,17,2.625
+Saline,22,PreCS,Post,PostAcquisition,Post,0.34375
+Saline,26,CS,Acquisition,Acquisition,1,1.8125
+Saline,26,CS,Acquisition,Acquisition,2,4.3125
+Saline,26,CS,Acquisition,Acquisition,3,7.0625
+Saline,26,CS,Acquisition,Acquisition,4,5.9375
+Saline,26,CS,Acquisition,Acquisition,5,6.25
+Saline,26,CS,Acquisition,Acquisition,6,5.5
+Saline,26,CS,Acquisition,Acquisition,7,6.875
+Saline,26,CS,Acquisition,Acquisition,8,9
+Saline,26,CS,Acquisition,Acquisition,9,8.5625
+Saline,26,CS,Infusion,Infusion,12,2.9375
+Saline,26,CS,Infusion,Infusion,13,7.1875
+Saline,26,CS,Infusion,Infusion,14,10.9375
+Saline,26,CS,Infusion,Infusion,15,8.375
+Saline,26,CS,No Infusion,NoInfusion,16,11.5625
+Saline,26,CS,No Infusion,NoInfusion,17,10.6875
+Saline,26,CS,Post,PostAcquisition,Post,4.65625
+Saline,26,CSPre,Acquisition,Acquisition,1,0.625
+Saline,26,CSPre,Acquisition,Acquisition,2,1.625
+Saline,26,CSPre,Acquisition,Acquisition,3,2.75
+Saline,26,CSPre,Acquisition,Acquisition,4,2.6875
+Saline,26,CSPre,Acquisition,Acquisition,5,3.375
+Saline,26,CSPre,Acquisition,Acquisition,6,4.1875
+Saline,26,CSPre,Acquisition,Acquisition,7,3.8125
+Saline,26,CSPre,Acquisition,Acquisition,8,7.5625
+Saline,26,CSPre,Acquisition,Acquisition,9,6.75
+Saline,26,CSPre,Infusion,Infusion,12,2.5625
+Saline,26,CSPre,Infusion,Infusion,13,7.0625
+Saline,26,CSPre,Infusion,Infusion,14,10.6875
+Saline,26,CSPre,Infusion,Infusion,15,7.375
+Saline,26,CSPre,No Infusion,NoInfusion,16,10.5625
+Saline,26,CSPre,No Infusion,NoInfusion,17,10.5
+Saline,26,CSPre,Post,PostAcquisition,Post,3.78125
+Saline,26,PreCS,Acquisition,Acquisition,1,1.1875
+Saline,26,PreCS,Acquisition,Acquisition,2,2.6875
+Saline,26,PreCS,Acquisition,Acquisition,3,4.3125
+Saline,26,PreCS,Acquisition,Acquisition,4,3.25
+Saline,26,PreCS,Acquisition,Acquisition,5,2.875
+Saline,26,PreCS,Acquisition,Acquisition,6,1.3125
+Saline,26,PreCS,Acquisition,Acquisition,7,3.0625
+Saline,26,PreCS,Acquisition,Acquisition,8,1.4375
+Saline,26,PreCS,Acquisition,Acquisition,9,1.8125
+Saline,26,PreCS,Infusion,Infusion,12,0.375
+Saline,26,PreCS,Infusion,Infusion,13,0.125
+Saline,26,PreCS,Infusion,Infusion,14,0.25
+Saline,26,PreCS,Infusion,Infusion,15,1
+Saline,26,PreCS,No Infusion,NoInfusion,16,1
+Saline,26,PreCS,No Infusion,NoInfusion,17,0.1875
+Saline,26,PreCS,Post,PostAcquisition,Post,0.875
+Saline,28,CS,Acquisition,Acquisition,1,3.125
+Saline,28,CS,Acquisition,Acquisition,2,6.5
+Saline,28,CS,Acquisition,Acquisition,3,7.5
+Saline,28,CS,Acquisition,Acquisition,4,6.9375
+Saline,28,CS,Acquisition,Acquisition,5,6.5625
+Saline,28,CS,Acquisition,Acquisition,6,5
+Saline,28,CS,Acquisition,Acquisition,7,3.3125
+Saline,28,CS,Acquisition,Acquisition,8,3.75
+Saline,28,CS,Acquisition,Acquisition,9,3.3125
+Saline,28,CS,Infusion,Infusion,12,7.25
+Saline,28,CS,Infusion,Infusion,13,6.25
+Saline,28,CS,Infusion,Infusion,14,8.0625
+Saline,28,CS,Infusion,Infusion,15,5.5
+Saline,28,CS,No Infusion,NoInfusion,16,6.5
+Saline,28,CS,No Infusion,NoInfusion,17,5.375
+Saline,28,CS,Post,PostAcquisition,Post,6.9375
+Saline,28,CSPre,Acquisition,Acquisition,1,0.875
+Saline,28,CSPre,Acquisition,Acquisition,2,4.6875
+Saline,28,CSPre,Acquisition,Acquisition,3,6.8125
+Saline,28,CSPre,Acquisition,Acquisition,4,5.25
+Saline,28,CSPre,Acquisition,Acquisition,5,4.6875
+Saline,28,CSPre,Acquisition,Acquisition,6,4.4375
+Saline,28,CSPre,Acquisition,Acquisition,7,2.0625
+Saline,28,CSPre,Acquisition,Acquisition,8,3.0625
+Saline,28,CSPre,Acquisition,Acquisition,9,2.375
+Saline,28,CSPre,Infusion,Infusion,12,7.125
+Saline,28,CSPre,Infusion,Infusion,13,5.625
+Saline,28,CSPre,Infusion,Infusion,14,7.9375
+Saline,28,CSPre,Infusion,Infusion,15,4.875
+Saline,28,CSPre,No Infusion,NoInfusion,16,6.25
+Saline,28,CSPre,No Infusion,NoInfusion,17,4.9375
+Saline,28,CSPre,Post,PostAcquisition,Post,6.1875
+Saline,28,PreCS,Acquisition,Acquisition,1,2.25
+Saline,28,PreCS,Acquisition,Acquisition,2,1.8125
+Saline,28,PreCS,Acquisition,Acquisition,3,0.6875
+Saline,28,PreCS,Acquisition,Acquisition,4,1.6875
+Saline,28,PreCS,Acquisition,Acquisition,5,1.875
+Saline,28,PreCS,Acquisition,Acquisition,6,0.5625
+Saline,28,PreCS,Acquisition,Acquisition,7,1.25
+Saline,28,PreCS,Acquisition,Acquisition,8,0.6875
+Saline,28,PreCS,Acquisition,Acquisition,9,0.9375
+Saline,28,PreCS,Infusion,Infusion,12,0.125
+Saline,28,PreCS,Infusion,Infusion,13,0.625
+Saline,28,PreCS,Infusion,Infusion,14,0.125
+Saline,28,PreCS,Infusion,Infusion,15,0.625
+Saline,28,PreCS,No Infusion,NoInfusion,16,0.25
+Saline,28,PreCS,No Infusion,NoInfusion,17,0.4375
+Saline,28,PreCS,Post,PostAcquisition,Post,0.75
+Saline,32,CS,Acquisition,Acquisition,1,3.125
+Saline,32,CS,Acquisition,Acquisition,2,4
+Saline,32,CS,Acquisition,Acquisition,3,4.75
+Saline,32,CS,Acquisition,Acquisition,4,4.5625
+Saline,32,CS,Acquisition,Acquisition,5,5
+Saline,32,CS,Acquisition,Acquisition,6,5.25
+Saline,32,CS,Acquisition,Acquisition,7,5.4375
+Saline,32,CS,Acquisition,Acquisition,8,4.75
+Saline,32,CS,Acquisition,Acquisition,9,5.625
+Saline,32,CS,Infusion,Infusion,12,2.875
+Saline,32,CS,Infusion,Infusion,13,2.3125
+Saline,32,CS,Infusion,Infusion,14,5
+Saline,32,CS,Infusion,Infusion,15,4.25
+Saline,32,CS,No Infusion,NoInfusion,16,2.8125
+Saline,32,CS,No Infusion,NoInfusion,17,6.3125
+Saline,32,CS,Post,PostAcquisition,Post,6.71875
+Saline,32,CSPre,Acquisition,Acquisition,1,-0.75
+Saline,32,CSPre,Acquisition,Acquisition,2,2.5625
+Saline,32,CSPre,Acquisition,Acquisition,3,4.25
+Saline,32,CSPre,Acquisition,Acquisition,4,3.875
+Saline,32,CSPre,Acquisition,Acquisition,5,3.875
+Saline,32,CSPre,Acquisition,Acquisition,6,3.8125
+Saline,32,CSPre,Acquisition,Acquisition,7,4.875
+Saline,32,CSPre,Acquisition,Acquisition,8,4.375
+Saline,32,CSPre,Acquisition,Acquisition,9,3.75
+Saline,32,CSPre,Infusion,Infusion,12,1.625
+Saline,32,CSPre,Infusion,Infusion,13,2.0625
+Saline,32,CSPre,Infusion,Infusion,14,4.5625
+Saline,32,CSPre,Infusion,Infusion,15,4.1875
+Saline,32,CSPre,No Infusion,NoInfusion,16,2.6875
+Saline,32,CSPre,No Infusion,NoInfusion,17,6.25
+Saline,32,CSPre,Post,PostAcquisition,Post,6.03125
+Saline,32,PreCS,Acquisition,Acquisition,1,3.875
+Saline,32,PreCS,Acquisition,Acquisition,2,1.4375
+Saline,32,PreCS,Acquisition,Acquisition,3,0.5
+Saline,32,PreCS,Acquisition,Acquisition,4,0.6875
+Saline,32,PreCS,Acquisition,Acquisition,5,1.125
+Saline,32,PreCS,Acquisition,Acquisition,6,1.4375
+Saline,32,PreCS,Acquisition,Acquisition,7,0.5625
+Saline,32,PreCS,Acquisition,Acquisition,8,0.375
+Saline,32,PreCS,Acquisition,Acquisition,9,1.875
+Saline,32,PreCS,Infusion,Infusion,12,1.25
+Saline,32,PreCS,Infusion,Infusion,13,0.25
+Saline,32,PreCS,Infusion,Infusion,14,0.4375
+Saline,32,PreCS,Infusion,Infusion,15,0.0625
+Saline,32,PreCS,No Infusion,NoInfusion,16,0.125
+Saline,32,PreCS,No Infusion,NoInfusion,17,0.0625
+Saline,32,PreCS,Post,PostAcquisition,Post,0.6875

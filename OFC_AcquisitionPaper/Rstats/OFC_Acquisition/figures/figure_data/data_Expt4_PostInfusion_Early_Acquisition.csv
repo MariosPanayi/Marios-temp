@@ -1,0 +1,451 @@
+Group,Exclusion,Subj,Period,Day,MagEntries,Stage
+Muscimol,1,9,Pre,1,0.3125,Acquisition
+Muscimol,1,9,Pre,2,0.3125,Acquisition
+Muscimol,1,9,Pre,3,0.25,Acquisition
+Muscimol,1,9,Pre,4,0.3125,Acquisition
+Muscimol,1,9,Pre,5,0.5,Infusion
+Muscimol,1,9,Pre,6,0.125,Infusion
+Muscimol,1,9,Pre,7,0.6875,Infusion
+Muscimol,1,9,Pre,8,0.375,Infusion
+Muscimol,1,9,Pre,9,0.1875,Infusion
+Muscimol,1,9,Pre,10,0.625,No Infusion
+Muscimol,1,9,CS,1,1.25,Acquisition
+Muscimol,1,9,CS,2,0.25,Acquisition
+Muscimol,1,9,CS,3,0.6875,Acquisition
+Muscimol,1,9,CS,4,2.0625,Acquisition
+Muscimol,1,9,CS,5,2,Infusion
+Muscimol,1,9,CS,6,2.875,Infusion
+Muscimol,1,9,CS,7,2.5625,Infusion
+Muscimol,1,9,CS,8,2.3125,Infusion
+Muscimol,1,9,CS,9,2.9375,Infusion
+Muscimol,1,9,CS,10,3.625,No Infusion
+Muscimol,1,9,CSPre,1,0.9375,Acquisition
+Muscimol,1,9,CSPre,2,-0.0625,Acquisition
+Muscimol,1,9,CSPre,3,0.4375,Acquisition
+Muscimol,1,9,CSPre,4,1.75,Acquisition
+Muscimol,1,9,CSPre,5,1.5,Infusion
+Muscimol,1,9,CSPre,6,2.75,Infusion
+Muscimol,1,9,CSPre,7,1.875,Infusion
+Muscimol,1,9,CSPre,8,1.9375,Infusion
+Muscimol,1,9,CSPre,9,2.75,Infusion
+Muscimol,1,9,CSPre,10,3,No Infusion
+Muscimol,1,10,Pre,1,1.125,Acquisition
+Muscimol,1,10,Pre,2,0.6875,Acquisition
+Muscimol,1,10,Pre,3,0.3125,Acquisition
+Muscimol,1,10,Pre,4,0.8125,Acquisition
+Muscimol,1,10,Pre,5,0.6875,Infusion
+Muscimol,1,10,Pre,6,0.5,Infusion
+Muscimol,1,10,Pre,7,0.3125,Infusion
+Muscimol,1,10,Pre,8,0.25,Infusion
+Muscimol,1,10,Pre,9,0.75,Infusion
+Muscimol,1,10,Pre,10,0.625,No Infusion
+Muscimol,1,10,CS,1,0.5,Acquisition
+Muscimol,1,10,CS,2,0.4375,Acquisition
+Muscimol,1,10,CS,3,0.6875,Acquisition
+Muscimol,1,10,CS,4,0.75,Acquisition
+Muscimol,1,10,CS,5,1.5,Infusion
+Muscimol,1,10,CS,6,1,Infusion
+Muscimol,1,10,CS,7,0.8125,Infusion
+Muscimol,1,10,CS,8,0.875,Infusion
+Muscimol,1,10,CS,9,0.6875,Infusion
+Muscimol,1,10,CS,10,0.625,No Infusion
+Muscimol,1,10,CSPre,1,-0.625,Acquisition
+Muscimol,1,10,CSPre,2,-0.25,Acquisition
+Muscimol,1,10,CSPre,3,0.375,Acquisition
+Muscimol,1,10,CSPre,4,-0.0625,Acquisition
+Muscimol,1,10,CSPre,5,0.8125,Infusion
+Muscimol,1,10,CSPre,6,0.5,Infusion
+Muscimol,1,10,CSPre,7,0.5,Infusion
+Muscimol,1,10,CSPre,8,0.625,Infusion
+Muscimol,1,10,CSPre,9,-0.0625,Infusion
+Muscimol,1,10,CSPre,10,0,No Infusion
+Muscimol,1,11,Pre,1,1.0625,Acquisition
+Muscimol,1,11,Pre,2,0.9375,Acquisition
+Muscimol,1,11,Pre,3,0.125,Acquisition
+Muscimol,1,11,Pre,4,0.125,Acquisition
+Muscimol,1,11,Pre,5,0.1875,Infusion
+Muscimol,1,11,Pre,6,0.4375,Infusion
+Muscimol,1,11,Pre,7,0.5625,Infusion
+Muscimol,1,11,Pre,8,0.375,Infusion
+Muscimol,1,11,Pre,9,0.8125,Infusion
+Muscimol,1,11,Pre,10,1.0625,No Infusion
+Muscimol,1,11,CS,1,0.9375,Acquisition
+Muscimol,1,11,CS,2,1,Acquisition
+Muscimol,1,11,CS,3,0.125,Acquisition
+Muscimol,1,11,CS,4,0.8125,Acquisition
+Muscimol,1,11,CS,5,1.6875,Infusion
+Muscimol,1,11,CS,6,0.6875,Infusion
+Muscimol,1,11,CS,7,1.625,Infusion
+Muscimol,1,11,CS,8,1.1875,Infusion
+Muscimol,1,11,CS,9,2.0625,Infusion
+Muscimol,1,11,CS,10,2.25,No Infusion
+Muscimol,1,11,CSPre,1,-0.125,Acquisition
+Muscimol,1,11,CSPre,2,0.0625,Acquisition
+Muscimol,1,11,CSPre,3,0,Acquisition
+Muscimol,1,11,CSPre,4,0.6875,Acquisition
+Muscimol,1,11,CSPre,5,1.5,Infusion
+Muscimol,1,11,CSPre,6,0.25,Infusion
+Muscimol,1,11,CSPre,7,1.0625,Infusion
+Muscimol,1,11,CSPre,8,0.8125,Infusion
+Muscimol,1,11,CSPre,9,1.25,Infusion
+Muscimol,1,11,CSPre,10,1.1875,No Infusion
+Muscimol,1,12,Pre,1,0.875,Acquisition
+Muscimol,1,12,Pre,2,0.0625,Acquisition
+Muscimol,1,12,Pre,3,0,Acquisition
+Muscimol,1,12,Pre,4,0,Acquisition
+Muscimol,1,12,Pre,5,0,Infusion
+Muscimol,1,12,Pre,6,0.0625,Infusion
+Muscimol,1,12,Pre,7,0.8125,Infusion
+Muscimol,1,12,Pre,8,0.375,Infusion
+Muscimol,1,12,Pre,9,0.125,Infusion
+Muscimol,1,12,Pre,10,0.3125,No Infusion
+Muscimol,1,12,CS,1,0.0625,Acquisition
+Muscimol,1,12,CS,2,0.125,Acquisition
+Muscimol,1,12,CS,3,0.375,Acquisition
+Muscimol,1,12,CS,4,0.5,Acquisition
+Muscimol,1,12,CS,5,0.4375,Infusion
+Muscimol,1,12,CS,6,0.4375,Infusion
+Muscimol,1,12,CS,7,1.125,Infusion
+Muscimol,1,12,CS,8,0.9375,Infusion
+Muscimol,1,12,CS,9,0.625,Infusion
+Muscimol,1,12,CS,10,0.25,No Infusion
+Muscimol,1,12,CSPre,1,-0.8125,Acquisition
+Muscimol,1,12,CSPre,2,0.0625,Acquisition
+Muscimol,1,12,CSPre,3,0.375,Acquisition
+Muscimol,1,12,CSPre,4,0.5,Acquisition
+Muscimol,1,12,CSPre,5,0.4375,Infusion
+Muscimol,1,12,CSPre,6,0.375,Infusion
+Muscimol,1,12,CSPre,7,0.3125,Infusion
+Muscimol,1,12,CSPre,8,0.5625,Infusion
+Muscimol,1,12,CSPre,9,0.5,Infusion
+Muscimol,1,12,CSPre,10,-0.0625,No Infusion
+Muscimol,1,13,Pre,1,0.625,Acquisition
+Muscimol,1,13,Pre,2,0.5625,Acquisition
+Muscimol,1,13,Pre,3,0.5,Acquisition
+Muscimol,1,13,Pre,4,1.375,Acquisition
+Muscimol,1,13,Pre,5,0.8125,Infusion
+Muscimol,1,13,Pre,6,0.5625,Infusion
+Muscimol,1,13,Pre,7,0.1875,Infusion
+Muscimol,1,13,Pre,8,1.125,Infusion
+Muscimol,1,13,Pre,9,0.875,Infusion
+Muscimol,1,13,Pre,10,0.125,No Infusion
+Muscimol,1,13,CS,1,0.125,Acquisition
+Muscimol,1,13,CS,2,0.6875,Acquisition
+Muscimol,1,13,CS,3,0.875,Acquisition
+Muscimol,1,13,CS,4,1.5,Acquisition
+Muscimol,1,13,CS,5,0.125,Infusion
+Muscimol,1,13,CS,6,0.5625,Infusion
+Muscimol,1,13,CS,7,0.4375,Infusion
+Muscimol,1,13,CS,8,1.625,Infusion
+Muscimol,1,13,CS,9,1.25,Infusion
+Muscimol,1,13,CS,10,0.875,No Infusion
+Muscimol,1,13,CSPre,1,-0.5,Acquisition
+Muscimol,1,13,CSPre,2,0.125,Acquisition
+Muscimol,1,13,CSPre,3,0.375,Acquisition
+Muscimol,1,13,CSPre,4,0.125,Acquisition
+Muscimol,1,13,CSPre,5,-0.6875,Infusion
+Muscimol,1,13,CSPre,6,0,Infusion
+Muscimol,1,13,CSPre,7,0.25,Infusion
+Muscimol,1,13,CSPre,8,0.5,Infusion
+Muscimol,1,13,CSPre,9,0.375,Infusion
+Muscimol,1,13,CSPre,10,0.75,No Infusion
+Muscimol,1,14,Pre,1,0.3125,Acquisition
+Muscimol,1,14,Pre,2,0.4375,Acquisition
+Muscimol,1,14,Pre,3,0.375,Acquisition
+Muscimol,1,14,Pre,4,0.1875,Acquisition
+Muscimol,1,14,Pre,5,0.875,Infusion
+Muscimol,1,14,Pre,6,0.625,Infusion
+Muscimol,1,14,Pre,7,1.75,Infusion
+Muscimol,1,14,Pre,8,1.5,Infusion
+Muscimol,1,14,Pre,9,2.0625,Infusion
+Muscimol,1,14,Pre,10,0.625,No Infusion
+Muscimol,1,14,CS,1,0.6875,Acquisition
+Muscimol,1,14,CS,2,0.5,Acquisition
+Muscimol,1,14,CS,3,0.5625,Acquisition
+Muscimol,1,14,CS,4,1,Acquisition
+Muscimol,1,14,CS,5,1.1875,Infusion
+Muscimol,1,14,CS,6,0.8125,Infusion
+Muscimol,1,14,CS,7,1.25,Infusion
+Muscimol,1,14,CS,8,2.4375,Infusion
+Muscimol,1,14,CS,9,2.8125,Infusion
+Muscimol,1,14,CS,10,1.1875,No Infusion
+Muscimol,1,14,CSPre,1,0.375,Acquisition
+Muscimol,1,14,CSPre,2,0.0625,Acquisition
+Muscimol,1,14,CSPre,3,0.1875,Acquisition
+Muscimol,1,14,CSPre,4,0.8125,Acquisition
+Muscimol,1,14,CSPre,5,0.3125,Infusion
+Muscimol,1,14,CSPre,6,0.1875,Infusion
+Muscimol,1,14,CSPre,7,-0.5,Infusion
+Muscimol,1,14,CSPre,8,0.9375,Infusion
+Muscimol,1,14,CSPre,9,0.75,Infusion
+Muscimol,1,14,CSPre,10,0.5625,No Infusion
+Muscimol,1,16,Pre,1,0.8125,Acquisition
+Muscimol,1,16,Pre,2,0.5,Acquisition
+Muscimol,1,16,Pre,3,0.4375,Acquisition
+Muscimol,1,16,Pre,4,0.9375,Acquisition
+Muscimol,1,16,Pre,5,0.25,Infusion
+Muscimol,1,16,Pre,6,0.25,Infusion
+Muscimol,1,16,Pre,7,0.625,Infusion
+Muscimol,1,16,Pre,8,0.3125,Infusion
+Muscimol,1,16,Pre,9,0.375,Infusion
+Muscimol,1,16,Pre,10,0.0625,No Infusion
+Muscimol,1,16,CS,1,0.25,Acquisition
+Muscimol,1,16,CS,2,0.5,Acquisition
+Muscimol,1,16,CS,3,0.125,Acquisition
+Muscimol,1,16,CS,4,0.375,Acquisition
+Muscimol,1,16,CS,5,0.9375,Infusion
+Muscimol,1,16,CS,6,1.25,Infusion
+Muscimol,1,16,CS,7,1.75,Infusion
+Muscimol,1,16,CS,8,2.1875,Infusion
+Muscimol,1,16,CS,9,1.625,Infusion
+Muscimol,1,16,CS,10,0.4375,No Infusion
+Muscimol,1,16,CSPre,1,-0.5625,Acquisition
+Muscimol,1,16,CSPre,2,0,Acquisition
+Muscimol,1,16,CSPre,3,-0.3125,Acquisition
+Muscimol,1,16,CSPre,4,-0.5625,Acquisition
+Muscimol,1,16,CSPre,5,0.6875,Infusion
+Muscimol,1,16,CSPre,6,1,Infusion
+Muscimol,1,16,CSPre,7,1.125,Infusion
+Muscimol,1,16,CSPre,8,1.875,Infusion
+Muscimol,1,16,CSPre,9,1.25,Infusion
+Muscimol,1,16,CSPre,10,0.375,No Infusion
+Saline,1,1,Pre,1,1.75,Acquisition
+Saline,1,1,Pre,2,0.5,Acquisition
+Saline,1,1,Pre,3,0.8125,Acquisition
+Saline,1,1,Pre,4,0.25,Acquisition
+Saline,1,1,Pre,5,0.0625,Infusion
+Saline,1,1,Pre,6,0.375,Infusion
+Saline,1,1,Pre,7,0.25,Infusion
+Saline,1,1,Pre,8,0.1875,Infusion
+Saline,1,1,Pre,9,0.4375,Infusion
+Saline,1,1,Pre,10,0.375,No Infusion
+Saline,1,1,CS,1,0.8125,Acquisition
+Saline,1,1,CS,2,0.4375,Acquisition
+Saline,1,1,CS,3,1.3125,Acquisition
+Saline,1,1,CS,4,0.5625,Acquisition
+Saline,1,1,CS,5,2.625,Infusion
+Saline,1,1,CS,6,3.5,Infusion
+Saline,1,1,CS,7,2.25,Infusion
+Saline,1,1,CS,8,3.1875,Infusion
+Saline,1,1,CS,9,5.75,Infusion
+Saline,1,1,CS,10,6.125,No Infusion
+Saline,1,1,CSPre,1,-0.9375,Acquisition
+Saline,1,1,CSPre,2,-0.0625,Acquisition
+Saline,1,1,CSPre,3,0.5,Acquisition
+Saline,1,1,CSPre,4,0.3125,Acquisition
+Saline,1,1,CSPre,5,2.5625,Infusion
+Saline,1,1,CSPre,6,3.125,Infusion
+Saline,1,1,CSPre,7,2,Infusion
+Saline,1,1,CSPre,8,3,Infusion
+Saline,1,1,CSPre,9,5.3125,Infusion
+Saline,1,1,CSPre,10,5.75,No Infusion
+Saline,1,2,Pre,1,0,Acquisition
+Saline,1,2,Pre,2,0.625,Acquisition
+Saline,1,2,Pre,3,0.25,Acquisition
+Saline,1,2,Pre,4,0,Acquisition
+Saline,1,2,Pre,5,0.4375,Infusion
+Saline,1,2,Pre,6,0,Infusion
+Saline,1,2,Pre,7,0,Infusion
+Saline,1,2,Pre,8,0,Infusion
+Saline,1,2,Pre,9,0.0625,Infusion
+Saline,1,2,Pre,10,0.25,No Infusion
+Saline,1,2,CS,1,0.125,Acquisition
+Saline,1,2,CS,2,0.5,Acquisition
+Saline,1,2,CS,3,0.8125,Acquisition
+Saline,1,2,CS,4,0.8125,Acquisition
+Saline,1,2,CS,5,0.625,Infusion
+Saline,1,2,CS,6,0.5625,Infusion
+Saline,1,2,CS,7,1,Infusion
+Saline,1,2,CS,8,1.4375,Infusion
+Saline,1,2,CS,9,0.8125,Infusion
+Saline,1,2,CS,10,0.6875,No Infusion
+Saline,1,2,CSPre,1,0.125,Acquisition
+Saline,1,2,CSPre,2,-0.125,Acquisition
+Saline,1,2,CSPre,3,0.5625,Acquisition
+Saline,1,2,CSPre,4,0.8125,Acquisition
+Saline,1,2,CSPre,5,0.1875,Infusion
+Saline,1,2,CSPre,6,0.5625,Infusion
+Saline,1,2,CSPre,7,1,Infusion
+Saline,1,2,CSPre,8,1.4375,Infusion
+Saline,1,2,CSPre,9,0.75,Infusion
+Saline,1,2,CSPre,10,0.4375,No Infusion
+Saline,1,3,Pre,1,0.0625,Acquisition
+Saline,1,3,Pre,2,0.0625,Acquisition
+Saline,1,3,Pre,3,0.1875,Acquisition
+Saline,1,3,Pre,4,0.1875,Acquisition
+Saline,1,3,Pre,5,0.4375,Infusion
+Saline,1,3,Pre,6,0.625,Infusion
+Saline,1,3,Pre,7,0.125,Infusion
+Saline,1,3,Pre,8,0,Infusion
+Saline,1,3,Pre,9,0.0625,Infusion
+Saline,1,3,Pre,10,0,No Infusion
+Saline,1,3,CS,1,0.0625,Acquisition
+Saline,1,3,CS,2,0.375,Acquisition
+Saline,1,3,CS,3,0.5,Acquisition
+Saline,1,3,CS,4,0.5625,Acquisition
+Saline,1,3,CS,5,1.125,Infusion
+Saline,1,3,CS,6,0.625,Infusion
+Saline,1,3,CS,7,1.6875,Infusion
+Saline,1,3,CS,8,1.6875,Infusion
+Saline,1,3,CS,9,3.0625,Infusion
+Saline,1,3,CS,10,3.1875,No Infusion
+Saline,1,3,CSPre,1,0,Acquisition
+Saline,1,3,CSPre,2,0.3125,Acquisition
+Saline,1,3,CSPre,3,0.3125,Acquisition
+Saline,1,3,CSPre,4,0.375,Acquisition
+Saline,1,3,CSPre,5,0.6875,Infusion
+Saline,1,3,CSPre,6,0,Infusion
+Saline,1,3,CSPre,7,1.5625,Infusion
+Saline,1,3,CSPre,8,1.6875,Infusion
+Saline,1,3,CSPre,9,3,Infusion
+Saline,1,3,CSPre,10,3.1875,No Infusion
+Saline,1,4,Pre,1,0.1875,Acquisition
+Saline,1,4,Pre,2,0.5625,Acquisition
+Saline,1,4,Pre,3,0.125,Acquisition
+Saline,1,4,Pre,4,0.5625,Acquisition
+Saline,1,4,Pre,5,0.3125,Infusion
+Saline,1,4,Pre,6,1.0625,Infusion
+Saline,1,4,Pre,7,0.1875,Infusion
+Saline,1,4,Pre,8,0.3125,Infusion
+Saline,1,4,Pre,9,0,Infusion
+Saline,1,4,Pre,10,0.125,No Infusion
+Saline,1,4,CS,1,0,Acquisition
+Saline,1,4,CS,2,0.1875,Acquisition
+Saline,1,4,CS,3,0.875,Acquisition
+Saline,1,4,CS,4,1.3125,Acquisition
+Saline,1,4,CS,5,2.75,Infusion
+Saline,1,4,CS,6,3.3125,Infusion
+Saline,1,4,CS,7,3.875,Infusion
+Saline,1,4,CS,8,3.3125,Infusion
+Saline,1,4,CS,9,3.6875,Infusion
+Saline,1,4,CS,10,4.9375,No Infusion
+Saline,1,4,CSPre,1,-0.1875,Acquisition
+Saline,1,4,CSPre,2,-0.375,Acquisition
+Saline,1,4,CSPre,3,0.75,Acquisition
+Saline,1,4,CSPre,4,0.75,Acquisition
+Saline,1,4,CSPre,5,2.4375,Infusion
+Saline,1,4,CSPre,6,2.25,Infusion
+Saline,1,4,CSPre,7,3.6875,Infusion
+Saline,1,4,CSPre,8,3,Infusion
+Saline,1,4,CSPre,9,3.6875,Infusion
+Saline,1,4,CSPre,10,4.8125,No Infusion
+Saline,1,5,Pre,1,0.6875,Acquisition
+Saline,1,5,Pre,2,0,Acquisition
+Saline,1,5,Pre,3,0.375,Acquisition
+Saline,1,5,Pre,4,0.5,Acquisition
+Saline,1,5,Pre,5,0.3125,Infusion
+Saline,1,5,Pre,6,0.3125,Infusion
+Saline,1,5,Pre,7,0.125,Infusion
+Saline,1,5,Pre,8,0.1875,Infusion
+Saline,1,5,Pre,9,0.5,Infusion
+Saline,1,5,Pre,10,0.0625,No Infusion
+Saline,1,5,CS,1,0.3125,Acquisition
+Saline,1,5,CS,2,0.3125,Acquisition
+Saline,1,5,CS,3,0.5,Acquisition
+Saline,1,5,CS,4,0.25,Acquisition
+Saline,1,5,CS,5,0.625,Infusion
+Saline,1,5,CS,6,1.625,Infusion
+Saline,1,5,CS,7,2.125,Infusion
+Saline,1,5,CS,8,2.1875,Infusion
+Saline,1,5,CS,9,3.1875,Infusion
+Saline,1,5,CS,10,4.25,No Infusion
+Saline,1,5,CSPre,1,-0.375,Acquisition
+Saline,1,5,CSPre,2,0.3125,Acquisition
+Saline,1,5,CSPre,3,0.125,Acquisition
+Saline,1,5,CSPre,4,-0.25,Acquisition
+Saline,1,5,CSPre,5,0.3125,Infusion
+Saline,1,5,CSPre,6,1.3125,Infusion
+Saline,1,5,CSPre,7,2,Infusion
+Saline,1,5,CSPre,8,2,Infusion
+Saline,1,5,CSPre,9,2.6875,Infusion
+Saline,1,5,CSPre,10,4.1875,No Infusion
+Saline,1,6,Pre,1,0.5,Acquisition
+Saline,1,6,Pre,2,0.4375,Acquisition
+Saline,1,6,Pre,3,0.25,Acquisition
+Saline,1,6,Pre,4,0.1875,Acquisition
+Saline,1,6,Pre,5,0.375,Infusion
+Saline,1,6,Pre,6,0.8125,Infusion
+Saline,1,6,Pre,7,0.5625,Infusion
+Saline,1,6,Pre,8,0.6875,Infusion
+Saline,1,6,Pre,9,1,Infusion
+Saline,1,6,Pre,10,0.8125,No Infusion
+Saline,1,6,CS,1,0.1875,Acquisition
+Saline,1,6,CS,2,0.75,Acquisition
+Saline,1,6,CS,3,0.6875,Acquisition
+Saline,1,6,CS,4,2.0625,Acquisition
+Saline,1,6,CS,5,1.875,Infusion
+Saline,1,6,CS,6,4.25,Infusion
+Saline,1,6,CS,7,3.4375,Infusion
+Saline,1,6,CS,8,3.9375,Infusion
+Saline,1,6,CS,9,3.8125,Infusion
+Saline,1,6,CS,10,4.25,No Infusion
+Saline,1,6,CSPre,1,-0.3125,Acquisition
+Saline,1,6,CSPre,2,0.3125,Acquisition
+Saline,1,6,CSPre,3,0.4375,Acquisition
+Saline,1,6,CSPre,4,1.875,Acquisition
+Saline,1,6,CSPre,5,1.5,Infusion
+Saline,1,6,CSPre,6,3.4375,Infusion
+Saline,1,6,CSPre,7,2.875,Infusion
+Saline,1,6,CSPre,8,3.25,Infusion
+Saline,1,6,CSPre,9,2.8125,Infusion
+Saline,1,6,CSPre,10,3.4375,No Infusion
+Saline,1,7,Pre,1,1.875,Acquisition
+Saline,1,7,Pre,2,0.25,Acquisition
+Saline,1,7,Pre,3,0,Acquisition
+Saline,1,7,Pre,4,0.125,Acquisition
+Saline,1,7,Pre,5,0.125,Infusion
+Saline,1,7,Pre,6,0.3125,Infusion
+Saline,1,7,Pre,7,0,Infusion
+Saline,1,7,Pre,8,0.4375,Infusion
+Saline,1,7,Pre,9,0,Infusion
+Saline,1,7,Pre,10,0,No Infusion
+Saline,1,7,CS,1,1.3125,Acquisition
+Saline,1,7,CS,2,0.3125,Acquisition
+Saline,1,7,CS,3,0.4375,Acquisition
+Saline,1,7,CS,4,1.25,Acquisition
+Saline,1,7,CS,5,3,Infusion
+Saline,1,7,CS,6,3.375,Infusion
+Saline,1,7,CS,7,3.1875,Infusion
+Saline,1,7,CS,8,3.6875,Infusion
+Saline,1,7,CS,9,3.5625,Infusion
+Saline,1,7,CS,10,2.4375,No Infusion
+Saline,1,7,CSPre,1,-0.5625,Acquisition
+Saline,1,7,CSPre,2,0.0625,Acquisition
+Saline,1,7,CSPre,3,0.4375,Acquisition
+Saline,1,7,CSPre,4,1.125,Acquisition
+Saline,1,7,CSPre,5,2.875,Infusion
+Saline,1,7,CSPre,6,3.0625,Infusion
+Saline,1,7,CSPre,7,3.1875,Infusion
+Saline,1,7,CSPre,8,3.25,Infusion
+Saline,1,7,CSPre,9,3.5625,Infusion
+Saline,1,7,CSPre,10,2.4375,No Infusion
+Saline,1,8,Pre,1,0.8125,Acquisition
+Saline,1,8,Pre,2,0.8125,Acquisition
+Saline,1,8,Pre,3,1.25,Acquisition
+Saline,1,8,Pre,4,0.8125,Acquisition
+Saline,1,8,Pre,5,0.1875,Infusion
+Saline,1,8,Pre,6,0.3125,Infusion
+Saline,1,8,Pre,7,1,Infusion
+Saline,1,8,Pre,8,0.5625,Infusion
+Saline,1,8,Pre,9,0.75,Infusion
+Saline,1,8,Pre,10,0.25,No Infusion
+Saline,1,8,CS,1,0.4375,Acquisition
+Saline,1,8,CS,2,0.6875,Acquisition
+Saline,1,8,CS,3,0.5625,Acquisition
+Saline,1,8,CS,4,0.5,Acquisition
+Saline,1,8,CS,5,1.9375,Infusion
+Saline,1,8,CS,6,2.125,Infusion
+Saline,1,8,CS,7,3,Infusion
+Saline,1,8,CS,8,4.5,Infusion
+Saline,1,8,CS,9,4.5,Infusion
+Saline,1,8,CS,10,4.125,No Infusion
+Saline,1,8,CSPre,1,-0.375,Acquisition
+Saline,1,8,CSPre,2,-0.125,Acquisition
+Saline,1,8,CSPre,3,-0.6875,Acquisition
+Saline,1,8,CSPre,4,-0.3125,Acquisition
+Saline,1,8,CSPre,5,1.75,Infusion
+Saline,1,8,CSPre,6,1.8125,Infusion
+Saline,1,8,CSPre,7,2,Infusion
+Saline,1,8,CSPre,8,3.9375,Infusion
+Saline,1,8,CSPre,9,3.75,Infusion
+Saline,1,8,CSPre,10,3.875,No Infusion
