@@ -64,33 +64,69 @@ shift_xaxis <- function(p, y=0){
 # Load Data ---------------------------------------------------------------
 
 folderpath <- here("rawdata","Marios","3_LeverPressingForLights","CombinedData")
-filename <- "LPL_ProcessedData_pertrial_1sbins.csv"
+filename <- "LPL_ProcessedData_WithinSession7_5minBins.csv"
 
 rawdata <- read_csv(here(folderpath,filename))
 
-data_PerSession <- rawdata %>% 
-  group_by(Day, subject, CS_name, Period) %>% 
-  summarise(LLr = mean(A1_freq)*5,
-            LLr_Duration = mean(A1_dur)*5,
-            RLr = mean(A2_freq)*5,
-            RLr_Duration = mean(A2_dur)*5) %>%
+## Rceode lever identity based on counterbalancing
+data_recode <- rawdata %>% 
+  group_by(Day, subject) %>% 
+  mutate(LP_Freq_Flash  = ifelse(FLash_leverCbx == "Left", A1_freq, ifelse(FLash_leverCbx == "Right", A2_freq, NA)),
+         LP_Dur_Flash  = ifelse(FLash_leverCbx == "Left", A1_dur, ifelse(FLash_leverCbx == "Right", A2_dur, NA)),
+         LP_Freq_Steady  = ifelse(Steady_levercbx == "Left", A1_freq, ifelse(Steady_levercbx == "Right", A2_freq, NA)),
+         LP_Dur_Steady  = ifelse(Steady_levercbx == "Left", A1_dur, ifelse(Steady_levercbx == "Right", A2_dur, NA)) 
+         ) %>% 
   ungroup()
 
+## relabel data
+data_bin <- data_recode %>%
+  group_by(Day, counterbalancing, timebins, subject) %>%
+  summarise(LPFreq_Flash = sum(LP_Freq_Flash),
+            LPDur_Flash = sum(LP_Dur_Flash),
+            LPFreq_Steady = sum(LP_Freq_Steady),
+            LPDur_Steady = sum(LP_Dur_Steady),
+            Reinforcer_Flash = sum(Flash_freq),
+            Reinforcer_Steady = sum(Steady_freq),
+            
+  ) %>%
+  ungroup()
+
+#Long format  
+data_bin_long <- data_bin %>% 
+  pivot_longer(c(LPFreq_Flash,LPDur_Flash, LPFreq_Steady,LPDur_Steady, Reinforcer_Flash, Reinforcer_Steady), names_to = c("Measure","Stimulus"), names_sep = "_", values_to = "LP") %>% 
+  pivot_wider(names_from = Measure, values_from = LP)
+
+# Summarise at total presses per day
+data_PerSession <- data_recode %>%
+  group_by(Day, counterbalancing, subject) %>%
+  summarise(LPFreq_Flash = sum(LP_Freq_Flash),
+            LPDur_Flash = sum(LP_Dur_Flash),
+            LPFreq_Steady = sum(LP_Freq_Steady),
+            LPDur_Steady = sum(LP_Dur_Steady),
+            Reinforcer_Flash = sum(Flash_freq),
+            Reinforcer_Steady = sum(Steady_freq),
+            
+) %>%
+  ungroup()
+
+#Long format
+data_PerSession_long <- data_PerSession %>% 
+  pivot_longer(c(LPFreq_Flash,LPDur_Flash, LPFreq_Steady,LPDur_Steady, Reinforcer_Flash, Reinforcer_Steady), names_to = c("Measure","Stimulus"), names_sep = "_", values_to = "LP") %>% 
+  pivot_wider(names_from = Measure, values_from = LP)
 
 
-Acqsuisition_LeftLever <- data_PerSession %>% 
-  filter(CS_name == "Left") %>%
-  ggplot(mapping = aes(x = as.factor(Day), y = LLr_Duration, group = interaction(CS_name,Period), colour = interaction(CS_name,Period), fill = interaction(CS_name,Period), shape = interaction(CS_name,Period),linetype = interaction(CS_name,Period))) +
+Acquisition_PerSession <- data_PerSession_long %>% 
+  ggplot(mapping = aes(x = as.factor(Day), y = Reinforcer, group = Stimulus, colour = Stimulus, fill = Stimulus, shape = Stimulus, linetype = Stimulus)) +
   stat_summary_bin(fun.data = "mean_se", geom = "line", size = .5) +
   stat_summary(fun.data = "mean_se", geom = "errorbar", width = 0.0, size = .3, linetype = 1, show.legend = FALSE) +
   stat_summary_bin(fun.data = "mean_se", geom = "point", size = 2) +
   # Make Pretty
-  scale_y_continuous( expand = expansion(mult = c(0, 0)), breaks=seq(-100,100,1)) +
-  ggtitle("Acquisition") + xlab("Day") + ylab("Lever press rate (5s)") +
+  scale_y_continuous( expand = expansion(mult = c(0, 0)), breaks=seq(-100,100,2)) +
+  ggtitle("Acquisition") + xlab("Day") + ylab("Total Reinforcers (30 mins)") +
   theme_cowplot(11) +
   theme(plot.title = element_text(hjust = 0.5)) +
   theme(plot.title = element_text(size=10)) +
-  coord_cartesian(ylim = c(-1,6.0001)) +
+  coord_cartesian(ylim = c(0,14.0001)) +
   theme(axis.title.x=element_text(face = "bold")) +
   # scale_linetype_manual(name = "", values = linetypes)  +
   # scale_colour_manual(name = "", values = linecolours, aesthetics = c("colour")) +
@@ -98,5 +134,30 @@ Acqsuisition_LeftLever <- data_PerSession %>%
   # scale_fill_manual(name = "", values = fillcolours) +
   theme(legend.key.width=unit(1,"line"))
 
-Acqsuisition_LeftLever
+Acquisition_PerSession
+
+
+
+Acquisition_PerBin <- data_bin_long %>% 
+  ggplot(mapping = aes(x = as.factor(timebins), y = Reinforcer, group = Stimulus, colour = Stimulus, fill = Stimulus, shape = Stimulus, linetype = Stimulus)) +
+  stat_summary_bin(fun.data = "mean_se", geom = "line", size = .5) +
+  stat_summary(fun.data = "mean_se", geom = "errorbar", width = 0.0, size = .3, linetype = 1, show.legend = FALSE) +
+  stat_summary_bin(fun.data = "mean_se", geom = "point", size = 2) +
+  facet_wrap(~Day, nrow = 1) +
+  # Make Pretty
+  scale_y_continuous( expand = expansion(mult = c(0, 0)), breaks=seq(-100,100,1)) +
+  ggtitle("Acquisition") + xlab("Bin 7.5 mins") + ylab("Total Reinforcers") +
+  theme_cowplot(11) +
+  theme(plot.title = element_text(hjust = 0.5)) +
+  theme(plot.title = element_text(size=10)) +
+  coord_cartesian(ylim = c(0,5.0001)) +
+  theme(axis.title.x=element_text(face = "bold")) +
+  # scale_linetype_manual(name = "", values = linetypes)  +
+  # scale_colour_manual(name = "", values = linecolours, aesthetics = c("colour")) +
+  # scale_shape_manual(name = "", values = pointshapes) +
+  # scale_fill_manual(name = "", values = fillcolours) +
+  theme(legend.key.width=unit(1,"line"))
+
+Acquisition_PerBin
+
 

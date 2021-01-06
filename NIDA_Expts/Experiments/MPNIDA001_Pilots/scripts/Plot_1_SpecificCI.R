@@ -89,14 +89,26 @@ fillcolours <- c("A_O1" = DarkRed,
                  "C_O1" = MediumRed,
                  "D_O2" = MediumBlue,
                  "AX_" = White,
-                 "BY_" = White)
+                 "BY_" = White,
+                 "CX_" = LightRed,
+                 "DY_" = LightBlue,
+                 "CY_" = MediumRed,
+                 "DX_" = MediumBlue,
+                 "CXDY" = White,
+                 "CYDX" = Black)
 
 linecolours <- c("A_O1" = DarkRed,
                  "B_O2" = DarkBlue, 
                  "C_O1" = MediumRed,
                  "D_O2" = MediumBlue,
                  "AX_" = LightRed,
-                 "BY_" = LightBlue)
+                 "BY_" = LightBlue,
+                 "CX_" = LightRed,
+                 "DY_" = LightBlue,
+                 "CY_" = LightRed,
+                 "DX_" = LightBlue,
+                 "CXDY" = Black,
+                 "CYDX" = Black)
 
 
 linetypes <- c("A_O1" = "solid",
@@ -104,7 +116,13 @@ linetypes <- c("A_O1" = "solid",
                "C_O1" = "solid",
                "D_O2" = "solid",
                "AX_" = "dotted",
-               "BY_" = "dotted")
+               "BY_" = "dotted",
+               "CX_" = "dotted",
+               "DY_" = "dotted",
+               "CY_" = "dotted",
+               "DX_" = "dotted",
+               "CXDY" = "dotted",
+               "CYDX" = "solid")
 
 
 pointshapes <- c("A_O1" = square,
@@ -112,7 +130,13 @@ pointshapes <- c("A_O1" = square,
                     "C_O1" = square,
                     "D_O2" = circle,
                     "AX_" = triangleUp,
-                    "BY_" = triangleDown)
+                    "BY_" = triangleDown,
+                 "CX_" = triangleUp,
+                 "DY_" = triangleDown,
+                 "CY_" = square,
+                 "DX_" = circle,
+                 "CXDY" = triangleUp,
+                 "CYDX" = square)
 
 
 # Load Data - Stage 1 ---------------------------------------------------------------
@@ -901,6 +925,377 @@ write_csv(data_PerSession_last5s_CSPre, here("figures", "figure_data", savefile)
   
   savefile <- "CI_Stage3_CSPre_last5s.csv"
   write_csv(data_PerSession_last5s_CSPre, here("figures", "figure_data",savefile))
+  
+
+# Stage 4: Summation Test -------------------------------------------------
+
+  # Load Data - Stage 4 ---------------------------------------------------------------
+  
+  folderpath <- here("rawdata","Marios","1_SpecificCI","CombinedData")
+  filename <- "CI_Stage4_ProcessedData_pertrial_1sbins.csv"
+  
+  rawdata <- read_csv(here(folderpath,filename))
+  
+  # Fix Day factor to numeric
+  rawdata <- rawdata %>% 
+    mutate(Day = as.numeric(str_remove(Day, "Day")))
+  
+  # Add Trial Numbers for probes
+  bin_trial <- c("1",
+                 "2",
+                 "3",
+                 "4",
+                 "5",
+                 "6",
+                 "7",
+                 "8",
+                 "9",
+                 "10",
+                 "11",
+                 "12",
+                 "13",
+                 "14",
+                 "15",
+                 "16",
+                 "17",
+                 "18",
+                 "19",
+                 "20",
+                 "21",
+                 "22",
+                 "23",
+                 "24",
+                 "25",
+                 "26",
+                 "27",
+                 "28",
+                 "29",
+                 "30",
+                 "31",
+                 "32")
+  
+  
+  TrialNumber_Probes <- c(NA,
+                          NA,
+                          1,
+                          1,
+                          1,
+                          1,
+                          1,
+                          1,
+                          NA,
+                          NA,
+                          2,
+                          2,
+                          2,
+                          2,
+                          2,
+                          2,
+                          NA,
+                          NA,
+                          3,
+                          3,
+                          3,
+                          3,
+                          3,
+                          3,
+                          NA,
+                          NA,
+                          4,
+                          4,
+                          4,
+                          4,
+                          4,
+                          4)
+  
+  TrialNumber_CS <- c(1,
+                      1,
+                      NA,
+                      NA,
+                      NA,
+                      NA,
+                      NA,
+                      NA,
+                      2,
+                      2,
+                      NA,
+                      NA,
+                      NA,
+                      NA,
+                      NA,
+                      NA,
+                      3,
+                      3,
+                      NA,
+                      NA,
+                      NA,
+                      NA,
+                      NA,
+                      NA,
+                      4,
+                      4,
+                      NA,
+                      NA,
+                      NA,
+                      NA,
+                      NA,
+                      NA)
+
+  
+  # Create counterbalancing lookup table
+  lookup_TrialNum <- data.frame(bin_trial, TrialNumber_Probes, TrialNumber_CS)
+  
+  rawdata <- rawdata %>% 
+    mutate(bin_trial = as.character(bin_trial))
+  # Combine with rawdata
+  rawdata <- left_join(rawdata, lookup_TrialNum, by = c("bin_trial"))
+  
+  
+  
+  # Add new factors to represent predicted outcome identity and Cue pairs
+  
+  CS_name <- c("A_O1",
+               "B_O2",
+               "C_O1",
+               "D_O2",
+               "AX_",
+               "BY_",
+               "CX_",
+               "DX_",
+               "CY_",
+               "DY_")
+  
+  Outcome <- c("O1",
+               "O2",
+               "O1",
+               "O2",
+               "O1",
+               "O2",
+               "O1",
+               "O2",
+               "O1",
+               "O2")
+  
+  CSPair <- c("AB",
+              "AB",
+              "CD",
+              "CD",
+              "AXBY",
+              "AXBY",
+              "CXDY",
+              "CYDX",
+              "CYDX",
+              "CXDY")
+  
+  newfactorlookup <- data.frame(CS_name, Outcome, CSPair)
+  rawdata <- left_join(rawdata, newfactorlookup, by = "CS_name")
+  
+  
+  data_pertrial <- rawdata %>% 
+    group_by(Day, subject, Outcome, CSPair, CS_name, Period, bin_trial, TrialNumber_CS, TrialNumber_Probes) %>% 
+    summarise(MagEntries = mean(A3_freq)*10,
+              MagDuration = mean(A3_dur)*10) %>%
+    ungroup()
+  
+  data_pertrial_CSPre <- data_pertrial %>% 
+    pivot_wider(names_from = Period,values_from = c(MagEntries, MagDuration)) %>% 
+    mutate(MagEntries_CSPre = MagEntries_CS - MagEntries_Pre,
+           MagDuration_CSPre = MagDuration_CS - MagDuration_Pre) %>% 
+    pivot_longer(c(MagEntries_CS, MagEntries_Post, MagEntries_Pre, MagDuration_CS, MagDuration_Post, MagDuration_Pre, MagEntries_CSPre, MagDuration_CSPre), names_to = c("Measure", "Period"), names_sep = "_", values_to = "Mag") %>% 
+    pivot_wider(names_from = Measure, values_from = Mag)
+  
+  
+  
+  data_PerSession <- rawdata %>% 
+    group_by(Day, subject, Outcome, CSPair, CS_name, Period) %>% 
+    summarise(MagEntries = mean(A3_freq)*10,
+              MagDuration = mean(A3_dur)*10) %>%
+    ungroup()
+  
+  data_PerSession_CSPre <- data_PerSession %>% 
+    pivot_wider(names_from = Period,values_from = c(MagEntries, MagDuration)) %>% 
+    mutate(MagEntries_CSPre = MagEntries_CS - MagEntries_Pre,
+           MagDuration_CSPre = MagDuration_CS - MagDuration_Pre) %>% 
+    pivot_longer(c(MagEntries_CS, MagEntries_Post, MagEntries_Pre, MagDuration_CS, MagDuration_Post, MagDuration_Pre, MagEntries_CSPre, MagDuration_CSPre), names_to = c("Measure", "Period"), names_sep = "_", values_to = "Mag") %>% 
+    pivot_wider(names_from = Measure, values_from = Mag)
+  
+  
+  data_PerSession_last5s <- rawdata %>% 
+    filter(bin_timewithin > 5) %>% 
+    group_by(Day, subject, Outcome, CSPair, CS_name, Period) %>% 
+    summarise(MagEntries = mean(A3_freq)*5,
+              MagDuration = mean(A3_dur)*5) %>%
+    ungroup()
+  
+  
+  data_PerSession_last5s_CSPre <- data_PerSession_last5s %>% 
+    pivot_wider(names_from = Period,values_from = c(MagEntries, MagDuration)) %>% 
+    mutate(MagEntries_CSPre = MagEntries_CS - MagEntries_Pre,
+           MagDuration_CSPre = MagDuration_CS - MagDuration_Pre) %>% 
+    pivot_longer(c(MagEntries_CS, MagEntries_Post, MagEntries_Pre, MagDuration_CS, MagDuration_Post, MagDuration_Pre, MagEntries_CSPre, MagDuration_CSPre), names_to = c("Measure", "Period"), names_sep = "_", values_to = "Mag") %>% 
+    pivot_wider(names_from = Measure, values_from = Mag)
+  
+
+  #  Plots Stage 4 ----------------------------------------------------------
+  
+
+  ## 10s Data
+  ### Frequency
+  ### Per Trial 
+  Acqsuisition_Stage4_MagFreq_PerTrial <- data_pertrial_CSPre %>% 
+    filter(Period == "CSPre",
+           CS_name != "C_O1"  & CS_name != "D_O2" ) %>%
+    ggplot(mapping = aes(x = as.factor(TrialNumber_Probes), y = MagEntries, group = CS_name, colour = CS_name, fill = CS_name, shape = CS_name,linetype = CS_name)) +
+    stat_summary_bin(fun.data = "mean_se", geom = "line", size = .5) +
+    stat_summary(fun.data = "mean_se", geom = "errorbar", width = 0.0, size = .3, linetype = 1, show.legend = FALSE) +
+    stat_summary_bin(fun.data = "mean_se", geom = "point", size = 2) +
+    # Make Pretty
+    scale_y_continuous( expand = expansion(mult = c(0, 0)), breaks=seq(-100,100,1)) +
+    ggtitle("Stage 4") + xlab("Trial") + ylab("Magazine Entry 10s (CS-Pre)") +
+    theme_cowplot(11) +
+    theme(plot.title = element_text(hjust = 0.5)) +
+    theme(plot.title = element_text(size=10)) +
+    coord_cartesian(ylim = c(-2,2.0001)) +
+    theme(axis.title.x=element_text(face = "bold")) +
+    scale_linetype_manual(name = "", values = linetypes)  +
+    scale_colour_manual(name = "", values = linecolours, aesthetics = c("colour")) +
+    scale_shape_manual(name = "", values = pointshapes) +
+    scale_fill_manual(name = "", values = fillcolours) +
+    theme(legend.key.width=unit(1,"line"))
+  
+  Acqsuisition_Stage4_MagFreq_PerTrial <- shift_xaxis(Acqsuisition_Stage4_MagFreq_PerTrial)
+  Acqsuisition_Stage4_MagFreq_PerTrial
+  
+  cqsuisition_Stage4_MagFreq_PerTrial_combined <- data_pertrial_CSPre %>% 
+    filter(Period == "CSPre",
+           CS_name != "C_O1"  & CS_name != "D_O2" ) %>% 
+  group_by(Day, subject, CSPair, Period, TrialNumber_Probes) %>% 
+    summarise(MagEntries = mean(MagEntries),
+              MagDuration = mean(MagDuration)) %>%
+    ungroup() %>%
+    ggplot(mapping = aes(x = as.factor(TrialNumber_Probes), y = MagEntries, group = CSPair, colour = CSPair, fill = CSPair, shape = CSPair,linetype = CSPair)) +
+    stat_summary_bin(fun.data = "mean_se", geom = "line", size = .5) +
+    stat_summary(fun.data = "mean_se", geom = "errorbar", width = 0.0, size = .3, linetype = 1, show.legend = FALSE) +
+    stat_summary_bin(fun.data = "mean_se", geom = "point", size = 2) +
+    # Make Pretty
+    scale_y_continuous( expand = expansion(mult = c(0, 0)), breaks=seq(-100,100,1)) +
+    ggtitle("Stage 4") + xlab("Trial") + ylab("Magazine Entry 10s (CS-Pre)") +
+    theme_cowplot(11) +
+    theme(plot.title = element_text(hjust = 0.5)) +
+    theme(plot.title = element_text(size=10)) +
+    coord_cartesian(ylim = c(-2,2.0001)) +
+    theme(axis.title.x=element_text(face = "bold")) +
+    scale_linetype_manual(name = "", values = linetypes)  +
+    scale_colour_manual(name = "", values = linecolours, aesthetics = c("colour")) +
+    scale_shape_manual(name = "", values = pointshapes) +
+    scale_fill_manual(name = "", values = fillcolours) +
+    theme(legend.key.width=unit(1,"line"))
+  
+  Acqsuisition_Stage4_MagFreq_PerTrial_combined <- shift_xaxis(Acqsuisition_Stage4_MagFreq_PerTrial_combined)
+  Acqsuisition_Stage4_MagFreq_PerTrial_combined
+  
+  
+  
+  ## 10s Data
+  ### Frequency
+  Acqsuisition_Stage4_MagFreq_Combined_trial1 <- data_pertrial_CSPre %>% 
+    filter(Period == "CSPre",
+           CS_name != "C_O1"  & CS_name != "D_O2",
+           TrialNumber_Probes == 1) %>%
+    group_by(Day, subject, CSPair, Period) %>% 
+    summarise(MagEntries = mean(MagEntries),
+              MagDuration = mean(MagDuration)) %>%
+    ungroup() %>% 
+    ggplot(mapping = aes(x = as.factor(CSPair), y = MagEntries, group = CSPair, colour = CSPair, fill = CSPair)) +
+    stat_summary_bin(fun.data = "mean_se", geom = "bar", position = "dodge",  size = .3) +
+    stat_summary(fun.data = "mean_se", geom = "errorbar", position = position_dodge(width = 0.9),  width = 0,  size = .3, colour = "black", linetype = "solid", show.legend = FALSE) + 
+    # Make Pretty
+    scale_y_continuous( expand = expansion(mult = c(0, 0)), breaks=seq(-100,100,.5)) +
+    ggtitle("Stage 4") + xlab("Compound") + ylab("Magazine Entry 10s (CS-Pre)") +
+    theme_cowplot(11) +
+    theme(plot.title = element_text(hjust = 0.5)) +
+    theme(plot.title = element_text(size=10)) +
+    coord_cartesian(ylim = c(-1,1.0001)) +
+    theme(axis.title.x=element_text(face = "bold")) +
+    scale_colour_manual(name = "", values = linecolours, aesthetics = c("colour")) +
+    scale_fill_manual(name = "", values = fillcolours) +
+    theme(legend.key.width=unit(0.5,"line"))
+
+  
+  CI_Stage4_10s_Freq <- shift_xaxis(Acqsuisition_Stage4_MagFreq)
+  CI_Stage4_10s_Freq
+  
+  
+  Acqsuisition_Stage4_MagFreq_Combined_trial1 <- data_pertrial_CSPre %>% 
+    filter(Period == "CS",
+           CS_name != "C_O1"  & CS_name != "D_O2",
+           TrialNumber_Probes == 1) %>%
+    group_by(Day, subject, CS_name, Period) %>% 
+    summarise(MagEntries = mean(MagEntries),
+              MagDuration = mean(MagDuration)) %>%
+    ungroup() %>% 
+    ggplot(mapping = aes(x = as.factor(CS_name), y = MagEntries, group = CS_name, colour = CS_name, fill = CS_name)) +
+    stat_summary_bin(fun.data = "mean_se", geom = "bar", position = "dodge",  size = .3) +
+    stat_summary(fun.data = "mean_se", geom = "errorbar", position = position_dodge(width = 0.9),  width = 0,  size = .3, colour = "black", linetype = "solid", show.legend = FALSE) + 
+    # Make Pretty
+    scale_y_continuous( expand = expansion(mult = c(0, 0)), breaks=seq(-100,100,.5)) +
+    ggtitle("Stage 4") + xlab("Compound") + ylab("Magazine Entry 10s (CS-Pre)") +
+    theme_cowplot(11) +
+    theme(plot.title = element_text(hjust = 0.5)) +
+    theme(plot.title = element_text(size=10)) +
+    coord_cartesian(ylim = c(-1,1.0001)) +
+    theme(axis.title.x=element_text(face = "bold")) +
+    scale_colour_manual(name = "", values = linecolours, aesthetics = c("colour")) +
+    scale_fill_manual(name = "", values = fillcolours) +
+    theme(legend.key.width=unit(0.5,"line"))
+  
+  
+  CI_Stage4_10s_Freq <- shift_xaxis(Acqsuisition_Stage4_MagFreq_Combined_trial1)
+  CI_Stage4_10s_Freq
+  
+  
+  
+  # #Inspect individual animals
+  # 
+  # data_PerSession_CSPre %>% 
+  #   filter(Period == "CS") %>% 
+  #   select(-MagEntries, -Period) %>%
+  #   pivot_wider(names_from = subject, values_from = MagDuration) %>% 
+  #   kable()
+  # 
+  # data_PerSession_CSPre %>% 
+  #   filter(Period == "CS") %>% 
+  #   select(-MagDuration, -Period) %>%
+  #   pivot_wider(names_from = subject, values_from = MagEntries) %>% 
+  #   kable()
+  # 
+  
+  
+  # Save Stage 4 Figures ----------------------------------------------------
+  
+  # CI_Stage4_10s_Freq
+  # CI_Stage4_10s_Dur
+  # CI_Stage4_5s_Freq
+  # CI_Stage4_5s_Dur
+  
+  
+  filename = here("figures", "CI_Stage4_10s_Freq.png")
+  ggsave(filename, CI_Stage4_10s_Freq, width = 80, height = 80, units = "mm", dpi = 1200)
+  filename = here("figures", "CI_Stage4_10s_Dur.png")
+  ggsave(filename, CI_Stage4_10s_Dur, width = 80, height = 80, units = "mm", dpi = 1200)
+  filename = here("figures", "CI_Stage4_5s_Freq.png")
+  ggsave(filename, CI_Stage4_5s_Freq, width = 80, height = 80, units = "mm", dpi = 1200)
+  filename = here("figures", "CI_Stage4_5s_Dur.png")
+  ggsave(filename, CI_Stage4_5s_Dur, width = 80, height = 80, units = "mm", dpi = 1200)  
+  
+  
+  
+  
+  
+  
+  
+  
+  
   
   
   

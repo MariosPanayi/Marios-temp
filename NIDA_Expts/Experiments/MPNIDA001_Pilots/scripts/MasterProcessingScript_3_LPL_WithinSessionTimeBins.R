@@ -159,14 +159,14 @@ counterbalancing <-  c("A",
                         "B")
 
 
-leftleverCbx <-  c("Flash",
-                   "Steady")
+FLash_leverCbx <-  c("Left",
+                   "Right")
 
-rightlevercbx <-  c("Steady",
-                    "Flash")
+Steady_levercbx <-  c("Right",
+                    "Left")
 
 # Create counterbalancing lookup table
-lookup_counterbalancing <- data.frame(counterbalancing, leftleverCbx, rightlevercbx)
+lookup_counterbalancing <- data.frame(counterbalancing, FLash_leverCbx, Steady_levercbx)
 # Combine with rawdata
 rawdata <- left_join(rawdata, lookup_counterbalancing, by = "counterbalancing")
 
