@@ -1,0 +1,9 @@
+Project	UserID	Protocol	Session	Station	Run	Subject	Time	Current State	Transition State	Transition Event	A1 - LLR	A2 - RLR	A3 - MAG	A4 - 	A[1] LLR_OFF	A[2] RLR_OFF	A[3] MAG_OFF	A[4] 
+C	Marios	43	216	9	1	10____	0	0	1	0	0	0	0	0	0	0	0	0
+C	Marios	43	216	9	1	10____	69507	1	0	0	1	0	0	0	0	0	0	0
+C	Marios	43	216	9	1	10____	69509	1	0	0	0	0	0	0	1	0	0	0
+C	Marios	43	216	9	1	10____	69586	1	4	1	1	0	0	0	0	0	0	0
+C	Marios	43	216	9	1	10____	69588	4	0	0	0	0	0	0	1	0	0	0
+C	Marios	43	216	9	1	10____	69636	4	1	0	0	0	0	0	0	0	0	0
+C	Marios	43	216	9	1	10____	90000	1	6	0	0	0	0	0	0	0	0	0
+C	Marios	43	216	9	1	10____	93000	6	-1	0	0	0	0	0	0	0	0	0

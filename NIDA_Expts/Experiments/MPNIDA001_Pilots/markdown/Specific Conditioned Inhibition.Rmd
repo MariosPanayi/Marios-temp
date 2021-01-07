@@ -4,40 +4,6 @@ author: "Marios Panayi"
 date: "12/28/2020"
 output: word_document
 ---
-
-# Task Diagram
-
-# Methods
-
-## Subjects
-Subjects were 16 #RATS# (n = 8 male, n = 8 female) housed in groups of 1-3 per cage, food restricted to approximately 90% of their ad libitum weight [weight M = ##, SD = ##; age M = ##, SD = ##]. Males were maintained on 15g and females maintained on 10g  of standard rat chow per day. All subjects were food restricted 1 week prior to behavioural testing. Rats were maintained on a 12 hr/12 hr light/dark cycle and tested during the light phase between 09:00 and 17:00 five-seven days days per week. Experiments were performed at the National Institute on Drug Abuse Intramural Research Program (NIDA IRP), in accordance with NIH guidelines. 
-
-## Behavioural Apparatus
-Testing chambers consisted of a standard Coulbourn rat testing chamber equipped with standard commercially available parts (Coulbourn Instruments, Allentown, PA), within an external sound attenuating chamber. All stimuli and manipulanda were located on the right wall of each chamber which was partitioned into 3 sections (described in order from the floor to the roof of the chamber). The left section contained a retractable lever, an LED light, and a speaker attached to a multi-tone generator. The middle section contained a recessed magazine receptacle, an incandescent House light, and a pedestal mounting two pellet dispensers. The right section contained a retractable lever, an LED light, a clicker, and a speaker attached to a white noise generator. Auditory stimuli consisted of a pure tone, a siren (oscillating between two tones at 5Hz), a 5Hz train of clicks, and white noise, all calibrated to 72 dB. Visual stimuli consisted of the illumination of the house light and the two LED panel lights (steady), and flashing the two LED panel lights at 5Hz (0.1s on, 0.1s off). Cues A and B were the clicker and white noise, cues C and D were the tone and siren, and cues X and Y were the steady and flashing lights (counterbalanced across rats, sex, and all possible stimulus combinations). Food rewards delivered by the pellet dispenser were 45 mg Banana flavoured sucrose (Bio-serv F0021) and 45 mg chocolate flavoured purified diet (Bio-Serv F0299). 
-
-## Behavioural Procedures
-### Magazine Training
-Magazine training consisted over 3 days involving one session per day. During each 30 minute magazine training session, a single pellet outcome was delivered on a variable time schedule (VT; M = 120s +/- 50%). On the first day subjects received either banana or chocolate flavoured pellets, on the second day they received the other pellet, and on the third day the banana and chocolate were presented in the same session in two blocks of 14 minutes. The order of pellet flavour presentation was counterbalanced across subjects. One rat did not consume over 85% of the rewards in session 2, and was given an additional session at the end of that day.
-
-### Stage 1: Pavlovian Acquisition
-Pavlovian acquisition sessions involved the presentation of all four auditory cues (A,B,C,D), each paired with a unique pellet flavour outcome (A & C predicted O1, B and D predicted O2; cue-flavour combinations fully counterbalanced). All cues were presented for 10s followed immediately by the delivery of a single pellet. Cues were presented on a variable inter-trial interval 110s (vITI 110s), 6 presentations of each cue (i.e. a total of 24 trials per session) and the order of presentation was pseudo-randomised such that a cue would not be presented more than twice in a row. Subjects received 4 sessions (1 session/day) of stage 1 Pavlovian acquisition.
-
-### Stage 2: Feature Negative Discrimination
-Feature negative discrimination training involved the presentation of cues A and B followed by reward, and audio-visual compound presentations of cues AX and BY followed by non-reinforcement. All session parameters were identical to Stage 1 except that there were 4 presentations each of cues A and B, and 8 presentations each of AX and BY. Subjects received 6 days (1 session/day) of stage 2 feature negative discrimination. This training stage was intended to establish cues X as a conditioned inhibitor of O1 and cue Y ans a conditioned inhibitor of O2.
-
-### Stage 3: Retraining
-Subjects received 2 additional days of Pavlovian training with just cues C and D, 12 presentations of each, all other parameters were identical to stage 1. Subjects received 2 days (1 session/day) of retraining.
-
-### Summation Test
-A summation test was performed to test whether cues X and Y had been established as conditioned inhibitors specific to O1 and O2 (respectively). Each session involved 4 blocks of trials. Each block started with a single rewarded presentation of cue C and D (randomised order) followed by a single non-reinforced presentation of each of the novel audio-visual compounds CX, CY, DX, and DY (randomised order). Thus each block started with 2 reinforced trials followed by 4 non-reinforced probe trials. All remaining session parameters were identical to stage 1. If cues X and Y have been established as specific conditioned inhibitors, then they should selectively inhibit responding when presented in compound with the cue that predicts the same outcome targeted in stage 2 i.e. responding to CX and DY will be significantly lower than responding to CY and DX.
-
-### Retardation Test
-An outcome specific retardation test was conducted to assess whether cues X and Y had become specific inhibitors of O1 and O2 (respectively). Subjects received 12 presentations each of cue X and Y followed by delivery of O1. Subjects received 8 days (1 session/day) of retardation testing. All remaining session parameters were identical to stage 1. If cue X has been established a conditioned inhibitor specific to O1, then learning that cue X predicts O1 will be significantly impaired (either in rate or asymptotic performance) relative to learning that cue Y predicts O1 (if Y has also been established as an inhibitor of O2).
-
-## Data analysis
-Magazine entry and duration in the 10s CS period minus the immediately preceding 10s PreCS period are presented and analyzed for all reported analyses. Analyses of the PreCS baseline levels did not reveal any significant differences between cue types which justified the use of this difference score to index CS specific elevations in magazine activity. All stages were analyzed with repeated measures ANOVA [##PACKAGE IN R##], and follow up simple effects are reported with a Tukey family-wise error rate correction. All analyses were run with a between subjects factor of sex, but these did not reveal any significant main effects or interactions between the sex of the subjects and performance in the task. Therefore, sex was not included as a factor in the reported statistics.
-
-# Results
 ```{r setup, include=FALSE, message = FALSE, warning=FALSE}
 knitr::opts_chunk$set(echo = FALSE)
 ## Packages for data organisation and plotting
@@ -66,6 +32,42 @@ CI_Stage2_CSPre <- read_csv(here("figures","figure_data","CI_Stage2_CSPre.csv"))
 CI_Stage3_CSPre <- read_csv(here("figures","figure_data","CI_Stage3_CSPre.csv"))
 ```
 
+# Methods
+
+## Subjects
+Subjects were 16 #RATS# (n = 8 male, n = 8 female) housed in groups of 1-3 per cage, food restricted to approximately 90% of their ad libitum weight [weight M = ##, SD = ##; age M = ##, SD = ##]. Males were maintained on 15g and females maintained on 10g  of standard rat chow per day. All subjects were food restricted 1 week prior to behavioural testing. Rats were maintained on a 12 hr/12 hr light/dark cycle and tested during the light phase between 09:00 and 17:00 five-seven days days per week. Experiments were performed at the National Institute on Drug Abuse Intramural Research Program (NIDA IRP), in accordance with NIH guidelines. 
+
+## Behavioural Apparatus
+Testing chambers consisted of a standard Coulbourn rat testing chamber equipped with standard commercially available parts (Coulbourn Instruments, Allentown, PA), within an external sound attenuating chamber. All stimuli and manipulanda were located on the right wall of each chamber which was partitioned into 3 sections (described in order from the floor to the roof of the chamber). The left section contained a retractable lever, an LED light, and a speaker attached to a multi-tone generator. The middle section contained a recessed magazine receptacle, an incandescent House light, and a pedestal mounting two pellet dispensers. The right section contained a retractable lever, an LED light, a clicker, and a speaker attached to a white noise generator. Auditory stimuli consisted of a pure tone, a siren (oscillating between two tones at 5Hz), a 5Hz train of clicks, and white noise, all calibrated to 72 dB. Visual stimuli consisted of the illumination of the house light and the two LED panel lights (steady), and flashing the two LED panel lights at 5Hz (0.1s on, 0.1s off). Cues A and B were the clicker and white noise, cues C and D were the tone and siren, and cues X and Y were the steady and flashing lights (counterbalanced across rats, sex, and all possible stimulus combinations). Food rewards delivered by the pellet dispenser were 45 mg Banana flavoured sucrose (Bio-serv F0021) and 45 mg chocolate flavoured purified diet (Bio-Serv F0299). 
+
+## Behavioural Procedures
+### Magazine Training
+Magazine training consisted over 3 days involving one session per day. During each 30 minute magazine training session, a single pellet outcome was delivered on a variable time schedule (VT; M = 120s +/- 50%). On the first day subjects received either banana or chocolate flavoured pellets, on the second day they received the other pellet, and on the third day the banana and chocolate were presented in the same session in two blocks of 14 minutes. The order of pellet flavour presentation was counterbalanced across subjects. One rat did not consume over 85% of the rewards in session 2, and was given an additional session at the end of that day.
+
+### Stage 1: Pavlovian Acquisition
+Pavlovian acquisition sessions involved the presentation of all four auditory cues (A,B,C,D), each paired with a unique pellet flavour outcome (A & C predicted O1, B and D predicted O2; cue-flavour combinations fully counterbalanced). All cues were presented for 10s followed immediately by the delivery of a single pellet. Cues were presented on a variable inter-trial interval 110s (vITI 110s), 6 presentations of each cue (i.e. a total of 24 trials per session) and the order of presentation was pseudo-randomised such that a cue would not be presented more than twice in a row. Subjects received 4 sessions (1 session/day) of stage 1 Pavlovian acquisition.
+
+### Stage 2: Feature Negative Discrimination
+Feature negative discrimination training involved the presentation of cues A and B followed by reward, and audio-visual compound presentations of cues AX and BY followed by non-reinforcement. All session parameters were identical to Stage 1 except that there were 4 presentations each of cues A and B, and 8 presentations each of AX and BY. Subjects received 6 days (1 session/day) of stage 2 feature negative discrimination. This training stage was intended to establish cues X as a conditioned inhibitor of O1 and cue Y ans a conditioned inhibitor of O2.
+
+### Stage 3: Retraining
+Subjects received 2 additional days of Pavlovian training with just cues C and D, 12 presentations of each, all other parameters were identical to stage 1. Subjects received 2 days (1 session/day) of retraining.
+
+### Summation Test
+A summation test was performed to test whether cues X and Y had been established as conditioned inhibitors specific to O1 and O2 (respectively). Each session involved 4 blocks of trials. Each block started with a single rewarded presentation of cue C and D (randomised order) followed by a single non-reinforced presentation of each of the novel audio-visual compounds CX, CY, DX, and DY (randomised order). Thus each block started with 2 reinforced trials followed by 4 non-reinforced probe trials. All remaining session parameters were identical to stage 1. If cues X and Y have been established as specific conditioned inhibitors, then they should selectively inhibit responding when presented in compound with the cue that predicts the same outcome targeted in stage 2 i.e. responding to CX and DY will be significantly lower than responding to CY and DX.
+
+### Retardation Test
+An outcome specific retardation test was conducted to assess whether cues X and Y had become specific inhibitors of O1 and O2 (respectively). Subjects received 12 presentations each of cue X and Y followed by delivery of O1. Subjects received 8 days (1 session/day) of retardation testing. All remaining session parameters were identical to stage 1. If cue X has been established a conditioned inhibitor specific to O1, then learning that cue X predicts O1 will be significantly impaired (either in rate or asymptotic performance) relative to learning that cue Y predicts O1 (if Y has also been established as an inhibitor of O2).
+
+#### Task Diagram
+
+`r include_graphics(here("figures", "SpecificCI_ExperimentalDesign.png"))`
+
+## Data analysis
+Magazine entry and duration in the 10s CS period minus the immediately preceding 10s PreCS period are presented and analyzed for all reported analyses. Analyses of the PreCS baseline levels did not reveal any significant differences between cue types which justified the use of this difference score to index CS specific elevations in magazine activity. All stages were analyzed with repeated measures ANOVA [##PACKAGE IN R##], and follow up simple effects are reported with a Tukey family-wise error rate correction. All analyses were run with a between subjects factor of sex, but these did not reveal any significant main effects or interactions between the sex of the subjects and performance in the task. Therefore, sex was not included as a factor in the reported statistics.
+
+
+# Results
 ## Stage 1: Acquisition
 ```{r Stage 1 Acquisition Stats , include=FALSE, message = FALSE, warning=FALSE}
 rawdata <- CI_Stage1_CSPre %>% 
