@@ -1,0 +1,26 @@
+Project,UserID,Protocol,Session,Station,Run,Subject,Time,Current State,Transition State,Transition Event,A1_On,A2_On,A3_On,A4_On,A1_Off,A2_Off,A3_Off,A4_Off,folder,file
+C,Marios,55,235,9,1,18____,0,0,1,0,0,0,0,0,0,0,0,0,LPL_Devaluation1_Test_Day13,LPLDevaluation1TestDay13B
+C,Marios,55,235,9,1,18____,258,1,0,0,0,0,1,0,0,0,0,0,LPL_Devaluation1_Test_Day13,LPLDevaluation1TestDay13B
+C,Marios,55,235,9,1,18____,279,1,0,0,0,0,0,0,0,0,1,0,LPL_Devaluation1_Test_Day13,LPLDevaluation1TestDay13B
+C,Marios,55,235,9,1,18____,4540,1,0,0,0,0,1,0,0,0,0,0,LPL_Devaluation1_Test_Day13,LPLDevaluation1TestDay13B
+C,Marios,55,235,9,1,18____,4547,1,0,0,0,0,0,0,0,0,1,0,LPL_Devaluation1_Test_Day13,LPLDevaluation1TestDay13B
+C,Marios,55,235,9,1,18____,9785,1,0,0,0,0,1,0,0,0,0,0,LPL_Devaluation1_Test_Day13,LPLDevaluation1TestDay13B
+C,Marios,55,235,9,1,18____,9787,1,0,0,0,0,0,0,0,0,1,0,LPL_Devaluation1_Test_Day13,LPLDevaluation1TestDay13B
+C,Marios,55,235,9,1,18____,30000,1,2,0,0,0,0,0,0,0,0,0,LPL_Devaluation1_Test_Day13,LPLDevaluation1TestDay13B
+C,Marios,55,235,9,1,18____,31560,2,0,0,0,0,1,0,0,0,0,0,LPL_Devaluation1_Test_Day13,LPLDevaluation1TestDay13B
+C,Marios,55,235,9,1,18____,31596,2,0,0,0,0,0,0,0,0,1,0,LPL_Devaluation1_Test_Day13,LPLDevaluation1TestDay13B
+C,Marios,55,235,9,1,18____,31725,2,0,0,0,0,1,0,0,0,0,0,LPL_Devaluation1_Test_Day13,LPLDevaluation1TestDay13B
+C,Marios,55,235,9,1,18____,31794,2,0,0,0,0,0,0,0,0,1,0,LPL_Devaluation1_Test_Day13,LPLDevaluation1TestDay13B
+C,Marios,55,235,9,1,18____,36000,2,3,0,0,0,0,0,0,0,0,0,LPL_Devaluation1_Test_Day13,LPLDevaluation1TestDay13B
+C,Marios,55,235,9,1,18____,36102,3,0,0,0,0,1,0,0,0,0,0,LPL_Devaluation1_Test_Day13,LPLDevaluation1TestDay13B
+C,Marios,55,235,9,1,18____,36131,3,0,0,0,0,0,0,0,0,1,0,LPL_Devaluation1_Test_Day13,LPLDevaluation1TestDay13B
+C,Marios,55,235,9,1,18____,36282,3,0,0,0,0,1,0,0,0,0,0,LPL_Devaluation1_Test_Day13,LPLDevaluation1TestDay13B
+C,Marios,55,235,9,1,18____,36294,3,0,0,0,0,0,0,0,0,1,0,LPL_Devaluation1_Test_Day13,LPLDevaluation1TestDay13B
+C,Marios,55,235,9,1,18____,36593,3,0,0,0,0,1,0,0,0,0,0,LPL_Devaluation1_Test_Day13,LPLDevaluation1TestDay13B
+C,Marios,55,235,9,1,18____,36598,3,0,0,0,0,0,0,0,0,1,0,LPL_Devaluation1_Test_Day13,LPLDevaluation1TestDay13B
+C,Marios,55,235,9,1,18____,45023,3,0,0,0,0,1,0,0,0,0,0,LPL_Devaluation1_Test_Day13,LPLDevaluation1TestDay13B
+C,Marios,55,235,9,1,18____,45033,3,0,0,0,0,0,0,0,0,1,0,LPL_Devaluation1_Test_Day13,LPLDevaluation1TestDay13B
+C,Marios,55,235,9,1,18____,64769,3,0,0,0,0,1,0,0,0,0,0,LPL_Devaluation1_Test_Day13,LPLDevaluation1TestDay13B
+C,Marios,55,235,9,1,18____,64771,3,0,0,0,0,0,0,0,0,1,0,LPL_Devaluation1_Test_Day13,LPLDevaluation1TestDay13B
+C,Marios,55,235,9,1,18____,66000,3,6,0,0,0,0,0,0,0,0,0,LPL_Devaluation1_Test_Day13,LPLDevaluation1TestDay13B
+C,Marios,55,235,9,1,18____,69000,6,-1,0,0,0,0,0,0,0,0,0,LPL_Devaluation1_Test_Day13,LPLDevaluation1TestDay13B

@@ -61,6 +61,67 @@ shift_xaxis <- function(p, y=0){
 
 
 
+# Plot Style Parameters ---------------------------------------------------
+
+## Define Colours to be used
+DarkRed     = "#67001F" 
+MediumRed   = "#B2182B"
+LightRed    = "#D6604D"
+DarkBlue    = "#053061"
+MediumBlue  = "#2166AC"
+LightBlue   = "#4393C3"  
+Black       = "#000000"
+White       = "#ffffff"
+LightGrey   = "#F0F0F0"
+MediumGrey  = "#BDBDBD"
+DarkGrey    = "#252525"
+
+## Shapes for Geom_point
+circle            = 21
+square            = 22
+diamond           = 23
+triangleUp        = 24
+triangleDown      = 25
+
+
+
+fillcolours <- c("Flash" = DarkRed,
+                 "Steady" = DarkBlue,
+                 "Left" = DarkRed,
+                 "Right" = DarkBlue,
+                 "Banana" = DarkRed,
+                 "Chocolate" = DarkBlue)
+
+linecolours <- c("Flash" = DarkRed,
+                 "Steady" = DarkBlue,
+                 "Left" = DarkRed,
+                 "Right" = DarkBlue,
+                 "Banana" = DarkRed,
+                 "Chocolate" = DarkBlue)
+
+
+linetypes <- c("Flash" = "dotted",
+               "Steady" = "solid",
+               "Left" = "dotted",
+               "Right" = "solid",
+               "Banana" = "dotted",
+               "Chocolate" = "solid")
+
+
+
+pointshapes <- c("Flash" = circle,
+                 "Steady" = square,
+                 "Left" = circle,
+                 "Right" = square,
+                 "Banana" = circle,
+                 "Chocolate" = square)
+
+
+
+
+# Stage 1: Instrumental Acquisition ---------------------------------------
+
+
 # Load Data ---------------------------------------------------------------
 
 folderpath <- here("rawdata","Marios","3_LeverPressingForLights","CombinedData")
@@ -80,7 +141,7 @@ data_recode <- rawdata %>%
 
 ## relabel data
 data_bin <- data_recode %>%
-  group_by(Day, counterbalancing, timebins, subject) %>%
+  group_by(Day, counterbalancing, Pavlovian_cbx, Instrumental_cbx, timebins, subject) %>%
   summarise(LPFreq_Flash = sum(LP_Freq_Flash),
             LPDur_Flash = sum(LP_Dur_Flash),
             LPFreq_Steady = sum(LP_Freq_Steady),
@@ -98,7 +159,7 @@ data_bin_long <- data_bin %>%
 
 # Summarise at total presses per day
 data_PerSession <- data_recode %>%
-  group_by(Day, counterbalancing, subject) %>%
+  group_by(Day, counterbalancing, Pavlovian_cbx, Instrumental_cbx, subject) %>%
   summarise(LPFreq_Flash = sum(LP_Freq_Flash),
             LPDur_Flash = sum(LP_Dur_Flash),
             LPFreq_Steady = sum(LP_Freq_Steady),
@@ -114,50 +175,365 @@ data_PerSession_long <- data_PerSession %>%
   pivot_longer(c(LPFreq_Flash,LPDur_Flash, LPFreq_Steady,LPDur_Steady, Reinforcer_Flash, Reinforcer_Steady), names_to = c("Measure","Stimulus"), names_sep = "_", values_to = "LP") %>% 
   pivot_wider(names_from = Measure, values_from = LP)
 
+# # Save total Experienced reinforcers to csv from first stage and use for determining devaluation coutnerbalancing
+# AAAcounterbalancingDeval <- data_PerSession_long %>% 
+#   group_by(counterbalancing, Pavlovian_cbx, Instrumental_cbx, subject, Stimulus) %>% 
+#   summarise(Reinforcer = sum(Reinforcer)) %>% 
+#   pivot_wider(names_from = Stimulus, values_from = Reinforcer)
+# 
+# savefolderpath <- here("rawdata","Marios","3_LeverPressingForLights","CombinedData")
+# savefilename <- "LPL_CounterbalancingDeval.csv"
+# dir.create(savefolderpath)
+# write_csv(AAAcounterbalancingDeval,here(savefolderpath,savefilename))
 
-Acquisition_PerSession <- data_PerSession_long %>% 
+
+
+Acquisition_PerSession_Reinforcer <- data_PerSession_long %>% 
   ggplot(mapping = aes(x = as.factor(Day), y = Reinforcer, group = Stimulus, colour = Stimulus, fill = Stimulus, shape = Stimulus, linetype = Stimulus)) +
   stat_summary_bin(fun.data = "mean_se", geom = "line", size = .5) +
   stat_summary(fun.data = "mean_se", geom = "errorbar", width = 0.0, size = .3, linetype = 1, show.legend = FALSE) +
   stat_summary_bin(fun.data = "mean_se", geom = "point", size = 2) +
   # Make Pretty
-  scale_y_continuous( expand = expansion(mult = c(0, 0)), breaks=seq(-100,100,2)) +
-  ggtitle("Acquisition") + xlab("Day") + ylab("Total Reinforcers (30 mins)") +
+  scale_y_continuous( expand = expansion(mult = c(0, 0)), breaks=seq(-1000,1000,2)) +
+  ggtitle("Stage 1: Instrumental") + xlab("Day") + ylab("Total Reinforcers (30 mins)") +
   theme_cowplot(11) +
   theme(plot.title = element_text(hjust = 0.5)) +
   theme(plot.title = element_text(size=10)) +
   coord_cartesian(ylim = c(0,14.0001)) +
   theme(axis.title.x=element_text(face = "bold")) +
-  # scale_linetype_manual(name = "", values = linetypes)  +
-  # scale_colour_manual(name = "", values = linecolours, aesthetics = c("colour")) +
-  # scale_shape_manual(name = "", values = pointshapes) +
-  # scale_fill_manual(name = "", values = fillcolours) +
+  scale_linetype_manual(name = "", values = linetypes)  +
+  scale_colour_manual(name = "", values = linecolours, aesthetics = c("colour")) +
+  scale_shape_manual(name = "", values = pointshapes) +
+  scale_fill_manual(name = "", values = fillcolours) +
   theme(legend.key.width=unit(1,"line"))
 
-Acquisition_PerSession
+Acquisition_PerSession_Reinforcer
+
+Acquisition_PerSession_LP <- data_PerSession_long %>% 
+  ggplot(mapping = aes(x = as.factor(Day), y = LPFreq, group = Stimulus, colour = Stimulus, fill = Stimulus, shape = Stimulus, linetype = Stimulus)) +
+  stat_summary_bin(fun.data = "mean_se", geom = "line", size = .5) +
+  stat_summary(fun.data = "mean_se", geom = "errorbar", width = 0.0, size = .3, linetype = 1, show.legend = FALSE) +
+  stat_summary_bin(fun.data = "mean_se", geom = "point", size = 2) +
+  # Make Pretty
+  scale_y_continuous( expand = expansion(mult = c(0, 0)), breaks=seq(-1000,1000,5)) +
+  ggtitle("Stage 1: Instrumental") + xlab("Day") + ylab("Total LP (30 mins)") +
+  theme_cowplot(11) +
+  theme(plot.title = element_text(hjust = 0.5)) +
+  theme(plot.title = element_text(size=10)) +
+  coord_cartesian(ylim = c(0,65.0001)) +
+  theme(axis.title.x=element_text(face = "bold")) +
+  scale_linetype_manual(name = "", values = linetypes)  +
+  scale_colour_manual(name = "", values = linecolours, aesthetics = c("colour")) +
+  scale_shape_manual(name = "", values = pointshapes) +
+  scale_fill_manual(name = "", values = fillcolours) +
+  theme(legend.key.width=unit(1,"line"))
+
+Acquisition_PerSession_LP
 
 
 
-Acquisition_PerBin <- data_bin_long %>% 
+Acquisition_PerBin_Reinforcer <- data_bin_long %>% 
   ggplot(mapping = aes(x = as.factor(timebins), y = Reinforcer, group = Stimulus, colour = Stimulus, fill = Stimulus, shape = Stimulus, linetype = Stimulus)) +
   stat_summary_bin(fun.data = "mean_se", geom = "line", size = .5) +
   stat_summary(fun.data = "mean_se", geom = "errorbar", width = 0.0, size = .3, linetype = 1, show.legend = FALSE) +
   stat_summary_bin(fun.data = "mean_se", geom = "point", size = 2) +
   facet_wrap(~Day, nrow = 1) +
   # Make Pretty
-  scale_y_continuous( expand = expansion(mult = c(0, 0)), breaks=seq(-100,100,1)) +
-  ggtitle("Acquisition") + xlab("Bin 7.5 mins") + ylab("Total Reinforcers") +
+  scale_y_continuous( expand = expansion(mult = c(0, 0)), breaks=seq(-1000,1000,1)) +
+  ggtitle("Stage 1: Instrumental") + xlab("Bin 7.5 mins") + ylab("Total Reinforcers") +
   theme_cowplot(11) +
   theme(plot.title = element_text(hjust = 0.5)) +
   theme(plot.title = element_text(size=10)) +
   coord_cartesian(ylim = c(0,5.0001)) +
   theme(axis.title.x=element_text(face = "bold")) +
-  # scale_linetype_manual(name = "", values = linetypes)  +
-  # scale_colour_manual(name = "", values = linecolours, aesthetics = c("colour")) +
-  # scale_shape_manual(name = "", values = pointshapes) +
-  # scale_fill_manual(name = "", values = fillcolours) +
+  scale_linetype_manual(name = "", values = linetypes)  +
+  scale_colour_manual(name = "", values = linecolours, aesthetics = c("colour")) +
+  scale_shape_manual(name = "", values = pointshapes) +
+  scale_fill_manual(name = "", values = fillcolours) +
   theme(legend.key.width=unit(1,"line"))
 
-Acquisition_PerBin
+Acquisition_PerBin_Reinforcer
 
+
+Acquisition_PerBin_LP <- data_bin_long %>% 
+  ggplot(mapping = aes(x = as.factor(timebins), y = LPFreq, group = Stimulus, colour = Stimulus, fill = Stimulus, shape = Stimulus, linetype = Stimulus)) +
+  stat_summary_bin(fun.data = "mean_se", geom = "line", size = .5) +
+  stat_summary(fun.data = "mean_se", geom = "errorbar", width = 0.0, size = .3, linetype = 1, show.legend = FALSE) +
+  stat_summary_bin(fun.data = "mean_se", geom = "point", size = 2) +
+  facet_wrap(~Day, nrow = 1) +
+  # Make Pretty
+  scale_y_continuous( expand = expansion(mult = c(0, 0)), breaks=seq(-1000,1000,5)) +
+  ggtitle("Stage 1: Instrumental") + xlab("Bin 7.5 mins") + ylab("Total LP") +
+  theme_cowplot(11) +
+  theme(plot.title = element_text(hjust = 0.5)) +
+  theme(plot.title = element_text(size=10)) +
+  coord_cartesian(ylim = c(0,20.0001)) +
+  theme(axis.title.x=element_text(face = "bold")) +
+  scale_linetype_manual(name = "", values = linetypes)  +
+  scale_colour_manual(name = "", values = linecolours, aesthetics = c("colour")) +
+  scale_shape_manual(name = "", values = pointshapes) +
+  scale_fill_manual(name = "", values = fillcolours) +
+  theme(legend.key.width=unit(1,"line"))
+
+Acquisition_PerBin_LP
+
+
+# Save Stage 1 Data for analysis ------------------------------------------
+
+
+savefile <- "LPL_Stage1_sessionAvg.csv"
+write_csv(data_PerSession_long, here("figures", "figure_data",savefile))
+
+
+savefile <- "CI_Stage1_7_5minBins.csv"
+write_csv(data_bin_long, here("figures", "figure_data",savefile))
+
+
+
+# Stage 2: Pavlovian Acquisition ------------------------------------------
+
+# Load Data - Stage 1 ---------------------------------------------------------------
+
+folderpath <- here("rawdata","Marios","3_LeverPressingForLights","CombinedData")
+filename <- "LPL_Pavlovian_ProcessedData_pertrial_1sbins.csv"
+
+rawdata <- read_csv(here(folderpath,filename))
+
+# Fix Day factor to numeric
+rawdata <- rawdata %>% 
+  mutate(Day = as.numeric(str_remove(Day, "Day")))
+
+
+data_PerSession <- rawdata %>% 
+  group_by(Day, subject, outcome_ID, CS_name, Lever_name, Period) %>% 
+  summarise(MagEntries = mean(A3_freq)*5,
+            MagDuration = mean(A3_dur)*5) %>%
+  ungroup()
+
+data_PerSession_CSPre <- data_PerSession %>% 
+  pivot_wider(names_from = Period,values_from = c(MagEntries, MagDuration)) %>% 
+  mutate(MagEntries_CSPre = MagEntries_CS - MagEntries_Pre2,
+         MagDuration_CSPre = MagDuration_CS - MagDuration_Pre2) %>% 
+  pivot_longer(c(MagEntries_CS, MagEntries_Post1, MagEntries_Post2, MagEntries_Pre1,  MagEntries_Pre2, MagDuration_CS, MagDuration_Post1, MagDuration_Post2, MagDuration_Pre1, MagDuration_Pre2, MagEntries_CSPre, MagDuration_CSPre), names_to = c("Measure", "Period"), names_sep = "_", values_to = "Mag") %>% 
+  pivot_wider(names_from = Measure, values_from = Mag)
+
+
+#  Plots Stage 1 ----------------------------------------------------------
+
+## 5s Data
+### Frequency
+
+Acquisition_Stage2_MagFreq <- data_PerSession_CSPre %>% 
+  filter(Period == "CSPre") %>%
+  ggplot(mapping = aes(x = as.factor(Day-6), y = MagEntries, group = CS_name, colour = CS_name, fill = CS_name, shape = CS_name,linetype = CS_name)) +
+  stat_summary_bin(fun.data = "mean_se", geom = "line", size = .5) +
+  stat_summary(fun.data = "mean_se", geom = "errorbar", width = 0.0, size = .3, linetype = 1, show.legend = FALSE) +
+  stat_summary_bin(fun.data = "mean_se", geom = "point", size = 2) +
+  # Make Pretty
+  scale_y_continuous( expand = expansion(mult = c(0, 0)), breaks=seq(-100,100,1)) +
+  ggtitle("Stage 2: Pavlovian") + xlab("Day") + ylab("Magazine Entry 5s (CS-Pre)") +
+  theme_cowplot(11) +
+  theme(plot.title = element_text(hjust = 0.5)) +
+  theme(plot.title = element_text(size=10)) +
+  coord_cartesian(ylim = c(-1,2.0001)) +
+  theme(axis.title.x=element_text(face = "bold")) +
+  scale_linetype_manual(name = "", values = linetypes)  +
+  scale_colour_manual(name = "", values = linecolours, aesthetics = c("colour")) +
+  scale_shape_manual(name = "", values = pointshapes) +
+  scale_fill_manual(name = "", values = fillcolours) +
+  theme(legend.key.width=unit(1,"line"))
+
+LPL_Stage2_5s_Freq <- shift_xaxis(Acquisition_Stage2_MagFreq)
+
+LPL_Stage2_5s_Freq
+
+
+## 5s Data
+### Duration
+
+Acquisition_Stage2_MagDur <- data_PerSession_CSPre %>% 
+  filter(Period == "CSPre") %>%
+  ggplot(mapping = aes(x = as.factor(Day-6), y = MagDuration, group = CS_name, colour = CS_name, fill = CS_name, shape = CS_name,linetype = CS_name)) +
+  stat_summary_bin(fun.data = "mean_se", geom = "line", size = .5) +
+  stat_summary(fun.data = "mean_se", geom = "errorbar", width = 0.0, size = .3, linetype = 1, show.legend = FALSE) +
+  stat_summary_bin(fun.data = "mean_se", geom = "point", size = 2) +
+  # Make Pretty
+  scale_y_continuous( expand = expansion(mult = c(0, 0)), breaks=seq(-100,100,1)) +
+  ggtitle("Stage 2: Pavlovian") + xlab("Day") + ylab("Magazine Duration 5s (CS-Pre)") +
+  theme_cowplot(11) +
+  theme(plot.title = element_text(hjust = 0.5)) +
+  theme(plot.title = element_text(size=10)) +
+  coord_cartesian(ylim = c(-1,2.0001)) +
+  theme(axis.title.x=element_text(face = "bold")) +
+  scale_linetype_manual(name = "", values = linetypes)  +
+  scale_colour_manual(name = "", values = linecolours, aesthetics = c("colour")) +
+  scale_shape_manual(name = "", values = pointshapes) +
+  scale_fill_manual(name = "", values = fillcolours) +
+  theme(legend.key.width=unit(1,"line"))
+
+LPL_Stage2_5s_Dur <- shift_xaxis(Acquisition_Stage2_MagDur)
+
+LPL_Stage2_5s_Dur
+
+# Plots by corresponding instrumental lever
+
+## 5s Data
+### Frequency
+
+Acquisition_Stage2_MagFreq_leverID <- data_PerSession_CSPre %>% 
+  filter(Period == "CSPre") %>%
+  ggplot(mapping = aes(x = as.factor(Day-6), y = MagEntries, group = Lever_name, colour = Lever_name, fill = Lever_name, shape = Lever_name,linetype = Lever_name)) +
+  stat_summary_bin(fun.data = "mean_se", geom = "line", size = .5) +
+  stat_summary(fun.data = "mean_se", geom = "errorbar", width = 0.0, size = .3, linetype = 1, show.legend = FALSE) +
+  stat_summary_bin(fun.data = "mean_se", geom = "point", size = 2) +
+  # Make Pretty
+  scale_y_continuous( expand = expansion(mult = c(0, 0)), breaks=seq(-100,100,1)) +
+  ggtitle("Stage 2: Pavlovian") + xlab("Day") + ylab("Magazine Entry 5s (CS-Pre)") +
+  theme_cowplot(11) +
+  theme(plot.title = element_text(hjust = 0.5)) +
+  theme(plot.title = element_text(size=10)) +
+  coord_cartesian(ylim = c(-1,2.0001)) +
+  theme(axis.title.x=element_text(face = "bold")) +
+  scale_linetype_manual(name = "", values = linetypes)  +
+  scale_colour_manual(name = "", values = linecolours, aesthetics = c("colour")) +
+  scale_shape_manual(name = "", values = pointshapes) +
+  scale_fill_manual(name = "", values = fillcolours) +
+  theme(legend.key.width=unit(1,"line"))
+
+LPL_Stage2_5s_Freq_leverID <- shift_xaxis(Acquisition_Stage2_MagFreq_leverID)
+
+LPL_Stage2_5s_Freq_leverID
+
+
+## 5s Data
+### Duration
+
+Acquisition_Stage2_MagDur_leverID <- data_PerSession_CSPre %>% 
+  filter(Period == "CSPre") %>%
+  ggplot(mapping = aes(x = as.factor(Day-6), y = MagDuration, group = Lever_name, colour = Lever_name, fill = Lever_name, shape = Lever_name,linetype = Lever_name)) +
+  stat_summary_bin(fun.data = "mean_se", geom = "line", size = .5) +
+  stat_summary(fun.data = "mean_se", geom = "errorbar", width = 0.0, size = .3, linetype = 1, show.legend = FALSE) +
+  stat_summary_bin(fun.data = "mean_se", geom = "point", size = 2) +
+  # Make Pretty
+  scale_y_continuous( expand = expansion(mult = c(0, 0)), breaks=seq(-100,100,1)) +
+  ggtitle("Stage 2: Pavlovian") + xlab("Day") + ylab("Magazine Entry 5s (CS-Pre)") +
+  theme_cowplot(11) +
+  theme(plot.title = element_text(hjust = 0.5)) +
+  theme(plot.title = element_text(size=10)) +
+  coord_cartesian(ylim = c(-1,2.0001)) +
+  theme(axis.title.x=element_text(face = "bold")) +
+  scale_linetype_manual(name = "", values = linetypes)  +
+  scale_colour_manual(name = "", values = linecolours, aesthetics = c("colour")) +
+  scale_shape_manual(name = "", values = pointshapes) +
+  scale_fill_manual(name = "", values = fillcolours) +
+  theme(legend.key.width=unit(1,"line"))
+
+LPL_Stage2_5s_Dur_leverID <- shift_xaxis(Acquisition_Stage2_MagDur_leverID)
+
+LPL_Stage2_5s_Dur_leverID
+
+# Plots by Outcome Identity
+
+## 5s Data
+### Frequency
+
+Acquisition_Stage2_MagFreq_OutcomeID <- data_PerSession_CSPre %>% 
+  filter(Period == "CSPre") %>%
+  ggplot(mapping = aes(x = as.factor(Day-6), y = MagEntries, group = outcome_ID, colour = outcome_ID, fill = outcome_ID, shape = outcome_ID,linetype = outcome_ID)) +
+  stat_summary_bin(fun.data = "mean_se", geom = "line", size = .5) +
+  stat_summary(fun.data = "mean_se", geom = "errorbar", width = 0.0, size = .3, linetype = 1, show.legend = FALSE) +
+  stat_summary_bin(fun.data = "mean_se", geom = "point", size = 2) +
+  # Make Pretty
+  scale_y_continuous( expand = expansion(mult = c(0, 0)), breaks=seq(-100,100,1)) +
+  ggtitle("Stage 2: Pavlovian") + xlab("Day") + ylab("Magazine Entry 5s (CS-Pre)") +
+  theme_cowplot(11) +
+  theme(plot.title = element_text(hjust = 0.5)) +
+  theme(plot.title = element_text(size=10)) +
+  coord_cartesian(ylim = c(-1,2.0001)) +
+  theme(axis.title.x=element_text(face = "bold")) +
+  scale_linetype_manual(name = "", values = linetypes)  +
+  scale_colour_manual(name = "", values = linecolours, aesthetics = c("colour")) +
+  scale_shape_manual(name = "", values = pointshapes) +
+  scale_fill_manual(name = "", values = fillcolours) +
+  theme(legend.key.width=unit(1,"line"))
+
+LPL_Stage2_5s_Freq_OutcomeID <- shift_xaxis(Acquisition_Stage2_MagFreq_OutcomeID)
+
+LPL_Stage2_5s_Freq_OutcomeID
+
+
+## 5s Data
+### Duration
+
+Acquisition_Stage2_MagDur_OutcomeID <- data_PerSession_CSPre %>% 
+  filter(Period == "CSPre") %>%
+  ggplot(mapping = aes(x = as.factor(Day-6), y = MagDuration, group = outcome_ID, colour = outcome_ID, fill = outcome_ID, shape = outcome_ID,linetype = outcome_ID)) +
+  stat_summary_bin(fun.data = "mean_se", geom = "line", size = .5) +
+  stat_summary(fun.data = "mean_se", geom = "errorbar", width = 0.0, size = .3, linetype = 1, show.legend = FALSE) +
+  stat_summary_bin(fun.data = "mean_se", geom = "point", size = 2) +
+  # Make Pretty
+  scale_y_continuous( expand = expansion(mult = c(0, 0)), breaks=seq(-100,100,1)) +
+  ggtitle("Stage 2: Pavlovian") + xlab("Day") + ylab("Magazine Entry 5s (CS-Pre)") +
+  theme_cowplot(11) +
+  theme(plot.title = element_text(hjust = 0.5)) +
+  theme(plot.title = element_text(size=10)) +
+  coord_cartesian(ylim = c(-1,2.0001)) +
+  theme(axis.title.x=element_text(face = "bold")) +
+  scale_linetype_manual(name = "", values = linetypes)  +
+  scale_colour_manual(name = "", values = linecolours, aesthetics = c("colour")) +
+  scale_shape_manual(name = "", values = pointshapes) +
+  scale_fill_manual(name = "", values = fillcolours) +
+  theme(legend.key.width=unit(1,"line"))
+
+LPL_Stage2_5s_Dur_OutcomeID <- shift_xaxis(Acquisition_Stage2_MagDur_OutcomeID)
+
+LPL_Stage2_5s_Dur_OutcomeID
+
+
+# Save Stage 2 Data for analysis ------------------------------------------
+
+savefile <- "LPL_Stage2_CSPre.csv"
+write_csv(data_PerSession_CSPre, here("figures", "figure_data",savefile))
+
+# Combined Figure Panels ---------------------------------------------------
+
+# Acquisition_PerSession_Reinforcer
+# Acquisition_PerSession_LP
+# Acquisition_PerBin_Reinforcer
+# Acquisition_PerBin_LP
+# 
+# LPL_Stage2_5s_Freq
+# LPL_Stage2_5s_Dur
+# LPL_Stage2_5s_Freq_leverID
+# LPL_Stage2_5s_Dur_leverID
+# LPL_Stage2_5s_Freq_OutcomeID
+# LPL_Stage2_5s_Dur_OutcomeID
+
+
+## Instrumental
+A <- Acquisition_PerBin_LP + theme(legend.position= c(0.80,.75), 
+                                legend.justification='left',
+                                legend.direction='vertical')
+
+C <- Acquisition_PerBin_Reinforcer + theme(legend.position= c(0.80,.75), 
+                                legend.justification='left',
+                                legend.direction='vertical', 
+                                )
+
+B <- LPL_Stage2_5s_Freq + theme(legend.position= c(0.05,.85), 
+                                legend.justification='left',
+                                legend.direction='vertical', 
+                                )
+
+D <- LPL_Stage2_5s_Dur + theme(legend.position= c(0.05,.85), 
+                                legend.justification='left',
+                                legend.direction='vertical', 
+                                )
+
+LPL_Combined_Acquisition <- (A + B + C +D) + plot_annotation(tag_levels = 'A') + plot_layout(ncol = 2, nrow = 2, widths = c(1.2, .5, 1.2, .5))
+LPL_Combined_Acquisition
+
+
+filename = here("figures", "LPL_Combined_Acquisition.png")
+ggsave(filename, LPL_Combined_Acquisition, width = 210, height = 150, units = "mm", dpi = 1200)
 

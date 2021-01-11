@@ -83,10 +83,7 @@ diamond           = 23
 triangleUp        = 24
 triangleDown      = 25
 
-c("A++--" = DarkRed,
-  "B+-" = MediumRed,
-  "C++" = DarkBlue,
-  "D+" = MediumBlue)
+
 
 fillcolours <- c("A++--" = DarkRed,
                  "B+-" = LightRed,

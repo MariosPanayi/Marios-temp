@@ -95,7 +95,13 @@ fillcolours <- c("A_O1" = DarkRed,
                  "CY_" = MediumRed,
                  "DX_" = MediumBlue,
                  "CXDY" = White,
-                 "CYDX" = Black)
+                 "CYDX" = Black,
+                 "X_O1" = White,
+                 "X_O2" = Black,
+                 "Y_O1" = DarkGrey,
+                 "Y_O2" = LightGrey,
+                 "Congruent" = White,
+                 "Incongruent" = Black)
 
 linecolours <- c("A_O1" = DarkRed,
                  "B_O2" = DarkBlue, 
@@ -108,7 +114,13 @@ linecolours <- c("A_O1" = DarkRed,
                  "CY_" = LightRed,
                  "DX_" = LightBlue,
                  "CXDY" = Black,
-                 "CYDX" = Black)
+                 "CYDX" = Black,
+                 "X_O1" = DarkRed,
+                 "X_O2" = DarkRed,
+                 "Y_O1" = DarkBlue,
+                 "Y_O2" = DarkBlue,
+                 "Congruent" = Black,
+                 "Incongruent" = Black)
 
 
 linetypes <- c("A_O1" = "solid",
@@ -122,7 +134,13 @@ linetypes <- c("A_O1" = "solid",
                "CY_" = "solid",
                "DX_" = "solid",
                "CXDY" = "dotted",
-               "CYDX" = "solid")
+               "CYDX" = "solid",
+               "X_O1" = "dotted",
+               "X_O2" = "solid",
+               "Y_O1" = "solid",
+               "Y_O2" = "dotted",
+               "Congruent" = "dotted",
+               "Incongruent" = "solid")
 
 
 pointshapes <- c("A_O1" = square,
@@ -136,7 +154,13 @@ pointshapes <- c("A_O1" = square,
                  "CY_" = square,
                  "DX_" = circle,
                  "CXDY" = triangleUp,
-                 "CYDX" = square)
+                 "CYDX" = square,
+                 "X_O1" = triangleDown,
+                 "X_O2" = triangleUp,
+                 "Y_O1" = triangleUp,
+                 "Y_O2" = triangleDown,
+                 "Congruent" = triangleDown,
+                 "Incongruent" = triangleUp)
 
 
 # Load Data - Stage 1 ---------------------------------------------------------------
@@ -1671,9 +1695,290 @@ write_csv(data_PerSession_last5s_CSPre, here("figures", "figure_data", savefile)
   
   
   
+  # Load Data - Stage 5 ---------------------------------------------------------------
+  
+  folderpath <- here("rawdata","Marios","1_SpecificCI","CombinedData")
+  filename <- "CI_Stage5_ProcessedData_pertrial_1sbins.csv"
+  
+  rawdata <- read_csv(here(folderpath,filename))
+  
+  # Fix Day factor to numeric
+  rawdata <- rawdata %>% 
+    mutate(Day = as.numeric(str_remove(Day, "Day")))
+  
+  # Add new factors to represent predicted outcome identity and Cue pairs
+  
+  CS_name <- c("X_O1",
+               "Y_O2",
+               "Y_O1",
+               "X_O2")
+  
+  Outcome <- c("O1",
+               "O2",
+               "O1",
+               "O2")
+  CSPair <- c("Congruent",
+              "Congruent",
+              "Incongruent",
+              "Incongruent")
+  
+  newfactorlookup <- data.frame(CS_name, Outcome, CSPair)
+  rawdata <- left_join(rawdata, newfactorlookup, by = "CS_name")
+  
+  data_PerSession <- rawdata %>% 
+    group_by(Day, subject, Outcome, CSPair, CS_name, Period) %>% 
+    summarise(MagEntries = mean(A3_freq)*10,
+              MagDuration = mean(A3_dur)*10) %>%
+    ungroup()
+  
+  data_PerSession_CSPre <- data_PerSession %>% 
+    pivot_wider(names_from = Period,values_from = c(MagEntries, MagDuration)) %>% 
+    mutate(MagEntries_CSPre = MagEntries_CS - MagEntries_Pre,
+           MagDuration_CSPre = MagDuration_CS - MagDuration_Pre) %>% 
+    pivot_longer(c(MagEntries_CS, MagEntries_Post, MagEntries_Pre, MagDuration_CS, MagDuration_Post, MagDuration_Pre, MagEntries_CSPre, MagDuration_CSPre), names_to = c("Measure", "Period"), names_sep = "_", values_to = "Mag") %>% 
+    pivot_wider(names_from = Measure, values_from = Mag)
   
   
+  data_PerSession_last5s <- rawdata %>% 
+    filter(bin_timewithin > 5) %>% 
+    group_by(Day, subject, Outcome, CSPair, CS_name, Period) %>% 
+    summarise(MagEntries = mean(A3_freq)*5,
+              MagDuration = mean(A3_dur)*5) %>%
+    ungroup()
   
+  
+  data_PerSession_last5s_CSPre <- data_PerSession_last5s %>% 
+    pivot_wider(names_from = Period,values_from = c(MagEntries, MagDuration)) %>% 
+    mutate(MagEntries_CSPre = MagEntries_CS - MagEntries_Pre,
+           MagDuration_CSPre = MagDuration_CS - MagDuration_Pre) %>% 
+    pivot_longer(c(MagEntries_CS, MagEntries_Post, MagEntries_Pre, MagDuration_CS, MagDuration_Post, MagDuration_Pre, MagEntries_CSPre, MagDuration_CSPre), names_to = c("Measure", "Period"), names_sep = "_", values_to = "Mag") %>% 
+    pivot_wider(names_from = Measure, values_from = Mag)
+  
+  
+  #  Plots Stage 5 ----------------------------------------------------------
+  
+  ## 10s Data
+  ### Frequency
+  
+  Acqsuisition_Stage5_MagFreq <- data_PerSession_CSPre %>% 
+    filter(Period == "CSPre") %>%
+    ggplot(mapping = aes(x = as.factor(Day), y = MagEntries, group = CS_name, colour = CS_name, fill = CS_name, shape = CS_name,linetype = CS_name)) +
+    stat_summary_bin(fun.data = "mean_se", geom = "line", size = .5) +
+    stat_summary(fun.data = "mean_se", geom = "errorbar", width = 0.0, size = .3, linetype = 1, show.legend = FALSE) +
+    stat_summary_bin(fun.data = "mean_se", geom = "point", size = 2) +
+    # Make Pretty
+    scale_y_continuous( expand = expansion(mult = c(0, 0)), breaks=seq(-100,100,1)) +
+    ggtitle("Stage 3") + xlab("Day") + ylab("Magazine Entry 10s (CS-Pre)") +
+    theme_cowplot(11) +
+    theme(plot.title = element_text(hjust = 0.5)) +
+    theme(plot.title = element_text(size=10)) +
+    coord_cartesian(ylim = c(-1,2.0001)) +
+    theme(axis.title.x=element_text(face = "bold")) +
+    scale_linetype_manual(name = "", values = linetypes)  +
+    scale_colour_manual(name = "", values = linecolours, aesthetics = c("colour")) +
+    scale_shape_manual(name = "", values = pointshapes) +
+    scale_fill_manual(name = "", values = fillcolours) +
+    theme(legend.key.width=unit(1,"line"))
+  
+  CI_Stage5_10s_Freq <- shift_xaxis(Acqsuisition_Stage5_MagFreq)
+  
+  ## 10s Data
+  ### Duration
+  
+  Acqsuisition_Stage5_MagDur <- data_PerSession_CSPre %>% 
+    filter(Period == "CSPre") %>%
+    ggplot(mapping = aes(x = as.factor(Day), y = MagDuration, group = CS_name, colour = CS_name, fill = CS_name, shape = CS_name,linetype = CS_name)) +
+    stat_summary_bin(fun.data = "mean_se", geom = "line", size = .5) +
+    stat_summary(fun.data = "mean_se", geom = "errorbar", width = 0.0, size = .3, linetype = 1, show.legend = FALSE) +
+    stat_summary_bin(fun.data = "mean_se", geom = "point", size = 2) +
+    # Make Pretty
+    scale_y_continuous( expand = expansion(mult = c(0, 0)), breaks=seq(-100,100,1)) +
+    ggtitle("Stage 3") + xlab("Day") + ylab("Magazine Duration 10s (CS-Pre)") +
+    theme_cowplot(11) +
+    theme(plot.title = element_text(hjust = 0.5)) +
+    theme(plot.title = element_text(size=10)) +
+    coord_cartesian(ylim = c(-1,2.0001)) +
+    theme(axis.title.x=element_text(face = "bold")) +
+    scale_linetype_manual(name = "", values = linetypes)  +
+    scale_colour_manual(name = "", values = linecolours, aesthetics = c("colour")) +
+    scale_shape_manual(name = "", values = pointshapes) +
+    scale_fill_manual(name = "", values = fillcolours) +
+    theme(legend.key.width=unit(1,"line"))
+  
+  CI_Stage5_10s_Dur <- shift_xaxis(Acqsuisition_Stage5_MagDur)
+  
+  
+  ## 5s Data
+  ### Frequency
+  
+  Acqsuisition_Stage5_MagFreq_5s <- data_PerSession_last5s_CSPre %>% 
+    filter(Period == "CSPre") %>%
+    ggplot(mapping = aes(x = as.factor(Day), y = MagEntries, group = CS_name, colour = CS_name, fill = CS_name, shape = CS_name,linetype = CS_name)) +
+    stat_summary_bin(fun.data = "mean_se", geom = "line", size = .5) +
+    stat_summary(fun.data = "mean_se", geom = "errorbar", width = 0.0, size = .3, linetype = 1, show.legend = FALSE) +
+    stat_summary_bin(fun.data = "mean_se", geom = "point", size = 2) +
+    # Make Pretty
+    scale_y_continuous( expand = expansion(mult = c(0, 0)), breaks=seq(-100,100,1)) +
+    ggtitle("Stage 3") + xlab("Day") + ylab("Magazine Entry 5s (CS-Pre)") +
+    theme_cowplot(11) +
+    theme(plot.title = element_text(hjust = 0.5)) +
+    theme(plot.title = element_text(size=10)) +
+    coord_cartesian(ylim = c(-1,2.0001)) +
+    theme(axis.title.x=element_text(face = "bold")) +
+    scale_linetype_manual(name = "", values = linetypes)  +
+    scale_colour_manual(name = "", values = linecolours, aesthetics = c("colour")) +
+    scale_shape_manual(name = "", values = pointshapes) +
+    scale_fill_manual(name = "", values = fillcolours) +
+    theme(legend.key.width=unit(1,"line"))
+  
+  CI_Stage5_5s_Freq <- shift_xaxis(Acqsuisition_Stage5_MagFreq_5s)
+  
+  ## 5s Data
+  ### Duration
+  
+  Acqsuisition_Stage5_MagDur_5s <- data_PerSession_last5s_CSPre %>% 
+    filter(Period == "CSPre") %>%
+    ggplot(mapping = aes(x = as.factor(Day), y = MagDuration, group = CS_name, colour = CS_name, fill = CS_name, shape = CS_name,linetype = CS_name)) +
+    stat_summary_bin(fun.data = "mean_se", geom = "line", size = .5) +
+    stat_summary(fun.data = "mean_se", geom = "errorbar", width = 0.0, size = .3, linetype = 1, show.legend = FALSE) +
+    stat_summary_bin(fun.data = "mean_se", geom = "point", size = 2) +
+    # Make Pretty
+    scale_y_continuous( expand = expansion(mult = c(0, 0)), breaks=seq(-100,100,1)) +
+    ggtitle("Stage 3") + xlab("Day") + ylab("Magazine Duration 5s (CS-Pre)") +
+    theme_cowplot(11) +
+    theme(plot.title = element_text(hjust = 0.5)) +
+    theme(plot.title = element_text(size=10)) +
+    coord_cartesian(ylim = c(-1,2.0001)) +
+    theme(axis.title.x=element_text(face = "bold")) +
+    scale_linetype_manual(name = "", values = linetypes)  +
+    scale_colour_manual(name = "", values = linecolours, aesthetics = c("colour")) +
+    scale_shape_manual(name = "", values = pointshapes) +
+    scale_fill_manual(name = "", values = fillcolours) +
+    theme(legend.key.width=unit(1,"line"))
+  
+  CI_Stage5_5s_Dur <- shift_xaxis(Acqsuisition_Stage5_MagDur_5s)
+  
+  
+
+# Retardation Combined Conditions ----------------------------------------------------
+
+    
+    ## 10s Data
+    ### Frequency
+    
+    Acqsuisition_Stage5_MagFreq_combined <- data_PerSession_CSPre %>% 
+    filter(Period == "CSPre") %>% 
+    group_by(Day, subject, CSPair, Period) %>% 
+    summarise(MagEntries = mean(MagEntries),
+              MagDuration = mean(MagDuration)) %>%
+    ungroup() %>%
+    ggplot(mapping = aes(x = as.factor(Day), y = MagEntries, group = CSPair, colour = CSPair, fill = CSPair, shape = CSPair,linetype = CSPair)) +
+    stat_summary_bin(fun.data = "mean_se", geom = "line", size = .5) +
+    stat_summary(fun.data = "mean_se", geom = "errorbar", width = 0.0, size = .3, linetype = 1, show.legend = FALSE) +
+    stat_summary_bin(fun.data = "mean_se", geom = "point", size = 2) +
+    # Make Pretty
+    scale_y_continuous( expand = expansion(mult = c(0, 0)), breaks=seq(-100,100,1)) +
+    ggtitle("Stage 3") + xlab("Day") + ylab("Magazine Entry 10s (CS-Pre)") +
+    theme_cowplot(11) +
+    theme(plot.title = element_text(hjust = 0.5)) +
+    theme(plot.title = element_text(size=10)) +
+    coord_cartesian(ylim = c(-1,2.0001)) +
+    theme(axis.title.x=element_text(face = "bold")) +
+    scale_linetype_manual(name = "", values = linetypes)  +
+    scale_colour_manual(name = "", values = linecolours, aesthetics = c("colour")) +
+    scale_shape_manual(name = "", values = pointshapes) +
+    scale_fill_manual(name = "", values = fillcolours) +
+    theme(legend.key.width=unit(1,"line"))
+  
+  CI_Stage5_10s_Freq_combined <- shift_xaxis(Acqsuisition_Stage5_MagFreq_combined)
+  
+  ## 10s Data
+  ### Duration
+  
+  Acqsuisition_Stage5_MagDur_combined <- data_PerSession_CSPre %>% 
+    filter(Period == "CSPre") %>% 
+    group_by(Day, subject, CSPair, Period) %>% 
+    summarise(MagEntries = mean(MagEntries),
+              MagDuration = mean(MagDuration)) %>%
+    ungroup() %>%
+    ggplot(mapping = aes(x = as.factor(Day), y = MagDuration, group = CSPair, colour = CSPair, fill = CSPair, shape = CSPair,linetype = CSPair)) +
+    stat_summary_bin(fun.data = "mean_se", geom = "line", size = .5) +
+    stat_summary(fun.data = "mean_se", geom = "errorbar", width = 0.0, size = .3, linetype = 1, show.legend = FALSE) +
+    stat_summary_bin(fun.data = "mean_se", geom = "point", size = 2) +
+    # Make Pretty
+    scale_y_continuous( expand = expansion(mult = c(0, 0)), breaks=seq(-100,100,1)) +
+    ggtitle("Stage 3") + xlab("Day") + ylab("Magazine Entry 10s (CS-Pre)") +
+    theme_cowplot(11) +
+    theme(plot.title = element_text(hjust = 0.5)) +
+    theme(plot.title = element_text(size=10)) +
+    coord_cartesian(ylim = c(-1,2.0001)) +
+    theme(axis.title.x=element_text(face = "bold")) +
+    scale_linetype_manual(name = "", values = linetypes)  +
+    scale_colour_manual(name = "", values = linecolours, aesthetics = c("colour")) +
+    scale_shape_manual(name = "", values = pointshapes) +
+    scale_fill_manual(name = "", values = fillcolours) +
+    theme(legend.key.width=unit(1,"line"))
+  
+  CI_Stage5_10s_Dur_combined <- shift_xaxis(Acqsuisition_Stage5_MagDur_combined)
+  
+  
+    ## 5s Data
+    ### Frequency
+    
+    Acqsuisition_Stage5_MagFreq_combined_5s <- data_PerSession_last5s_CSPre %>% 
+    filter(Period == "CSPre") %>% 
+    group_by(Day, subject, CSPair, Period) %>% 
+    summarise(MagEntries = mean(MagEntries),
+              MagDuration = mean(MagDuration)) %>%
+    ungroup() %>%
+    ggplot(mapping = aes(x = as.factor(Day), y = MagEntries, group = CSPair, colour = CSPair, fill = CSPair, shape = CSPair,linetype = CSPair)) +
+    stat_summary_bin(fun.data = "mean_se", geom = "line", size = .5) +
+    stat_summary(fun.data = "mean_se", geom = "errorbar", width = 0.0, size = .3, linetype = 1, show.legend = FALSE) +
+    stat_summary_bin(fun.data = "mean_se", geom = "point", size = 2) +
+    # Make Pretty
+    scale_y_continuous( expand = expansion(mult = c(0, 0)), breaks=seq(-100,100,1)) +
+    ggtitle("Stage 3") + xlab("Day") + ylab("Magazine Entry 10s (CS-Pre)") +
+    theme_cowplot(11) +
+    theme(plot.title = element_text(hjust = 0.5)) +
+    theme(plot.title = element_text(size=10)) +
+    coord_cartesian(ylim = c(-1,2.0001)) +
+    theme(axis.title.x=element_text(face = "bold")) +
+    scale_linetype_manual(name = "", values = linetypes)  +
+    scale_colour_manual(name = "", values = linecolours, aesthetics = c("colour")) +
+    scale_shape_manual(name = "", values = pointshapes) +
+    scale_fill_manual(name = "", values = fillcolours) +
+    theme(legend.key.width=unit(1,"line"))
+  
+  CI_Stage5_10s_Freq_combined_5s <- shift_xaxis(Acqsuisition_Stage5_MagFreq_combined_5s)
+  
+  ## 5s Data
+  ### Duration
+  
+  Acqsuisition_Stage5_MagDur_combined_5s <- data_PerSession_last5s_CSPre %>% 
+    filter(Period == "CSPre") %>% 
+    group_by(Day, subject, CSPair, Period) %>% 
+    summarise(MagEntries = mean(MagEntries),
+              MagDuration = mean(MagDuration)) %>%
+    ungroup() %>%
+    ggplot(mapping = aes(x = as.factor(Day), y = MagDuration, group = CSPair, colour = CSPair, fill = CSPair, shape = CSPair,linetype = CSPair)) +
+    stat_summary_bin(fun.data = "mean_se", geom = "line", size = .5) +
+    stat_summary(fun.data = "mean_se", geom = "errorbar", width = 0.0, size = .3, linetype = 1, show.legend = FALSE) +
+    stat_summary_bin(fun.data = "mean_se", geom = "point", size = 2) +
+    # Make Pretty
+    scale_y_continuous( expand = expansion(mult = c(0, 0)), breaks=seq(-100,100,1)) +
+    ggtitle("Stage 3") + xlab("Day") + ylab("Magazine Entry 10s (CS-Pre)") +
+    theme_cowplot(11) +
+    theme(plot.title = element_text(hjust = 0.5)) +
+    theme(plot.title = element_text(size=10)) +
+    coord_cartesian(ylim = c(-1,2.0001)) +
+    theme(axis.title.x=element_text(face = "bold")) +
+    scale_linetype_manual(name = "", values = linetypes)  +
+    scale_colour_manual(name = "", values = linecolours, aesthetics = c("colour")) +
+    scale_shape_manual(name = "", values = pointshapes) +
+    scale_fill_manual(name = "", values = fillcolours) +
+    theme(legend.key.width=unit(1,"line"))
+  
+  CI_Stage5_10s_Dur_combined_5s <- shift_xaxis(Acqsuisition_Stage5_MagDur_combined_5s)
   
   
   # Combined Figure Panels ---------------------------------------------------

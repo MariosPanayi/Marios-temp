@@ -145,11 +145,25 @@ subject <- c("17____",
                         "A",
                         "B",
                         "B")
+  
+  sex <- c("F",
+           "F",
+           "F",
+           "F",
+           "F",
+           "F",
+           "M",
+           "M",
+           "M",
+           "F",
+           "F",
+           "F")
+  
 
   
   
   # Create counterbalancing lookup table
-lookup_counterbalancing <- data.frame(subject, counterbalancing)
+lookup_counterbalancing <- data.frame(subject, counterbalancing, sex)
   # Combine with rawdata
 rawdata <- left_join(rawdata, lookup_counterbalancing, by = "subject")
 
@@ -169,6 +183,55 @@ Steady_levercbx <-  c("Right",
 lookup_counterbalancing <- data.frame(counterbalancing, FLash_leverCbx, Steady_levercbx)
 # Combine with rawdata
 rawdata <- left_join(rawdata, lookup_counterbalancing, by = "counterbalancing")
+
+
+## Added later for completeness
+
+subject <- c("17____",
+             "18____",
+             "19____",
+             "20____",
+             "21____",
+             "22____",
+             "23____",
+             "24____",
+             "25____",
+             "42____",
+             "43____",
+             "44____")
+
+Instrumental_cbx <- c("A",
+                      "B",
+                      "A",
+                      "B",
+                      "A",
+                      "B",
+                      "A",
+                      "B",
+                      "B",
+                      "A",
+                      "B",
+                      "A")
+
+
+Pavlovian_cbx <- c("X",
+                  "X",
+                  "Y",
+                  "Y",
+                  "X",
+                  "X",
+                  "X",
+                  "Y",
+                  "Y",
+                  "Y",
+                  "Y",
+                  "X")
+
+# Create counterbalancing lookup table
+lookup_counterbalancing <- data.frame(subject, Instrumental_cbx, Pavlovian_cbx)
+# Combine with rawdata
+rawdata <- left_join(rawdata, lookup_counterbalancing, by = "subject")
+
 
 # Calculate Session/Day number --------------------------------------------
 

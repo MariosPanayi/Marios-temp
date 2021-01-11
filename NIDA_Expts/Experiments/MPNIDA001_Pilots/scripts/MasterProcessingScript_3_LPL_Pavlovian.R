@@ -23,7 +23,8 @@ listofdatafolders <- c("LPL_Pavlovian_Acquisition_Day7",
                        "LPL_Pavlovian_Acquisition_Day8",
                        "LPL_Pavlovian_Acquisition_Day9",
                        "LPL_Pavlovian_Acquisition_Day10",
-                       "LPL_Pavlovian_Acquisition_Day11")
+                       "LPL_Pavlovian_Acquisition_Day11",
+                       "LPL_Pavlovian_Acquisition_Day12")
 
 
 #  extract data filenames, only .txt --------------------------------------
@@ -151,21 +152,35 @@ subject <- c("17____",
                       "X",
                       "Y",
                       "Y")
-  sex <- c("F",
-             "F",
-             "F",
-             "F",
-             "F",
-             "F",
-             "M",
-             "M",
-             "M",
-             "F",
-             "F",
-             "F")
+  
+  sex <- c("Female",
+             "Female",
+             "Female",
+             "Female",
+             "Female",
+             "Female",
+             "Male",
+             "Male",
+             "Male",
+             "Female",
+             "Female",
+             "Female")
+  
+  instrumentalcbx <- c("A",
+                        "B",
+                        "A",
+                        "B",
+                        "A",
+                        "B",
+                        "A",
+                        "B",
+                        "A",
+                        "A",
+                        "B",
+                        "B")
   
   # Create counterbalancing lookup table
-lookup_counterbalancing <- data.frame(subject, counterbalancing, sex)
+lookup_counterbalancing <- data.frame(subject, counterbalancing, sex, instrumentalcbx)
   # Combine with rawdata
 rawdata <- left_join(rawdata, lookup_counterbalancing, by = "subject")
 
@@ -204,70 +219,75 @@ lookup_stateIDs <- data.frame(bin_state, Period, state_ID)
 # COmbine with rawdata
 rawdata <- left_join(rawdata, lookup_stateIDs, by =c("bin_state"))
 
-# ### 
-# CS_name <- c("A++--",
-#              "B+-",
-#              "C++",
-#              "D+",
-#              "B+-",
-#              "C++",
-#              "D+",
-#              "A++--",
-#              "C++",
-#              "D+",
-#              "A++--",
-#              "B+-",
-#              "D+",
-#              "A++--",
-#              "B+-",
-#              "C++")
-# 
-# state_ID <- c("Click",
-#               "Noise",
-#               "Tone",
-#               "Siren",
-#               "Click",
-#               "Noise",
-#               "Tone",
-#               "Siren",
-#               "Click",
-#               "Noise",
-#               "Tone",
-#               "Siren",
-#               "Click",
-#               "Noise",
-#               "Tone",
-#               "Siren")
-# 
-# counterbalancing<- c("A",
-#                      "A",
-#                      "A",
-#                      "A",
-#                      "B",
-#                      "B",
-#                      "B",
-#                      "B",
-#                      "C",
-#                      "C",
-#                      "C",
-#                      "C",
-#                      "D",
-#                      "D",
-#                      "D",
-#                      "D")
-# 
-# # Create counterbalancing lookup table
-# lookup_CSname <- data.frame(counterbalancing, state_ID, CS_name)
-# # Combine with rawdata
-# rawdata <- left_join(rawdata, lookup_CSname, by = c("counterbalancing","state_ID"))
-# 
-# 
-# # Not the most satisfying solution, but will have to do since other methods don't appear to be working very well
-# rawdata <- rawdata %>% 
-#   group_by(subject, session, bin_trial) %>% 
-#   mutate(CS_name = unique(CS_name[Period == "CS"])[1]) %>% 
-#   ungroup()
-# 
+###
+CS_name <- c("Flash",
+             "Steady",
+             "Flash",
+             "Steady",
+             "Flash",
+             "Steady",
+             "Flash",
+             "Steady")
+
+Lever_name <- c("Left",
+             "Right",
+             "Left",
+             "Right",
+             "Right",
+             "Left",
+             "Right",
+             "Left")
+
+state_ID <- c("Flash",
+              "Steady",
+              "Flash",
+              "Steady",
+              "Flash",
+              "Steady",
+              "Flash",
+              "Steady")
+
+outcome_ID <- c("Banana",
+              "Chocolate",
+              "Chocolate",
+              "Banana",
+              "Banana",
+              "Chocolate",
+              "Chocolate",
+              "Banana")
+
+instrumentalcbx <- c("A",
+                     "A",
+                     "A",
+                     "A",
+                     "B",
+                     "B",
+                     "B",
+                     "B")
+
+counterbalancing<- c("X",
+                     "X",
+                     "Y",
+                     "Y",
+                     "X",
+                     "X",
+                     "Y",
+                     "Y")
+
+# Create counterbalancing lookup table
+lookup_CSname <- data.frame(counterbalancing, state_ID, CS_name, instrumentalcbx,Lever_name, outcome_ID)
+# Combine with rawdata
+rawdata <- left_join(rawdata, lookup_CSname, by = c("counterbalancing","instrumentalcbx","state_ID"))
+
+
+# Not the most satisfying solution, but will have to do since other methods don't appear to be working very well
+rawdata <- rawdata %>%
+  group_by(subject, session, bin_trial) %>%
+  mutate(CS_name = unique(CS_name[Period == "CS"])[1],
+         outcome_ID = unique(outcome_ID[Period == "CS"])[1],
+         Lever_name = unique(Lever_name[Period == "CS"])[1]) %>%
+  ungroup()
+
 
 # Calculate Session/Day number --------------------------------------------
 
