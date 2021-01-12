@@ -349,16 +349,16 @@ CI_Stage1_5s_Dur <- shift_xaxis(Acqsuisition_Stage1_MagDur_5s)
 # CI_Stage1_5s_Freq
 # CI_Stage1_5s_Dur
 
-
-filename = here("figures", "CI_Stage1_10s_Freq.png")
-ggsave(filename, CI_Stage1_10s_Freq, width = 80, height = 80, units = "mm", dpi = 1200)
-filename = here("figures", "CI_Stage1_10s_Dur.png")
-ggsave(filename, CI_Stage1_10s_Dur, width = 80, height = 80, units = "mm", dpi = 1200)
-filename = here("figures", "CI_Stage1_5s_Freq.png")
-ggsave(filename, CI_Stage1_5s_Freq, width = 80, height = 80, units = "mm", dpi = 1200)
-filename = here("figures", "CI_Stage1_5s_Dur.png")
-ggsave(filename, CI_Stage1_5s_Dur, width = 80, height = 80, units = "mm", dpi = 1200)
-
+# 
+# filename = here("figures", "CI_Stage1_10s_Freq.png")
+# ggsave(filename, CI_Stage1_10s_Freq, width = 80, height = 80, units = "mm", dpi = 1200)
+# filename = here("figures", "CI_Stage1_10s_Dur.png")
+# ggsave(filename, CI_Stage1_10s_Dur, width = 80, height = 80, units = "mm", dpi = 1200)
+# filename = here("figures", "CI_Stage1_5s_Freq.png")
+# ggsave(filename, CI_Stage1_5s_Freq, width = 80, height = 80, units = "mm", dpi = 1200)
+# filename = here("figures", "CI_Stage1_5s_Dur.png")
+# ggsave(filename, CI_Stage1_5s_Dur, width = 80, height = 80, units = "mm", dpi = 1200)
+# 
 
 
 # Save Stage 1 Data for analysis ------------------------------------------
@@ -693,38 +693,38 @@ CI_Stage2_5s_Dur_Post <- shift_xaxis(FeatureNegative_Stage2_MagDur_5s_Post)
 
 
 # Save Stage 2 Figures ----------------------------------------------------
-
-# CI_Stage2_10s_Freq
-# CI_Stage2_10s_Dur
-# CI_Stage2_5s_Freq
-# CI_Stage2_5s_Dur
-
-
-filename = here("figures", "CI_Stage2_10s_Freq.png")
-ggsave(filename, CI_Stage2_10s_Freq, width = 80, height = 80, units = "mm", dpi = 1200)
-filename = here("figures", "CI_Stage2_10s_Dur.png")
-ggsave(filename, CI_Stage2_10s_Dur, width = 80, height = 80, units = "mm", dpi = 1200)
-filename = here("figures", "CI_Stage2_5s_Freq.png")
-ggsave(filename, CI_Stage2_5s_Freq, width = 80, height = 80, units = "mm", dpi = 1200)
-filename = here("figures", "CI_Stage2_5s_Dur.png")
-ggsave(filename, CI_Stage2_5s_Dur, width = 80, height = 80, units = "mm", dpi = 1200)
-
-
-# CI_Stage2_10s_Freq_Post
-# CI_Stage2_10s_Dur_Post
-# CI_Stage2_5s_Freq_Post
-# CI_Stage2_5s_Dur_Post
-
-
-
-filename = here("figures", "CI_Stage2_10s_Freq_Post.png")
-ggsave(filename, CI_Stage2_10s_Freq_Post, width = 80, height = 80, units = "mm", dpi = 1200)
-filename = here("figures", "CI_Stage2_10s_Dur_Post.png")
-ggsave(filename, CI_Stage2_10s_Dur_Post, width = 80, height = 80, units = "mm", dpi = 1200)
-filename = here("figures", "CI_Stage2_5s_Freq_Post.png")
-ggsave(filename, CI_Stage2_5s_Freq_Post, width = 80, height = 80, units = "mm", dpi = 1200)
-filename = here("figures", "CI_Stage2_5s_Dur_Post.png")
-ggsave(filename, CI_Stage2_5s_Dur_Post, width = 80, height = 80, units = "mm", dpi = 1200)
+# 
+# # CI_Stage2_10s_Freq
+# # CI_Stage2_10s_Dur
+# # CI_Stage2_5s_Freq
+# # CI_Stage2_5s_Dur
+# 
+# 
+# filename = here("figures", "CI_Stage2_10s_Freq.png")
+# ggsave(filename, CI_Stage2_10s_Freq, width = 80, height = 80, units = "mm", dpi = 1200)
+# filename = here("figures", "CI_Stage2_10s_Dur.png")
+# ggsave(filename, CI_Stage2_10s_Dur, width = 80, height = 80, units = "mm", dpi = 1200)
+# filename = here("figures", "CI_Stage2_5s_Freq.png")
+# ggsave(filename, CI_Stage2_5s_Freq, width = 80, height = 80, units = "mm", dpi = 1200)
+# filename = here("figures", "CI_Stage2_5s_Dur.png")
+# ggsave(filename, CI_Stage2_5s_Dur, width = 80, height = 80, units = "mm", dpi = 1200)
+# 
+# 
+# # CI_Stage2_10s_Freq_Post
+# # CI_Stage2_10s_Dur_Post
+# # CI_Stage2_5s_Freq_Post
+# # CI_Stage2_5s_Dur_Post
+# 
+# 
+# 
+# filename = here("figures", "CI_Stage2_10s_Freq_Post.png")
+# ggsave(filename, CI_Stage2_10s_Freq_Post, width = 80, height = 80, units = "mm", dpi = 1200)
+# filename = here("figures", "CI_Stage2_10s_Dur_Post.png")
+# ggsave(filename, CI_Stage2_10s_Dur_Post, width = 80, height = 80, units = "mm", dpi = 1200)
+# filename = here("figures", "CI_Stage2_5s_Freq_Post.png")
+# ggsave(filename, CI_Stage2_5s_Freq_Post, width = 80, height = 80, units = "mm", dpi = 1200)
+# filename = here("figures", "CI_Stage2_5s_Dur_Post.png")
+# ggsave(filename, CI_Stage2_5s_Dur_Post, width = 80, height = 80, units = "mm", dpi = 1200)
 
 # Save Stage 2 Data for analysis ------------------------------------------
 
@@ -922,23 +922,23 @@ write_csv(data_PerSession_last5s_CSPre, here("figures", "figure_data", savefile)
   
   
   # Save Stage 3 Figures ----------------------------------------------------
-  
-  # CI_Stage3_10s_Freq
-  # CI_Stage3_10s_Dur
-  # CI_Stage3_5s_Freq
-  # CI_Stage3_5s_Dur
-  
-  
-  filename = here("figures", "CI_Stage3_10s_Freq.png")
-  ggsave(filename, CI_Stage3_10s_Freq, width = 80, height = 80, units = "mm", dpi = 1200)
-  filename = here("figures", "CI_Stage3_10s_Dur.png")
-  ggsave(filename, CI_Stage3_10s_Dur, width = 80, height = 80, units = "mm", dpi = 1200)
-  filename = here("figures", "CI_Stage3_5s_Freq.png")
-  ggsave(filename, CI_Stage3_5s_Freq, width = 80, height = 80, units = "mm", dpi = 1200)
-  filename = here("figures", "CI_Stage3_5s_Dur.png")
-  ggsave(filename, CI_Stage3_5s_Dur, width = 80, height = 80, units = "mm", dpi = 1200)
-  
-  
+  # 
+  # # CI_Stage3_10s_Freq
+  # # CI_Stage3_10s_Dur
+  # # CI_Stage3_5s_Freq
+  # # CI_Stage3_5s_Dur
+  # 
+  # 
+  # filename = here("figures", "CI_Stage3_10s_Freq.png")
+  # ggsave(filename, CI_Stage3_10s_Freq, width = 80, height = 80, units = "mm", dpi = 1200)
+  # filename = here("figures", "CI_Stage3_10s_Dur.png")
+  # ggsave(filename, CI_Stage3_10s_Dur, width = 80, height = 80, units = "mm", dpi = 1200)
+  # filename = here("figures", "CI_Stage3_5s_Freq.png")
+  # ggsave(filename, CI_Stage3_5s_Freq, width = 80, height = 80, units = "mm", dpi = 1200)
+  # filename = here("figures", "CI_Stage3_5s_Dur.png")
+  # ggsave(filename, CI_Stage3_5s_Dur, width = 80, height = 80, units = "mm", dpi = 1200)
+  # 
+  # 
   
   # Save Stage 3 Data for analysis ------------------------------------------
   
@@ -1220,9 +1220,8 @@ write_csv(data_PerSession_last5s_CSPre, here("figures", "figure_data", savefile)
     scale_fill_manual(name = "", values = fillcolours) +
     theme(legend.key.width=unit(1,"line"))
   
+  CI_Stage4_10s_Freq <- shift_xaxis(Acqsuisition_Stage4_MagFreq_CD)
   
-  Acqsuisition_Stage4_MagFreq_CD <- shift_xaxis(Acqsuisition_Stage4_MagFreq_CD)
-  Acqsuisition_Stage4_MagFreq_CD
   
   
   ## 10s
@@ -1249,8 +1248,8 @@ write_csv(data_PerSession_last5s_CSPre, here("figures", "figure_data", savefile)
     theme(legend.key.width=unit(1,"line"))
   
   
-  Acqsuisition_Stage4_MagDur_CD <- shift_xaxis(Acqsuisition_Stage4_MagDur_CD)
-  Acqsuisition_Stage4_MagDur_CD
+  CI_Stage4_10s_Dur <- shift_xaxis(Acqsuisition_Stage4_MagDur_CD)
+  
   
   
   
@@ -1278,8 +1277,8 @@ write_csv(data_PerSession_last5s_CSPre, here("figures", "figure_data", savefile)
     theme(legend.key.width=unit(1,"line"))
   
   
-  Acqsuisition_Stage4_MagFreq_CD_5s <- shift_xaxis(Acqsuisition_Stage4_MagFreq_CD_5s)
-  Acqsuisition_Stage4_MagFreq_CD_5s
+  CI_Stage4_5s_Freq <- shift_xaxis(Acqsuisition_Stage4_MagFreq_CD_5s)
+
   
   
   ## 10s
@@ -1306,8 +1305,8 @@ write_csv(data_PerSession_last5s_CSPre, here("figures", "figure_data", savefile)
     theme(legend.key.width=unit(1,"line"))
   
   
-  Acqsuisition_Stage4_MagDur_CD_5s <- shift_xaxis(Acqsuisition_Stage4_MagDur_CD_5s)
-  Acqsuisition_Stage4_MagDur_CD_5s
+  CI_Stage4_5s_Dur <- shift_xaxis(Acqsuisition_Stage4_MagDur_CD_5s)
+  
 
   # Summation Probe Trials - Per Trial  -----------------------------------------------------------------------
   ## 10s Data
@@ -1335,8 +1334,8 @@ write_csv(data_PerSession_last5s_CSPre, here("figures", "figure_data", savefile)
     theme(legend.key.width=unit(1,"line"))
 
 
-  Acqsuisition_Stage4_MagFreq_PerTrial <- shift_xaxis(Acqsuisition_Stage4_MagFreq_PerTrial)
-  Acqsuisition_Stage4_MagFreq_PerTrial
+  CI_Stage4_10s_Freq_PerTrial <- shift_xaxis(Acqsuisition_Stage4_MagFreq_PerTrial)
+
   
   ## 10s Data
   ### Duration
@@ -1362,8 +1361,8 @@ write_csv(data_PerSession_last5s_CSPre, here("figures", "figure_data", savefile)
     scale_fill_manual(name = "", values = fillcolours) +
     theme(legend.key.width=unit(1,"line"))
   
-  Acqsuisition_Stage4_MagDur_PerTrial <- shift_xaxis(Acqsuisition_Stage4_MagDur_PerTrial)
-  Acqsuisition_Stage4_MagDur_PerTrial
+  CI_Stage4_10s_Dur_PerTrial <- shift_xaxis(Acqsuisition_Stage4_MagDur_PerTrial)
+
   
   ### 
   # Summation Probe Trials - Combined congruent/incongruent
@@ -1396,8 +1395,8 @@ write_csv(data_PerSession_last5s_CSPre, here("figures", "figure_data", savefile)
     scale_fill_manual(name = "", values = fillcolours) +
     theme(legend.key.width=unit(1,"line"))
   
-  Acqsuisition_Stage4_MagFreq_PerTrial_combined <- shift_xaxis(Acqsuisition_Stage4_MagFreq_PerTrial_combined)
-  Acqsuisition_Stage4_MagFreq_PerTrial_combined
+  CI_Stage4_10s_Freq_PerTrial_Combined <- shift_xaxis(Acqsuisition_Stage4_MagFreq_PerTrial_combined)
+  
   
   ## 10s Data
   ### Duration
@@ -1428,8 +1427,8 @@ write_csv(data_PerSession_last5s_CSPre, here("figures", "figure_data", savefile)
     scale_fill_manual(name = "", values = fillcolours) +
     theme(legend.key.width=unit(1,"line"))
   
-  Acqsuisition_Stage4_MagDur_PerTrial_combined <- shift_xaxis(Acqsuisition_Stage4_MagDur_PerTrial_combined)
-  Acqsuisition_Stage4_MagDur_PerTrial_combined
+  CI_Stage4_10s_Dur_PerTrial_Combined <- shift_xaxis(Acqsuisition_Stage4_MagDur_PerTrial_combined)
+  
   
   ## FIRST 5s Data
   ### Frequency
@@ -1460,8 +1459,8 @@ write_csv(data_PerSession_last5s_CSPre, here("figures", "figure_data", savefile)
     scale_fill_manual(name = "", values = fillcolours) +
     theme(legend.key.width=unit(1,"line"))
   
-  Acqsuisition_Stage4_MagFreq_PerTrial_combined_1st5s <- shift_xaxis(Acqsuisition_Stage4_MagFreq_PerTrial_combined_1st5s)
-  Acqsuisition_Stage4_MagFreq_PerTrial_combined_1st5s
+  CI_Stage4_1st5s_Freq_PerTrial_Combined <- shift_xaxis(Acqsuisition_Stage4_MagFreq_PerTrial_combined_1st5s)
+  
   
   ## FIRST 5s Data
   ### Duration
@@ -1492,15 +1491,15 @@ write_csv(data_PerSession_last5s_CSPre, here("figures", "figure_data", savefile)
     scale_fill_manual(name = "", values = fillcolours) +
     theme(legend.key.width=unit(1,"line"))
   
-  Acqsuisition_Stage4_MagDur_PerTrial_combined_1st5s <- shift_xaxis(Acqsuisition_Stage4_MagDur_PerTrial_combined_1st5s)
-  Acqsuisition_Stage4_MagDur_PerTrial_combined_1st5s
+  CI_Stage4_1st5s_Dur_PerTrial_Combined <- shift_xaxis(Acqsuisition_Stage4_MagDur_PerTrial_combined_1st5s)
+  
   
   
   ## LAST 5s Data
   ### Frequency
   ### Per Trial 
   
-  Acqsuisition_Stage4_MagFreq_PerTrial_combined_1st5s <- data_pertrial_last5s_CSPre %>% 
+  Acqsuisition_Stage4_MagFreq_PerTrial_combined_2nd5s <- data_pertrial_last5s_CSPre %>% 
     filter(Period == "CSPre",
            CS_name != "C_O1"  & CS_name != "D_O2" ) %>% 
     group_by(Day, subject, CSPair, Period, TrialNumber_Probes) %>% 
@@ -1525,14 +1524,14 @@ write_csv(data_PerSession_last5s_CSPre, here("figures", "figure_data", savefile)
     scale_fill_manual(name = "", values = fillcolours) +
     theme(legend.key.width=unit(1,"line"))
   
-  Acqsuisition_Stage4_MagFreq_PerTrial_combined_1st5s <- shift_xaxis(Acqsuisition_Stage4_MagFreq_PerTrial_combined_1st5s)
-  Acqsuisition_Stage4_MagFreq_PerTrial_combined_1st5s
+  CI_Stage4_2nd5s_Freq_PerTrial_Combined <- shift_xaxis(Acqsuisition_Stage4_MagFreq_PerTrial_combined_2nd5s)
+  
   
   ## LAST 5s Data
   ### Duration
   ### Per Trial 
   
-  Acqsuisition_Stage4_MagDur_PerTrial_combined_1st5s <- data_pertrial_last5s_CSPre %>% 
+  Acqsuisition_Stage4_MagDur_PerTrial_combined_2nd5s <- data_pertrial_last5s_CSPre %>% 
     filter(Period == "CSPre",
            CS_name != "C_O1"  & CS_name != "D_O2" ) %>% 
     group_by(Day, subject, CSPair, Period, TrialNumber_Probes) %>% 
@@ -1557,8 +1556,8 @@ write_csv(data_PerSession_last5s_CSPre, here("figures", "figure_data", savefile)
     scale_fill_manual(name = "", values = fillcolours) +
     theme(legend.key.width=unit(1,"line"))
   
-  Acqsuisition_Stage4_MagDur_PerTrial_combined_1st5s <- shift_xaxis(Acqsuisition_Stage4_MagDur_PerTrial_combined_1st5s)
-  Acqsuisition_Stage4_MagDur_PerTrial_combined_1st5s
+  CI_Stage4_2nd5s_Dur_PerTrial_Combined <- shift_xaxis(Acqsuisition_Stage4_MagDur_PerTrial_combined_2nd5s)
+  
   
   
   
@@ -1570,7 +1569,7 @@ write_csv(data_PerSession_last5s_CSPre, here("figures", "figure_data", savefile)
     summarise(MagEntries = mean(A3_freq),
               MagDuration = mean(A3_dur)) %>%
     ungroup() %>%
-    ggplot(mapping = aes(x = as.factor(bin_timewithin), y = MagDuration, group = CSPair, colour = CSPair, fill = CSPair, shape = CSPair,linetype = CSPair)) +
+    ggplot(mapping = aes(x = as.factor(bin_timewithin), y = MagEntries, group = CSPair, colour = CSPair, fill = CSPair, shape = CSPair,linetype = CSPair)) +
     stat_summary_bin(fun.data = "mean_se", geom = "line", size = .5) +
     stat_summary(fun.data = "mean_se", geom = "errorbar", width = 0.0, size = .3, linetype = 1, show.legend = FALSE) +
     stat_summary_bin(fun.data = "mean_se", geom = "point", size = 2) +
@@ -1589,8 +1588,35 @@ write_csv(data_PerSession_last5s_CSPre, here("figures", "figure_data", savefile)
     scale_fill_manual(name = "", values = fillcolours) +
     theme(legend.key.width=unit(1,"line"))
   
- Acqsuisition_Stage4_MagFreq_1sBins
+  CI_Stage4_10s_Freq_WithinCS <- Acqsuisition_Stage4_MagFreq_1sBins
   
+  Acqsuisition_Stage4_MagDur_1sBins <- rawdata %>% 
+    filter(Period == "CS",
+           CS_name != "C_O1" & CS_name != "D_O2" ) %>% 
+    group_by(Day, subject, CSPair, Period, TrialNumber_Probes, bin_timewithin) %>% 
+    summarise(MagEntries = mean(A3_freq),
+              MagDuration = mean(A3_dur)) %>%
+    ungroup() %>%
+    ggplot(mapping = aes(x = as.factor(bin_timewithin), y = MagDuration, group = CSPair, colour = CSPair, fill = CSPair, shape = CSPair,linetype = CSPair)) +
+    stat_summary_bin(fun.data = "mean_se", geom = "line", size = .5) +
+    stat_summary(fun.data = "mean_se", geom = "errorbar", width = 0.0, size = .3, linetype = 1, show.legend = FALSE) +
+    stat_summary_bin(fun.data = "mean_se", geom = "point", size = 2) +
+    facet_wrap(~TrialNumber_Probes, nrow = 1) +
+    # Make Pretty
+    scale_y_continuous( expand = expansion(mult = c(0, 0)), breaks=seq(-100,100,.2)) +
+    ggtitle("Stage 4") + xlab("Trial") + ylab("Magazine Duration (1s) ") +
+    theme_cowplot(11) +
+    theme(plot.title = element_text(hjust = 0.5)) +
+    theme(plot.title = element_text(size=10)) +
+    coord_cartesian(ylim = c(-0.2,0.6001)) +
+    theme(axis.title.x=element_text(face = "bold")) +
+    scale_linetype_manual(name = "", values = linetypes)  +
+    scale_colour_manual(name = "", values = linecolours, aesthetics = c("colour")) +
+    scale_shape_manual(name = "", values = pointshapes) +
+    scale_fill_manual(name = "", values = fillcolours) +
+    theme(legend.key.width=unit(1,"line"))
+  
+  CI_Stage4_10s_Dur_WithinCS <- Acqsuisition_Stage4_MagDur_1sBins
 
 # Summation Test Trial 1 --------------------------------------------------
 
@@ -1620,8 +1646,8 @@ write_csv(data_PerSession_last5s_CSPre, here("figures", "figure_data", savefile)
     theme(legend.key.width=unit(0.5,"line"))
 
   
-  Acqsuisition_Stage4_MagFreq_Combined_trial1 <- shift_xaxis(Acqsuisition_Stage4_MagFreq_Combined_trial1)
-  Acqsuisition_Stage4_MagFreq_Combined_trial1
+  CI_Stage4_10s_Freq_1stTrial_Combined <- shift_xaxis(Acqsuisition_Stage4_MagFreq_Combined_trial1)
+
   
   ## 10s Data
   ### Duration
@@ -1649,8 +1675,8 @@ write_csv(data_PerSession_last5s_CSPre, here("figures", "figure_data", savefile)
     theme(legend.key.width=unit(0.5,"line"))
   
   
-  Acqsuisition_Stage4_MagDur_Combined_trial1 <- shift_xaxis(Acqsuisition_Stage4_MagDur_Combined_trial1)
-  Acqsuisition_Stage4_MagDur_Combined_trial1
+  CI_Stage4_10s_Dur_1stTrial_Combined <- shift_xaxis(Acqsuisition_Stage4_MagDur_Combined_trial1)
+
   
 
 
@@ -1949,7 +1975,7 @@ write_csv(data_PerSession_last5s_CSPre, here("figures", "figure_data", savefile)
     scale_fill_manual(name = "", values = fillcolours) +
     theme(legend.key.width=unit(1,"line"))
   
-  CI_Stage5_10s_Freq_combined_5s <- shift_xaxis(Acqsuisition_Stage5_MagFreq_combined_5s)
+  CI_Stage5_5s_Freq_combined <- shift_xaxis(Acqsuisition_Stage5_MagFreq_combined_5s)
   
   ## 5s Data
   ### Duration
@@ -1978,12 +2004,12 @@ write_csv(data_PerSession_last5s_CSPre, here("figures", "figure_data", savefile)
     scale_fill_manual(name = "", values = fillcolours) +
     theme(legend.key.width=unit(1,"line"))
   
-  CI_Stage5_10s_Dur_combined_5s <- shift_xaxis(Acqsuisition_Stage5_MagDur_combined_5s)
+  CI_Stage5_5s_Dur_combined <- shift_xaxis(Acqsuisition_Stage5_MagDur_combined_5s)
   
   
-  # Combined Figure Panels ---------------------------------------------------
+  # Combined Figure Panels: Stages 1-3 ---------------------------------------------------
   
-  ## 10s Frequency
+  ## 10s 
   A <- CI_Stage1_10s_Freq + theme(legend.position= c(0.05,.90), 
                                   legend.justification='left',
                                   legend.direction='vertical')
@@ -1998,33 +2024,30 @@ write_csv(data_PerSession_last5s_CSPre, here("figures", "figure_data", savefile)
                                   legend.direction='vertical', 
                                   axis.title.y = element_blank())
   
-  CI_10s_Freq_Combined <- (A + B + C) + plot_annotation(tag_levels = 'A') + plot_layout(nrow = 1, widths = c(1, 2, .5))
-  
-  filename = here("figures", "CI_10s_Freq_Combined.png")
-  ggsave(filename, CI_10s_Freq_Combined, width = 120, height = 80, units = "mm", dpi = 1200)
+
   
   ## 10s Duration
-  A <- CI_Stage1_10s_Dur + theme(legend.position= c(0.05,.90), 
+  D <- CI_Stage1_10s_Dur + theme(legend.position= c(0.05,.90), 
                                  legend.justification='left',
                                  legend.direction='vertical')
   
-  B <- CI_Stage2_10s_Dur + theme(legend.position= c(0.05,.90), 
+  E <- CI_Stage2_10s_Dur + theme(legend.position= c(0.05,.90), 
                                  legend.justification='left',
                                  legend.direction='vertical', 
                                  axis.title.y = element_blank())
   
-  C <- CI_Stage3_10s_Dur + theme(legend.position= c(0.05,.90), 
+  F1 <- CI_Stage3_10s_Dur + theme(legend.position= c(0.05,.90), 
                                  legend.justification='left',
                                  legend.direction='vertical', 
                                  axis.title.y = element_blank())
   
-  CI_10s_Dur_Combined <- (A + B + C) + plot_annotation(tag_levels = 'A') + plot_layout(nrow = 1, widths = c(1, 2, .5))
+  CI_Stages123_10s_Combined <- (A + B + C + D + E +F1) + plot_annotation(tag_levels = 'A') + plot_layout(nrow = 2, ncol = 3, widths = c(1, 2, .5, 1, 2, .5))
   
-  filename = here("figures", "CI_10s_Dur_Combined.png")
-  ggsave(filename, CI_10s_Dur_Combined, width = 120, height = 80, units = "mm", dpi = 1200)
+  filename = here("figures", "CI_Stages123_10s_Combined.png")
+  ggsave(filename, CI_Stages123_10s_Combined, width = 160, height = 160, units = "mm", dpi = 1200)
   
   
-  ## 5s Frequency
+  ## 5s Combined
   A <- CI_Stage1_5s_Freq + theme(legend.position= c(0.05,.90), 
                                  legend.justification='left',
                                  legend.direction='vertical')
@@ -2038,31 +2061,157 @@ write_csv(data_PerSession_last5s_CSPre, here("figures", "figure_data", savefile)
                                  legend.justification='left',
                                  legend.direction='vertical', 
                                  axis.title.y = element_blank())
-  
-  CI_5s_Freq_Combined <- (A + B + C) + plot_annotation(tag_levels = 'A') + plot_layout(nrow = 1, widths = c(1, 2, .5))
-  
-  filename = here("figures", "CI_5s_Freq_Combined.png")
-  ggsave(filename, CI_5s_Freq_Combined, width = 120, height = 80, units = "mm", dpi = 1200)
-  
-  ## 5s Duration
-  A <- CI_Stage1_5s_Dur + theme(legend.position= c(0.05,.90), 
+
+  ## 5s
+  D <- CI_Stage1_5s_Dur + theme(legend.position= c(0.05,.90), 
                                 legend.justification='left',
                                 legend.direction='vertical')
   
-  B <- CI_Stage2_5s_Dur + theme(legend.position= c(0.05,.90), 
+  E <- CI_Stage2_5s_Dur + theme(legend.position= c(0.05,.90), 
                                 legend.justification='left',
                                 legend.direction='vertical', 
                                 axis.title.y = element_blank())
   
-  C <- CI_Stage3_5s_Dur + theme(legend.position= c(0.05,.90), 
+  F1 <- CI_Stage3_5s_Dur + theme(legend.position= c(0.05,.90), 
                                 legend.justification='left',
                                 legend.direction='vertical', 
                                 axis.title.y = element_blank())
+
+  CI_Stages123_5s_Combined <- (A + B + C + D + E +F1) + plot_annotation(tag_levels = 'A') + plot_layout(nrow = 2, ncol = 3, widths = c(1, 2, .5, 1, 2, .5))
   
-  CI_5s_Dur_Combined <- (A + B + C) + plot_annotation(tag_levels = 'A') + plot_layout(nrow = 1, widths = c(1, 2, .5))
+  filename = here("figures", "CI_Stages123_5s_Combined.png")
+  ggsave(filename, CI_Stages123_5s_Combined, width = 160, height = 160, units = "mm", dpi = 1200)
+
+# Combined Figure Panels: Test Sessions -----------------------------------
+  # CI_Stage4_10s_Freq
+  # CI_Stage4_10s_Dur
+  # CI_Stage4_5s_Freq
+  # CI_Stage4_5s_Dur
+  # 
+  # CI_Stage4_10s_Freq_PerTrial
+  # CI_Stage4_10s_Dur_PerTrial
+  # 
+  # CI_Stage4_10s_Freq_PerTrial_Combined
+  # CI_Stage4_10s_Dur_PerTrial_Combined
+  # CI_Stage4_1st5s_Freq_PerTrial_Combined
+  # CI_Stage4_1st5s_Dur_PerTrial_Combined
+  # CI_Stage4_2nd5s_Freq_PerTrial_Combined
+  # CI_Stage4_2nd5s_Dur_PerTrial_Combined
+  # 
+  # CI_Stage4_10s_Freq_WithinCS
+  # CI_Stage4_10s_Dur_WithinCS
+  # 
+  # CI_Stage4_10s_Freq_1stTrial_Combined
+  # CI_Stage4_10s_Dur_1stTrial_Combined
+  # 
+  # CI_Stage5_10s_Freq
+  # CI_Stage5_10s_Dur
+  # CI_Stage5_5s_Freq
+  # CI_Stage5_5s_Dur
+  # 
+  # CI_Stage5_10s_Freq_combined
+  # CI_Stage5_10s_Dur_combined
+  # CI_Stage5_5s_Freq_combined
+  # CI_Stage5_5s_Dur_combined
   
-  filename = here("figures", "CI_5s_Dur_Combined.png")
-  ggsave(filename, CI_5s_Dur_Combined, width = 120, height = 80, units = "mm", dpi = 1200)
+  
+  ## Stage 4: Summation - Per Trial
+  A <- CI_Stage4_10s_Freq_PerTrial + theme(legend.position= c(0.8,.90), 
+                                  legend.justification='left',
+                                  legend.direction='vertical')
+  
+  B <- CI_Stage4_10s_Dur_PerTrial + theme(legend.position= c(0.8,.90), 
+                                  legend.justification='left',
+                                  legend.direction='vertical')
+  
+  C <- CI_Stage4_10s_Freq_PerTrial_Combined + theme(legend.position= c(0.8,.90), 
+                                  legend.justification='left',
+                                  legend.direction='vertical')
+  
+  D <- CI_Stage4_10s_Dur_PerTrial_Combined + theme(legend.position= c(0.8,.90), 
+                                                    legend.justification='left',
+                                                    legend.direction='vertical')
+  
+ CI_Stage4_PerTrial_Analyses <- (A + B + C + D) + plot_annotation(tag_levels = 'A') + plot_layout(nrow = 2, ncol = 2, widths = c(1,1,1,1))
+  
+  filename = here("figures", "CI_Stage4_PerTrial_Analyses.png")
+  ggsave(filename, CI_Stage4_PerTrial_Analyses, width = 180, height = 180, units = "mm", dpi = 1200)
+  
+## Stage 4: Summation - Separate Cues at Test Per Trial
+  A <- CI_Stage4_10s_Freq_WithinCS + theme(legend.position= c(0.8,.90), 
+                                           legend.justification='left',
+                                           legend.direction='vertical')
+  
+  B <- CI_Stage4_10s_Dur_WithinCS + theme(legend.position= c(0.8,.90), 
+                                          legend.justification='left',
+                                          legend.direction='vertical')
+  
+  CI_Stage4_WithinCS_Analyses <- (A + B ) + plot_annotation(tag_levels = 'A') + plot_layout(nrow = 2, ncol = 1, widths = c(1,1))
+  
+  filename = here("figures", "CI_Stage4_WithinCS_Analyses.png")
+  ggsave(filename, CI_Stage4_WithinCS_Analyses, width = 180, height = 180, units = "mm", dpi = 1200)
+  
+  ## Stage 4: Summation - 1st Trial Test
+  
+
+  
+  A <- CI_Stage4_10s_Freq_1stTrial_Combined + theme(legend.position= c(0.8,.90), 
+                                           legend.justification='left',
+                                           legend.direction='vertical')
+  
+  B <- CI_Stage4_10s_Dur_1stTrial_Combined + theme(legend.position= c(0.8,.90), 
+                                          legend.justification='left',
+                                          legend.direction='vertical')
+  
+  CI_Stage4_1stTrial_Analyses <- (A + B ) + plot_annotation(tag_levels = 'A') + plot_layout(nrow = 2, ncol = 1, widths = c(1,1))
+  
+  filename = here("figures", "CI_Stage4_1stTrial_Analyses.png")
+  ggsave(filename, CI_Stage4_1stTrial_Analyses, width = 90, height = 180, units = "mm", dpi = 1200)
   
   
 
+  
+  ## Stage 5: Retardation - 10s
+  A <- CI_Stage5_10s_Freq + theme(legend.position= c(0.8,.90), 
+                                           legend.justification='left',
+                                           legend.direction='vertical')
+  
+  B <- CI_Stage5_10s_Dur + theme(legend.position= c(0.8,.90), 
+                                          legend.justification='left',
+                                          legend.direction='vertical')
+  
+  C <- CI_Stage5_10s_Freq_combined + theme(legend.position= c(0.8,.90), 
+                                                    legend.justification='left',
+                                                    legend.direction='vertical')
+  
+  D <- CI_Stage5_10s_Dur_combined + theme(legend.position= c(0.8,.90), 
+                                                   legend.justification='left',
+                                                   legend.direction='vertical')
+  
+  CI_Stage5_10s_Freq_Analyses <- (A + B + C + D) + plot_annotation(tag_levels = 'A') + plot_layout(nrow = 2, ncol = 2, widths = c(1,1,1,1))
+  
+  filename = here("figures", "CI_Stage5_10s_Freq_Analyses.png")
+  ggsave(filename, CI_Stage5_10s_Freq_Analyses, width = 180, height = 180, units = "mm", dpi = 1200)
+  
+  ## Stage 5: Retardation - 10s 
+  A <- CI_Stage5_10s_Freq + theme(legend.position= c(0.8,.90), 
+                                  legend.justification='left',
+                                  legend.direction='vertical')
+  
+  B <- CI_Stage5_10s_Dur + theme(legend.position= c(0.8,.90), 
+                                 legend.justification='left',
+                                 legend.direction='vertical')
+  
+  C <- CI_Stage5_10s_Freq_combined + theme(legend.position= c(0.8,.90), 
+                                           legend.justification='left',
+                                           legend.direction='vertical')
+  
+  D <- CI_Stage5_10s_Dur_combined + theme(legend.position= c(0.8,.90), 
+                                          legend.justification='left',
+                                          legend.direction='vertical')
+  
+  CI_Stage5_10s_Analyses <- (A + B + C + D) + plot_annotation(tag_levels = 'A') + plot_layout(nrow = 2, ncol = 2, widths = c(1,1,1,1))
+  
+  filename = here("figures", "CI_Stage5_10s_Freq_Analyses.png")
+  ggsave(filename, CI_Stage5_10s_Freq_Analyses, width = 180, height = 180, units = "mm", dpi = 1200)
+  

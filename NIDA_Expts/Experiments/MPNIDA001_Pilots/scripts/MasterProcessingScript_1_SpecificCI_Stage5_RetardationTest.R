@@ -20,7 +20,8 @@ projectdatafolder <- c("1_SpecificCI")
 
 ## Final level of folders contianing the relevant .txt Coulbourn files
 listofdatafolders <- c("RetardationTest_Stage5_Day16",
-                       "RetardationTest_Stage5_Day17")
+                       "RetardationTest_Stage5_Day17",
+                       "RetardationTest_Stage5_Day18")
 
 
 #  extract data filenames, only .txt --------------------------------------
@@ -205,7 +206,7 @@ rawdata <- left_join(rawdata, lookup_stateIDs, by =c("bin_state"))
 # Not the most satisfying solution, but will have to do since other methods don't appear to be working very well
 rawdata <- rawdata %>% 
   group_by(subject, session, bin_trial) %>% 
-  mutate(CS_name = unique(CS_name[Period == "CS"])[1]) %>% 
+  mutate(CS_name = unique(state_ID[Period == "CS"])[1]) %>% 
   ungroup()
 
 

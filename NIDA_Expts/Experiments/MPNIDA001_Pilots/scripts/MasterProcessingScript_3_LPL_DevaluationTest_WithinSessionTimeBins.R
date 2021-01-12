@@ -171,18 +171,18 @@ subject <- c("17____",
            "F",
            "F")
   
-  DevaluedOutcome1 <- c("O1",
-                        "O2",
-                        "O2",
-                        "O1",
-                        "O2",
-                        "O1",
-                        "O1",
-                        "O2",
-                        "O2",
-                        "O2",
-                        "O2",
-                        "O2")
+  DevaluedOutcome1 <- c("Banana",
+                        "Chocolate",
+                        "Chocolate",
+                        "Banana",
+                        "Chocolate",
+                        "Banana",
+                        "Banana",
+                        "Chocolate",
+                        "Chocolate",
+                        "Chocolate",
+                        "Chocolate",
+                        "Chocolate")
   
 
   
@@ -213,15 +213,16 @@ Steady_levercbx <-  c("Right",
                       "Right",
                       "Left")
 
-Flash_OutcomeID <- c("O1",
-                     "O1",
-                     "O2",
-                     "O2")
+Flash_OutcomeID <- c("Chocolate",
+                     "Banana",
+                     "Chocolate",
+                     "Banana")
 
-Steady_OutcomeID <- c("O2",
-                     "O2",
-                     "O1",
-                     "O1")
+
+Steady_OutcomeID <- c("Banana",
+                     "Chocolate",
+                     "Banana",
+                     "Chocolate")
 
 
 # Create counterbalancing lookup table
@@ -236,6 +237,13 @@ rawdata <- rawdata %>%
   mutate(folder1 = folder) %>% 
   separate(folder1, c(NA,"Stage","Schedule","Day"))
 
+
+
+# Define Test Periods -----------------------------------------------------
+# 10 mins non-reinforced 2 lever test, 2 min lever retraction ITI, 10 mins reinforced 2 lever test [i.e. Lights delivered on FR1, No Food rewards!]
+
+rawdata <- rawdata %>%
+  mutate(Test_Period = ifelse(timebins <= 10, "NonReinforced", ifelse(timebins <= 12, "ITI", ifelse(timebins <= 22, "Reinforced", NA))))
 
 # Save as CSV -------------------------------------------------------------
 

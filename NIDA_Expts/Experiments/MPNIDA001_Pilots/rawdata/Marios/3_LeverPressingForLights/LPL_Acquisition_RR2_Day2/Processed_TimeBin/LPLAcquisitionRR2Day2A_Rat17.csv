@@ -1,5 +1,4 @@
 folder,file,savename,subject,protocol,station,run,project,userID,session,timebins,timebin_start,timebin_end,A1_freq,A1_dur,A2_freq,A2_dur,A3_freq,A3_dur,A4_freq,A4_dur,Flash_freq,Flash_dur,Steady_freq,Steady_dur
-LPL_Acquisition_RR2_Day2,LPLAcquisitionRR2Day2A,LPLAcquisitionRR2Day2A_Rat17.csv,17____,16,1,1,C,Marios,90,1,0,450,5,0.959999999999923,2,1.27999999999997,0,0,0,0,2,10,0,0
-LPL_Acquisition_RR2_Day2,LPLAcquisitionRR2Day2A,LPLAcquisitionRR2Day2A_Rat17.csv,17____,16,1,1,C,Marios,90,2,450,900,15,6.27999999999986,4,13.84,0,0,0,0,5,25,0,0
-LPL_Acquisition_RR2_Day2,LPLAcquisitionRR2Day2A,LPLAcquisitionRR2Day2A_Rat17.csv,17____,16,1,1,C,Marios,90,3,900,1350,16,9.25999999999976,1,1.98000000000002,0,0,0,0,6,30,0,0
-LPL_Acquisition_RR2_Day2,LPLAcquisitionRR2Day2A,LPLAcquisitionRR2Day2A_Rat17.csv,17____,16,1,1,C,Marios,90,4,1350,1800,16,6.61999999999966,0,0,0,0,0,0,4,20,0,0
+LPL_Acquisition_RR2_Day2,LPLAcquisitionRR2Day2A,LPLAcquisitionRR2Day2A_Rat17.csv,17____,16,1,1,C,Marios,90,1,0,600,14,5.65999999999974,4,2.45999999999997,0,0,0,0,5,25,0,0
+LPL_Acquisition_RR2_Day2,LPLAcquisitionRR2Day2A,LPLAcquisitionRR2Day2A_Rat17.csv,17____,16,1,1,C,Marios,90,2,600,1200,21,10.0399999999998,3,14.64,0,0,0,0,7,35,0,0
+LPL_Acquisition_RR2_Day2,LPLAcquisitionRR2Day2A,LPLAcquisitionRR2Day2A_Rat17.csv,17____,16,1,1,C,Marios,90,3,1200,1800,17,7.41999999999962,0,0,0,0,0,0,5,25,0,0

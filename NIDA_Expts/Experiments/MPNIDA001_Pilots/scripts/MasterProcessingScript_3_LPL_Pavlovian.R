@@ -126,72 +126,14 @@ for (i in c(1:length(filestojoin))){
 
 # Recode COunterbalancing information -----------------------------------
 ## Solution: create a counterbalancing data frame and then left_join() with the rawdata to match all relevant rows on Subject[Make sure subject is labelled the same in both tables]
-subject <- c("17____",
-             "18____",
-             "19____",
-             "20____",
-             "21____",
-             "22____",
-             "42____",
-             "43____",
-             "44____",
-             "23____",
-             "24____",
-             "25____")
-
-
-  counterbalancing <- c("X",
-                      "X",
-                      "Y",
-                      "Y",
-                      "X",
-                      "X",
-                      "Y",
-                      "Y",
-                      "X",
-                      "X",
-                      "Y",
-                      "Y")
-  
-  sex <- c("Female",
-             "Female",
-             "Female",
-             "Female",
-             "Female",
-             "Female",
-             "Male",
-             "Male",
-             "Male",
-             "Female",
-             "Female",
-             "Female")
-  
-  instrumentalcbx <- c("A",
-                        "B",
-                        "A",
-                        "B",
-                        "A",
-                        "B",
-                        "A",
-                        "B",
-                        "A",
-                        "A",
-                        "B",
-                        "B")
-  
-  # Create counterbalancing lookup table
-lookup_counterbalancing <- data.frame(subject, counterbalancing, sex, instrumentalcbx)
-  # Combine with rawdata
-rawdata <- left_join(rawdata, lookup_counterbalancing, by = "subject")
-
 
 ###
 state_ID <- c("PreCS1",
               "PreCS2",
              "Flash",
              "Steady",
-             "BananaPel",
-             "ChocolatePel",
+             "Banana",
+             "Chocolate",
              "PostCS2")
 
 Period <- c("Pre1",
@@ -212,81 +154,126 @@ bin_state <- c(2,
 
 
 
-
-
 # Create counterbalancing lookup table
 lookup_stateIDs <- data.frame(bin_state, Period, state_ID)
 # COmbine with rawdata
 rawdata <- left_join(rawdata, lookup_stateIDs, by =c("bin_state"))
 
-###
-CS_name <- c("Flash",
-             "Steady",
-             "Flash",
-             "Steady",
-             "Flash",
-             "Steady",
-             "Flash",
-             "Steady")
-
-Lever_name <- c("Left",
-             "Right",
-             "Left",
-             "Right",
-             "Right",
-             "Left",
-             "Right",
-             "Left")
-
-state_ID <- c("Flash",
-              "Steady",
-              "Flash",
-              "Steady",
-              "Flash",
-              "Steady",
-              "Flash",
-              "Steady")
-
-outcome_ID <- c("Banana",
-              "Chocolate",
-              "Chocolate",
-              "Banana",
-              "Banana",
-              "Chocolate",
-              "Chocolate",
-              "Banana")
-
-instrumentalcbx <- c("A",
-                     "A",
-                     "A",
-                     "A",
-                     "B",
-                     "B",
-                     "B",
-                     "B")
-
-counterbalancing<- c("X",
-                     "X",
-                     "Y",
-                     "Y",
-                     "X",
-                     "X",
-                     "Y",
-                     "Y")
-
-# Create counterbalancing lookup table
-lookup_CSname <- data.frame(counterbalancing, state_ID, CS_name, instrumentalcbx,Lever_name, outcome_ID)
-# Combine with rawdata
-rawdata <- left_join(rawdata, lookup_CSname, by = c("counterbalancing","instrumentalcbx","state_ID"))
-
 
 # Not the most satisfying solution, but will have to do since other methods don't appear to be working very well
 rawdata <- rawdata %>%
   group_by(subject, session, bin_trial) %>%
-  mutate(CS_name = unique(CS_name[Period == "CS"])[1],
-         outcome_ID = unique(outcome_ID[Period == "CS"])[1],
-         Lever_name = unique(Lever_name[Period == "CS"])[1]) %>%
+  mutate(CS_name = unique(state_ID[Period == "CS"])[1],
+         outcome_ID = unique(state_ID[Period == "Post1"])[1]) %>%
   ungroup()
+
+
+
+# Counterbalancing Added later --------------------------------------------
+
+subject <- c("17____",
+             "18____",
+             "19____",
+             "20____",
+             "21____",
+             "22____",
+             "42____",
+             "43____",
+             "44____",
+             "23____",
+             "24____",
+             "25____")
+
+
+counterbalancing <- c("X",
+                      "X",
+                      "Y",
+                      "Y",
+                      "X",
+                      "X",
+                      "Y",
+                      "Y",
+                      "X",
+                      "X",
+                      "Y",
+                      "Y")
+
+sex <- c("Female",
+         "Female",
+         "Female",
+         "Female",
+         "Female",
+         "Female",
+         "Male",
+         "Male",
+         "Male",
+         "Female",
+         "Female",
+         "Female")
+
+instrumentalcbx <- c("A",
+                     "B",
+                     "A",
+                     "B",
+                     "A",
+                     "B",
+                     "A",
+                     "B",
+                     "A",
+                     "A",
+                     "B",
+                     "B")
+
+DevaluedOutcome1 <- c("Banana",
+                      "Chocolate",
+                      "Chocolate",
+                      "Banana",
+                      "Chocolate",
+                      "Banana",
+                      "Chocolate",
+                      "Chocolate",
+                      "Chocolate",
+                      "Banana",
+                      "Chocolate",
+                      "Chocolate")
+
+DevaluedCue <- c("Steady",
+                 "Flash",
+                 "Steady",
+                 "Flash",
+                 "Flash",
+                 "Steady",
+                 "Flash",
+                 "Steady",
+                 "Flash",
+                 "Flash",
+                 "Steady",
+                 "Steady")
+
+
+NonDevaluedCue <- c("Flash",
+                    "Steady",
+                    "Flash",
+                    "Steady",
+                    "Steady",
+                    "Flash",
+                    "Steady",
+                    "Flash",
+                    "Steady",
+                    "Steady",
+                    "Flash",
+                    "Flash")
+
+# Create counterbalancing lookup table
+lookup_counterbalancing <- data.frame(subject, counterbalancing, sex, instrumentalcbx, DevaluedOutcome1, DevaluedCue, NonDevaluedCue)
+# Combine with rawdata
+rawdata <- left_join(rawdata, lookup_counterbalancing, by = "subject")
+
+
+# Add deval counterbalancing ID to each stimulus
+rawdata <- rawdata %>%
+  mutate(DevaluationID = ifelse(CS_name == DevaluedCue, "Devalued", ifelse(CS_name == NonDevaluedCue, "NonDevalued", NA)))
+
 
 
 # Calculate Session/Day number --------------------------------------------
