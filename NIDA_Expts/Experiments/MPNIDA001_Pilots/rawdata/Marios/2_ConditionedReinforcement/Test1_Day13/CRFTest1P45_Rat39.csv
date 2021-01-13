@@ -1,0 +1,16 @@
+Project,UserID,Protocol,Session,Station,Run,Subject,Time,Current State,Transition State,Transition Event,A1_On,A2_On,A3_On,A4_On,A1_Off,A2_Off,A3_Off,A4_Off,folder,file
+C,Marios,45,189,15,1,39____,0,0,1,0,0,0,0,0,0,0,0,0,Test1_Day13,CRFTest1P45
+C,Marios,45,189,15,1,39____,43531,1,0,0,1,0,0,0,0,0,0,0,Test1_Day13,CRFTest1P45
+C,Marios,45,189,15,1,39____,43534,1,0,0,0,0,0,0,1,0,0,0,Test1_Day13,CRFTest1P45
+C,Marios,45,189,15,1,39____,43539,1,5,1,1,0,0,0,0,0,0,0,Test1_Day13,CRFTest1P45
+C,Marios,45,189,15,1,39____,43541,5,0,0,0,0,0,0,1,0,0,0,Test1_Day13,CRFTest1P45
+C,Marios,45,189,15,1,39____,43554,5,0,0,1,0,0,0,0,0,0,0,Test1_Day13,CRFTest1P45
+C,Marios,45,189,15,1,39____,43560,5,0,0,0,0,0,0,1,0,0,0,Test1_Day13,CRFTest1P45
+C,Marios,45,189,15,1,39____,43589,5,1,0,0,0,0,0,0,0,0,0,Test1_Day13,CRFTest1P45
+C,Marios,45,189,15,1,39____,44611,1,0,0,1,0,0,0,0,0,0,0,Test1_Day13,CRFTest1P45
+C,Marios,45,189,15,1,39____,44644,1,0,0,0,0,0,0,1,0,0,0,Test1_Day13,CRFTest1P45
+C,Marios,45,189,15,1,39____,45852,1,5,1,1,0,0,0,0,0,0,0,Test1_Day13,CRFTest1P45
+C,Marios,45,189,15,1,39____,45868,5,0,0,0,0,0,0,1,0,0,0,Test1_Day13,CRFTest1P45
+C,Marios,45,189,15,1,39____,45902,5,1,0,0,0,0,0,0,0,0,0,Test1_Day13,CRFTest1P45
+C,Marios,45,189,15,1,39____,90000,1,6,0,0,0,0,0,0,0,0,0,Test1_Day13,CRFTest1P45
+C,Marios,45,189,15,1,39____,93000,6,-1,0,0,0,0,0,0,0,0,0,Test1_Day13,CRFTest1P45

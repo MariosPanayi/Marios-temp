@@ -1,0 +1,26 @@
+Project,UserID,Protocol,Session,Station,Run,Subject,Time,Current State,Transition State,Transition Event,A1_On,A2_On,A3_On,A4_On,A1_Off,A2_Off,A3_Off,A4_Off,folder,file
+C,Marios,45,216,5,1,34____,0,0,1,0,0,0,0,0,0,0,0,0,Test3_Day16,CRFTest3P45
+C,Marios,45,216,5,1,34____,405,1,0,0,1,0,0,0,0,0,0,0,Test3_Day16,CRFTest3P45
+C,Marios,45,216,5,1,34____,478,1,0,0,0,0,0,0,1,0,0,0,Test3_Day16,CRFTest3P45
+C,Marios,45,216,5,1,34____,1901,1,0,0,0,1,0,0,0,0,0,0,Test3_Day16,CRFTest3P45
+C,Marios,45,216,5,1,34____,1939,1,0,0,0,0,0,0,0,1,0,0,Test3_Day16,CRFTest3P45
+C,Marios,45,216,5,1,34____,2408,1,5,1,1,0,0,0,0,0,0,0,Test3_Day16,CRFTest3P45
+C,Marios,45,216,5,1,34____,2414,5,0,0,0,0,0,0,1,0,0,0,Test3_Day16,CRFTest3P45
+C,Marios,45,216,5,1,34____,2458,5,1,0,0,0,0,0,0,0,0,0,Test3_Day16,CRFTest3P45
+C,Marios,45,216,5,1,34____,2604,1,0,0,1,0,0,0,0,0,0,0,Test3_Day16,CRFTest3P45
+C,Marios,45,216,5,1,34____,2623,1,0,0,0,0,0,0,1,0,0,0,Test3_Day16,CRFTest3P45
+C,Marios,45,216,5,1,34____,62008,1,5,1,1,0,0,0,0,0,0,0,Test3_Day16,CRFTest3P45
+C,Marios,45,216,5,1,34____,62023,5,0,0,0,0,0,0,1,0,0,0,Test3_Day16,CRFTest3P45
+C,Marios,45,216,5,1,34____,62058,5,1,0,0,0,0,0,0,0,0,0,Test3_Day16,CRFTest3P45
+C,Marios,45,216,5,1,34____,63898,1,0,0,1,0,0,0,0,0,0,0,Test3_Day16,CRFTest3P45
+C,Marios,45,216,5,1,34____,63907,1,0,0,0,0,0,0,1,0,0,0,Test3_Day16,CRFTest3P45
+C,Marios,45,216,5,1,34____,63911,1,5,1,1,0,0,0,0,0,0,0,Test3_Day16,CRFTest3P45
+C,Marios,45,216,5,1,34____,63930,5,0,0,0,0,0,0,1,0,0,0,Test3_Day16,CRFTest3P45
+C,Marios,45,216,5,1,34____,63961,5,1,0,0,0,0,0,0,0,0,0,Test3_Day16,CRFTest3P45
+C,Marios,45,216,5,1,34____,64429,1,0,0,1,0,0,0,0,0,0,0,Test3_Day16,CRFTest3P45
+C,Marios,45,216,5,1,34____,64447,1,0,0,0,0,0,0,1,0,0,0,Test3_Day16,CRFTest3P45
+C,Marios,45,216,5,1,34____,64514,1,5,1,1,0,0,0,0,0,0,0,Test3_Day16,CRFTest3P45
+C,Marios,45,216,5,1,34____,64531,5,0,0,0,0,0,0,1,0,0,0,Test3_Day16,CRFTest3P45
+C,Marios,45,216,5,1,34____,64564,5,1,0,0,0,0,0,0,0,0,0,Test3_Day16,CRFTest3P45
+C,Marios,45,216,5,1,34____,90000,1,6,0,0,0,0,0,0,0,0,0,Test3_Day16,CRFTest3P45
+C,Marios,45,216,5,1,34____,93000,6,-1,0,0,0,0,0,0,0,0,0,Test3_Day16,CRFTest3P45

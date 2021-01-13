@@ -21,7 +21,8 @@ projectdatafolder <- c("1_SpecificCI")
 ## Final level of folders contianing the relevant .txt Coulbourn files
 listofdatafolders <- c("RetardationTest_Stage5_Day16",
                        "RetardationTest_Stage5_Day17",
-                       "RetardationTest_Stage5_Day18")
+                       "RetardationTest_Stage5_Day18",
+                       "RetardationTest_Stage5_Day19")
 
 
 #  extract data filenames, only .txt --------------------------------------

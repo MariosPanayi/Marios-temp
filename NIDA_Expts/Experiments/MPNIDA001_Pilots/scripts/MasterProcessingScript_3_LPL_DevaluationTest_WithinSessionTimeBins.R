@@ -19,7 +19,8 @@ datafoldersinproject2 <-c("Marios")
 projectdatafolder <- c("3_LeverPressingForLights")
 
 ## Final level of folders contianing the relevant .txt Coulbourn files
-listofdatafolders <- c("LPL_Devaluation1_Test_Day13")
+listofdatafolders <- c("LPL_Devaluation1_Test_Day13",
+                       "LPL_Devaluation2_Test_Day14")
 
 
 #  extract data filenames, only .txt --------------------------------------
@@ -171,21 +172,7 @@ subject <- c("17____",
            "F",
            "F")
   
-  DevaluedOutcome1 <- c("Banana",
-                        "Chocolate",
-                        "Chocolate",
-                        "Banana",
-                        "Chocolate",
-                        "Banana",
-                        "Banana",
-                        "Chocolate",
-                        "Chocolate",
-                        "Chocolate",
-                        "Chocolate",
-                        "Chocolate")
-  
 
-  
   
   # Create counterbalancing lookup table
 lookup_counterbalancing <- data.frame(subject, counterbalancing, Pavlovian_cbx, DevaluedOutcome1, sex)
@@ -236,6 +223,89 @@ rawdata <- left_join(rawdata, lookup_counterbalancing, by = c("counterbalancing"
 rawdata <- rawdata %>%
   mutate(folder1 = folder) %>% 
   separate(folder1, c(NA,"Stage","Schedule","Day"))
+
+
+# Add counterbalancing of devalued outcome dependent on which test day it is
+
+DevaluedOutcome <- c("Banana",
+                      "Chocolate",
+                      "Chocolate",
+                      "Banana",
+                      "Chocolate",
+                      "Banana",
+                      "Banana",
+                      "Chocolate",
+                      "Chocolate",
+                      "Chocolate",
+                      "Chocolate",
+                      "Chocolate",
+                     "Chocolate",
+                     "Banana",
+                     "Banana",
+                     "Chocolate",
+                     "Banana",
+                     "Chocolate",
+                     "Chocolate",
+                     "Banana",
+                     "Banana",
+                     "Banana",
+                     "Banana",
+                     "Banana")
+
+subject <- c("17____",
+             "18____",
+             "19____",
+             "20____",
+             "21____",
+             "22____",
+             "42____",
+             "43____",
+             "44____",
+             "23____",
+             "24____",
+             "25____",
+             "17____",
+             "18____",
+             "19____",
+             "20____",
+             "21____",
+             "22____",
+             "42____",
+             "43____",
+             "44____",
+             "23____",
+             "24____",
+             "25____")
+
+Day <- c("Day13",
+"Day13",
+"Day13",
+"Day13",
+"Day13",
+"Day13",
+"Day13",
+"Day13",
+"Day13",
+"Day13",
+"Day13",
+"Day13",
+"Day14",
+"Day14",
+"Day14",
+"Day14",
+"Day14",
+"Day14",
+"Day14",
+"Day14",
+"Day14",
+"Day14",
+"Day14",
+"Day14")
+
+# Create counterbalancing lookup table
+lookup_counterbalancing <- data.frame(Day, subject, DevaluedOutcome)
+# Combine with rawdata
+rawdata <- left_join(rawdata, lookup_counterbalancing, by = c("Day", "subject"))
 
 
 

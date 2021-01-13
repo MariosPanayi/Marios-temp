@@ -116,8 +116,8 @@ linecolours <- c("A_O1" = DarkRed,
                  "CXDY" = Black,
                  "CYDX" = Black,
                  "X_O1" = DarkRed,
-                 "X_O2" = DarkRed,
-                 "Y_O1" = DarkBlue,
+                 "X_O2" = DarkBlue,
+                 "Y_O1" = DarkRed,
                  "Y_O2" = DarkBlue,
                  "Congruent" = Black,
                  "Incongruent" = Black)
@@ -137,8 +137,8 @@ linetypes <- c("A_O1" = "solid",
                "CYDX" = "solid",
                "X_O1" = "dotted",
                "X_O2" = "solid",
-               "Y_O1" = "solid",
-               "Y_O2" = "dotted",
+               "Y_O1" = "dotted",
+               "Y_O2" = "solid",
                "Congruent" = "dotted",
                "Incongruent" = "solid")
 
@@ -1794,11 +1794,11 @@ write_csv(data_PerSession_last5s_CSPre, here("figures", "figure_data", savefile)
     stat_summary_bin(fun.data = "mean_se", geom = "point", size = 2) +
     # Make Pretty
     scale_y_continuous( expand = expansion(mult = c(0, 0)), breaks=seq(-100,100,1)) +
-    ggtitle("Stage 3") + xlab("Day") + ylab("Magazine Entry 10s (CS-Pre)") +
+    ggtitle("Stage 5: Retardation") + xlab("Day") + ylab("Magazine Entry 10s (CS-Pre)") +
     theme_cowplot(11) +
     theme(plot.title = element_text(hjust = 0.5)) +
     theme(plot.title = element_text(size=10)) +
-    coord_cartesian(ylim = c(-1,2.0001)) +
+    coord_cartesian(ylim = c(-1,4.0001)) +
     theme(axis.title.x=element_text(face = "bold")) +
     scale_linetype_manual(name = "", values = linetypes)  +
     scale_colour_manual(name = "", values = linecolours, aesthetics = c("colour")) +
@@ -1819,11 +1819,11 @@ write_csv(data_PerSession_last5s_CSPre, here("figures", "figure_data", savefile)
     stat_summary_bin(fun.data = "mean_se", geom = "point", size = 2) +
     # Make Pretty
     scale_y_continuous( expand = expansion(mult = c(0, 0)), breaks=seq(-100,100,1)) +
-    ggtitle("Stage 3") + xlab("Day") + ylab("Magazine Duration 10s (CS-Pre)") +
+    ggtitle("Stage 5: Retardation") + xlab("Day") + ylab("Magazine Duration 10s (CS-Pre)") +
     theme_cowplot(11) +
     theme(plot.title = element_text(hjust = 0.5)) +
     theme(plot.title = element_text(size=10)) +
-    coord_cartesian(ylim = c(-1,2.0001)) +
+    coord_cartesian(ylim = c(-1,4.0001)) +
     theme(axis.title.x=element_text(face = "bold")) +
     scale_linetype_manual(name = "", values = linetypes)  +
     scale_colour_manual(name = "", values = linecolours, aesthetics = c("colour")) +
@@ -1845,11 +1845,11 @@ write_csv(data_PerSession_last5s_CSPre, here("figures", "figure_data", savefile)
     stat_summary_bin(fun.data = "mean_se", geom = "point", size = 2) +
     # Make Pretty
     scale_y_continuous( expand = expansion(mult = c(0, 0)), breaks=seq(-100,100,1)) +
-    ggtitle("Stage 3") + xlab("Day") + ylab("Magazine Entry 5s (CS-Pre)") +
+    ggtitle("Stage 5: Retardation") + xlab("Day") + ylab("Magazine Entry 5s (CS-Pre)") +
     theme_cowplot(11) +
     theme(plot.title = element_text(hjust = 0.5)) +
     theme(plot.title = element_text(size=10)) +
-    coord_cartesian(ylim = c(-1,2.0001)) +
+    coord_cartesian(ylim = c(-1,4.0001)) +
     theme(axis.title.x=element_text(face = "bold")) +
     scale_linetype_manual(name = "", values = linetypes)  +
     scale_colour_manual(name = "", values = linecolours, aesthetics = c("colour")) +
@@ -1870,11 +1870,11 @@ write_csv(data_PerSession_last5s_CSPre, here("figures", "figure_data", savefile)
     stat_summary_bin(fun.data = "mean_se", geom = "point", size = 2) +
     # Make Pretty
     scale_y_continuous( expand = expansion(mult = c(0, 0)), breaks=seq(-100,100,1)) +
-    ggtitle("Stage 3") + xlab("Day") + ylab("Magazine Duration 5s (CS-Pre)") +
+    ggtitle("Stage 5: Retardation") + xlab("Day") + ylab("Magazine Duration 5s (CS-Pre)") +
     theme_cowplot(11) +
     theme(plot.title = element_text(hjust = 0.5)) +
     theme(plot.title = element_text(size=10)) +
-    coord_cartesian(ylim = c(-1,2.0001)) +
+    coord_cartesian(ylim = c(-1,4.0001)) +
     theme(axis.title.x=element_text(face = "bold")) +
     scale_linetype_manual(name = "", values = linetypes)  +
     scale_colour_manual(name = "", values = linecolours, aesthetics = c("colour")) +
@@ -1904,11 +1904,11 @@ write_csv(data_PerSession_last5s_CSPre, here("figures", "figure_data", savefile)
     stat_summary_bin(fun.data = "mean_se", geom = "point", size = 2) +
     # Make Pretty
     scale_y_continuous( expand = expansion(mult = c(0, 0)), breaks=seq(-100,100,1)) +
-    ggtitle("Stage 3") + xlab("Day") + ylab("Magazine Entry 10s (CS-Pre)") +
+    ggtitle("Stage 5: Retardation") + xlab("Day") + ylab("Magazine Entry 10s (CS-Pre)") +
     theme_cowplot(11) +
     theme(plot.title = element_text(hjust = 0.5)) +
     theme(plot.title = element_text(size=10)) +
-    coord_cartesian(ylim = c(-1,2.0001)) +
+    coord_cartesian(ylim = c(-1,4.0001)) +
     theme(axis.title.x=element_text(face = "bold")) +
     scale_linetype_manual(name = "", values = linetypes)  +
     scale_colour_manual(name = "", values = linecolours, aesthetics = c("colour")) +
@@ -1933,11 +1933,11 @@ write_csv(data_PerSession_last5s_CSPre, here("figures", "figure_data", savefile)
     stat_summary_bin(fun.data = "mean_se", geom = "point", size = 2) +
     # Make Pretty
     scale_y_continuous( expand = expansion(mult = c(0, 0)), breaks=seq(-100,100,1)) +
-    ggtitle("Stage 3") + xlab("Day") + ylab("Magazine Entry 10s (CS-Pre)") +
+    ggtitle("Stage 5: Retardation") + xlab("Day") + ylab("Magazine Entry 10s (CS-Pre)") +
     theme_cowplot(11) +
     theme(plot.title = element_text(hjust = 0.5)) +
     theme(plot.title = element_text(size=10)) +
-    coord_cartesian(ylim = c(-1,2.0001)) +
+    coord_cartesian(ylim = c(-1,4.0001)) +
     theme(axis.title.x=element_text(face = "bold")) +
     scale_linetype_manual(name = "", values = linetypes)  +
     scale_colour_manual(name = "", values = linecolours, aesthetics = c("colour")) +
@@ -1963,11 +1963,11 @@ write_csv(data_PerSession_last5s_CSPre, here("figures", "figure_data", savefile)
     stat_summary_bin(fun.data = "mean_se", geom = "point", size = 2) +
     # Make Pretty
     scale_y_continuous( expand = expansion(mult = c(0, 0)), breaks=seq(-100,100,1)) +
-    ggtitle("Stage 3") + xlab("Day") + ylab("Magazine Entry 10s (CS-Pre)") +
+    ggtitle("Stage 5: Retardation") + xlab("Day") + ylab("Magazine Entry 10s (CS-Pre)") +
     theme_cowplot(11) +
     theme(plot.title = element_text(hjust = 0.5)) +
     theme(plot.title = element_text(size=10)) +
-    coord_cartesian(ylim = c(-1,2.0001)) +
+    coord_cartesian(ylim = c(-1,4.0001)) +
     theme(axis.title.x=element_text(face = "bold")) +
     scale_linetype_manual(name = "", values = linetypes)  +
     scale_colour_manual(name = "", values = linecolours, aesthetics = c("colour")) +
@@ -1992,11 +1992,11 @@ write_csv(data_PerSession_last5s_CSPre, here("figures", "figure_data", savefile)
     stat_summary_bin(fun.data = "mean_se", geom = "point", size = 2) +
     # Make Pretty
     scale_y_continuous( expand = expansion(mult = c(0, 0)), breaks=seq(-100,100,1)) +
-    ggtitle("Stage 3") + xlab("Day") + ylab("Magazine Entry 10s (CS-Pre)") +
+    ggtitle("Stage 5: Retardation") + xlab("Day") + ylab("Magazine Entry 10s (CS-Pre)") +
     theme_cowplot(11) +
     theme(plot.title = element_text(hjust = 0.5)) +
     theme(plot.title = element_text(size=10)) +
-    coord_cartesian(ylim = c(-1,2.0001)) +
+    coord_cartesian(ylim = c(-1,4.0001)) +
     theme(axis.title.x=element_text(face = "bold")) +
     scale_linetype_manual(name = "", values = linetypes)  +
     scale_colour_manual(name = "", values = linecolours, aesthetics = c("colour")) +

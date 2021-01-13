@@ -1,0 +1,23 @@
+Project,UserID,Protocol,Session,Station,Run,Subject,Time,Current State,Transition State,Transition Event,A1_On,A2_On,A3_On,A4_On,A1_Off,A2_Off,A3_Off,A4_Off,folder,file
+C,Marios,39,216,12,1,14____,0,0,1,0,0,0,0,0,0,0,0,0,Test3_Day16,CRFTest3P39
+C,Marios,39,216,12,1,14____,561,1,0,0,1,0,0,0,0,0,0,0,Test3_Day16,CRFTest3P39
+C,Marios,39,216,12,1,14____,806,1,0,0,0,0,0,0,1,0,0,0,Test3_Day16,CRFTest3P39
+C,Marios,39,216,12,1,14____,815,1,4,1,1,0,0,0,0,0,0,0,Test3_Day16,CRFTest3P39
+C,Marios,39,216,12,1,14____,848,4,0,0,0,0,0,0,1,0,0,0,Test3_Day16,CRFTest3P39
+C,Marios,39,216,12,1,14____,865,4,1,0,0,0,0,0,0,0,0,0,Test3_Day16,CRFTest3P39
+C,Marios,39,216,12,1,14____,3626,1,0,0,1,0,0,0,0,0,0,0,Test3_Day16,CRFTest3P39
+C,Marios,39,216,12,1,14____,3648,1,0,0,0,0,0,0,1,0,0,0,Test3_Day16,CRFTest3P39
+C,Marios,39,216,12,1,14____,34480,1,4,1,1,0,0,0,0,0,0,0,Test3_Day16,CRFTest3P39
+C,Marios,39,216,12,1,14____,34488,4,0,0,0,0,0,0,1,0,0,0,Test3_Day16,CRFTest3P39
+C,Marios,39,216,12,1,14____,34521,4,0,0,1,0,0,0,0,0,0,0,Test3_Day16,CRFTest3P39
+C,Marios,39,216,12,1,14____,34523,4,0,0,0,0,0,0,1,0,0,0,Test3_Day16,CRFTest3P39
+C,Marios,39,216,12,1,14____,34530,4,1,0,0,0,0,0,0,0,0,0,Test3_Day16,CRFTest3P39
+C,Marios,39,216,12,1,14____,64159,1,0,0,1,0,0,0,0,0,0,0,Test3_Day16,CRFTest3P39
+C,Marios,39,216,12,1,14____,64164,1,0,0,0,0,0,0,1,0,0,0,Test3_Day16,CRFTest3P39
+C,Marios,39,216,12,1,14____,84753,1,4,1,1,0,0,0,0,0,0,0,Test3_Day16,CRFTest3P39
+C,Marios,39,216,12,1,14____,84763,4,0,0,0,0,0,0,1,0,0,0,Test3_Day16,CRFTest3P39
+C,Marios,39,216,12,1,14____,84765,4,0,0,1,0,0,0,0,0,0,0,Test3_Day16,CRFTest3P39
+C,Marios,39,216,12,1,14____,84767,4,0,0,0,0,0,0,1,0,0,0,Test3_Day16,CRFTest3P39
+C,Marios,39,216,12,1,14____,84803,4,1,0,0,0,0,0,0,0,0,0,Test3_Day16,CRFTest3P39
+C,Marios,39,216,12,1,14____,90000,1,6,0,0,0,0,0,0,0,0,0,Test3_Day16,CRFTest3P39
+C,Marios,39,216,12,1,14____,93000,6,-1,0,0,0,0,0,0,0,0,0,Test3_Day16,CRFTest3P39

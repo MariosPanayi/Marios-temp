@@ -654,8 +654,8 @@ data_recode <- rawdata %>%
          LP_Dur_Flash  = ifelse(FLash_leverCbx == "Left", A1_dur, ifelse(FLash_leverCbx == "Right", A2_dur, NA)),
          LP_Freq_Steady  = ifelse(Steady_levercbx == "Left", A1_freq, ifelse(Steady_levercbx == "Right", A2_freq, NA)),
          LP_Dur_Steady  = ifelse(Steady_levercbx == "Left", A1_dur, ifelse(Steady_levercbx == "Right", A2_dur, NA)),
-         DevaluedStimulus = ifelse(DevaluedOutcome1 == Flash_OutcomeID, "Flash", ifelse(DevaluedOutcome1 == Steady_OutcomeID, "Steady", NA)),
-         NonDevaluedStimulus = ifelse(DevaluedOutcome1 != Flash_OutcomeID, "Flash", ifelse(DevaluedOutcome1 != Steady_OutcomeID, "Steady", NA)),
+         DevaluedStimulus = ifelse(DevaluedOutcome == Flash_OutcomeID, "Flash", ifelse(DevaluedOutcome == Steady_OutcomeID, "Steady", NA)),
+         NonDevaluedStimulus = ifelse(DevaluedOutcome != Flash_OutcomeID, "Flash", ifelse(DevaluedOutcome != Steady_OutcomeID, "Steady", NA)),
          DevaluedLever = ifelse(DevaluedStimulus == "Flash", FLash_leverCbx , ifelse(DevaluedStimulus == "Steady", Steady_levercbx, NA)),
          NonDevaluedLever = ifelse(NonDevaluedStimulus == "Flash", FLash_leverCbx , ifelse(NonDevaluedStimulus == "Steady", Steady_levercbx, NA)),
          LP_Freq_Devalued  = ifelse(DevaluedLever == "Left", A1_freq, ifelse(DevaluedLever == "Right", A2_freq, NA)),
@@ -673,7 +673,7 @@ data_recode <- rawdata %>%
 
 ## relabel data
 data_bin <- data_recode %>%
-  group_by(Day, counterbalancing, Pavlovian_cbx, DevaluedOutcome1, DevaluedStimulus, DevaluedLever, Test_Period,timebins, subject) %>%
+  group_by(Day, counterbalancing, Pavlovian_cbx, DevaluedOutcome, DevaluedStimulus, DevaluedLever, Test_Period,timebins, subject) %>%
   summarise(LPFreq_Flash = sum(LP_Freq_Flash),
             LPDur_Flash = sum(LP_Dur_Flash),
             LPFreq_Steady = sum(LP_Freq_Steady),
@@ -702,19 +702,45 @@ data_bin_long_DevalID <- data_bin %>%
 
 # Sum responding over time bins 
 data_Period_long_DevalID <- data_bin_long_DevalID %>% 
-  group_by(Day, counterbalancing, Pavlovian_cbx, DevaluedOutcome1, DevaluedStimulus, DevaluedLever, Test_Period, Stimulus, subject) %>% 
+  group_by(Day, counterbalancing, Pavlovian_cbx, DevaluedOutcome, DevaluedStimulus, DevaluedLever, Test_Period, Stimulus, subject) %>% 
   summarise(LPFreq = sum(LPFreq),
             LPDur = sum(LPDur),
             Reinforcer = sum(Reinforcer)
   ) %>% 
   ungroup()
 
+# Average across both test sessions
+data_bin_long_DevalID_Avg <- data_bin_long_DevalID %>% 
+  group_by(Test_Period, timebins, subject, Stimulus) %>% 
+  summarise(LPFreq = mean(LPFreq),
+            LPDur = mean(LPDur),
+            Reinforcer = mean(Reinforcer))  %>% 
+  ungroup()
+
+data_Period_long_DevalID_Avg <- data_Period_long_DevalID %>% 
+  group_by(Test_Period, subject, Stimulus) %>% 
+  summarise(LPFreq = mean(LPFreq),
+            LPDur = mean(LPDur),
+            Reinforcer = mean(Reinforcer))  %>% 
+  ungroup()
+
+
 # Plots STage 3 - Deval ---------------------------------------------------
 
-Devaluation_PerBin_LP <- data_bin_long_DevalID %>% 
+
+# Exclude subjects
+plot_bin <- data_bin_long_DevalID_Avg %>% 
+  filter(subject != "17____",subject != "21____",subject != "18____",subject != "20____")
+
+plot_Period <- data_Period_long_DevalID %>% 
+  filter(subject != "17____",subject != "21____",subject != "18____",subject != "20____")
+
+# subject != "42____" & subject != "18____" & subject != "43____" & subject != "25____"
+
+Devaluation_PerBin_LP <- plot_bin %>% 
   filter(Stimulus != "Magazine",
          Test_Period != "ITI",
-         subject != "18____") %>% 
+        ) %>% 
   ggplot(mapping = aes(x = as.factor(timebins), y = LPFreq, group = Stimulus, colour = Stimulus, fill = Stimulus, shape = Stimulus, linetype = Stimulus)) +
   stat_summary_bin(fun.data = "mean_se", geom = "line", size = .5) +
   stat_summary(fun.data = "mean_se", geom = "errorbar", width = 0.0, size = .3, linetype = 1, show.legend = FALSE) +
@@ -734,12 +760,12 @@ Devaluation_PerBin_LP <- data_bin_long_DevalID %>%
   scale_fill_manual(name = "", values = fillcolours) +
   theme(legend.key.width=unit(1,"line"))
 
+Devaluation_PerBin_LP
 
 
-Devaluation_PerBin_Reinforcers <- data_bin_long_DevalID %>% 
+Devaluation_PerBin_Reinforcers <- plot_bin %>% 
   filter(Stimulus != "Magazine",
-         Test_Period != "ITI",
-         subject != "18____") %>% 
+         Test_Period != "ITI") %>% 
   ggplot(mapping = aes(x = as.factor(timebins), y = Reinforcer, group = Stimulus, colour = Stimulus, fill = Stimulus, shape = Stimulus, linetype = Stimulus)) +
   stat_summary_bin(fun.data = "mean_se", geom = "line", size = .5) +
   stat_summary(fun.data = "mean_se", geom = "errorbar", width = 0.0, size = .3, linetype = 1, show.legend = FALSE) +
@@ -759,18 +785,18 @@ Devaluation_PerBin_Reinforcers <- data_bin_long_DevalID %>%
   scale_fill_manual(name = "", values = fillcolours) +
   theme(legend.key.width=unit(1,"line"))
 
-
+Devaluation_PerBin_Reinforcers
 
 ## Total Responses
 
-Devaluation_Total_LP <- data_Period_long_DevalID %>% 
+Devaluation_Total_LP <- plot_Period %>% 
   filter(Stimulus != "Magazine",
-         Test_Period != "ITI",
-         subject != "18____") %>% 
+         Test_Period != "ITI") %>% 
 ggplot(mapping = aes(x = as.factor(Test_Period), y = LPFreq, group = Stimulus, colour = Stimulus, fill = Stimulus)) +
   stat_summary_bin(fun.data = "mean_se", geom = "bar", position = "dodge",  size = .3) +
   stat_summary(fun.data = "mean_se", geom = "errorbar", position = position_dodge(width = 0.9),  width = 0,  size = .3, colour = "black", linetype = "solid", show.legend = FALSE) + 
-  # Make Pretty
+  facet_wrap(~Day,) +
+   # Make Pretty
   scale_y_continuous( expand = expansion(mult = c(0, 0)), breaks=seq(-1000,1000,5)) +
   ggtitle("Stage 3: Devaluation Test") + xlab("Test Period") + ylab("Total LP (10 mins)") +
   theme_cowplot(11) +
@@ -783,15 +809,15 @@ ggplot(mapping = aes(x = as.factor(Test_Period), y = LPFreq, group = Stimulus, c
   theme(legend.key.width=unit(0.5,"line"))
 
 
+Devaluation_Total_LP
 
-
-Devaluation_Total_Reinforcers <- data_Period_long_DevalID %>% 
+Devaluation_Total_Reinforcers <- plot_Period %>% 
   filter(Stimulus != "Magazine",
-         Test_Period != "ITI",
-         subject != "18____") %>% 
+         Test_Period != "ITI") %>% 
   ggplot(mapping = aes(x = as.factor(Test_Period), y = Reinforcer, group = Stimulus, colour = Stimulus, fill = Stimulus)) +
   stat_summary_bin(fun.data = "mean_se", geom = "bar", position = "dodge",  size = .3) +
   stat_summary(fun.data = "mean_se", geom = "errorbar", position = position_dodge(width = 0.9),  width = 0,  size = .3, colour = "black", linetype = "solid", show.legend = FALSE) + 
+  facet_wrap(~Day,) +
   # Make Pretty
   scale_y_continuous( expand = expansion(mult = c(0, 0)), breaks=seq(-1000,1000,5)) +
   ggtitle("Stage 3: Devaluation Test") + xlab("Test Period") + ylab("Total Reinforcers (10 mins)") +
@@ -805,7 +831,7 @@ Devaluation_Total_Reinforcers <- data_Period_long_DevalID %>%
   theme(legend.key.width=unit(0.5,"line"))
 
 
-
+Devaluation_Total_Reinforcers
 
 # Combined Figure Panels ---------------------------------------------------
 # # Stage 1: Instrumental

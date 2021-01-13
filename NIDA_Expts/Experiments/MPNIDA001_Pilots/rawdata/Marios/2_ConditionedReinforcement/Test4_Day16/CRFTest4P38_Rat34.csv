@@ -1,0 +1,8 @@
+Project,UserID,Protocol,Session,Station,Run,Subject,Time,Current State,Transition State,Transition Event,A1_On,A2_On,A3_On,A4_On,A1_Off,A2_Off,A3_Off,A4_Off,folder,file
+C,Marios,38,220,5,1,34____,0,0,1,0,0,0,0,0,0,0,0,0,Test4_Day16,CRFTest4P38
+C,Marios,38,220,5,1,34____,32506,1,0,0,1,0,0,0,0,0,0,0,Test4_Day16,CRFTest4P38
+C,Marios,38,220,5,1,34____,32507,1,2,1,1,0,0,0,1,0,0,0,Test4_Day16,CRFTest4P38
+C,Marios,38,220,5,1,34____,32542,2,0,0,0,0,0,0,1,0,0,0,Test4_Day16,CRFTest4P38
+C,Marios,38,220,5,1,34____,32557,2,1,0,0,0,0,0,0,0,0,0,Test4_Day16,CRFTest4P38
+C,Marios,38,220,5,1,34____,90000,1,6,0,0,0,0,0,0,0,0,0,Test4_Day16,CRFTest4P38
+C,Marios,38,220,5,1,34____,93000,6,-1,0,0,0,0,0,0,0,0,0,Test4_Day16,CRFTest4P38
