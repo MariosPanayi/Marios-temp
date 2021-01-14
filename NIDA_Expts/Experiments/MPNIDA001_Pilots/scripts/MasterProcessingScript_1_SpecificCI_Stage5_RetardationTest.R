@@ -22,7 +22,8 @@ projectdatafolder <- c("1_SpecificCI")
 listofdatafolders <- c("RetardationTest_Stage5_Day16",
                        "RetardationTest_Stage5_Day17",
                        "RetardationTest_Stage5_Day18",
-                       "RetardationTest_Stage5_Day19")
+                       "RetardationTest_Stage5_Day19",
+                       "RetardationTest_Stage5_Day20")
 
 
 #  extract data filenames, only .txt --------------------------------------

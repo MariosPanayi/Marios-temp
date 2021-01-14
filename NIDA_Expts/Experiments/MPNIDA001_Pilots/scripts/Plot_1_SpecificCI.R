@@ -1933,7 +1933,7 @@ write_csv(data_PerSession_last5s_CSPre, here("figures", "figure_data", savefile)
     stat_summary_bin(fun.data = "mean_se", geom = "point", size = 2) +
     # Make Pretty
     scale_y_continuous( expand = expansion(mult = c(0, 0)), breaks=seq(-100,100,1)) +
-    ggtitle("Stage 5: Retardation") + xlab("Day") + ylab("Magazine Entry 10s (CS-Pre)") +
+    ggtitle("Stage 5: Retardation") + xlab("Day") + ylab("Magazine Duration 10s (CS-Pre)") +
     theme_cowplot(11) +
     theme(plot.title = element_text(hjust = 0.5)) +
     theme(plot.title = element_text(size=10)) +

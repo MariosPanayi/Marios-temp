@@ -732,7 +732,7 @@ data_Period_long_DevalID_Avg <- data_Period_long_DevalID %>%
 plot_bin <- data_bin_long_DevalID_Avg %>% 
   filter(subject != "17____",subject != "21____",subject != "18____",subject != "20____")
 
-plot_Period <- data_Period_long_DevalID %>% 
+plot_Period <- data_Period_long_DevalID_Avg %>% 
   filter(subject != "17____",subject != "21____",subject != "18____",subject != "20____")
 
 # subject != "42____" & subject != "18____" & subject != "43____" & subject != "25____"
@@ -795,7 +795,7 @@ Devaluation_Total_LP <- plot_Period %>%
 ggplot(mapping = aes(x = as.factor(Test_Period), y = LPFreq, group = Stimulus, colour = Stimulus, fill = Stimulus)) +
   stat_summary_bin(fun.data = "mean_se", geom = "bar", position = "dodge",  size = .3) +
   stat_summary(fun.data = "mean_se", geom = "errorbar", position = position_dodge(width = 0.9),  width = 0,  size = .3, colour = "black", linetype = "solid", show.legend = FALSE) + 
-  facet_wrap(~Day,) +
+  # facet_wrap(~Test,) +
    # Make Pretty
   scale_y_continuous( expand = expansion(mult = c(0, 0)), breaks=seq(-1000,1000,5)) +
   ggtitle("Stage 3: Devaluation Test") + xlab("Test Period") + ylab("Total LP (10 mins)") +
@@ -817,7 +817,7 @@ Devaluation_Total_Reinforcers <- plot_Period %>%
   ggplot(mapping = aes(x = as.factor(Test_Period), y = Reinforcer, group = Stimulus, colour = Stimulus, fill = Stimulus)) +
   stat_summary_bin(fun.data = "mean_se", geom = "bar", position = "dodge",  size = .3) +
   stat_summary(fun.data = "mean_se", geom = "errorbar", position = position_dodge(width = 0.9),  width = 0,  size = .3, colour = "black", linetype = "solid", show.legend = FALSE) + 
-  facet_wrap(~Day,) +
+  # facet_wrap(~Day,) +
   # Make Pretty
   scale_y_continuous( expand = expansion(mult = c(0, 0)), breaks=seq(-1000,1000,5)) +
   ggtitle("Stage 3: Devaluation Test") + xlab("Test Period") + ylab("Total Reinforcers (10 mins)") +
@@ -859,50 +859,24 @@ Devaluation_Total_Reinforcers
 # Devaluation_Total_LP
 # Devaluation_Total_Reinforcers
 
-## Flash vs Steady Stage 1 and 2
-A <- Acquisition_PerBin_LP + theme(legend.position= c(0.80,.75), 
-                                legend.justification='left',
-                                legend.direction='vertical')
-
-C <- Acquisition_PerBin_Reinforcer + theme(legend.position= c(0.80,.75), 
-                                legend.justification='left',
-                                legend.direction='vertical', 
-                                )
-
-B <- LPL_Stage2_5s_Freq + theme(legend.position= c(0.05,.85), 
-                                legend.justification='left',
-                                legend.direction='vertical', 
-                                )
-
-D <- LPL_Stage2_5s_Dur + theme(legend.position= c(0.05,.85), 
-                                legend.justification='left',
-                                legend.direction='vertical', 
-                                )
-
-LPL_Combined_Acquisition <- (A + B + C +D) + plot_annotation(tag_levels = 'A') + plot_layout(ncol = 2, nrow = 2, widths = c(1.2, .5, 1.2, .5))
-LPL_Combined_Acquisition
-
-
-filename = here("figures", "LPL_Combined_Acquisition_StimID.png")
-ggsave(filename, LPL_Combined_Acquisition, width = 210, height = 150, units = "mm", dpi = 1200)
 
 
 ## Flash vs Steady Stage 1 and 2
-A1 <- Acquisition_PerBin_LP_DevalID + theme(legend.position= c(0.80,.90), 
+A1 <- Acquisition_PerBin_LP + theme(legend.position= c(0.80,.75), 
                                    legend.justification='left',
                                    legend.direction='vertical')
 
-D1 <- Acquisition_PerBin_Reinforcer_DevalID + theme(legend.position= c(0.80,.90), 
+D1 <- Acquisition_PerBin_Reinforcer + theme(legend.position= c(0.80,.75), 
                                            legend.justification='left',
                                            legend.direction='vertical', 
 )
 
-B1 <- LPL_Stage2_5s_Freq_DevalID + theme(legend.position= c(0.05,.90), 
+B1 <- LPL_Stage2_5s_Freq + theme(legend.position= c(0.05,.85), 
                                 legend.justification='left',
                                 legend.direction='vertical', 
 )
 
-E1 <- LPL_Stage2_5s_Dur_DevalID + theme(legend.position= c(0.05,.90), 
+E1 <- LPL_Stage2_5s_Dur + theme(legend.position= c(0.05,.85), 
                                legend.justification='left',
                                legend.direction='vertical', 
 )
@@ -922,6 +896,6 @@ LPL_Combined_Acquisition <- (A1 + B1 + C1 + D1 + E1 + F1) + plot_annotation(tag_
 LPL_Combined_Acquisition
 
 
-filename = here("figures", "LPL_Combined_Acquisition_DevalID.png")
+filename = here("figures", "LPL_Combined_Acquisition_Devaluation.png")
 ggsave(filename, LPL_Combined_Acquisition, width = 280, height = 150, units = "mm", dpi = 1200)
 
