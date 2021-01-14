@@ -724,6 +724,13 @@ data_Period_long_DevalID_Avg <- data_Period_long_DevalID %>%
             Reinforcer = mean(Reinforcer))  %>% 
   ungroup()
 
+data_Period_long_DevalID_Avg_separateDay <- data_Period_long_DevalID %>% 
+  group_by(Day, Test_Period, subject, Stimulus) %>% 
+  summarise(LPFreq = mean(LPFreq),
+            LPDur = mean(LPDur),
+            Reinforcer = mean(Reinforcer))  %>% 
+  ungroup()
+
 
 # Plots STage 3 - Deval ---------------------------------------------------
 
@@ -833,6 +840,54 @@ Devaluation_Total_Reinforcers <- plot_Period %>%
 
 Devaluation_Total_Reinforcers
 
+
+# TEst Split by test day/order --------------------------------------------
+
+Devaluation_Total_LP_TestOrder <- data_Period_long_DevalID_Avg_separateDay %>% 
+  filter(Stimulus != "Magazine",
+         Test_Period != "ITI") %>% 
+  ggplot(mapping = aes(x = as.factor(Day), y = LPFreq, group = Stimulus, colour = Stimulus, fill = Stimulus)) +
+  stat_summary_bin(fun.data = "mean_se", geom = "bar", position = "dodge",  size = .3) +
+  stat_summary(fun.data = "mean_se", geom = "errorbar", position = position_dodge(width = 0.9),  width = 0,  size = .3, colour = "black", linetype = "solid", show.legend = FALSE) + 
+  facet_wrap(~Day, scales="free") +
+  # Make Pretty
+  scale_y_continuous( expand = expansion(mult = c(0, 0)), breaks=seq(-1000,1000,5)) +
+  ggtitle("Stage 3: Devaluation Test") + xlab("Test Period") + ylab("Total LP (10 mins)") +
+  theme_cowplot(11) +
+  theme(plot.title = element_text(hjust = 0.5)) +
+  theme(plot.title = element_text(size=10)) +
+  coord_cartesian(ylim = c(0,30.0001)) +
+  theme(axis.title.x=element_text(face = "bold")) +
+  scale_colour_manual(name = "", values = linecolours, aesthetics = c("colour")) +
+  scale_fill_manual(name = "", values = fillcolours) +
+  theme(legend.key.width=unit(0.5,"line"))
+
+
+Devaluation_Total_LP_TestOrder
+
+
+Devaluation_Total_Reinforcer_TestOrder <- data_Period_long_DevalID_Avg_separateDay %>% 
+  filter(Stimulus != "Magazine",
+         Test_Period != "ITI") %>% 
+  ggplot(mapping = aes(x = as.factor(Day), y = Reinforcer, group = Stimulus, colour = Stimulus, fill = Stimulus)) +
+  stat_summary_bin(fun.data = "mean_se", geom = "bar", position = "dodge",  size = .3) +
+  stat_summary(fun.data = "mean_se", geom = "errorbar", position = position_dodge(width = 0.9),  width = 0,  size = .3, colour = "black", linetype = "solid", show.legend = FALSE) + 
+  facet_wrap(~Day, scales="free") +
+  # Make Pretty
+  scale_y_continuous( expand = expansion(mult = c(0, 0)), breaks=seq(-1000,1000,5)) +
+  ggtitle("Stage 3: Devaluation Test") + xlab("Test Period") + ylab("Total Reinforcers (10 mins)") +
+  theme_cowplot(11) +
+  theme(plot.title = element_text(hjust = 0.5)) +
+  theme(plot.title = element_text(size=10)) +
+  coord_cartesian(ylim = c(0,15.0001)) +
+  theme(axis.title.x=element_text(face = "bold")) +
+  scale_colour_manual(name = "", values = linecolours, aesthetics = c("colour")) +
+  scale_fill_manual(name = "", values = fillcolours) +
+  theme(legend.key.width=unit(0.5,"line"))
+
+
+Devaluation_Total_Reinforcer_TestOrder
+
 # Combined Figure Panels ---------------------------------------------------
 # # Stage 1: Instrumental
 # Acquisition_PerSession_Reinforcer
@@ -892,10 +947,28 @@ F1 <- Devaluation_Total_Reinforcers  + theme(legend.position= c(0.05,.90),
 )
 
 
-LPL_Combined_Acquisition <- (A1 + B1 + C1 + D1 + E1 + F1) + plot_annotation(tag_levels = 'A') + plot_layout(ncol = 3, nrow = 2, widths = c(1.2, .5, .5, 1.2, .5, .5))
+LPL_Combined_Acquisition <- (A1 + B1 + C1 + D1 + E1 + F1) + plot_annotation(tag_levels = 'A') + plot_layout(ncol = 3, nrow = 2, widths = c(1, .5, .4, 1, .5, .4))
 LPL_Combined_Acquisition
 
 
 filename = here("figures", "LPL_Combined_Acquisition_Devaluation.png")
 ggsave(filename, LPL_Combined_Acquisition, width = 280, height = 150, units = "mm", dpi = 1200)
+
+
+
+# Test order plot ---------------------------------------------------------
+
+A <- Devaluation_Total_LP_TestOrder + theme(legend.position= c(0.05,.90), 
+                                                                         legend.justification='left',
+                                                                         legend.direction='vertical')
+
+B <- Devaluation_Total_Reinforcer_TestOrder + theme(legend.position= c(0.05,.90), 
+                                            legend.justification='left',
+                                            legend.direction='vertical')
+
+LPL_SeparateTestOrder_Devaluation <- (A + B) + plot_annotation(tag_levels = 'A') + plot_layout(ncol = 1, nrow = 2, widths = c(1,1))
+
+
+filename = here("figures", "LPL_SeparateTestOrder_Devaluation.png")
+ggsave(filename, LPL_SeparateTestOrder_Devaluation, width = 80, height = 150, units = "mm", dpi = 1200)
 

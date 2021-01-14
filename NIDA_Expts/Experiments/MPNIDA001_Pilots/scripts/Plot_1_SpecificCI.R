@@ -2172,45 +2172,23 @@ write_csv(data_PerSession_last5s_CSPre, here("figures", "figure_data", savefile)
 
   
   ## Stage 5: Retardation - 10s
-  A <- CI_Stage5_10s_Freq + theme(legend.position= c(0.8,.90), 
+  A <- CI_Stage5_10s_Freq + theme(legend.position= c(0.05,.90), 
                                            legend.justification='left',
                                            legend.direction='vertical')
   
-  B <- CI_Stage5_10s_Dur + theme(legend.position= c(0.8,.90), 
+  B <- CI_Stage5_10s_Dur + theme(legend.position= c(0.05,.90), 
                                           legend.justification='left',
                                           legend.direction='vertical')
   
-  C <- CI_Stage5_10s_Freq_combined + theme(legend.position= c(0.8,.90), 
+  C <- CI_Stage5_10s_Freq_combined + theme(legend.position= c(0.05,.90), 
                                                     legend.justification='left',
                                                     legend.direction='vertical')
   
-  D <- CI_Stage5_10s_Dur_combined + theme(legend.position= c(0.8,.90), 
+  D <- CI_Stage5_10s_Dur_combined + theme(legend.position= c(0.05,.90), 
                                                    legend.justification='left',
                                                    legend.direction='vertical')
   
   CI_Stage5_10s_Freq_Analyses <- (A + B + C + D) + plot_annotation(tag_levels = 'A') + plot_layout(nrow = 2, ncol = 2, widths = c(1,1,1,1))
-  
-  filename = here("figures", "CI_Stage5_10s_Freq_Analyses.png")
-  ggsave(filename, CI_Stage5_10s_Freq_Analyses, width = 180, height = 180, units = "mm", dpi = 1200)
-  
-  ## Stage 5: Retardation - 10s 
-  A <- CI_Stage5_10s_Freq + theme(legend.position= c(0.8,.90), 
-                                  legend.justification='left',
-                                  legend.direction='vertical')
-  
-  B <- CI_Stage5_10s_Dur + theme(legend.position= c(0.8,.90), 
-                                 legend.justification='left',
-                                 legend.direction='vertical')
-  
-  C <- CI_Stage5_10s_Freq_combined + theme(legend.position= c(0.8,.90), 
-                                           legend.justification='left',
-                                           legend.direction='vertical')
-  
-  D <- CI_Stage5_10s_Dur_combined + theme(legend.position= c(0.8,.90), 
-                                          legend.justification='left',
-                                          legend.direction='vertical')
-  
-  CI_Stage5_10s_Analyses <- (A + B + C + D) + plot_annotation(tag_levels = 'A') + plot_layout(nrow = 2, ncol = 2, widths = c(1,1,1,1))
   
   filename = here("figures", "CI_Stage5_10s_Freq_Analyses.png")
   ggsave(filename, CI_Stage5_10s_Freq_Analyses, width = 180, height = 180, units = "mm", dpi = 1200)
