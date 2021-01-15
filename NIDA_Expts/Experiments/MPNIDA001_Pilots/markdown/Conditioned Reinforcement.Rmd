@@ -34,67 +34,11 @@ library(knitr)
 CRF_Acquisition_CSPre <- read_csv(here("figures","figure_data","CRF_Acquisition_CSPre.csv"))
 CRF_Acquisition_CSPre_Last5s <- read_csv(here("figures","figure_data","CRF_Acquisition_CSPre_Last5s.csv"))
 # Test Data
-CRF_data_P100_HighvsLow_long <- read_csv(here("figures","figure_data","CRF_data_P100_HighvsLow_long.csv"))
-CRF_data_P50_HighvsLow_long <- read_csv(here("figures","figure_data","CRF_data_P50_HighvsLow_long.csv"))
-CRF_data_High_100Vs50_long <- read_csv(here("figures","figure_data","CRF_data_High_100Vs50_long.csv"))
-CRF_data_Low_100Vs50_long <- read_csv(here("figures","figure_data","CRF_data_Low_100Vs50_long.csv"))
-
-# Test Data Create average session data
-CRF_data_P100_HighvsLow_long_Avg <- CRF_data_P100_HighvsLow_long %>% 
-  group_by(TestCondition, Day, subject, measure, Value, Probability) %>% 
-  summarise(Freq = sum(Freq)) 
-
-CRF_data_P50_HighvsLow_long_Avg <- CRF_data_P50_HighvsLow_long %>% 
-  group_by(TestCondition, Day, subject, measure, Value, Probability) %>% 
-  summarise(Freq = sum(Freq)) 
-
-CRF_data_High_100Vs50_long_Avg <- CRF_data_High_100Vs50_long %>% 
-  group_by(TestCondition, Day, subject, measure, Value, Probability) %>% 
-  summarise(Freq = sum(Freq)) 
-
-CRF_data_Low_100Vs50_long_Avg <- CRF_data_Low_100Vs50_long %>% 
-  group_by(TestCondition, Day, subject, measure, Value, Probability) %>% 
-  summarise(Freq = sum(Freq)) 
-
-## Check things are being averaged correctly 
-# CRF_data_P100_HighvsLow_long_Avg %>% 
-#      count(unique(subject)) %>% 
-# kable()
-
-CRF_data_HighvsLow_long_combined <- full_join(CRF_data_P100_HighvsLow_long_Avg, CRF_data_P50_HighvsLow_long_Avg)
-CRF_data_100Vs50_long_combined <- full_join(CRF_data_High_100Vs50_long_Avg, CRF_data_Low_100Vs50_long_Avg)
-
-CRF_data_P100_HighvsLow_long_Avg <- CRF_data_P100_HighvsLow_long_Avg %>% 
-pivot_wider(names_from = c(Value, Probability, measure), values_from =  Freq) %>% 
-  mutate(ExcludeSubject = ifelse(High_P100_CS == 0 | Low_P100_CS == 0, "Exclude", "Keep"),
-         Diff_P100_CS = High_P100_CS - Low_P100_CS,
-         Diff_P100_LP = High_P100_LP - Low_P100_LP,
-         PercDiff_P100_LP = 100*(High_P100_LP - Low_P100_LP)/ (High_P100_LP + Low_P100_LP)) %>% 
-  pivot_longer(c(4:7, 9:11),names_to = c("Value", "Probability", "measure"), names_sep = "_" , values_to = c("Freq"))
-
-CRF_data_P50_HighvsLow_long_Avg <- CRF_data_P50_HighvsLow_long_Avg %>% 
-pivot_wider(names_from = c(Value, Probability, measure), values_from =  Freq) %>% 
-  mutate(ExcludeSubject = ifelse(High_P50_CS == 0 | Low_P50_CS == 0, "Exclude", "Keep"),
-         Diff_P50_CS = High_P50_CS - Low_P50_CS,
-         Diff_P50_LP = High_P50_LP - Low_P50_LP,
-         PercDiff_P50_LP = 100*(High_P50_LP - Low_P50_LP)/ (High_P50_LP + Low_P50_LP)) %>% 
-  pivot_longer(c(4:7, 9:11),names_to = c("Value", "Probability", "measure"), names_sep = "_" , values_to = c("Freq"))
-
-CRF_data_High_100Vs50_long_Avg <- CRF_data_High_100Vs50_long_Avg %>% 
-pivot_wider(names_from = c(Value, Probability, measure), values_from =  Freq) %>% 
-  mutate(ExcludeSubject = ifelse(High_P100_CS == 0 | High_P50_CS == 0, "Exclude", "Keep"),
-         Diff_High_CS = High_P100_CS - High_P50_CS,
-         Diff_High_LP = High_P100_LP - High_P50_LP,
-         PercDiff_High_LP = 100*(High_P100_LP - High_P50_LP)/ (High_P100_LP + High_P50_LP)) %>% 
-  pivot_longer(c(4:7, 9:11),names_to = c("Value", "Probability", "measure"), names_sep = "_" , values_to = c("Freq"))
-
-CRF_data_Low_100Vs50_long_Avg <- CRF_data_Low_100Vs50_long_Avg %>% 
-pivot_wider(names_from = c(Value, Probability, measure), values_from =  Freq) %>% 
-    mutate(ExcludeSubject = ifelse(Low_P100_CS == 0 | Low_P50_CS == 0, "Exclude", "Keep"),
-         Diff_Low_CS = Low_P100_CS - Low_P50_CS,
-         Diff_Low_LP = Low_P100_LP - Low_P50_LP,
-         PercDiff_Low_LP = 100*(Low_P100_LP - Low_P50_LP)/ (Low_P100_LP + Low_P50_LP)) %>% 
-  pivot_longer(c(4:7, 9:11),names_to = c("Value", "Probability", "measure"), names_sep = "_" , values_to = c("Freq"))
+# CRF_data_P100_HighvsLow_long <- read_csv(here("figures","figure_data","CRF_data_P100_HighvsLow_long.csv"))
+# CRF_data_P50_HighvsLow_long <- read_csv(here("figures","figure_data","CRF_data_P50_HighvsLow_long.csv"))
+# CRF_data_High_100Vs50_long <- read_csv(here("figures","figure_data","CRF_data_High_100Vs50_long.csv"))
+# CRF_data_Low_100Vs50_long <- read_csv(here("figures","figure_data","CRF_data_Low_100Vs50_long.csv"))
+CRF_ALL_data_long_Avg <- read_csv(here("figures","figure_data","CRF_ALL_data_long_Avg.csv"))
 
 
 ```
@@ -228,37 +172,24 @@ simple_Stg1_Dur_5s$table
 
 
 
-```{r Test CRF HighvsLow Value comparisons Stats , include=FALSE, message = FALSE, warning=FALSE}
-rawdata <- CRF_data_HighvsLow_long_combined %>% 
-  filter(measure == "LP")
+```{r Test CRF DIfference Scores Stats , include=FALSE, message = FALSE, warning=FALSE}
+# This analysis is not great - Standard ANOVA, only 4 rats did all 4 tests so this analysis kicks out too many subjects
+rawdata <- CRF_ALL_data_long_Avg %>% 
+  filter(Value == "Diff",
+         measure == "LP",
+         ExcludeSubject == "Keep")
 # Stage 1 Acquisition Frequency
-anova <- aov_4(Freq ~ (Value*Probability|subject), data = rawdata, anova_table = list(correction = "none", es = "pes"))
+anova <- aov_4(Freq ~ (TestCondition|subject), data = rawdata, anova_table = list(correction = "none", es = "pes"))
 anova_test_Value <- apa_print(anova, mse = "FALSE",correction = "none",es = "pes")
-## simple effects - linear trend on Day
-simple <- emmeans(anova, ~Value*Probability)
-simple_Test_Value <- apa_print(contrast(simple, interaction = "pairwise", by = "Probability", adjust = "tukey"))
+# ## simple effects - linear trend on Day
+# simple <- emmeans(anova, ~TestCondition)
+# simple_Test_Value <- apa_print(contrast(simple, interaction = "pairwise", by = "Probability", adjust = "tukey"))
 
 anova_test_Value$table
-simple_Test_Value$table
+# simple_Test_Value$table
 
-
-rawdata <- CRF_data_100Vs50_long_combined %>% 
-  filter(measure == "LP")
-# Stage 1 Acquisition Frequency
-anova <- aov_4(Freq ~ (Value*Probability|subject), data = rawdata, anova_table = list(correction = "none", es = "pes"))
-anova_test_Probability <- apa_print(anova, mse = "FALSE",correction = "none",es = "pes")
-## simple effects - linear trend on Day
-simple <- emmeans(anova, ~Value*Probability)
-simple_Test_Probability <- apa_print(contrast(simple, interaction = "pairwise", by = "Value", adjust = "tukey"))
-
-anova_test_Probability$table
-simple_Test_Probability$table
 
 ```
 
-
-
-`r CRF_data_HighvsLow_Table`
-`r CRF_data_100Vs50_Table`
 
 
