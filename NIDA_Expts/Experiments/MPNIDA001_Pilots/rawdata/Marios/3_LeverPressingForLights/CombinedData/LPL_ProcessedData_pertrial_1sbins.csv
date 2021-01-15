@@ -7677,7 +7677,6 @@ LPL_Acquisition_RR2_Day3,LPLAcquisitionRR2Day3B,LPLAcquisitionRR2Day3B_Rat43.csv
 LPL_Acquisition_RR2_Day3,LPLAcquisitionRR2Day3B,LPLAcquisitionRR2Day3B_Rat43.csv,43____,17,13,1,C,Marios,100,16,222,1389.42,3,0,0,0,0,0,0,0,0,B,Post,Post,Right,Acquisition,RR2,Day3
 LPL_Acquisition_RR2_Day3,LPLAcquisitionRR2Day3B,LPLAcquisitionRR2Day3B_Rat43.csv,43____,17,13,1,C,Marios,100,16,222,1390.42,4,0,0,0,0,0,0,0,0,B,Post,Post,Right,Acquisition,RR2,Day3
 LPL_Acquisition_RR2_Day3,LPLAcquisitionRR2Day3B,LPLAcquisitionRR2Day3B_Rat43.csv,43____,17,13,1,C,Marios,100,16,222,1391.42,5,0,0,0,0,0,0,0,0,B,Post,Post,Right,Acquisition,RR2,Day3
-<<<<<<< HEAD
 LPL_Acquisition_RR2_Day4,LPLAcquisitionRR2Day4A,LPLAcquisitionRR2Day4A_Rat17.csv,17____,16,1,1,C,Marios,113,1,2,41.88,1,1,0.119999999999997,0,0,0,0,0,0,A,Light,Flash,Left,Acquisition,RR2,Day4
 LPL_Acquisition_RR2_Day4,LPLAcquisitionRR2Day4A,LPLAcquisitionRR2Day4A_Rat17.csv,17____,16,1,1,C,Marios,113,1,2,42.88,2,0,0,0,0,0,0,0,0,A,Light,Flash,Left,Acquisition,RR2,Day4
 LPL_Acquisition_RR2_Day4,LPLAcquisitionRR2Day4A,LPLAcquisitionRR2Day4A_Rat17.csv,17____,16,1,1,C,Marios,113,1,2,43.88,3,0,0,0,0,0,0,0,0,A,Light,Flash,Left,Acquisition,RR2,Day4
@@ -9494,5 +9493,3 @@ LPL_Acquisition_RR2_Day4,LPLAcquisitionRR2Day4B,LPLAcquisitionRR2Day4B_Rat43.csv
 LPL_Acquisition_RR2_Day4,LPLAcquisitionRR2Day4B,LPLAcquisitionRR2Day4B_Rat43.csv,43____,17,13,1,C,Marios,113,7,222,1786.7,3,0,0,0,0,0,0,0,0,B,Post,Post,Right,Acquisition,RR2,Day4
 LPL_Acquisition_RR2_Day4,LPLAcquisitionRR2Day4B,LPLAcquisitionRR2Day4B_Rat43.csv,43____,17,13,1,C,Marios,113,7,222,1787.7,4,0,0,0,0,0,0,0,0,B,Post,Post,Right,Acquisition,RR2,Day4
 LPL_Acquisition_RR2_Day4,LPLAcquisitionRR2Day4B,LPLAcquisitionRR2Day4B_Rat43.csv,43____,17,13,1,C,Marios,113,7,222,1788.7,5,0,0,0,0,0,0,0,0,B,Post,Post,Right,Acquisition,RR2,Day4
-=======
->>>>>>> 196f026a4ac8c36440346810a382ecdcd36d9701

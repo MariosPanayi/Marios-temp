@@ -575,6 +575,9 @@ CRF_ALL_data_long_Avg <- full_join(full_join(CRF_data_P100_HighVsLow_long_Avg,CR
 full_join(CRF_data_High_100Vs50_long_Avg,CRF_data_Low_100Vs50_long_Avg) )
 
 
+savefile <- "CRF_ALL_data_long_Avg.csv"
+write_csv(CRF_ALL_data_long_Avg, here("figures", "figure_data", savefile))
+
 # 
 # 
 # # Save CRF Test Plot Data -------------------------------------------------
