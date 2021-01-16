@@ -1012,20 +1012,15 @@ coulbourn_processdata_Operant_SessionTimeBinAnalysis <- function(filename,folder
 }
 
 
-
-
 # 
-# 
-# 
-# 
-# coulbourn_actioncleantimestamps(A_on, A_off) {
+# coulbourn_actioncleantimestamps <- function(A_on, A_off) {
 #   # Function takes a vector of Action ON times and a vector of Action OFF times from a session
 #   # Data are processed to fix any issues with missing/non-mathcing ON/OFF times
 #   # Assumptions made are that:
 #   # 1) If an action OFF signal is the first timestamp, then the first action ON was before the session started (so first A_On set to time = 0)
 #   # 2) Any ON or OFF signal that is doesn't pair chronologically with the other signals reflects an action ON/OFF signal occuring faster than the temporal resolution of the system
 #   #   A corresponding On/Off signal is added so that the ON-OFF duration is 0 (i.e. they occured at the same time)
-#   # These issues happen surprisingly often for Coulbourn Lever Pressing data in particular 
+#   # These issues happen surprisingly often for Coulbourn Lever Pressing data in particular
 #   # N.B. output is a data frame of A_on and A_off, split this output apart for use wiht other functions.
 #   
 #   if (length(A_on) > 0 | length(A_off) > 0) {
@@ -1067,7 +1062,7 @@ coulbourn_processdata_Operant_SessionTimeBinAnalysis <- function(filename,folder
 #     
 #     
 #     # Keep doing the following steps until the on and off signal vectors are empty
-#     # We will delete things as they are moved from A_on and A_off and transfer them 
+#     # We will delete things as they are moved from A_on and A_off and transfer them
 #     # to the new vector with any extra on and off signals required
 #     while (length(A_on) > 0 | length(A_off) > 0) {
 #       
@@ -1097,7 +1092,7 @@ coulbourn_processdata_Operant_SessionTimeBinAnalysis <- function(filename,folder
 #           # OFF event comes after previous On event
 #           if (A_off[1] <= A_on[1] ) {
 #             # Condition 1: Off event is before Next On event and after previous On event
-#             # Situation -> OFF signal where it was expected 
+#             # Situation -> OFF signal where it was expected
 #             # Solution -> add to ts and event lists
 #             ts <- c(ts, A_off[1])
 #             event <- c(event, "A_off")
@@ -1111,10 +1106,10 @@ coulbourn_processdata_Operant_SessionTimeBinAnalysis <- function(filename,folder
 #             ts <- c(ts, tail(ts,1))
 #             event <- c(event, "A_off")
 #             
-#           } 
+#           }
 #         }
 #         
-#       } 
+#       }
 #       
 #       
 #       else if (tail(event,1) == "A_off") {
@@ -1135,7 +1130,7 @@ coulbourn_processdata_Operant_SessionTimeBinAnalysis <- function(filename,folder
 #           ts <- c(ts, tail(ts,1))
 #           event <- c(event, "A_on")
 #           
-#         } 
+#         }
 #         
 #         else if(A_on[1] >= tail(ts,1)){
 #           
@@ -1155,7 +1150,7 @@ coulbourn_processdata_Operant_SessionTimeBinAnalysis <- function(filename,folder
 #             ts <- c(ts, tail(ts,1))
 #             event <- c(event, "A_on")
 #             
-#           } 
+#           }
 #         }
 #       }
 #       
@@ -1164,8 +1159,8 @@ coulbourn_processdata_Operant_SessionTimeBinAnalysis <- function(filename,folder
 #     
 #     # Check to see if final event was an ON. If so, then Add a corresponding OFF straight afterwards
 #     # IMPORTANT - This is a major assumption!!! It is also possible that the final action doesn't have a corresponding OFF signal because the session ended.
-#     # However, this is really hard to judge without looking at each case individually. 
-#     # Given that the end of the session usually has little of interest, this is a conservative assumption about the animals' behaviour that is consistent 
+#     # However, this is really hard to judge without looking at each case individually.
+#     # Given that the end of the session usually has little of interest, this is a conservative assumption about the animals' behaviour that is consistent
 #     # with the assumptions earlier in this script.
 #     
 #     if (tail(event,1) == "A_on") {
