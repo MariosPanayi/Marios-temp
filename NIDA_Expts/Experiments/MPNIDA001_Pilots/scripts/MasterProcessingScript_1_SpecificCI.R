@@ -4,9 +4,17 @@ library(tidyverse)
 library(knitr)
 # Package for relative file paths
 library(here)
+# Benchmark time of functions
+library(microbenchmark)
 # Load Analysis Functions
 source(here("scripts", "CoulbournAnalysisFunctions.R"))
 
+# Packages for parallel computing
+library(foreach)
+library(doParallel)
+
+numCores = 8
+registerDoParallel(numCores)
 
 # Identify files to analyze
 

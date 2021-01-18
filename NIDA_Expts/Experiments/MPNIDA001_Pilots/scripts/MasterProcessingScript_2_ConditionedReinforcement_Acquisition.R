@@ -4,19 +4,23 @@ library(tidyverse)
 library(knitr)
 # Package for relative file paths
 library(here)
+# Benchmark time of functions
+library(microbenchmark)
 # Load Analysis Functions
 source(here("scripts", "CoulbournAnalysisFunctions.R"))
 
+# Packages for parallel computing
+library(foreach)
+library(doParallel)
+
+numCores = 16
+registerDoParallel(numCores)
 
 # Identify files to analyze
 
-# Can't use here() function effectively here, so have to create relative file paths
 ## COllapses multiple subfolders if needed
-datafoldersinproject1 <- c("rawdata")
-datafoldersinproject2 <-c("Marios")
-
-## Project specific folder
-projectdatafolder <- c("2_ConditionedReinforcement")
+### Project specific folder
+projectdatafolder <- c("rawdata","Marios","2_ConditionedReinforcement")
 
 ## Final level of folders contianing the relevant .txt Coulbourn files
 listofdatafolders <- c("Acquisition_Day1",
@@ -35,32 +39,19 @@ listofdatafolders <- c("Acquisition_Day1",
                        "ReAcquisition_Day15",
                        "EnhancedAcquisition_Day17",
                        "EnhancedAcquisition_Day18",
-                       "EnhancedAcquisition_Day19")
+                       "EnhancedAcquisition_Day19",
+                       "EnhancedAcquisition_Day20")
 
 
 #  extract data filenames, only .txt --------------------------------------
 
 
-datafilepaths <-0
-for (i in c(1:length(listofdatafolders))){
-lookup <- paste(datafoldersinproject1, datafoldersinproject2, projectdatafolder, listofdatafolders[i], sep = "/")
 
-  datafilepaths <- list.files(path = lookup, pattern = ".txt")
-  for (j in c(1:length(datafilepaths))) {
-    
-    # For each raw.txt file split up the data into indivudal subjects .csv files for subsequent analysis
-    folderpath <- here(datafoldersinproject1, datafoldersinproject2,projectdatafolder,listofdatafolders[i])
-    filename <- datafilepaths[j]
-    ## Run Function
-    coulbourn_rawdatasplit(filename,folderpath) 
-  }
-  
-}
-
-
+Coulbourn_extractIndividualSubjectFiles(projectdatafolder, listofdatafolders)
 
 #  extract processed data filenames, only .csv and put them into a --------
 
+processdata <- function(projectdatafolder, listofdatafolders) {
 ########## Set parameters ############
 
 ## List of states
@@ -91,13 +82,16 @@ trialstartstate = S["ITI"]
 ########## Run Analysis ############
 
 for (i in c(1:length(listofdatafolders))){
-  lookup <- paste(datafoldersinproject1, datafoldersinproject2, projectdatafolder, listofdatafolders[i], sep = "/")
+  lookup <- paste(c(projectdatafolder, listofdatafolders[i]), collapse = "/")
   
   datafilepaths <- list.files(path = lookup, pattern = ".csv")
-  for (j in c(1:length(datafilepaths))) {
-    
-    # For each raw.txt file split up the data into indivudal subjects .csv files for subsequent analysis
-    folderpath <- here(datafoldersinproject1, datafoldersinproject2,projectdatafolder,listofdatafolders[i])
+  foreach (j = c(1:length(datafilepaths))) %dopar% {
+    library(here)
+    library(tidyverse)
+    library(knitr)
+    source(here("scripts", "CoulbournAnalysisFunctions.R"))
+    # For each raw.txt file split up the data into individual subjects .csv files for subsequent analysis
+    folderpath <- here(paste(projectdatafolder, collapse = "/"),listofdatafolders[i])
     filename <- datafilepaths[j]
     ## Run Function - N.B. Warnings will appear to tell you that the new directory for data storage already exists. Safe to ignore.
     coulbourn_processdata_Pavlovian_timebin(filename,folderpath,S,timebase, timebinwidth, nobin, bin, trialstartstate)
@@ -105,36 +99,15 @@ for (i in c(1:length(listofdatafolders))){
   
 }
 
+}
 
+processdata(projectdatafolder, listofdatafolders)
 
 # Combine all data --------------------------------------------------------
 #create list of all filenames
-filestojoin <- "0"
-for (i in c(1:length(listofdatafolders))){
-  lookup <- paste(datafoldersinproject1, datafoldersinproject2, projectdatafolder, listofdatafolders[i],"Processed_TimeBin",  sep = "/")
-  
-  datafilepaths <- list.files(path = lookup, pattern = ".csv", full.names = TRUE)
-  filestojoin <- c(filestojoin, datafilepaths)
-  # for (j in c(1:length(datafilepaths))) {
-  #   
-  #   # For each processed .csv file, load the data and then join it together
-  #   filename <- datafilepaths[j]
-  #   ## Load and analyse
-}
-#delete initialising variable
-filestojoin <- filestojoin[-1]
 
-## Load each table of data and join into a single 
-for (i in c(1:length(filestojoin))){ 
-  if (i == 1){
-    rawdata <- read_csv(filestojoin[i])
-    } else {
-      tempdata <- read_csv(filestojoin[i])
-      rawdata <- full_join(rawdata,tempdata)
-  }
-}
-
-
+processedfoldername = "Processed_TimeBin"
+rawdata <- Coulbourn_Joinprocesseddata(projectdatafolder, listofdatafolders, processedfoldername)
 
 # Recode COunterbalancing information -----------------------------------
 ## Solution: create a counterbalancing data frame and then left_join() with the rawdata to match all relevant rows on Subject[Make sure subject is labelled the same in both tables]
@@ -305,4 +278,4 @@ rawdata <- rawdata %>%
 savefolderpath <- here("rawdata","Marios","2_ConditionedReinforcement","CombinedData")
 savefilename <- "CRF_ProcessedData_pertrial_1sbins.csv"
 dir.create(savefolderpath)
-write_csv(rawdata,here(savefolderpath,savefilename))
+data.table::fwrite(rawdata,here(savefolderpath,savefilename))

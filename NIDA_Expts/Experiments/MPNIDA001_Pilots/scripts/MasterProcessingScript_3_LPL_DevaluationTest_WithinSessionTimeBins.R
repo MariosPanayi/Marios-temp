@@ -175,7 +175,7 @@ subject <- c("17____",
 
   
   # Create counterbalancing lookup table
-lookup_counterbalancing <- data.frame(subject, counterbalancing, Pavlovian_cbx, DevaluedOutcome1, sex)
+lookup_counterbalancing <- data.frame(subject, counterbalancing, Pavlovian_cbx, sex)
   # Combine with rawdata
 rawdata <- left_join(rawdata, lookup_counterbalancing, by = "subject")
 

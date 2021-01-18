@@ -2,7 +2,7 @@ folder,file,savename,subject,protocol,station,run,project,userID,session,timebin
 Test4_Day16,CRFTest4P44,CRFTest4P44_Rat11.csv,11____,44,2,1,C,Marios,220,1,0,60,2,1.82,0,0,0,0,0,0,0,0,1,1,0,0,0,0
 Test4_Day16,CRFTest4P44,CRFTest4P44_Rat11.csv,11____,44,2,1,C,Marios,220,2,60,120,0,0,3,4.22,0,0,0,0,0,0,0,0,0,0,1,1
 Test4_Day16,CRFTest4P44,CRFTest4P44_Rat11.csv,11____,44,2,1,C,Marios,220,3,120,180,0,0,1,0.280000000000001,0,0,0,0,0,0,0,0,0,0,1,0.439999999999998
-Test4_Day16,CRFTest4P44,CRFTest4P44_Rat11.csv,11____,44,2,1,C,Marios,220,4,180,240,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0.560000000000002
+Test4_Day16,CRFTest4P44,CRFTest4P44_Rat11.csv,11____,44,2,1,C,Marios,220,4,180,240,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 Test4_Day16,CRFTest4P44,CRFTest4P44_Rat11.csv,11____,44,2,1,C,Marios,220,5,240,300,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 Test4_Day16,CRFTest4P44,CRFTest4P44_Rat11.csv,11____,44,2,1,C,Marios,220,6,300,360,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 Test4_Day16,CRFTest4P44,CRFTest4P44_Rat11.csv,11____,44,2,1,C,Marios,220,7,360,420,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
