@@ -89,7 +89,7 @@ processdata <- function(projectdatafolder, listofdatafolders) {
   
 }
 
-processdata(projectdatafolder, listofdatafolders)
+microbenchmark(processdata(projectdatafolder, listofdatafolders), times = 1)
 
 
 
