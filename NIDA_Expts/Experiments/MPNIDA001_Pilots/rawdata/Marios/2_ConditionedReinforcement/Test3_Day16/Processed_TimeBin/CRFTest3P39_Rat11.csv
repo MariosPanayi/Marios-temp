@@ -1,5 +1,5 @@
 folder,file,savename,subject,protocol,station,run,project,userID,session,timebins,timebin_start,timebin_end,A1_freq,A1_dur,A2_freq,A2_dur,A3_freq,A3_dur,A4_freq,A4_dur,Click_freq,Click_dur,Noise_freq,Noise_dur,Tone_freq,Tone_dur,Siren_freq,Siren_dur
-Test3_Day16,CRFTest3P39,CRFTest3P39_Rat11.csv,11____,39,2,1,C,Marios,216,1,0,60,3,0.52,0,0,0,0,0,0,0,0,0,0,1,1,0,0
+Test3_Day16,CRFTest3P39,CRFTest3P39_Rat11.csv,11____,39,2,1,C,Marios,216,1,0,60,3,0.520000000000001,0,0,0,0,0,0,0,0,0,0,1,1,0,0
 Test3_Day16,CRFTest3P39,CRFTest3P39_Rat11.csv,11____,39,2,1,C,Marios,216,2,60,120,1,0.200000000000003,0,0,0,0,0,0,0,0,0,0,1,1,0,0
 Test3_Day16,CRFTest3P39,CRFTest3P39_Rat11.csv,11____,39,2,1,C,Marios,216,3,120,180,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 Test3_Day16,CRFTest3P39,CRFTest3P39_Rat11.csv,11____,39,2,1,C,Marios,216,4,180,240,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0

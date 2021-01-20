@@ -196,8 +196,8 @@ FLash_leverCbx <-  c("Left",
                      "Right")
 
 Steady_levercbx <-  c("Right",
-                      "Left",
                       "Right",
+                      "Left",
                       "Left")
 
 Flash_OutcomeID <- c("Chocolate",

@@ -1,8 +1,8 @@
 folder,file,savename,subject,protocol,station,run,project,userID,session,timebins,timebin_start,timebin_end,A1_freq,A1_dur,A2_freq,A2_dur,A3_freq,A3_dur,A4_freq,A4_dur,Flash_freq,Flash_dur,Steady_freq,Steady_dur
 LPL_Devaluation2_Test_Day14,LPLDevaluation2TestDay14B,LPLDevaluation2TestDay14B_Rat25.csv,25____,55,2,1,C,Marios,251,1,0,60,0,0,1,1.8,2,1.16,0,0,0,0,0,0
 LPL_Devaluation2_Test_Day14,LPLDevaluation2TestDay14B,LPLDevaluation2TestDay14B_Rat25.csv,25____,55,2,1,C,Marios,251,2,60,120,0,0,0,0,0,0,0,0,0,0,0,0
-LPL_Devaluation2_Test_Day14,LPLDevaluation2TestDay14B,LPLDevaluation2TestDay14B_Rat25.csv,25____,55,2,1,C,Marios,251,3,120,180,0,0,5,9.38000000000002,0,0,0,0,0,0,0,0
-LPL_Devaluation2_Test_Day14,LPLDevaluation2TestDay14B,LPLDevaluation2TestDay14B_Rat25.csv,25____,55,2,1,C,Marios,251,4,180,240,0,0,0,0,0,0,0,0,0,0,0,0
+LPL_Devaluation2_Test_Day14,LPLDevaluation2TestDay14B,LPLDevaluation2TestDay14B_Rat25.csv,25____,55,2,1,C,Marios,251,3,120,180,0,0,5,9.38000000000001,0,0,0,0,0,0,0,0
+LPL_Devaluation2_Test_Day14,LPLDevaluation2TestDay14B,LPLDevaluation2TestDay14B_Rat25.csv,25____,55,2,1,C,Marios,251,4,180,240,0,0,0,0.0800000000000125,0,0,0,0,0,0,0,0
 LPL_Devaluation2_Test_Day14,LPLDevaluation2TestDay14B,LPLDevaluation2TestDay14B_Rat25.csv,25____,55,2,1,C,Marios,251,5,240,300,0,0,0,0,1,3.95999999999998,0,0,0,0,0,0
 LPL_Devaluation2_Test_Day14,LPLDevaluation2TestDay14B,LPLDevaluation2TestDay14B_Rat25.csv,25____,55,2,1,C,Marios,251,6,300,360,0,0,0,0,0,0,0,0,0,0,0,0
 LPL_Devaluation2_Test_Day14,LPLDevaluation2TestDay14B,LPLDevaluation2TestDay14B_Rat25.csv,25____,55,2,1,C,Marios,251,7,360,420,0,0,0,0,0,0,0,0,0,0,0,0
@@ -14,10 +14,10 @@ LPL_Devaluation2_Test_Day14,LPLDevaluation2TestDay14B,LPLDevaluation2TestDay14B_
 LPL_Devaluation2_Test_Day14,LPLDevaluation2TestDay14B,LPLDevaluation2TestDay14B_Rat25.csv,25____,55,2,1,C,Marios,251,13,720,780,0,0,8,7.15999999999997,2,0.739999999999895,0,0,4,20,0,0
 LPL_Devaluation2_Test_Day14,LPLDevaluation2TestDay14B,LPLDevaluation2TestDay14B_Rat25.csv,25____,55,2,1,C,Marios,251,14,780,840,0,0,8,14.3800000000001,1,5.24000000000001,0,0,6,30,0,0
 LPL_Devaluation2_Test_Day14,LPLDevaluation2TestDay14B,LPLDevaluation2TestDay14B_Rat25.csv,25____,55,2,1,C,Marios,251,15,840,900,0,0,4,3.27999999999997,0,0,0,0,3,11.9,0,0
-LPL_Devaluation2_Test_Day14,LPLDevaluation2TestDay14B,LPLDevaluation2TestDay14B_Rat25.csv,25____,55,2,1,C,Marios,251,16,900,960,0,0,8,7.10000000000002,1,0.67999999999995,0,0,4,20,0,0
+LPL_Devaluation2_Test_Day14,LPLDevaluation2TestDay14B,LPLDevaluation2TestDay14B_Rat25.csv,25____,55,2,1,C,Marios,251,16,900,960,0,0,8,7.10000000000002,1,0.67999999999995,0,0,4,23.1,0,0
 LPL_Devaluation2_Test_Day14,LPLDevaluation2TestDay14B,LPLDevaluation2TestDay14B_Rat25.csv,25____,55,2,1,C,Marios,251,17,960,1020,0,0,2,4.72000000000003,0,0,0,0,2,10,0,0
 LPL_Devaluation2_Test_Day14,LPLDevaluation2TestDay14B,LPLDevaluation2TestDay14B_Rat25.csv,25____,55,2,1,C,Marios,251,18,1020,1080,7,4.88000000000011,3,8.55999999999995,1,1.5,0,0,3,14.24,3,15
-LPL_Devaluation2_Test_Day14,LPLDevaluation2TestDay14B,LPLDevaluation2TestDay14B_Rat25.csv,25____,55,2,1,C,Marios,251,19,1080,1140,4,2.5,2,1.49999999999977,0,0,0,0,2,10,2,10
+LPL_Devaluation2_Test_Day14,LPLDevaluation2TestDay14B,LPLDevaluation2TestDay14B_Rat25.csv,25____,55,2,1,C,Marios,251,19,1080,1140,4,2.5,2,1.49999999999977,0,0,0,0,2,10.76,2,10
 LPL_Devaluation2_Test_Day14,LPLDevaluation2TestDay14B,LPLDevaluation2TestDay14B_Rat25.csv,25____,55,2,1,C,Marios,251,20,1140,1200,1,1.29999999999995,1,0.880000000000109,1,0.0800000000001546,0,0,1,5,1,5
 LPL_Devaluation2_Test_Day14,LPLDevaluation2TestDay14B,LPLDevaluation2TestDay14B_Rat25.csv,25____,55,2,1,C,Marios,251,21,1200,1260,1,0.439999999999827,1,0.860000000000127,1,0.5,0,0,1,5,1,5
 LPL_Devaluation2_Test_Day14,LPLDevaluation2TestDay14B,LPLDevaluation2TestDay14B_Rat25.csv,25____,55,2,1,C,Marios,251,22,1260,1320,4,9.22000000000003,0,0,1,0.160000000000082,0,0,0,0,3,15

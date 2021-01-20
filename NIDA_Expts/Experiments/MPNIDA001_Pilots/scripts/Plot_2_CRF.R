@@ -212,6 +212,9 @@ data_PerSession_last5s_CSPre <- data_PerSession_last5s %>%
   pivot_wider(names_from = Measure, values_from = Mag)
 
 
+# Acquisition Plots -------------------------------------------------------
+
+
 
 Acqsuisition_Stage1_MagFreq <- data_PerSession_CSPre %>% 
   filter(Period == "CSPre") %>%
@@ -308,6 +311,35 @@ Acqsuisition_Stage1_MagDur_last5s <- data_PerSession_last5s_CSPre %>%
 
 Acqsuisition_Stage1_MagDur_last5s
 
+# Enhanced Acquisition Period - Plot separately and collapse over days
+
+
+EnhancedAcqsuisition_Stage1_MagFreq <- data_PerSession_CSPre %>% 
+  filter(Period == "CSPre",
+         Day >= 21) %>%
+  group_by(subject, probability, magnitude, sex, CS_name, Period) %>% 
+  summarise(MagEntries = mean(MagEntries),
+            MagDuration = mean(MagDuration)) %>%
+  ungroup() %>% 
+  ggplot(mapping = aes(x = as.factor(CS_name), y = MagEntries, group = CS_name, colour = CS_name, fill = CS_name)) +
+  stat_summary_bin(fun.data = "mean_se", geom = "bar", position = "dodge",  size = .3) +
+  stat_summary(fun.data = "mean_se", geom = "errorbar", position = position_dodge(width = 0.9),  width = 0,  size = .3, colour = "black", linetype = "solid", show.legend = FALSE) + 
+  # geom_point(aes(group = subject), colour = Black) +
+  # geom_line(aes(group = subject), colour = Black) +
+  # facet_wrap(~Day,) +
+  # Make Pretty
+  scale_y_continuous( expand = expansion(mult = c(0, 0)), breaks=seq(-1000,1000,1)) +
+  ggtitle("Enhanced Acquisition: Final 2 days") + xlab("CS Identity") + ylab("Magazine Durations 10s (CS-Pre)") +
+  theme_cowplot(11) +
+  theme(plot.title = element_text(hjust = 0.5)) +
+  theme(plot.title = element_text(size=10)) +
+  coord_cartesian(ylim = c(0,6.0001)) +
+  theme(axis.title.x=element_text(face = "bold")) +
+  scale_colour_manual(name = "", values = linecolours, aesthetics = c("colour")) +
+  scale_fill_manual(name = "", values = fillcolours) +
+  theme(legend.key.width=unit(0.5,"line"))
+
+EnhancedAcqsuisition_Stage1_MagFreq
 
 # #Inspect individual animals
 # 

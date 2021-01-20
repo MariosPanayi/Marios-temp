@@ -5,16 +5,17 @@ library(knitr)
 library(data.table)
 # Package for relative file paths
 library(here)
-# Benchmark time of functions
-library(microbenchmark)
+# # Benchmark time of functions and analyze time profile of functions
+# library(microbenchmark)
+# library(profvis)
 # Load Analysis Functions
 source(here("scripts", "CoulbournAnalysisFunctions.R"))
 
-# Packages for parallel computing
+# Packages for parallel computing siginificantly speeds things up
 library(foreach)
 library(doParallel)
 
-numCores = 8
+numCores = 16
 registerDoParallel(numCores)
 
 # Identify files to analyze
@@ -91,9 +92,7 @@ processdata <- function(projectdatafolder, listofdatafolders) {
   
 }
 
-
-microbenchmark(processdata(projectdatafolder, listofdatafolders), times = 1)
-
+processdata(projectdatafolder, listofdatafolders)
 
 # Combine all data --------------------------------------------------------
 #create list of all filenames

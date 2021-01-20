@@ -5,8 +5,9 @@ library(knitr)
 library(data.table)
 # Package for relative file paths
 library(here)
-# Benchmark time of functions
+# Benchmark time of functions and profile where time is spent within function
 library(microbenchmark)
+library(profvis)
 # Load Analysis Functions
 source(here("scripts", "CoulbournAnalysisFunctions.R"))
 
@@ -587,8 +588,8 @@ A_diff <- A_off - A_on
 
 
 
-bin_start = c(1.5,4, 7)
-bin_end = c(3, 6, 700)
+bin_start = c(1.5, 4, 4, 7,   710, 730, 10100)
+bin_end =   c(  3, 6, 7.5, 700, 720, 740, 11000)
 
 Aoff_binstart_diff <- A_off-bin_start
 Aoff_binend_diff <- A_off-bin_end
@@ -609,21 +610,95 @@ subtract_idx <- (which(A_on <= bin_end[i] & A_off > bin_end[i]))
 print(sum(A_diff[sum_idx], Aoff_binstart_diff[add_idx])-Aoff_binend_diff[subtract_idx])
 }
 
-trying <- (A_on >= bin_start[i] & A_on <= bin_end[i])
+# trying <- (A_on >= bin_start[i] & A_on <= bin_end[i])
+# 
+# speedtesting <- microbenchmark("Sumwhich" = sum(A_diff[which(A_on >= bin_start[i] & A_on <= bin_end[i])]),
+# "SumConvertingMultiply" = sum(as.integer(A_on >= bin_start[i] & A_on <= bin_end[i])*A_diff), 
+# times = 1000)
+# autoplot(speedtesting)
+# 
 
-speedtesting <- microbenchmark("Sumwhich" = sum(A_diff[which(A_on >= bin_start[i] & A_on <= bin_end[i])]),
-"SumConvertingMultiply" = sum(as.integer(A_on >= bin_start[i] & A_on <= bin_end[i])*A_diff), 
-times = 1000)
+
+
+
+
+# Old Function for binning action durations -------------------------------
+
+OldFunction <- function(A_on, A_off, bin_start, bin_end){
+
+bin_A_freq <- replicate(length(bin_start), 0)
+bin_A_dur <- replicate(length(bin_start), 0)
+
+for (i in c(1:length(bin_start))){
+  bin_A_freq[i] = sum(A_on >= bin_start[i] & A_on < bin_end[i])
+  
+  for (j in c(1:length(A_on))){
+    # action starts before timebin and ends within timebin
+    if ( A_on[j] < bin_start & A_off[j] >= bin_start[i] & A_off[j] < bin_end[i]) {
+      bin_A_dur[i] <- bin_A_dur[i] + (A_off[j] - bin_start[i])
+      # action after timebin starts and before timebin ends
+    } else if ( A_on[j] >= bin_start[i] & A_off[j] < bin_end[i] ) {
+      bin_A_dur[i] <- bin_A_dur[i] + (A_off[j] - A_on[j])
+      # action starts within the timebin , and ends after timebin
+    } else if ( A_on[j] >= bin_start[i] & A_on[j] < bin_end[i] & A_off[j] >= bin_end[i] ) {
+      bin_A_dur[i] <- bin_A_dur[i] + bin_end[i] - A_on[j]
+      # action before bin starts and continues until after bin
+    } else if ( A_on[j] <= bin_start[i] & A_off[j] > bin_end[i] ) {
+      bin_A_dur[i] <- bin_A_dur[i] + (bin_end[i] - bin_start[i])
+    } else {bin_A_dur[i] <- bin_A_dur[i]}
+  }
+}
+
+}
+
+
+speedtesting <- microbenchmark("OldFunction" = OldFunction(A_on, A_off, bin_start, bin_end), times = 1)
 autoplot(speedtesting)
 
+newFunction <- function(A_on, A_off, bin_start, bin_end){
+  
+  # pre-allocate variables with 0s
+  bin_A_freq <- replicate(length(bin_start), 0)
+  bin_A_dur <- replicate(length(bin_start), 0)
+  bin_A_sum <- replicate(length(bin_start), 0)
+  bin_A_add <- replicate(length(bin_start), 0)
+  bin_A_subtract <- replicate(length(bin_start), 0)
+  # Simplify calculations by doing them all in advance for the most common case
+  A_diff <- A_off - A_on
+  
+  for (i in c(1:length(bin_start))){
+    # Frequency counts [the easy stuff]
+    bin_A_freq[i] <- sum(as.integer(A_on >= bin_start[i] & A_on < bin_end[i]))
+    # Duration counts [a bit more going on]
+    sum_idx <- (which(A_on >= bin_start[i] & A_on <= bin_end[i]))
+    add_idx <- (which(A_on < bin_start[i] & A_off >= bin_start[i]))
+    subtract_idx <- (which(A_on <= bin_end[i] & A_off > bin_end[i]))
+    
+    # Unfortunately no vectorised code for this without lots of redundant steps/inefficiency
+    # So just test if any indices were found and update elements appropriately
+    if(!is_empty(sum_idx)) {
+      bin_A_sum[i] <- sum(A_diff[sum_idx])
+      } 
+    
+    if(!is_empty(add_idx)) {
+      bin_A_add[i] <- A_off[add_idx] - bin_start[i]
+      } 
+    
+    if(!is_empty(subtract_idx)) {
+      bin_A_subtract[i] <- A_off[subtract_idx] - bin_end[i]
+      } 
+  }
+  # Combine all of these at the end
+  bin_A_dur = bin_A_sum + bin_A_add - bin_A_subtract
+  
+}
+  
 
 
+speedtesting <- microbenchmark("OldFunction" = OldFunction(A_on, A_off, bin_start, bin_end),
+                               "NewFunction" = newFunction(A_on, A_off, bin_start, bin_end),
+                               times = 10)
+speedtesting
 
-
-
-
-
-
-
-
+autoplot(speedtesting)
 

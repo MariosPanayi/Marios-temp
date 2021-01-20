@@ -212,6 +212,9 @@ coulbourn_actioncleantimestamps <- function(A_on, A_off) {
     # If there are ties to consider
     if (length(ties) != 0) {
       
+      # Special case to ignore when there is only 1 tie AND it is the very first event
+      if (length(ties) > 1 & ties[1] > 1) {
+      
       # Test to ignore first tie if it is also the first event
       if(ties[1] == 1) {j = 2} else {j = 1}
       
@@ -235,7 +238,7 @@ coulbourn_actioncleantimestamps <- function(A_on, A_off) {
           
         }
       }
-      
+     } 
     }
     
     # clear unused temporary variables for memory efficiency
@@ -299,7 +302,7 @@ coulbourn_actioncleantimestamps <- function(A_on, A_off) {
 
 
 coulbourn_actionbin <- function(A_on, A_off, bin_start, bin_end){
-  
+  # Speed things up if there are no actions -> output appropriate array of zeros
   if (length(A_on) > 0 | length(A_off) > 0) {
     
     
@@ -312,31 +315,44 @@ coulbourn_actionbin <- function(A_on, A_off, bin_start, bin_end){
     
     
     #### Calculate frequency and duration of actions ####
-    # Initialise variable
+    ## Most efficient version for R functions [vectorised when possible]
+    
+    # pre-allocate variables with 0s
     bin_A_freq <- replicate(length(bin_start), 0)
     bin_A_dur <- replicate(length(bin_start), 0)
+    bin_A_sum <- replicate(length(bin_start), 0)
+    bin_A_add <- replicate(length(bin_start), 0)
+    bin_A_subtract <- replicate(length(bin_start), 0)
+    # Simplify calculations by doing them all in advance for the most common case
+    A_diff <- A_off - A_on
+    
     for (i in c(1:length(bin_start))){
-      bin_A_freq[i] = sum(A_on >= bin_start[i] & A_on < bin_end[i])
+      # Frequency counts [the easy stuff]
+      bin_A_freq[i] <- sum(as.integer(A_on >= bin_start[i] & A_on < bin_end[i]))
+      # Duration counts [a bit more going on]
+      sum_idx <- (which(A_on >= bin_start[i] & A_on <= bin_end[i]))
+      add_idx <- (which(A_on < bin_start[i] & A_off >= bin_start[i]))
+      subtract_idx <- (which(A_on <= bin_end[i] & A_off > bin_end[i]))
       
-      for (j in c(1:length(A_on))){
-        # action starts before timebin and ends within timebin
-        if ( A_on[j] < bin_start & A_off[j] >= bin_start[i] & A_off[j] < bin_end[i]) {
-          bin_A_dur[i] <- bin_A_dur[i] + (A_off[j] - bin_start[i])
-          # action after timebin starts and before timebin ends
-        } else if ( A_on[j] >= bin_start[i] & A_off[j] < bin_end[i] ) {
-          bin_A_dur[i] <- bin_A_dur[i] + (A_off[j] - A_on[j])
-          # action starts within the timebin , and ends after timebin
-        } else if ( A_on[j] >= bin_start[i] & A_on[j] < bin_end[i] & A_off[j] >= bin_end[i] ) {
-          bin_A_dur[i] <- bin_A_dur[i] + bin_end[i] - A_on[j]
-          # action before bin starts and continues until after bin
-        } else if ( A_on[j] <= bin_start[i] & A_off[j] > bin_end[i] ) {
-          bin_A_dur[i] <- bin_A_dur[i] + (bin_end[i] - bin_start[i])
-        } else {bin_A_dur[i] <- bin_A_dur[i]}
-      }
+      # Unfortunately no vectorised code for this without lots of redundant steps/inefficiency
+      # So just test if any indices were found and update elements appropriately
+      if(!is_empty(sum_idx)) {
+        bin_A_sum[i] <- sum(A_diff[sum_idx])
+      } 
+      
+      if(!is_empty(add_idx)) {
+        bin_A_add[i] <- A_off[add_idx] - bin_start[i]
+      } 
+      
+      if(!is_empty(subtract_idx)) {
+        bin_A_subtract[i] <- A_off[subtract_idx] - bin_end[i]
+      } 
     }
     
+    # Combine all of these at the end
+    bin_A_dur = bin_A_sum + bin_A_add - bin_A_subtract
     
-    
+    # Combine for function output
     bin_A_data <- cbind(bin_A_freq,bin_A_dur)
     
     return(bin_A_data)
@@ -522,7 +538,7 @@ coulbourn_processdata_Pavlovian_timebin <- function(filename,folderpath,S,timeba
   savefilename <- filename
   # Create a new processed data folder
   savefolderpath <- here(folderpath, "Processed_TimeBin")
-  dir.create(savefolderpath)
+  dir.create(savefolderpath, showWarnings = FALSE)
   
   savefilepath <- here(savefolderpath, savefilename)
   fwrite(data_bin, savefilepath)
@@ -726,7 +742,7 @@ data_bin <- data.table(folder, file, savename, subject, protocol, station, run, 
 savefilename <- filename
 # Create a new processed data folder
 savefolderpath <- here(folderpath, "Processed_TimeBin")
-dir.create(savefolderpath)
+dir.create(savefolderpath, showWarnings = FALSE)
 
 savefilepath <- here(savefolderpath, savefilename)
 fwrite(data_bin, savefilepath)
@@ -867,7 +883,7 @@ coulbourn_processdata_Operant_SessionTimeBinAnalysis <- function(filename,folder
   savefilename <- filename
   # Create a new processed data folder
   savefolderpath <- here(folderpath, "Processed_TimeBin")
-  dir.create(savefolderpath)
+  dir.create(savefolderpath, showWarnings = FALSE)
   
   savefilepath <- here(savefolderpath, savefilename)
   fwrite(data_bin, savefilepath)

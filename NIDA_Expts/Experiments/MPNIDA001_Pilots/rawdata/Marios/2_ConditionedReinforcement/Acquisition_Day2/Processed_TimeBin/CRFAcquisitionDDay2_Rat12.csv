@@ -26,7 +26,7 @@ Acquisition_Day2,CRFAcquisitionDDay2,CRFAcquisitionDDay2_Rat12.csv,12____,14,10,
 Acquisition_Day2,CRFAcquisitionDDay2,CRFAcquisitionDDay2_Rat12.csv,12____,14,10,1,C,Marios,63,1,8,210,5,0,0,0,0,0,0,0,0
 Acquisition_Day2,CRFAcquisitionDDay2,CRFAcquisitionDDay2_Rat12.csv,12____,14,10,1,C,Marios,63,1,8,211,6,0,0,0,0,0,0,0,0
 Acquisition_Day2,CRFAcquisitionDDay2,CRFAcquisitionDDay2_Rat12.csv,12____,14,10,1,C,Marios,63,1,8,212,7,0,0,0,0,1,1,0,0
-Acquisition_Day2,CRFAcquisitionDDay2,CRFAcquisitionDDay2_Rat12.csv,12____,14,10,1,C,Marios,63,1,8,213,8,0,0,0,0,0,0,0,0
+Acquisition_Day2,CRFAcquisitionDDay2,CRFAcquisitionDDay2_Rat12.csv,12____,14,10,1,C,Marios,63,1,8,213,8,0,0,0,0,0,0.319999999999993,0,0
 Acquisition_Day2,CRFAcquisitionDDay2,CRFAcquisitionDDay2_Rat12.csv,12____,14,10,1,C,Marios,63,1,8,214,9,0,0,0,0,2,0.960000000000008,0,0
 Acquisition_Day2,CRFAcquisitionDDay2,CRFAcquisitionDDay2_Rat12.csv,12____,14,10,1,C,Marios,63,1,8,215,10,0,0,0,0,0,1,0,0
 Acquisition_Day2,CRFAcquisitionDDay2,CRFAcquisitionDDay2_Rat12.csv,12____,14,10,1,C,Marios,63,2,2,450,1,0,0,0,0,0,0,0,0
@@ -64,7 +64,7 @@ Acquisition_Day2,CRFAcquisitionDDay2,CRFAcquisitionDDay2_Rat12.csv,12____,14,10,
 Acquisition_Day2,CRFAcquisitionDDay2,CRFAcquisitionDDay2_Rat12.csv,12____,14,10,1,C,Marios,63,3,2,812,3,0,0,0,0,0,0,0,0
 Acquisition_Day2,CRFAcquisitionDDay2,CRFAcquisitionDDay2_Rat12.csv,12____,14,10,1,C,Marios,63,3,2,813,4,0,0,0,0,0,0,0,0
 Acquisition_Day2,CRFAcquisitionDDay2,CRFAcquisitionDDay2_Rat12.csv,12____,14,10,1,C,Marios,63,3,2,814,5,0,0,0,0,2,0.299999999999955,0,0
-Acquisition_Day2,CRFAcquisitionDDay2,CRFAcquisitionDDay2_Rat12.csv,12____,14,10,1,C,Marios,63,3,2,815,6,0,0,0,0,0,0,0,0
+Acquisition_Day2,CRFAcquisitionDDay2,CRFAcquisitionDDay2_Rat12.csv,12____,14,10,1,C,Marios,63,3,2,815,6,0,0,0,0,0,0.399999999999977,0,0
 Acquisition_Day2,CRFAcquisitionDDay2,CRFAcquisitionDDay2_Rat12.csv,12____,14,10,1,C,Marios,63,3,2,816,7,0,0,0,0,0,0,0,0
 Acquisition_Day2,CRFAcquisitionDDay2,CRFAcquisitionDDay2_Rat12.csv,12____,14,10,1,C,Marios,63,3,2,817,8,0,0,0,0,0,0,0,0
 Acquisition_Day2,CRFAcquisitionDDay2,CRFAcquisitionDDay2_Rat12.csv,12____,14,10,1,C,Marios,63,3,2,818,9,0,0,0,0,0,0,0,0
@@ -83,11 +83,11 @@ Acquisition_Day2,CRFAcquisitionDDay2,CRFAcquisitionDDay2_Rat12.csv,12____,14,10,
 Acquisition_Day2,CRFAcquisitionDDay2,CRFAcquisitionDDay2_Rat12.csv,12____,14,10,1,C,Marios,63,3,8,831,2,0,0,0,0,0,0,0,0
 Acquisition_Day2,CRFAcquisitionDDay2,CRFAcquisitionDDay2_Rat12.csv,12____,14,10,1,C,Marios,63,3,8,832,3,0,0,0,0,2,0.839999999999918,0,0
 Acquisition_Day2,CRFAcquisitionDDay2,CRFAcquisitionDDay2_Rat12.csv,12____,14,10,1,C,Marios,63,3,8,833,4,0,0,0,0,0,1,0,0
-Acquisition_Day2,CRFAcquisitionDDay2,CRFAcquisitionDDay2_Rat12.csv,12____,14,10,1,C,Marios,63,3,8,834,5,0,0,0,0,0,0,0,0
+Acquisition_Day2,CRFAcquisitionDDay2,CRFAcquisitionDDay2_Rat12.csv,12____,14,10,1,C,Marios,63,3,8,834,5,0,0,0,0,0,0.860000000000014,0,0
 Acquisition_Day2,CRFAcquisitionDDay2,CRFAcquisitionDDay2_Rat12.csv,12____,14,10,1,C,Marios,63,3,8,835,6,0,0,0,0,1,0.960000000000036,0,0
 Acquisition_Day2,CRFAcquisitionDDay2,CRFAcquisitionDDay2_Rat12.csv,12____,14,10,1,C,Marios,63,3,8,836,7,0,0,0,0,0,1,0,0
-Acquisition_Day2,CRFAcquisitionDDay2,CRFAcquisitionDDay2_Rat12.csv,12____,14,10,1,C,Marios,63,3,8,837,8,0,0,0,0,2,0.420000000000073,0,0
-Acquisition_Day2,CRFAcquisitionDDay2,CRFAcquisitionDDay2_Rat12.csv,12____,14,10,1,C,Marios,63,3,8,838,9,0,0,0,0,0,0,0,0
+Acquisition_Day2,CRFAcquisitionDDay2,CRFAcquisitionDDay2_Rat12.csv,12____,14,10,1,C,Marios,63,3,8,837,8,0,0,0,0,2,0.680000000000064,0,0
+Acquisition_Day2,CRFAcquisitionDDay2,CRFAcquisitionDDay2_Rat12.csv,12____,14,10,1,C,Marios,63,3,8,838,9,0,0,0,0,0,0.879999999999996,0,0
 Acquisition_Day2,CRFAcquisitionDDay2,CRFAcquisitionDDay2_Rat12.csv,12____,14,10,1,C,Marios,63,3,8,839,10,0,0,0,0,0,0,0,0
 Acquisition_Day2,CRFAcquisitionDDay2,CRFAcquisitionDDay2_Rat12.csv,12____,14,10,1,C,Marios,63,4,2,1090,1,0,0,0,0,0,0,0,0
 Acquisition_Day2,CRFAcquisitionDDay2,CRFAcquisitionDDay2_Rat12.csv,12____,14,10,1,C,Marios,63,4,2,1091,2,0,0,0,0,1,0.759999999999991,0,0
@@ -96,10 +96,10 @@ Acquisition_Day2,CRFAcquisitionDDay2,CRFAcquisitionDDay2_Rat12.csv,12____,14,10,
 Acquisition_Day2,CRFAcquisitionDDay2,CRFAcquisitionDDay2_Rat12.csv,12____,14,10,1,C,Marios,63,4,2,1094,5,0,0,0,0,0,1,0,0
 Acquisition_Day2,CRFAcquisitionDDay2,CRFAcquisitionDDay2_Rat12.csv,12____,14,10,1,C,Marios,63,4,2,1095,6,0,0,0,0,0,1,0,0
 Acquisition_Day2,CRFAcquisitionDDay2,CRFAcquisitionDDay2_Rat12.csv,12____,14,10,1,C,Marios,63,4,2,1096,7,0,0,0,0,0,1,0,0
-Acquisition_Day2,CRFAcquisitionDDay2,CRFAcquisitionDDay2_Rat12.csv,12____,14,10,1,C,Marios,63,4,2,1097,8,0,0,0,0,0,0,0,0
+Acquisition_Day2,CRFAcquisitionDDay2,CRFAcquisitionDDay2_Rat12.csv,12____,14,10,1,C,Marios,63,4,2,1097,8,0,0,0,0,0,0.279999999999973,0,0
 Acquisition_Day2,CRFAcquisitionDDay2,CRFAcquisitionDDay2_Rat12.csv,12____,14,10,1,C,Marios,63,4,2,1098,9,0,0,0,0,1,0.599999999999909,0,0
 Acquisition_Day2,CRFAcquisitionDDay2,CRFAcquisitionDDay2_Rat12.csv,12____,14,10,1,C,Marios,63,4,2,1099,10,0,0,0,0,0,1,0,0
-Acquisition_Day2,CRFAcquisitionDDay2,CRFAcquisitionDDay2_Rat12.csv,12____,14,10,1,C,Marios,63,4,5,1100,1,0,0,0,0,0,0,0,0
+Acquisition_Day2,CRFAcquisitionDDay2,CRFAcquisitionDDay2_Rat12.csv,12____,14,10,1,C,Marios,63,4,5,1100,1,0,0,0,0,0,0.339999999999918,0,0
 Acquisition_Day2,CRFAcquisitionDDay2,CRFAcquisitionDDay2_Rat12.csv,12____,14,10,1,C,Marios,63,4,5,1101,2,0,0,0,0,0,0,0,0
 Acquisition_Day2,CRFAcquisitionDDay2,CRFAcquisitionDDay2_Rat12.csv,12____,14,10,1,C,Marios,63,4,5,1102,3,0,0,0,0,0,0,0,0
 Acquisition_Day2,CRFAcquisitionDDay2,CRFAcquisitionDDay2_Rat12.csv,12____,14,10,1,C,Marios,63,4,5,1103,4,0,0,0,0,0,0,0,0
@@ -133,7 +133,7 @@ Acquisition_Day2,CRFAcquisitionDDay2,CRFAcquisitionDDay2_Rat12.csv,12____,14,10,
 Acquisition_Day2,CRFAcquisitionDDay2,CRFAcquisitionDDay2_Rat12.csv,12____,14,10,1,C,Marios,63,5,5,1333,2,0,0,0,0,0,0,0,0
 Acquisition_Day2,CRFAcquisitionDDay2,CRFAcquisitionDDay2_Rat12.csv,12____,14,10,1,C,Marios,63,5,5,1334,3,0,0,0,0,0,0,0,0
 Acquisition_Day2,CRFAcquisitionDDay2,CRFAcquisitionDDay2_Rat12.csv,12____,14,10,1,C,Marios,63,5,5,1335,4,0,0,0,0,1,0.160000000000082,0,0
-Acquisition_Day2,CRFAcquisitionDDay2,CRFAcquisitionDDay2_Rat12.csv,12____,14,10,1,C,Marios,63,5,5,1336,5,0,0,0,0,0,0,0,0
+Acquisition_Day2,CRFAcquisitionDDay2,CRFAcquisitionDDay2_Rat12.csv,12____,14,10,1,C,Marios,63,5,5,1336,5,0,0,0,0,0,0.220000000000027,0,0
 Acquisition_Day2,CRFAcquisitionDDay2,CRFAcquisitionDDay2_Rat12.csv,12____,14,10,1,C,Marios,63,5,5,1337,6,0,0,0,0,0,0,0,0
 Acquisition_Day2,CRFAcquisitionDDay2,CRFAcquisitionDDay2_Rat12.csv,12____,14,10,1,C,Marios,63,5,5,1338,7,0,0,0,0,0,0,0,0
 Acquisition_Day2,CRFAcquisitionDDay2,CRFAcquisitionDDay2_Rat12.csv,12____,14,10,1,C,Marios,63,5,5,1339,8,0,0,0,0,0,0,0,0
@@ -146,7 +146,7 @@ Acquisition_Day2,CRFAcquisitionDDay2,CRFAcquisitionDDay2_Rat12.csv,12____,14,10,
 Acquisition_Day2,CRFAcquisitionDDay2,CRFAcquisitionDDay2_Rat12.csv,12____,14,10,1,C,Marios,63,5,9,1346,5,0,0,0,0,1,0.5,0,0
 Acquisition_Day2,CRFAcquisitionDDay2,CRFAcquisitionDDay2_Rat12.csv,12____,14,10,1,C,Marios,63,5,9,1347,6,0,0,0,0,0,1,0,0
 Acquisition_Day2,CRFAcquisitionDDay2,CRFAcquisitionDDay2_Rat12.csv,12____,14,10,1,C,Marios,63,5,9,1348,7,0,0,0,0,0,1,0,0
-Acquisition_Day2,CRFAcquisitionDDay2,CRFAcquisitionDDay2_Rat12.csv,12____,14,10,1,C,Marios,63,5,9,1349,8,0,0,0,0,0,0,0,0
+Acquisition_Day2,CRFAcquisitionDDay2,CRFAcquisitionDDay2_Rat12.csv,12____,14,10,1,C,Marios,63,5,9,1349,8,0,0,0,0,0,0.400000000000091,0,0
 Acquisition_Day2,CRFAcquisitionDDay2,CRFAcquisitionDDay2_Rat12.csv,12____,14,10,1,C,Marios,63,5,9,1350,9,0,0,0,0,0,0,0,0
 Acquisition_Day2,CRFAcquisitionDDay2,CRFAcquisitionDDay2_Rat12.csv,12____,14,10,1,C,Marios,63,5,9,1351,10,0,0,0,0,0,0,0,0
 Acquisition_Day2,CRFAcquisitionDDay2,CRFAcquisitionDDay2_Rat12.csv,12____,14,10,1,C,Marios,63,6,2,1490,1,0,0,0,0,0,0,0,0
@@ -165,7 +165,7 @@ Acquisition_Day2,CRFAcquisitionDDay2,CRFAcquisitionDDay2_Rat12.csv,12____,14,10,
 Acquisition_Day2,CRFAcquisitionDDay2,CRFAcquisitionDDay2_Rat12.csv,12____,14,10,1,C,Marios,63,6,6,1503,4,0,0,0,0,0,0,0,0
 Acquisition_Day2,CRFAcquisitionDDay2,CRFAcquisitionDDay2_Rat12.csv,12____,14,10,1,C,Marios,63,6,6,1504,5,0,0,0,0,0,0,0,0
 Acquisition_Day2,CRFAcquisitionDDay2,CRFAcquisitionDDay2_Rat12.csv,12____,14,10,1,C,Marios,63,6,6,1505,6,0,0,0,0,1,1,0,0
-Acquisition_Day2,CRFAcquisitionDDay2,CRFAcquisitionDDay2_Rat12.csv,12____,14,10,1,C,Marios,63,6,6,1506,7,0,0,0,0,0,0,0,0
+Acquisition_Day2,CRFAcquisitionDDay2,CRFAcquisitionDDay2_Rat12.csv,12____,14,10,1,C,Marios,63,6,6,1506,7,0,0,0,0,0,0.380000000000109,0,0
 Acquisition_Day2,CRFAcquisitionDDay2,CRFAcquisitionDDay2_Rat12.csv,12____,14,10,1,C,Marios,63,6,6,1507,8,0,0,0,0,0,0,0,0
 Acquisition_Day2,CRFAcquisitionDDay2,CRFAcquisitionDDay2_Rat12.csv,12____,14,10,1,C,Marios,63,6,6,1508,9,0,0,0,0,1,0.420000000000073,0,0
 Acquisition_Day2,CRFAcquisitionDDay2,CRFAcquisitionDDay2_Rat12.csv,12____,14,10,1,C,Marios,63,6,6,1509,10,0,0,0,0,0,1,0,0
@@ -177,8 +177,8 @@ Acquisition_Day2,CRFAcquisitionDDay2,CRFAcquisitionDDay2_Rat12.csv,12____,14,10,
 Acquisition_Day2,CRFAcquisitionDDay2,CRFAcquisitionDDay2_Rat12.csv,12____,14,10,1,C,Marios,63,6,8,1515,6,0,0,0,0,0,1,0,0
 Acquisition_Day2,CRFAcquisitionDDay2,CRFAcquisitionDDay2_Rat12.csv,12____,14,10,1,C,Marios,63,6,8,1516,7,0,0,0,0,0,1,0,0
 Acquisition_Day2,CRFAcquisitionDDay2,CRFAcquisitionDDay2_Rat12.csv,12____,14,10,1,C,Marios,63,6,8,1517,8,0,0,0,0,0,1,0,0
-Acquisition_Day2,CRFAcquisitionDDay2,CRFAcquisitionDDay2_Rat12.csv,12____,14,10,1,C,Marios,63,6,8,1518,9,0,0,0,0,1,0.0399999999999636,0,0
-Acquisition_Day2,CRFAcquisitionDDay2,CRFAcquisitionDDay2_Rat12.csv,12____,14,10,1,C,Marios,63,6,8,1519,10,0,0,0,0,0,0,0,0
+Acquisition_Day2,CRFAcquisitionDDay2,CRFAcquisitionDDay2_Rat12.csv,12____,14,10,1,C,Marios,63,6,8,1518,9,0,0,0,0,1,0.680000000000064,0,0
+Acquisition_Day2,CRFAcquisitionDDay2,CRFAcquisitionDDay2_Rat12.csv,12____,14,10,1,C,Marios,63,6,8,1519,10,0,0,0,0,0,0.8599999999999,0,0
 Acquisition_Day2,CRFAcquisitionDDay2,CRFAcquisitionDDay2_Rat12.csv,12____,14,10,1,C,Marios,63,7,2,1642,1,0,0,0,0,0,0,0,0
 Acquisition_Day2,CRFAcquisitionDDay2,CRFAcquisitionDDay2_Rat12.csv,12____,14,10,1,C,Marios,63,7,2,1643,2,0,0,0,0,0,0,0,0
 Acquisition_Day2,CRFAcquisitionDDay2,CRFAcquisitionDDay2_Rat12.csv,12____,14,10,1,C,Marios,63,7,2,1644,3,0,0,0,0,0,0,0,0
@@ -208,7 +208,7 @@ Acquisition_Day2,CRFAcquisitionDDay2,CRFAcquisitionDDay2_Rat12.csv,12____,14,10,
 Acquisition_Day2,CRFAcquisitionDDay2,CRFAcquisitionDDay2_Rat12.csv,12____,14,10,1,C,Marios,63,7,7,1668,7,0,0,0,0,0,1,0,0
 Acquisition_Day2,CRFAcquisitionDDay2,CRFAcquisitionDDay2_Rat12.csv,12____,14,10,1,C,Marios,63,7,7,1669,8,0,0,0,0,0,1,0,0
 Acquisition_Day2,CRFAcquisitionDDay2,CRFAcquisitionDDay2_Rat12.csv,12____,14,10,1,C,Marios,63,7,7,1670,9,0,0,0,0,0,1,0,0
-Acquisition_Day2,CRFAcquisitionDDay2,CRFAcquisitionDDay2_Rat12.csv,12____,14,10,1,C,Marios,63,7,7,1671,10,0,0,0,0,0,0,0,0
+Acquisition_Day2,CRFAcquisitionDDay2,CRFAcquisitionDDay2_Rat12.csv,12____,14,10,1,C,Marios,63,7,7,1671,10,0,0,0,0,0,0.839999999999918,0,0
 Acquisition_Day2,CRFAcquisitionDDay2,CRFAcquisitionDDay2_Rat12.csv,12____,14,10,1,C,Marios,63,8,2,1826,1,0,0,0,0,0,0,0,0
 Acquisition_Day2,CRFAcquisitionDDay2,CRFAcquisitionDDay2_Rat12.csv,12____,14,10,1,C,Marios,63,8,2,1827,2,0,0,0,0,0,0,0,0
 Acquisition_Day2,CRFAcquisitionDDay2,CRFAcquisitionDDay2_Rat12.csv,12____,14,10,1,C,Marios,63,8,2,1828,3,0,0,0,0,0,0,0,0
@@ -251,7 +251,7 @@ Acquisition_Day2,CRFAcquisitionDDay2,CRFAcquisitionDDay2_Rat12.csv,12____,14,10,
 Acquisition_Day2,CRFAcquisitionDDay2,CRFAcquisitionDDay2_Rat12.csv,12____,14,10,1,C,Marios,63,9,2,2035,10,0,0,0,0,0,1,0,0
 Acquisition_Day2,CRFAcquisitionDDay2,CRFAcquisitionDDay2_Rat12.csv,12____,14,10,1,C,Marios,63,9,4,2036,1,0,0,0,0,0,1,0,0
 Acquisition_Day2,CRFAcquisitionDDay2,CRFAcquisitionDDay2_Rat12.csv,12____,14,10,1,C,Marios,63,9,4,2037,2,0,0,0,0,0,1,0,0
-Acquisition_Day2,CRFAcquisitionDDay2,CRFAcquisitionDDay2_Rat12.csv,12____,14,10,1,C,Marios,63,9,4,2038,3,0,0,0,0,0,0,0,0
+Acquisition_Day2,CRFAcquisitionDDay2,CRFAcquisitionDDay2_Rat12.csv,12____,14,10,1,C,Marios,63,9,4,2038,3,0,0,0,0,0,0.200000000000045,0,0
 Acquisition_Day2,CRFAcquisitionDDay2,CRFAcquisitionDDay2_Rat12.csv,12____,14,10,1,C,Marios,63,9,4,2039,4,0,0,0,0,0,0,0,0
 Acquisition_Day2,CRFAcquisitionDDay2,CRFAcquisitionDDay2_Rat12.csv,12____,14,10,1,C,Marios,63,9,4,2040,5,0,0,0,0,1,0.220000000000027,0,0
 Acquisition_Day2,CRFAcquisitionDDay2,CRFAcquisitionDDay2_Rat12.csv,12____,14,10,1,C,Marios,63,9,4,2041,6,0,0,0,0,0,0,0,0
@@ -267,7 +267,7 @@ Acquisition_Day2,CRFAcquisitionDDay2,CRFAcquisitionDDay2_Rat12.csv,12____,14,10,
 Acquisition_Day2,CRFAcquisitionDDay2,CRFAcquisitionDDay2_Rat12.csv,12____,14,10,1,C,Marios,63,9,9,2051,6,0,0,0,0,0,0,0,0
 Acquisition_Day2,CRFAcquisitionDDay2,CRFAcquisitionDDay2_Rat12.csv,12____,14,10,1,C,Marios,63,9,9,2052,7,0,0,0,0,0,0,0,0
 Acquisition_Day2,CRFAcquisitionDDay2,CRFAcquisitionDDay2_Rat12.csv,12____,14,10,1,C,Marios,63,9,9,2053,8,0,0,0,0,1,0.940000000000055,0,0
-Acquisition_Day2,CRFAcquisitionDDay2,CRFAcquisitionDDay2_Rat12.csv,12____,14,10,1,C,Marios,63,9,9,2054,9,0,0,0,0,2,0.699999999999818,0,0
+Acquisition_Day2,CRFAcquisitionDDay2,CRFAcquisitionDDay2_Rat12.csv,12____,14,10,1,C,Marios,63,9,9,2054,9,0,0,0,0,2,0.859999999999673,0,0
 Acquisition_Day2,CRFAcquisitionDDay2,CRFAcquisitionDDay2_Rat12.csv,12____,14,10,1,C,Marios,63,9,9,2055,10,0,0,0,0,0,1,0,0
 Acquisition_Day2,CRFAcquisitionDDay2,CRFAcquisitionDDay2_Rat12.csv,12____,14,10,1,C,Marios,63,10,2,2274,1,0,0,0,0,0,1,0,0
 Acquisition_Day2,CRFAcquisitionDDay2,CRFAcquisitionDDay2_Rat12.csv,12____,14,10,1,C,Marios,63,10,2,2275,2,0,0,0,0,0,1,0,0
@@ -286,7 +286,7 @@ Acquisition_Day2,CRFAcquisitionDDay2,CRFAcquisitionDDay2_Rat12.csv,12____,14,10,
 Acquisition_Day2,CRFAcquisitionDDay2,CRFAcquisitionDDay2_Rat12.csv,12____,14,10,1,C,Marios,63,10,5,2288,5,0,0,0,0,0,1,0,0
 Acquisition_Day2,CRFAcquisitionDDay2,CRFAcquisitionDDay2_Rat12.csv,12____,14,10,1,C,Marios,63,10,5,2289,6,0,0,0,0,0,1,0,0
 Acquisition_Day2,CRFAcquisitionDDay2,CRFAcquisitionDDay2_Rat12.csv,12____,14,10,1,C,Marios,63,10,5,2290,7,0,0,0,0,0,1,0,0
-Acquisition_Day2,CRFAcquisitionDDay2,CRFAcquisitionDDay2_Rat12.csv,12____,14,10,1,C,Marios,63,10,5,2291,8,0,0,0,0,0,0,0,0
+Acquisition_Day2,CRFAcquisitionDDay2,CRFAcquisitionDDay2_Rat12.csv,12____,14,10,1,C,Marios,63,10,5,2291,8,0,0,0,0,0,0.340000000000146,0,0
 Acquisition_Day2,CRFAcquisitionDDay2,CRFAcquisitionDDay2_Rat12.csv,12____,14,10,1,C,Marios,63,10,5,2292,9,0,0,0,0,1,0.760000000000218,0,0
 Acquisition_Day2,CRFAcquisitionDDay2,CRFAcquisitionDDay2_Rat12.csv,12____,14,10,1,C,Marios,63,10,5,2293,10,0,0,0,0,0,1,0,0
 Acquisition_Day2,CRFAcquisitionDDay2,CRFAcquisitionDDay2_Rat12.csv,12____,14,10,1,C,Marios,63,10,7,2294,1,0,0,0,0,0,1,0,0
@@ -312,7 +312,7 @@ Acquisition_Day2,CRFAcquisitionDDay2,CRFAcquisitionDDay2_Rat12.csv,12____,14,10,
 Acquisition_Day2,CRFAcquisitionDDay2,CRFAcquisitionDDay2_Rat12.csv,12____,14,10,1,C,Marios,63,11,3,2580,1,0,0,0,0,1,0.0799999999999272,0,0
 Acquisition_Day2,CRFAcquisitionDDay2,CRFAcquisitionDDay2_Rat12.csv,12____,14,10,1,C,Marios,63,11,3,2581,2,0,0,0,0,0,1,0,0
 Acquisition_Day2,CRFAcquisitionDDay2,CRFAcquisitionDDay2_Rat12.csv,12____,14,10,1,C,Marios,63,11,3,2582,3,0,0,0,0,0,1,0,0
-Acquisition_Day2,CRFAcquisitionDDay2,CRFAcquisitionDDay2_Rat12.csv,12____,14,10,1,C,Marios,63,11,3,2583,4,0,0,0,0,1,0.159999999999854,0,0
+Acquisition_Day2,CRFAcquisitionDDay2,CRFAcquisitionDDay2_Rat12.csv,12____,14,10,1,C,Marios,63,11,3,2583,4,0,0,0,0,1,0.679999999999836,0,0
 Acquisition_Day2,CRFAcquisitionDDay2,CRFAcquisitionDDay2_Rat12.csv,12____,14,10,1,C,Marios,63,11,3,2584,5,0,0,0,0,0,0,0,0
 Acquisition_Day2,CRFAcquisitionDDay2,CRFAcquisitionDDay2_Rat12.csv,12____,14,10,1,C,Marios,63,11,3,2585,6,0,0,0,0,0,0,0,0
 Acquisition_Day2,CRFAcquisitionDDay2,CRFAcquisitionDDay2_Rat12.csv,12____,14,10,1,C,Marios,63,11,3,2586,7,0,0,0,0,0,0,0,0
@@ -347,7 +347,7 @@ Acquisition_Day2,CRFAcquisitionDDay2,CRFAcquisitionDDay2_Rat12.csv,12____,14,10,
 Acquisition_Day2,CRFAcquisitionDDay2,CRFAcquisitionDDay2_Rat12.csv,12____,14,10,1,C,Marios,63,12,6,2913,6,0,0,0,0,0,0,0,0
 Acquisition_Day2,CRFAcquisitionDDay2,CRFAcquisitionDDay2_Rat12.csv,12____,14,10,1,C,Marios,63,12,6,2914,7,0,0,0,0,1,0.539999999999964,0,0
 Acquisition_Day2,CRFAcquisitionDDay2,CRFAcquisitionDDay2_Rat12.csv,12____,14,10,1,C,Marios,63,12,6,2915,8,0,0,0,0,0,1,0,0
-Acquisition_Day2,CRFAcquisitionDDay2,CRFAcquisitionDDay2_Rat12.csv,12____,14,10,1,C,Marios,63,12,6,2916,9,0,0,0,0,0,0,0,0
+Acquisition_Day2,CRFAcquisitionDDay2,CRFAcquisitionDDay2_Rat12.csv,12____,14,10,1,C,Marios,63,12,6,2916,9,0,0,0,0,0,0.800000000000182,0,0
 Acquisition_Day2,CRFAcquisitionDDay2,CRFAcquisitionDDay2_Rat12.csv,12____,14,10,1,C,Marios,63,12,6,2917,10,0,0,0,0,0,0,0,0
 Acquisition_Day2,CRFAcquisitionDDay2,CRFAcquisitionDDay2_Rat12.csv,12____,14,10,1,C,Marios,63,12,8,2918,1,0,0,0,0,0,0,0,0
 Acquisition_Day2,CRFAcquisitionDDay2,CRFAcquisitionDDay2_Rat12.csv,12____,14,10,1,C,Marios,63,12,8,2919,2,0,0,0,0,0,0,0,0
@@ -373,7 +373,7 @@ Acquisition_Day2,CRFAcquisitionDDay2,CRFAcquisitionDDay2_Rat12.csv,12____,14,10,
 Acquisition_Day2,CRFAcquisitionDDay2,CRFAcquisitionDDay2_Rat12.csv,12____,14,10,1,C,Marios,63,13,6,3253,2,0,0,0,0,0,0,0,0
 Acquisition_Day2,CRFAcquisitionDDay2,CRFAcquisitionDDay2_Rat12.csv,12____,14,10,1,C,Marios,63,13,6,3254,3,0,0,0,0,0,0,0,0
 Acquisition_Day2,CRFAcquisitionDDay2,CRFAcquisitionDDay2_Rat12.csv,12____,14,10,1,C,Marios,63,13,6,3255,4,0,0,0,0,1,0.900000000000091,0,0
-Acquisition_Day2,CRFAcquisitionDDay2,CRFAcquisitionDDay2_Rat12.csv,12____,14,10,1,C,Marios,63,13,6,3256,5,0,0,0,0,0,0,0,0
+Acquisition_Day2,CRFAcquisitionDDay2,CRFAcquisitionDDay2_Rat12.csv,12____,14,10,1,C,Marios,63,13,6,3256,5,0,0,0,0,0,0.119999999999891,0,0
 Acquisition_Day2,CRFAcquisitionDDay2,CRFAcquisitionDDay2_Rat12.csv,12____,14,10,1,C,Marios,63,13,6,3257,6,0,0,0,0,0,0,0,0
 Acquisition_Day2,CRFAcquisitionDDay2,CRFAcquisitionDDay2_Rat12.csv,12____,14,10,1,C,Marios,63,13,6,3258,7,0,0,0,0,0,0,0,0
 Acquisition_Day2,CRFAcquisitionDDay2,CRFAcquisitionDDay2_Rat12.csv,12____,14,10,1,C,Marios,63,13,6,3259,8,0,0,0,0,0,0,0,0
@@ -389,7 +389,7 @@ Acquisition_Day2,CRFAcquisitionDDay2,CRFAcquisitionDDay2_Rat12.csv,12____,14,10,
 Acquisition_Day2,CRFAcquisitionDDay2,CRFAcquisitionDDay2_Rat12.csv,12____,14,10,1,C,Marios,63,13,8,3269,8,0,0,0,0,1,0.960000000000036,0,0
 Acquisition_Day2,CRFAcquisitionDDay2,CRFAcquisitionDDay2_Rat12.csv,12____,14,10,1,C,Marios,63,13,8,3270,9,0,0,0,0,0,1,0,0
 Acquisition_Day2,CRFAcquisitionDDay2,CRFAcquisitionDDay2_Rat12.csv,12____,14,10,1,C,Marios,63,13,8,3271,10,0,0,0,0,0,1,0,0
-Acquisition_Day2,CRFAcquisitionDDay2,CRFAcquisitionDDay2_Rat12.csv,12____,14,10,1,C,Marios,63,14,2,3378,1,0,0,0,0,1,0.199999999999818,0,0
+Acquisition_Day2,CRFAcquisitionDDay2,CRFAcquisitionDDay2_Rat12.csv,12____,14,10,1,C,Marios,63,14,2,3378,1,0,0,0,0,1,0.5,0,0
 Acquisition_Day2,CRFAcquisitionDDay2,CRFAcquisitionDDay2_Rat12.csv,12____,14,10,1,C,Marios,63,14,2,3379,2,0,0,0,0,0,0,0,0
 Acquisition_Day2,CRFAcquisitionDDay2,CRFAcquisitionDDay2_Rat12.csv,12____,14,10,1,C,Marios,63,14,2,3380,3,0,0,0,0,0,0,0,0
 Acquisition_Day2,CRFAcquisitionDDay2,CRFAcquisitionDDay2_Rat12.csv,12____,14,10,1,C,Marios,63,14,2,3381,4,0,0,0,0,0,0,0,0
@@ -403,7 +403,7 @@ Acquisition_Day2,CRFAcquisitionDDay2,CRFAcquisitionDDay2_Rat12.csv,12____,14,10,
 Acquisition_Day2,CRFAcquisitionDDay2,CRFAcquisitionDDay2_Rat12.csv,12____,14,10,1,C,Marios,63,14,3,3389,2,0,0,0,0,0,0,0,0
 Acquisition_Day2,CRFAcquisitionDDay2,CRFAcquisitionDDay2_Rat12.csv,12____,14,10,1,C,Marios,63,14,3,3390,3,0,0,0,0,0,0,0,0
 Acquisition_Day2,CRFAcquisitionDDay2,CRFAcquisitionDDay2_Rat12.csv,12____,14,10,1,C,Marios,63,14,3,3391,4,0,0,0,0,1,0.860000000000127,0,0
-Acquisition_Day2,CRFAcquisitionDDay2,CRFAcquisitionDDay2_Rat12.csv,12____,14,10,1,C,Marios,63,14,3,3392,5,0,0,0,0,0,0,0,0
+Acquisition_Day2,CRFAcquisitionDDay2,CRFAcquisitionDDay2_Rat12.csv,12____,14,10,1,C,Marios,63,14,3,3392,5,0,0,0,0,0,0.400000000000091,0,0
 Acquisition_Day2,CRFAcquisitionDDay2,CRFAcquisitionDDay2_Rat12.csv,12____,14,10,1,C,Marios,63,14,3,3393,6,0,0,0,0,0,0,0,0
 Acquisition_Day2,CRFAcquisitionDDay2,CRFAcquisitionDDay2_Rat12.csv,12____,14,10,1,C,Marios,63,14,3,3394,7,0,0,0,0,0,0,0,0
 Acquisition_Day2,CRFAcquisitionDDay2,CRFAcquisitionDDay2_Rat12.csv,12____,14,10,1,C,Marios,63,14,3,3395,8,0,0,0,0,0,0,0,0
@@ -478,4 +478,4 @@ Acquisition_Day2,CRFAcquisitionDDay2,CRFAcquisitionDDay2_Rat12.csv,12____,14,10,
 Acquisition_Day2,CRFAcquisitionDDay2,CRFAcquisitionDDay2_Rat12.csv,12____,14,10,1,C,Marios,63,16,9,3836,7,0,0,0,0,0,0,0,0
 Acquisition_Day2,CRFAcquisitionDDay2,CRFAcquisitionDDay2_Rat12.csv,12____,14,10,1,C,Marios,63,16,9,3837,8,0,0,0,0,1,0.7199999999998,0,0
 Acquisition_Day2,CRFAcquisitionDDay2,CRFAcquisitionDDay2_Rat12.csv,12____,14,10,1,C,Marios,63,16,9,3838,9,0,0,0,0,0,1,0,0
-Acquisition_Day2,CRFAcquisitionDDay2,CRFAcquisitionDDay2_Rat12.csv,12____,14,10,1,C,Marios,63,16,9,3839,10,0,0,0,0,0,0,0,0
+Acquisition_Day2,CRFAcquisitionDDay2,CRFAcquisitionDDay2_Rat12.csv,12____,14,10,1,C,Marios,63,16,9,3839,10,0,0,0,0,0,0.0199999999999818,0,0

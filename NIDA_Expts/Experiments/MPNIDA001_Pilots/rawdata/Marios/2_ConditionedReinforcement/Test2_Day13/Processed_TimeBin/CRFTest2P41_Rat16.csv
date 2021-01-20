@@ -1,6 +1,6 @@
 folder,file,savename,subject,protocol,station,run,project,userID,session,timebins,timebin_start,timebin_end,A1_freq,A1_dur,A2_freq,A2_dur,A3_freq,A3_dur,A4_freq,A4_dur,Click_freq,Click_dur,Noise_freq,Noise_dur,Tone_freq,Tone_dur,Siren_freq,Siren_dur
 Test2_Day13,CRFTest2P41,CRFTest2P41_Rat16.csv,16____,41,9,1,C,Marios,194,1,0,60,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
-Test2_Day13,CRFTest2P41,CRFTest2P41_Rat16.csv,16____,41,9,1,C,Marios,194,2,60,120,6,2.23999999999999,0,0,0,0,0,0,0,0,0,0,0,0,2,2
+Test2_Day13,CRFTest2P41,CRFTest2P41_Rat16.csv,16____,41,9,1,C,Marios,194,2,60,120,6,2.24,0,0,0,0,0,0,0,0,0,0,0,0,2,2
 Test2_Day13,CRFTest2P41,CRFTest2P41_Rat16.csv,16____,41,9,1,C,Marios,194,3,120,180,0,0,1,0.240000000000009,0,0,0,0,0,0,0,0,0,0,0,0
 Test2_Day13,CRFTest2P41,CRFTest2P41_Rat16.csv,16____,41,9,1,C,Marios,194,4,180,240,2,0.359999999999985,0,0,0,0,0,0,0,0,0,0,0,0,1,1
 Test2_Day13,CRFTest2P41,CRFTest2P41_Rat16.csv,16____,41,9,1,C,Marios,194,5,240,300,2,0.0799999999999272,1,0.480000000000018,0,0,0,0,0,0,0,0,0,0,1,1
