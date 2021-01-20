@@ -578,3 +578,29 @@ A_while - A_For
 A_while - A_None
 head(A_For - A_None)
 sum(A_For - A_None)
+
+# Action Bin  -------------------------------------------------------------
+# test data
+A_on <- seq(from = 1, to = 11, by = 2)
+A_off <- seq(from = 2, to = 12, by = 2)
+
+bin_start = c(1.5,4, 7)
+bin_end = c(3, 6, 9.5)
+
+for(i in c(1:length(bin_start))) {
+print(which(A_on >= bin_start[i] & A_on <= bin_end[i]))
+  print(which(A_on <= bin_start[i] & A_on <= bin_end[i]))
+}
+
+
+
+
+
+
+
+
+
+
+
+
+

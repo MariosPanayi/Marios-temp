@@ -303,7 +303,7 @@ coulbourn_actionbin <- function(A_on, A_off, bin_start, bin_end){
   if (length(A_on) > 0 | length(A_off) > 0) {
     
     
-    # CLean timestamp data
+    # Clean timestamp data
     A_data <- coulbourn_actioncleantimestamps(A_on, A_off)
     # Separate data frame output and replace original (A_on, A_off) variables
     A_on <- A_data$A_on
