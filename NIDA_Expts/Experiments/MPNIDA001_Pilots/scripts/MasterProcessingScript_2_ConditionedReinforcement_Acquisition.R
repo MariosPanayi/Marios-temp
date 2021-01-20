@@ -2,6 +2,7 @@
 ## Packages for data organisation and plotting
 library(tidyverse)
 library(knitr)
+library(data.table)
 # Package for relative file paths
 library(here)
 # Benchmark time of functions
@@ -22,7 +23,7 @@ registerDoParallel(numCores)
 ### Project specific folder
 projectdatafolder <- c("rawdata","Marios","2_ConditionedReinforcement")
 
-## Final level of folders contianing the relevant .txt Coulbourn files
+## Final level of folders containing the relevant .txt Coulbourn files
 listofdatafolders <- c("Acquisition_Day1",
                        "Acquisition_Day2",
                        "Acquisition_Day3",
@@ -40,7 +41,8 @@ listofdatafolders <- c("Acquisition_Day1",
                        "EnhancedAcquisition_Day17",
                        "EnhancedAcquisition_Day18",
                        "EnhancedAcquisition_Day19",
-                       "EnhancedAcquisition_Day20")
+                       "EnhancedAcquisition_Day20",
+                       "EnhancedAcquisition_Day21")
 
 
 #  extract data filenames, only .txt --------------------------------------
@@ -89,6 +91,8 @@ for (i in c(1:length(listofdatafolders))){
     library(here)
     library(tidyverse)
     library(knitr)
+    library(data.table)
+    data
     source(here("scripts", "CoulbournAnalysisFunctions.R"))
     # For each raw.txt file split up the data into individual subjects .csv files for subsequent analysis
     folderpath <- here(paste(projectdatafolder, collapse = "/"),listofdatafolders[i])
@@ -163,7 +167,7 @@ subject <- c("9_____",
              "M")
   
   # Create counterbalancing lookup table
-lookup_counterbalancing <- data.frame(subject, counterbalancing, sex)
+lookup_counterbalancing <- data.table(subject, counterbalancing, sex)
   # Combine with rawdata
 rawdata <- left_join(rawdata, lookup_counterbalancing, by = "subject")
 
@@ -196,7 +200,7 @@ bin_state <- c(2,
               8,
               9)
 # Create counterbalancing lookup table
-lookup_stateIDs <- data.frame(bin_state, Period, state_ID)
+lookup_stateIDs <- data.table(bin_state, Period, state_ID)
 # COmbine with rawdata
 rawdata <- left_join(rawdata, lookup_stateIDs, by =c("bin_state"))
 
@@ -253,7 +257,7 @@ counterbalancing<- c("A",
                      "D")
 
 # Create counterbalancing lookup table
-lookup_CSname <- data.frame(counterbalancing, state_ID, CS_name)
+lookup_CSname <- data.table(counterbalancing, state_ID, CS_name)
 # Combine with rawdata
 rawdata <- left_join(rawdata, lookup_CSname, by = c("counterbalancing","state_ID"))
 
@@ -278,4 +282,4 @@ rawdata <- rawdata %>%
 savefolderpath <- here("rawdata","Marios","2_ConditionedReinforcement","CombinedData")
 savefilename <- "CRF_ProcessedData_pertrial_1sbins.csv"
 dir.create(savefolderpath)
-data.table::fwrite(rawdata,here(savefolderpath,savefilename))
+fwrite(rawdata,here(paste(c(savefolderpath, savefilename), collapse = "/")))

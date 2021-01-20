@@ -6,6 +6,7 @@
 # Note that some of these are repeated within certain functions to allow for parallel FOR loops
 library(tidyverse)
 library(knitr)
+library(data.table)
 # Package for relative file paths
 library(here)
 # -------------------------------------------------------------------------
@@ -54,7 +55,7 @@ coulbourn_rawdatasplit <- function(filename,folderpath) {
   # Coulbourn files are tab separated value .txt files
   # rawdata <- read_tsv(filepath)
   # Faster function for reading in files
-  rawdata <- data.table::fread(filepath)
+  rawdata <- fread(filepath)
   
   # Clean up variable names -------------------------------------------------
   
@@ -110,9 +111,9 @@ coulbourn_rawdatasplit <- function(filename,folderpath) {
     
     filepath <- here(folderpath, tempfilename)
     
-    # data.table::fwrite(temp, filepath)
+    # fwrite(temp, filepath)
     #  Faster file writing function
-    data.table::fwrite(temp, filepath)
+    fwrite(temp, filepath)
     
   }
   
@@ -141,15 +142,14 @@ Coulbourn_Joinprocesseddata <- function(projectdatafolder, listofdatafolders, pr
   ## Load each table of data and join into a single 
   for (i in c(1:length(filestojoin))){ 
     if (i == 1){
-      rawdata <- data.table::fread(filestojoin[i])
+      rawdata <- fread(filestojoin[i])
     } else {
-      tempdata <- data.table::fread(filestojoin[i])
-      rawdata <- full_join(rawdata,tempdata)
+      tempdata <- fread(filestojoin[i])
+      rawdata <- rbindlist(list(rawdata,tempdata))
     }
   }
   return(rawdata)
 }
-
 
 
 
@@ -163,18 +163,13 @@ coulbourn_actioncleantimestamps <- function(A_on, A_off) {
   # These issues happen surprisingly often for Coulbourn Lever Pressing data in particular
   # N.B. output is a data frame of A_on and A_off, split this output apart for use with other functions.
   
+  
   if (length(A_on) > 0 | length(A_off) > 0) {
     
     # Make sure data are in chronological order!!! Otherwise loop will go on forever
     A_on <- sort(A_on)
     A_off <- sort(A_off)
     
-    
-    # create new empty variable to populate with values
-    # Note that this inefficient method is required because Coulbourn timestamps don't obey logic,
-    # There is no way to precalculate the number of events because the on and off signals might both contain independent inconsistencies
-    ts = double()
-    event = character()
     
     if (is_empty(A_on) & !is_empty(A_off)) {
       # Check to see if there are no ON signals
@@ -183,7 +178,7 @@ coulbourn_actioncleantimestamps <- function(A_on, A_off) {
     }
     if (!is_empty(A_on) & is_empty(A_off)) {
       # Check to see if there are no OFF signals
-      # Situation - special case where OFF signal occurred within temporal resolution of system for first repsonse
+      # Situation - special case where OFF signal occurred within temporal resolution of system for first response
       A_off <- c(A_on[1], A_off)
     }
     if (A_on[1] > A_off[1]) {
@@ -192,153 +187,116 @@ coulbourn_actioncleantimestamps <- function(A_on, A_off) {
       A_on <- c(0,A_on)
     }
     
-    # Efficiency Check --------------------------------------------------------
     
-    # Check to see if the data are all correct now i.e. all A_on have a corresponding A_off, and each A_on[1] <= A_off[i]
     
-    if (length(A_on) == length(A_off)) {
-      # Test whether all A_on <= A_off
-      correctdata <- as.logical(A_on <= A_off)
-      if (length(which(correctdata == FALSE)) == 0) {
-        # All data are correct so return unprocessed
-        A_data <- data.frame(A_on, A_off)
-        return(A_data)
+    
+    # Combine all on and off signals and order them by time AND [A_on before A_off] when there is a tie 
+    # [we will deal with issues this might cause, but it will be correct most of the time]
+    time = c(A_on, A_off)
+    event = c(rep("A_on", length(A_on)), rep("A_off", length(A_off)))
+    # Event ID is just a numeric version of even -1 = On, 1 = Off
+    eventID = c(rep(-1, length(A_on)), rep(1, length(A_off)))
+    
+    #  Order data
+    A = data.frame(time, event, eventID)
+    A = setorder(A, time, eventID)
+    # Add a numeric order to the list so we can manipulate values later
+    A$eventorder = c(1:nrow(A))
+    
+    
+    # Check for sequential times that are tied for more than 1 event
+    # N.B. if ties[i] = 0, then that event[i] and event[i+1] happened at the same time
+    ties = diff(A$time)
+    ties = which(ties == 0)
+    
+    # If there are ties to consider
+    if (length(ties) != 0) {
+      
+      # Test to ignore first tie if it is also the first event
+      if(ties[1] == 1) {j = 2} else {j = 1}
+      
+      for(i in c(j:length(ties))){
         
-      }
-    } else {
-      
-      
-      
-      # add first onset [which will exist since A_on is not empty AND we have made sure the first on is before the first off]
-      
-      ts <- c(ts, A_on[1])
-      event <- c(event, "A_on")
-      A_on <- A_on[-1]
-      
-      
-      # Keep doing the following steps until the on and off signal vectors are empty
-      # We will delete things as they are moved from A_on and A_off and transfer them
-      # to the new vector with any extra on and off signals required
-      while (length(A_on) > 0 | length(A_off) > 0) {
+        idx = ties[i]
         
-        # First check if the last thing in the event list is an On or Off
-        if (tail(event,1) == "A_on"){
-          ### Last event is an On ###
+        if((A$event[idx-1] == "A_on" & A$event[idx] == "A_on" &  A$event[idx+1] == "A_off")) {
           
-          if (is_empty(A_on) & !is_empty(A_off)){
-            # No more recorded ON signals - deal with remaining OFF signals if any exist
-            # Solution -> add next OFF signal to ts and event lists
-            ts <- c(ts, A_off[1])
-            event <- c(event, "A_off")
-            # Remove value from off list
-            A_off <- A_off[-1]
-            
-          } else if (!is_empty(A_on) & is_empty(A_off)){
-            # No more recorded OFF signals - Remaining ON signals to be dealt with
-            # Situation  -> an On signal occurred without a corresponding OFF signal - happened within temporal resolution of system
-            # Solution -> add an extra OFF event to the list
-            ts <- c(ts, tail(ts,1))
-            event <- c(event, "A_off")
-            
-          }
+          # If the tied A_on and A_off signals are in the wrong order, switch them around
+          # Note that this is the only way they can be ordered incorrectly since:
+          # 1) We have already ordered the data so any times that are tied will put an A_on before an A_off
+          # 2) Coulbourn never records more than 1x A_on and 1x A_off with the same time
+          # 3) If the previous A_on had a simultaneous A_off then it would also be recorded as such
           
-          else if (A_off[1] >= tail(ts,1)) {
-            
-            # OFF event comes after previous On event
-            if (A_off[1] <= A_on[1] ) {
-              # Condition 1: Off event is before Next On event and after previous On event
-              # Situation -> OFF signal where it was expected
-              # Solution -> add to ts and event lists
-              ts <- c(ts, A_off[1])
-              event <- c(event, "A_off")
-              # Remove value from off list
-              A_off <- A_off[-1]
-              
-            } else if (A_off[1] > A_on[1]) {
-              # Condition 2: Off event is after Next On event AND correctly after previous ON event
-              # Situation -> OFF event after previous ON happened faster than system temporal resolutions
-              # Solution -> add an extra OFF event to the list
-              ts <- c(ts, tail(ts,1))
-              event <- c(event, "A_off")
-              
-            }
-          }
+          A$eventorder[idx] = idx+1
+          A$eventorder[idx+1] = idx
+          
+          # Important to re-order the data after each change in case multiple ties are adjacent to each other
+          A = setorder(A, eventorder)
           
         }
-        
-        
-        else if (tail(event,1) == "A_off") {
-          ### Last event is an Off ###
-          
-          if (is_empty(A_off) & !is_empty(A_on)){
-            # No more recorded Off signals - deal with remaining OFF signals if any exist
-            # Solution -> add next ON signal to ts and event lists
-            ts <- c(ts, A_on[1])
-            event <- c(event, "A_on")
-            # Remove value from on list
-            A_on <- A_on[-1]
-            
-          } else if (!is_empty(A_off) & is_empty(A_on)){
-            # No more recorded ON signals - Remaining OFF signals to be dealt with
-            # Situation -> an OFF signal occurred without a corresponding ON signal - happened within temporal resolution of system
-            # Solution -> add an extra ON event to the list
-            ts <- c(ts, tail(ts,1))
-            event <- c(event, "A_on")
-            
-          }
-          
-          else if(A_on[1] >= tail(ts,1)){
-            
-            if (A_on[1] <= A_off[1]){
-              # COndition 3: Next On event comes before the Next Off event AND Next ON event comes after previous OFF event
-              # Situation -> On signal where it is expected
-              # SOlution -> add to ts and event lists
-              ts <- c(ts, A_on[1])
-              event <- c(event, "A_on")
-              # Remove value from off list
-              A_on <- A_on[-1]
-              
-            } else if(A_on[1] > A_off[1]){
-              # Condition 4: Next On event comes AFTER the Next Off event AND Next ON event comes after previous OFF event
-              # Situation -> On event after previous OFF happened faster than system temporal resolutions
-              # Solution -> add an extra ON event to the list
-              ts <- c(ts, tail(ts,1))
-              event <- c(event, "A_on")
-              
-            }
-          }
-        }
-        
-        # While loop end
       }
-      
-      # Check to see if final event was an ON. If so, then Add a corresponding OFF straight afterwards
-      # IMPORTANT - This is a major assumption!!! It is also possible that the final action doesn't have a corresponding OFF signal because the session ended.
-      # However, this is really hard to judge without looking at each case individually.
-      # Given that the end of the session usually has little of interest, this is a conservative assumption about the animals' behaviour that is consistent
-      # with the assumptions earlier in this script.
-      
-      if (tail(event,1) == "A_on") {
-        ts <- c(ts, tail(ts,1))
-        event <- c(event, "A_off")
-        
-      }
-      #Finally convert the data back into variables A_on and A_off
-      
-      A_on <- ts[event == "A_on"]
-      A_off <- ts[event == "A_off"]
-      
-      A_data <- data.frame(A_on, A_off)
-      return(A_data)
       
     }
     
+    # clear unused temporary variables for memory efficiency
+    rm(ties,event,time, A_on, A_off)
+    
+    # a value of 0 indicates that this index and the one above it are the same [i.e. two A_on or two A_off in a row] 
+    repeats <- diff(A$eventID)
+    # Indices in A of first repeat value
+    repeatsidx <- which(repeats == 0)
+    # Identity of the repeated event name
+    repeats_ID <- A$event[repeatsidx]
+    # Time of the first repeated event
+    extra_time <- A$time[repeatsidx]
+    # New position to insert extra event between repeats
+    extra_eventorder <- A$eventorder[repeatsidx] + 0.5
+    
+    # Create datatable and recode the new event identities 
+    A_extra <- data.table(repeatsidx, repeats_ID, extra_time, extra_event = repeats_ID, extra_eventorder)
+    recodeData <- data.table(
+      oldvalues = c("A_on", "A_off"),
+      newvalues = c("A_off", "A_on")
+    )
+    # Recode data to reflect the correct identity of the extra events to insert
+    A_extra[recodeData, extra_event := newvalues, on =. (extra_event =  oldvalues)]
+    # Drop unnecessary variables
+    A_extra <- A_extra[, c("extra_time","extra_event", "extra_eventorder")]
+    # Relabel columns to merge with A data
+    colnames(A_extra) <- c("time","event", "eventorder")
+    
+    # Join with original data
+    A <- A[, c("time","event", "eventorder")]
+    A <- rbindlist(list(A, A_extra), use.names = TRUE)
+    # Re organise the data in correct temporal order
+    A <- setorder(A, eventorder)
+    
+    # One last check to make sure final event is an OFF signal
+    if (A$event[nrow(A)] == "A_on") {
+      # Create extra data and append to A
+      A_final <- data.frame(time = A$time[nrow(A)], 
+                            event = "A_off", 
+                            eventorder = (A$eventorder[nrow(A)] + 0.5))
+      A <- rbindlist(list(A, A_final), use.names = TRUE)
+      A <- setorder(A, eventorder)
+      
+    }
+    
+    ### Extract data and return function output
+    A_on = A$time[A$event == "A_on"]
+    A_off = A$time[A$event == "A_off"]
+    A_data <- data.frame(A_on, A_off)
+    return(A_data)
+    
+    
+    # End Data re-ordering   
   } else {
     A_data <- data.frame(A_on, A_off)
     return(A_data)
   }
   
 }
+
 
 coulbourn_actionbin <- function(A_on, A_off, bin_start, bin_end){
   
@@ -433,7 +391,7 @@ coulbourn_processdata_Pavlovian_timebin <- function(filename,folderpath,S,timeba
   filepath <- here(folderpath, filename)
   
   ## Read in data
-  rawdata <- data.table::fread(filepath)
+  rawdata <- fread(filepath)
   ## Key to convert actions
   
   # key_actions <- c("LLR_On" = "A1_On",
@@ -555,9 +513,8 @@ coulbourn_processdata_Pavlovian_timebin <- function(filename,folderpath,S,timeba
   session <- replicate(length(bin_trial), rawdata$Session[1])
   
   ## Combine all the data together
-  data_bin <- cbind(folder, file, savename, subject, protocol, station, run, project, userID, session, bin_trial, bin_state, bin_time, bin_timewithin, data_bin)
-  # convert to dataframe for saving
-  data_bin <- as.data.frame(data_bin)
+  data_bin <- data.table(folder, file, savename, subject, protocol, station, run, project, userID, session, bin_trial, bin_state, bin_time, bin_timewithin, data_bin)
+
   
   
   ## Save as .csv file
@@ -568,7 +525,7 @@ coulbourn_processdata_Pavlovian_timebin <- function(filename,folderpath,S,timeba
   dir.create(savefolderpath)
   
   savefilepath <- here(savefolderpath, savefilename)
-  data.table::fwrite(data_bin, savefilepath)
+  fwrite(data_bin, savefilepath)
   
   # Function end
 }
@@ -610,7 +567,7 @@ coulbourn_processdata_Pavlovian_timebin <- function(filename,folderpath,S,timeba
 # postbintime <- 5
 # 
 # ## Read in data
-# rawdata <- data.table::fread(filepath)
+# rawdata <- fread(filepath)
 # ## Key to convert actions
 
 coulbourn_processdata_Instrumental_PrePosttimebin <- function(filename,folderpath,S,timebase, timebinwidth, nobin, bin, trialstartstate, prebintime, postbintime) {
@@ -618,7 +575,7 @@ coulbourn_processdata_Instrumental_PrePosttimebin <- function(filename,folderpat
   filepath <- here(folderpath, filename)
   
   ## Read in data
-  rawdata <- data.table::fread(filepath)
+  rawdata <- fread(filepath)
 ## Key to convert actions
 
 # key_actions <- c("LLR_On" = "A1_On",
@@ -760,9 +717,8 @@ userID <- replicate(length(bin_trial), rawdata$UserID[1])
 session <- replicate(length(bin_trial), rawdata$Session[1])
 
 ## Combine all the data together
-data_bin <- cbind(folder, file, savename, subject, protocol, station, run, project, userID, session, bin_trial, bin_state, bin_time, bin_timewithin, data_bin)
-# convert to dataframe for saving
-data_bin <- as.data.frame(data_bin)
+data_bin <- data.table(folder, file, savename, subject, protocol, station, run, project, userID, session, bin_trial, bin_state, bin_time, bin_timewithin, data_bin)
+
 
 
 ## Save as .csv file
@@ -773,7 +729,7 @@ savefolderpath <- here(folderpath, "Processed_TimeBin")
 dir.create(savefolderpath)
 
 savefilepath <- here(savefolderpath, savefilename)
-data.table::fwrite(data_bin, savefilepath)
+fwrite(data_bin, savefilepath)
 
 # Function end
 }
@@ -819,7 +775,7 @@ coulbourn_processdata_Operant_SessionTimeBinAnalysis <- function(filename,folder
   filepath <- here(folderpath, filename)
   
   ## Read in data
-  rawdata <- data.table::fread(filepath)
+  rawdata <- fread(filepath)
   ## Key to convert actions
   
   # key_actions <- c("LLR_On" = "A1_On",
@@ -902,9 +858,8 @@ coulbourn_processdata_Operant_SessionTimeBinAnalysis <- function(filename,folder
   session <- replicate(length(timebins), rawdata$Session[1])
   
   ## Combine all the data together
-  data_bin <- cbind(folder, file, savename, subject, protocol, station, run, project, userID, session, timebins,timebin_start, timebin_end, data_bin)
-  # convert to dataframe for saving
-  data_bin <- as.data.frame(data_bin)
+  data_bin <- data.table(folder, file, savename, subject, protocol, station, run, project, userID, session, timebins,timebin_start, timebin_end, data_bin)
+
   
   
   ## Save as .csv file
@@ -915,7 +870,7 @@ coulbourn_processdata_Operant_SessionTimeBinAnalysis <- function(filename,folder
   dir.create(savefolderpath)
   
   savefilepath <- here(savefolderpath, savefilename)
-  data.table::fwrite(data_bin, savefilepath)
+  fwrite(data_bin, savefilepath)
   
   # Function end
 }

@@ -83,7 +83,7 @@ RetardationTest_Stage5_Day17,CIRetardationTestStage5Day17BananaO1,CIRetardationT
 RetardationTest_Stage5_Day17,CIRetardationTestStage5Day17BananaO1,CIRetardationTestStage5Day17BananaO1_Rat32.csv,32____,52,5,1,C,Marios,232,3,5,431,2,0,0,0,0,0,1,0,0
 RetardationTest_Stage5_Day17,CIRetardationTestStage5Day17BananaO1,CIRetardationTestStage5Day17BananaO1_Rat32.csv,32____,52,5,1,C,Marios,232,3,5,432,3,0,0,0,0,0,1,0,0
 RetardationTest_Stage5_Day17,CIRetardationTestStage5Day17BananaO1,CIRetardationTestStage5Day17BananaO1_Rat32.csv,32____,52,5,1,C,Marios,232,3,5,433,4,0,0,0,0,0,1,0,0
-RetardationTest_Stage5_Day17,CIRetardationTestStage5Day17BananaO1,CIRetardationTestStage5Day17BananaO1_Rat32.csv,32____,52,5,1,C,Marios,232,3,5,434,5,0,0,0,0,2,0.54000000000002,0,0
+RetardationTest_Stage5_Day17,CIRetardationTestStage5Day17BananaO1,CIRetardationTestStage5Day17BananaO1_Rat32.csv,32____,52,5,1,C,Marios,232,3,5,434,5,0,0,0,0,2,0.540000000000021,0,0
 RetardationTest_Stage5_Day17,CIRetardationTestStage5Day17BananaO1,CIRetardationTestStage5Day17BananaO1_Rat32.csv,32____,52,5,1,C,Marios,232,3,5,435,6,0,0,0,0,0,0,0,0
 RetardationTest_Stage5_Day17,CIRetardationTestStage5Day17BananaO1,CIRetardationTestStage5Day17BananaO1_Rat32.csv,32____,52,5,1,C,Marios,232,3,5,436,7,0,0,0,0,0,0,0,0
 RetardationTest_Stage5_Day17,CIRetardationTestStage5Day17BananaO1,CIRetardationTestStage5Day17BananaO1_Rat32.csv,32____,52,5,1,C,Marios,232,3,5,437,8,0,0,0,0,0,0,0,0
@@ -145,8 +145,8 @@ RetardationTest_Stage5_Day17,CIRetardationTestStage5Day17BananaO1,CIRetardationT
 RetardationTest_Stage5_Day17,CIRetardationTestStage5Day17BananaO1,CIRetardationTestStage5Day17BananaO1_Rat32.csv,32____,52,5,1,C,Marios,232,5,5,703,4,0,0,0,0,0,1,0,0
 RetardationTest_Stage5_Day17,CIRetardationTestStage5Day17BananaO1,CIRetardationTestStage5Day17BananaO1_Rat32.csv,32____,52,5,1,C,Marios,232,5,5,704,5,0,0,0,0,0,1,0,0
 RetardationTest_Stage5_Day17,CIRetardationTestStage5Day17BananaO1,CIRetardationTestStage5Day17BananaO1_Rat32.csv,32____,52,5,1,C,Marios,232,5,5,705,6,0,0,0,0,1,0.67999999999995,0,0
-RetardationTest_Stage5_Day17,CIRetardationTestStage5Day17BananaO1,CIRetardationTestStage5Day17BananaO1_Rat32.csv,32____,52,5,1,C,Marios,232,5,5,706,7,0,0,0,0,2,0.520000000000095,0,0
-RetardationTest_Stage5_Day17,CIRetardationTestStage5Day17BananaO1,CIRetardationTestStage5Day17BananaO1_Rat32.csv,32____,52,5,1,C,Marios,232,5,5,707,8,0,0,0,0,1,0.700000000000045,0,0
+RetardationTest_Stage5_Day17,CIRetardationTestStage5Day17BananaO1,CIRetardationTestStage5Day17BananaO1_Rat32.csv,32____,52,5,1,C,Marios,232,5,5,706,7,0,0,0,0,2,0.520000000000096,0,0
+RetardationTest_Stage5_Day17,CIRetardationTestStage5Day17BananaO1,CIRetardationTestStage5Day17BananaO1_Rat32.csv,32____,52,5,1,C,Marios,232,5,5,707,8,0,0,0,0,1,0.700000000000046,0,0
 RetardationTest_Stage5_Day17,CIRetardationTestStage5Day17BananaO1,CIRetardationTestStage5Day17BananaO1_Rat32.csv,32____,52,5,1,C,Marios,232,5,5,708,9,0,0,0,0,0,0,0,0
 RetardationTest_Stage5_Day17,CIRetardationTestStage5Day17BananaO1,CIRetardationTestStage5Day17BananaO1_Rat32.csv,32____,52,5,1,C,Marios,232,5,5,709,10,0,0,0,0,0,0,0,0
 RetardationTest_Stage5_Day17,CIRetardationTestStage5Day17BananaO1,CIRetardationTestStage5Day17BananaO1_Rat32.csv,32____,52,5,1,C,Marios,232,6,2,780,1,0,0,0,0,0,1,0,0
@@ -356,7 +356,7 @@ RetardationTest_Stage5_Day17,CIRetardationTestStage5Day17BananaO1,CIRetardationT
 RetardationTest_Stage5_Day17,CIRetardationTestStage5Day17BananaO1,CIRetardationTestStage5Day17BananaO1_Rat32.csv,32____,52,5,1,C,Marios,232,12,5,1434,5,0,0,0,0,0,1,0,0
 RetardationTest_Stage5_Day17,CIRetardationTestStage5Day17BananaO1,CIRetardationTestStage5Day17BananaO1_Rat32.csv,32____,52,5,1,C,Marios,232,12,5,1435,6,0,0,0,0,0,1,0,0
 RetardationTest_Stage5_Day17,CIRetardationTestStage5Day17BananaO1,CIRetardationTestStage5Day17BananaO1_Rat32.csv,32____,52,5,1,C,Marios,232,12,5,1436,7,0,0,0,0,4,0.400000000000091,0,0
-RetardationTest_Stage5_Day17,CIRetardationTestStage5Day17BananaO1,CIRetardationTestStage5Day17BananaO1_Rat32.csv,32____,52,5,1,C,Marios,232,12,5,1437,8,0,0,0,0,1,0.700000000000045,0,0
+RetardationTest_Stage5_Day17,CIRetardationTestStage5Day17BananaO1,CIRetardationTestStage5Day17BananaO1_Rat32.csv,32____,52,5,1,C,Marios,232,12,5,1437,8,0,0,0,0,1,0.700000000000046,0,0
 RetardationTest_Stage5_Day17,CIRetardationTestStage5Day17BananaO1,CIRetardationTestStage5Day17BananaO1_Rat32.csv,32____,52,5,1,C,Marios,232,12,5,1438,9,0,0,0,0,1,0.1400000000001,0,0
 RetardationTest_Stage5_Day17,CIRetardationTestStage5Day17BananaO1,CIRetardationTestStage5Day17BananaO1_Rat32.csv,32____,52,5,1,C,Marios,232,12,5,1439,10,0,0,0,0,1,0.120000000000118,0,0
 RetardationTest_Stage5_Day17,CIRetardationTestStage5Day17BananaO1,CIRetardationTestStage5Day17BananaO1_Rat32.csv,32____,52,5,1,C,Marios,232,13,2,1560,1,0,0,0,0,0,0,0,0
@@ -478,7 +478,7 @@ RetardationTest_Stage5_Day17,CIRetardationTestStage5Day17BananaO1,CIRetardationT
 RetardationTest_Stage5_Day17,CIRetardationTestStage5Day17BananaO1,CIRetardationTestStage5Day17BananaO1_Rat32.csv,32____,52,5,1,C,Marios,232,16,5,1866,7,0,0,0,0,0,0,0,0
 RetardationTest_Stage5_Day17,CIRetardationTestStage5Day17BananaO1,CIRetardationTestStage5Day17BananaO1_Rat32.csv,32____,52,5,1,C,Marios,232,16,5,1867,8,0,0,0,0,2,0.0800000000001546,0,0
 RetardationTest_Stage5_Day17,CIRetardationTestStage5Day17BananaO1,CIRetardationTestStage5Day17BananaO1_Rat32.csv,32____,52,5,1,C,Marios,232,16,5,1868,9,0,0,0,0,1,0.0399999999999636,0,0
-RetardationTest_Stage5_Day17,CIRetardationTestStage5Day17BananaO1,CIRetardationTestStage5Day17BananaO1_Rat32.csv,32____,52,5,1,C,Marios,232,16,5,1869,10,0,0,0,0,1,0.700000000000045,0,0
+RetardationTest_Stage5_Day17,CIRetardationTestStage5Day17BananaO1,CIRetardationTestStage5Day17BananaO1_Rat32.csv,32____,52,5,1,C,Marios,232,16,5,1869,10,0,0,0,0,1,0.700000000000046,0,0
 RetardationTest_Stage5_Day17,CIRetardationTestStage5Day17BananaO1,CIRetardationTestStage5Day17BananaO1_Rat32.csv,32____,52,5,1,C,Marios,232,17,2,1945,1,0,0,0,0,0,0,0,0
 RetardationTest_Stage5_Day17,CIRetardationTestStage5Day17BananaO1,CIRetardationTestStage5Day17BananaO1_Rat32.csv,32____,52,5,1,C,Marios,232,17,2,1946,2,0,0,0,0,0,0,0,0
 RetardationTest_Stage5_Day17,CIRetardationTestStage5Day17BananaO1,CIRetardationTestStage5Day17BananaO1_Rat32.csv,32____,52,5,1,C,Marios,232,17,2,1947,3,0,0,0,0,0,0,0,0
@@ -647,7 +647,7 @@ RetardationTest_Stage5_Day17,CIRetardationTestStage5Day17BananaO1,CIRetardationT
 RetardationTest_Stage5_Day17,CIRetardationTestStage5Day17BananaO1,CIRetardationTestStage5Day17BananaO1_Rat32.csv,32____,52,5,1,C,Marios,232,22,3,2610,6,0,0,0,0,0,0,0,0
 RetardationTest_Stage5_Day17,CIRetardationTestStage5Day17BananaO1,CIRetardationTestStage5Day17BananaO1_Rat32.csv,32____,52,5,1,C,Marios,232,22,3,2611,7,0,0,0,0,0,0,0,0
 RetardationTest_Stage5_Day17,CIRetardationTestStage5Day17BananaO1,CIRetardationTestStage5Day17BananaO1_Rat32.csv,32____,52,5,1,C,Marios,232,22,3,2612,8,0,0,0,0,0,0,0,0
-RetardationTest_Stage5_Day17,CIRetardationTestStage5Day17BananaO1,CIRetardationTestStage5Day17BananaO1_Rat32.csv,32____,52,5,1,C,Marios,232,22,3,2613,9,0,0,0,0,1,0.659999999999854,0,0
+RetardationTest_Stage5_Day17,CIRetardationTestStage5Day17BananaO1,CIRetardationTestStage5Day17BananaO1_Rat32.csv,32____,52,5,1,C,Marios,232,22,3,2613,9,0,0,0,0,1,0.659999999999855,0,0
 RetardationTest_Stage5_Day17,CIRetardationTestStage5Day17BananaO1,CIRetardationTestStage5Day17BananaO1_Rat32.csv,32____,52,5,1,C,Marios,232,22,3,2614,10,0,0,0,0,1,0.119999999999891,0,0
 RetardationTest_Stage5_Day17,CIRetardationTestStage5Day17BananaO1,CIRetardationTestStage5Day17BananaO1_Rat32.csv,32____,52,5,1,C,Marios,232,22,5,2615,1,0,0,0,0,0,1,0,0
 RetardationTest_Stage5_Day17,CIRetardationTestStage5Day17BananaO1,CIRetardationTestStage5Day17BananaO1_Rat32.csv,32____,52,5,1,C,Marios,232,22,5,2616,2,0,0,0,0,0,1,0,0
@@ -684,7 +684,7 @@ RetardationTest_Stage5_Day17,CIRetardationTestStage5Day17BananaO1,CIRetardationT
 RetardationTest_Stage5_Day17,CIRetardationTestStage5Day17BananaO1,CIRetardationTestStage5Day17BananaO1_Rat32.csv,32____,52,5,1,C,Marios,232,23,5,2782,3,0,0,0,0,0,1,0,0
 RetardationTest_Stage5_Day17,CIRetardationTestStage5Day17BananaO1,CIRetardationTestStage5Day17BananaO1_Rat32.csv,32____,52,5,1,C,Marios,232,23,5,2783,4,0,0,0,0,0,1,0,0
 RetardationTest_Stage5_Day17,CIRetardationTestStage5Day17BananaO1,CIRetardationTestStage5Day17BananaO1_Rat32.csv,32____,52,5,1,C,Marios,232,23,5,2784,5,0,0,0,0,0,1,0,0
-RetardationTest_Stage5_Day17,CIRetardationTestStage5Day17BananaO1,CIRetardationTestStage5Day17BananaO1_Rat32.csv,32____,52,5,1,C,Marios,232,23,5,2785,6,0,0,0,0,3,0.659999999999854,0,0
+RetardationTest_Stage5_Day17,CIRetardationTestStage5Day17BananaO1,CIRetardationTestStage5Day17BananaO1_Rat32.csv,32____,52,5,1,C,Marios,232,23,5,2785,6,0,0,0,0,3,0.659999999999855,0,0
 RetardationTest_Stage5_Day17,CIRetardationTestStage5Day17BananaO1,CIRetardationTestStage5Day17BananaO1_Rat32.csv,32____,52,5,1,C,Marios,232,23,5,2786,7,0,0,0,0,0,0,0,0
 RetardationTest_Stage5_Day17,CIRetardationTestStage5Day17BananaO1,CIRetardationTestStage5Day17BananaO1_Rat32.csv,32____,52,5,1,C,Marios,232,23,5,2787,8,0,0,0,0,0,0,0,0
 RetardationTest_Stage5_Day17,CIRetardationTestStage5Day17BananaO1,CIRetardationTestStage5Day17BananaO1_Rat32.csv,32____,52,5,1,C,Marios,232,23,5,2788,9,0,0,0,0,0,0,0,0
