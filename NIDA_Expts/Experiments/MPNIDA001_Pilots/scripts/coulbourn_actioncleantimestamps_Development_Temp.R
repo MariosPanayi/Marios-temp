@@ -581,17 +581,40 @@ sum(A_For - A_None)
 
 # Action Bin  -------------------------------------------------------------
 # test data
-A_on <- seq(from = 1, to = 11, by = 2)
-A_off <- seq(from = 2, to = 12, by = 2)
+A_on <- seq(from = 1, to = 11000, by = 2)
+A_off <- seq(from = 2, to = 11001, by = 2)
+A_diff <- A_off - A_on
+
+
 
 bin_start = c(1.5,4, 7)
-bin_end = c(3, 6, 9.5)
+bin_end = c(3, 6, 700)
+
+Aoff_binstart_diff <- A_off-bin_start
+Aoff_binend_diff <- A_off-bin_end
 
 for(i in c(1:length(bin_start))) {
-print(which(A_on >= bin_start[i] & A_on <= bin_end[i]))
-  print(which(A_on <= bin_start[i] & A_on <= bin_end[i]))
+# Which on signals are within the time bin
+  # Sum all the differences between these A_on signals and their corresponding A_off signal
+sum_idx <- (which(A_on >= bin_start[i] & A_on <= bin_end[i]))
+as.integer(A_on >= bin_start[i] & A_on <= bin_end[i])
+# Which signals start before the bin starts
+  # Find the difference between the bin_start and A_off signal, and add this value to the total time
+add_idx <- (which(A_on < bin_start[i] & A_off >= bin_start[i]))
+
+# Which signals start before the end of the bin and continue afterwards
+  # Find the difference between bin_end and A_off signal and minus this from the total time
+subtract_idx <- (which(A_on <= bin_end[i] & A_off > bin_end[i]))
+
+print(sum(A_diff[sum_idx], Aoff_binstart_diff[add_idx])-Aoff_binend_diff[subtract_idx])
 }
 
+trying <- (A_on >= bin_start[i] & A_on <= bin_end[i])
+
+speedtesting <- microbenchmark("Sumwhich" = sum(A_diff[which(A_on >= bin_start[i] & A_on <= bin_end[i])]),
+"SumConvertingMultiply" = sum(as.integer(A_on >= bin_start[i] & A_on <= bin_end[i])*A_diff), 
+times = 1000)
+autoplot(speedtesting)
 
 
 
