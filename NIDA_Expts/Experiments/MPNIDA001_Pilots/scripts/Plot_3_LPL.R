@@ -93,7 +93,9 @@ fillcolours <- c("Flash" = DarkRed,
                  "Chocolate" = DarkBlue,
                  "Devalued" = Black,
                  "NonDevalued" = White,
-                 "Magazine" = LightGrey)
+                 "Magazine" = LightGrey,
+                 "Same" = DarkRed,
+                 "Different" = DarkBlue)
 
 linecolours <- c("Flash" = DarkRed,
                  "Steady" = DarkBlue,
@@ -103,7 +105,9 @@ linecolours <- c("Flash" = DarkRed,
                  "Chocolate" = DarkBlue,
                  "Devalued" = Black,
                  "NonDevalued" = Black,
-                 "Magazine" = MediumGrey)
+                 "Magazine" = MediumGrey,
+                 "Same" = DarkRed,
+                 "Different" = DarkBlue)
 
 
 linetypes <- c("Flash" = "dotted",
@@ -114,7 +118,9 @@ linetypes <- c("Flash" = "dotted",
                "Chocolate" = "solid",
                "Devalued" = "dotted",
                "NonDevalued" = "solid",
-               "Magazine" = "solid")
+               "Magazine" = "solid",
+               "Same" = "solid",
+               "Different" = "solid")
 
 
 
@@ -126,7 +132,9 @@ pointshapes <- c("Flash" = circle,
                  "Chocolate" = square,
                  "Devalued" = square,
                  "NonDevalued" = circle,
-                 "Magazine" = triangleDown)
+                 "Magazine" = triangleDown,
+                 "Same" = circle,
+                 "Different" = square)
 
 
 
@@ -207,12 +215,12 @@ data_Period_long_DevalID <- data_bin_long_DevalID %>%
   ) %>% 
   ungroup()
 
-
-
-
+# 
+# 
+# 
 # #Long format
-# data_PerSession_long <- data_PerSession %>% 
-#   pivot_longer(c(LPFreq_Flash,LPDur_Flash, LPFreq_Steady,LPDur_Steady, Reinforcer_Flash, Reinforcer_Steady), names_to = c("Measure","Stimulus"), names_sep = "_", values_to = "LP") %>% 
+# data_PerSession_long <- data_PerSession %>%
+#   pivot_longer(c(LPFreq_Flash,LPDur_Flash, LPFreq_Steady,LPDur_Steady, Reinforcer_Flash, Reinforcer_Steady), names_to = c("Measure","Stimulus"), names_sep = "_", values_to = "LP") %>%
 #   pivot_wider(names_from = Measure, values_from = LP)
 # 
 # # Save total Experienced reinforcers to csv from first stage and use for determining devaluation coutnerbalancing
@@ -225,7 +233,7 @@ data_Period_long_DevalID <- data_bin_long_DevalID %>%
 # savefilename <- "LPL_CounterbalancingDeval.csv"
 # dir.create(savefolderpath)
 # write_csv(AAAcounterbalancingDeval,here(savefolderpath,savefilename))
-# 
+
 
 # Plot Instrumental Acquisition: Stim ID -------------------------------------------
 
@@ -737,10 +745,10 @@ data_Period_long_DevalID_Avg_separateDay <- data_Period_long_DevalID %>%
 
 # Exclude subjects
 plot_bin <- data_bin_long_DevalID_Avg %>% 
-  filter(subject != "17____",subject != "21____",subject != "18____",subject != "20____")
+  filter(subject != "17____")
 
 plot_Period <- data_Period_long_DevalID_Avg %>% 
-  filter(subject != "17____",subject != "21____",subject != "18____",subject != "20____")
+  filter(subject != "17____")
 
 # subject != "42____" & subject != "18____" & subject != "43____" & subject != "25____"
 
@@ -900,38 +908,426 @@ rawdata <- read_csv(here(folderpath,filename))
 
 # Keep working from here! -------------------------------------------------
 
+data_bin <- rawdata %>%
+  group_by(counterbalancing, Pavlovian_cbx,Test_Period,Test_Period_ID, timebins, timebins_within, subject) %>%
+  summarise(LPFreq_Flash = sum(FlashLever),
+            LPFreq_Steady = sum(SteadyLever),
+            Reinforcer_Flash = sum(Flash_freq),
+            Reinforcer_Steady = sum(Steady_freq),
+            LPFreq_Banana = sum(BananaLever),
+            LPFreq_Chocolate = sum(ChocolateLever),
+            LPFreq_Magazine = sum(A3_freq),
+            LPDur_Magazine = sum(A3_dur)
+  ) %>%
+  ungroup()
 
-# 
-# #Long format  
-# data_bin_long_StimID <- data_bin %>% 
-#   pivot_longer(c(LPFreq_Flash, LPDur_Flash, LPFreq_Steady, LPDur_Steady, Reinforcer_Flash, Reinforcer_Steady, LPFreq_Magazine, LPDur_Magazine, FlashLever, SteadyLever, BananaLever, ChocolateLever), names_to = c("Measure","Stimulus"), names_sep = "_", values_to = "LP") %>% 
-#   pivot_wider(names_from = Measure, values_from = LP)
+#Long format
+data_bin_long <- data_bin %>%
+  pivot_longer(c(LPFreq_Flash, LPFreq_Steady, Reinforcer_Flash, Reinforcer_Steady, LPFreq_Banana, LPFreq_Chocolate, LPFreq_Magazine, LPDur_Magazine ), names_to = c("Measure","Stimulus"), names_sep = "_", values_to = "LP") %>%
+  pivot_wider(names_from = Measure, values_from = LP)
+
+# 2 minute bins
+data_bin_long <- data_bin_long %>% 
+  mutate(timebins_within2mins = ceiling(timebins_within/2))
+
+data_bin_long_2mins <- data_bin_long %>% 
+  group_by(counterbalancing, Pavlovian_cbx,Test_Period,Test_Period_ID, subject, Stimulus, timebins_within2mins) %>% 
+  summarise(LPFreq = sum(LPFreq),
+            LPDur = sum(LPDur),
+            Reinforcer = sum(Reinforcer)
+  ) %>% 
+  ungroup()
 
 
 
 
+# Sum responding over time bins 
+data_bin_long_avg <- data_bin_long %>% 
+  group_by(counterbalancing, Pavlovian_cbx,Test_Period,Test_Period_ID, subject, Stimulus) %>% 
+  summarise(LPFreq = sum(LPFreq),
+            LPDur = sum(LPDur),
+            Reinforcer = sum(Reinforcer)
+  ) %>% 
+  ungroup()
 
 
 
+# Same VS Different for Reinstatement period only
+
+data_bin_long_samediff <- data_bin_long %>% 
+  filter(Test_Period == "Reinstatament_Test",
+         Stimulus == "Banana" | Stimulus == "Chocolate") %>% 
+  select(-Reinforcer, -LPDur) %>% 
+  mutate(Congruence = ifelse(Stimulus == Test_Period_ID, "Same", "Different"))
+
+# Sum over time periods
+data_bin_long_samediff <- data_bin_long_samediff %>% 
+  group_by(counterbalancing, Pavlovian_cbx,Test_Period, subject, Congruence, timebins_within) %>% 
+  summarise(LPFreq = sum(LPFreq)
+  ) %>% 
+  ungroup()
+
+data_bin_long_samediff_avg <- data_bin_long_samediff %>% 
+  group_by(counterbalancing, Pavlovian_cbx,Test_Period, subject, Congruence) %>% 
+  summarise(LPFreq = sum(LPFreq)/2
+  ) %>% 
+  ungroup()
+
+
+  
+
+# Plot Reinstatement Test Data --------------------------------------------
+
+## Extinction Test
+
+ReinstatementTest_Extinction_LP <- data_bin_long_avg %>% 
+  filter(Stimulus == "Flash" | Stimulus == "Steady",
+         Test_Period == "NonReinforced",
+         subject != "17____") %>% 
+  ggplot(mapping = aes(x = as.factor(Stimulus), y = LPFreq, group = Stimulus, colour = Stimulus, fill = Stimulus)) +
+  stat_summary_bin(fun.data = "mean_se", geom = "bar", position = "dodge",  size = .3) +
+  stat_summary(fun.data = "mean_se", geom = "errorbar", position = position_dodge(width = 0.9),  width = 0,  size = .3, colour = "black", linetype = "solid", show.legend = FALSE) + 
+  # facet_wrap(~Day,) +
+  # Make Pretty
+  scale_y_continuous( expand = expansion(mult = c(0, 0)), breaks=seq(-1000,1000,5)) +
+  ggtitle("Reinstatament Test: Extinction Period 1") + xlab("Lever") + ylab("Total Lever Presses (10 mins)") +
+  theme_cowplot(11) +
+  theme(plot.title = element_text(hjust = 0.5)) +
+  theme(plot.title = element_text(size=10)) +
+  coord_cartesian(ylim = c(0,30.0001)) +
+  theme(axis.title.x=element_text(face = "bold")) +
+  scale_colour_manual(name = "", values = linecolours, aesthetics = c("colour")) +
+  scale_fill_manual(name = "", values = fillcolours) +
+  theme(legend.key.width=unit(0.5,"line"))
+
+
+ReinstatementTest_Extinction_LP
+
+ReinstatementTest_Extinction_LP_OutcomeID <- data_bin_long_avg %>% 
+  filter(Stimulus == "Banana" | Stimulus == "Chocolate",
+         Test_Period == "NonReinforced",
+         subject != "17____") %>% 
+  ggplot(mapping = aes(x = as.factor(Stimulus), y = LPFreq, group = Stimulus, colour = Stimulus, fill = Stimulus)) +
+  stat_summary_bin(fun.data = "mean_se", geom = "bar", position = "dodge",  size = .3) +
+  stat_summary(fun.data = "mean_se", geom = "errorbar", position = position_dodge(width = 0.9),  width = 0,  size = .3, colour = "black", linetype = "solid", show.legend = FALSE) + 
+  # facet_wrap(~Day,) +
+  # Make Pretty
+  scale_y_continuous( expand = expansion(mult = c(0, 0)), breaks=seq(-1000,1000,5)) +
+  ggtitle("Reinstatament Test: Extinction Period 1") + xlab("Lever->Stimulus->Outcome") + ylab("Total Lever Presses (10 mins)") +
+  theme_cowplot(11) +
+  theme(plot.title = element_text(hjust = 0.5)) +
+  theme(plot.title = element_text(size=10)) +
+  coord_cartesian(ylim = c(0,30.0001)) +
+  theme(axis.title.x=element_text(face = "bold")) +
+  scale_colour_manual(name = "", values = linecolours, aesthetics = c("colour")) +
+  scale_fill_manual(name = "", values = fillcolours) +
+  theme(legend.key.width=unit(0.5,"line"))
+
+
+ReinstatementTest_Extinction_LP_OutcomeID
+
+ReinstatementTest_Extinction_Mag <- data_bin_long_avg %>% 
+  filter(Stimulus == "Magazine",
+         Test_Period == "NonReinforced",
+         subject != "17____") %>% 
+  ggplot(mapping = aes(x = as.factor(Stimulus), y = LPFreq, group = Stimulus, colour = Stimulus, fill = Stimulus)) +
+  stat_summary_bin(fun.data = "mean_se", geom = "bar", position = "dodge",  size = .3) +
+  stat_summary(fun.data = "mean_se", geom = "errorbar", position = position_dodge(width = 0.9),  width = 0,  size = .3, colour = "black", linetype = "solid", show.legend = FALSE) + 
+  # facet_wrap(~Day,) +
+  # Make Pretty
+  scale_y_continuous( expand = expansion(mult = c(0, 0)), breaks=seq(-1000,1000,5)) +
+  ggtitle("Reinstatament Test: Extinction Period 1") + xlab("") + ylab("Magazine Entries (10 mins)") +
+  theme_cowplot(11) +
+  theme(plot.title = element_text(hjust = 0.5)) +
+  theme(plot.title = element_text(size=10)) +
+  coord_cartesian(ylim = c(0,40.0001)) +
+  theme(axis.title.x=element_text(face = "bold")) +
+  scale_colour_manual(name = "", values = linecolours, aesthetics = c("colour")) +
+  scale_fill_manual(name = "", values = fillcolours) +
+  theme(legend.key.width=unit(0.5,"line"))
+
+
+ReinstatementTest_Extinction_Mag
+
+
+## Outcome Specific Reinstatament Tests
+
+ReinstatementTest_Reinstatement_LP <- data_bin_long_avg %>% 
+  filter(Stimulus == "Banana" | Stimulus == "Chocolate",
+         Test_Period == "Reinstatament_Test",
+         subject != "17____") %>% 
+  ggplot(mapping = aes(x = as.factor(Test_Period_ID), y = LPFreq, group = Stimulus, colour = Stimulus, fill = Stimulus)) +
+  stat_summary_bin(fun.data = "mean_se", geom = "bar", position = "dodge",  size = .3) +
+  stat_summary(fun.data = "mean_se", geom = "errorbar", position = position_dodge(width = 0.9),  width = 0,  size = .3, colour = "black", linetype = "solid", show.legend = FALSE) + 
+  # facet_wrap(~Day,) +
+  # Make Pretty
+  scale_y_continuous( expand = expansion(mult = c(0, 0)), breaks=seq(-1000,1000,5)) +
+  ggtitle("Reinstatament Test: Reinstatement Period 2") + xlab("Reinstated Outcome ID") + ylab("Total Lever Presses (10 mins)") +
+  theme_cowplot(11) +
+  theme(plot.title = element_text(hjust = 0.5)) +
+  theme(plot.title = element_text(size=10)) +
+  coord_cartesian(ylim = c(0,30.0001)) +
+  theme(axis.title.x=element_text(face = "bold")) +
+  scale_colour_manual(name = "", values = linecolours, aesthetics = c("colour")) +
+  scale_fill_manual(name = "", values = fillcolours) +
+  theme(legend.key.width=unit(0.5,"line"))
+
+
+ReinstatementTest_Reinstatement_LP
+
+## Reinforced Test - Final
+
+ReinstatementTest_Reinforced_LP <- data_bin_long_avg %>% 
+  filter(Stimulus == "Flash" | Stimulus == "Steady",
+         Test_Period == "Reinforced",
+         subject != "17____") %>% 
+  ggplot(mapping = aes(x = as.factor(Stimulus), y = LPFreq, group = Stimulus, colour = Stimulus, fill = Stimulus)) +
+  stat_summary_bin(fun.data = "mean_se", geom = "bar", position = "dodge",  size = .3) +
+  stat_summary(fun.data = "mean_se", geom = "errorbar", position = position_dodge(width = 0.9),  width = 0,  size = .3, colour = "black", linetype = "solid", show.legend = FALSE) + 
+  # facet_wrap(~Day,) +
+  # Make Pretty
+  scale_y_continuous( expand = expansion(mult = c(0, 0)), breaks=seq(-1000,1000,5)) +
+  ggtitle("Reinstatament Test: Reinforced Period 3") + xlab("Lever") + ylab("Total Lever Presses (10 mins)") +
+  theme_cowplot(11) +
+  theme(plot.title = element_text(hjust = 0.5)) +
+  theme(plot.title = element_text(size=10)) +
+  coord_cartesian(ylim = c(0,30.0001)) +
+  theme(axis.title.x=element_text(face = "bold")) +
+  scale_colour_manual(name = "", values = linecolours, aesthetics = c("colour")) +
+  scale_fill_manual(name = "", values = fillcolours) +
+  theme(legend.key.width=unit(0.5,"line"))
+
+
+ReinstatementTest_Reinforced_LP
+
+ReinstatementTest_Reinforced_CS <- data_bin_long_avg %>% 
+  filter(Stimulus == "Flash" | Stimulus == "Steady",
+         Test_Period == "Reinforced",
+         subject != "17____") %>% 
+  ggplot(mapping = aes(x = as.factor(Stimulus), y = Reinforcer, group = Stimulus, colour = Stimulus, fill = Stimulus)) +
+  stat_summary_bin(fun.data = "mean_se", geom = "bar", position = "dodge",  size = .3) +
+  stat_summary(fun.data = "mean_se", geom = "errorbar", position = position_dodge(width = 0.9),  width = 0,  size = .3, colour = "black", linetype = "solid", show.legend = FALSE) + 
+  # facet_wrap(~Day,) +
+  # Make Pretty
+  scale_y_continuous( expand = expansion(mult = c(0, 0)), breaks=seq(-1000,1000,5)) +
+  ggtitle("Reinstatament Test: Reinforced Period 3") + xlab("Lever") + ylab("Total Lever Presses (10 mins)") +
+  theme_cowplot(11) +
+  theme(plot.title = element_text(hjust = 0.5)) +
+  theme(plot.title = element_text(size=10)) +
+  coord_cartesian(ylim = c(0,30.0001)) +
+  theme(axis.title.x=element_text(face = "bold")) +
+  scale_colour_manual(name = "", values = linecolours, aesthetics = c("colour")) +
+  scale_fill_manual(name = "", values = fillcolours) +
+  theme(legend.key.width=unit(0.5,"line"))
+
+ReinstatementTest_Reinforced_CS
+
+
+ReinstatementTest_Reinforced_LP_OutcomeID <- data_bin_long_avg %>% 
+  filter(Stimulus == "Banana" | Stimulus == "Chocolate",
+         Test_Period == "Reinforced",
+         subject != "17____") %>% 
+  ggplot(mapping = aes(x = as.factor(Stimulus), y = LPFreq, group = Stimulus, colour = Stimulus, fill = Stimulus)) +
+  stat_summary_bin(fun.data = "mean_se", geom = "bar", position = "dodge",  size = .3) +
+  stat_summary(fun.data = "mean_se", geom = "errorbar", position = position_dodge(width = 0.9),  width = 0,  size = .3, colour = "black", linetype = "solid", show.legend = FALSE) + 
+  # facet_wrap(~Day,) +
+  # Make Pretty
+  scale_y_continuous( expand = expansion(mult = c(0, 0)), breaks=seq(-1000,1000,5)) +
+  ggtitle("Reinstatament Test: Reinforced Period 3") + xlab("Lever") + ylab("Total Lever Presses (10 mins)") +
+  theme_cowplot(11) +
+  theme(plot.title = element_text(hjust = 0.5)) +
+  theme(plot.title = element_text(size=10)) +
+  coord_cartesian(ylim = c(0,30.0001)) +
+  theme(axis.title.x=element_text(face = "bold")) +
+  scale_colour_manual(name = "", values = linecolours, aesthetics = c("colour")) +
+  scale_fill_manual(name = "", values = fillcolours) +
+  theme(legend.key.width=unit(0.5,"line"))
+
+
+ReinstatementTest_Reinforced_LP_OutcomeID
 
 
 
+#  Extinction Test over timebins
+ReinstatementTest_Extinction_timebin_LP <- data_bin_long %>% 
+  filter(Stimulus == "Banana" | Stimulus == "Chocolate",
+         Test_Period == "NonReinforced",
+         subject != "17____") %>% 
+  ggplot(mapping = aes(x = as.factor(timebins_within), y = LPFreq, group = Stimulus, colour = Stimulus, fill = Stimulus, shape = Stimulus, linetype = Stimulus)) +
+  stat_summary_bin(fun.data = "mean_se", geom = "line", size = .5) +
+  stat_summary(fun.data = "mean_se", geom = "errorbar", width = 0.0, size = .3, linetype = 1, show.legend = FALSE) +
+  stat_summary_bin(fun.data = "mean_se", geom = "point", size = 2) +
+  # facet_wrap(~Test_Period_ID, nrow = 1, scales = "free_x") +
+  # Make Pretty
+  scale_y_continuous( expand = expansion(mult = c(0, 0)), breaks=seq(-1000,1000,5)) +
+  ggtitle("Reinstatament Test: Extinction Period 1") + xlab("Bin 1 min") + ylab("Total LP") +
+  theme_cowplot(11) +
+  theme(plot.title = element_text(hjust = 0.5)) +
+  theme(plot.title = element_text(size=10)) +
+  coord_cartesian(ylim = c(0,10.0001)) +
+  theme(axis.title.x=element_text(face = "bold")) +
+  scale_linetype_manual(name = "", values = linetypes)  +
+  scale_colour_manual(name = "", values = linecolours, aesthetics = c("colour")) +
+  scale_shape_manual(name = "", values = pointshapes) +
+  scale_fill_manual(name = "", values = fillcolours) +
+  theme(legend.key.width=unit(1,"line"))
+ReinstatementTest_Extinction_timebin_LP
+
+#  Reinstatement Tests over timebins
+ReinstatementTest_Reinstatament_timebin_LP <- data_bin_long %>% 
+  filter(Stimulus == "Banana" | Stimulus == "Chocolate",
+         Test_Period == "Reinstatament_Test",
+         subject != "17____") %>% 
+  ggplot(mapping = aes(x = as.factor(timebins_within), y = LPFreq, group = Stimulus, colour = Stimulus, fill = Stimulus, shape = Stimulus, linetype = Stimulus)) +
+  stat_summary_bin(fun.data = "mean_se", geom = "line", size = .5) +
+  stat_summary(fun.data = "mean_se", geom = "errorbar", width = 0.0, size = .3, linetype = 1, show.legend = FALSE) +
+  stat_summary_bin(fun.data = "mean_se", geom = "point", size = 2) +
+  # facet_wrap(~Test_Period_ID, nrow = 1, scales = "free_x") +
+  # Make Pretty
+  scale_y_continuous( expand = expansion(mult = c(0, 0)), breaks=seq(-1000,1000,5)) +
+  ggtitle("Reinstatament Test: Reinstatament Period 2") + xlab("Bin 1 min") + ylab("Total LP") +
+  theme_cowplot(11) +
+  theme(plot.title = element_text(hjust = 0.5)) +
+  theme(plot.title = element_text(size=10)) +
+  coord_cartesian(ylim = c(0,10.0001)) +
+  theme(axis.title.x=element_text(face = "bold")) +
+  scale_linetype_manual(name = "", values = linetypes)  +
+  scale_colour_manual(name = "", values = linecolours, aesthetics = c("colour")) +
+  scale_shape_manual(name = "", values = pointshapes) +
+  scale_fill_manual(name = "", values = fillcolours) +
+  theme(legend.key.width=unit(1,"line"))
+
+ReinstatementTest_Reinstatament_timebin_LP
+
+#  Reinforced Tests over timebins
+ReinstatementTest_Reinforced_timebin_LP <- data_bin_long %>% 
+  filter(Stimulus == "Banana" | Stimulus == "Chocolate",
+         Test_Period == "Reinforced",
+         subject != "17____") %>% 
+ggplot(mapping = aes(x = as.factor(timebins_within), y = LPFreq, group = Stimulus, colour = Stimulus, fill = Stimulus, shape = Stimulus, linetype = Stimulus)) +
+  stat_summary_bin(fun.data = "mean_se", geom = "line", size = .5) +
+  stat_summary(fun.data = "mean_se", geom = "errorbar", width = 0.0, size = .3, linetype = 1, show.legend = FALSE) +
+  stat_summary_bin(fun.data = "mean_se", geom = "point", size = 2) +
+  # facet_wrap(~Test_Period_ID, nrow = 1, scales = "free_x") +
+  # Make Pretty
+  scale_y_continuous( expand = expansion(mult = c(0, 0)), breaks=seq(-1000,1000,5)) +
+  ggtitle("Reinstatament Test: Reinforced Period 3") + xlab("Bin 1 min") + ylab("Total LP") +
+  theme_cowplot(11) +
+  theme(plot.title = element_text(hjust = 0.5)) +
+  theme(plot.title = element_text(size=10)) +
+  coord_cartesian(ylim = c(0,10.0001)) +
+  theme(axis.title.x=element_text(face = "bold")) +
+  scale_linetype_manual(name = "", values = linetypes)  +
+  scale_colour_manual(name = "", values = linecolours, aesthetics = c("colour")) +
+  scale_shape_manual(name = "", values = pointshapes) +
+  scale_fill_manual(name = "", values = fillcolours) +
+  theme(legend.key.width=unit(1,"line"))
+ReinstatementTest_Reinforced_timebin_LP
 
 
 
+ReinstatementTest_Extinction_LP_OutcomeID + ReinstatementTest_Reinstatement_LP +ReinstatementTest_Reinforced_LP_OutcomeID
+
+ReinstatementTest_Extinction_timebin_LP + ReinstatementTest_Reinstatament_timebin_LP + ReinstatementTest_Reinforced_timebin_LP
 
 
+# All periods over time
+
+ReinstatementTest_All_timebin <- data_bin_long %>% 
+  filter(Stimulus == "Magazine" | Stimulus == "Banana" | Stimulus == "Chocolate",
+         subject != "17____",
+         Test_Period != "ITI" & Test_Period != "Reinstatament") %>% 
+  ggplot(mapping = aes(x = as.factor(timebins_within), y = LPFreq, group = Stimulus, colour = Stimulus, fill = Stimulus, shape = Stimulus, linetype = Stimulus)) +
+  stat_summary_bin(fun.data = "mean_se", geom = "line", size = .5) +
+  stat_summary(fun.data = "mean_se", geom = "errorbar", width = 0.0, size = .3, linetype = 1, show.legend = FALSE) +
+  stat_summary_bin(fun.data = "mean_se", geom = "point", size = 2) +
+  facet_wrap(~Test_Period + Test_Period_ID, nrow = 1, scales = "free_x") +
+  # Make Pretty
+  scale_y_continuous( expand = expansion(mult = c(0, 0)), breaks=seq(-1000,1000,5)) +
+  ggtitle("Reinstatament Test: Magazine Entries") + xlab("Bin 1 min") + ylab("Magazine Entries") +
+  theme_cowplot(11) +
+  theme(plot.title = element_text(hjust = 0.5)) +
+  theme(plot.title = element_text(size=10)) +
+  coord_cartesian(ylim = c(0,10.0001)) +
+  theme(axis.title.x=element_text(face = "bold")) +
+  scale_linetype_manual(name = "", values = linetypes)  +
+  scale_colour_manual(name = "", values = linecolours, aesthetics = c("colour")) +
+  scale_shape_manual(name = "", values = pointshapes) +
+  scale_fill_manual(name = "", values = fillcolours) +
+  theme(legend.key.width=unit(1,"line"))
+ReinstatementTest_All_timebin
+
+ReinstatementTest_All_timebin_2mins <- data_bin_long_2mins %>% 
+  filter(Stimulus == "Magazine" | Stimulus == "Banana" | Stimulus == "Chocolate",
+         subject != "17____",
+         Test_Period != "ITI" & Test_Period != "Reinstatament") %>% 
+  ggplot(mapping = aes(x = as.factor(timebins_within2mins), y = LPFreq, group = Stimulus, colour = Stimulus, fill = Stimulus, shape = Stimulus, linetype = Stimulus)) +
+  stat_summary_bin(fun.data = "mean_se", geom = "line", size = .5) +
+  stat_summary(fun.data = "mean_se", geom = "errorbar", width = 0.0, size = .3, linetype = 1, show.legend = FALSE) +
+  stat_summary_bin(fun.data = "mean_se", geom = "point", size = 2) +
+  facet_wrap(~Test_Period + Test_Period_ID, nrow = 1, scales = "free_x") +
+  # Make Pretty
+  scale_y_continuous( expand = expansion(mult = c(0, 0)), breaks=seq(-1000,1000,5)) +
+  ggtitle("Reinstatament Test: Magazine Entries") + xlab("Bin 1 min") + ylab("Magazine Entries") +
+  theme_cowplot(11) +
+  theme(plot.title = element_text(hjust = 0.5)) +
+  theme(plot.title = element_text(size=10)) +
+  coord_cartesian(ylim = c(0,15.0001)) +
+  theme(axis.title.x=element_text(face = "bold")) +
+  scale_linetype_manual(name = "", values = linetypes)  +
+  scale_colour_manual(name = "", values = linecolours, aesthetics = c("colour")) +
+  scale_shape_manual(name = "", values = pointshapes) +
+  scale_fill_manual(name = "", values = fillcolours) +
+  theme(legend.key.width=unit(1,"line"))
+ReinstatementTest_All_timebin_2mins
+
+# PLot of congruence for Reinstatement Test period
+
+ReinstatementTest_Reinstatament_timebin_Congruence <- data_bin_long_samediff %>% 
+filter(subject != "17____") %>% 
+  ggplot(mapping = aes(x = as.factor(timebins_within), y = LPFreq, group = Congruence, colour = Congruence, fill = Congruence, shape = Congruence, linetype = Congruence)) +
+  stat_summary_bin(fun.data = "mean_se", geom = "line", size = .5) +
+  stat_summary(fun.data = "mean_se", geom = "errorbar", width = 0.0, size = .3, linetype = 1, show.legend = FALSE) +
+  stat_summary_bin(fun.data = "mean_se", geom = "point", size = 2) +
+  # facet_wrap(~Test_Period_ID, nrow = 1, scales = "free_x") +
+  # Make Pretty
+  scale_y_continuous( expand = expansion(mult = c(0, 0)), breaks=seq(-1000,1000,5)) +
+  ggtitle("Reinstatament Test: Reinstatament Period 2") + xlab("Bin 1 min") + ylab("Total LP") +
+  theme_cowplot(11) +
+  theme(plot.title = element_text(hjust = 0.5)) +
+  theme(plot.title = element_text(size=10)) +
+  coord_cartesian(ylim = c(0,10.0001)) +
+  theme(axis.title.x=element_text(face = "bold")) +
+  scale_linetype_manual(name = "", values = linetypes)  +
+  scale_colour_manual(name = "", values = linecolours, aesthetics = c("colour")) +
+  scale_shape_manual(name = "", values = pointshapes) +
+  scale_fill_manual(name = "", values = fillcolours) +
+  theme(legend.key.width=unit(1,"line"))
 
 
+ReinstatementTest_Reinstatament_timebin_Congruence
 
 
+ReinstatementTest_Reinstatament_Avg_Congruence <- data_bin_long_samediff_avg %>% 
+  filter(subject != "17____") %>% 
+  ggplot(mapping = aes(x = as.factor(Congruence), y = LPFreq, group = Congruence, colour = Congruence, fill = Congruence)) +
+  stat_summary_bin(fun.data = "mean_se", geom = "bar", position = "dodge",  size = .3) +
+  stat_summary(fun.data = "mean_se", geom = "errorbar", position = position_dodge(width = 0.9),  width = 0,  size = .3, colour = "black", linetype = "solid", show.legend = FALSE) + 
+  # facet_wrap(~Day,) +
+  # Make Pretty
+  scale_y_continuous( expand = expansion(mult = c(0, 0)), breaks=seq(-1000,1000,5)) +
+  ggtitle("Reinstatament Test: Reinstatement Period 2") + xlab("Reinstatament-Lever") + ylab("Total Lever Presses (10 mins)") +
+  theme_cowplot(11) +
+  theme(plot.title = element_text(hjust = 0.5)) +
+  theme(plot.title = element_text(size=10)) +
+  coord_cartesian(ylim = c(0,15.0001)) +
+  theme(axis.title.x=element_text(face = "bold")) +
+  scale_colour_manual(name = "", values = linecolours, aesthetics = c("colour")) +
+  scale_fill_manual(name = "", values = fillcolours) +
+  theme(legend.key.width=unit(0.5,"line"))
 
 
-
-
-
-
-
+ReinstatementTest_Reinstatament_Avg_Congruence
 
 
 
