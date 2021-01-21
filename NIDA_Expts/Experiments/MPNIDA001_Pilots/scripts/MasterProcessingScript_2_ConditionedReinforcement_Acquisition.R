@@ -43,7 +43,8 @@ listofdatafolders <- c("Acquisition_Day1",
                        "EnhancedAcquisition_Day19",
                        "EnhancedAcquisition_Day20",
                        "EnhancedAcquisition_Day21",
-                       "EnhancedAcquisition_Day22")
+                       "EnhancedAcquisition_Day22",
+                       "EnhancedAcquisition_Day23")
 
 
 #  extract data filenames, only .txt --------------------------------------
@@ -282,5 +283,5 @@ rawdata <- rawdata %>%
 
 savefolderpath <- here("rawdata","Marios","2_ConditionedReinforcement","CombinedData")
 savefilename <- "CRF_ProcessedData_pertrial_1sbins.csv"
-dir.create(savefolderpath)
+dir.create(savefolderpath, showWarnings = FALSE)
 fwrite(rawdata,here(paste(c(savefolderpath, savefilename), collapse = "/")))

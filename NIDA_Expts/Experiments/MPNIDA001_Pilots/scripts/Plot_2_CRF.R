@@ -316,7 +316,7 @@ Acqsuisition_Stage1_MagDur_last5s
 
 EnhancedAcqsuisition_Stage1_MagFreq <- data_PerSession_CSPre %>% 
   filter(Period == "CSPre",
-         Day >= 21) %>%
+         Day >= 22) %>%
   group_by(subject, probability, magnitude, sex, CS_name, Period) %>% 
   summarise(MagEntries = mean(MagEntries),
             MagDuration = mean(MagDuration)) %>%
@@ -329,7 +329,7 @@ EnhancedAcqsuisition_Stage1_MagFreq <- data_PerSession_CSPre %>%
   # facet_wrap(~Day,) +
   # Make Pretty
   scale_y_continuous( expand = expansion(mult = c(0, 0)), breaks=seq(-1000,1000,1)) +
-  ggtitle("Enhanced Acquisition: Final 2 days") + xlab("CS Identity") + ylab("Magazine Durations 10s (CS-Pre)") +
+  ggtitle("Enhanced Acquisition: Final 4 days") + xlab("CS Identity") + ylab("Magazine Durations 10s (CS-Pre)") +
   theme_cowplot(11) +
   theme(plot.title = element_text(hjust = 0.5)) +
   theme(plot.title = element_text(size=10)) +

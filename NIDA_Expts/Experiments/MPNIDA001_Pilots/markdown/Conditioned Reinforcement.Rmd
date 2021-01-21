@@ -170,18 +170,19 @@ simple_Stg1_Dur_5s$table
 
 ```{r Stage 3 Enhanced Acquisition Stats Mag*prob , include=FALSE, message = FALSE, warning=FALSE}
 rawdata <- CRF_Acquisition_CSPre %>% 
-  filter(Period == "CS",
-         Day >= 21)
+  filter(Period == "CSPre",
+         Day >= 22)
 # Stage 1 Acquisition Frequency
 anova <- aov_4(MagEntries ~ (Day*magnitude*probability|subject), data = rawdata, anova_table = list(correction = "none", es = "pes"))
 anova_Stg3_Freq <- apa_print(anova, mse = "FALSE",correction = "none",es = "pes")
 ## simple effects - linear trend on Day
 simple <- emmeans(anova, ~magnitude*probability)
-simple_Stg3_Freq <- apa_print(contrast(simple, interaction = "pairwise", by = "magnitude", adjust = "tukey"))
+simple_Stg3_Freq <- apa_print(contrast(simple, interaction = "pairwise", by = "magnitude", adjust = "none"))
+simple_Stg3_Freq2 <- apa_print(contrast(simple, interaction = "pairwise", by = "probability", adjust = "none"))
 
 anova_Stg3_Freq$table
 simple_Stg3_Freq$table
-
+simple_Stg3_Freq2$table
 
 # Stage 1 Acquisition Duration
 anova <- aov_4(MagDuration ~ (Day*magnitude*probability|subject), data = rawdata, anova_table = list(correction = "none", es = "pes"))
@@ -199,7 +200,12 @@ simple_Stg3_Dur$table
 
 `r apa_table(within(anova_Stg3_Freq$table, rm(pes)),caption = "Magazine Frequency ANOVA")`
 
+*Simple Effects*
 
+`r apa_table(simple_Stg3_Freq$table)`
+
+*Simple Effects*
+`r apa_table(simple_Stg3_Freq2$table)`
 
 `r apa_table(within(anova_Stg3_Dur$table, rm(pes)),caption = "Magazine Duration ANOVA")`
 

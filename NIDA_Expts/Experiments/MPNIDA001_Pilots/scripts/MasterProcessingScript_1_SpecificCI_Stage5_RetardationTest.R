@@ -279,5 +279,5 @@ rawdata <- rawdata %>%
 
 savefolderpath <- here("rawdata","Marios","1_SpecificCI","CombinedData")
 savefilename <- "CI_Stage5_ProcessedData_pertrial_1sbins.csv"
-dir.create(savefolderpath)
+dir.create(savefolderpath, showWarnings = FALSE)
 fwrite(rawdata,here(paste(c(savefolderpath, savefilename), collapse = "/")))
