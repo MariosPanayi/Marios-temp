@@ -888,6 +888,53 @@ Devaluation_Total_Reinforcer_TestOrder <- data_Period_long_DevalID_Avg_separateD
 
 Devaluation_Total_Reinforcer_TestOrder
 
+
+# Specific reinstatement test load data -----------------------------------
+
+folderpath <- here("rawdata","Marios","3_LeverPressingForLights","CombinedData")
+filename <- "LPL_ProcessedData_ReinstatamentTest_WithinSession1minBins.csv"
+
+rawdata <- read_csv(here(folderpath,filename))
+
+
+
+# Keep working from here! -------------------------------------------------
+
+
+# 
+# #Long format  
+# data_bin_long_StimID <- data_bin %>% 
+#   pivot_longer(c(LPFreq_Flash, LPDur_Flash, LPFreq_Steady, LPDur_Steady, Reinforcer_Flash, Reinforcer_Steady, LPFreq_Magazine, LPDur_Magazine, FlashLever, SteadyLever, BananaLever, ChocolateLever), names_to = c("Measure","Stimulus"), names_sep = "_", values_to = "LP") %>% 
+#   pivot_wider(names_from = Measure, values_from = LP)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 # Combined Figure Panels ---------------------------------------------------
 # # Stage 1: Instrumental
 # Acquisition_PerSession_Reinforcer

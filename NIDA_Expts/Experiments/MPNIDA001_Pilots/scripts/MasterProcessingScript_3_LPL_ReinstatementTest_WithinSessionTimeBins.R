@@ -251,6 +251,16 @@ rawdata <- rawdata %>%
                                                                         ifelse(timebins <= 37, "ITI", 
                                                                                ifelse(timebins <= 47, "Reinforced", NA))))))))))
 
+# Add columns coding the identity of the reinforcer delivered during reinstatement
+rawdata <- rawdata %>% 
+  mutate(Test_Period_ID = ifelse((Chocolate_dur > 0 | Test_Chocolate_dur > 0), "Chocolate", ifelse((Banana_dur > 0 | Test_Banana_dur > 0), "Banana", Test_Period)))
+# Recode Lever IDs
+rawdata <- rawdata %>% 
+  mutate(FlashLever = ifelse(FLash_leverCbx == "Left", A1_freq, A2_freq),
+         SteadyLever = ifelse(Steady_levercbx == "Left", A1_freq, A2_freq),
+         BananaLever = ifelse(Banana_Levercbx == "Left", A1_freq, A2_freq),
+         ChocolateLever = ifelse(Chocolate_Levercbx == "Left", A1_freq, A2_freq))
+
 # Save as CSV -------------------------------------------------------------
 
 savefolderpath <- here("rawdata","Marios","3_LeverPressingForLights","CombinedData")
