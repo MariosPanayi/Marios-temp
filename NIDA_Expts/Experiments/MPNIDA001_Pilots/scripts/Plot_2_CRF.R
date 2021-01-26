@@ -1084,6 +1084,867 @@ testdata_All_LP_Diff <- CRF_ALL_data_long_Avg %>%
 testdata_All_LP_Diff
 
 
+testdata_All_CS_Diff <- CRF_ALL_data_long_Avg %>% 
+  filter(measure == "CS",
+         Value == "Diff",
+         ExcludeSubject == "Keep") %>% 
+  ggplot(mapping = aes(x = as.factor(TestCondition), y = Freq, group = TestCondition, colour = TestCondition, fill = TestCondition)) +
+  stat_summary_bin(fun.data = "mean_se", geom = "bar", position = "dodge",  size = .3) +
+  stat_summary(fun.data = "mean_se", geom = "errorbar", position = position_dodge(width = 0.9),  width = 0,  size = .3, colour = "black", linetype = "solid", show.legend = FALSE) + 
+  geom_point(aes(group = subject), colour = Black) +
+  # geom_line(aes(group = subject), colour = Black) +
+  # facet_wrap(~Day,) +
+  # Make Pretty
+  scale_y_continuous( expand = expansion(mult = c(0, 0)), breaks=seq(-1000,1000,20)) +
+  ggtitle("") + xlab("") + ylab("LP Difference") +
+  theme_cowplot(11) +
+  theme(plot.title = element_text(hjust = 0.5)) +
+  theme(plot.title = element_text(size=10)) +
+  coord_cartesian(ylim = c(-100,100.0001)) +
+  theme(axis.title.x=element_text(face = "bold")) +
+  scale_colour_manual(name = "", values = linecolours, aesthetics = c("colour")) +
+  scale_fill_manual(name = "", values = fillcolours) +
+  theme(legend.key.width=unit(0.5,"line")) + 
+  scale_x_discrete(labels = c("P100 - P50\nHigh","P100 - P50\nLow","High - Low\nP100", "High - Low\nP50")) +
+  theme(axis.text.x = element_text(face = "bold"))
+
+testdata_All_CS_Diff
+
+
+
+# Load CRF Repeat Test Data  -----------------------------------------------------
+
+
+
+
+folderpath <- here("rawdata","Marios","2_ConditionedReinforcement","CombinedData")
+filename <- "CRF_ProcessedData_CRFRTests_Repeats_withinSession1minBin.csv"
+
+rawdata <- read_csv(here(folderpath,filename))
+# Add 10 min bin filter
+rawdata <- rawdata %>% 
+  mutate(timebins_10 = ceiling(timebins/10))
+
+# FIlter out subject/sessions that didn't get to the choice test period
+rawdata <- rawdata %>% 
+  filter(timebins != 0)
+
+# COunterbalancing check to see if stimuli cause different rates of CRF
+data_repeatTest_CBX <- rawdata %>% 
+  mutate(Click_LP_Freq = ifelse(Left_LeverCueID == "Click", A1_freq, ifelse(Right_LeverCueID == "Click", A2_freq, NA )),
+         Noise_LP_Freq = ifelse(Left_LeverCueID == "Noise", A1_freq, ifelse(Right_LeverCueID == "Noise", A2_freq, NA )),
+         Tone_LP_Freq = ifelse(Left_LeverCueID == "Tone", A1_freq, ifelse(Right_LeverCueID == "Tone", A2_freq, NA )),
+         Siren_LP_Freq = ifelse(Left_LeverCueID == "Siren", A1_freq, ifelse(Right_LeverCueID == "Siren", A2_freq, NA )) ) %>% 
+  pivot_longer(cols = c(Click_LP_Freq,Noise_LP_Freq,Tone_LP_Freq, Siren_LP_Freq), names_to = "LeverCue", values_to = "LPFreq") %>% 
+  group_by(counterbalancing, subject, LeverCue) %>% 
+  summarise(LPFreq = sum(LPFreq, na.rm = TRUE)) %>% 
+  ungroup()
+
+#  Quick plot
+data_repeatTest_CBX %>% 
+  ggplot(mapping = aes(x = as.factor(LeverCue), y = LPFreq, group = LeverCue, colour = LeverCue, fill = LeverCue)) +
+  stat_summary_bin(fun.data = "mean_se", geom = "bar", position = "dodge",  size = .3) +
+  stat_summary(fun.data = "mean_se", geom = "errorbar", position = position_dodge(width = 0.9),  width = 0,  size = .3, colour = "black", linetype = "solid", show.legend = FALSE) + 
+  # geom_point(aes(group = subject), colour = Black) +
+  # geom_line(aes(group = subject), colour = Black) +
+  facet_wrap(~counterbalancing,) +
+  # Make Pretty
+  scale_y_continuous( expand = expansion(mult = c(0, 0)), breaks=seq(-1000,1000,10)) +
+  ggtitle("Counterbalancing") + xlab("CS Identity") + ylab("Total LP (All Tests)") +
+  theme_cowplot(11) +
+  theme(plot.title = element_text(hjust = 0.5)) +
+  theme(plot.title = element_text(size=10)) +
+  coord_cartesian(ylim = c(0,60.0001)) +
+  theme(axis.title.x=element_text(face = "bold")) +
+  # scale_colour_manual(name = "", values = linecolours, aesthetics = c("colour")) +
+  # scale_fill_manual(name = "", values = fillcolours) +
+  theme(legend.key.width=unit(0.5,"line"))
+
+
+# Data: P100_HighVsLow ----------------------------------------------------
+
+# Separate each condition for separate analysis
+data_repeatTest_P100_HighvsLow <- rawdata %>% 
+  filter(TestCondition=="P100_HighVsLow")
+
+## Recode lever identity and reward identity based on counterbalancing
+data_repeatTest_P100_HighvsLow <- data_repeatTest_P100_HighvsLow %>% 
+  group_by(Day, subject) %>% 
+  mutate(LP_P100_High  = ifelse(CS_LeftLeverName == "C++", A1_freq, ifelse(CS_RightLeverName == "C++", A2_freq, NA)),
+         LP_P100_Low  = ifelse(CS_LeftLeverName == "D+", A1_freq, ifelse(CS_RightLeverName == "D+", A2_freq, NA)),
+         # LP_P100_High_dur  = ifelse(CS_LeftLeverName == "C++", A1_dur, ifelse(CS_RightLeverName == "C++", A2_dur, NA)),
+         # LP_P100_Low_dur  = ifelse(CS_LeftLeverName == "D+", A1_dur, ifelse(CS_RightLeverName == "D+", A2_dur, NA)),
+         CS_P100_High = ifelse(CS_LeftLeverName == "C++", ifelse(Left_LeverCueID == "Click", 
+                                                                 Click_freq, ifelse(Left_LeverCueID == "Noise", Noise_freq, 
+                                                                                    ifelse(Left_LeverCueID == "Tone", Tone_freq, 
+                                                                                           ifelse(Left_LeverCueID == "Siren", Siren_freq, NA )))), 
+                               ifelse(CS_RightLeverName == "C++", ifelse(Right_LeverCueID == "Click", 
+                                                                         Click_freq, ifelse(Right_LeverCueID == "Noise", Noise_freq, 
+                                                                                            ifelse(Right_LeverCueID == "Tone", Tone_freq, 
+                                                                                                   ifelse(Right_LeverCueID == "Siren", Siren_freq, NA ))))) ),
+         CS_P100_Low = ifelse(CS_LeftLeverName == "D+", ifelse(Left_LeverCueID == "Click", 
+                                                               Click_freq, ifelse(Left_LeverCueID == "Noise", Noise_freq, 
+                                                                                  ifelse(Left_LeverCueID == "Tone", Tone_freq, 
+                                                                                         ifelse(Left_LeverCueID == "Siren", Siren_freq, NA )))), 
+                              ifelse(CS_RightLeverName == "D+", ifelse(Right_LeverCueID == "Click", 
+                                                                       Click_freq, ifelse(Right_LeverCueID == "Noise", Noise_freq, 
+                                                                                          ifelse(Right_LeverCueID == "Tone", Tone_freq, 
+                                                                                                 ifelse(Right_LeverCueID == "Siren", Siren_freq, NA ))))) ),
+         
+         
+  ) %>% 
+  ungroup()
+
+data_repeatTest_P100_HighvsLow_long <- data_repeatTest_P100_HighvsLow %>% 
+  pivot_longer(c(LP_P100_High, LP_P100_Low, CS_P100_High, CS_P100_Low), names_to = c("measure", "Probability", "Value"), names_sep = "_" ,values_to = "Freq") 
+
+
+
+
+# Data: P50_HighVsLow ----------------------------------------------------
+
+# Separate each condition for separate analysis
+data_repeatTest_P50_HighVsLow <- rawdata %>% 
+  filter(TestCondition=="P50_HighVsLow")
+
+## Recode lever identity and reward identity based on counterbalancing
+data_repeatTest_P50_HighVsLow <- data_repeatTest_P50_HighVsLow %>% 
+  group_by(Day, subject) %>% 
+  mutate(LP_P50_High  = ifelse(CS_LeftLeverName == "A++--", A1_freq, ifelse(CS_RightLeverName == "A++--", A2_freq, NA)),
+         LP_P50_Low  = ifelse(CS_LeftLeverName == "B+-", A1_freq, ifelse(CS_RightLeverName == "B+-", A2_freq, NA)),
+         # LP_P50_High_dur  = ifelse(CS_LeftLeverName == "A++--", A1_dur, ifelse(CS_RightLeverName == "A++--", A2_dur, NA)),
+         # LP_P50_Low_dur  = ifelse(CS_LeftLeverName == "B+-", A1_dur, ifelse(CS_RightLeverName == "B+-", A2_dur, NA)),
+         CS_P50_High = ifelse(CS_LeftLeverName == "A++--", ifelse(Left_LeverCueID == "Click", 
+                                                                  Click_freq, ifelse(Left_LeverCueID == "Noise", Noise_freq, 
+                                                                                     ifelse(Left_LeverCueID == "Tone", Tone_freq, 
+                                                                                            ifelse(Left_LeverCueID == "Siren", Siren_freq, NA )))), 
+                              ifelse(CS_RightLeverName == "A++--", ifelse(Right_LeverCueID == "Click", 
+                                                                          Click_freq, ifelse(Right_LeverCueID == "Noise", Noise_freq, 
+                                                                                             ifelse(Right_LeverCueID == "Tone", Tone_freq, 
+                                                                                                    ifelse(Right_LeverCueID == "Siren", Siren_freq, NA ))))) ),
+         CS_P50_Low = ifelse(CS_LeftLeverName == "B+-", ifelse(Left_LeverCueID == "Click", 
+                                                               Click_freq, ifelse(Left_LeverCueID == "Noise", Noise_freq, 
+                                                                                  ifelse(Left_LeverCueID == "Tone", Tone_freq, 
+                                                                                         ifelse(Left_LeverCueID == "Siren", Siren_freq, NA )))), 
+                             ifelse(CS_RightLeverName == "B+-", ifelse(Right_LeverCueID == "Click", 
+                                                                       Click_freq, ifelse(Right_LeverCueID == "Noise", Noise_freq, 
+                                                                                          ifelse(Right_LeverCueID == "Tone", Tone_freq, 
+                                                                                                 ifelse(Right_LeverCueID == "Siren", Siren_freq, NA ))))) ),
+         
+         
+  ) %>% 
+  ungroup()
+
+data_repeatTest_P50_HighVsLow_long <- data_repeatTest_P50_HighVsLow %>% 
+  pivot_longer(c(LP_P50_High, LP_P50_Low, CS_P50_High, CS_P50_Low), names_to = c("measure", "Probability", "Value"), names_sep = "_" ,values_to = "Freq") 
+
+
+# Data: High_100Vs50 ----------------------------------------------------
+
+# Separate each condition for separate analysis
+data_repeatTest_High_100Vs50 <- rawdata %>% 
+  filter(TestCondition=="High_100Vs50")
+
+## Recode lever identity and reward identity based on counterbalancing
+data_repeatTest_High_100Vs50 <- data_repeatTest_High_100Vs50 %>% 
+  group_by(Day, subject) %>% 
+  mutate(LP_P100_High  = ifelse(CS_LeftLeverName == "C++", A1_freq, ifelse(CS_RightLeverName == "C++", A2_freq, NA)),
+         LP_P50_High  = ifelse(CS_LeftLeverName == "A++--", A1_freq, ifelse(CS_RightLeverName == "A++--", A2_freq, NA)),
+         # LP_P100_High_dur  = ifelse(CS_LeftLeverName == "C++", A1_dur, ifelse(CS_RightLeverName == "C++", A2_dur, NA)),
+         # LP_P50_High_dur  = ifelse(CS_LeftLeverName == "A++--", A1_dur, ifelse(CS_RightLeverName == "A++--", A2_dur, NA)),
+         CS_P100_High = ifelse(CS_LeftLeverName == "C++", ifelse(Left_LeverCueID == "Click", 
+                                                                 Click_freq, ifelse(Left_LeverCueID == "Noise", Noise_freq, 
+                                                                                    ifelse(Left_LeverCueID == "Tone", Tone_freq, 
+                                                                                           ifelse(Left_LeverCueID == "Siren", Siren_freq, NA )))), 
+                               ifelse(CS_RightLeverName == "C++", ifelse(Right_LeverCueID == "Click", 
+                                                                         Click_freq, ifelse(Right_LeverCueID == "Noise", Noise_freq, 
+                                                                                            ifelse(Right_LeverCueID == "Tone", Tone_freq, 
+                                                                                                   ifelse(Right_LeverCueID == "Siren", Siren_freq, NA ))))) ),
+         CS_P50_High = ifelse(CS_LeftLeverName == "A++--", ifelse(Left_LeverCueID == "Click", 
+                                                                  Click_freq, ifelse(Left_LeverCueID == "Noise", Noise_freq, 
+                                                                                     ifelse(Left_LeverCueID == "Tone", Tone_freq, 
+                                                                                            ifelse(Left_LeverCueID == "Siren", Siren_freq, NA )))), 
+                              ifelse(CS_RightLeverName == "A++--", ifelse(Right_LeverCueID == "Click", 
+                                                                          Click_freq, ifelse(Right_LeverCueID == "Noise", Noise_freq, 
+                                                                                             ifelse(Right_LeverCueID == "Tone", Tone_freq, 
+                                                                                                    ifelse(Right_LeverCueID == "Siren", Siren_freq, NA ))))) ),
+         
+         
+  ) %>% 
+  ungroup()
+
+data_repeatTest_High_100Vs50_long <- data_repeatTest_High_100Vs50 %>% 
+  pivot_longer(c(LP_P100_High, LP_P50_High, CS_P100_High, CS_P50_High), names_to = c("measure", "Probability", "Value"), names_sep = "_" ,values_to = "Freq") 
+
+
+
+
+# Data: Low_100Vs50 ----------------------------------------------------
+
+# Separate each condition for separate analysis
+data_repeatTest_Low_100Vs50 <- rawdata %>% 
+  filter(TestCondition=="Low_100Vs50")
+
+## Recode lever identity and reward identity based on counterbalancing
+data_repeatTest_Low_100Vs50 <- data_repeatTest_Low_100Vs50 %>% 
+  group_by(Day, subject) %>% 
+  mutate(LP_P100_Low  = ifelse(CS_LeftLeverName == "D+", A1_freq, ifelse(CS_RightLeverName == "D+", A2_freq, NA)),
+         LP_P50_Low  = ifelse(CS_LeftLeverName == "B+-", A1_freq, ifelse(CS_RightLeverName == "B+-", A2_freq, NA)),
+         # LP_P100_Low_dur  = ifelse(CS_LeftLeverName == "D+", A1_dur, ifelse(CS_RightLeverName == "D+", A2_dur, NA)),
+         # LP_P50_Low_dur  = ifelse(CS_LeftLeverName == "B+-", A1_dur, ifelse(CS_RightLeverName == "B+-", A2_dur, NA)),
+         CS_P100_Low = ifelse(CS_LeftLeverName == "D+", ifelse(Left_LeverCueID == "Click", 
+                                                               Click_freq, ifelse(Left_LeverCueID == "Noise", Noise_freq, 
+                                                                                  ifelse(Left_LeverCueID == "Tone", Tone_freq, 
+                                                                                         ifelse(Left_LeverCueID == "Siren", Siren_freq, NA )))), 
+                              ifelse(CS_RightLeverName == "D+", ifelse(Right_LeverCueID == "Click", 
+                                                                       Click_freq, ifelse(Right_LeverCueID == "Noise", Noise_freq, 
+                                                                                          ifelse(Right_LeverCueID == "Tone", Tone_freq, 
+                                                                                                 ifelse(Right_LeverCueID == "Siren", Siren_freq, NA ))))) ),
+         CS_P50_Low = ifelse(CS_LeftLeverName == "B+-", ifelse(Left_LeverCueID == "Click", 
+                                                               Click_freq, ifelse(Left_LeverCueID == "Noise", Noise_freq, 
+                                                                                  ifelse(Left_LeverCueID == "Tone", Tone_freq, 
+                                                                                         ifelse(Left_LeverCueID == "Siren", Siren_freq, NA )))), 
+                             ifelse(CS_RightLeverName == "B+-", ifelse(Right_LeverCueID == "Click", 
+                                                                       Click_freq, ifelse(Right_LeverCueID == "Noise", Noise_freq, 
+                                                                                          ifelse(Right_LeverCueID == "Tone", Tone_freq, 
+                                                                                                 ifelse(Right_LeverCueID == "Siren", Siren_freq, NA ))))) ),
+         
+         
+  ) %>% 
+  ungroup()
+
+data_repeatTest_Low_100Vs50_long <- data_repeatTest_Low_100Vs50 %>% 
+  pivot_longer(c(LP_P100_Low, LP_P50_Low, CS_P100_Low, CS_P50_Low), names_to = c("measure", "Probability", "Value"), names_sep = "_" ,values_to = "Freq")
+
+# Data: Process exclusions ------------------------------------------------
+
+
+# Test Data Create average session data
+CRF_data_repeatTest_P100_HighVsLow_long_Avg <- data_repeatTest_P100_HighvsLow_long %>% 
+  group_by(TestCondition, Day, subject, measure, Value, Probability) %>% 
+  summarise(Freq = sum(Freq)) 
+
+CRF_data_repeatTest_P50_HighVsLow_long_Avg <- data_repeatTest_P50_HighVsLow_long %>% 
+  group_by(TestCondition, Day, subject, measure, Value, Probability) %>% 
+  summarise(Freq = sum(Freq)) 
+
+CRF_data_repeatTest_High_100Vs50_long_Avg <- data_repeatTest_High_100Vs50_long %>% 
+  group_by(TestCondition, Day, subject, measure, Value, Probability) %>% 
+  summarise(Freq = sum(Freq)) 
+
+CRF_data_repeatTest_Low_100Vs50_long_Avg <- data_repeatTest_Low_100Vs50_long %>% 
+  group_by(TestCondition, Day, subject, measure, Value, Probability) %>% 
+  summarise(Freq = sum(Freq)) 
+
+## Check things are being averaged correctly 
+# CRF_data_repeatTest_P100_HighVsLow_long_Avg %>% 
+#      count(unique(subject)) %>% 
+# kable()
+
+
+CRF_data_repeatTest_P100_HighVsLow_long_Avg <- CRF_data_repeatTest_P100_HighVsLow_long_Avg %>% 
+  pivot_wider(names_from = c(Value, Probability, measure), values_from =  Freq) %>% 
+  mutate(ExcludeSubject = ifelse(High_P100_CS == 0 | Low_P100_CS == 0, "Exclude", "Keep"),
+         Diff_P100_CS = High_P100_CS - Low_P100_CS,
+         Diff_P100_LP = High_P100_LP - Low_P100_LP,
+         PercDiff_P100_LP = 100*(High_P100_LP - Low_P100_LP)/ (High_P100_LP + Low_P100_LP)) %>% 
+  pivot_longer(c(4:7, 9:11),names_to = c("Value", "Probability", "measure"), names_sep = "_" , values_to = c("Freq"))
+
+CRF_data_repeatTest_P50_HighVsLow_long_Avg <- CRF_data_repeatTest_P50_HighVsLow_long_Avg %>% 
+  pivot_wider(names_from = c(Value, Probability, measure), values_from =  Freq) %>% 
+  mutate(ExcludeSubject = ifelse(High_P50_CS == 0 | Low_P50_CS == 0, "Exclude", "Keep"),
+         Diff_P50_CS = High_P50_CS - Low_P50_CS,
+         Diff_P50_LP = High_P50_LP - Low_P50_LP,
+         PercDiff_P50_LP = 100*(High_P50_LP - Low_P50_LP)/ (High_P50_LP + Low_P50_LP)) %>% 
+  pivot_longer(c(4:7, 9:11),names_to = c("Value", "Probability", "measure"), names_sep = "_" , values_to = c("Freq"))
+
+CRF_data_repeatTest_High_100Vs50_long_Avg <- CRF_data_repeatTest_High_100Vs50_long_Avg %>% 
+  pivot_wider(names_from = c(Value, Probability, measure), values_from =  Freq) %>% 
+  mutate(ExcludeSubject = ifelse(High_P100_CS == 0 | High_P50_CS == 0, "Exclude", "Keep"),
+         Diff_High_CS = High_P100_CS - High_P50_CS,
+         Diff_High_LP = High_P100_LP - High_P50_LP,
+         PercDiff_High_LP = 100*(High_P100_LP - High_P50_LP)/ (High_P100_LP + High_P50_LP)) %>% 
+  pivot_longer(c(4:7, 9:11),names_to = c("Value", "Probability", "measure"), names_sep = "_" , values_to = c("Freq"))
+
+CRF_data_repeatTest_Low_100Vs50_long_Avg <- CRF_data_repeatTest_Low_100Vs50_long_Avg %>% 
+  pivot_wider(names_from = c(Value, Probability, measure), values_from =  Freq) %>% 
+  mutate(ExcludeSubject = ifelse(Low_P100_CS == 0 | Low_P50_CS == 0, "Exclude", "Keep"),
+         Diff_Low_CS = Low_P100_CS - Low_P50_CS,
+         Diff_Low_LP = Low_P100_LP - Low_P50_LP,
+         PercDiff_Low_LP = 100*(Low_P100_LP - Low_P50_LP)/ (Low_P100_LP + Low_P50_LP)) %>% 
+  pivot_longer(c(4:7, 9:11),names_to = c("Value", "Probability", "measure"), names_sep = "_" , values_to = c("Freq"))
+
+# COmbine all into one table to difference scores plot simultaneously
+CRF_ALL_data_repeatTest_long_Avg <- full_join(full_join(CRF_data_repeatTest_P100_HighVsLow_long_Avg,CRF_data_repeatTest_P50_HighVsLow_long_Avg),
+                                              full_join(CRF_data_repeatTest_High_100Vs50_long_Avg,CRF_data_repeatTest_Low_100Vs50_long_Avg) )
+
+
+savefile <- "CRF_RepeatTest_ALL_data_repeatTest_long_Avg.csv"
+write_csv(CRF_ALL_data_repeatTest_long_Avg, here("figures", "figure_data", savefile))
+
+# 
+# 
+# # Save CRF Test Plot Data -------------------------------------------------
+# 
+# savefile <- "CRF_data_repeatTest_P100_HighvsLow_long.csv"
+# write_csv(data_repeatTest_P100_HighvsLow_long, here("figures", "figure_data", savefile))
+# 
+# 
+# savefile <- "CRF_data_repeatTest_P50_HighvsLow_long.csv"
+# write_csv(data_repeatTest_P50_HighVsLow_long, here("figures", "figure_data", savefile))
+# 
+# 
+# savefile <- "CRF_data_repeatTest_High_100Vs50_long.csv"
+# write_csv(data_repeatTest_High_100Vs50_long, here("figures", "figure_data", savefile))
+# 
+# 
+# savefile <- "CRF_data_repeatTest_Low_100Vs50_long.csv"
+# write_csv(data_repeatTest_Low_100Vs50_long, here("figures", "figure_data", savefile))
+# 
+
+# Plots: P100_HighVsLow ---------------------------------------------------
+
+
+
+repeatTest_P100_HighvsLow_TotalLP <- CRF_data_repeatTest_P100_HighVsLow_long_Avg %>% 
+  filter(measure == "LP",
+         Value != "Diff" & Value != "PercDiff",
+  ) %>% 
+  ggplot(mapping = aes(x = as.factor(Value), y = Freq, group = Value, colour = Value, fill = Value)) +
+  stat_summary_bin(fun.data = "mean_se", geom = "bar", position = "dodge",  size = .3) +
+  stat_summary(fun.data = "mean_se", geom = "errorbar", position = position_dodge(width = 0.9),  width = 0,  size = .3, colour = "black", linetype = "solid", show.legend = FALSE) + 
+  # geom_point(aes(group = subject), colour = Black) +
+  # geom_line(aes(group = subject), colour = Black) +
+  # facet_wrap(~Day,) +
+  # Make Pretty
+  scale_y_continuous( expand = expansion(mult = c(0, 0)), breaks=seq(-1000,1000,10)) +
+  ggtitle("P(100): High vs. Low Value") + xlab("CS Value") + ylab("Total LP (30 mins)") +
+  theme_cowplot(11) +
+  theme(plot.title = element_text(hjust = 0.5)) +
+  theme(plot.title = element_text(size=10)) +
+  coord_cartesian(ylim = c(0,60.0001)) +
+  theme(axis.title.x=element_text(face = "bold")) +
+  scale_colour_manual(name = "", values = linecolours, aesthetics = c("colour")) +
+  scale_fill_manual(name = "", values = fillcolours) +
+  theme(legend.key.width=unit(0.5,"line"))
+repeatTest_P100_HighvsLow_TotalLP
+
+repeatTest_P100_HighvsLow_TotalCS <- CRF_data_repeatTest_P100_HighVsLow_long_Avg %>% 
+  filter(measure == "CS",
+         Value != "Diff" & Value != "PercDiff",
+  ) %>% 
+  ggplot(mapping = aes(x = as.factor(Value), y = Freq, group = Value, colour = Value, fill = Value)) +
+  stat_summary_bin(fun.data = "mean_se", geom = "bar", position = "dodge",  size = .3) +
+  stat_summary(fun.data = "mean_se", geom = "errorbar", position = position_dodge(width = 0.9),  width = 0,  size = .3, colour = "black", linetype = "solid", show.legend = FALSE) + 
+  # geom_point(aes(group = subject), colour = Black) +
+  # geom_line(aes(group = subject), colour = Black) +
+  # facet_wrap(~Day,) +
+  # Make Pretty
+  scale_y_continuous( expand = expansion(mult = c(0, 0)), breaks=seq(-1000,1000,5)) +
+  ggtitle("P(100): High vs. Low Value") + xlab("CS Value") + ylab("Total CS (30 mins)") +
+  theme_cowplot(11) +
+  theme(plot.title = element_text(hjust = 0.5)) +
+  theme(plot.title = element_text(size=10)) +
+  coord_cartesian(ylim = c(0,30.0001)) +
+  theme(axis.title.x=element_text(face = "bold")) +
+  scale_colour_manual(name = "", values = linecolours, aesthetics = c("colour")) +
+  scale_fill_manual(name = "", values = fillcolours) +
+  theme(legend.key.width=unit(0.5,"line"))
+repeatTest_P100_HighvsLow_TotalCS
+
+
+repeatTest_P100_HighvsLow_TotalLPDiff <- CRF_data_repeatTest_P100_HighVsLow_long_Avg %>% 
+  filter(measure == "LP",
+         Value == "PercDiff",
+  ) %>% 
+  ggplot(mapping = aes(x = as.factor(Value), y = Freq, group = Value, colour = Value, fill = Value)) +
+  stat_summary_bin(fun.data = "mean_se", geom = "bar", position = "dodge",  size = .3) +
+  stat_summary(fun.data = "mean_se", geom = "errorbar", position = position_dodge(width = 0.9),  width = 0,  size = .3, colour = "black", linetype = "solid", show.legend = FALSE) + 
+  geom_point(aes(group = subject), colour = Black) +
+  # geom_line(aes(group = subject), colour = Black) +
+  # facet_wrap(~Day,) +
+  # Make Pretty
+  scale_y_continuous( expand = expansion(mult = c(0, 0)), breaks=seq(-1000,1000,10)) +
+  ggtitle("P(100): High vs. Low Value") + xlab("High - Low") + ylab("Percent Difference") +
+  theme_cowplot(11) +
+  theme(plot.title = element_text(hjust = 0.5)) +
+  theme(plot.title = element_text(size=10)) +
+  coord_cartesian(ylim = c(-100,100.0001)) +
+  theme(axis.title.x=element_text(face = "bold")) +
+  scale_colour_manual(name = "", values = linecolours, aesthetics = c("colour")) +
+  scale_fill_manual(name = "", values = fillcolours) +
+  theme(legend.key.width=unit(0.5,"line"))
+repeatTest_P100_HighvsLow_TotalLPDiff
+
+# 
+# 
+# P100_HighvsLow_1minBins <- data_repeatTest_P100_HighvsLow_long %>% 
+#   group_by(Day, subject, measure, Value, timebins_10) %>% 
+#   summarise(Freq = sum(Freq)) %>% 
+#   filter(measure == "LP") %>% 
+#   ggplot(mapping = aes(x = as.factor(timebins_10), y = Freq, group = Value, colour = Value, fill = Value, shape = Value,linetype = Value)) +
+#   # facet_wrap(~ sex) +
+#   stat_summary_bin(fun.data = "mean_se", geom = "line", size = .5) +
+#   stat_summary(fun.data = "mean_se", geom = "errorbar", width = 0.0, size = .3, linetype = 1, show.legend = FALSE) +
+#   stat_summary_bin(fun.data = "mean_se", geom = "point", size = 2) +
+#   # Make Pretty
+#   scale_y_continuous( expand = expansion(mult = c(0, 0)), breaks=seq(-100,100,1)) +
+#   ggtitle("P(100): High vs. Low Value") + xlab("10 min bins") + ylab("Total LP (30 mins)") +
+#   theme_cowplot(11) +
+#   theme(plot.title = element_text(hjust = 0.5)) +
+#   theme(plot.title = element_text(size=10)) +
+#   coord_cartesian(ylim = c(0,20.0001)) +
+#   theme(axis.title.x=element_text(face = "bold")) +
+#   scale_linetype_manual(name = "", values = linetypes)  +
+#   scale_colour_manual(name = "", values = linecolours, aesthetics = c("colour")) +
+#   scale_shape_manual(name = "", values = pointshapes) +
+#   scale_fill_manual(name = "", values = fillcolours) +
+#   theme(legend.key.width=unit(1,"line"))
+# P100_HighvsLow_1minBins
+
+
+# Plots: P50_HighVsLow ---------------------------------------------------
+
+
+repeatTest_P50_HighvsLow_TotalLP <- CRF_data_repeatTest_P50_HighVsLow_long_Avg %>% 
+  filter(measure == "LP",
+         Value != "Diff" & Value != "PercDiff",
+  )  %>% 
+  ggplot(mapping = aes(x = as.factor(Value), y = Freq, group = Value, colour = Value, fill = Value)) +
+  stat_summary_bin(fun.data = "mean_se", geom = "bar", position = "dodge",  size = .3) +
+  stat_summary(fun.data = "mean_se", geom = "errorbar", position = position_dodge(width = 0.9),  width = 0,  size = .3, colour = "black", linetype = "solid", show.legend = FALSE) + 
+  # geom_point(aes(group = subject), colour = "black") +
+  # facet_wrap(~Day,) +
+  # Make Pretty
+  scale_y_continuous( expand = expansion(mult = c(0, 0)), breaks=seq(-1000,1000,10)) +
+  ggtitle("P(50): High vs. Low Value") + xlab("CS Value") + ylab("Total LP (30 mins)") +
+  theme_cowplot(11) +
+  theme(plot.title = element_text(hjust = 0.5)) +
+  theme(plot.title = element_text(size=10)) +
+  coord_cartesian(ylim = c(0,60.0001)) +
+  theme(axis.title.x=element_text(face = "bold")) +
+  scale_colour_manual(name = "", values = linecolours, aesthetics = c("colour")) +
+  scale_fill_manual(name = "", values = fillcolours) +
+  theme(legend.key.width=unit(0.5,"line"))
+repeatTest_P50_HighvsLow_TotalLP
+
+repeatTest_P50_HighvsLow_TotalCS <- CRF_data_repeatTest_P50_HighVsLow_long_Avg %>% 
+  filter(measure == "CS",
+         Value != "Diff" & Value != "PercDiff",
+  )  %>%  
+  ggplot(mapping = aes(x = as.factor(Value), y = Freq, group = Value, colour = Value, fill = Value)) +
+  stat_summary_bin(fun.data = "mean_se", geom = "bar", position = "dodge",  size = .3) +
+  stat_summary(fun.data = "mean_se", geom = "errorbar", position = position_dodge(width = 0.9),  width = 0,  size = .3, colour = "black", linetype = "solid", show.legend = FALSE) + 
+  # geom_point(aes(group = subject), colour = "black") +
+  # facet_wrap(~Day,) +
+  # Make Pretty
+  scale_y_continuous( expand = expansion(mult = c(0, 0)), breaks=seq(-1000,1000,5)) +
+  ggtitle("P(50): High vs. Low Value") + xlab("CS Value") + ylab("Total CS (30 mins)") +
+  theme_cowplot(11) +
+  theme(plot.title = element_text(hjust = 0.5)) +
+  theme(plot.title = element_text(size=10)) +
+  coord_cartesian(ylim = c(0,25.0001)) +
+  theme(axis.title.x=element_text(face = "bold")) +
+  scale_colour_manual(name = "", values = linecolours, aesthetics = c("colour")) +
+  scale_fill_manual(name = "", values = fillcolours) +
+  theme(legend.key.width=unit(0.5,"line"))
+repeatTest_P50_HighvsLow_TotalCS
+
+# repeatTest_P50_HighvsLow_TotalLPDiff <- CRF_data_repeatTest_P50_HighVsLow_long_Avg %>% 
+#   filter(measure == "LP",
+#          Value == "PercDiff",
+#   ) %>% 
+#   ggplot(mapping = aes(x = as.factor(Value), y = Freq, group = Value, colour = Value, fill = Value)) +
+#   stat_summary_bin(fun.data = "mean_se", geom = "bar", position = "dodge",  size = .3) +
+#   stat_summary(fun.data = "mean_se", geom = "errorbar", position = position_dodge(width = 0.9),  width = 0,  size = .3, colour = "black", linetype = "solid", show.legend = FALSE) + 
+#   geom_point(aes(group = subject), colour = Black) +
+#   # geom_line(aes(group = subject), colour = Black) +
+#   # facet_wrap(~Day,) +
+#   # Make Pretty
+#   scale_y_continuous( expand = expansion(mult = c(0, 0)), breaks=seq(-1000,1000,10)) +
+#   ggtitle("P(100): High vs. Low Value") + xlab("High - Low") + ylab("Percent Difference") +
+#   theme_cowplot(11) +
+#   theme(plot.title = element_text(hjust = 0.5)) +
+#   theme(plot.title = element_text(size=10)) +
+#   coord_cartesian(ylim = c(-100,100.0001)) +
+#   theme(axis.title.x=element_text(face = "bold")) +
+#   scale_colour_manual(name = "", values = linecolours, aesthetics = c("colour")) +
+#   scale_fill_manual(name = "", values = fillcolours) +
+#   theme(legend.key.width=unit(0.5,"line"))
+repeatTest_P50_HighvsLow_TotalLPDiff
+
+# 
+# 
+# P50_HighvsLow_1minBins <- data_repeatTest_P50_HighVsLow_long %>% 
+#   group_by(Day, subject, measure, Value, timebins_10) %>% 
+#   summarise(Freq = sum(Freq)) %>% 
+#   filter(measure == "LP") %>% 
+#   ggplot(mapping = aes(x = as.factor(timebins_10), y = Freq, group = Value, colour = Value, fill = Value, shape = Value,linetype = Value)) +
+#   # facet_wrap(~ sex) +
+#   stat_summary_bin(fun.data = "mean_se", geom = "line", size = .5) +
+#   stat_summary(fun.data = "mean_se", geom = "errorbar", width = 0.0, size = .3, linetype = 1, show.legend = FALSE) +
+#   stat_summary_bin(fun.data = "mean_se", geom = "point", size = 2) +
+#   # Make Pretty
+#   scale_y_continuous( expand = expansion(mult = c(0, 0)), breaks=seq(-100,100,1)) +
+#   ggtitle("P(50): High vs. Low Value") + xlab("10 min bins") + ylab("Total LP (30 mins)") +
+#   theme_cowplot(11) +
+#   theme(plot.title = element_text(hjust = 0.5)) +
+#   theme(plot.title = element_text(size=10)) +
+#   coord_cartesian(ylim = c(0,20.0001)) +
+#   theme(axis.title.x=element_text(face = "bold")) +
+#   scale_linetype_manual(name = "", values = linetypes)  +
+#   scale_colour_manual(name = "", values = linecolours, aesthetics = c("colour")) +
+#   scale_shape_manual(name = "", values = pointshapes) +
+#   scale_fill_manual(name = "", values = fillcolours) +
+#   theme(legend.key.width=unit(1,"line"))
+# P50_HighvsLow_1minBins
+
+
+
+# Plots: High_100Vs50 ---------------------------------------------------
+
+
+
+repeatTest_High_100Vs50_TotalLP <- CRF_data_repeatTest_High_100Vs50_long_Avg %>% 
+  filter(measure == "LP",
+         Value != "Diff" & Value != "PercDiff",
+  )  %>% 
+  ggplot(mapping = aes(x = as.factor(Probability), y = Freq, group = Probability, colour = Probability, fill = Probability)) +
+  stat_summary_bin(fun.data = "mean_se", geom = "bar", position = "dodge",  size = .3) +
+  stat_summary(fun.data = "mean_se", geom = "errorbar", position = position_dodge(width = 0.9),  width = 0,  size = .3, colour = "black", linetype = "solid", show.legend = FALSE) + 
+  # geom_point(aes(group = subject), colour = "black") +
+  # facet_wrap(~Day,) +
+  # Make Pretty
+  scale_y_continuous( expand = expansion(mult = c(0, 0)), breaks=seq(-1000,1000,10)) +
+  ggtitle("High Value: P(100) vs P(50)") + xlab("CS Probability") + ylab("Total LP (30 mins)") +
+  theme_cowplot(11) +
+  theme(plot.title = element_text(hjust = 0.5)) +
+  theme(plot.title = element_text(size=10)) +
+  coord_cartesian(ylim = c(0,60.0001)) +
+  theme(axis.title.x=element_text(face = "bold")) +
+  scale_colour_manual(name = "", values = linecolours, aesthetics = c("colour")) +
+  scale_fill_manual(name = "", values = fillcolours) +
+  theme(legend.key.width=unit(0.5,"line"))
+repeatTest_High_100Vs50_TotalLP
+
+repeatTest_High_100Vs50_TotalCS <- CRF_data_repeatTest_High_100Vs50_long_Avg %>% 
+  filter(measure == "CS",
+         Value != "Diff" & Value != "PercDiff",
+  )  %>% 
+  ggplot(mapping = aes(x = as.factor(Probability), y = Freq, group = Probability, colour = Probability, fill = Probability)) +
+  stat_summary_bin(fun.data = "mean_se", geom = "bar", position = "dodge",  size = .3) +
+  stat_summary(fun.data = "mean_se", geom = "errorbar", position = position_dodge(width = 0.9),  width = 0,  size = .3, colour = "black", linetype = "solid", show.legend = FALSE) + 
+  # geom_point(aes(group = subject), colour = "black") +
+  # facet_wrap(~Day,) +
+  # Make Pretty
+  scale_y_continuous( expand = expansion(mult = c(0, 0)), breaks=seq(-1000,1000,5)) +
+  ggtitle("High Value: P(100) vs P(50)") + xlab("CS Probability") + ylab("Total CS (30 mins)") +
+  theme_cowplot(11) +
+  theme(plot.title = element_text(hjust = 0.5)) +
+  theme(plot.title = element_text(size=10)) +
+  coord_cartesian(ylim = c(0,25.0001)) +
+  theme(axis.title.x=element_text(face = "bold")) +
+  scale_colour_manual(name = "", values = linecolours, aesthetics = c("colour")) +
+  scale_fill_manual(name = "", values = fillcolours) +
+  theme(legend.key.width=unit(0.5,"line"))
+repeatTest_High_100Vs50_TotalCS
+
+
+# repeatTest_High_100Vs50_TotalLPDiff <- CRF_data_repeatTest_High_100Vs50_long_Avg %>% 
+#   filter(measure == "LP",
+#          Value == "PercDiff",
+#   ) %>% 
+#   ggplot(mapping = aes(x = as.factor(Value), y = Freq, group = Value, colour = Value, fill = Value)) +
+#   stat_summary_bin(fun.data = "mean_se", geom = "bar", position = "dodge",  size = .3) +
+#   stat_summary(fun.data = "mean_se", geom = "errorbar", position = position_dodge(width = 0.9),  width = 0,  size = .3, colour = "black", linetype = "solid", show.legend = FALSE) + 
+#   geom_point(aes(group = subject), colour = Black) +
+#   # geom_line(aes(group = subject), colour = Black) +
+#   # facet_wrap(~Day,) +
+#   # Make Pretty
+#   scale_y_continuous( expand = expansion(mult = c(0, 0)), breaks=seq(-1000,1000,10)) +
+#   ggtitle("P(100): High vs. Low Value") + xlab("P100 - P50") + ylab("Percent Difference") +
+#   theme_cowplot(11) +
+#   theme(plot.title = element_text(hjust = 0.5)) +
+#   theme(plot.title = element_text(size=10)) +
+#   coord_cartesian(ylim = c(-100,100.0001)) +
+#   theme(axis.title.x=element_text(face = "bold")) +
+#   scale_colour_manual(name = "", values = linecolours, aesthetics = c("colour")) +
+#   scale_fill_manual(name = "", values = fillcolours) +
+#   theme(legend.key.width=unit(0.5,"line"))
+# repeatTest_High_100Vs50_TotalLPDiff
+
+# 
+# 
+# 
+# High_100Vs50_1minBins <- data_repeatTest_High_100Vs50_long %>% 
+#   group_by(Day, subject, measure, Probability, timebins_10) %>% 
+#   summarise(Freq = sum(Freq)) %>% 
+#   filter(measure == "LP") %>% 
+#   ggplot(mapping = aes(x = as.factor(timebins_10), y = Freq, group = Probability, colour = Probability, fill = Probability, shape = Probability,linetype = Probability)) +
+#   # facet_wrap(~ sex) +
+#   stat_summary_bin(fun.data = "mean_se", geom = "line", size = .5) +
+#   stat_summary(fun.data = "mean_se", geom = "errorbar", width = 0.0, size = .3, linetype = 1, show.legend = FALSE) +
+#   stat_summary_bin(fun.data = "mean_se", geom = "point", size = 2) +
+#   # Make Pretty
+#   scale_y_continuous( expand = expansion(mult = c(0, 0)), breaks=seq(-100,100,1)) +
+#   ggtitle("High Value: P(100) vs P(50)") + xlab("10 min bins") + ylab("Total LP (30 mins)") +
+#   theme_cowplot(11) +
+#   theme(plot.title = element_text(hjust = 0.5)) +
+#   theme(plot.title = element_text(size=10)) +
+#   coord_cartesian(ylim = c(0,20.0001)) +
+#   theme(axis.title.x=element_text(face = "bold")) +
+#   scale_linetype_manual(name = "", values = linetypes)  +
+#   scale_colour_manual(name = "", values = linecolours, aesthetics = c("colour")) +
+#   scale_shape_manual(name = "", values = pointshapes) +
+#   scale_fill_manual(name = "", values = fillcolours) +
+#   theme(legend.key.width=unit(1,"line"))
+# High_100Vs50_1minBins
+
+
+
+# Plots: Low_100Vs50 ---------------------------------------------------
+
+
+repeatTest_Low_100Vs50_TotalLP <- CRF_data_repeatTest_Low_100Vs50_long_Avg %>% 
+  filter(measure == "LP",
+         Value != "Diff" & Value != "PercDiff",
+  )  %>% 
+  ggplot(mapping = aes(x = as.factor(Probability), y = Freq, group = Probability, colour = Probability, fill = Probability)) +
+  stat_summary_bin(fun.data = "mean_se", geom = "bar", position = "dodge",  size = .3) +
+  stat_summary(fun.data = "mean_se", geom = "errorbar", position = position_dodge(width = 0.9),  width = 0,  size = .3, colour = "black", linetype = "solid", show.legend = FALSE) + 
+  # geom_point(aes(group = subject), colour = "black") +
+  # facet_wrap(~Day,) +
+  # Make Pretty
+  scale_y_continuous( expand = expansion(mult = c(0, 0)), breaks=seq(-1000,1000,10)) +
+  ggtitle("Low Value: P(100) vs P(50)") + xlab("CS Probability") + ylab("Total LP (30 mins)") +
+  theme_cowplot(11) +
+  theme(plot.title = element_text(hjust = 0.5)) +
+  theme(plot.title = element_text(size=10)) +
+  coord_cartesian(ylim = c(0,60.0001)) +
+  theme(axis.title.x=element_text(face = "bold")) +
+  scale_colour_manual(name = "", values = linecolours, aesthetics = c("colour")) +
+  scale_fill_manual(name = "", values = fillcolours) +
+  theme(legend.key.width=unit(0.5,"line"))
+repeatTest_Low_100Vs50_TotalLP
+
+repeatTest_Low_100Vs50_TotalCS <- CRF_data_repeatTest_Low_100Vs50_long_Avg %>% 
+  filter(measure == "CS",
+         Value != "Diff" & Value != "PercDiff",
+  )  %>% 
+  ggplot(mapping = aes(x = as.factor(Probability), y = Freq, group = Probability, colour = Probability, fill = Probability)) +
+  stat_summary_bin(fun.data = "mean_se", geom = "bar", position = "dodge",  size = .3) +
+  stat_summary(fun.data = "mean_se", geom = "errorbar", position = position_dodge(width = 0.9),  width = 0,  size = .3, colour = "black", linetype = "solid", show.legend = FALSE) + 
+  # geom_point(aes(group = subject), colour = "black") +
+  # facet_wrap(~Day,) +
+  # Make Pretty
+  scale_y_continuous( expand = expansion(mult = c(0, 0)), breaks=seq(-1000,1000,5)) +
+  ggtitle("Low Value: P(100) vs P(50)") + xlab("CS Probability") + ylab("Total CS (30 mins)") +
+  theme_cowplot(11) +
+  theme(plot.title = element_text(hjust = 0.5)) +
+  theme(plot.title = element_text(size=10)) +
+  coord_cartesian(ylim = c(0,25.0001)) +
+  theme(axis.title.x=element_text(face = "bold")) +
+  scale_colour_manual(name = "", values = linecolours, aesthetics = c("colour")) +
+  scale_fill_manual(name = "", values = fillcolours) +
+  theme(legend.key.width=unit(0.5,"line"))
+repeatTest_Low_100Vs50_TotalCS
+
+
+# 
+# repeatTest_Low_100Vs50_TotalLPDiff <- CRF_data_repeatTest_Low_100Vs50_long_Avg %>% 
+#   filter(measure == "LP",
+#          Value == "Diff",
+#   ) %>% 
+#   ggplot(mapping = aes(x = as.factor(Value), y = Freq, group = Value, colour = Value, fill = Value)) +
+#   stat_summary_bin(fun.data = "mean_se", geom = "bar", position = "dodge",  size = .3) +
+#   stat_summary(fun.data = "mean_se", geom = "errorbar", position = position_dodge(width = 0.9),  width = 0,  size = .3, colour = "black", linetype = "solid", show.legend = FALSE) + 
+#   geom_point(aes(group = subject), colour = Black) +
+#   # geom_line(aes(group = subject), colour = Black) +
+#   # facet_wrap(~Day,) +
+#   # Make Pretty
+#   scale_y_continuous( expand = expansion(mult = c(0, 0)), breaks=seq(-1000,1000,10)) +
+#   ggtitle("P(100): High vs. Low Value") + xlab("P100 - P50") + ylab("Percent Difference") +
+#   theme_cowplot(11) +
+#   theme(plot.title = element_text(hjust = 0.5)) +
+#   theme(plot.title = element_text(size=10)) +
+#   coord_cartesian(ylim = c(-100,100.0001)) +
+#   theme(axis.title.x=element_text(face = "bold")) +
+#   scale_colour_manual(name = "", values = linecolours, aesthetics = c("colour")) +
+#   scale_fill_manual(name = "", values = fillcolours) +
+#   theme(legend.key.width=unit(0.5,"line"))
+# repeatTest_Low_100Vs50_TotalLPDiff
+
+# 
+# 
+# Low_100Vs50_1minBins <- data_repeatTest_Low_100Vs50_long %>% 
+#   group_by(Day, subject, measure, Probability, timebins_10) %>% 
+#   summarise(Freq = sum(Freq)) %>% 
+#   filter(measure == "LP") %>% 
+#   ggplot(mapping = aes(x = as.factor(timebins_10), y = Freq, group = Probability, colour = Probability, fill = Probability, shape = Probability,linetype = Probability)) +
+#   # facet_wrap(~ sex) +
+#   stat_summary_bin(fun.data = "mean_se", geom = "line", size = .5) +
+#   stat_summary(fun.data = "mean_se", geom = "errorbar", width = 0.0, size = .3, linetype = 1, show.legend = FALSE) +
+#   stat_summary_bin(fun.data = "mean_se", geom = "point", size = 2) +
+#   # Make Pretty
+#   scale_y_continuous( expand = expansion(mult = c(0, 0)), breaks=seq(-100,100,1)) +
+#   ggtitle("Low Value: P(100) vs P(50)") + xlab("10 min bins") + ylab("Total LP (30 mins)") +
+#   theme_cowplot(11) +
+#   theme(plot.title = element_text(hjust = 0.5)) +
+#   theme(plot.title = element_text(size=10)) +
+#   coord_cartesian(ylim = c(0,20.0001)) +
+#   theme(axis.title.x=element_text(face = "bold")) +
+#   scale_linetype_manual(name = "", values = linetypes)  +
+#   scale_colour_manual(name = "", values = linecolours, aesthetics = c("colour")) +
+#   scale_shape_manual(name = "", values = pointshapes) +
+#   scale_fill_manual(name = "", values = fillcolours) +
+#   theme(legend.key.width=unit(1,"line"))
+# Low_100Vs50_1minBins
+
+
+
+
+# Plot Test All Conditions Difference scores ------------------------------
+
+testdata_repeatTest_All_LP_PercDiff <- CRF_ALL_data_repeatTest_long_Avg %>% 
+  filter(measure == "LP",
+         Value == "PercDiff",
+  ) %>% 
+  ggplot(mapping = aes(x = as.factor(TestCondition), y = Freq, group = TestCondition, colour = TestCondition, fill = TestCondition)) +
+  stat_summary_bin(fun.data = "mean_se", geom = "bar", position = "dodge",  size = .3) +
+  stat_summary(fun.data = "mean_se", geom = "errorbar", position = position_dodge(width = 0.9),  width = 0,  size = .3, colour = "black", linetype = "solid", show.legend = FALSE) + 
+  geom_point(aes(group = subject), colour = Black) +
+  # geom_line(aes(group = subject), colour = Black) +
+  # facet_wrap(~Day,) +
+  # Make Pretty
+  scale_y_continuous( expand = expansion(mult = c(0, 0)), breaks=seq(-1000,1000,20)) +
+  ggtitle("") + xlab("") + ylab("Percent Difference") +
+  theme_cowplot(11) +
+  theme(plot.title = element_text(hjust = 0.5)) +
+  theme(plot.title = element_text(size=10)) +
+  coord_cartesian(ylim = c(-100,100.0001)) +
+  theme(axis.title.x=element_text(face = "bold")) +
+  scale_colour_manual(name = "", values = linecolours, aesthetics = c("colour")) +
+  scale_fill_manual(name = "", values = fillcolours) +
+  theme(legend.key.width=unit(0.5,"line")) + 
+  scale_x_discrete(labels = c("P100 - P50\nHigh","P100 - P50\nLow","High - Low\nP100", "High - Low\nP50")) +
+  theme(axis.text.x = element_text(face = "bold"))
+
+testdata_repeatTest_All_LP_PercDiff
+
+testdata_repeatTest_All_LP_Diff <- CRF_ALL_data_repeatTest_long_Avg %>% 
+  filter(measure == "LP",
+         Value == "Diff",
+  ) %>% 
+  ggplot(mapping = aes(x = as.factor(TestCondition), y = Freq, group = TestCondition, colour = TestCondition, fill = TestCondition)) +
+  stat_summary_bin(fun.data = "mean_se", geom = "bar", position = "dodge",  size = .3) +
+  stat_summary(fun.data = "mean_se", geom = "errorbar", position = position_dodge(width = 0.9),  width = 0,  size = .3, colour = "black", linetype = "solid", show.legend = FALSE) + 
+  geom_point(aes(group = subject), colour = Black) +
+  # geom_line(aes(group = subject), colour = Black) +
+  # facet_wrap(~Day,) +
+  # Make Pretty
+  scale_y_continuous( expand = expansion(mult = c(0, 0)), breaks=seq(-1000,1000,20)) +
+  ggtitle("") + xlab("") + ylab("LP Difference") +
+  theme_cowplot(11) +
+  theme(plot.title = element_text(hjust = 0.5)) +
+  theme(plot.title = element_text(size=10)) +
+  coord_cartesian(ylim = c(-100,100.0001)) +
+  theme(axis.title.x=element_text(face = "bold")) +
+  scale_colour_manual(name = "", values = linecolours, aesthetics = c("colour")) +
+  scale_fill_manual(name = "", values = fillcolours) +
+  theme(legend.key.width=unit(0.5,"line")) + 
+  scale_x_discrete(labels = c("P100 - P50\nHigh","P100 - P50\nLow","High - Low\nP100", "High - Low\nP50")) +
+  theme(axis.text.x = element_text(face = "bold"))
+
+testdata_repeatTest_All_LP_Diff
+
+
+testdata_repeatTest_All_CS_Diff <- CRF_ALL_data_repeatTest_long_Avg %>% 
+  filter(measure == "CS",
+         Value == "Diff",
+  ) %>% 
+  ggplot(mapping = aes(x = as.factor(TestCondition), y = Freq, group = TestCondition, colour = TestCondition, fill = TestCondition)) +
+  stat_summary_bin(fun.data = "mean_se", geom = "bar", position = "dodge",  size = .3) +
+  stat_summary(fun.data = "mean_se", geom = "errorbar", position = position_dodge(width = 0.9),  width = 0,  size = .3, colour = "black", linetype = "solid", show.legend = FALSE) + 
+  geom_point(aes(group = subject), colour = Black) +
+  # geom_line(aes(group = subject), colour = Black) +
+  # facet_wrap(~Day,) +
+  # Make Pretty
+  scale_y_continuous( expand = expansion(mult = c(0, 0)), breaks=seq(-1000,1000,20)) +
+  ggtitle("") + xlab("") + ylab("CS Difference") +
+  theme_cowplot(11) +
+  theme(plot.title = element_text(hjust = 0.5)) +
+  theme(plot.title = element_text(size=10)) +
+  coord_cartesian(ylim = c(-40,40.0001)) +
+  theme(axis.title.x=element_text(face = "bold")) +
+  scale_colour_manual(name = "", values = linecolours, aesthetics = c("colour")) +
+  scale_fill_manual(name = "", values = fillcolours) +
+  theme(legend.key.width=unit(0.5,"line")) + 
+  scale_x_discrete(labels = c("P100 - P50\nHigh","P100 - P50\nLow","High - Low\nP100", "High - Low\nP50")) +
+  theme(axis.text.x = element_text(face = "bold"))
+
+testdata_repeatTest_All_CS_Diff
+
+
+
+# Correlate Pavlovian & CRF Test ------------------------------------------
+
+savefile <- "CRF_Acquisition_CSPre.csv"
+Data_PavlovianAcq <- read_csv(here("figures", "figure_data", savefile))
+
+
+Data_PavlovianAcq_summary <- Data_PavlovianAcq %>% 
+  filter(Period == "CSPre",
+         Day >= 20) %>% 
+  group_by(subject, CS_name) %>% 
+  summarise(MagEntries = mean(MagEntries)) %>% 
+  ungroup() %>% 
+  pivot_wider(names_from = CS_name, values_from = MagEntries) %>% 
+  mutate(P50_HighVsLow = `A++--` - `B+-`,
+         P100_HighVsLow = `C++` - `D+`,
+         High_100Vs50= `C++` - `A++--`,
+         Low_100Vs50 = `D+` - `B+-`)
+
+CRF_ALL_data_repeatTest_long_Avg_combined <- full_join(CRF_ALL_data_repeatTest_long_Avg, Data_PavlovianAcq_summary)
+
+
+CRF_ALL_data_repeatTest_Pav_vs_Inst <- CRF_ALL_data_repeatTest_long_Avg_combined  %>% 
+  filter(Value == "Diff" | Value == "PercDiff") %>% 
+  mutate(Instrumental = Freq,
+         Pavlovian = ifelse((TestCondition == "P50_HighVsLow"), P50_HighVsLow, 
+                            ifelse((TestCondition == "P100_HighVsLow"), P100_HighVsLow, 
+                                   ifelse((TestCondition == "High_100Vs50"), High_100Vs50, 
+                                          ifelse((TestCondition == "Low_100Vs50"), Low_100Vs50, NA) ) ) ) )
+
+
+
+
+CRF_ALL_data_repeatTest_Pav_vs_Inst %>% 
+  filter(Value == "Diff",
+         measure == "LP") %>%
+ggplot(mapping = aes(x = Pavlovian, y = Instrumental) ) +
+  geom_hline(yintercept=0, linetype="dashed", color = "black") +
+  geom_vline(xintercept=0, linetype="dashed", color = "black") +
+  geom_smooth(method='lm', colour = DarkRed, fill = LightGrey) +
+  geom_point() +
+  facet_wrap(~TestCondition, scales='free') +
+  # Make Pretty
+  scale_y_continuous( expand = expansion(mult = c(0, 0)), breaks=seq(-1000,1000,10)) +
+  scale_x_continuous( expand = expansion(mult = c(0, 0)), breaks=seq(-1000,1000,2)) +
+  ggtitle("") + xlab("Pavlovian High Value Bias") + ylab("Instrumental High Value Bias") +
+  theme_cowplot(11) +
+  theme(plot.title = element_text(hjust = 0.5)) +
+  theme(plot.title = element_text(size=10)) +
+  coord_cartesian(ylim = c(-30,50.0001), xlim = c(-2, 8)) +
+  theme(axis.title.x=element_text(face = "bold")) +
+  scale_linetype_manual(name = "", values = linetypes)  +
+  scale_colour_manual(name = "", values = linecolours, aesthetics = c("colour")) +
+  scale_shape_manual(name = "", values = pointshapes) +
+  scale_fill_manual(name = "", values = fillcolours) +
+  theme(legend.key.width=unit(1,"line"))
+  
+
+
+
 # Save Plots --------------------------------------------------------------
 
 # 
@@ -1166,9 +2027,73 @@ A <- testdata_All_LP_Diff + theme(legend.position = "none")
 
 B <- testdata_All_LP_PercDiff + theme(legend.position = "none")
 
-CRF_Test_LPDiff_All <- (A + B ) + plot_annotation(tag_levels = 'A') + plot_layout(nrow = 2, ncol = 1, widths = c(1, 1))
+C <- testdata_All_CS_Diff + theme(legend.position = "none")
+
+CRF_Test_LPDiff_All <- (A + B + C) + plot_annotation(tag_levels = 'A') + plot_layout(nrow = 3, ncol = 1, widths = c(1, 1))
 
 filename = here("figures", "CRF_Test_LPDiff_All.png")
-ggsave(filename, CRF_Test_LPDiff_All, width = 120, height = 160, units = "mm", dpi = 1200)
+ggsave(filename, CRF_Test_LPDiff_All, width = 120, height = 240, units = "mm", dpi = 1200)
+
+
+
+
+## Repeat Test Data - LP
+A <- repeatTest_P100_HighvsLow_TotalLP + theme(legend.position= c(0.05,.90), 
+                                               legend.justification='left',
+                                               legend.direction='vertical')
+
+B <- repeatTest_P50_HighvsLow_TotalLP + theme(legend.position= c(0.05,.90), 
+                                              legend.justification='left',
+                                              legend.direction='vertical')
+
+C <- repeatTest_High_100Vs50_TotalLP + theme(legend.position= c(0.05,.90), 
+                                             legend.justification='left',
+                                             legend.direction='vertical')
+
+D <- repeatTest_Low_100Vs50_TotalLP + theme(legend.position= c(0.05,.90), 
+                                            legend.justification='left',
+                                            legend.direction='vertical')
+
+repeatTest_CRF_Test_TotalLP <- (A + B + C + D) + plot_annotation(tag_levels = 'A') + plot_layout(nrow = 2, ncol = 2, widths = c(1, 1,1,1))
+
+filename = here("figures", "CRF_repeatTest_TotalLP.png")
+ggsave(filename, repeatTest_CRF_Test_TotalLP, width = 160, height = 160, units = "mm", dpi = 1200)
+
+## Test Data - CS presentations
+A <- repeatTest_P100_HighvsLow_TotalCS + theme(legend.position= c(0.05,.90), 
+                                               legend.justification='left',
+                                               legend.direction='vertical')
+
+B <- repeatTest_P50_HighvsLow_TotalCS + theme(legend.position= c(0.05,.90), 
+                                              legend.justification='left',
+                                              legend.direction='vertical')
+
+C <- repeatTest_High_100Vs50_TotalCS + theme(legend.position= c(0.05,.90), 
+                                             legend.justification='left',
+                                             legend.direction='vertical')
+
+D <- repeatTest_Low_100Vs50_TotalCS + theme(legend.position= c(0.05,.90), 
+                                            legend.justification='left',
+                                            legend.direction='vertical')
+
+repeatTest_CRF_Test_TotalCS <- (A + B + C + D) + plot_annotation(tag_levels = 'A') + plot_layout(nrow = 2, ncol = 2, widths = c(1, 1,1,1))
+
+filename = here("figures", "CRF_repeatTest_TotalCS.png")
+ggsave(filename, repeatTest_CRF_Test_TotalCS, width = 160, height = 160, units = "mm", dpi = 1200)
+
+
+## Repeat Test Data - LP differences All conditions
+
+A <- testdata_repeatTest_All_LP_Diff + theme(legend.position = "none")
+
+B <- testdata_repeatTest_All_LP_PercDiff + theme(legend.position = "none")
+
+C <- testdata_repeatTest_All_CS_Diff + theme(legend.position = "none")
+
+CRF_repeatTest_LPDiff_All <- (A + B + C) + plot_annotation(tag_levels = 'A') + plot_layout(nrow = 3, ncol = 1, widths = c(1, 1))
+
+filename = here("figures", "CRF_repeatTest_LPDiff_All.png")
+ggsave(filename, CRF_repeatTest_LPDiff_All, width = 120, height = 240, units = "mm", dpi = 1200)
+
 
 

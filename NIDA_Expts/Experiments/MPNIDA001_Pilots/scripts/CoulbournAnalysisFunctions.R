@@ -890,3 +890,153 @@ coulbourn_processdata_Operant_SessionTimeBinAnalysis <- function(filename,folder
   
   # Function end
 }
+
+
+coulbourn_processdata_Operant_SessionTimeBinAnalysis_variablestart <- function(filename,folderpath,S,timebase, timebinwidth, bin, trialstartstate, sessionendstate) {
+  
+  filepath <- here(folderpath, filename)
+  
+  ## Read in data
+  rawdata <- fread(filepath)
+  ## Key to convert actions
+  
+  # key_actions <- c("LLR_On" = "A1_On",
+  #   "RLR_On" = "A2_On",
+  #   "Mag_On" = "A3_On",
+  #   "A4_On" = "A4_On",
+  #   "LLR_Off" = "A1_Off",
+  #   "RLR_Off" = "A2_Off",
+  #   "Mag_Off" = "A3_Off",
+  #   "A4_Off" = "A4_Off")
+  
+  
+  # Change time units to seconds --------------------------------------------
+  
+  rawdata <- rawdata %>% 
+    mutate(Time = Time*timebase/1000)
+  
+  
+  
+  # Check to see if the trialstartstate exists in the data ------------------
+  
+  if (length(which(rawdata$`Transition State` == trialstartstate)) > 0) {
+    #Only proceed if there is data to analyze
+    
+    # Calculate Trial Start and End Times --------------------------------------------------------
+    trial_start <- rawdata$Time[which(rawdata$`Transition State` == trialstartstate)[1]]
+    trial_end <- rawdata$Time[which(rawdata$`Transition State` == sessionendstate)]
+    
+    sessionlength <- trial_end - trial_start
+    
+    # Timebins 
+    totalbins <- sessionlength/timebinwidth
+    timebins <- c(1:totalbins)
+    timebin_start <- seq(from = trial_start, to = trial_end-timebinwidth, by= timebinwidth)
+    timebin_end <- seq(from = (trial_start + timebinwidth), to = trial_end, by= timebinwidth)
+    
+    
+    # Count Frequency of events in bins ---------------------------------------
+    
+    # Extract data
+    ## repeat for each of the 4 possible actions
+    A1_on <- rawdata$Time[rawdata$A1_On == 1]
+    A1_off <- rawdata$Time[rawdata$A1_Off == 1]
+    A1_bin <- coulbourn_actionbin(A1_on, A1_off, timebin_start, timebin_end)
+    
+    A2_on <- rawdata$Time[rawdata$A2_On == 1]
+    A2_off <- rawdata$Time[rawdata$A2_Off == 1]
+    A2_bin <- coulbourn_actionbin(A2_on, A2_off, timebin_start, timebin_end)
+    
+    A3_on <- rawdata$Time[rawdata$A3_On == 1]
+    A3_off <- rawdata$Time[rawdata$A3_Off == 1]
+    A3_bin <- coulbourn_actionbin(A3_on, A3_off, timebin_start, timebin_end)
+    
+    A4_on <- rawdata$Time[rawdata$A4_On == 1]
+    A4_off <- rawdata$Time[rawdata$A4_Off == 1]
+    A4_bin <- coulbourn_actionbin(A4_on, A4_off, timebin_start, timebin_end)
+    
+    
+    # Loop through all the states you want to bin
+    statebins = 0
+    statebinnames <- "0"
+    for (i in 1:length(bin)) {
+      statei_on <- rawdata$Time[rawdata$`Transition State` == bin[i]]
+      statei_off <- rawdata$Time[rawdata$`Transition State` > 0 & rawdata$`Current State`== bin[i]]
+      
+      temp <- coulbourn_actionbin(statei_on, statei_off, timebin_start, timebin_end)
+      statebins <- cbind(statebins, temp)
+      
+      statebinnames <- c(statebinnames, paste(names(bin[i]), "freq", sep = "_"), paste(names(bin[i]), "dur", sep = "_"))
+    }
+    #Drop redundant initialised column
+    statebins <-subset(statebins, select = -1)
+    statebinnames <- statebinnames[-1]
+    
+    ## Combine into a dataframe and rename variables appropriately
+    data_bin <- cbind(A1_bin,A2_bin,A3_bin,A4_bin, statebins)
+    colnames(data_bin) <- c("A1_freq", "A1_dur","A2_freq", "A2_dur","A3_freq", "A3_dur","A4_freq", "A4_dur", statebinnames)
+    
+    
+    ## Add session/program/subject information
+    folder <- replicate(length(timebins), rawdata$folder[1])
+    file <- replicate(length(timebins), rawdata$file[1])
+    savename <- replicate(length(timebins), filename)
+    subject <- replicate(length(timebins), rawdata$Subject[1])
+    protocol <- replicate(length(timebins), rawdata$Protocol[1])
+    station <- replicate(length(timebins), rawdata$Station[1])
+    run <- replicate(length(timebins), rawdata$Run[1])
+    project <- replicate(length(timebins), rawdata$Project[1])
+    userID <- replicate(length(timebins), rawdata$UserID[1])
+    session <- replicate(length(timebins), rawdata$Session[1])
+    
+    ## Combine all the data together
+    data_bin <- data.table(folder, file, savename, subject, protocol, station, run, project, userID, session, timebins,timebin_start, timebin_end, data_bin)
+    
+    
+    
+    ## Save as .csv file
+    # Create a filenaming system that is identical to the original data but with a prefix that identifies the analysis method
+    savefilename <- filename
+    # Create a new processed data folder
+    savefolderpath <- here(folderpath, "Processed_TimeBin")
+    dir.create(savefolderpath, showWarnings = FALSE)
+    
+    savefilepath <- here(savefolderpath, savefilename)
+    fwrite(data_bin, savefilepath)
+    
+  }  else {
+    
+    # Create a dummy timebin for animals with no real data
+    timebins = c(0)
+    
+    ## Add session/program/subject information
+    folder <- replicate(length(timebins), rawdata$folder[1])
+    file <- replicate(length(timebins), rawdata$file[1])
+    savename <- replicate(length(timebins), filename)
+    subject <- replicate(length(timebins), rawdata$Subject[1])
+    protocol <- replicate(length(timebins), rawdata$Protocol[1])
+    station <- replicate(length(timebins), rawdata$Station[1])
+    run <- replicate(length(timebins), rawdata$Run[1])
+    project <- replicate(length(timebins), rawdata$Project[1])
+    userID <- replicate(length(timebins), rawdata$UserID[1])
+    session <- replicate(length(timebins), rawdata$Session[1])
+    
+    ## Combine all the data together
+    data_bin <- data.table(folder, file, savename, subject, protocol, station, run, project, userID, session, timebins)
+    
+    
+    
+    ## Save as .csv file
+    # Create a filenaming system that is identical to the original data but with a prefix that identifies the analysis method
+    savefilename <- filename
+    # Create a new processed data folder
+    savefolderpath <- here(folderpath, "Processed_TimeBin")
+    dir.create(savefolderpath, showWarnings = FALSE)
+    
+    savefilepath <- here(savefolderpath, savefilename)
+    fwrite(data_bin, savefilepath)
+    
+  }
+  
+  # Function end
+}

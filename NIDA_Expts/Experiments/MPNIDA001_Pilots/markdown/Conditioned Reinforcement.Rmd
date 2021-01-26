@@ -47,7 +47,7 @@ CRF_ALL_data_long_Avg <- read_csv(here("figures","figure_data","CRF_ALL_data_lon
 
 ```{r Stage 1 Acquisition STats , include=FALSE, message = FALSE, warning=FALSE}
 rawdata <- CRF_Acquisition_CSPre %>% 
-  filter(Period == "CS")
+  filter(Period == "CSPre")
 # Stage 1 Acquisition Frequency
 anova <- aov_4(MagEntries ~ (Day*CS_name|subject), data = rawdata, anova_table = list(correction = "none", es = "pes"))
 anova_Stg1_Freq <- apa_print(anova, mse = "FALSE",correction = "none",es = "pes")
@@ -75,7 +75,7 @@ simple_Stg1_Dur$table
 
 ```{r Stage 1 Acquisition STats Mag*prob , include=FALSE, message = FALSE, warning=FALSE}
 rawdata <- CRF_Acquisition_CSPre %>% 
-  filter(Period == "CS",
+  filter(Period == "CSPre",
          Day < 7)
 # Stage 1 Acquisition Frequency
 anova <- aov_4(MagEntries ~ (Day*magnitude*probability|subject), data = rawdata, anova_table = list(correction = "none", es = "pes"))
@@ -109,7 +109,7 @@ simple_Stg1_Dur$table
 
 ```{r Stage 1 Acquisition Last 5s Stats , include=FALSE, message = FALSE, warning=FALSE}
 rawdata <- CRF_Acquisition_CSPre_Last5s %>% 
-  filter(Period == "CS",
+  filter(Period == "CSPre",
          Day < 7)
 # Stage 1 Acquisition Frequency
 anova <- aov_4(MagEntries ~ (Day*CS_name|subject), data = rawdata, anova_table = list(correction = "none", es = "pes"))
@@ -138,7 +138,7 @@ simple_Stg1_Dur_5s$table
 
 ```{r Stage 1 Acquisition Last 5s Stats mag*prob , include=FALSE, message = FALSE, warning=FALSE}
 rawdata <- CRF_Acquisition_CSPre_Last5s %>% 
-  filter(Period == "CS")
+  filter(Period == "CSPre")
 # Stage 1 Acquisition Frequency
 anova <- aov_4(MagEntries ~ (Day*magnitude*probability|subject), data = rawdata, anova_table = list(correction = "none", es = "pes"))
 anova_Stg1_Freq_5s <- apa_print(anova, mse = "FALSE",correction = "none",es = "pes")
@@ -169,9 +169,10 @@ simple_Stg1_Dur_5s$table
 `r apa_table(within(anova_Stg1_Dur_5s$table, rm(pes)),caption = "Magazine Duration ANOVA - 5s")`
 
 ```{r Stage 3 Enhanced Acquisition Stats Mag*prob , include=FALSE, message = FALSE, warning=FALSE}
+# Look at the last 4 days of conditioning
 rawdata <- CRF_Acquisition_CSPre %>% 
   filter(Period == "CSPre",
-         Day >= 22)
+         Day >= 20)
 # Stage 1 Acquisition Frequency
 anova <- aov_4(MagEntries ~ (Day*magnitude*probability|subject), data = rawdata, anova_table = list(correction = "none", es = "pes"))
 anova_Stg3_Freq <- apa_print(anova, mse = "FALSE",correction = "none",es = "pes")
@@ -188,11 +189,13 @@ simple_Stg3_Freq2$table
 anova <- aov_4(MagDuration ~ (Day*magnitude*probability|subject), data = rawdata, anova_table = list(correction = "none", es = "pes"))
 anova_Stg3_Dur <- apa_print(anova, mse = "FALSE",correction = "none",es = "pes")
 ## simple effects - linear trend on Day
-simple <- emmeans(anova, ~Day*magnitude)
-simple_Stg3_Dur <- apa_print(contrast(simple, interaction = "pairwise", by = "Day", adjust = "tukey"))
+simple <- emmeans(anova, ~magnitude*probability)
+simple_Stg3_Dur <- apa_print(contrast(simple, interaction = "pairwise", by = "magnitude", adjust = "none"))
+simple_Stg3_Dur2 <- apa_print(contrast(simple, interaction = "pairwise", by = "probability", adjust = "none"))
 
 anova_Stg3_Dur$table
 simple_Stg3_Dur$table
+simple_Stg3_Dur2$table
 ```
 
 

@@ -1,0 +1,17 @@
+Project,UserID,Protocol,Session,Station,Run,Subject,Time,Current State,Transition State,Transition Event,A1_On,A2_On,A3_On,A4_On,A1_Off,A2_Off,A3_Off,A4_Off,folder,file
+C,Marios,71,295,13,1,35____,0,0,1,0,0,0,0,0,0,0,0,0,RepeatTest2_Day24,CRFRepeatTest2P71
+C,Marios,71,295,13,1,35____,1750,1,2,0,0,0,0,0,0,0,0,0,RepeatTest2_Day24,CRFRepeatTest2P71
+C,Marios,71,295,13,1,35____,2631,2,3,1,1,0,0,0,0,0,0,0,RepeatTest2_Day24,CRFRepeatTest2P71
+C,Marios,71,295,13,1,35____,2635,3,0,0,0,0,0,0,1,0,0,0,RepeatTest2_Day24,CRFRepeatTest2P71
+C,Marios,71,295,13,1,35____,2731,3,8,0,0,0,0,0,0,0,0,0,RepeatTest2_Day24,CRFRepeatTest2P71
+C,Marios,71,295,13,1,35____,4481,8,9,0,0,0,0,0,0,0,0,0,RepeatTest2_Day24,CRFRepeatTest2P71
+C,Marios,71,295,13,1,35____,7481,9,8,0,0,0,0,0,0,0,0,0,RepeatTest2_Day24,CRFRepeatTest2P71
+C,Marios,71,295,13,1,35____,8981,8,9,0,0,0,0,0,0,0,0,0,RepeatTest2_Day24,CRFRepeatTest2P71
+C,Marios,71,295,13,1,35____,9095,9,10,2,0,1,0,0,0,0,0,0,RepeatTest2_Day24,CRFRepeatTest2P71
+C,Marios,71,295,13,1,35____,9096,10,0,0,0,0,0,0,0,1,0,0,RepeatTest2_Day24,CRFRepeatTest2P71
+C,Marios,71,295,13,1,35____,9195,10,11,0,0,0,0,0,0,0,0,0,RepeatTest2_Day24,CRFRepeatTest2P71
+C,Marios,71,295,13,1,35____,10695,11,12,0,0,0,0,0,0,0,0,0,RepeatTest2_Day24,CRFRepeatTest2P71
+C,Marios,71,295,13,1,35____,30659,12,0,0,0,1,0,0,0,0,0,0,RepeatTest2_Day24,CRFRepeatTest2P71
+C,Marios,71,295,13,1,35____,30660,12,0,0,0,0,0,0,0,1,0,0,RepeatTest2_Day24,CRFRepeatTest2P71
+C,Marios,71,295,13,1,35____,100695,12,17,0,0,0,0,0,0,0,0,0,RepeatTest2_Day24,CRFRepeatTest2P71
+C,Marios,71,295,13,1,35____,102195,17,-1,0,0,0,0,0,0,0,0,0,RepeatTest2_Day24,CRFRepeatTest2P71

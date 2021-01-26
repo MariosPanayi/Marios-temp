@@ -22,7 +22,8 @@ projectdatafolder <- c("3_LeverPressingForLights")
 listofdatafolders <- c("LPL_Acquisition_RR2_Day1",
                        "LPL_Acquisition_RR2_Day2",
                        "LPL_Acquisition_RR2_Day3",
-                       "LPL_Acquisition_RR2_Day4")
+                       "LPL_Acquisition_RR2_Day4",
+                       "LPL_ReAcquisitionRR2_Sated1week_Day16")
 
 
 #  extract data filenames, only .txt --------------------------------------

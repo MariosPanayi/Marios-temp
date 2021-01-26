@@ -149,6 +149,11 @@ filename <- "LPL_ProcessedData_WithinSession10minBins.csv"
 
 rawdata <- read_csv(here(folderpath,filename))
 
+# Change Day into numeric
+rawdata <- rawdata %>% 
+  mutate(Day = str_replace(string = Day,pattern = "Day", replacement = ""),
+         Day = as.numeric(Day))
+
 ## Recode lever identity based on counterbalancing
 data_recode <- rawdata %>% 
   group_by(Day, subject) %>% 
@@ -169,6 +174,8 @@ data_recode <- rawdata %>%
          
   ) %>% 
   ungroup()
+
+
 
 
 ## relabel data

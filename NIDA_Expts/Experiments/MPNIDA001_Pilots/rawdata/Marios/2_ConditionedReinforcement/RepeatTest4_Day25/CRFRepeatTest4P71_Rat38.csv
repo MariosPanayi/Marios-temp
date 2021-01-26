@@ -1,0 +1,27 @@
+Project,UserID,Protocol,Session,Station,Run,Subject,Time,Current State,Transition State,Transition Event,A1_On,A2_On,A3_On,A4_On,A1_Off,A2_Off,A3_Off,A4_Off,folder,file
+C,Marios,71,302,7,1,38____,0,0,1,0,0,0,0,0,0,0,0,0,RepeatTest4_Day25,CRFRepeatTest4P71
+C,Marios,71,302,7,1,38____,2000,1,2,0,0,0,0,0,0,0,0,0,RepeatTest4_Day25,CRFRepeatTest4P71
+C,Marios,71,302,7,1,38____,3698,2,3,1,1,0,0,0,0,0,0,0,RepeatTest4_Day25,CRFRepeatTest4P71
+C,Marios,71,302,7,1,38____,3741,3,0,0,0,0,0,0,1,0,0,0,RepeatTest4_Day25,CRFRepeatTest4P71
+C,Marios,71,302,7,1,38____,3798,3,8,0,0,0,0,0,0,0,0,0,RepeatTest4_Day25,CRFRepeatTest4P71
+C,Marios,71,302,7,1,38____,5548,8,9,0,0,0,0,0,0,0,0,0,RepeatTest4_Day25,CRFRepeatTest4P71
+C,Marios,71,302,7,1,38____,8548,9,8,0,0,0,0,0,0,0,0,0,RepeatTest4_Day25,CRFRepeatTest4P71
+C,Marios,71,302,7,1,38____,10548,8,9,0,0,0,0,0,0,0,0,0,RepeatTest4_Day25,CRFRepeatTest4P71
+C,Marios,71,302,7,1,38____,13548,9,8,0,0,0,0,0,0,0,0,0,RepeatTest4_Day25,CRFRepeatTest4P71
+C,Marios,71,302,7,1,38____,14798,8,9,0,0,0,0,0,0,0,0,0,RepeatTest4_Day25,CRFRepeatTest4P71
+C,Marios,71,302,7,1,38____,17798,9,8,0,0,0,0,0,0,0,0,0,RepeatTest4_Day25,CRFRepeatTest4P71
+C,Marios,71,302,7,1,38____,19548,8,9,0,0,0,0,0,0,0,0,0,RepeatTest4_Day25,CRFRepeatTest4P71
+C,Marios,71,302,7,1,38____,22548,9,8,0,0,0,0,0,0,0,0,0,RepeatTest4_Day25,CRFRepeatTest4P71
+C,Marios,71,302,7,1,38____,24298,8,9,0,0,0,0,0,0,0,0,0,RepeatTest4_Day25,CRFRepeatTest4P71
+C,Marios,71,302,7,1,38____,27298,9,8,0,0,0,0,0,0,0,0,0,RepeatTest4_Day25,CRFRepeatTest4P71
+C,Marios,71,302,7,1,38____,29048,8,9,0,0,0,0,0,0,0,0,0,RepeatTest4_Day25,CRFRepeatTest4P71
+C,Marios,71,302,7,1,38____,32048,9,8,0,0,0,0,0,0,0,0,0,RepeatTest4_Day25,CRFRepeatTest4P71
+C,Marios,71,302,7,1,38____,33298,8,9,0,0,0,0,0,0,0,0,0,RepeatTest4_Day25,CRFRepeatTest4P71
+C,Marios,71,302,7,1,38____,33527,9,10,2,0,1,0,0,0,0,0,0,RepeatTest4_Day25,CRFRepeatTest4P71
+C,Marios,71,302,7,1,38____,33623,10,0,0,0,0,0,0,0,1,0,0,RepeatTest4_Day25,CRFRepeatTest4P71
+C,Marios,71,302,7,1,38____,33627,10,11,0,0,0,0,0,0,0,0,0,RepeatTest4_Day25,CRFRepeatTest4P71
+C,Marios,71,302,7,1,38____,35127,11,12,0,0,0,0,0,0,0,0,0,RepeatTest4_Day25,CRFRepeatTest4P71
+C,Marios,71,302,7,1,38____,35264,12,0,0,0,1,0,0,0,0,0,0,RepeatTest4_Day25,CRFRepeatTest4P71
+C,Marios,71,302,7,1,38____,35451,12,0,0,0,0,0,0,0,1,0,0,RepeatTest4_Day25,CRFRepeatTest4P71
+C,Marios,71,302,7,1,38____,125127,12,17,0,0,0,0,0,0,0,0,0,RepeatTest4_Day25,CRFRepeatTest4P71
+C,Marios,71,302,7,1,38____,126627,17,-1,0,0,0,0,0,0,0,0,0,RepeatTest4_Day25,CRFRepeatTest4P71
