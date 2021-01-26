@@ -3,7 +3,7 @@
 library(tidyverse)
 # Package for relative file paths
 library(here)
-# library(ggpubr)
+library(ggpubr)
 library(cowplot)
 library(ggsignif)
 library(patchwork)
@@ -1129,6 +1129,11 @@ rawdata <- rawdata %>%
 rawdata <- rawdata %>% 
   filter(timebins != 0)
 
+# Filter repeat sessions [optional]
+# rawdata <- rawdata %>% 
+#   filter(folder != "RepeatTest1_Day24")
+
+
 # COunterbalancing check to see if stimuli cause different rates of CRF
 data_repeatTest_CBX <- rawdata %>% 
   mutate(Click_LP_Freq = ifelse(Left_LeverCueID == "Click", A1_freq, ifelse(Right_LeverCueID == "Click", A2_freq, NA )),
@@ -1321,20 +1326,20 @@ data_repeatTest_Low_100Vs50_long <- data_repeatTest_Low_100Vs50 %>%
 
 # Test Data Create average session data
 CRF_data_repeatTest_P100_HighVsLow_long_Avg <- data_repeatTest_P100_HighvsLow_long %>% 
-  group_by(TestCondition, Day, subject, measure, Value, Probability) %>% 
-  summarise(Freq = sum(Freq)) 
+  group_by(TestCondition, protocol , subject, measure, Value, Probability) %>% 
+  summarise(Freq = mean(Freq)*30) 
 
 CRF_data_repeatTest_P50_HighVsLow_long_Avg <- data_repeatTest_P50_HighVsLow_long %>% 
-  group_by(TestCondition, Day, subject, measure, Value, Probability) %>% 
-  summarise(Freq = sum(Freq)) 
+  group_by(TestCondition, protocol , subject, measure, Value, Probability) %>% 
+  summarise(Freq = mean(Freq)*30) 
 
 CRF_data_repeatTest_High_100Vs50_long_Avg <- data_repeatTest_High_100Vs50_long %>% 
-  group_by(TestCondition, Day, subject, measure, Value, Probability) %>% 
-  summarise(Freq = sum(Freq)) 
+  group_by(TestCondition, protocol , subject, measure, Value, Probability) %>% 
+  summarise(Freq = mean(Freq)*30) 
 
 CRF_data_repeatTest_Low_100Vs50_long_Avg <- data_repeatTest_Low_100Vs50_long %>% 
-  group_by(TestCondition, Day, subject, measure, Value, Probability) %>% 
-  summarise(Freq = sum(Freq)) 
+  group_by(TestCondition, protocol , subject, measure, Value, Probability) %>% 
+  summarise(Freq = mean(Freq)*30) 
 
 ## Check things are being averaged correctly 
 # CRF_data_repeatTest_P100_HighVsLow_long_Avg %>% 
@@ -1916,7 +1921,8 @@ CRF_ALL_data_repeatTest_Pav_vs_Inst <- CRF_ALL_data_repeatTest_long_Avg_combined
                                           ifelse((TestCondition == "Low_100Vs50"), Low_100Vs50, NA) ) ) ) )
 
 
-# library(ggExtra)
+
+library(ggpubr)
 
 plotdata <- CRF_ALL_data_repeatTest_Pav_vs_Inst %>% 
   filter(Value == "Diff",
@@ -1944,9 +1950,24 @@ ggplot(data = plotdata, mapping = aes(x = Pavlovian, y = Instrumental) ) +
   scale_fill_manual(name = "", values = fillcolours) +
   theme(legend.key.width=unit(1,"line"))
   
+CRF_RepeatTest_ScatterPlot <- ggscatterhist(data = plotdata, x = "Pavlovian", y = "Instrumental",
+              group = "TestCondition", color = "TestCondition", shape = "circle",
+              size = 3, alpha = 0.8,
+              palette = c(DarkBlue, LightBlue, DarkRed, LightRed),
+              margin.params = list(fill = "TestCondition", color = "black", size = 0.2),
+              ggtheme = theme_bw()) 
+
+CRF_RepeatTest_ScatterPlot$sp <- CRF_RepeatTest_ScatterPlot$sp +        
+  geom_hline(yintercept = 0, linetype="dashed", color = "black") +
+  geom_vline(xintercept = 0, linetype="dashed", color = "black") 
+
+CRF_RepeatTest_ScatterPlot
 
 
-
+unique(CRF_ALL_data_repeatTest_long_Avg$subject[CRF_ALL_data_repeatTest_long_Avg$TestCondition=="P100_HighVsLow"])
+unique(CRF_ALL_data_repeatTest_long_Avg$subject[CRF_ALL_data_repeatTest_long_Avg$TestCondition=="P50_HighVsLow"])
+unique(CRF_ALL_data_repeatTest_long_Avg$subject[CRF_ALL_data_repeatTest_long_Avg$TestCondition=="High_100Vs50"])
+unique(CRF_ALL_data_repeatTest_long_Avg$subject[CRF_ALL_data_repeatTest_long_Avg$TestCondition=="Low_100Vs50"])
 # Save Plots --------------------------------------------------------------
 
 # 

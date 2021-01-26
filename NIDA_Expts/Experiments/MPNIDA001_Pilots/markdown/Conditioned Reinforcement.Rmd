@@ -39,6 +39,8 @@ CRF_Acquisition_CSPre_Last5s <- read_csv(here("figures","figure_data","CRF_Acqui
 # CRF_data_High_100Vs50_long <- read_csv(here("figures","figure_data","CRF_data_High_100Vs50_long.csv"))
 # CRF_data_Low_100Vs50_long <- read_csv(here("figures","figure_data","CRF_data_Low_100Vs50_long.csv"))
 CRF_ALL_data_long_Avg <- read_csv(here("figures","figure_data","CRF_ALL_data_long_Avg.csv"))
+CRF_RepeatTest_data_long_Avg <- read_csv(here("figures","figure_data","CRF_RepeatTest_ALL_data_repeatTest_long_Avg.csv"))
+
 
 
 ```
@@ -215,12 +217,15 @@ simple_Stg3_Dur2$table
 
 ```{r Test CRF DIfference Scores Stats , include=FALSE, message = FALSE, warning=FALSE}
 # This analysis is not great - Standard ANOVA, only 4 rats did all 4 tests so this analysis kicks out too many subjects
-rawdata <- CRF_ALL_data_long_Avg %>% 
+rawdata <- CRF_RepeatTest_data_long_Avg %>% 
   filter(Value == "Diff",
-         measure == "LP",
-         ExcludeSubject == "Keep")
+         measure == "LP") %>% 
+  mutate(comparison = ifelse(TestCondition == "P100_HighVsLow" | TestCondition == "P50_HighVsLow" , "Values", "Probabilities"),
+         Constant = ifelse(TestCondition == "P100_HighVsLow" | TestCondition == "High_100Vs50" , "High", "Low"))
+
+
 # Stage 1 Acquisition Frequency
-anova <- aov_4(Freq ~ (TestCondition|subject), data = rawdata, anova_table = list(correction = "none", es = "pes"))
+anova <- aov_4(Freq ~ (comparison*Constant|subject), data = rawdata, anova_table = list(correction = "none", es = "pes"))
 anova_test_Value <- apa_print(anova, mse = "FALSE",correction = "none",es = "pes")
 # ## simple effects - linear trend on Day
 # simple <- emmeans(anova, ~TestCondition)

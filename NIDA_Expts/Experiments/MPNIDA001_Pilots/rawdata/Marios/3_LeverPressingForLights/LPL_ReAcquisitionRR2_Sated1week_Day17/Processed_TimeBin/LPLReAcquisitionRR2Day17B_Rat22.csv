@@ -1,0 +1,4 @@
+folder,file,savename,subject,protocol,station,run,project,userID,session,timebins,timebin_start,timebin_end,A1_freq,A1_dur,A2_freq,A2_dur,A3_freq,A3_dur,A4_freq,A4_dur,Flash_freq,Flash_dur,Steady_freq,Steady_dur
+LPL_ReAcquisitionRR2_Sated1week_Day17,LPLReAcquisitionRR2Day17B,LPLReAcquisitionRR2Day17B_Rat22.csv,22____,17,12,1,C,Marios,307,1,0,600,29,27.6599999999999,30,17.6600000000001,0,0,0,0,9,45,13,64.36
+LPL_ReAcquisitionRR2_Sated1week_Day17,LPLReAcquisitionRR2Day17B,LPLReAcquisitionRR2Day17B_Rat22.csv,22____,17,12,1,C,Marios,307,2,600,1200,42,46.5400000000007,8,6.38,0,0,0,0,0,0,15,75.64
+LPL_ReAcquisitionRR2_Sated1week_Day17,LPLReAcquisitionRR2Day17B,LPLReAcquisitionRR2Day17B_Rat22.csv,22____,17,12,1,C,Marios,307,3,1200,1800,12,9.96000000000026,2,1.25999999999999,0,0,0,0,0,0,5,25

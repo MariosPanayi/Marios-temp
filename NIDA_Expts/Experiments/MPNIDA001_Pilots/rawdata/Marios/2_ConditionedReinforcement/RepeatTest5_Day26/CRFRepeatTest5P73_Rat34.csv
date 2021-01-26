@@ -1,0 +1,27 @@
+Project,UserID,Protocol,Session,Station,Run,Subject,Time,Current State,Transition State,Transition Event,A1_On,A2_On,A3_On,A4_On,A1_Off,A2_Off,A3_Off,A4_Off,folder,file
+C,Marios,73,305,5,1,34____,0,0,1,0,0,0,0,0,0,0,0,0,RepeatTest5_Day26,CRFRepeatTest5P73
+C,Marios,73,305,5,1,34____,1250,1,2,0,0,0,0,0,0,0,0,0,RepeatTest5_Day26,CRFRepeatTest5P73
+C,Marios,73,305,5,1,34____,1620,2,4,2,0,1,0,0,0,0,0,0,RepeatTest5_Day26,CRFRepeatTest5P73
+C,Marios,73,305,5,1,34____,1648,4,0,0,0,0,0,0,0,1,0,0,RepeatTest5_Day26,CRFRepeatTest5P73
+C,Marios,73,305,5,1,34____,1720,4,5,0,0,0,0,0,0,0,0,0,RepeatTest5_Day26,CRFRepeatTest5P73
+C,Marios,73,305,5,1,34____,3720,5,6,0,0,0,0,0,0,0,0,0,RepeatTest5_Day26,CRFRepeatTest5P73
+C,Marios,73,305,5,1,34____,3902,6,7,1,1,0,0,0,0,0,0,0,RepeatTest5_Day26,CRFRepeatTest5P73
+C,Marios,73,305,5,1,34____,3909,7,0,0,0,0,0,0,1,0,0,0,RepeatTest5_Day26,CRFRepeatTest5P73
+C,Marios,73,305,5,1,34____,4002,7,11,0,0,0,0,0,0,0,0,0,RepeatTest5_Day26,CRFRepeatTest5P73
+C,Marios,73,305,5,1,34____,5502,11,12,0,0,0,0,0,0,0,0,0,RepeatTest5_Day26,CRFRepeatTest5P73
+C,Marios,73,305,5,1,34____,6057,12,0,0,0,1,0,0,0,0,0,0,RepeatTest5_Day26,CRFRepeatTest5P73
+C,Marios,73,305,5,1,34____,6093,12,0,0,0,0,0,0,0,1,0,0,RepeatTest5_Day26,CRFRepeatTest5P73
+C,Marios,73,305,5,1,34____,11547,12,0,0,1,0,0,0,0,0,0,0,RepeatTest5_Day26,CRFRepeatTest5P73
+C,Marios,73,305,5,1,34____,11607,12,0,0,0,0,0,0,1,0,0,0,RepeatTest5_Day26,CRFRepeatTest5P73
+C,Marios,73,305,5,1,34____,27937,12,16,2,0,1,0,0,0,0,0,0,RepeatTest5_Day26,CRFRepeatTest5P73
+C,Marios,73,305,5,1,34____,27971,16,0,0,0,0,0,0,0,1,0,0,RepeatTest5_Day26,CRFRepeatTest5P73
+C,Marios,73,305,5,1,34____,28037,16,12,0,0,0,0,0,0,0,0,0,RepeatTest5_Day26,CRFRepeatTest5P73
+C,Marios,73,305,5,1,34____,28492,12,0,0,0,1,0,0,0,0,0,0,RepeatTest5_Day26,CRFRepeatTest5P73
+C,Marios,73,305,5,1,34____,28539,12,0,0,0,0,0,0,0,1,0,0,RepeatTest5_Day26,CRFRepeatTest5P73
+C,Marios,73,305,5,1,34____,31637,12,0,0,1,0,0,0,0,0,0,0,RepeatTest5_Day26,CRFRepeatTest5P73
+C,Marios,73,305,5,1,34____,31871,12,0,0,0,0,0,0,1,0,0,0,RepeatTest5_Day26,CRFRepeatTest5P73
+C,Marios,73,305,5,1,34____,31872,12,15,1,1,0,0,0,0,0,0,0,RepeatTest5_Day26,CRFRepeatTest5P73
+C,Marios,73,305,5,1,34____,31873,15,0,0,0,0,0,0,1,0,0,0,RepeatTest5_Day26,CRFRepeatTest5P73
+C,Marios,73,305,5,1,34____,31972,15,12,0,0,0,0,0,0,0,0,0,RepeatTest5_Day26,CRFRepeatTest5P73
+C,Marios,73,305,5,1,34____,95502,12,17,0,0,0,0,0,0,0,0,0,RepeatTest5_Day26,CRFRepeatTest5P73
+C,Marios,73,305,5,1,34____,97002,17,-1,0,0,0,0,0,0,0,0,0,RepeatTest5_Day26,CRFRepeatTest5P73

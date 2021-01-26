@@ -1,0 +1,25 @@
+Project,UserID,Protocol,Session,Station,Run,Subject,Time,Current State,Transition State,Transition Event,A1_On,A2_On,A3_On,A4_On,A1_Off,A2_Off,A3_Off,A4_Off,folder,file
+C,Marios,66,305,10,1,12____,0,0,1,0,0,0,0,0,0,0,0,0,RepeatTest5_Day26,CRFRepeatTest5P66
+C,Marios,66,305,10,1,12____,1250,1,2,0,0,0,0,0,0,0,0,0,RepeatTest5_Day26,CRFRepeatTest5P66
+C,Marios,66,305,10,1,12____,4104,2,3,1,1,0,0,0,0,0,0,0,RepeatTest5_Day26,CRFRepeatTest5P66
+C,Marios,66,305,10,1,12____,4105,3,0,0,0,0,0,0,1,0,0,0,RepeatTest5_Day26,CRFRepeatTest5P66
+C,Marios,66,305,10,1,12____,4204,3,8,0,0,0,0,0,0,0,0,0,RepeatTest5_Day26,CRFRepeatTest5P66
+C,Marios,66,305,10,1,12____,6204,8,9,0,0,0,0,0,0,0,0,0,RepeatTest5_Day26,CRFRepeatTest5P66
+C,Marios,66,305,10,1,12____,6524,9,10,2,0,1,0,0,0,0,0,0,RepeatTest5_Day26,CRFRepeatTest5P66
+C,Marios,66,305,10,1,12____,6624,10,11,0,0,0,0,0,0,0,0,0,RepeatTest5_Day26,CRFRepeatTest5P66
+C,Marios,66,305,10,1,12____,6625,11,0,0,0,0,0,0,0,1,0,0,RepeatTest5_Day26,CRFRepeatTest5P66
+C,Marios,66,305,10,1,12____,8124,11,12,0,0,0,0,0,0,0,0,0,RepeatTest5_Day26,CRFRepeatTest5P66
+C,Marios,66,305,10,1,12____,53918,12,0,0,0,1,0,0,0,0,0,0,RepeatTest5_Day26,CRFRepeatTest5P66
+C,Marios,66,305,10,1,12____,53949,12,0,0,0,0,0,0,0,1,0,0,RepeatTest5_Day26,CRFRepeatTest5P66
+C,Marios,66,305,10,1,12____,53956,12,13,2,0,1,0,0,0,0,0,0,RepeatTest5_Day26,CRFRepeatTest5P66
+C,Marios,66,305,10,1,12____,53979,13,0,0,0,0,0,0,0,1,0,0,RepeatTest5_Day26,CRFRepeatTest5P66
+C,Marios,66,305,10,1,12____,54056,13,12,0,0,0,0,0,0,0,0,0,RepeatTest5_Day26,CRFRepeatTest5P66
+C,Marios,66,305,10,1,12____,68149,12,0,0,0,1,0,0,0,0,0,0,RepeatTest5_Day26,CRFRepeatTest5P66
+C,Marios,66,305,10,1,12____,68241,12,0,0,0,0,0,0,0,1,0,0,RepeatTest5_Day26,CRFRepeatTest5P66
+C,Marios,66,305,10,1,12____,68509,12,13,2,0,1,0,0,0,0,0,0,RepeatTest5_Day26,CRFRepeatTest5P66
+C,Marios,66,305,10,1,12____,68513,13,0,0,0,0,0,0,0,1,0,0,RepeatTest5_Day26,CRFRepeatTest5P66
+C,Marios,66,305,10,1,12____,68550,13,0,0,0,1,0,0,0,0,0,0,RepeatTest5_Day26,CRFRepeatTest5P66
+C,Marios,66,305,10,1,12____,68574,13,0,0,0,0,0,0,0,1,0,0,RepeatTest5_Day26,CRFRepeatTest5P66
+C,Marios,66,305,10,1,12____,68609,13,12,0,0,0,0,0,0,0,0,0,RepeatTest5_Day26,CRFRepeatTest5P66
+C,Marios,66,305,10,1,12____,98124,12,17,0,0,0,0,0,0,0,0,0,RepeatTest5_Day26,CRFRepeatTest5P66
+C,Marios,66,305,10,1,12____,99624,17,-1,0,0,0,0,0,0,0,0,0,RepeatTest5_Day26,CRFRepeatTest5P66
