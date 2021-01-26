@@ -1550,13 +1550,13 @@ repeatTest_P50_HighvsLow_TotalCS <- CRF_data_repeatTest_P50_HighVsLow_long_Avg %
   theme(legend.key.width=unit(0.5,"line"))
 repeatTest_P50_HighvsLow_TotalCS
 
-# repeatTest_P50_HighvsLow_TotalLPDiff <- CRF_data_repeatTest_P50_HighVsLow_long_Avg %>% 
+# repeatTest_P50_HighvsLow_TotalLPDiff <- CRF_data_repeatTest_P50_HighVsLow_long_Avg %>%
 #   filter(measure == "LP",
 #          Value == "PercDiff",
-#   ) %>% 
+#   ) %>%
 #   ggplot(mapping = aes(x = as.factor(Value), y = Freq, group = Value, colour = Value, fill = Value)) +
 #   stat_summary_bin(fun.data = "mean_se", geom = "bar", position = "dodge",  size = .3) +
-#   stat_summary(fun.data = "mean_se", geom = "errorbar", position = position_dodge(width = 0.9),  width = 0,  size = .3, colour = "black", linetype = "solid", show.legend = FALSE) + 
+#   stat_summary(fun.data = "mean_se", geom = "errorbar", position = position_dodge(width = 0.9),  width = 0,  size = .3, colour = "black", linetype = "solid", show.legend = FALSE) +
 #   geom_point(aes(group = subject), colour = Black) +
 #   # geom_line(aes(group = subject), colour = Black) +
 #   # facet_wrap(~Day,) +
@@ -1571,7 +1571,7 @@ repeatTest_P50_HighvsLow_TotalCS
 #   scale_colour_manual(name = "", values = linecolours, aesthetics = c("colour")) +
 #   scale_fill_manual(name = "", values = fillcolours) +
 #   theme(legend.key.width=unit(0.5,"line"))
-repeatTest_P50_HighvsLow_TotalLPDiff
+# repeatTest_P50_HighvsLow_TotalLPDiff
 
 # 
 # 
@@ -1916,25 +1916,27 @@ CRF_ALL_data_repeatTest_Pav_vs_Inst <- CRF_ALL_data_repeatTest_long_Avg_combined
                                           ifelse((TestCondition == "Low_100Vs50"), Low_100Vs50, NA) ) ) ) )
 
 
+# library(ggExtra)
 
-
-CRF_ALL_data_repeatTest_Pav_vs_Inst %>% 
+plotdata <- CRF_ALL_data_repeatTest_Pav_vs_Inst %>% 
   filter(Value == "Diff",
-         measure == "LP") %>%
-ggplot(mapping = aes(x = Pavlovian, y = Instrumental) ) +
+         measure == "LP")
+  
+ggplot(data = plotdata, mapping = aes(x = Pavlovian, y = Instrumental) ) +
   geom_hline(yintercept=0, linetype="dashed", color = "black") +
   geom_vline(xintercept=0, linetype="dashed", color = "black") +
   geom_smooth(method='lm', colour = DarkRed, fill = LightGrey) +
   geom_point() +
   facet_wrap(~TestCondition, scales='free') +
+  # ggMarginal(data = plotdata, x = "Pavlovian", y = "Instrumental", type="density") +
   # Make Pretty
-  scale_y_continuous( expand = expansion(mult = c(0, 0)), breaks=seq(-1000,1000,10)) +
+  scale_y_continuous( expand = expansion(mult = c(0, 0)), breaks=seq(-1000,1000,20)) +
   scale_x_continuous( expand = expansion(mult = c(0, 0)), breaks=seq(-1000,1000,2)) +
   ggtitle("") + xlab("Pavlovian High Value Bias") + ylab("Instrumental High Value Bias") +
   theme_cowplot(11) +
   theme(plot.title = element_text(hjust = 0.5)) +
   theme(plot.title = element_text(size=10)) +
-  coord_cartesian(ylim = c(-30,50.0001), xlim = c(-2, 8)) +
+  coord_cartesian(ylim = c(-80,120.0001), xlim = c(-2, 8)) +
   theme(axis.title.x=element_text(face = "bold")) +
   scale_linetype_manual(name = "", values = linetypes)  +
   scale_colour_manual(name = "", values = linecolours, aesthetics = c("colour")) +
