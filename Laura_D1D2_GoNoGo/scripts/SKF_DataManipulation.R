@@ -1,3 +1,6 @@
+# https://stat.ethz.ch/pipermail/r-sig-mixed-models/2016q1/024465.html
+#  Check this out for proper Type III tests using Afex
+
 ##### Load relevant packages ----
 ## Packages for data organisation and plotting
 library(tidyverse)
