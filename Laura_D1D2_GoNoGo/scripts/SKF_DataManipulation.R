@@ -1,6 +1,3 @@
-# https://stat.ethz.ch/pipermail/r-sig-mixed-models/2016q1/024465.html
-#  Check this out for proper Type III tests using Afex
-
 ##### Load relevant packages ----
 ## Packages for data organisation and plotting
 library(tidyverse)
@@ -48,6 +45,10 @@ library(multcomp)
 library(emmeans)
 ###install.packages("ggResidpanel")
 library(ggResidpanel)
+
+# Optimisers for GLMM fitting
+library(optimx)
+library(dfoptim)
 
 
 #### Plot functions ====
@@ -163,32 +164,30 @@ rawdata <- fread(here(datafolder,filename))
 
 
 # Add new columns to data  ------------------------------------------------
-
-rawdata <- rawdata %>% 
-  mutate(Prop_NotLevers = 1- Prop_BothLevers,
-         Prop_NotLeversOrMag = 1- Prop_LeverOrMag,
-         Num_NotLevers = Num_ErrorTialsTotal - Num__BothLevers,
-         Num_NotLeverOrMag = Num_ErrorTialsTotal - Num_ErrorTialsLeverOrMag,
-         Num_Not_Mag = Num_ErrorTialsTotal - Num__Mag)
-
 # Add congruence of lever to trial type
 rawdata <- rawdata %>% 
-  mutate(Prop_congruentlever = ifelse(RewardSize == "Small", Prop_Slever, Prop_Llever),
-         Prop_incongruentlever = ifelse(RewardSize == "Small", Prop_Llever, Prop_Slever),
-         Num_congruentlever = ifelse(RewardSize == "Small", Num__Slever, Num__Llever),
-         Num_incongruentlever = ifelse(RewardSize == "Small", Num__Llever, Num__Slever),
-         Prop_totalLever_congruentlever = Num_congruentlever/Num__BothLevers,
-         Prop_totalLever_incongruentlever = Num_incongruentlever/Num__BothLevers,
-         Prop_totalLever_Slever = Num__Slever/Num__BothLevers,
-         Prop_totalLever_Llever = Num__Llever/Num__BothLevers,
-         Prop_totalLeverMag_Mag = Num__Mag/Num_ErrorTialsLeverOrMag)
+  mutate(prop_congruentlever = ifelse(RewardSize == "Small", prop_Slever, prop_Llever),
+         prop_incongruentlever = ifelse(RewardSize == "Small", prop_Llever, prop_Slever),
+         congruentlever = ifelse(RewardSize == "Small", Slever, Llever),
+         incongruentlever = ifelse(RewardSize == "Small", Llever, Slever),
+         prop_totalLever_congruentlever = congruentlever/BothLevers,
+         prop_totalLever_incongruentlever = incongruentlever/BothLevers,
+         prop_totalLever_Slever = Slever/BothLevers,
+         prop_totalLever_Llever = Llever/BothLevers,
+         not_Slever = TotalTrials - Slever,
+         not_Llever = TotalTrials - Llever,
+         not_Middle = TotalTrials - Middle,
+         not_Mag = TotalTrials - Mag,
+         not_BothLevers = TotalTrials - BothLevers,
+         not_congruentlever = TotalTrials - congruentlever,
+         not_incongruentlever = TotalTrials - incongruentlever)
 
 
 # # Run a chi-square for each subject? Nope, massively under-powered!
 # 
 # chisquaretests_Bothlevers <- rawdata %>% 
 #   group_by(SubjID) %>% 
-#   summarise(pvalue= chisq.test(Num__BothLevers, Num_NotLevers)$p.value)
+#   summarise(pvalue= chisq.test(BothLevers, NotLevers)$p.value)
 # 
 # chisquaretests_leverormag
 
@@ -228,20 +227,18 @@ figure_proportionerrors <- function(rawdata, yvalue, title) {
 
 
 # Plot Variable
-yvalue1 = "Prop_LeverOrMag"
-yvalue2 = "Prop_BothLevers"
-yvalue3 = "Prop_Mag"
-yvalue4 = "Prop_Llever"
-yvalue5 = "Prop_Slever"
-yvalue6 = "Prop_congruentlever"
-yvalue7 = "Prop_incongruentlever"
-yvalue8 = "Prop_totalLever_Llever"
-yvalue9 = "Prop_totalLever_Slever"
-yvalue10 = "Prop_totalLever_congruentlever"
-yvalue11 = "Prop_totalLever_incongruentlever"
+yvalue2 = "prop_Bothlevers"
+yvalue3 = "prop_Mag"
+yvalue4 = "prop_Llever"
+yvalue5 = "prop_Slever"
+yvalue6 = "prop_congruentlever"
+yvalue7 = "prop_incongruentlever"
+yvalue8 = "prop_totalLever_Llever"
+yvalue9 = "prop_totalLever_Slever"
+yvalue10 = "prop_totalLever_congruentlever"
+yvalue11 = "prop_totalLever_incongruentlever"
 
 # Plot title
-title1 = "Both Levers or Magazine/Total Errors"
 title2 = "Both Levers/Total Errors"
 title3 = "Magazine/Total Errors"
 title4 = "Large Lever/Total Errors"
@@ -254,7 +251,6 @@ title10 = "Congruent Lever/Lever Errors"
 title11 = "Incongruent Lever/Lever Errors"
 
 # Plot data
-Plot_Proportion_visitBothLeversandMag <- figure_proportionerrors(rawdata, yvalue1, title1)
 Plot_Proportion_visitBothLevers <- 		figure_proportionerrors(rawdata, yvalue2, title2)
 Plot_Proportion_visitMag <- 				figure_proportionerrors(rawdata, yvalue3, title3)
 Plot_Proportion_LargeLever_Total <- 		figure_proportionerrors(rawdata, yvalue4, title4)
@@ -275,86 +271,227 @@ Plot_Proportion_visitBothLevers + Plot_Proportion_visitMag
 Plot_Proportion_LargeLever_Total + Plot_Proportion_SmallLever_Total + Plot_Proportion_LargeLever_Levers + Plot_Proportion_SmallLever_Levers
 Plot_Proportion_Congruent_Total + Plot_Proportion_InCongruent_Total + Plot_Proportion_Congruent_Levers +Plot_Proportion_InCongruent_Levers
 
+# Conclusion -> too many rats with no lever error trials so a lot more missing data when looking at proportions of Lever errors
+
+
 
 # GLMM Binomial -----------------------------------------------------------
-
-
-# Random effect of Subjects and Drug and Reward Size, but no inetraction because of insufficient data-----------------------------------------------
-
-# Define model - only random effect of Subject
-model1 <- glmer(cbind(Num__BothLevers, Num_NotLevers)~ RewardSize*Drug + (1+ RewardSize + Drug |SubjID), data = rawdata, family=binomial)
-
-# Model summary shows actual beta coefficients - interpret with caution!
-summary(model1)
-# Anova output table to interpret Omnibus main effects/interactions
-Anova(model1)
-
-# Plot Residuals and other useful diagnostics about model fit [from "ggResidpanel" package]
-resid_panel(model1,  plots = "all")
-
-
-# SImple effects [if relevant!]
-emmeansout<-emmeans(model1,pairwise~RewardSize*Drug, adjust = "tukey")
-emmeansout$contrasts
-
-# Random effect of Subjects and Drug -----------------------------------------------
-
-# Define model - only random effect of Subject
-model2 <- glmer(cbind(Num__BothLevers, Num_NotLevers)~ RewardSize*Drug + (1 + Drug|SubjID), data = rawdata, family=binomial)
-
-# Model summary shows actual beta coefficients - interpret with caution!
-summary(model2)
-# Anova output table to interpret Omnibus main effects/interactions
-Anova(model2)
-
-# Plot Residuals and other useful diagnostics about model fit [from "ggResidpanel" package]
-resid_panel(model2,  plots = "all")
-
-
-# SImple effects [if relevant!]
-emmeansout<-emmeans(model2,pairwise~RewardSize*Drug, adjust = "tukey")
-emmeansout$contrasts
-
-
-
-# Random effect of Subjects and Drug and Reward Size, but no interaction because of insufficient data-----------------------------------------------
-install.packages("optimx")
-library(optimx)
-# Define model - only random effect of Subject
-model3 <- glmer(cbind(Num_Not_Mag,Num__Mag)~ RewardSize*Drug + (1|SubjID), data = rawdata, family=binomial, glmerControl(optimizer="bobyqa"))
-
-# Model summary shows actual beta coefficients - interpret with caution!
-summary(model3)
-# Anova output table to interpret Omnibus main effects/interactions
-Anova(model3)
-
-# Plot Residuals and other useful diagnostics about model fit [from "ggResidpanel" package]
-resid_panel(model3,  plots = "all")
-
-
-# SImple effects [if relevant!]
-emmeansout<-emmeans(model3,pairwise~RewardSize*Drug, adjust = "tukey")
-emmeansout$contrasts
+# Important note on different packages and how they treat testing approach and test statistics for each model
+# 1) Using glmer - default contrasts: This leads to contrasts that are treatment coded and are appropriate for Type II models
+### - Use of the summary() function will give you estimates of each treatment coded parameter [i.e. one level vs reference level for K-1 predictors]
+### - Use of the car::Anova() default: function will give you the Type II omnibus tests (i.e. traditional ANOVA style tests) but since these are Type II tests, 
+### you need to know that this is really what you want. This is because John Fox (author of the car package) is a big proponent of Type II as the default ANOVA 
+### method. Personally I disagree with this, particularly for experimental designs with factorial structure and a keen interest in interpreting interactions in 
+### a particular way. Of course, this is why it is important to know what your tests are actually testing! SOmetime Type II is very appropriate!
+### - Use of the car::Anova(model, type = 3): This will give you a Type III approach ANOVA summary table, however!!!! If you have not set your contrasts to sum
+### then the main effects will be nonsense! DO not interpret these!
+# 2) Use of glmer - "contr.sum" contrasts: Doing this makes it the case that you are running a Type III style ANOVA i.e. it sets things so that the contrasts sum 
+### to zero, and model parameters being tested are being tested relative to an intercept that is equal to the Grand Mean!
+# - Use of the summary() function will give you estimates of each parameter effect i.e. identical to a Type II ANOVA with sum coding. Not useful to interpret.
+### - Use of the car::Anova() default: Again, Type II ANOVA is the default here, so not the point of using sum coding!
+### - Use of the car::Anova(model, type = 3): Now you can interpret the Type III tests of the omnibus main effects and interactions in a manner consistent with a 
+### "traditional" Type III ANOVA [e.g. the default in SPSS]. This is what most people want, most of the time!
+### Summary fo the major conflict among very vocal statisticians about whether to use Type II vs Type III estimation techniques:
+### Type III assumes that missing subjects are at random, and therefore gives equal weighting to each grouping/condition/parameter.
+### Type II assumes that missing subjects are systematic and therefore the differences are meaningful, therefore it attributes equal weight to each subject i.e. 
+### differences in group sizes are represented in parameter estimates. Clearly this is often more desirable in non-experimental design situations.
+# 3) Use of afex::mixed() - Uses sum contrast coding by default, and provides Type III tests use with afex::nice() to provide summary table. 
+#
+# What about the correct type of test? i.e. Wald chi square? Likelihood Ratio? Bootstrapped p-values?
+# Here we are limited by the complexity of GLMMs. In LMMs, the option to do F-tests with Satterthwaite/Kenward-Rogers degrees of freedom approximation is great. We
+# just don't have that option for GLMMs. So, which of these tests should we use:
+# - Wald Chi Square Tests: Reasonable for large data sets, not so great for small data sets (faster to compute so often a default, because it is testing whether the 
+#   parameter value in just the full model is equal to zero )
+# - Likelihood Ratio Tests: Much better for smaller sample size data than the Wald. Test of whether the full model accounts for more variance than a reduced model with 
+#   just that one parameter missing, tetsing whetehr the parameter estimate is above zero.
+# - Boot strap P-Values: Also a great option, but can be computationally expensive.
+#
+# What do the different packages give you in terms of tests?
+# summary() and car::Anova() give you Wald chisquare tests. afex::mixed() lets you choose between likelihood ratio tests (method = "LRT" ) and bootstrapped p-values (method = "PB").
+# For bootstrapped p-values you need to remember to set the number of samples and it helps a lot to use parallel processing.
+# 
+# 
+# What about fitting the random effects structure? Option 1: Keep it maximal - Barr et al. 2013 "Keep it maximal" Journal of Memory and Language (doi:10.1016/j.jml.2012.11.001) 
+# However, consider the rebuttal in this post suggesting that this might under-power low sample sized tests....
+# https://vasishth-statistics.blogspot.com/2014/11/should-we-fit-maximal-linear-mixed.html
+# 
+# Useful GLMM resources: 
+# http://bbolker.github.io/mixedmodels-misc/glmmFAQ.html
+# https://github.com/singmann/afex
+# https://cran.r-project.org/web/packages/afex/vignettes/afex_analysing_accuracy_data.html
 
 # Random effect of Subjects and Drug and Reward Size, but no interaction because of insufficient data-----------------------------------------------
-# install.packages("optimx")
-# library(optimx)
-# Define model - only random effect of Subject
-model4 <- glmer(cbind(Num__Slever,(Num_ErrorTialsTotal-Num__BothLevers))~ RewardSize*Drug + (1 + RewardSize |SubjID), data = rawdata, family=binomial, glmerControl(optimizer="bobyqa"))
+# 
+# 
+# ### This first section tests standard glmer() analysis approaches
+# # Define model - only random effect of Subject
+# model1_default<- glmer(cbind(BothLevers, NotLevers)~ RewardSize*Drug + (1|SubjID), data = rawdata ,family=binomial)
+# model1_contrSum <- glmer(cbind(BothLevers, NotLevers)~ RewardSize*Drug + (1|SubjID), data = rawdata,  contrasts = list(RewardSize = "contr.sum", RewardSize = "contr.sum") ,family=binomial)
+# 
+# # Model summary shows actual beta coefficients - interpret with caution!
+# summary(model1_default)
+# summary(model1_contrSum)
+# # Anova output table to interpret Omnibus main effects/interactions
+# Anova(model1_default)
+# Anova(model1_default,type = 3)
+# Anova(model1_contrSum)
+# Anova(model1_contrSum,type = 3)
+# 
+# 
+# # Plot Residuals and other useful diagnostics about model fit [from "ggResidpanel" package]
+# resid_panel(model1_contrSum,  plots = "all")
+# 
+# 
+# # Simple effects [if relevant!]
+# emmeansout<-emmeans(model1_contrSum,pairwise~RewardSize*Drug, adjust = "tukey", type = "response")
+# emmeansout$contrasts
+# 
+# 
+# ### Next we use afex::mixed() to help
+# 
+# library(parallel)
+# nc <- detectCores() # number of cores
+# cl <- makeCluster(rep("localhost", nc)) # make cluster
+# 
+# model1_mixed_LRT <- mixed(cbind(BothLevers, NotLevers)~ RewardSize*Drug + (1|SubjID), data = rawdata, family=binomial, method = "LRT", all_fit = TRUE, cl = cl)
+# nice(model1_mixed_LRT)
+# emmeans_model1_mixed_LRT <- emmeans(model1_mixed_LRT, pairwise~RewardSize*Drug, adjust = "tukey", type = "response")
+# emmeans_model1_mixed_LRT$contrasts
+# 
+# model2_mixed_LRT <- mixed(prop_BothLevers ~ RewardSize*Drug + (1|SubjID), weights = rawdata$ErrorTialsTotal, data = rawdata, family=binomial, method = "LRT", all_fit = TRUE, cl = cl)
+# nice(model2_mixed_LRT)
+# 
 
-# Model summary shows actual beta coefficients - interpret with caution!
-summary(model4)
-# Anova output table to interpret Omnibus main effects/interactions
-Anova(model4)
 
-# Plot Residuals and other useful diagnostics about model fit [from "ggResidpanel" package]
-resid_panel(model4,  plots = "all")
-
-
-# SImple effects [if relevant!]
-emmeansout<-emmeans(model4,pairwise~RewardSize*Drug, adjust = "tukey")
-emmeansout$contrasts
+# #  Do not run until you have optimised with the LRT method, this can take a while...
+# model1_mixed_PB <- mixed(cbind(BothLevers, NotLevers)~ RewardSize*Drug + (1 |SubjID), data = rawdata, family=binomial, method = "PB", args.test = list(nsim = 1000, cl = cl), all_fit = TRUE, cl = cl)
+# nice(model1_mixed_PB)
 
 
 
+# Analysis 2: Probability of both levers ----------------------------------
+library(parallel)
+nc <- detectCores() # number of cores
+cl <- makeCluster(rep("localhost", nc)) # make cluster
 
+# Analysis approach - start with maximal random effects model and reduce until fit
+
+model2_bothlevers <- mixed(cbind(BothLevers,not_BothLevers) ~ RewardSize*Drug + (1+RewardSize + Drug|SubjID), 
+                           data = rawdata, 
+                           family=binomial, 
+                           method = "LRT",
+                           all_fit = TRUE,
+                           cl = cl)
+
+
+nice(model2_bothlevers)
+emmeans_model2_bothlevers <- emmeans(model2_bothlevers, pairwise~RewardSize*Drug, adjust = "tukey", type = "response")
+emmeans_model2_bothlevers$contrasts
+
+
+# Analysis 3: Probability of Mag ----------------------------------
+library(parallel)
+nc <- detectCores() # number of cores
+cl <- makeCluster(rep("localhost", nc)) # make cluster
+
+# Analysis approach - start with maximal random effects model and reduce until fit
+
+model3_Mag <- mixed(cbind(Mag,not_Mag) ~ RewardSize*Drug + ( 1 + RewardSize + Drug|SubjID), 
+                           data = rawdata, 
+                           family=binomial, 
+                           method = "LRT",
+                           all_fit = TRUE,
+                           cl = cl)
+
+
+nice(model3_Mag)
+emmeans_model3_Mag <- emmeans(model3_Mag, pairwise~RewardSize*Drug, adjust = "tukey", type = "response")
+emmeans_model3_Mag$contrasts
+
+
+# Analysis 4: Probability of Large Lever ----------------------------------
+library(parallel)
+nc <- detectCores() # number of cores
+cl <- makeCluster(rep("localhost", nc)) # make cluster
+
+# Analysis approach - start with maximal random effects model and reduce until fit
+
+model4_Llever <- mixed(cbind(Llever,not_Llever) ~ RewardSize*Drug + ( 1 + RewardSize + Drug|SubjID), 
+                    data = rawdata, 
+                    family=binomial, 
+                    method = "LRT",
+                    all_fit = TRUE,
+                    cl = cl)
+
+
+nice(model4_Llever)
+emmeans_model4_Llever <- emmeans(model4_Llever, pairwise~RewardSize*Drug, adjust = "tukey", type = "response")
+emmeans_model4_Llever$contrasts
+
+
+
+# Analysis 5: Probability of Small Lever ----------------------------------
+library(parallel)
+nc <- detectCores() # number of cores
+cl <- makeCluster(rep("localhost", nc)) # make cluster
+
+# Analysis approach - start with maximal random effects model and reduce until fit
+
+model5_Slever <- mixed(cbind(Slever,not_Slever) ~ RewardSize*Drug + ( 1 + RewardSize + Drug|SubjID), 
+                       data = rawdata, 
+                       family=binomial, 
+                       method = "LRT",
+                       all_fit = TRUE,
+                       cl = cl)
+
+
+nice(model5_Slever)
+emmeans_model5_Slever <- emmeans(model5_Slever, pairwise~RewardSize*Drug, adjust = "tukey", type = "response")
+emmeans_model5_Slever$contrasts
+
+
+# Analysis 6: Probability of COngruent Lever ----------------------------------
+library(parallel)
+nc <- detectCores() # number of cores
+cl <- makeCluster(rep("localhost", nc)) # make cluster
+
+# Analysis approach - start with maximal random effects model and reduce until fit
+
+model6_congruentlever <- mixed(cbind(congruentlever,not_congruentlever) ~ RewardSize*Drug + ( 1 + RewardSize + Drug|SubjID), 
+                       data = rawdata, 
+                       family=binomial, 
+                       method = "LRT",
+                       all_fit = TRUE,
+                       cl = cl)
+
+
+nice(model6_congruentlever)
+emmeans_model6_congruentlever <- emmeans(model6_congruentlever, pairwise~RewardSize*Drug, adjust = "tukey", type = "response")
+emmeans_model6_congruentlever$contrasts
+
+
+# Analysis 6: Probability of Incongruent Lever ----------------------------------
+library(parallel)
+nc <- detectCores() # number of cores
+cl <- makeCluster(rep("localhost", nc)) # make cluster
+
+# Analysis approach - start with maximal random effects model and reduce until fit
+
+model7_incongruentlever <- mixed(cbind(incongruentlever,not_incongruentlever) ~ RewardSize*Drug + ( 1 + RewardSize + Drug|SubjID), 
+                               data = rawdata, 
+                               family=binomial, 
+                               method = "LRT",
+                               all_fit = TRUE,
+                               cl = cl)
+
+
+nice(model7_incongruentlever)
+emmeans_model7_incongruentlever <- emmeans(model7_incongruentlever, pairwise~RewardSize*Drug, adjust = "tukey", type = "response")
+emmeans_model7_incongruentlever$contrasts
+
+nice(model2_bothlevers)
+nice(model3_Mag)
+nice(model4_Llever)
+nice(model5_Slever)
+nice(model6_congruentlever)
+nice(model7_incongruentlever)
