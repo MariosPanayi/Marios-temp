@@ -182,6 +182,10 @@ rawdata <- rawdata %>%
          not_congruentlever = TotalTrials - congruentlever,
          not_incongruentlever = TotalTrials - incongruentlever)
 
+datafolder <- "rawdata"
+filename <- "SKF_errordata_clean.csv"
+fwrite(rawdata, here(datafolder,filename))
+
 
 # # Run a chi-square for each subject? Nope, massively under-powered!
 # 
@@ -270,6 +274,25 @@ Plot_Proportion_InCongruent_Levers <- 	figure_proportionerrors(rawdata, yvalue11
 Plot_Proportion_visitBothLevers + Plot_Proportion_visitMag
 Plot_Proportion_LargeLever_Total + Plot_Proportion_SmallLever_Total + Plot_Proportion_LargeLever_Levers + Plot_Proportion_SmallLever_Levers
 Plot_Proportion_Congruent_Total + Plot_Proportion_InCongruent_Total + Plot_Proportion_Congruent_Levers +Plot_Proportion_InCongruent_Levers
+
+
+
+
+Plots_LeversAndMag <- (Plot_Proportion_visitBothLevers + Plot_Proportion_visitMag) + plot_annotation(tag_levels = 'A') + plot_layout(nrow = 1, ncol = 2, widths = c(1, 1))
+filename = here("figures", "Plots_LeversAndMag.png")
+ggsave(filename, Plots_LeversAndMag, width = 160, height = 120, units = "mm", dpi = 1200)
+
+
+Plots_LeversLargeVsSmall <- (Plot_Proportion_LargeLever_Total + Plot_Proportion_SmallLever_Total + Plot_Proportion_LargeLever_Levers + Plot_Proportion_SmallLever_Levers) + plot_annotation(tag_levels = 'A') + plot_layout(nrow = 2, ncol = 2, widths = c(1, 1))
+filename = here("figures", "Plots_LeversLargeVsSmall.png")
+ggsave(filename, Plots_LeversLargeVsSmall, width = 160, height = 240, units = "mm", dpi = 1200)
+
+Plots_CongruentVsIncongruent <- (Plot_Proportion_Congruent_Total + Plot_Proportion_InCongruent_Total + Plot_Proportion_Congruent_Levers +Plot_Proportion_InCongruent_Levers) + plot_annotation(tag_levels = 'A') + plot_layout(nrow = 2, ncol = 2, widths = c(1, 1))
+filename = here("figures", "Plots_CongruentVsIncongruent.png")
+ggsave(filename, Plots_CongruentVsIncongruent, width = 160, height = 240, units = "mm", dpi = 1200)
+
+
+
 
 # Conclusion -> too many rats with no lever error trials so a lot more missing data when looking at proportions of Lever errors
 
