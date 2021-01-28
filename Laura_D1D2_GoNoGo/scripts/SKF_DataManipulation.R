@@ -182,6 +182,8 @@ rawdata <- rawdata %>%
          not_congruentlever = TotalTrials - congruentlever,
          not_incongruentlever = TotalTrials - incongruentlever)
 
+# Save Data ---------------------------------------------------------------
+
 datafolder <- "rawdata"
 filename <- "SKF_errordata_clean.csv"
 fwrite(rawdata, here(datafolder,filename))
@@ -493,7 +495,7 @@ emmeans_model6_congruentlever <- emmeans(model6_congruentlever, pairwise~RewardS
 emmeans_model6_congruentlever$contrasts
 
 
-# Analysis 6: Probability of Incongruent Lever ----------------------------------
+# Analysis 7: Probability of Incongruent Lever ----------------------------------
 library(parallel)
 nc <- detectCores() # number of cores
 cl <- makeCluster(rep("localhost", nc)) # make cluster
@@ -512,9 +514,127 @@ nice(model7_incongruentlever)
 emmeans_model7_incongruentlever <- emmeans(model7_incongruentlever, pairwise~RewardSize*Drug, adjust = "tukey", type = "response")
 emmeans_model7_incongruentlever$contrasts
 
-nice(model2_bothlevers)
-nice(model3_Mag)
-nice(model4_Llever)
-nice(model5_Slever)
-nice(model6_congruentlever)
-nice(model7_incongruentlever)
+
+# ### Analyses wiht only Subject as Random effects ------------------------
+
+# Analysis 2: Probability of both levers ----------------------------------
+
+# Analysis approach - start with maximal random effects model and reduce until fit
+model_simple_2_bothlevers <- mixed(cbind(BothLevers,not_BothLevers) ~ RewardSize*Drug + (1|SubjID), 
+                                   data = rawdata, 
+                                   family=binomial, 
+                                   method = "LRT",
+                                   all_fit = TRUE,
+                                   cl = cl)
+
+
+# nice(model_simple_2_bothlevers)
+emmeans_model_simple_2_bothlevers <- emmeans(model_simple_2_bothlevers, pairwise~RewardSize*Drug, adjust = "tukey", type = "response")
+# emmeans_model_simple_2_bothlevers$contrasts
+
+
+# Analysis 3: Probability of Mag ----------------------------------
+model_simple_3_Mag <- mixed(cbind(Mag,not_Mag) ~ RewardSize*Drug + (1|SubjID), 
+                            data = rawdata, 
+                            family=binomial, 
+                            method = "LRT",
+                            all_fit = TRUE,
+                            cl = cl)
+
+
+# nice(model_simple_3_Mag)
+emmeans_model_simple_3_Mag <- emmeans(model_simple_3_Mag, pairwise~RewardSize*Drug, adjust = "tukey", type = "response")
+# emmeans_model_simple_3_Mag$contrasts
+
+# Analysis 4: Probability of Large Lever ----------------------------------
+
+model_simple_4_Llever <- mixed(cbind(Llever,not_Llever) ~ RewardSize*Drug + (1|SubjID), 
+                               data = rawdata, 
+                               family=binomial, 
+                               method = "LRT",
+                               all_fit = TRUE,
+                               cl = cl)
+
+
+# nice(model_simple_4_Llever)
+emmeans_model_simple_4_Llever <- emmeans(model_simple_4_Llever, pairwise~RewardSize*Drug, adjust = "tukey", type = "response")
+# emmeans_model_simple_4_Llever$contrasts
+
+
+
+# Analysis 5: Probability of Small Lever ----------------------------------
+
+model_simple_5_Slever <- mixed(cbind(Slever,not_Slever) ~ RewardSize*Drug + (1|SubjID), 
+                               data = rawdata, 
+                               family=binomial, 
+                               method = "LRT",
+                               all_fit = TRUE,
+                               cl = cl)
+
+
+# nice(model_simple_5_Slever)
+emmeans_model_simple_5_Slever <- emmeans(model_simple_5_Slever, pairwise~RewardSize*Drug, adjust = "tukey", type = "response")
+# emmeans_model_simple_5_Slever$contrasts
+
+
+# Analysis 6: Probability of COngruent Lever ----------------------------------
+model_simple_6_congruentlever <- mixed(cbind(congruentlever,not_congruentlever) ~ RewardSize*Drug + (1|SubjID), 
+                                       data = rawdata, 
+                                       family=binomial, 
+                                       method = "LRT",
+                                       all_fit = TRUE,
+                                       cl = cl)
+
+
+# nice(model_simple_6_congruentlever)
+emmeans_model_simple_6_congruentlever <- emmeans(model_simple_6_congruentlever, pairwise~RewardSize*Drug, adjust = "tukey", type = "response")
+# emmeans_model_simple_6_congruentlever$contrasts
+
+
+# Analysis 7: Probability of Incongruent Lever ----------------------------------
+model_simple_7_incongruentlever <- mixed(cbind(incongruentlever,not_incongruentlever) ~ RewardSize*Drug + (1|SubjID), 
+                                         data = rawdata, 
+                                         family=binomial, 
+                                         method = "LRT",
+                                         all_fit = TRUE,
+                                         cl = cl)
+
+
+# nice(model_simple_7_incongruentlever)
+emmeans_model_simple_7_incongruentlever <- emmeans(model_simple_7_incongruentlever, pairwise~RewardSize*Drug, adjust = "tukey", type = "response")
+# emmeans_model_simple_7_incongruentlever$contrasts
+
+
+# Save analyses to Rdata for Markdown - speeds things up!  ----------------
+
+
+
+datafolder <- "rawdata"
+filename <- "SKF_errordata_analyses.RData"
+
+
+save(model2_bothlevers,
+model3_Mag,
+model4_Llever,
+model5_Slever,
+model6_congruentlever,
+model7_incongruentlever,
+model_simple_2_bothlevers,
+model_simple_3_Mag,
+model_simple_4_Llever,
+model_simple_5_Slever,
+model_simple_6_congruentlever,
+model_simple_7_incongruentlever,
+emmeans_model2_bothlevers,
+emmeans_model3_Mag,
+emmeans_model4_Llever,
+emmeans_model5_Slever,
+emmeans_model6_congruentlever,
+emmeans_model7_incongruentlever,
+emmeans_model_simple_2_bothlevers,
+emmeans_model_simple_3_Mag,
+emmeans_model_simple_4_Llever,
+emmeans_model_simple_5_Slever,
+emmeans_model_simple_6_congruentlever,
+emmeans_model_simple_7_incongruentlever,
+file = here(datafolder,filename))

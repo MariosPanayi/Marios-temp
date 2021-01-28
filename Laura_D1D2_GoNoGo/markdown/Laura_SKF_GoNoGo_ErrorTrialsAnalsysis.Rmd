@@ -2,11 +2,13 @@
 title: "Laura_SKF_GoNoGo_ErrorTrialsAnalsysis"
 author: "Marios Panayi"
 date: "1/27/2021"
-output: word_document
+output:
+  word_document: default
 ---
 
 ```{r setup, include=FALSE, message = FALSE, warning=FALSE}
 knitr::opts_chunk$set(echo = FALSE)
+library(tinytex)
 ## Packages for data organisation and plotting
 library(tidyverse)
 # Package for relative file paths
@@ -81,134 +83,79 @@ library(dfoptim)
 
 
 ```{r Load data from figures for Stats , include=FALSE, message = FALSE, warning=FALSE}
+# Load Raw Data
 datafolder <- "rawdata"
 filename <- "SKF_errordata_clean.csv"
 rawdata <- fread(here(datafolder,filename))
-library(parallel)
-nc <- detectCores() # number of cores
-cl <- makeCluster(rep("localhost", nc)) # make cluster
-```
 
+# Reanalyze data?
+reanalysis = TRUE
 
-```{r Analysis 2: Probability of both levers , include=FALSE, message = FALSE, warning=FALSE}
-# Analysis 2: Probability of both levers ----------------------------------
+if (reanalysis){
+  source(here("scripts", "SKF_DataManipulation.R"))
+}
+# Load Analyses
+datafolder <- "rawdata"
+filename <- "SKF_errordata_analyses.RData"
+load(here(datafolder,filename))
 
-# Analysis approach - start with maximal random effects model and reduce until fit
-
-model2_bothlevers <- mixed(cbind(BothLevers,not_BothLevers) ~ RewardSize*Drug + (1+RewardSize + Drug|SubjID), 
-                           data = rawdata, 
-                           family=binomial, 
-                           method = "LRT",
-                           all_fit = TRUE,
-                           cl = cl)
-
-
-# nice(model2_bothlevers)
-emmeans_model2_bothlevers <- emmeans(model2_bothlevers, pairwise~RewardSize*Drug, adjust = "tukey", type = "response")
-# emmeans_model2_bothlevers$contrasts
-
-
-# Analysis 3: Probability of Mag ----------------------------------
-model3_Mag <- mixed(cbind(Mag,not_Mag) ~ RewardSize*Drug + ( 1 + RewardSize + Drug|SubjID), 
-                           data = rawdata, 
-                           family=binomial, 
-                           method = "LRT",
-                           all_fit = TRUE,
-                           cl = cl)
-
-
-# nice(model3_Mag)
-emmeans_model3_Mag <- emmeans(model3_Mag, pairwise~RewardSize*Drug, adjust = "tukey", type = "response")
-# emmeans_model3_Mag$contrasts
-
-# Analysis 4: Probability of Large Lever ----------------------------------
-
-model4_Llever <- mixed(cbind(Llever,not_Llever) ~ RewardSize*Drug + ( 1 + RewardSize + Drug|SubjID), 
-                    data = rawdata, 
-                    family=binomial, 
-                    method = "LRT",
-                    all_fit = TRUE,
-                    cl = cl)
-
-
-# nice(model4_Llever)
-emmeans_model4_Llever <- emmeans(model4_Llever, pairwise~RewardSize*Drug, adjust = "tukey", type = "response")
-# emmeans_model4_Llever$contrasts
-
-
-
-# Analysis 5: Probability of Small Lever ----------------------------------
-
-model5_Slever <- mixed(cbind(Slever,not_Slever) ~ RewardSize*Drug + ( 1 + RewardSize + Drug|SubjID), 
-                       data = rawdata, 
-                       family=binomial, 
-                       method = "LRT",
-                       all_fit = TRUE,
-                       cl = cl)
-
-
-# nice(model5_Slever)
-emmeans_model5_Slever <- emmeans(model5_Slever, pairwise~RewardSize*Drug, adjust = "tukey", type = "response")
-# emmeans_model5_Slever$contrasts
-
-
-# Analysis 6: Probability of COngruent Lever ----------------------------------
-model6_congruentlever <- mixed(cbind(congruentlever,not_congruentlever) ~ RewardSize*Drug + ( 1 + RewardSize + Drug|SubjID), 
-                       data = rawdata, 
-                       family=binomial, 
-                       method = "LRT",
-                       all_fit = TRUE,
-                       cl = cl)
-
-
-# nice(model6_congruentlever)
-emmeans_model6_congruentlever <- emmeans(model6_congruentlever, pairwise~RewardSize*Drug, adjust = "tukey", type = "response")
-# emmeans_model6_congruentlever$contrasts
-
-
-# Analysis 6: Probability of Incongruent Lever ----------------------------------
-model7_incongruentlever <- mixed(cbind(incongruentlever,not_incongruentlever) ~ RewardSize*Drug + ( 1 + RewardSize + Drug|SubjID), 
-                               data = rawdata, 
-                               family=binomial, 
-                               method = "LRT",
-                               all_fit = TRUE,
-                               cl = cl)
-
-
-# nice(model7_incongruentlever)
-emmeans_model7_incongruentlever <- emmeans(model7_incongruentlever, pairwise~RewardSize*Drug, adjust = "tukey", type = "response")
-# emmeans_model7_incongruentlever$contrasts
 
 ```
-
-
 
 
 ![Probability of both levers or magazine](../figures/Plots_LeversAndMag.png) 
 
-## A) Analysis of both levers data
-`r apa_table(model2_bothlevers$anova_table)`
+# A) Analysis of both levers data
 
-## B) Analysis of magazine data
-`r apa_table(model3_Mag$anova_table)`
+### Full random effects
+`r apa_table(model2_bothlevers$anova_table)` 
+
+### Only subject random effects
+`r apa_table(model_simple_2_bothlevers$anova_table)` 
 
 
+# B) Analysis of magazine data
+### Full random effects
+`r apa_table(model3_Mag$anova_table)` 
+
+### Only subject random effects
+`r apa_table(model_simple_3_Mag$anova_table)` 
+
+\newpage
 
 ![Probability of large and small reward levers](../figures/Plots_LeversLargeVsSmall.png) 
 
 
-## A) Analysis of large reward lever
+# A) Analysis of large reward lever
+### Full random effects
 `r apa_table(model4_Llever$anova_table)`
 
-## B) Analysis of large reward lever
-`r apa_table(model5_Slever$anova_table)`
+### Only subject random effects
+`r apa_table(model_simple_4_Llever$anova_table)`
+
+# B) Analysis of large reward lever
+### Full random effects
+`r apa_table(model5_Slever$anova_table)` 
+
+### Only subject random effects
+`r apa_table(model_simple_5_Slever$anova_table)` 
+
+\newpage
 
 ![Probability of congruent and incongruent reward levers](../figures/Plots_CongruentVsIncongruent.png) 
 
 
-## A) Analysis of congruent reward lever
+# A) Analysis of congruent reward lever
+### Full random effects
 `r apa_table(model6_congruentlever$anova_table)`
 
-## A) Analysis of incongruent reward lever
+### Only subject random effects
+`r apa_table(model_simple_6_congruentlever$anova_table)`
+
+# A) Analysis of incongruent reward lever
+### Full random effects
 `r apa_table(model7_incongruentlever$anova_table)`
+
+### Only subject random effects
+`r apa_table(model_simple_7_incongruentlever$anova_table)`
 
