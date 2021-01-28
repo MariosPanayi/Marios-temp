@@ -29,7 +29,8 @@ listofdatafolders <- c("RepeatTest1_Day24",
                        "RepeatTest2_Day24",
                        "RepeatTest3_Day25",
                        "RepeatTest4_Day25",
-                       "RepeatTest5_Day26")
+                       "RepeatTest5_Day26",
+                       "RepeatTest6_Day27")
 
 
 

@@ -1130,8 +1130,10 @@ rawdata <- rawdata %>%
   filter(timebins != 0)
 
 # Filter repeat sessions [optional]
-# rawdata <- rawdata %>% 
-#   filter(folder != "RepeatTest1_Day24")
+rawdata <- rawdata %>%
+  filter(folder != "RepeatTest2_Day24",
+         folder != "RepeatTest4_Day25",
+         )
 
 
 # COunterbalancing check to see if stimuli cause different rates of CRF
