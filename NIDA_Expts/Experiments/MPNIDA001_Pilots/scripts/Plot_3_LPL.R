@@ -149,6 +149,16 @@ filename <- "LPL_ProcessedData_WithinSession10minBins.csv"
 
 rawdata <- read_csv(here(folderpath,filename))
 
+rawdata <- rawdata %>% 
+  mutate(Flash_freq = Flash_freq + Flash_2_freq,
+         Flash_dur = Flash_dur + Flash_2_dur ,
+         Steady_freq = Steady_freq + Steady_2_freq,
+         Steady_dur = Steady_dur + Steady_2_dur ) %>% 
+  select(-Flash_2_freq, -Flash_2_dur , -Steady_2_freq, -Steady_2_dur)
+
+    
+# For reversal data - combine Steady/Steady_2 and Flash/Flash_2
+
 # Change Day into numeric
 rawdata <- rawdata %>% 
   mutate(Day = str_replace(string = Day,pattern = "Day", replacement = ""),

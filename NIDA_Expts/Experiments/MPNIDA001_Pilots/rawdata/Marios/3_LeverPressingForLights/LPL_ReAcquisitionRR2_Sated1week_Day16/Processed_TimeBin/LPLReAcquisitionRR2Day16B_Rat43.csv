@@ -1,4 +1,4 @@
-folder,file,savename,subject,protocol,station,run,project,userID,session,timebins,timebin_start,timebin_end,A1_freq,A1_dur,A2_freq,A2_dur,A3_freq,A3_dur,A4_freq,A4_dur,Flash_freq,Flash_dur,Steady_freq,Steady_dur
-LPL_ReAcquisitionRR2_Sated1week_Day16,LPLReAcquisitionRR2Day16B,LPLReAcquisitionRR2Day16B_Rat43.csv,43____,17,13,1,C,Marios,300,1,0,600,2,0.100000000000023,40,6.44000000000011,0,0,0,0,20,100,0,0
-LPL_ReAcquisitionRR2_Sated1week_Day16,LPLReAcquisitionRR2Day16B,LPLReAcquisitionRR2Day16B_Rat43.csv,43____,17,13,1,C,Marios,300,2,600,1200,3,6.57999999999993,10,2.73999999999978,0,0,0,0,3,15,1,5
-LPL_ReAcquisitionRR2_Sated1week_Day16,LPLReAcquisitionRR2Day16B,LPLReAcquisitionRR2Day16B_Rat43.csv,43____,17,13,1,C,Marios,300,3,1200,1800,0,0,0,0,0,0,0,0,0,0,0,0
+folder,file,savename,subject,protocol,station,run,project,userID,session,timebins,timebin_start,timebin_end,A1_freq,A1_dur,A2_freq,A2_dur,A3_freq,A3_dur,A4_freq,A4_dur,Flash_freq,Flash_dur,Steady_freq,Steady_dur,Flash_2_freq,Flash_2_dur,Steady_2_freq,Steady_2_dur
+LPL_ReAcquisitionRR2_Sated1week_Day16,LPLReAcquisitionRR2Day16B,LPLReAcquisitionRR2Day16B_Rat43.csv,43____,17,13,1,C,Marios,300,1,0,600,2,0.100000000000023,40,6.44000000000011,0,0,0,0,20,100,0,0,0,0,0,0
+LPL_ReAcquisitionRR2_Sated1week_Day16,LPLReAcquisitionRR2Day16B,LPLReAcquisitionRR2Day16B_Rat43.csv,43____,17,13,1,C,Marios,300,2,600,1200,3,6.57999999999993,10,2.73999999999978,0,0,0,0,3,15,1,5,0,0,0,0
+LPL_ReAcquisitionRR2_Sated1week_Day16,LPLReAcquisitionRR2Day16B,LPLReAcquisitionRR2Day16B_Rat43.csv,43____,17,13,1,C,Marios,300,3,1200,1800,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0

@@ -24,7 +24,8 @@ listofdatafolders <- c("LPL_Acquisition_RR2_Day1",
                        "LPL_Acquisition_RR2_Day3",
                        "LPL_Acquisition_RR2_Day4",
                        "LPL_ReAcquisitionRR2_Sated1week_Day16",
-                       "LPL_ReAcquisitionRR2_Sated1week_Day17")
+                       "LPL_ReAcquisitionRR2_Sated1week_Day17",
+                       "LPL_Reversal_Test_Day18")
 
 
 #  extract data filenames, only .txt --------------------------------------
@@ -55,7 +56,10 @@ lookup <- paste(datafoldersinproject1, datafoldersinproject2, projectdatafolder,
 S = c("IRI" = 1,
       "Flash" = 2,
       "Steady" = 3,
-      "End" = 4)
+      "End" = 4,
+      "IRIReversal" = 5,
+      "Flash_2" = 6,
+      "Steady_2" = 7)
 
 ## Time base the linc was set to, in ms
 timebase = 20
@@ -64,7 +68,7 @@ timebase = 20
 timebinwidth = 600
 
 ## Count the frequency and duration of these states
-bin = c(S["Flash"], S["Steady"])
+bin = c(S["Flash"], S["Steady"], S["Flash_2"], S["Steady_2"])
 
 ## state that should be considered the end of the session. For the absolute end of recording specify the number -1 [the state_ID of the finished state in Coulbourn]
 sessionendstate <- S["End"]

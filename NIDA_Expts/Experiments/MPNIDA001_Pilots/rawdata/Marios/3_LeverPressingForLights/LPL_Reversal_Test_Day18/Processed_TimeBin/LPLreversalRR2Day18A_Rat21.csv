@@ -1,0 +1,5 @@
+folder,file,savename,subject,protocol,station,run,project,userID,session,timebins,timebin_start,timebin_end,A1_freq,A1_dur,A2_freq,A2_dur,A3_freq,A3_dur,A4_freq,A4_dur,Flash_freq,Flash_dur,Steady_freq,Steady_dur,Flash_2_freq,Flash_2_dur,Steady_2_freq,Steady_2_dur
+LPL_Reversal_Test_Day18,LPLreversalRR2Day18A,LPLreversalRR2Day18A_Rat21.csv,21____,75,4,1,C,Marios,312,1,0,600,30,28.4400000000001,9,8.27999999999996,0,0,0,0,13,65,1,5,0,0,0,0
+LPL_Reversal_Test_Day18,LPLreversalRR2Day18A,LPLreversalRR2Day18A_Rat21.csv,21____,75,4,1,C,Marios,312,2,600,1200,8,6.5999999999998,0,0,0,0,0,0,0,0,0,0,0,0,3,15
+LPL_Reversal_Test_Day18,LPLreversalRR2Day18A,LPLreversalRR2Day18A_Rat21.csv,21____,75,4,1,C,Marios,312,3,1200,1800,10,14.3599999999999,4,10.6199999999997,0,0,0,0,0,0,0,0,0,0,3,15
+LPL_Reversal_Test_Day18,LPLreversalRR2Day18A,LPLreversalRR2Day18A_Rat21.csv,21____,75,4,1,C,Marios,312,4,1800,2400,6,16.9800000000005,8,5.05999999999995,0,0,0,0,0,0,0,0,2,10,3,15
