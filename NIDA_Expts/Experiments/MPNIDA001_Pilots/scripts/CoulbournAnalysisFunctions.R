@@ -610,142 +610,181 @@ rawdata <- rawdata %>%
   mutate(Time = Time*timebase/1000)
 
 # Calculate Trials --------------------------------------------------------
-
-
-## Add a column to the data set indicating trial number
-
-### Identify the start time of each trial, and the final end state (indicated by -1 in Coulbourn)
-trialTimes <- c(which(rawdata$`Transition State` == trialstartstate), which(rawdata$`Transition State` == -1))
-trialDuration <- diff(trialTimes)
-totalTrials <- length(trialTimes) - 1
-
-
-## Initialise trialnum variable with 0s for every row
-trialNum <- replicate(nrow(rawdata),0)
-
-for (i in c(1:totalTrials)) {
-  trialIdx = c(trialTimes[i]:(trialTimes[i+1]-1))
-  trialNum[trialIdx] = i
+# First test to see if there are any trials at all, if not, then we can output an empty data set
+  #  Initailise variable
+  totalTrials = 0
+  totalTrialspertype = as.integer()
+  for (i in c(1:length(bin))) {
+    trialstobin <- length(which(rawdata$`Transition State` == bin[i]))
+    totalTrials = totalTrials + trialstobin
+    totalTrialspertype = c(totalTrialspertype, trialstobin)
+  }
   
-}
+  if (totalTrials > 0) {
+    
+    
+    ## Add a column to the data set indicating trial number
+    ### Identify the start time of each trial, and the final end state (indicated by -1 in Coulbourn)
+    
+    # Create time-binned data - Frequency --------------------------------------
+    # ## Target bin state info
+    binstate_IDx = as.double()
+    binstate_ID = as.double()
+    binstart_Time = as.double()
+    trialendIdx = as.double()
+    binend_Time = as.double()
+    for (i in c(1:length(bin))) {
+      if (totalTrialspertype[i] > 0) {
+        temp = which(rawdata$`Transition State` == bin[i])
+        temp2 = which(rawdata$`Current State` == bin[i] & rawdata$`Transition State` > 0)
+        
+        binstate_IDx = c(binstate_IDx,  temp)
+        binstart_Time = c(binstart_Time, rawdata$Time[temp])
+        binstate_ID = c(binstate_ID, replicate(length(temp), bin[i]) )
+        trialendIdx = c(trialendIdx, temp2)
+        binend_Time = c(binend_Time, rawdata$Time[temp2])
+        
+      }
+    }
+    
+    binTrialNum = sort(binstart_Time, index.return = TRUE)
+    binTrialNum = binTrialNum$ix
 
-## append trial counter to dataframe
-rawdata <- cbind(rawdata,trialNum)
+    ## Add extra artificial "bins" for a pre and post target state period identify
+    prebin_start <- binstart_Time - prebintime
+    prebin_end <- binstart_Time
+    prebin_stateID <- replicate(n = length(prebin_start), 111)
+    prebin_TrialNum <- binTrialNum
+    postbin_start <- binend_Time
+    postbin_end <- binend_Time + postbintime
+    postbin_stateID <- replicate(n = length(prebin_start), 222)
+    postbin_TrialNum <- binTrialNum
+    
+    binend_Time <- c(binend_Time, prebin_end, postbin_end)
+    binstart_Time <- c(binstart_Time, prebin_start, postbin_start)
+    binstate_ID <- c(binstate_ID, prebin_stateID, postbin_stateID)
+    binTrialNum <- c(binTrialNum, prebin_TrialNum, postbin_TrialNum)
+    
+    
+    # Calculate a new variable with interval units for each state (e.g. 1s bins)
+    bin_time <- 0
+    bin_state <- 0
+    bin_trial <- 0
+    bin_timewithin <- 0
 
+    
 
-# Create time-binned data - Frequency --------------------------------------
-## State change info
-statechange_idx = which(rawdata$`Transition State` !=0)
-statechange_ID = rawdata$`Transition State`[statechange_idx]
-statechange_Time = rawdata$Time[statechange_idx]
-statechange_TrialNum = rawdata$trialNum[statechange_idx]
-## Target bin state info
-binstates_idx =  which(!is.na(match(statechange_ID, bin)))
-binstate_ID = statechange_ID[binstates_idx]
-binstart_Time = statechange_Time[binstates_idx]
-binend_Time = statechange_Time[binstates_idx+1]
-binTrialNum = statechange_TrialNum[binstates_idx]
-## Add extra artificial "bins" for a pre and post target state period identify
-prebin_start <- binstart_Time - prebintime
-prebin_end <- binstart_Time
-prebin_stateID <- replicate(n = length(prebin_start), 111)
-prebin_TrialNum <- binTrialNum
-postbin_start <- binend_Time
-postbin_end <- binend_Time + postbintime
-postbin_stateID <- replicate(n = length(prebin_start), 222)
-postbin_TrialNum <- binTrialNum
+      for (i in  c(1:length(binstart_Time))) {
+        
+        # Timebin intervals
+        Temp <- seq(from = binstart_Time[i], to = binend_Time[i] - timebinwidth, by = timebinwidth)
+        bin_time <- c(bin_time, Temp)
+        # State IDS
+        Temp <- replicate(length(Temp),binstate_ID[i])
+        bin_state <- c(bin_state, Temp)
+        # Trial Number
+        Temp <- replicate(length(Temp),binTrialNum[i])
+        bin_trial <- c(bin_trial, Temp)
+        # Time within the State
+        Temp <- seq(from = timebinwidth, to = length(Temp), by = timebinwidth)
+        bin_timewithin <- c(bin_timewithin, Temp)
+        
+      }
+      # Clear initialised value from position 1 of vars
+      bin_time <- bin_time[-1] 
+      bin_state <- bin_state[-1] 
+      bin_trial <- bin_trial[-1] 
+      bin_timewithin <- bin_timewithin[-1]
+      ## Create new variable with bin_endtime
+      bin_endtime <- bin_time + timebinwidth
 
-binend_Time <- c(binend_Time, prebin_end, postbin_end)
-binstart_Time <- c(binstart_Time, prebin_start, postbin_start)
-binstate_ID <- c(binstate_ID, prebin_stateID, postbin_stateID)
-binTrialNum <- c(binTrialNum, prebin_TrialNum, postbin_TrialNum)
-
-
-# Calculate a new variable with interval units for each state (e.g. 1s bins)
-bin_time <- 0
-bin_state <- 0
-bin_trial <- 0
-bin_timewithin <- 0
-
-# If no states are present [i.e. animal didn't do anything] return zeros
-
-if (length(binstart_Time) == 0 ) {} else {
-for (i in  c(1:length(binstart_Time))) {
+    
+    # Count Frequency of events in bins ---------------------------------------
+    
+    # Extract data
+    ## repeat for each of the 4 possible actions
+    A1_on <- rawdata$Time[rawdata$A1_On == 1]
+    A1_off <- rawdata$Time[rawdata$A1_Off == 1]
+    A1_bin <- coulbourn_actionbin(A1_on, A1_off, bin_time, bin_endtime)
+    
+    A2_on <- rawdata$Time[rawdata$A2_On == 1]
+    A2_off <- rawdata$Time[rawdata$A2_Off == 1]
+    A2_bin <- coulbourn_actionbin(A2_on, A2_off, bin_time, bin_endtime)
+    
+    A3_on <- rawdata$Time[rawdata$A3_On == 1]
+    A3_off <- rawdata$Time[rawdata$A3_Off == 1]
+    A3_bin <- coulbourn_actionbin(A3_on, A3_off, bin_time, bin_endtime)
+    
+    A4_on <- rawdata$Time[rawdata$A4_On == 1]
+    A4_off <- rawdata$Time[rawdata$A4_Off == 1]
+    A4_bin <- coulbourn_actionbin(A4_on, A4_off, bin_time, bin_endtime)
+    
+    ## Combine into a dataframe and rename variables appropriately
+    data_bin <- cbind(A1_bin,A2_bin,A3_bin,A4_bin)
+    colnames(data_bin) <- c("A1_freq", "A1_dur","A2_freq", "A2_dur","A3_freq", "A3_dur","A4_freq", "A4_dur")
+    
+    
+    ## Add session/program/subject information
+    folder <- replicate(length(bin_trial), rawdata$folder[1])
+    file <- replicate(length(bin_trial), rawdata$file[1])
+    savename <- replicate(length(bin_trial), filename)
+    subject <- replicate(length(bin_trial), rawdata$Subject[1])
+    protocol <- replicate(length(bin_trial), rawdata$Protocol[1])
+    station <- replicate(length(bin_trial), rawdata$Station[1])
+    run <- replicate(length(bin_trial), rawdata$Run[1])
+    project <- replicate(length(bin_trial), rawdata$Project[1])
+    userID <- replicate(length(bin_trial), rawdata$UserID[1])
+    session <- replicate(length(bin_trial), rawdata$Session[1])
+    
+    ## Combine all the data together
+    data_bin <- data.table(folder, file, savename, subject, protocol, station, run, project, userID, session, bin_trial, bin_state, bin_time, bin_timewithin, data_bin)
+    
+    
+    
+    ## Save as .csv file
+    # Create a filenaming system that is identical to the original data but with a prefix that identifies the analysis method
+    savefilename <- filename
+    # Create a new processed data folder
+    savefolderpath <- here(folderpath, "Processed_TimeBin")
+    dir.create(savefolderpath, showWarnings = FALSE)
+    
+    savefilepath <- here(savefolderpath, savefilename)
+    fwrite(data_bin, savefilepath)
+  } else {
+    
+    # Create a dummy timebin for animals with no real data
+    timebins = c(0)
+    
+    ## Add session/program/subject information
+    folder <- replicate(length(timebins), rawdata$folder[1])
+    file <- replicate(length(timebins), rawdata$file[1])
+    savename <- replicate(length(timebins), filename)
+    subject <- replicate(length(timebins), rawdata$Subject[1])
+    protocol <- replicate(length(timebins), rawdata$Protocol[1])
+    station <- replicate(length(timebins), rawdata$Station[1])
+    run <- replicate(length(timebins), rawdata$Run[1])
+    project <- replicate(length(timebins), rawdata$Project[1])
+    userID <- replicate(length(timebins), rawdata$UserID[1])
+    session <- replicate(length(timebins), rawdata$Session[1])
+    
+    ## Combine all the data together
+    data_bin <- data.table(folder, file, savename, subject, protocol, station, run, project, userID, session, timebins)
+    
+    
+    
+    ## Save as .csv file
+    # Create a filenaming system that is identical to the original data but with a prefix that identifies the analysis method
+    savefilename <- filename
+    # Create a new processed data folder
+    savefolderpath <- here(folderpath, "Processed_TimeBin")
+    dir.create(savefolderpath, showWarnings = FALSE)
+    
+    savefilepath <- here(savefolderpath, savefilename)
+    fwrite(data_bin, savefilepath)
+    
+  }
   
-  # Timebin intervals
-  Temp <- seq(from = binstart_Time[i], to = binend_Time[i] - timebinwidth, by = timebinwidth)
-  bin_time <- c(bin_time, Temp)
-  # State IDS
-  Temp <- replicate(length(Temp),binstate_ID[i])
-  bin_state <- c(bin_state, Temp)
-  # Trial Number
-  Temp <- replicate(length(Temp),binTrialNum[i])
-  bin_trial <- c(bin_trial, Temp)
-  # Time within the State
-  Temp <- seq(from = timebinwidth, to = length(Temp), by = timebinwidth)
-  bin_timewithin <- c(bin_timewithin, Temp)
   
-}
-# Clear initialised value from position 1 of vars
-bin_time <- bin_time[-1] 
-bin_state <- bin_state[-1] 
-bin_trial <- bin_trial[-1] 
-bin_timewithin <- bin_timewithin[-1]
-## Create new variable with bin_endtime
-bin_endtime <- bin_time + timebinwidth
-}
-
-# Count Frequency of events in bins ---------------------------------------
-
-# Extract data
-## repeat for each of the 4 possible actions
-A1_on <- rawdata$Time[rawdata$A1_On == 1]
-A1_off <- rawdata$Time[rawdata$A1_Off == 1]
-A1_bin <- coulbourn_actionbin(A1_on, A1_off, bin_time, bin_endtime)
-
-A2_on <- rawdata$Time[rawdata$A2_On == 1]
-A2_off <- rawdata$Time[rawdata$A2_Off == 1]
-A2_bin <- coulbourn_actionbin(A2_on, A2_off, bin_time, bin_endtime)
-
-A3_on <- rawdata$Time[rawdata$A3_On == 1]
-A3_off <- rawdata$Time[rawdata$A3_Off == 1]
-A3_bin <- coulbourn_actionbin(A3_on, A3_off, bin_time, bin_endtime)
-
-A4_on <- rawdata$Time[rawdata$A4_On == 1]
-A4_off <- rawdata$Time[rawdata$A4_Off == 1]
-A4_bin <- coulbourn_actionbin(A4_on, A4_off, bin_time, bin_endtime)
-
-## Combine into a dataframe and rename variables appropriately
-data_bin <- cbind(A1_bin,A2_bin,A3_bin,A4_bin)
-colnames(data_bin) <- c("A1_freq", "A1_dur","A2_freq", "A2_dur","A3_freq", "A3_dur","A4_freq", "A4_dur")
-
-
-## Add session/program/subject information
-folder <- replicate(length(bin_trial), rawdata$folder[1])
-file <- replicate(length(bin_trial), rawdata$file[1])
-savename <- replicate(length(bin_trial), filename)
-subject <- replicate(length(bin_trial), rawdata$Subject[1])
-protocol <- replicate(length(bin_trial), rawdata$Protocol[1])
-station <- replicate(length(bin_trial), rawdata$Station[1])
-run <- replicate(length(bin_trial), rawdata$Run[1])
-project <- replicate(length(bin_trial), rawdata$Project[1])
-userID <- replicate(length(bin_trial), rawdata$UserID[1])
-session <- replicate(length(bin_trial), rawdata$Session[1])
-
-## Combine all the data together
-data_bin <- data.table(folder, file, savename, subject, protocol, station, run, project, userID, session, bin_trial, bin_state, bin_time, bin_timewithin, data_bin)
-
-
-
-## Save as .csv file
-# Create a filenaming system that is identical to the original data but with a prefix that identifies the analysis method
-savefilename <- filename
-# Create a new processed data folder
-savefolderpath <- here(folderpath, "Processed_TimeBin")
-dir.create(savefolderpath, showWarnings = FALSE)
-
-savefilepath <- here(savefolderpath, savefilename)
-fwrite(data_bin, savefilepath)
 
 # Function end
 }

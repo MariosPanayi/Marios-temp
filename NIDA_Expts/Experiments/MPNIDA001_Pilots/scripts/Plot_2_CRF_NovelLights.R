@@ -121,8 +121,24 @@ rawdata <- read_csv(here(folderpath,filename))
 rawdata <- rawdata %>% 
   mutate(Day = as.numeric(str_remove(Day, "Day")))
 
+data_PerTrial <- rawdata %>% 
+  mutate(trialnumber = ceiling(bin_trial/4)) %>% 
+  group_by(Day, counterbalancing, subject, sex, trialnumber,CS_name, Period) %>% 
+  summarise(MagEntries = mean(A3_freq)*1,
+            MagDuration = mean(A3_dur)*1) %>%
+  ungroup()
+
+
+data_PerTrial_CSPre <- data_PerTrial %>% 
+  pivot_wider(names_from = Period,values_from = c(MagEntries, MagDuration)) %>% 
+  mutate(MagEntries_CSPre = MagEntries_CS - MagEntries_Pre,
+         MagDuration_CSPre = MagDuration_CS - MagDuration_Pre) %>% 
+  pivot_longer(c(MagEntries_CS, MagEntries_Post, MagEntries_Pre, MagDuration_CS, MagDuration_Post, MagDuration_Pre, MagEntries_CSPre, MagDuration_CSPre), names_to = c("Measure", "Period"), names_sep = "_", values_to = "Mag") %>% 
+  pivot_wider(names_from = Measure, values_from = Mag)
+
+
 data_PerSession <- rawdata %>% 
-  group_by(Day, subject, sex, CS_name, Period) %>% 
+  group_by(Day, counterbalancing, subject, sex, CS_name, Period) %>% 
   summarise(MagEntries = mean(A3_freq)*10,
             MagDuration = mean(A3_dur)*10) %>%
   ungroup()
@@ -137,7 +153,7 @@ data_PerSession_CSPre <- data_PerSession %>%
 
 data_PerSession_last5s <- rawdata %>% 
   filter(bin_timewithin > 5) %>% 
-  group_by(Day, subject,sex, CS_name, Period) %>% 
+  group_by(Day, counterbalancing, subject,sex, CS_name, Period) %>% 
   summarise(MagEntries = mean(A3_freq)*5,
             MagDuration = mean(A3_dur)*5) %>%
   ungroup()
@@ -151,6 +167,8 @@ data_PerSession_last5s_CSPre <- data_PerSession_last5s %>%
   pivot_wider(names_from = Measure, values_from = Mag)
 
 
+data
+
 # Acquisition Plots -------------------------------------------------------
 
 
@@ -162,13 +180,14 @@ Acqsuisition_Stage1_MagFreq <- data_PerSession_CSPre %>%
   stat_summary_bin(fun.data = "mean_se", geom = "line", size = .5) +
   stat_summary(fun.data = "mean_se", geom = "errorbar", width = 0.0, size = .3, linetype = 1, show.legend = FALSE) +
   stat_summary_bin(fun.data = "mean_se", geom = "point", size = 2) +
+  facet_wrap(~counterbalancing, ) +
   # Make Pretty
   scale_y_continuous( expand = expansion(mult = c(0, 0)), breaks=seq(-100,100,1)) +
   ggtitle("Acquisition") + xlab("Day") + ylab("Magazine Entry 10s (CS-Pre)") +
   theme_cowplot(11) +
   theme(plot.title = element_text(hjust = 0.5)) +
   theme(plot.title = element_text(size=10)) +
-  coord_cartesian(ylim = c(-2,3.0001)) +
+  coord_cartesian(ylim = c(-2,8.0001)) +
   theme(axis.title.x=element_text(face = "bold")) +
   scale_linetype_manual(name = "", values = linetypes)  +
   scale_colour_manual(name = "", values = linecolours, aesthetics = c("colour")) +
@@ -176,23 +195,24 @@ Acqsuisition_Stage1_MagFreq <- data_PerSession_CSPre %>%
   scale_fill_manual(name = "", values = fillcolours) +
   theme(legend.key.width=unit(1,"line"))
 
-Acqsuisition_Stage1_MagFreq <- shift_xaxis(Acqsuisition_Stage1_MagFreq)
+Acqsuisition_Stage1_MagFreq <- shift_xaxis_facet(Acqsuisition_Stage1_MagFreq)
 Acqsuisition_Stage1_MagFreq
 
 Acqsuisition_Stage1_MagDur <- data_PerSession_CSPre %>% 
-  filter(Period == "CS") %>%
+  filter(Period == "CSPre") %>%
   ggplot(mapping = aes(x = as.factor(Day), y = MagDuration, group = CS_name, colour = CS_name, fill = CS_name, shape = CS_name,linetype = CS_name)) +
   # facet_wrap(~ sex) +
   stat_summary_bin(fun.data = "mean_se", geom = "line", size = .5) +
   stat_summary(fun.data = "mean_se", geom = "errorbar", width = 0.0, size = .3, linetype = 1, show.legend = FALSE) +
   stat_summary_bin(fun.data = "mean_se", geom = "point", size = 2) +
+  facet_wrap(~counterbalancing, ) +
   # Make Pretty
   scale_y_continuous( expand = expansion(mult = c(0, 0)), breaks=seq(-100,100,1)) +
   ggtitle("Acquisition") + xlab("Day") + ylab("Magazine Durations 10s (CS-Pre)") +
   theme_cowplot(11) +
   theme(plot.title = element_text(hjust = 0.5)) +
   theme(plot.title = element_text(size=10)) +
-  coord_cartesian(ylim = c(-2,3.0001)) +
+  coord_cartesian(ylim = c(-2,8.0001)) +
   theme(axis.title.x=element_text(face = "bold")) +
   scale_linetype_manual(name = "", values = linetypes)  +
   scale_colour_manual(name = "", values = linecolours, aesthetics = c("colour")) +
@@ -200,7 +220,7 @@ Acqsuisition_Stage1_MagDur <- data_PerSession_CSPre %>%
   scale_fill_manual(name = "", values = fillcolours) +
   theme(legend.key.width=unit(1,"line"))
 
-Acqsuisition_Stage1_MagDur <- shift_xaxis(Acqsuisition_Stage1_MagDur)
+Acqsuisition_Stage1_MagDur <- shift_xaxis_facet(Acqsuisition_Stage1_MagDur)
 Acqsuisition_Stage1_MagDur
 
 Acqsuisition_Stage1_MagFreq_last5s <- data_PerSession_last5s_CSPre %>% 
@@ -250,6 +270,60 @@ Acqsuisition_Stage1_MagDur_last5s <- data_PerSession_last5s_CSPre %>%
 
 Acqsuisition_Stage1_MagDur_last5s <- shift_xaxis(Acqsuisition_Stage1_MagDur_last5s)
 
+
+# ACquisition - Per Trial  ------------------------------------------------
+
+# Acquisition Plots -------------------------------------------------------
+
+Acqsuisition_Stage1_PerTrial_MagFreq <- data_PerTrial_CSPre %>% 
+  filter(Period == "CSPre") %>%
+  ggplot(mapping = aes(x = as.factor(trialnumber), y = MagEntries, group = CS_name, colour = CS_name, fill = CS_name, shape = CS_name,linetype = CS_name)) +
+  # facet_wrap(~ sex) +
+  stat_summary_bin(fun.data = "mean_se", geom = "line", size = .5) +
+  stat_summary(fun.data = "mean_se", geom = "errorbar", width = 0.0, size = .3, linetype = 1, show.legend = FALSE) +
+  stat_summary_bin(fun.data = "mean_se", geom = "point", size = 2) +
+  facet_wrap(~Day, ) +
+  # Make Pretty
+  scale_y_continuous( expand = expansion(mult = c(0, 0)), breaks=seq(-100,100,0.2)) +
+  ggtitle("Acquisition") + xlab("Trial Number") + ylab("Magazine Entry 1s (CS-Pre)") +
+  theme_cowplot(11) +
+  theme(plot.title = element_text(hjust = 0.5)) +
+  theme(plot.title = element_text(size=10)) +
+  coord_cartesian(ylim = c(-0.4,0.4001)) +
+  theme(axis.title.x=element_text(face = "bold")) +
+  scale_linetype_manual(name = "", values = linetypes)  +
+  scale_colour_manual(name = "", values = linecolours, aesthetics = c("colour")) +
+  scale_shape_manual(name = "", values = pointshapes) +
+  scale_fill_manual(name = "", values = fillcolours) +
+  theme(legend.key.width=unit(1,"line"))
+
+Acqsuisition_Stage1_PerTrial_MagFreq <- shift_xaxis_facet(Acqsuisition_Stage1_PerTrial_MagFreq)
+Acqsuisition_Stage1_PerTrial_MagFreq
+
+Acqsuisition_Stage1_PerTrial_MagDur <- data_PerTrial_CSPre %>% 
+  filter(Period == "CSPre") %>%
+  ggplot(mapping = aes(x = as.factor(trialnumber), y = MagDuration, group = CS_name, colour = CS_name, fill = CS_name, shape = CS_name,linetype = CS_name)) +
+  # facet_wrap(~ sex) +
+  stat_summary_bin(fun.data = "mean_se", geom = "line", size = .5) +
+  stat_summary(fun.data = "mean_se", geom = "errorbar", width = 0.0, size = .3, linetype = 1, show.legend = FALSE) +
+  stat_summary_bin(fun.data = "mean_se", geom = "point", size = 2) +
+  facet_wrap(~Day, ) +
+  # Make Pretty
+  scale_y_continuous( expand = expansion(mult = c(0, 0)), breaks=seq(-100,100,0.2)) +
+  ggtitle("Acquisition") + xlab("Trial Number") + ylab("Magazine Duration 1s (CS-Pre)") +
+  theme_cowplot(11) +
+  theme(plot.title = element_text(hjust = 0.5)) +
+  theme(plot.title = element_text(size=10)) +
+  coord_cartesian(ylim = c(-0.4,0.4001)) +
+  theme(axis.title.x=element_text(face = "bold")) +
+  scale_linetype_manual(name = "", values = linetypes)  +
+  scale_colour_manual(name = "", values = linecolours, aesthetics = c("colour")) +
+  scale_shape_manual(name = "", values = pointshapes) +
+  scale_fill_manual(name = "", values = fillcolours) +
+  theme(legend.key.width=unit(1,"line"))
+
+Acqsuisition_Stage1_PerTrial_MagDur <- shift_xaxis_facet(Acqsuisition_Stage1_PerTrial_MagDur)
+Acqsuisition_Stage1_PerTrial_MagDur
 
 
 # Save Stage 1 Data for analysis ------------------------------------------
