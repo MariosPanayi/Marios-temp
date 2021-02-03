@@ -180,13 +180,15 @@ subject <- c("17____",
   
 
 
-# !!!!!!!!!Continue working from here!!!!!!!!!! ---------------------------
+
 
   
   # Create counterbalancing lookup table
 lookup_counterbalancing <- data.frame(subject, counterbalancing, Pavlovian_cbx, sex)
   # Combine with rawdata
 rawdata <- left_join(rawdata, lookup_counterbalancing, by = "subject")
+
+
 
 # Add counterbalancing associated with lever->light IDs
 
@@ -317,16 +319,9 @@ lookup_counterbalancing <- data.frame(Day, subject, DevaluedOutcome)
 rawdata <- left_join(rawdata, lookup_counterbalancing, by = c("Day", "subject"))
 
 
-
-# Define Test Periods -----------------------------------------------------
-# 10 mins non-reinforced 2 lever test, 2 min lever retraction ITI, 10 mins reinforced 2 lever test [i.e. Lights delivered on FR1, No Food rewards!]
-
-rawdata <- rawdata %>%
-  mutate(Test_Period = ifelse(timebins <= 10, "NonReinforced", ifelse(timebins <= 12, "ITI", ifelse(timebins <= 22, "Reinforced", NA))))
-
 # Save as CSV -------------------------------------------------------------
 
 savefolderpath <- here("rawdata","Marios","3_LeverPressingForLights","CombinedData")
-savefilename <- "LPL_ProcessedData_DevlautionTest_WithinSession1minBins.csv"
+savefilename <- "LPL_ProcessedData_DevlautionTest_WithinCue1minBins.csv"
 dir.create(savefolderpath)
 write_csv(rawdata,here(savefolderpath,savefilename))

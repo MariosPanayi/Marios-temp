@@ -633,6 +633,7 @@ rawdata <- rawdata %>%
     binstart_Time = as.double()
     trialendIdx = as.double()
     binend_Time = as.double()
+    binCueSpecificTrialNum = as.double()
     for (i in c(1:length(bin))) {
       if (totalTrialspertype[i] > 0) {
         temp = which(rawdata$`Transition State` == bin[i])
@@ -644,6 +645,8 @@ rawdata <- rawdata %>%
         trialendIdx = c(trialendIdx, temp2)
         binend_Time = c(binend_Time, rawdata$Time[temp2])
         
+        binCueSpecificTrialNum = c(binCueSpecificTrialNum, c(1:totalTrialspertype[i]) )
+        
       }
     }
     
@@ -653,25 +656,27 @@ rawdata <- rawdata %>%
     ## Add extra artificial "bins" for a pre and post target state period identify
     prebin_start <- binstart_Time - prebintime
     prebin_end <- binstart_Time
-    prebin_stateID <- replicate(n = length(prebin_start), 111)
+    prebin_stateID <- paste("pre",as.character(binstate_ID), sep = "_" )
     prebin_TrialNum <- binTrialNum
     postbin_start <- binend_Time
     postbin_end <- binend_Time + postbintime
-    postbin_stateID <- replicate(n = length(prebin_start), 222)
+    postbin_stateID <- paste("post",as.character(binstate_ID), sep = "_" )
     postbin_TrialNum <- binTrialNum
+    
+    binstate_ID <- paste("cue",as.character(binstate_ID), sep = "_" )
     
     binend_Time <- c(binend_Time, prebin_end, postbin_end)
     binstart_Time <- c(binstart_Time, prebin_start, postbin_start)
     binstate_ID <- c(binstate_ID, prebin_stateID, postbin_stateID)
     binTrialNum <- c(binTrialNum, prebin_TrialNum, postbin_TrialNum)
-    
+    binCueSpecificTrialNum <- c(binCueSpecificTrialNum,binCueSpecificTrialNum,binCueSpecificTrialNum)
     
     # Calculate a new variable with interval units for each state (e.g. 1s bins)
-    bin_time <- 0
-    bin_state <- 0
-    bin_trial <- 0
-    bin_timewithin <- 0
-
+    bin_time <- as.double()
+    bin_state <- as.double()
+    bin_trial <- as.double()
+    bin_timewithin <- as.double()
+    bin_CueSpecificTrialNum <- as.double()
     
 
       for (i in  c(1:length(binstart_Time))) {
@@ -688,13 +693,12 @@ rawdata <- rawdata %>%
         # Time within the State
         Temp <- seq(from = timebinwidth, to = length(Temp), by = timebinwidth)
         bin_timewithin <- c(bin_timewithin, Temp)
+        #Trial Number specific to Cue identity
+        Temp <- replicate(length(Temp),binCueSpecificTrialNum[i])
+        bin_CueSpecificTrialNum <- c(bin_CueSpecificTrialNum, Temp)
         
       }
-      # Clear initialised value from position 1 of vars
-      bin_time <- bin_time[-1] 
-      bin_state <- bin_state[-1] 
-      bin_trial <- bin_trial[-1] 
-      bin_timewithin <- bin_timewithin[-1]
+
       ## Create new variable with bin_endtime
       bin_endtime <- bin_time + timebinwidth
 
@@ -737,7 +741,7 @@ rawdata <- rawdata %>%
     session <- replicate(length(bin_trial), rawdata$Session[1])
     
     ## Combine all the data together
-    data_bin <- data.table(folder, file, savename, subject, protocol, station, run, project, userID, session, bin_trial, bin_state, bin_time, bin_timewithin, data_bin)
+    data_bin <- data.table(folder, file, savename, subject, protocol, station, run, project, userID, session, bin_trial, bin_CueSpecificTrialNum, bin_state, bin_time, bin_timewithin, data_bin)
     
     
     
@@ -768,7 +772,7 @@ rawdata <- rawdata %>%
     session <- replicate(length(timebins), rawdata$Session[1])
     
     ## Combine all the data together
-    data_bin <- data.table(folder, file, savename, subject, protocol, station, run, project, userID, session, timebins)
+    data_bin <- data.table(folder, file, savename, subject, protocol, station, run, project, userID, session)
     
     
     

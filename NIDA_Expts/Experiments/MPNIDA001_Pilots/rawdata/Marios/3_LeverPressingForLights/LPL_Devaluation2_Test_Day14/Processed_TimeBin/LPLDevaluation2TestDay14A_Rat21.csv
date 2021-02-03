@@ -1,2 +1,2 @@
-folder,file,savename,subject,protocol,station,run,project,userID,session,timebins
-LPL_Devaluation2_Test_Day14,LPLDevaluation2TestDay14A,LPLDevaluation2TestDay14A_Rat21.csv,21____,54,4,1,C,Marios,248,0
+folder,file,savename,subject,protocol,station,run,project,userID,session
+LPL_Devaluation2_Test_Day14,LPLDevaluation2TestDay14A,LPLDevaluation2TestDay14A_Rat21.csv,21____,54,4,1,C,Marios,248

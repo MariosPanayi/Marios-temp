@@ -28,7 +28,8 @@ projectdatafolder <- c("rawdata","Marios","2_ConditionedReinforcement")
 ## Final level of folders contianing the relevant .txt Coulbourn files
 listofdatafolders <- c("NovelLightCues_Acquisition_Day1",
                        "NovelLightCues_Acquisition_Day2",
-                       "NovelLightCues_Acquisition_Day3")
+                       "NovelLightCues_Acquisition_Day3",
+                       "NovelLightCues_Acquisition_Day4")
 
 
 #  extract data filenames, only .txt --------------------------------------

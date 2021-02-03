@@ -187,7 +187,7 @@ Acqsuisition_Stage1_MagFreq <- data_PerSession_CSPre %>%
   theme_cowplot(11) +
   theme(plot.title = element_text(hjust = 0.5)) +
   theme(plot.title = element_text(size=10)) +
-  coord_cartesian(ylim = c(-2,8.0001)) +
+  coord_cartesian(ylim = c(-2,4.0001)) +
   theme(axis.title.x=element_text(face = "bold")) +
   scale_linetype_manual(name = "", values = linetypes)  +
   scale_colour_manual(name = "", values = linecolours, aesthetics = c("colour")) +
@@ -212,7 +212,7 @@ Acqsuisition_Stage1_MagDur <- data_PerSession_CSPre %>%
   theme_cowplot(11) +
   theme(plot.title = element_text(hjust = 0.5)) +
   theme(plot.title = element_text(size=10)) +
-  coord_cartesian(ylim = c(-2,8.0001)) +
+  coord_cartesian(ylim = c(-2,4.0001)) +
   theme(axis.title.x=element_text(face = "bold")) +
   scale_linetype_manual(name = "", values = linetypes)  +
   scale_colour_manual(name = "", values = linecolours, aesthetics = c("colour")) +
@@ -245,7 +245,7 @@ Acqsuisition_Stage1_MagFreq_last5s <- data_PerSession_last5s_CSPre %>%
   theme(legend.key.width=unit(1,"line"))
 
 Acqsuisition_Stage1_MagFreq_last5s <- shift_xaxis(Acqsuisition_Stage1_MagFreq_last5s)
-
+Acqsuisition_Stage1_MagFreq_last5s
 
 Acqsuisition_Stage1_MagDur_last5s <- data_PerSession_last5s_CSPre %>% 
   filter(Period == "CSPre") %>%
@@ -269,7 +269,7 @@ Acqsuisition_Stage1_MagDur_last5s <- data_PerSession_last5s_CSPre %>%
   theme(legend.key.width=unit(1,"line"))
 
 Acqsuisition_Stage1_MagDur_last5s <- shift_xaxis(Acqsuisition_Stage1_MagDur_last5s)
-
+Acqsuisition_Stage1_MagDur_last5s
 
 # ACquisition - Per Trial  ------------------------------------------------
 
