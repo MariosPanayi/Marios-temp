@@ -344,7 +344,7 @@ Acquisition_PerBin_LP <- data_bin_long_StimID %>%
 
 
 
-# Plot Instrumental Acquisition: Deval1 ID --------------------------------
+# Plot Instrumental Acquisition: Deval ID --------------------------------
 
 Acquisition_PerSession_Reinforcer_DevalID <- data_Period_long_DevalID %>% 
   ggplot(mapping = aes(x = as.factor(Day), y = Reinforcer, group = Stimulus, colour = Stimulus, fill = Stimulus, shape = Stimulus, linetype = Stimulus)) +

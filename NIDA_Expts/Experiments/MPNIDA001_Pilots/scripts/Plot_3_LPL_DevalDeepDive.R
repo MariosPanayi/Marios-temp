@@ -181,7 +181,7 @@ data_recode <- rawdata %>%
 
 ## relabel data
 data_bin <- data_recode %>%
-  # filter(bin_CueSpecificTrialNum <= 1) %>% 
+  # filter(bin_CueSpecificTrialNum <= 6) %>%
   group_by(Day, counterbalancing, Pavlovian_cbx, DevaluedOutcome, DevaluedStimulus, DevaluedLever, Period ,bin_timewithin, Devalued_Trial, subject) %>%
   summarise(LPFreq_Flash = mean(LP_Freq_Flash, na.rm=TRUE),
             LPDur_Flash = mean(LP_Dur_Flash, na.rm=TRUE),
@@ -289,7 +289,7 @@ Devaluation_Total_MagFreq <- plot_Period %>%
   theme_cowplot(11) +
   theme(plot.title = element_text(hjust = 0.5)) +
   theme(plot.title = element_text(size=10)) +
-  coord_cartesian(ylim = c(0,2.0001)) +
+  coord_cartesian(ylim = c(0,4.0001)) +
   theme(axis.title.x=element_text(face = "bold")) +
   scale_colour_manual(name = "", values = linecolours, aesthetics = c("colour")) +
   scale_fill_manual(name = "", values = fillcolours) +
@@ -301,7 +301,7 @@ Devaluation_Total_MagFreq
 Devaluation_Total_LP <- plot_Period %>% 
   filter(Stimulus != "Magazine",
   ) %>% 
-  ggplot(mapping = aes(x = as.factor(Stimulus), y = LPFreq, group = Stimulus, colour = Stimulus, fill = Stimulus)) +
+  ggplot(mapping = aes(x = as.factor(Stimulus), y = LPDur, group = Stimulus, colour = Stimulus, fill = Stimulus)) +
   stat_summary_bin(fun.data = "mean_se", geom = "bar", position = "dodge",  size = .3) +
   stat_summary(fun.data = "mean_se", geom = "errorbar", position = position_dodge(width = 0.9),  width = 0,  size = .3, colour = "black", linetype = "solid", show.legend = FALSE) + 
   geom_point(aes(group = subject), colour = gray(.5)) +
@@ -321,4 +321,15 @@ Devaluation_Total_LP <- plot_Period %>%
 
 
 Devaluation_Total_LP
+
+
+# Save Data for analysis ------------------------------------------
+
+
+savefile <- "LPL_Stage3_DevalTest_WithinCue_PeriodAvg.csv"
+write_csv(plot_Period, here("figures", "figure_data",savefile))
+
+
+
+
 
