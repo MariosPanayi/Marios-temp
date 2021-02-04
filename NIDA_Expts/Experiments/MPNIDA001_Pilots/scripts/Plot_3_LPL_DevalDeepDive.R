@@ -181,7 +181,7 @@ data_recode <- rawdata %>%
 
 ## relabel data
 data_bin <- data_recode %>%
-  # filter(bin_CueSpecificTrialNum <= 6) %>%
+  # filter(bin_CueSpecificTrialNum <= 1) %>%
   group_by(Day, counterbalancing, Pavlovian_cbx, DevaluedOutcome, DevaluedStimulus, DevaluedLever, Period ,bin_timewithin, Devalued_Trial, subject) %>%
   summarise(LPFreq_Flash = mean(LP_Freq_Flash, na.rm=TRUE),
             LPDur_Flash = mean(LP_Dur_Flash, na.rm=TRUE),
@@ -277,7 +277,7 @@ plot_Period <- data_Period_long_DevalID_Avg %>%
 Devaluation_Total_MagFreq <- plot_Period %>% 
   filter(Stimulus == "Magazine",
 ) %>% 
-  ggplot(mapping = aes(x = as.factor(Devalued_Trial), y = LPFreq, group = Devalued_Trial, colour = Devalued_Trial, fill = Devalued_Trial)) +
+  ggplot(mapping = aes(x = as.factor(Devalued_Trial), y = LPDur, group = Devalued_Trial, colour = Devalued_Trial, fill = Devalued_Trial)) +
   stat_summary_bin(fun.data = "mean_se", geom = "bar", position = "dodge",  size = .3) +
   stat_summary(fun.data = "mean_se", geom = "errorbar", position = position_dodge(width = 0.9),  width = 0,  size = .3, colour = "black", linetype = "solid", show.legend = FALSE) + 
   geom_point(aes(group = subject), colour = gray(.5)) +
@@ -301,7 +301,7 @@ Devaluation_Total_MagFreq
 Devaluation_Total_LP <- plot_Period %>% 
   filter(Stimulus != "Magazine",
   ) %>% 
-  ggplot(mapping = aes(x = as.factor(Stimulus), y = LPDur, group = Stimulus, colour = Stimulus, fill = Stimulus)) +
+  ggplot(mapping = aes(x = as.factor(Stimulus), y = LPFreq, group = Stimulus, colour = Stimulus, fill = Stimulus)) +
   stat_summary_bin(fun.data = "mean_se", geom = "bar", position = "dodge",  size = .3) +
   stat_summary(fun.data = "mean_se", geom = "errorbar", position = position_dodge(width = 0.9),  width = 0,  size = .3, colour = "black", linetype = "solid", show.legend = FALSE) + 
   geom_point(aes(group = subject), colour = gray(.5)) +

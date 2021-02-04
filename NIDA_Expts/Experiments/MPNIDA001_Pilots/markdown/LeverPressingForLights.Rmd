@@ -38,9 +38,11 @@ LPL_Stage3_DevalTest_WithinCue_PeriodAvg <- read_csv(here("figures","figure_data
 ```{r Deval Test Within Cue magazine , include=FALSE, message = FALSE, warning=FALSE}
 rawdata <- LPL_Stage3_DevalTest_WithinCue_PeriodAvg %>% 
 filter(Stimulus == "Magazine",
-       Period == "cue")
-# Stage 1 Acquisition Frequency
-anova <- aov_4(LPFreq ~ (Devalued_Trial|subject), data = rawdata, anova_table = list(correction = "none", es = "pes"))
+        Period != "pre",
+       )
+
+# Magazine Frequency
+anova <- aov_4(LPFreq ~ (Period*Devalued_Trial|subject), data = rawdata, anova_table = list(correction = "none", es = "pes"))
 anova_Test_LPFreq <- apa_print(anova, mse = "FALSE",correction = "none",es = "pes")
 ## simple effects -
 simple <- emmeans(anova, ~Period*Devalued_Trial)
@@ -49,5 +51,15 @@ simple_Test_LPFreq <- apa_print(contrast(simple, interaction = "pairwise", by = 
 anova_Test_LPFreq$table
 simple_Test_LPFreq$table
 
+# Magazine Duration
+anova <- aov_4(LPDur ~ (Period*Devalued_Trial|subject), data = rawdata, anova_table = list(correction = "none", es = "pes"))
+anova_Test_LPDur <- apa_print(anova, mse = "FALSE",correction = "none",es = "pes")
+## simple effects -
+simple <- emmeans(anova, ~Period*Devalued_Trial)
+simple_Test_LPDur <- apa_print(contrast(simple, interaction = "pairwise", by = "Period" ,adjust = "none"))
+
+anova_Test_LPDur$table
+simple_Test_LPDur$table
+
 ```
-`r include_graphics(here("figures", "CI_10s_Freq_Combined.png"))`
+

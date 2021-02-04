@@ -123,7 +123,7 @@ rawdata <- rawdata %>%
 
 data_PerTrial <- rawdata %>% 
   mutate(trialnumber = ceiling(bin_trial/4)) %>% 
-  group_by(Day, counterbalancing, subject, sex, trialnumber,CS_name, Period) %>% 
+  group_by(Day, counterbalancing, subject, sex, trialnumber,state_ID, CS_name, Period) %>% 
   summarise(MagEntries = mean(A3_freq)*1,
             MagDuration = mean(A3_dur)*1) %>%
   ungroup()
@@ -138,7 +138,7 @@ data_PerTrial_CSPre <- data_PerTrial %>%
 
 
 data_PerSession <- rawdata %>% 
-  group_by(Day, counterbalancing, subject, sex, CS_name, Period) %>% 
+  group_by(Day, counterbalancing, subject, sex, state_ID, CS_name, Period) %>% 
   summarise(MagEntries = mean(A3_freq)*10,
             MagDuration = mean(A3_dur)*10) %>%
   ungroup()
@@ -153,7 +153,7 @@ data_PerSession_CSPre <- data_PerSession %>%
 
 data_PerSession_last5s <- rawdata %>% 
   filter(bin_timewithin > 5) %>% 
-  group_by(Day, counterbalancing, subject,sex, CS_name, Period) %>% 
+  group_by(Day, counterbalancing, subject,sex,state_ID, CS_name, Period) %>% 
   summarise(MagEntries = mean(A3_freq)*5,
             MagDuration = mean(A3_dur)*5) %>%
   ungroup()
@@ -174,8 +174,9 @@ data
 
 
 Acqsuisition_Stage1_MagFreq <- data_PerSession_CSPre %>% 
-  filter(Period == "CSPre") %>%
-  ggplot(mapping = aes(x = as.factor(Day), y = MagEntries, group = CS_name, colour = CS_name, fill = CS_name, shape = CS_name,linetype = CS_name)) +
+  filter(Period == "CS")  %>%
+  na.omit() %>% 
+  ggplot(mapping = aes(x = as.factor(Day), y = MagEntries, group = state_ID, colour = state_ID, fill = state_ID, shape = state_ID,linetype = state_ID)) +
   # facet_wrap(~ sex) +
   stat_summary_bin(fun.data = "mean_se", geom = "line", size = .5) +
   stat_summary(fun.data = "mean_se", geom = "errorbar", width = 0.0, size = .3, linetype = 1, show.legend = FALSE) +
@@ -189,18 +190,19 @@ Acqsuisition_Stage1_MagFreq <- data_PerSession_CSPre %>%
   theme(plot.title = element_text(size=10)) +
   coord_cartesian(ylim = c(-2,4.0001)) +
   theme(axis.title.x=element_text(face = "bold")) +
-  scale_linetype_manual(name = "", values = linetypes)  +
-  scale_colour_manual(name = "", values = linecolours, aesthetics = c("colour")) +
-  scale_shape_manual(name = "", values = pointshapes) +
-  scale_fill_manual(name = "", values = fillcolours) +
+  # scale_linetype_manual(name = "", values = linetypes)  +
+  # scale_colour_manual(name = "", values = linecolours, aesthetics = c("colour")) +
+  # scale_shape_manual(name = "", values = pointshapes) +
+  # scale_fill_manual(name = "", values = fillcolours) +
   theme(legend.key.width=unit(1,"line"))
 
 Acqsuisition_Stage1_MagFreq <- shift_xaxis_facet(Acqsuisition_Stage1_MagFreq)
 Acqsuisition_Stage1_MagFreq
 
 Acqsuisition_Stage1_MagDur <- data_PerSession_CSPre %>% 
-  filter(Period == "CSPre") %>%
-  ggplot(mapping = aes(x = as.factor(Day), y = MagDuration, group = CS_name, colour = CS_name, fill = CS_name, shape = CS_name,linetype = CS_name)) +
+  filter(Period == "CS") %>%
+  na.omit() %>% 
+  ggplot(mapping = aes(x = as.factor(Day), y = MagDuration, group = state_ID, colour = state_ID, fill = state_ID, shape = state_ID,linetype = state_ID)) +
   # facet_wrap(~ sex) +
   stat_summary_bin(fun.data = "mean_se", geom = "line", size = .5) +
   stat_summary(fun.data = "mean_se", geom = "errorbar", width = 0.0, size = .3, linetype = 1, show.legend = FALSE) +
@@ -214,10 +216,10 @@ Acqsuisition_Stage1_MagDur <- data_PerSession_CSPre %>%
   theme(plot.title = element_text(size=10)) +
   coord_cartesian(ylim = c(-2,4.0001)) +
   theme(axis.title.x=element_text(face = "bold")) +
-  scale_linetype_manual(name = "", values = linetypes)  +
-  scale_colour_manual(name = "", values = linecolours, aesthetics = c("colour")) +
-  scale_shape_manual(name = "", values = pointshapes) +
-  scale_fill_manual(name = "", values = fillcolours) +
+  # scale_linetype_manual(name = "", values = linetypes)  +
+  # scale_colour_manual(name = "", values = linecolours, aesthetics = c("colour")) +
+  # scale_shape_manual(name = "", values = pointshapes) +
+  # scale_fill_manual(name = "", values = fillcolours) +
   theme(legend.key.width=unit(1,"line"))
 
 Acqsuisition_Stage1_MagDur <- shift_xaxis_facet(Acqsuisition_Stage1_MagDur)

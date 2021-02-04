@@ -29,7 +29,8 @@ projectdatafolder <- c("rawdata","Marios","2_ConditionedReinforcement")
 listofdatafolders <- c("NovelLightCues_Acquisition_Day1",
                        "NovelLightCues_Acquisition_Day2",
                        "NovelLightCues_Acquisition_Day3",
-                       "NovelLightCues_Acquisition_Day4")
+                       "NovelLightCues_Acquisition_Day4",
+                       "NovelLightCues_Acquisition_Day5")
 
 
 #  extract data filenames, only .txt --------------------------------------
