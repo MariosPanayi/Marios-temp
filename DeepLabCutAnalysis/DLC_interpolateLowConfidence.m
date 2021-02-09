@@ -32,4 +32,4 @@ end
 %Fill nan values with linear interpolation
 %note that you can easily change this to other forms of fill using options
 %in fillmissing() e.g. use previous non-missing etc...
-filtered = fillmissing(filtered, 'linear', 1);
+filtered = fillmissing(filtered, 'linear',1, 'EndValues', 'next');
