@@ -180,10 +180,12 @@ magnitude <- c("High",
 factorlookup <- data.frame(CS_name, probability, magnitude)
 rawdata <- left_join(rawdata, factorlookup, by = "CS_name")
   
+rawdata <- rawdata %>% 
+  mutate( Stage = ifelse(Stage =="Acquisition", "1.Acquisition", ifelse(Stage =="ReAcquisition", "2.ReAcquisition", ifelse(Stage =="EnhancedAcquisition", "3.EnhancedAcquisition", NA))) )
 
 
 data_PerSession <- rawdata %>% 
-  group_by(Day, subject, probability, magnitude, sex, CS_name, Period) %>% 
+  group_by(Stage, Day, subject, probability, magnitude, sex, CS_name, Period) %>% 
   summarise(MagEntries = mean(A3_freq)*10,
             MagDuration = mean(A3_dur)*10) %>%
   ungroup()
@@ -198,7 +200,7 @@ data_PerSession_CSPre <- data_PerSession %>%
 
 data_PerSession_last5s <- rawdata %>% 
   filter(bin_timewithin > 5) %>% 
-  group_by(Day, subject,probability, magnitude, sex, CS_name, Period) %>% 
+  group_by(Stage, Day, subject,probability, magnitude, sex, CS_name, Period) %>% 
   summarise(MagEntries = mean(A3_freq)*5,
             MagDuration = mean(A3_dur)*5) %>%
   ungroup()
@@ -223,6 +225,7 @@ Acqsuisition_Stage1_MagFreq <- data_PerSession_CSPre %>%
   stat_summary_bin(fun.data = "mean_se", geom = "line", size = .5) +
   stat_summary(fun.data = "mean_se", geom = "errorbar", width = 0.0, size = .3, linetype = 1, show.legend = FALSE) +
   stat_summary_bin(fun.data = "mean_se", geom = "point", size = 2) +
+  facet_grid(.~Stage,scales = "free_x", space = "free_x") +
   # Make Pretty
   scale_y_continuous( expand = expansion(mult = c(0, 0)), breaks=seq(-100,100,1)) +
   ggtitle("Acquisition") + xlab("Day") + ylab("Magazine Entry 10s (CS-Pre)") +
@@ -247,6 +250,7 @@ Acqsuisition_Stage1_MagDur <- data_PerSession_CSPre %>%
   stat_summary_bin(fun.data = "mean_se", geom = "line", size = .5) +
   stat_summary(fun.data = "mean_se", geom = "errorbar", width = 0.0, size = .3, linetype = 1, show.legend = FALSE) +
   stat_summary_bin(fun.data = "mean_se", geom = "point", size = 2) +
+  facet_grid(.~Stage,scales = "free_x", space = "free_x") +
   # Make Pretty
   scale_y_continuous( expand = expansion(mult = c(0, 0)), breaks=seq(-100,100,1)) +
   ggtitle("Acquisition") + xlab("Day") + ylab("Magazine Durations 10s (CS-Pre)") +
@@ -2033,6 +2037,28 @@ ggplot(data = plotdata, mapping = aes(x = Instrumental, y = Pavlovian_MagEntries
   # scale_fill_manual(name = "", values = fillcolours) +
   theme(legend.key.width=unit(1,"line"))
 
+CRF_RepeatTest_PavInstCorrelation <- ggplot(data = plotdata, mapping = aes(x = Instrumental, y = Pavlovian_MagEntries, fill = ID_Comparison, colour = ID_Comparison) ) +
+  geom_hline(yintercept=0, linetype="dashed", color = "black") +
+  geom_vline(xintercept=0, linetype="dashed", color = "black") +
+  geom_smooth(method='lm', colour = DarkRed, fill = LightGrey) +
+  geom_point() +
+  facet_wrap(~TestCondition, scales='free') +
+  # ggMarginal(data = plotdata, x = "Pavlovian", y = "Instrumental", type="density") +
+  # Make Pretty
+  scale_y_continuous( expand = expansion(mult = c(0, 0)), breaks=seq(-1000,1000,2)) +
+  scale_x_continuous( expand = expansion(mult = c(0, 0)), breaks=seq(-1000,1000,20)) +
+  ggtitle("") + xlab("Instrumental High Value Bias") + ylab("Pavlovian High Value Bias") +
+  theme_cowplot(11) +
+  theme(plot.title = element_text(hjust = 0.5)) +
+  theme(plot.title = element_text(size=10)) +
+  coord_cartesian(ylim = c(-2, 8), xlim = c(-80,120.0001)) +
+  theme(axis.title.x=element_text(face = "bold")) +
+  # scale_linetype_manual(name = "", values = linetypes)  +
+  # scale_colour_manual(name = "", values = linecolours, aesthetics = c("colour")) +
+  # scale_shape_manual(name = "", values = pointshapes) +
+  # scale_fill_manual(name = "", values = fillcolours) +
+  theme(legend.key.width=unit(1,"line"))
+
 CRF_RepeatTest_ScatterPlot <- ggscatterhist(data = plotdata, x = "Pavlovian_MagEntries", y = "Instrumental",
               group = "TestCondition", color = "Low_ID", shape = "circle",
               size = 3, alpha = 0.8,
@@ -2146,7 +2172,7 @@ B <- Acqsuisition_Stage1_MagDur + theme(legend.position= c(0.05,.90),
 CRF_Acquisition_10s_combined <- (A + B) + plot_annotation(tag_levels = 'A') + plot_layout(nrow = 2, ncol = 1, widths = c(1, 1))
 
 filename = here("figures", "CRF_Acquisition_10s_combined.png")
-ggsave(filename, CRF_Acquisition_10s_combined, width = 100, height = 160, units = "mm", dpi = 1200)
+ggsave(filename, CRF_Acquisition_10s_combined, width = 140, height = 160, units = "mm", dpi = 1200)
 
 ## Test Data - LP
 A <- P100_HighvsLow_TotalLP + theme(legend.position= c(0.05,.90), 
@@ -2268,3 +2294,6 @@ ggsave(filename, CRF_repeatTest_LPDiff_All, width = 120, height = 240, units = "
 
 
 
+#
+filename = here("figures", "CRF_RepeatTest_PavInstCorrelation.png")
+ggsave(filename, CRF_RepeatTest_PavInstCorrelation, width = 240, height = 240, units = "mm", dpi = 1200)

@@ -238,4 +238,6 @@ anova_test_Value$table
 ```
 
 
+# Repeat Test Data
 
+`r apa_table(anova_test_Value$table)`
