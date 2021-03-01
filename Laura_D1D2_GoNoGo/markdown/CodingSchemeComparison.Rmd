@@ -1,0 +1,151 @@
+---
+title: "Laura_SKF_GoNoGo_ErrorTrialsAnalsysis"
+author: "Marios Panayi"
+date: "1/27/2021"
+output:
+  word_document: default
+---
+
+```{r setup, include=FALSE, message = FALSE, warning=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+library(tinytex)
+## Packages for data organisation and plotting
+library(tidyverse)
+# Package for relative file paths
+library(here)
+# library(ggpubr)
+library(cowplot)
+library(ggsignif)
+library(patchwork)
+################################################################################
+## Packages for Data analysis
+library(afex)
+afex_options(emmeans_model = "multivariate")# use multivariate model for all follow-up tests.
+library(emmeans)
+# install.packages("devtools")
+# devtools::install_github("crsh/papaja")
+library(papaja)
+library(knitr)
+# remotes::install_github("noamross/redoc")
+# library(redoc)
+
+## Packages for data organisation and plotting
+library(tidyverse)
+library(knitr)
+library(data.table)
+library(broom)
+# Package for relative file paths
+library(here)
+# Pretty Plot Stuff
+library(ggpubr)
+library(cowplot)
+library(ggsignif)
+library(patchwork)
+library(RColorBrewer)
+
+## Packages for Data analysis
+library(afex)
+afex_options(emmeans_model = "multivariate")# use multivariate model for all follow-up tests.
+library(emmeans)
+
+# Packages for markdown 
+# install.packages("devtools")
+# devtools::install_github("crsh/papaja")
+# library(papaja)
+# library(knitr)
+# remotes::install_github("noamross/redoc")
+# library(redoc)
+
+# Packages for parallel computing significantly speeds things up (sometimes)
+library(foreach)
+library(doParallel)
+
+numCores = 16
+registerDoParallel(numCores)
+
+
+###Get packages needed for GLMM
+###install.packages("lme4")
+library(lme4)
+###install.packages("car")
+library(car)
+###install.packages("multcomp")
+library(multcomp)
+###install.packages("emmeans")
+library(emmeans)
+###install.packages("ggResidpanel")
+library(ggResidpanel)
+
+# Optimisers for GLMM fitting
+library(optimx)
+library(dfoptim)
+```
+
+
+```{r Generate fake data set , include=FALSE, message = FALSE, warning=FALSE}
+
+
+nhigh = 120
+nlow = nhigh/4
+
+pbiashigh = .8
+pbiaslow = 1 - pbiashigh
+
+
+A1B1 = cbind(rep(c("A1"), nlow), rep(c("B1"), nlow), rep(c(1,0), c(nlow*pbiaslow, nlow*pbiashigh)) )
+A1B2 = cbind(rep(c("A1"), nhigh), rep(c("B2"), nhigh), rep(c(1,0), c(nhigh*pbiaslow, nhigh*pbiashigh)) )
+A2B1 = cbind(rep(c("A2"), nlow), rep(c("B1"), nlow), rep(c(1,0), c(nlow*pbiashigh, nlow*pbiaslow)) )
+A2B2 = cbind(rep(c("A2"), nhigh), rep(c("B2"), nhigh), rep(c(1,0), c(nhigh*pbiaslow, nhigh*pbiashigh)) )
+
+
+rawdata = rbind(A1B1, A1B2, A2B1, A2B2)
+rawdata = as.data.frame(rawdata)
+names(rawdata) = c("A", "B", "choice")
+# convert choice into double
+rawdata <- rawdata %>% 
+  mutate(choice = as.numeric(choice),
+         A = as.factor(A),
+         B = as.factor(B),
+         Ac = ifelse(A == "A1", 0.5, -0.5),
+         Bc = ifelse(B == "B1", 0.5, -0.5),
+         AcBc = Ac*Bc)
+
+
+# summarise data
+
+summarytable <- rawdata %>%
+  group_by(A,B, choice) %>% 
+  summarise(Sum = n())
+
+summarytable <- summarytable %>% 
+         mutate(choice = ifelse(choice == 1, "Yes", "No")) %>% 
+  pivot_wider(names_from = choice, values_from = Sum)
+
+rawdata %>% 
+ggplot(aes(x = A, y = choice, group = B, colour = B, fill = B))+
+   stat_summary_bin(fun.data = "mean_se", geom = "bar", position = "dodge",  size = .3) +
+   stat_summary(fun.data = "mean_se", geom = "errorbar", position = position_dodge(width = 0.9),  width = 0,  size = .3, colour = "black", linetype = "solid", show.legend = FALSE) 
+
+model1_default <- lm(cbind(Yes,No) ~ A*B , data = summarytable ,family=binomial)
+model1_contrSum <- lm(choice ~ A*B , data = rawdata ,family=binomial, contrasts = "contr.sum")
+
+emmeans(model1_contrSum,pairwise~A*B, adjust = "none", type = "response")
+
+plot(model1_default)
+
+Anova(model1_default)
+Anova(model1_default,type = 3)
+Anova(model1_contrSum)
+Anova(model1_contrSum,type = 3)
+summary(model1_default)
+summary(model1_contrSum)
+                  
+```
+
+
+
+
+
+
+
+

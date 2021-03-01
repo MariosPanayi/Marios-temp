@@ -247,6 +247,26 @@ ylim([0,RawData(i).max_xy(2) - RawData(i).min_xy(2)]);
 j = j+1;
  
 end
+
+figure
+j = 1;
+% cmap = bone(time_end);
+
+% for i = 6:11 
+    for i = 7 
+subplot(2,3,j)
+hold on
+xs = RawData(i).data_downsampled(time_start:time_end,bodypart) - RawData(i).min_xy(1);
+ys = RawData(i).data_downsampled(time_start:time_end,bodypart+1) - RawData(i).min_xy(2);
+distances = sqrt(diff(xs).^2 + diff(ys).^2);
+plot(1:length(distances), cumsum(distances))
+j = j+1;
+ylim([0,3500]) 
+end
+
+xfit = 1:length(distances);
+yfit = cumsum(distances);
+yfitlog = log(yfit);
 %%
 
 bodypart = (head*3) - 1;
@@ -255,11 +275,11 @@ time_end = 30*downsamplerate;
 figure
 j = 1;
 
-for i =  [35:37,48:50] 
+for i =  [25:27,31:33] 
 subplot(2,3,j)
 xs = (RawData(i).data_downsampled(time_start:time_end,bodypart) - RawData(i).min_xy(1));
 ys = (RawData(i).data_downsampled(time_start:time_end,bodypart+1) - RawData(i).min_xy(2));
-numbins = 5;
+numbins = 3;
 Xedges = [0:(RawData(i).max_xy(1)/(numbins)):RawData(i).max_xy(1)];
 Yedges = [0:(RawData(i).max_xy(2)/(numbins)):RawData(i).max_xy(2)];
 histogram2(xs, ys, Xedges, Yedges, 'DisplayStyle','tile')
@@ -369,6 +389,6 @@ datatable = [datatable; temptable];
 end
 
 %%
-writetable(datatable, [folderPath+filePath+"GluA1AAB_Data_downsampled_10FPS.csv"])
+% writetable(datatable, [folderPath+filePath+"GluA1AAB_Data_downsampled_10FPS.csv"])
 
 toc

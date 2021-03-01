@@ -89,7 +89,7 @@ filename <- "SKF_errordata_clean.csv"
 rawdata <- fread(here(datafolder,filename))
 
 # Reanalyze data?
-reanalysis = TRUE
+reanalysis = FALSE
 
 if (reanalysis){
   source(here("scripts", "SKF_DataManipulation.R"))
@@ -133,7 +133,7 @@ load(here(datafolder,filename))
 ### Only subject random effects
 `r apa_table(model_simple_4_Llever$anova_table)`
 
-# B) Analysis of large reward lever
+# B) Analysis of small reward lever
 ### Full random effects
 `r apa_table(model5_Slever$anova_table)` 
 

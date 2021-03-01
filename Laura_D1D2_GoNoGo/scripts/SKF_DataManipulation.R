@@ -170,17 +170,19 @@ rawdata <- rawdata %>%
          prop_incongruentlever = ifelse(RewardSize == "Small", prop_Llever, prop_Slever),
          congruentlever = ifelse(RewardSize == "Small", Slever, Llever),
          incongruentlever = ifelse(RewardSize == "Small", Llever, Slever),
-         prop_totalLever_congruentlever = congruentlever/BothLevers,
-         prop_totalLever_incongruentlever = incongruentlever/BothLevers,
-         prop_totalLever_Slever = Slever/BothLevers,
-         prop_totalLever_Llever = Llever/BothLevers,
+         Bothlevers = Slever + Llever,
+         prop_Bothlevers = Bothlevers/TotalTrials,
+         prop_totalLever_congruentlever = congruentlever/Bothlevers,
+         prop_totalLever_incongruentlever = incongruentlever/Bothlevers,
+         prop_totalLever_Slever = Slever/Bothlevers,
+         prop_totalLever_Llever = Llever/Bothlevers,
          not_Slever = TotalTrials - Slever,
          not_Llever = TotalTrials - Llever,
-         not_Middle = TotalTrials - Middle,
          not_Mag = TotalTrials - Mag,
-         not_BothLevers = TotalTrials - BothLevers,
+         not_Bothlevers = TotalTrials - Bothlevers,
          not_congruentlever = TotalTrials - congruentlever,
-         not_incongruentlever = TotalTrials - incongruentlever)
+         not_incongruentlever = TotalTrials - incongruentlever) %>% 
+  na.omit()
 
 # Save Data ---------------------------------------------------------------
 
@@ -285,13 +287,13 @@ filename = here("figures", "Plots_LeversAndMag.png")
 ggsave(filename, Plots_LeversAndMag, width = 160, height = 120, units = "mm", dpi = 1200)
 
 
-Plots_LeversLargeVsSmall <- (Plot_Proportion_LargeLever_Total + Plot_Proportion_SmallLever_Total + Plot_Proportion_LargeLever_Levers + Plot_Proportion_SmallLever_Levers) + plot_annotation(tag_levels = 'A') + plot_layout(nrow = 2, ncol = 2, widths = c(1, 1))
+Plots_LeversLargeVsSmall <- (Plot_Proportion_LargeLever_Total + Plot_Proportion_SmallLever_Total) + plot_annotation(tag_levels = 'A') + plot_layout(nrow = 1, ncol = 2, widths = c(1, 1))
 filename = here("figures", "Plots_LeversLargeVsSmall.png")
-ggsave(filename, Plots_LeversLargeVsSmall, width = 160, height = 240, units = "mm", dpi = 1200)
+ggsave(filename, Plots_LeversLargeVsSmall, width = 160, height = 120, units = "mm", dpi = 1200)
 
-Plots_CongruentVsIncongruent <- (Plot_Proportion_Congruent_Total + Plot_Proportion_InCongruent_Total + Plot_Proportion_Congruent_Levers +Plot_Proportion_InCongruent_Levers) + plot_annotation(tag_levels = 'A') + plot_layout(nrow = 2, ncol = 2, widths = c(1, 1))
+Plots_CongruentVsIncongruent <- (Plot_Proportion_Congruent_Total + Plot_Proportion_InCongruent_Total) + plot_annotation(tag_levels = 'A') + plot_layout(nrow = 1, ncol = 2, widths = c(1, 1))
 filename = here("figures", "Plots_CongruentVsIncongruent.png")
-ggsave(filename, Plots_CongruentVsIncongruent, width = 160, height = 240, units = "mm", dpi = 1200)
+ggsave(filename, Plots_CongruentVsIncongruent, width = 160, height = 120, units = "mm", dpi = 1200)
 
 
 
@@ -401,7 +403,7 @@ cl <- makeCluster(rep("localhost", nc)) # make cluster
 
 # Analysis approach - start with maximal random effects model and reduce until fit
 
-model2_bothlevers <- mixed(cbind(BothLevers,not_BothLevers) ~ RewardSize*Drug + (1+RewardSize + Drug|SubjID), 
+model2_bothlevers <- mixed(cbind(Bothlevers,not_Bothlevers) ~ RewardSize*Drug + (1+RewardSize + Drug||SubjID), 
                            data = rawdata, 
                            family=binomial, 
                            method = "LRT",
@@ -421,7 +423,7 @@ cl <- makeCluster(rep("localhost", nc)) # make cluster
 
 # Analysis approach - start with maximal random effects model and reduce until fit
 
-model3_Mag <- mixed(cbind(Mag,not_Mag) ~ RewardSize*Drug + ( 1 + RewardSize + Drug|SubjID), 
+model3_Mag <- mixed(cbind(Mag,not_Mag) ~ RewardSize*Drug + ( 1 + RewardSize + Drug||SubjID), 
                            data = rawdata, 
                            family=binomial, 
                            method = "LRT",
@@ -441,7 +443,7 @@ cl <- makeCluster(rep("localhost", nc)) # make cluster
 
 # Analysis approach - start with maximal random effects model and reduce until fit
 
-model4_Llever <- mixed(cbind(Llever,not_Llever) ~ RewardSize*Drug + ( 1 + RewardSize + Drug|SubjID), 
+model4_Llever <- mixed(cbind(Llever,not_Llever) ~ RewardSize*Drug + ( 1 + RewardSize + Drug||SubjID), 
                     data = rawdata, 
                     family=binomial, 
                     method = "LRT",
@@ -462,7 +464,7 @@ cl <- makeCluster(rep("localhost", nc)) # make cluster
 
 # Analysis approach - start with maximal random effects model and reduce until fit
 
-model5_Slever <- mixed(cbind(Slever,not_Slever) ~ RewardSize*Drug + ( 1 + RewardSize + Drug|SubjID), 
+model5_Slever <- mixed(cbind(Slever,not_Slever) ~ RewardSize*Drug + ( 1 + RewardSize + Drug||SubjID), 
                        data = rawdata, 
                        family=binomial, 
                        method = "LRT",
@@ -482,7 +484,7 @@ cl <- makeCluster(rep("localhost", nc)) # make cluster
 
 # Analysis approach - start with maximal random effects model and reduce until fit
 
-model6_congruentlever <- mixed(cbind(congruentlever,not_congruentlever) ~ RewardSize*Drug + ( 1 + RewardSize + Drug|SubjID), 
+model6_congruentlever <- mixed(cbind(congruentlever,not_congruentlever) ~ RewardSize*Drug + ( 1 + RewardSize + Drug||SubjID), 
                        data = rawdata, 
                        family=binomial, 
                        method = "LRT",
@@ -502,7 +504,7 @@ cl <- makeCluster(rep("localhost", nc)) # make cluster
 
 # Analysis approach - start with maximal random effects model and reduce until fit
 
-model7_incongruentlever <- mixed(cbind(incongruentlever,not_incongruentlever) ~ RewardSize*Drug + ( 1 + RewardSize + Drug|SubjID), 
+model7_incongruentlever <- mixed(cbind(incongruentlever,not_incongruentlever) ~ RewardSize*Drug + ( 1 + RewardSize + Drug||SubjID), 
                                data = rawdata, 
                                family=binomial, 
                                method = "LRT",
@@ -520,7 +522,7 @@ emmeans_model7_incongruentlever$contrasts
 # Analysis 2: Probability of both levers ----------------------------------
 
 # Analysis approach - start with maximal random effects model and reduce until fit
-model_simple_2_bothlevers <- mixed(cbind(BothLevers,not_BothLevers) ~ RewardSize*Drug + (1|SubjID), 
+model_simple_2_bothlevers <- mixed(cbind(Bothlevers,not_Bothlevers) ~ RewardSize*Drug + (1|SubjID), 
                                    data = rawdata, 
                                    family=binomial, 
                                    method = "LRT",
