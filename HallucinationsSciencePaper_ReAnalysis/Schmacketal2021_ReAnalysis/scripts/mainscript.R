@@ -23,20 +23,71 @@ rawdata <- rawdata %>%
                               ifelse(choice == "Signal" & actualsignal == "NoSignal", "FalseAlarm", 
                                      ifelse(choice == "Signal" & actualsignal == "Signal", "CorrectDetection", "Other")))),
   ) 
-     
-rawdata %>% 
-  filter(!is.na(blockBias) & !is.na(ROC)) %>% 
-ggplot(mapping = aes(x = confidence, group = ROC, colour = ROC, fill = ROC, shape = ROC,linetype = ROC))+
-  facet_wrap(~ blockBias * ROC) +
-  geom_histogram(aes(y = stat(count / sum(count))))
-                                 
+
 # Filter data
 data_baseline <- rawdata %>% 
-  filter(blockBias != "NaN", 
+  filter(!is.na(ROC),
+         blockBias == "NaN", 
          ketamine == "NaN", 
          optogenetics == "NaN", 
          haloperidol == "NaN")
+     
+data_baseline %>% 
+  filter(!is.na(ROC),
+         # ROC == "FalseAlarm" | 
+         # ROC == "CorrectDetection",
+         catchtrial == 1,
+         ) %>% 
+ggplot(mapping = aes(x = confidence, group = ROC, colour = ROC, fill = ROC, shape = ROC,linetype = ROC))+
+  geom_histogram() + 
+  facet_wrap(~ actualsignal, ) 
 
+medianconfidence <- data_baseline %>% 
+group_by(subjectId, ROC, blockBias) %>% 
+  summarise(medianConfidence = median(confidence))
+
+medianconfidencecatchtrials <- data_baseline %>% 
+  filter(catchtrial == 1) %>% 
+  group_by(subjectId, ROC, blockBias) %>% 
+  summarise(medianConfidence = median(confidence))
+
+medianconfidencecatchtrials <- data_baseline %>% 
+  filter(catchtrial == 1) %>% 
+  group_by(ROC, subjectId) %>% 
+  summarise(medianConfidence = median(confidence),
+            abovemedian = sum(confidence > median(confidence)),
+            above54median = sum(confidence > 5.4469) ,
+            totaltrials = sum(confidence >0 ) ,
+            percTrialsAbove = (above54median/totaltrials) *100 ) 
+         
+
+medianconfidence %>% 
+  filter( ROC == "FalseAlarm" | ROC == "Miss") %>% 
+ggplot(mapping = aes(x = ROC, y = medianConfidence, group = ROC, colour = ROC, fill = ROC))+
+  stat_summary_bin(fun.data = "mean_se", geom = "bar", position = "dodge",  size = .3) +
+  stat_summary(fun.data = "mean_se", geom = "errorbar", position = position_dodge(width = 0.9),  width = 0,  size = .3, colour = "black", linetype = "solid", show.legend = FALSE) + 
+  geom_line(aes(group = subjectId), colour = "darkslategrey") +
+  facet_wrap(~blockBias, ) +
+  # Make Pretty
+  scale_y_continuous( expand = expansion(mult = c(0, 0)), breaks=seq(-100,100,.2)) +
+  coord_cartesian(ylim = c(2,7)) +
+  ggtitle("Block BIas") + xlab("Error Type") + ylab("Median Confidence (s)") +
+  theme_cowplot(11)
+
+medianconfidencecatchtrials %>% 
+  # filter( ROC == "FalseAlarm" | ROC == "Miss") %>% 
+  ggplot(mapping = aes(x = ROC, y = medianConfidence, group = ROC, colour = ROC, fill = ROC))+
+  stat_summary_bin(fun.data = "mean_se", geom = "bar", position = "dodge",  size = .3) +
+  stat_summary(fun.data = "mean_se", geom = "errorbar", position = position_dodge(width = 0.9),  width = 0,  size = .3, colour = "black", linetype = "solid", show.legend = FALSE) + 
+  geom_line(aes(group = subjectId), colour = "darkslategrey") +
+  facet_wrap(~blockBias, ) +
+  # Make Pretty
+  scale_y_continuous( expand = expansion(mult = c(0, 0)), breaks=seq(-100,100,.2)) +
+  coord_cartesian(ylim = c(2,7)) +
+  ggtitle("Block BIas") + xlab("Error Type") + ylab("Median Confidence (s)") +
+  theme_cowplot(11)
+
+sum(summary_overall$n)
 
 
 # Recode data
