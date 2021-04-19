@@ -1,0 +1,65 @@
+---
+title: "Sensory Reinforcement"
+author: "Marios Panayi"
+date: "12/28/2020"
+output: word_document
+---
+```{r setup, include=FALSE, message = FALSE, warning=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+## Packages for data organisation and plotting
+library(tidyverse)
+# Package for relative file paths
+library(here)
+# library(ggpubr)
+library(cowplot)
+library(ggsignif)
+library(patchwork)
+################################################################################
+## Packages for Data analysis
+library(afex)
+afex_options(emmeans_model = "multivariate")# use multivariate model for all follow-up tests.
+library(emmeans)
+# install.packages("devtools")
+# devtools::install_github("crsh/papaja")
+library(papaja)
+library(knitr)
+# remotes::install_github("noamross/redoc")
+# library(redoc)
+```
+
+```{r Load data from figures for Stats , include=FALSE, message = FALSE, warning=FALSE}
+LPL_Stage3_DevalTest_WithinCue_PeriodAvg <- read_csv(here("figures","figure_data","LPL_Stage3_DevalTest_WithinCue_PeriodAvg.csv"))
+
+```
+
+
+# Results
+## Stage 1: Acquisition
+```{r Deval Test Within Cue magazine , include=FALSE, message = FALSE, warning=FALSE}
+rawdata <- LPL_Stage3_DevalTest_WithinCue_PeriodAvg %>% 
+filter(Stimulus == "Magazine",
+        Period != "pre",
+       )
+
+# Magazine Frequency
+anova <- aov_4(LPFreq ~ (Period*Devalued_Trial|subject), data = rawdata, anova_table = list(correction = "none", es = "pes"))
+anova_Test_LPFreq <- apa_print(anova, mse = "FALSE",correction = "none",es = "pes")
+## simple effects -
+simple <- emmeans(anova, ~Period*Devalued_Trial)
+simple_Test_LPFreq <- apa_print(contrast(simple, interaction = "pairwise", by = "Period" ,adjust = "none"))
+
+anova_Test_LPFreq$table
+simple_Test_LPFreq$table
+
+# Magazine Duration
+anova <- aov_4(LPDur ~ (Period*Devalued_Trial|subject), data = rawdata, anova_table = list(correction = "none", es = "pes"))
+anova_Test_LPDur <- apa_print(anova, mse = "FALSE",correction = "none",es = "pes")
+## simple effects -
+simple <- emmeans(anova, ~Period*Devalued_Trial)
+simple_Test_LPDur <- apa_print(contrast(simple, interaction = "pairwise", by = "Period" ,adjust = "none"))
+
+anova_Test_LPDur$table
+simple_Test_LPDur$table
+
+```
+

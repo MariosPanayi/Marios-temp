@@ -1,0 +1,243 @@
+---
+title: "Conditioned Reinforcement"
+author: "Marios Panayi"
+date: "12/28/2020"
+output: word_document
+---
+
+```{r setup, include=FALSE, message = FALSE, warning=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+## Packages for data organisation and plotting
+library(tidyverse)
+# Package for relative file paths
+library(here)
+# library(ggpubr)
+library(cowplot)
+library(ggsignif)
+library(patchwork)
+################################################################################
+## Packages for Data analysis
+library(afex)
+afex_options(emmeans_model = "multivariate")# use multivariate model for all follow-up tests.
+library(emmeans)
+# install.packages("devtools")
+# devtools::install_github("crsh/papaja")
+library(papaja)
+library(knitr)
+# remotes::install_github("noamross/redoc")
+# library(redoc)
+```
+
+
+
+```{r Load data from figures for Stats , include=FALSE, message = FALSE, warning=FALSE}
+CRF_Acquisition_CSPre <- read_csv(here("figures","figure_data","CRF_Acquisition_CSPre.csv"))
+CRF_Acquisition_CSPre_Last5s <- read_csv(here("figures","figure_data","CRF_Acquisition_CSPre_Last5s.csv"))
+# Test Data
+# CRF_data_P100_HighvsLow_long <- read_csv(here("figures","figure_data","CRF_data_P100_HighvsLow_long.csv"))
+# CRF_data_P50_HighvsLow_long <- read_csv(here("figures","figure_data","CRF_data_P50_HighvsLow_long.csv"))
+# CRF_data_High_100Vs50_long <- read_csv(here("figures","figure_data","CRF_data_High_100Vs50_long.csv"))
+# CRF_data_Low_100Vs50_long <- read_csv(here("figures","figure_data","CRF_data_Low_100Vs50_long.csv"))
+CRF_ALL_data_long_Avg <- read_csv(here("figures","figure_data","CRF_ALL_data_long_Avg.csv"))
+CRF_RepeatTest_data_long_Avg <- read_csv(here("figures","figure_data","CRF_RepeatTest_ALL_data_repeatTest_long_Avg.csv"))
+
+
+
+```
+
+
+
+```{r Stage 1 Acquisition STats , include=FALSE, message = FALSE, warning=FALSE}
+rawdata <- CRF_Acquisition_CSPre %>% 
+  filter(Period == "CSPre")
+# Stage 1 Acquisition Frequency
+anova <- aov_4(MagEntries ~ (Day*CS_name|subject), data = rawdata, anova_table = list(correction = "none", es = "pes"))
+anova_Stg1_Freq <- apa_print(anova, mse = "FALSE",correction = "none",es = "pes")
+## simple effects - linear trend on Day
+simple <- emmeans(anova, ~CS_name)
+simple_Stg1_Freq <- apa_print(contrast(simple, interaction = "pairwise", adjust = "tukey"))
+
+anova_Stg1_Freq$table
+simple_Stg1_Freq$table
+
+
+# Stage 1 Acquisition Duration
+anova <- aov_4(MagDuration ~ (Day*CS_name|subject), data = rawdata, anova_table = list(correction = "none", es = "pes"))
+anova_Stg1_Dur <- apa_print(anova, mse = "FALSE",correction = "none",es = "pes")
+## simple effects - linear trend on Day
+simple <- emmeans(anova, ~CS_name)
+simple_Stg1_Dur <- apa_print(contrast(simple, interaction = "pairwise", adjust = "tukey"))
+
+anova_Stg1_Dur$table
+simple_Stg1_Dur$table
+
+```
+
+
+
+```{r Stage 1 Acquisition STats Mag*prob , include=FALSE, message = FALSE, warning=FALSE}
+rawdata <- CRF_Acquisition_CSPre %>% 
+  filter(Period == "CSPre",
+         Day < 7)
+# Stage 1 Acquisition Frequency
+anova <- aov_4(MagEntries ~ (Day*magnitude*probability|subject), data = rawdata, anova_table = list(correction = "none", es = "pes"))
+anova_Stg1_Freq <- apa_print(anova, mse = "FALSE",correction = "none",es = "pes")
+## simple effects - linear trend on Day
+simple <- emmeans(anova, ~Day*probability)
+simple_Stg1_Freq <- apa_print(contrast(simple, interaction = "poly", by = "probability", adjust = "tukey"))
+
+anova_Stg1_Freq$table
+simple_Stg1_Freq$table
+
+
+# Stage 1 Acquisition Duration
+anova <- aov_4(MagDuration ~ (Day*magnitude*probability|subject), data = rawdata, anova_table = list(correction = "none", es = "pes"))
+anova_Stg1_Dur <- apa_print(anova, mse = "FALSE",correction = "none",es = "pes")
+## simple effects - linear trend on Day
+simple <- emmeans(anova, ~Day*probability)
+simple_Stg1_Dur <- apa_print(contrast(simple, interaction = "pairwise", by = "Day", adjust = "tukey"))
+
+anova_Stg1_Dur$table
+simple_Stg1_Dur$table
+```
+
+
+`r apa_table(within(anova_Stg1_Freq$table, rm(pes)),caption = "Magazine Frequency ANOVA")`
+
+
+
+`r apa_table(within(anova_Stg1_Dur$table, rm(pes)),caption = "Magazine Duration ANOVA")`
+
+
+```{r Stage 1 Acquisition Last 5s Stats , include=FALSE, message = FALSE, warning=FALSE}
+rawdata <- CRF_Acquisition_CSPre_Last5s %>% 
+  filter(Period == "CSPre",
+         Day < 7)
+# Stage 1 Acquisition Frequency
+anova <- aov_4(MagEntries ~ (Day*CS_name|subject), data = rawdata, anova_table = list(correction = "none", es = "pes"))
+anova_Stg1_Freq_5s <- apa_print(anova, mse = "FALSE",correction = "none",es = "pes")
+## simple effects - linear trend on Day
+simple <- emmeans(anova, ~CS_name)
+simple_Stg1_Freq_5s <- apa_print(contrast(simple, interaction = "pairwise", adjust = "tukey"))
+
+anova_Stg1_Freq_5s$table
+simple_Stg1_Freq_5s$table
+
+
+# Stage 1 Acquisition Duration
+anova <- aov_4(MagDuration ~ (Day*CS_name|subject), data = rawdata, anova_table = list(correction = "none", es = "pes"))
+anova_Stg1_Dur_5s <- apa_print(anova, mse = "FALSE",correction = "none",es = "pes")
+## simple effects - linear trend on Day
+simple <- emmeans(anova, ~CS_name)
+simple_Stg1_Dur_5s <- apa_print(contrast(simple, interaction = "pairwise", adjust = "tukey"))
+
+anova_Stg1_Dur_5s$table
+simple_Stg1_Dur_5s$table
+```
+
+
+
+
+```{r Stage 1 Acquisition Last 5s Stats mag*prob , include=FALSE, message = FALSE, warning=FALSE}
+rawdata <- CRF_Acquisition_CSPre_Last5s %>% 
+  filter(Period == "CSPre")
+# Stage 1 Acquisition Frequency
+anova <- aov_4(MagEntries ~ (Day*magnitude*probability|subject), data = rawdata, anova_table = list(correction = "none", es = "pes"))
+anova_Stg1_Freq_5s <- apa_print(anova, mse = "FALSE",correction = "none",es = "pes")
+## simple effects - linear trend on Day
+simple <- emmeans(anova, ~magnitude*probability)
+simple_Stg1_Freq_5s <- apa_print(contrast(simple, interaction = "pairwise", by = "probability", adjust = "tukey"))
+
+anova_Stg1_Freq_5s$table
+simple_Stg1_Freq_5s$table
+
+
+# Stage 1 Acquisition Duration
+anova <- aov_4(MagDuration ~ (Day*magnitude*probability|subject), data = rawdata, anova_table = list(correction = "none", es = "pes"))
+anova_Stg1_Dur_5s <- apa_print(anova, mse = "FALSE",correction = "none",es = "pes")
+## simple effects - linear trend on Day
+simple <- emmeans(anova, ~magnitude*probability)
+simple_Stg1_Dur_5s <- apa_print(contrast(simple, interaction = "pairwise",  by = "probability", adjust = "tukey"))
+
+anova_Stg1_Dur_5s$table
+simple_Stg1_Dur_5s$table
+```
+
+
+`r apa_table(within(anova_Stg1_Freq_5s$table, rm(pes)),caption = "Magazine Frequency ANOVA - 5s")`
+
+
+
+`r apa_table(within(anova_Stg1_Dur_5s$table, rm(pes)),caption = "Magazine Duration ANOVA - 5s")`
+
+```{r Stage 3 Enhanced Acquisition Stats Mag*prob , include=FALSE, message = FALSE, warning=FALSE}
+# Look at the last 4 days of conditioning
+rawdata <- CRF_Acquisition_CSPre %>% 
+  filter(Period == "CSPre",
+         Day >= 20)
+# Stage 1 Acquisition Frequency
+anova <- aov_4(MagEntries ~ (Day*magnitude*probability|subject), data = rawdata, anova_table = list(correction = "none", es = "pes"))
+anova_Stg3_Freq <- apa_print(anova, mse = "FALSE",correction = "none",es = "pes")
+## simple effects - linear trend on Day
+simple <- emmeans(anova, ~magnitude*probability)
+simple_Stg3_Freq <- apa_print(contrast(simple, interaction = "pairwise", by = "magnitude", adjust = "none"))
+simple_Stg3_Freq2 <- apa_print(contrast(simple, interaction = "pairwise", by = "probability", adjust = "none"))
+
+anova_Stg3_Freq$table
+simple_Stg3_Freq$table
+simple_Stg3_Freq2$table
+
+# Stage 1 Acquisition Duration
+anova <- aov_4(MagDuration ~ (Day*magnitude*probability|subject), data = rawdata, anova_table = list(correction = "none", es = "pes"))
+anova_Stg3_Dur <- apa_print(anova, mse = "FALSE",correction = "none",es = "pes")
+## simple effects - linear trend on Day
+simple <- emmeans(anova, ~magnitude*probability)
+simple_Stg3_Dur <- apa_print(contrast(simple, interaction = "pairwise", by = "magnitude", adjust = "none"))
+simple_Stg3_Dur2 <- apa_print(contrast(simple, interaction = "pairwise", by = "probability", adjust = "none"))
+
+anova_Stg3_Dur$table
+simple_Stg3_Dur$table
+simple_Stg3_Dur2$table
+```
+
+
+#Enhanced Acquisition Only
+
+`r apa_table(within(anova_Stg3_Freq$table, rm(pes)),caption = "Magazine Frequency ANOVA")`
+
+*Simple Effects*
+
+`r apa_table(simple_Stg3_Freq$table)`
+
+*Simple Effects*
+`r apa_table(simple_Stg3_Freq2$table)`
+
+`r apa_table(within(anova_Stg3_Dur$table, rm(pes)),caption = "Magazine Duration ANOVA")`
+
+
+```{r Test CRF DIfference Scores Stats , include=FALSE, message = FALSE, warning=FALSE}
+# This analysis is not great - Standard ANOVA, only 4 rats did all 4 tests so this analysis kicks out too many subjects
+rawdata <- CRF_RepeatTest_data_long_Avg %>% 
+  filter(Value == "Diff",
+         measure == "LP") %>% 
+  mutate(comparison = ifelse(TestCondition == "P100_HighVsLow" | TestCondition == "P50_HighVsLow" , "Values", "Probabilities"),
+         Constant = ifelse(TestCondition == "P100_HighVsLow" | TestCondition == "High_100Vs50" , "High", "Low"))
+
+
+# Stage 1 Acquisition Frequency
+anova <- aov_4(Freq ~ (comparison*Constant|subject), data = rawdata, anova_table = list(correction = "none", es = "pes"))
+anova_test_Value <- apa_print(anova, mse = "FALSE",correction = "none",es = "pes")
+# ## simple effects - linear trend on Day
+# simple <- emmeans(anova, ~TestCondition)
+# simple_Test_Value <- apa_print(contrast(simple, interaction = "pairwise", by = "Probability", adjust = "tukey"))
+
+anova_test_Value$table
+# simple_Test_Value$table
+
+
+```
+
+
+# Repeat Test Data
+
+`r apa_table(anova_test_Value$table)`
