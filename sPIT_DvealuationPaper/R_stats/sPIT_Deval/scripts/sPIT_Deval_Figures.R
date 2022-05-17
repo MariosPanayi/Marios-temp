@@ -209,10 +209,10 @@ scalelims_breaks = 5
     ylab("Lever presses/min") + 
     xlab("Day") +
     theme(axis.title.x=element_text(face = "bold")) +
-    scale_linetype_manual(name = "", values = linetypes)+
-    scale_colour_manual(name = "", values = linecolours, aesthetics = c("colour")) +
-    scale_shape_manual(name = "", values = pointshapes) +
-    scale_fill_manual(name = "", values = fillcolours)
+    scale_linetype_manual(name = "", values = linetypes, limits = force)+
+    scale_colour_manual(name = "", values = linecolours, aesthetics = c("colour"), limits = force) +
+    scale_shape_manual(name = "", values = pointshapes, limits = force) +
+    scale_fill_manual(name = "", values = fillcolours, limits = force)
     
   SKR214_Instrumental_acquisition
 
@@ -304,10 +304,10 @@ scalelims_breaks = 5
     ylab("CS-PreCS Entries/min") + 
     xlab("Day") +
     theme(axis.title.x=element_text(face = "bold")) +
-    scale_linetype_manual(name = "", values = linetypes)+
-    scale_colour_manual(name = "", values = linecolours, aesthetics = c("colour")) +
-    scale_shape_manual(name = "", values = pointshapes) +
-    scale_fill_manual(name = "", values = fillcolours)
+    scale_linetype_manual(name = "", values = linetypes, limits = force)+
+    scale_colour_manual(name = "", values = linecolours, aesthetics = c("colour"), limits = force) +
+    scale_shape_manual(name = "", values = pointshapes, limits = force) +
+    scale_fill_manual(name = "", values = fillcolours, limits = force)
   
   SKR214_Pavlovian_acquisition
 
@@ -365,8 +365,8 @@ scalelims_breaks = 5
     xlab("") +
     # theme(axis.title.x=element_blank())+
     theme(axis.text.x = element_blank()) +
-    scale_colour_manual(name = "", values = linecolours, aesthetics = c("colour")) +
-    scale_fill_manual(name = "", values = fillcolours)
+    scale_colour_manual(name = "", values = linecolours, aesthetics = c("colour"), limits = force) +
+    scale_fill_manual(name = "", values = fillcolours, limits = force)
   
   SKR214_Satiety_Consumption
 
@@ -441,10 +441,10 @@ scalelims_breaks = 5
     ylab("Lever presses/min") + 
     xlab("1 minute bins") +
     theme(axis.title.x=element_text(face = "bold")) +
-    scale_linetype_manual(name = "", values = linetypes)+
-    scale_colour_manual(name = "", values = linecolours, aesthetics = c("colour")) +
-    scale_shape_manual(name = "", values = pointshapes) +
-    scale_fill_manual(name = "", values = fillcolours)
+    scale_linetype_manual(name = "", values = linetypes, limits = force)+
+    scale_colour_manual(name = "", values = linecolours, aesthetics = c("colour"), limits = force) +
+    scale_shape_manual(name = "", values = pointshapes, limits = force) +
+    scale_fill_manual(name = "", values = fillcolours, limits = force)
   
   SKR214_Satiety_DevalTest
   
@@ -510,8 +510,8 @@ scalelims_breaks = 5
     ylab("Non-Devalued - Devalued \n Lever presses/min") + 
     xlab("Devaluation") +
     theme(axis.title.x=element_text(face = "bold")) +
-    scale_colour_manual(name = "", values = linecolours, aesthetics = c("colour")) +
-    scale_fill_manual(name = "", values = fillcolours)
+    scale_colour_manual(name = "", values = linecolours, aesthetics = c("colour"), limits = force) +
+    scale_fill_manual(name = "", values = fillcolours, limits = force)
   
   SKR214_Satiety_DevalTest_Index
   
@@ -621,17 +621,49 @@ scalelims_breaks = 5
   #   stat_summary(fun = "mean", geom = "bar", size = 1, position = position_dodge(width = .9)) +
   #   stat_summary(fun.data = "mean_se", geom = "errorbar", width = 0, size = 0.2, position = position_dodge(width = 0.9), colour = "black", linetype = 1, show.legend = FALSE) +
   #   theme_cowplot() +
+  #   coord_cartesian(ylim = scalelims) +
+  #   scale_y_continuous(breaks = seq(scalelims[1],scalelims[2],by = scalelims_breaks), expand = c(0.0,0)) +
+  #   # ggtitle("",subtitle = "") +
+  #   ylab("Lever presses/min") +
+  #   xlab("Lever") +
+  #   theme(axis.title.x=element_text(face = "bold")) +
+  #   scale_colour_manual(name = "", values = linecolours, aesthetics = c("colour"), limits = force) +
+  #   scale_fill_manual(name = "", values = fillcolours, limits = force)
+  # 
+  # SKR214_Satiety_sPITTest_splitDeval
+  
+
+# Alternative Plots that help visualise the 2 Lever tests! ----------------
+
+
+  # summary %>% ggplot(mapping = aes(x = Devaluation, y = `lever Presses`, colour = same_diff, group = same_diff, fill = same_diff)) +
+  #   stat_summary(fun = "mean", geom = "bar", size = 1, position = position_dodge(width = .9)) +
+  #   stat_summary(fun.data = "mean_se", geom = "errorbar", width = 0, size = 0.2, position = position_dodge(width = 0.9), colour = "black", linetype = 1, show.legend = FALSE) +
+  #   facet_grid(cols = vars(`Devalued Pavlovian US?`)) +
+  #   theme_cowplot() +
   #   coord_cartesian(ylim = scalelims) + 
   #   scale_y_continuous(breaks = seq(scalelims[1],scalelims[2],by = scalelims_breaks), expand = c(0.0,0)) +
   #   # ggtitle("",subtitle = "") + 
   #   ylab("Lever presses/min") + 
   #   xlab("Lever") +
-  #   theme(axis.title.x=element_text(face = "bold")) +
-  #   scale_colour_manual(name = "", values = linecolours, aesthetics = c("colour")) +
-  #   scale_fill_manual(name = "", values = fillcolours)
+  #   theme(axis.title.x=element_text(face = "bold")) 
+  #   # scale_colour_manual(name = "", values = linecolours, aesthetics = c("colour"), limits = force, limits = force) +
+  #   # scale_fill_manual(name = "", values = fillcolours, limits = force)
   # 
-  # SKR214_Satiety_sPITTest_splitDeval
-  
+  # 
+  # summary %>% ggplot(mapping = aes(x = Devaluation, y = `lever Presses`, colour = `Devalued Pavlovian US?`, group = `Devalued Pavlovian US?`, fill = `Devalued Pavlovian US?`)) +
+  #   stat_summary(fun = "mean", geom = "bar", size = 1, position = position_dodge(width = .9)) +
+  #   stat_summary(fun.data = "mean_se", geom = "errorbar", width = 0, size = 0.2, position = position_dodge(width = 0.9), colour = "black", linetype = 1, show.legend = FALSE) +
+  #   facet_grid(cols = vars(Devaluation)) +
+  #   theme_cowplot() +
+  #   coord_cartesian(ylim = scalelims) +
+  #   scale_y_continuous(breaks = seq(scalelims[1],scalelims[2],by = scalelims_breaks), expand = c(0.0,0)) +
+  #   # ggtitle("",subtitle = "") +
+  #   ylab("Lever presses/min") +
+  #   xlab("Pavlovian CS") +
+  #   theme(axis.title.x=element_text(face = "bold")) 
+
+
   
   SKR214_Satiety_sPITTest_splitSameDiff <- summary %>% ggplot(mapping = aes(x = Devaluation, y = `lever Presses`, colour = same_diff, group = same_diff, fill = same_diff)) +
     stat_summary(fun = "mean", geom = "bar", size = 1, position = position_dodge(width = .9)) +
@@ -643,8 +675,8 @@ scalelims_breaks = 5
     ylab("Lever presses/min") + 
     xlab("Lever") +
     theme(axis.title.x=element_text(face = "bold")) +
-    scale_colour_manual(name = "", values = linecolours, aesthetics = c("colour")) +
-    scale_fill_manual(name = "", values = fillcolours)
+    scale_colour_manual(name = "", values = linecolours, aesthetics = c("colour"), limits = force, limits = force) +
+    scale_fill_manual(name = "", values = fillcolours, limits = force)
   
   SKR214_Satiety_sPITTest_splitSameDiff
   
@@ -875,320 +907,351 @@ scalelims_breaks = 5
     ylab("MagEntries/min") + 
     xlab("CS") +
     theme(axis.title.x=element_text(face = "bold")) +
-    scale_colour_manual(name = "", values = linecolours, aesthetics = c("colour")) +
-    scale_fill_manual(name = "", values = fillcolours)
+    scale_colour_manual(name = "", values = linecolours, aesthetics = c("colour"), limits = force) +
+    scale_fill_manual(name = "", values = fillcolours, limits = force)
   
   SKR214_Satiety_sPITTest_splitMagEntries
 
-#   # Expt1. SKR214 - LiCl Consumption  ----------------------------------------------  
-#   
-#   # Define rawdata filepath 
-#   data_path <- here("rawdata", "SKR214_LiCl_TasteAversion.csv")
-#   
-#   # Load and organise data 
-#   plot_data <- function(data_path) {
-#     
-#     ### 1. Prepare Data
-#     # Load Data
-#     full_data <- read_csv(data_path)
-#     
-#     levelorder <- c("Saline", "LiCl")
-#     full_data <- full_data %>% 
-#       mutate(Injection = factor(Injection, levels = levelorder))
-#     
-#     
-#     # Check that there are equal numbers of entries per subject/day
-#     full_data %>%
-#       group_by(Rat, Pairing, Injection) %>%
-#       summarise(n = n()) %>%
-#       spread(Rat, n)%>%
-#       kable()
-#     
-#     return(full_data)
-# 
-#   }
-#   
-#   # Save data for analysis
-#   summary <- plot_data(data_path)
-#   save_path <- here("rawdata", "processed_data", "SKR214_LiClConsumption.csv")
-#   write_csv(summary, save_path)
-#   
-#   # Plot Data
-#   scalelims = c(0,22)
-#   scalelims_breaks = 2
-# 
-#   
-#     SKR214_LiCl_Consumption <- summary %>% 
-#     ggplot(mapping = aes(x = as.factor(Pairing), y = `Consumed (g)`, colour = Injection, group = Injection, fill = Injection, shape = Injection, linetype = Injection)) +
-#     stat_summary(fun.data = "mean_se", geom = "errorbar", width = 0, size = 0.5, linetype = 1, show.legend = FALSE) +
-#     stat_summary(fun = "mean", geom = "line", size = 0.5) +
-#     stat_summary(fun = "mean", geom = "point", size = 3) +
-#     theme_cowplot() +
-#     coord_cartesian(ylim = scalelims) + 
-#     scale_y_continuous(breaks = seq(scalelims[1],scalelims[2],by = scalelims_breaks), expand = c(0.0,0)) +
-#     # ggtitle("",subtitle = "") + 
-#     ylab("Consumed (g)") + 
-#     xlab("Pairing") +
-#     theme(axis.title.x=element_text(face = "bold")) +
-#     scale_linetype_manual(name = "", values = linetypes)+
-#     scale_colour_manual(name = "", values = linecolours, aesthetics = c("colour")) +
-#     scale_shape_manual(name = "", values = pointshapes) +
-#     scale_fill_manual(name = "", values = fillcolours)
-#   
-#     SKR214_LiCl_Consumption
-#   
-# # Expt1. SKR214 - LiCl in Magazine  ----------------------------------------------  
-#     
-#     # Define rawdata filepath 
-#     data_path <- here("rawdata", "SKR214_DevaluationinMag_LiCl.csv")
-#     
-#     # Load and organise data 
-#     plot_data <- function(data_path) {
-#       
-#       ### 1. Prepare Data
-#       # Load Data
-#       full_data <- read_csv(data_path)
-#       
-#       summary <- full_data %>% 
-#         mutate(Liquid = case_when(str_detect(MSN,"sucrose") ~ "Sucrose",
-#                                   str_detect(MSN,"Maltodextrin") ~ "Maltodextrin")
-#         ) %>% 
-#         select(Injection, Liquid, Subject, Bin_4mins, Mag1_5sBins, Mag1_duration_5sbins) %>% 
-#         group_by(Injection, Subject, Liquid, Bin_4mins) %>% 
-#         summarise(Bin_4mins = median(Bin_4mins),
-#                   MagEntry = sum(Mag1_5sBins)/4,
-#                   MagDur = sum(Mag1_duration_5sbins)/100/4) %>% 
-#         ungroup() %>% 
-#         filter(Bin_4mins < 7)
-#       
-#       levelorder <- c("Saline", "LiCl")
-#       summary <- summary %>% 
-#         mutate(Injection = factor(Injection, levels = levelorder))
-#       
-#       return(summary)
-#       
-#     }   
-#     
-#     
-#     # Save data for analysis
-#     summary <- plot_data(data_path)
-#     save_path <- here("rawdata", "processed_data", "SKR214_LiCl_DevaluationinMag.csv")
-#     write_csv(summary, save_path)
-#     
-#     # Plot Data
-#     scalelims = c(0,8)
-#     scalelims_breaks = 2
-#     
-#     
-#     SKR214_LiCl_DevalinMag <- summary %>% 
-#       ggplot(mapping = aes(x = as.factor(Bin_4mins), y = MagEntry, colour = Injection, group = Injection, fill = Injection, shape = Injection, linetype = Injection)) +
-#       stat_summary(fun.data = "mean_se", geom = "errorbar", width = 0, size = 0.5, linetype = 1, show.legend = FALSE) +
-#       stat_summary(fun = "mean", geom = "line", size = 0.5) +
-#       stat_summary(fun = "mean", geom = "point", size = 3) +
-#       theme_cowplot() +
-#       coord_cartesian(ylim = scalelims) + 
-#       scale_y_continuous(breaks = seq(scalelims[1],scalelims[2],by = scalelims_breaks), expand = c(0.0,0)) +
-#       # ggtitle("",subtitle = "") + 
-#       ylab("Magazine Entries/Min") + 
-#       xlab("4 minute bins") +
-#       theme(axis.title.x=element_text(face = "bold")) +
-#       scale_linetype_manual(name = "", values = linetypes)+
-#       scale_colour_manual(name = "", values = linecolours, aesthetics = c("colour")) +
-#       scale_shape_manual(name = "", values = pointshapes) +
-#       scale_fill_manual(name = "", values = fillcolours)
-#     
-#     SKR214_LiCl_DevalinMag
-#     
-#     # Expt1. SKR214 - LiCl Instrumental Devaluation  ----------------------------------------------  
-#     
-#     # Define rawdata filepath 
-#     data_path <- here("rawdata", "SKR214_sPIT_Test.csv")
-#     
-#     # Load and organise data 
-#     plot_data <- function(data_path) {
-#       
-#       ### 1. Prepare Data
-#       # Load Data
-#       full_data <- read_csv(data_path)
-#       
-#       summary <- full_data %>% 
-#         filter(`Trial Structure` == "Baseline Extinction",
-#                Devaluation == "LiCl") %>% 
-#         group_by(Devaluation, Subject, `Minute Counter`) %>% 
-#         summarise(`Devalued Lever` = mean(`Devalued Lever`)*60,
-#                   `Non-Devalued Lever` = mean(`Non-Devalued Lever`)*60,
-#                   MagEntries = mean(MagEntries)*60,
-#                   # MagDuration = mean(MagDuration)*60 # MagDuration not recorded in these data
-#         ) %>% 
-#         ungroup()
-#       
-#       
-#       summary_LP <- summary %>% 
-#         select(Subject, `Minute Counter`, `Devalued Lever`, `Non-Devalued Lever`) %>% 
-#         gather(key = "Devaluation", value = "lever Presses", `Devalued Lever`, `Non-Devalued Lever`)
-#       
-#       ### 2. Fix data Order for plotting
-#       levelorder <- c("Non-Devalued", "Devalued")
-#       summary_LP <- summary_LP %>% 
-#         mutate(Devaluation = str_replace(string = Devaluation, pattern = "Non-Devalued Lever",replacement = "Non-Devalued"),
-#                Devaluation = str_replace(string = Devaluation, pattern = "Devalued Lever",replacement = "Devalued"),
-#                Devaluation = factor(Devaluation, levels = levelorder))
-#       
-#       
-#       
-#       # Check that there are equal numbers of entries per subject/day
-#       summary_LP %>% 
-#         group_by(Subject) %>% 
-#         summarise(n = n()) %>% 
-#         spread(Subject, n)%>%
-#         kable()
-#       
-#       return(summary_LP)   
-#       
-#     }
-#     
-#     
-#     # Save data for analysis
-#     summary <- plot_data(data_path)
-#     save_path <- here("rawdata", "processed_data", "SKR214_LiClDevalTest.csv")
-#     write_csv(summary, save_path)
-#     
-#     # Plot Data
-#     scalelims = c(0,30)
-#     scalelims_breaks = 5
-#     
-#     SKR214_LiCl_DevalTest <- summary %>% ggplot(mapping = aes(x = as.factor(`Minute Counter`), y = `lever Presses`, colour = Devaluation, group = Devaluation, fill = Devaluation, shape = Devaluation, linetype = Devaluation)) +
-#       stat_summary(fun.data = "mean_se", geom = "errorbar", width = 0, size = 0.5, linetype = 1, show.legend = FALSE) +
-#       stat_summary(fun = "mean", geom = "line", size = 0.5) +
-#       stat_summary(fun = "mean", geom = "point", size = 3) +
-#       theme_cowplot() +
-#       coord_cartesian(ylim = scalelims) + 
-#       scale_y_continuous(breaks = seq(scalelims[1],scalelims[2],by = scalelims_breaks), expand = c(0.0,0)) +
-#       # ggtitle("",subtitle = "") + 
-#       ylab("Lever presses/min") + 
-#       xlab("1 minute bins") +
-#       theme(axis.title.x=element_text(face = "bold")) +
-#       scale_linetype_manual(name = "", values = linetypes)+
-#       scale_colour_manual(name = "", values = linecolours, aesthetics = c("colour")) +
-#       scale_shape_manual(name = "", values = pointshapes) +
-#       scale_fill_manual(name = "", values = fillcolours)
-#     
-#     SKR214_LiCl_DevalTest
-#     
-#     
-#     # Expt1. SKR214 - LiCl sPIT Test  ----------------------------------------------  
-#     
-#     # Define rawdata filepath 
-#     data_path <- here("rawdata", "SKR214_sPIT_Test.csv")
-#     
-#     # Load and organise data 
-#     plot_data <- function(data_path) {
-#       
-#       ### 1. Prepare Data
-#       # Load Data
-#       full_data <- read_csv(data_path)
-#       
-#       summary <- full_data %>% 
-#         filter(
-#           `Trial Structure` == "PreCS" | `Trial Structure` == "CS",
-#           # `trial period split minutes [1,2]` == "PreCS2"|`trial period split minutes [1,2]` == "CS1",
-#           # `trial period split minutes [1,2]` == "PreCS1" | `trial period split minutes [1,2]` == "PreCS2"|`trial period split minutes [1,2]` == "CS1"|`trial period split minutes [1,2]` == "CS2",
-#           # `Trial Number` == 1|`Trial Number` == 2,
-#           Devaluation == "LiCl"
-#         ) %>% 
-#         group_by(Devaluation, Group, Session, Subject, `Trial Structure`, `Devalued Pavlovian US?`) %>% 
-#         summarise(`Devalued Lever` = mean(`Devalued Lever`)*60,
-#                   `Non-Devalued Lever` = mean(`Non-Devalued Lever`)*60,
-#                   MagEntries = mean(MagEntries)*60,
-#                   # MagDuration = mean(MagDuration)*60 # MagDuration not recorded in these data
-#         ) %>% 
-#         ungroup()
-#       
-#       
-#       
-#       summary_LP <- summary %>% 
-#         select(-MagEntries, -Devaluation) %>% 
-#         pivot_longer( cols =  `Devalued Lever`:`Non-Devalued Lever`, names_to = "Devaluation", values_to = "lever Presses") 
-#       
-#       
-#       summary_LP_wide <- summary_LP %>% 
-#         pivot_wider(names_from = `Trial Structure`, values_from = `lever Presses`) 
-#       
-#       summary_LP_PreCSonly <- summary_LP_wide %>% 
-#         select(-CS) %>% 
-#         group_by(Group, Session, Subject, Devaluation) %>% 
-#         summarise(PreCS = mean(PreCS)) %>%
-#         ungroup()
-#       
-#       summary_LP_PreCSonly <- summary_LP_PreCSonly %>% 
-#         pivot_longer(cols = PreCS, names_to = "Trial Structure", values_to = "lever Presses") %>% 
-#         mutate("Devalued Pavlovian US?" = "PreCS")
-#       
-#       summary_LP_commonPreCS <- summary_LP %>% 
-#         filter(`Trial Structure` == "CS") %>% 
-#         full_join(summary_LP_PreCSonly)
-#       
-#       summary_LP_commonPreCS <- summary_LP_commonPreCS %>% 
-#         unite("same_diff",c("Devalued Pavlovian US?", "Devaluation"), sep = "_", remove = FALSE) %>% 
-#         mutate(same_diff = str_replace(string = same_diff, pattern = "Non-Devalued_Non-Devalued Lever",replacement = "Same"),
-#                same_diff = str_replace(string = same_diff, pattern = "Devalued_Non-Devalued Lever",replacement = "Different"),
-#                same_diff = str_replace(string = same_diff, pattern = "Non-Devalued_Devalued Lever",replacement = "Different"),
-#                same_diff = str_replace(string = same_diff, pattern = "Devalued_Devalued Lever",replacement = "Same"),
-#                same_diff = str_replace(string = same_diff, pattern = "General_Devalued Lever",replacement = "General"),
-#                same_diff = str_replace(string = same_diff, pattern = "General_Non-Devalued Lever",replacement = "General"),
-#                same_diff = str_replace(string = same_diff, pattern = "PreCS_Devalued Lever",replacement = "PreCS"),
-#                same_diff = str_replace(string = same_diff, pattern = "PreCS_Non-Devalued Lever",replacement = "PreCS"))
-#       
-#       
-#       # Average across repeated session
-#       summary_LP_commonPreCS <- summary_LP_commonPreCS %>% 
-#         group_by(Subject, Devaluation,  `Trial Structure`, same_diff, `Devalued Pavlovian US?`) %>% 
-#         summarise(`lever Presses` = mean(`lever Presses`)) %>% 
-#         ungroup()
-#       
-#       
-#       levelorder <- c("Non-Devalued", "Devalued")
-#       levelorderCS <- c("PreCS", "Non-Devalued", "Devalued", "General")
-#       leverlorderCS2 <- c("PreCS", "Same", "Different", "General")
-#       summary_LP_commonPreCS <- summary_LP_commonPreCS %>% 
-#         mutate(Devaluation = str_replace(string = Devaluation, pattern = "Non-Devalued Lever",replacement = "Non-Devalued"),
-#                Devaluation = str_replace(string = Devaluation, pattern = "Devalued Lever",replacement = "Devalued"),
-#                Devaluation = factor(Devaluation, levels = levelorder),
-#                `Devalued Pavlovian US?` = factor(`Devalued Pavlovian US?`, levels = levelorderCS),
-#                same_diff = factor(same_diff, levels = leverlorderCS2))
-#       
-#       
-#       return(summary_LP_commonPreCS)
-#       
-#     }
-#     
-#     
-#     
-#     # Save data for analysis
-#     summary <- plot_data(data_path)
-#     save_path <- here("rawdata", "processed_data", "SKR214_LiClsPITTest.csv")
-#     write_csv(summary, save_path)
-#     
-#     # Plot Data
-#     scalelims = c(0,8)
-#     scalelims_breaks = 1
-#     
-# 
-#     SKR214_LiCl_sPITTest_splitSameDiff <- summary %>% ggplot(mapping = aes(x = Devaluation, y = `lever Presses`, colour = same_diff, group = same_diff, fill = same_diff)) +
-#       stat_summary(fun = "mean", geom = "bar", size = 1, position = position_dodge(width = .9)) +
-#       stat_summary(fun.data = "mean_se", geom = "errorbar", width = 0, size = 0.2, position = position_dodge(width = 0.9), colour = "black", linetype = 1, show.legend = FALSE) +
-#       theme_cowplot() +
-#       coord_cartesian(ylim = scalelims) + 
-#       scale_y_continuous(breaks = seq(scalelims[1],scalelims[2],by = scalelims_breaks), expand = c(0.0,0)) +
-#       # ggtitle("",subtitle = "") + 
-#       ylab("Lever presses/min") + 
-#       xlab("Lever") +
-#       theme(axis.title.x=element_text(face = "bold")) +
-#       scale_colour_manual(name = "", values = linecolours, aesthetics = c("colour")) +
-#       scale_fill_manual(name = "", values = fillcolours)
-#     
-#     SKR214_LiCl_sPITTest_splitSameDiff
+  # Expt1. SKR214 - LiCl Consumption  ----------------------------------------------
+
+  # Define rawdata filepath
+  data_path <- here("rawdata", "SKR214_LiCl_TasteAversion.csv")
+
+  # Load and organise data
+  plot_data <- function(data_path) {
+
+    ### 1. Prepare Data
+    # Load Data
+    full_data <- read_csv(data_path)
+
+    levelorder <- c("Saline", "LiCl")
+    full_data <- full_data %>%
+      mutate(Injection = factor(Injection, levels = levelorder))
+
+
+    # Check that there are equal numbers of entries per subject/day
+    full_data %>%
+      group_by(Rat, Pairing, Injection) %>%
+      summarise(n = n()) %>%
+      spread(Rat, n)%>%
+      kable()
+
+    return(full_data)
+
+  }
+
+  # Save data for analysis
+  summary <- plot_data(data_path)
+  save_path <- here("rawdata", "processed_data", "SKR214_LiClConsumption.csv")
+  write_csv(summary, save_path)
+
+  # Plot Data
+  scalelims = c(0,22)
+  scalelims_breaks = 2
+
+
+    SKR214_LiCl_Consumption <- summary %>%
+    ggplot(mapping = aes(x = as.factor(Pairing), y = `Consumed (g)`, colour = Injection, group = Injection, fill = Injection, shape = Injection, linetype = Injection)) +
+    stat_summary(fun.data = "mean_se", geom = "errorbar", width = 0, size = 0.5, linetype = 1, show.legend = FALSE) +
+    stat_summary(fun = "mean", geom = "line", size = 0.5) +
+    stat_summary(fun = "mean", geom = "point", size = 3) +
+    theme_cowplot() +
+    coord_cartesian(ylim = scalelims) +
+    scale_y_continuous(breaks = seq(scalelims[1],scalelims[2],by = scalelims_breaks), expand = c(0.0,0)) +
+    # ggtitle("",subtitle = "") +
+    ylab("Consumed (g)") +
+    xlab("Pairing") +
+    theme(axis.title.x=element_text(face = "bold")) +
+    scale_linetype_manual(name = "", values = linetypes, limits = force)+
+    scale_colour_manual(name = "", values = linecolours, aesthetics = c("colour"), limits = force) +
+    scale_shape_manual(name = "", values = pointshapes, limits = force) +
+    scale_fill_manual(name = "", values = fillcolours, limits = force)
+
+    SKR214_LiCl_Consumption
+
+# Expt1. SKR214 - LiCl in Magazine  ----------------------------------------------
+
+    # Define rawdata filepath
+    data_path <- here("rawdata", "SKR214_DevaluationinMag_LiCl.csv")
+
+    # Load and organise data
+    plot_data <- function(data_path) {
+
+      ### 1. Prepare Data
+      # Load Data
+      full_data <- read_csv(data_path)
+
+      summary <- full_data %>%
+        mutate(Liquid = case_when(str_detect(MSN,"sucrose") ~ "Sucrose",
+                                  str_detect(MSN,"Maltodextrin") ~ "Maltodextrin")
+        ) %>%
+        select(Injection, Liquid, Subject, Bin_4mins, Mag1_5sBins, Mag1_duration_5sbins) %>%
+        group_by(Injection, Subject, Liquid, Bin_4mins) %>%
+        summarise(Bin_4mins = median(Bin_4mins),
+                  MagEntry = sum(Mag1_5sBins)/4,
+                  MagDur = sum(Mag1_duration_5sbins)/100/4) %>%
+        ungroup() %>%
+        filter(Bin_4mins < 7)
+
+      levelorder <- c("Saline", "LiCl")
+      summary <- summary %>%
+        mutate(Injection = factor(Injection, levels = levelorder))
+
+      return(summary)
+
+    }
+
+
+    # Save data for analysis
+    summary <- plot_data(data_path)
+    save_path <- here("rawdata", "processed_data", "SKR214_LiCl_DevaluationinMag.csv")
+    write_csv(summary, save_path)
+
+    # Plot Data
+    scalelims = c(0,8)
+    scalelims_breaks = 2
+
+
+    SKR214_LiCl_DevalinMag <- summary %>%
+      ggplot(mapping = aes(x = as.factor(Bin_4mins), y = MagEntry, colour = Injection, group = Injection, fill = Injection, shape = Injection, linetype = Injection)) +
+      stat_summary(fun.data = "mean_se", geom = "errorbar", width = 0, size = 0.5, linetype = 1, show.legend = FALSE) +
+      stat_summary(fun = "mean", geom = "line", size = 0.5) +
+      stat_summary(fun = "mean", geom = "point", size = 3) +
+      theme_cowplot() +
+      coord_cartesian(ylim = scalelims) +
+      scale_y_continuous(breaks = seq(scalelims[1],scalelims[2],by = scalelims_breaks), expand = c(0.0,0)) +
+      # ggtitle("",subtitle = "") +
+      ylab("Magazine Entries/Min") +
+      xlab("4 minute bins") +
+      theme(axis.title.x=element_text(face = "bold")) +
+      scale_linetype_manual(name = "", values = linetypes, limits = force)+
+      scale_colour_manual(name = "", values = linecolours, aesthetics = c("colour"), limits = force) +
+      scale_shape_manual(name = "", values = pointshapes, limits = force) +
+      scale_fill_manual(name = "", values = fillcolours, limits = force)
+
+    SKR214_LiCl_DevalinMag
+
+    # Expt1. SKR214 - LiCl Instrumental Devaluation  ----------------------------------------------
+
+    # Define rawdata filepath
+    data_path <- here("rawdata", "SKR214_sPIT_Test.csv")
+
+    # Load and organise data
+    plot_data <- function(data_path) {
+
+      ### 1. Prepare Data
+      # Load Data
+      full_data <- read_csv(data_path)
+
+      summary <- full_data %>%
+        filter(`Trial Structure` == "Baseline Extinction",
+               Devaluation == "LiCl") %>%
+        group_by(Devaluation, Subject, `Minute Counter`) %>%
+        summarise(`Devalued Lever` = mean(`Devalued Lever`)*60,
+                  `Non-Devalued Lever` = mean(`Non-Devalued Lever`)*60,
+                  MagEntries = mean(MagEntries)*60,
+                  # MagDuration = mean(MagDuration)*60 # MagDuration not recorded in these data
+        ) %>%
+        ungroup()
+
+
+      summary_LP <- summary %>%
+        select(Subject, `Minute Counter`, `Devalued Lever`, `Non-Devalued Lever`) %>%
+        gather(key = "Devaluation", value = "lever Presses", `Devalued Lever`, `Non-Devalued Lever`)
+
+      ### 2. Fix data Order for plotting
+      levelorder <- c("Non-Devalued", "Devalued")
+      summary_LP <- summary_LP %>%
+        mutate(Devaluation = str_replace(string = Devaluation, pattern = "Non-Devalued Lever",replacement = "Non-Devalued"),
+               Devaluation = str_replace(string = Devaluation, pattern = "Devalued Lever",replacement = "Devalued"),
+               Devaluation = factor(Devaluation, levels = levelorder))
+
+
+
+      # Check that there are equal numbers of entries per subject/day
+      summary_LP %>%
+        group_by(Subject) %>%
+        summarise(n = n()) %>%
+        spread(Subject, n)%>%
+        kable()
+
+      return(summary_LP)
+
+    }
+
+
+    # Save data for analysis
+    summary <- plot_data(data_path)
+    save_path <- here("rawdata", "processed_data", "SKR214_LiClDevalTest.csv")
+    write_csv(summary, save_path)
+
+    # Plot Data
+    scalelims = c(0,30)
+    scalelims_breaks = 5
+
+    SKR214_LiCl_DevalTest <- summary %>% ggplot(mapping = aes(x = as.factor(`Minute Counter`), y = `lever Presses`, colour = Devaluation, group = Devaluation, fill = Devaluation, shape = Devaluation, linetype = Devaluation)) +
+      stat_summary(fun.data = "mean_se", geom = "errorbar", width = 0, size = 0.5, linetype = 1, show.legend = FALSE) +
+      stat_summary(fun = "mean", geom = "line", size = 0.5) +
+      stat_summary(fun = "mean", geom = "point", size = 3) +
+      theme_cowplot() +
+      coord_cartesian(ylim = scalelims) +
+      scale_y_continuous(breaks = seq(scalelims[1],scalelims[2],by = scalelims_breaks), expand = c(0.0,0)) +
+      # ggtitle("",subtitle = "") +
+      ylab("Lever presses/min") +
+      xlab("1 minute bins") +
+      theme(axis.title.x=element_text(face = "bold")) +
+      scale_linetype_manual(name = "", values = linetypes, limits = force)+
+      scale_colour_manual(name = "", values = linecolours, aesthetics = c("colour"), limits = force) +
+      scale_shape_manual(name = "", values = pointshapes, limits = force) +
+      scale_fill_manual(name = "", values = fillcolours, limits = force)
+
+    SKR214_LiCl_DevalTest
+
+
+    # Expt1. SKR214 - LiCl sPIT Test  ----------------------------------------------
+
+    # Define rawdata filepath
+    data_path <- here("rawdata", "SKR214_sPIT_Test.csv")
+
+    # Load and organise data
+    plot_data <- function(data_path) {
+
+      ### 1. Prepare Data
+      # Load Data
+      full_data <- read_csv(data_path)
+
+      summary <- full_data %>%
+        filter(
+          `Trial Structure` == "PreCS" | `Trial Structure` == "CS",
+          # `trial period split minutes [1,2]` == "PreCS2"|`trial period split minutes [1,2]` == "CS1",
+          # `trial period split minutes [1,2]` == "PreCS1" | `trial period split minutes [1,2]` == "PreCS2"|`trial period split minutes [1,2]` == "CS1"|`trial period split minutes [1,2]` == "CS2",
+          # `Trial Number` == 1|`Trial Number` == 2,
+          Devaluation == "LiCl"
+        ) %>%
+        group_by(Devaluation, Group, Session, Subject, `Trial Structure`, `Devalued Pavlovian US?`) %>%
+        summarise(`Devalued Lever` = mean(`Devalued Lever`)*60,
+                  `Non-Devalued Lever` = mean(`Non-Devalued Lever`)*60,
+                  MagEntries = mean(MagEntries)*60,
+                  # MagDuration = mean(MagDuration)*60 # MagDuration not recorded in these data
+        ) %>%
+        ungroup()
+
+
+
+      summary_LP <- summary %>%
+        select(-MagEntries, -Devaluation) %>%
+        pivot_longer( cols =  `Devalued Lever`:`Non-Devalued Lever`, names_to = "Devaluation", values_to = "lever Presses")
+
+
+      summary_LP_wide <- summary_LP %>%
+        pivot_wider(names_from = `Trial Structure`, values_from = `lever Presses`)
+
+      summary_LP_PreCSonly <- summary_LP_wide %>%
+        select(-CS) %>%
+        group_by(Group, Session, Subject, Devaluation) %>%
+        summarise(PreCS = mean(PreCS)) %>%
+        ungroup()
+
+      summary_LP_PreCSonly <- summary_LP_PreCSonly %>%
+        pivot_longer(cols = PreCS, names_to = "Trial Structure", values_to = "lever Presses") %>%
+        mutate("Devalued Pavlovian US?" = "PreCS")
+
+      summary_LP_commonPreCS <- summary_LP %>%
+        filter(`Trial Structure` == "CS") %>%
+        full_join(summary_LP_PreCSonly)
+
+      summary_LP_commonPreCS <- summary_LP_commonPreCS %>%
+        unite("same_diff",c("Devalued Pavlovian US?", "Devaluation"), sep = "_", remove = FALSE) %>%
+        mutate(same_diff = str_replace(string = same_diff, pattern = "Non-Devalued_Non-Devalued Lever",replacement = "Same"),
+               same_diff = str_replace(string = same_diff, pattern = "Devalued_Non-Devalued Lever",replacement = "Different"),
+               same_diff = str_replace(string = same_diff, pattern = "Non-Devalued_Devalued Lever",replacement = "Different"),
+               same_diff = str_replace(string = same_diff, pattern = "Devalued_Devalued Lever",replacement = "Same"),
+               same_diff = str_replace(string = same_diff, pattern = "General_Devalued Lever",replacement = "General"),
+               same_diff = str_replace(string = same_diff, pattern = "General_Non-Devalued Lever",replacement = "General"),
+               same_diff = str_replace(string = same_diff, pattern = "PreCS_Devalued Lever",replacement = "PreCS"),
+               same_diff = str_replace(string = same_diff, pattern = "PreCS_Non-Devalued Lever",replacement = "PreCS"))
+
+
+      # Average across repeated session
+      summary_LP_commonPreCS <- summary_LP_commonPreCS %>%
+        group_by(Subject, Devaluation,  `Trial Structure`, same_diff, `Devalued Pavlovian US?`) %>%
+        summarise(`lever Presses` = mean(`lever Presses`)) %>%
+        ungroup()
+
+
+      levelorder <- c("Non-Devalued", "Devalued")
+      levelorderCS <- c("PreCS", "Non-Devalued", "Devalued", "General")
+      leverlorderCS2 <- c("PreCS", "Same", "Different", "General")
+      summary_LP_commonPreCS <- summary_LP_commonPreCS %>%
+        mutate(Devaluation = str_replace(string = Devaluation, pattern = "Non-Devalued Lever",replacement = "Non-Devalued"),
+               Devaluation = str_replace(string = Devaluation, pattern = "Devalued Lever",replacement = "Devalued"),
+               Devaluation = factor(Devaluation, levels = levelorder),
+               `Devalued Pavlovian US?` = factor(`Devalued Pavlovian US?`, levels = levelorderCS),
+               same_diff = factor(same_diff, levels = leverlorderCS2))
+
+
+      return(summary_LP_commonPreCS)
+
+    }
+
+
+
+    # Save data for analysis
+    summary <- plot_data(data_path)
+    save_path <- here("rawdata", "processed_data", "SKR214_LiClsPITTest.csv")
+    write_csv(summary, save_path)
+
+    # Plot Data
+    scalelims = c(0,8)
+    scalelims_breaks = 1
+
+
+    SKR214_LiCl_sPITTest_splitSameDiff <- summary %>% ggplot(mapping = aes(x = Devaluation, y = `lever Presses`, colour = same_diff, group = same_diff, fill = same_diff)) +
+      stat_summary(fun = "mean", geom = "bar", size = 1, position = position_dodge(width = .9)) +
+      stat_summary(fun.data = "mean_se", geom = "errorbar", width = 0, size = 0.2, position = position_dodge(width = 0.9), colour = "black", linetype = 1, show.legend = FALSE) +
+      theme_cowplot() +
+      coord_cartesian(ylim = scalelims) +
+      scale_y_continuous(breaks = seq(scalelims[1],scalelims[2],by = scalelims_breaks), expand = c(0.0,0)) +
+      # ggtitle("",subtitle = "") +
+      ylab("Lever presses/min") +
+      xlab("Lever") +
+      theme(axis.title.x=element_text(face = "bold")) +
+      scale_colour_manual(name = "", values = linecolours, aesthetics = c("colour"), limits = force) +
+      scale_fill_manual(name = "", values = fillcolours, limits = force)
+
+    SKR214_LiCl_sPITTest_splitSameDiff
+
     
+    
+    # Alternative Plots that help visualise the 2 Lever tests! ----------------
+    
+    
+    # summary %>% ggplot(mapping = aes(x = Devaluation, y = `lever Presses`, colour = same_diff, group = same_diff, fill = same_diff)) +
+    #   stat_summary(fun = "mean", geom = "bar", size = 1, position = position_dodge(width = .9)) +
+    #   stat_summary(fun.data = "mean_se", geom = "errorbar", width = 0, size = 0.2, position = position_dodge(width = 0.9), colour = "black", linetype = 1, show.legend = FALSE) +
+    #   facet_grid(cols = vars(`Devalued Pavlovian US?`)) +
+    #   theme_cowplot() +
+    #   coord_cartesian(ylim = scalelims) + 
+    #   scale_y_continuous(breaks = seq(scalelims[1],scalelims[2],by = scalelims_breaks), expand = c(0.0,0)) +
+    #   # ggtitle("",subtitle = "") + 
+    #   ylab("Lever presses/min") + 
+    #   xlab("Lever") +
+    #   theme(axis.title.x=element_text(face = "bold")) 
+    #   # scale_colour_manual(name = "", values = linecolours, aesthetics = c("colour"), limits = force, limits = force) +
+    #   # scale_fill_manual(name = "", values = fillcolours, limits = force)
+    # 
+    # 
+    # summary %>% ggplot(mapping = aes(x = Devaluation, y = `lever Presses`, colour = `Devalued Pavlovian US?`, group = `Devalued Pavlovian US?`, fill = `Devalued Pavlovian US?`)) +
+    #   stat_summary(fun = "mean", geom = "bar", size = 1, position = position_dodge(width = .9)) +
+    #   stat_summary(fun.data = "mean_se", geom = "errorbar", width = 0, size = 0.2, position = position_dodge(width = 0.9), colour = "black", linetype = 1, show.legend = FALSE) +
+    #   facet_grid(cols = vars(Devaluation)) +
+    #   theme_cowplot() +
+    #   coord_cartesian(ylim = scalelims) +
+    #   scale_y_continuous(breaks = seq(scalelims[1],scalelims[2],by = scalelims_breaks), expand = c(0.0,0)) +
+    #   # ggtitle("",subtitle = "") +
+    #   ylab("Lever presses/min") +
+    #   xlab("Pavlovian CS") +
+    #   theme(axis.title.x=element_text(face = "bold"))     
 
 # SKR216 SINGLE LEVER EXPERIMENTS 1. Satiety -----------------------------------------
     # Expt2. SKR216 Satiety - Instrumental Acquisition --------------------------------
@@ -1259,10 +1322,10 @@ scalelims_breaks = 5
       ylab("Lever presses/min") + 
       xlab("Day") +
       theme(axis.title.x=element_text(face = "bold")) +
-      scale_linetype_manual(name = "", values = linetypes)+
-      scale_colour_manual(name = "", values = linecolours, aesthetics = c("colour")) +
-      scale_shape_manual(name = "", values = pointshapes) +
-      scale_fill_manual(name = "", values = fillcolours)
+      scale_linetype_manual(name = "", values = linetypes, limits = force)+
+      scale_colour_manual(name = "", values = linecolours, aesthetics = c("colour"), limits = force) +
+      scale_shape_manual(name = "", values = pointshapes, limits = force) +
+      scale_fill_manual(name = "", values = fillcolours, limits = force)
     
     SKR216_Satiety_Instrumental_acquisition
 
@@ -1378,10 +1441,10 @@ scalelims_breaks = 5
       ylab("CS-PreCS Entries/min") + 
       xlab("Day") +
       theme(axis.title.x=element_text(face = "bold")) +
-      scale_linetype_manual(name = "", values = linetypes)+
-      scale_colour_manual(name = "", values = linecolours, aesthetics = c("colour")) +
-      scale_shape_manual(name = "", values = pointshapes) +
-      scale_fill_manual(name = "", values = fillcolours)
+      scale_linetype_manual(name = "", values = linetypes, limits = force)+
+      scale_colour_manual(name = "", values = linecolours, aesthetics = c("colour"), limits = force) +
+      scale_shape_manual(name = "", values = pointshapes, limits = force) +
+      scale_fill_manual(name = "", values = fillcolours, limits = force)
     
     SKR216_Satiety_Pavlovian_acquisition
 
@@ -1442,8 +1505,8 @@ scalelims_breaks = 5
       xlab("") +
       # theme(axis.title.x=element_blank())+
       theme(axis.text.x = element_blank()) +
-      scale_colour_manual(name = "", values = linecolours, aesthetics = c("colour")) +
-      scale_fill_manual(name = "", values = fillcolours)
+      scale_colour_manual(name = "", values = linecolours, aesthetics = c("colour"), limits = force) +
+      scale_fill_manual(name = "", values = fillcolours, limits = force)
     
     SKR216_Satiety_Consumption
 
@@ -1514,10 +1577,10 @@ scalelims_breaks = 5
       ylab("Lever presses/min") + 
       xlab("1 minute bins") +
       theme(axis.title.x=element_text(face = "bold")) +
-      scale_linetype_manual(name = "", values = linetypes)+
-      scale_colour_manual(name = "", values = linecolours, aesthetics = c("colour")) +
-      scale_shape_manual(name = "", values = pointshapes) +
-      scale_fill_manual(name = "", values = fillcolours)
+      scale_linetype_manual(name = "", values = linetypes, limits = force)+
+      scale_colour_manual(name = "", values = linecolours, aesthetics = c("colour"), limits = force) +
+      scale_shape_manual(name = "", values = pointshapes, limits = force) +
+      scale_fill_manual(name = "", values = fillcolours, limits = force)
     
     SKR216_Satiety_DevalTest
     
@@ -1588,8 +1651,8 @@ scalelims_breaks = 5
       ylab("Non-Devalued - Devalued \n Lever presses/min") + 
       xlab("Devaluation") +
       theme(axis.title.x=element_text(face = "bold")) +
-      scale_colour_manual(name = "", values = linecolours, aesthetics = c("colour")) +
-      scale_fill_manual(name = "", values = fillcolours)
+      scale_colour_manual(name = "", values = linecolours, aesthetics = c("colour"), limits = force) +
+      scale_fill_manual(name = "", values = fillcolours, limits = force)
     
     SKR216_Satiety_DevalTest_Index
     
@@ -1700,8 +1763,8 @@ scalelims_breaks = 5
       ylab("Lever presses/min") + 
       xlab("Lever") +
       theme(axis.title.x=element_text(face = "bold")) +
-      scale_colour_manual(name = "", values = linecolours, aesthetics = c("colour")) +
-      scale_fill_manual(name = "", values = fillcolours)
+      scale_colour_manual(name = "", values = linecolours, aesthetics = c("colour"), limits = force) +
+      scale_fill_manual(name = "", values = fillcolours, limits = force)
     
     SKR216_satiety_sPITTest_splitSameDiff   
     
@@ -1934,8 +1997,8 @@ scalelims_breaks = 5
       ylab("Lever presses/min") + 
       xlab("Lever") +
       theme(axis.title.x=element_text(face = "bold")) +
-      scale_colour_manual(name = "", values = linecolours, aesthetics = c("colour")) +
-      scale_fill_manual(name = "", values = fillcolours)
+      scale_colour_manual(name = "", values = linecolours, aesthetics = c("colour"), limits = force) +
+      scale_fill_manual(name = "", values = fillcolours, limits = force)
     
     SKR216_satiety_sPITTest_splitMagEntries   
     
@@ -1952,8 +2015,8 @@ scalelims_breaks = 5
       ylab("Lever presses/min") + 
       xlab("Lever") +
       theme(axis.title.x=element_text(face = "bold")) +
-      scale_colour_manual(name = "", values = linecolours, aesthetics = c("colour")) +
-      scale_fill_manual(name = "", values = fillcolours)
+      scale_colour_manual(name = "", values = linecolours, aesthetics = c("colour"), limits = force) +
+      scale_fill_manual(name = "", values = fillcolours, limits = force)
     
     SKR216_satiety_sPITTest_splitMagEntries   
     
@@ -2031,10 +2094,10 @@ scalelims_breaks = 5
     #   ylab("Lever presses/min") +
     #   xlab("Day") +
     #   theme(axis.title.x=element_text(face = "bold")) +
-    #   scale_linetype_manual(name = "", values = linetypes)+
-    #   scale_colour_manual(name = "", values = linecolours, aesthetics = c("colour")) +
-    #   scale_shape_manual(name = "", values = pointshapes) +
-    #   scale_fill_manual(name = "", values = fillcolours)
+    #   scale_linetype_manual(name = "", values = linetypes, limits = force)+
+    #   scale_colour_manual(name = "", values = linecolours, aesthetics = c("colour"), limits = force) +
+    #   scale_shape_manual(name = "", values = pointshapes, limits = force) +
+    #   scale_fill_manual(name = "", values = fillcolours, limits = force)
     # 
     # SKR216_LiCL_Instrumental_acquisition
     # 
@@ -2148,10 +2211,10 @@ scalelims_breaks = 5
     #   ylab("CS-PreCS Entries/min") + 
     #   xlab("Day") +
     #   theme(axis.title.x=element_text(face = "bold")) +
-    #   scale_linetype_manual(name = "", values = linetypes)+
-    #   scale_colour_manual(name = "", values = linecolours, aesthetics = c("colour")) +
-    #   scale_shape_manual(name = "", values = pointshapes) +
-    #   scale_fill_manual(name = "", values = fillcolours)
+    #   scale_linetype_manual(name = "", values = linetypes, limits = force)+
+    #   scale_colour_manual(name = "", values = linecolours, aesthetics = c("colour"), limits = force) +
+    #   scale_shape_manual(name = "", values = pointshapes, limits = force) +
+    #   scale_fill_manual(name = "", values = fillcolours, limits = force)
     # 
     # SKR216_LiCl_Pavlovian_acquisition
     #
@@ -2208,10 +2271,10 @@ scalelims_breaks = 5
     #   ylab("Consumed (g)") + 
     #   xlab("Pairing") +
     #   theme(axis.title.x=element_text(face = "bold")) +
-    #   scale_linetype_manual(name = "", values = linetypes)+
-    #   scale_colour_manual(name = "", values = linecolours, aesthetics = c("colour")) +
-    #   scale_shape_manual(name = "", values = pointshapes) +
-    #   scale_fill_manual(name = "", values = fillcolours)
+    #   scale_linetype_manual(name = "", values = linetypes, limits = force)+
+    #   scale_colour_manual(name = "", values = linecolours, aesthetics = c("colour"), limits = force) +
+    #   scale_shape_manual(name = "", values = pointshapes, limits = force) +
+    #   scale_fill_manual(name = "", values = fillcolours, limits = force)
     # 
     # SKR216_LiCl_Consumption
     # 
@@ -2270,10 +2333,10 @@ scalelims_breaks = 5
     #   ylab("Magazine Entries/Min") + 
     #   xlab("4 minute bins") +
     #   theme(axis.title.x=element_text(face = "bold")) +
-    #   scale_linetype_manual(name = "", values = linetypes)+
-    #   scale_colour_manual(name = "", values = linecolours, aesthetics = c("colour")) +
-    #   scale_shape_manual(name = "", values = pointshapes) +
-    #   scale_fill_manual(name = "", values = fillcolours)
+    #   scale_linetype_manual(name = "", values = linetypes, limits = force)+
+    #   scale_colour_manual(name = "", values = linecolours, aesthetics = c("colour"), limits = force) +
+    #   scale_shape_manual(name = "", values = pointshapes, limits = force) +
+    #   scale_fill_manual(name = "", values = fillcolours, limits = force)
     # 
     # SKR216_LiCl_DevalinMag   
     # 
@@ -2343,10 +2406,10 @@ scalelims_breaks = 5
     #   ylab("Lever presses/min") + 
     #   xlab("1 minute bins") +
     #   theme(axis.title.x=element_text(face = "bold")) +
-    #   scale_linetype_manual(name = "", values = linetypes)+
-    #   scale_colour_manual(name = "", values = linecolours, aesthetics = c("colour")) +
-    #   scale_shape_manual(name = "", values = pointshapes) +
-    #   scale_fill_manual(name = "", values = fillcolours)
+    #   scale_linetype_manual(name = "", values = linetypes, limits = force)+
+    #   scale_colour_manual(name = "", values = linecolours, aesthetics = c("colour"), limits = force) +
+    #   scale_shape_manual(name = "", values = pointshapes, limits = force) +
+    #   scale_fill_manual(name = "", values = fillcolours, limits = force)
     # 
     # SKR216_LiCl_DevalTest
     # 
@@ -2452,8 +2515,8 @@ scalelims_breaks = 5
     #   ylab("Lever presses/min") + 
     #   xlab("Lever") +
     #   theme(axis.title.x=element_text(face = "bold")) +
-    #   scale_colour_manual(name = "", values = linecolours, aesthetics = c("colour")) +
-    #   scale_fill_manual(name = "", values = fillcolours)
+    #   scale_colour_manual(name = "", values = linecolours, aesthetics = c("colour"), limits = force) +
+    #   scale_fill_manual(name = "", values = fillcolours, limits = force)
     # 
     # SKR216_LiCl_sPITTest_splitSameDiff    
     # 
