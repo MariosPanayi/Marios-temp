@@ -4,7 +4,8 @@ tic
 % filePath = "MK801\";
 % 
 % load([folderPath+filePath+"MK801AAB_Data.mat"])
-folderPath = "D:\DLC_AllVideos_Analysis\Summary\";
+% folderPath = "D:\DLC_AllVideos_Analysis\Summary\";
+folderPath = 'C:\Users\panayimc\Box\NIDA_Expts\Papers\AAB_Analysis_2020\Summary\';
 filePath = "GluA1KO\";
 
 load([folderPath+filePath+"GluA1AAB_Data.mat"])

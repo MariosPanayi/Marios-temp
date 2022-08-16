@@ -1,7 +1,9 @@
 tic
 %%
-folderPath = "D:\DLC_AllVideos_Analysis\Summary\";
-filePath = "MK801\";
+file.folder = "C:\Users\panayimc\Box\NIDA_Expts\Papers\AAB_Analysis_2020\Summary";
+file.subfolder = "GluA1KO";
+file.name = 'GluA1AAB_Data.mat';
+
 
 %
 % List of DLC labels in order [from RawData.bodyparts]
@@ -44,21 +46,22 @@ likelihood = 3;
 
 % params
 params.crop = 1; % Crop data based on box limits? True or false
-params.interpolate = 1; %Interpolate tracking data if below some crietrion - linear interpolation used [ see interpolateLowConfidence2.m]
+params.interpolate = 1; %Interpolate tracking data if below some criterion - linear interpolation used [ see interpolateLowConfidence2.m]
 params.criterion = 1; %Threshold criterion for trackign points to interpolate
 params.smoothxy = 0; %0.25 %Option to smooth data with moving average over some period of time in seconds
 params.boxdimension = 40; %Parameter used to convert pixel distance to cm. Value here should be the distance (in cm) between the inner corners of the square box.
 params.downsamplerate = 20; %Downsample rate to regularise the variable framerate e.g. 10 Hz = 10
 
 
-% Run pre-processing scripts
-runpreprocessing = 1;
+% Run pre-processing scripts - might need to update how these functions
+% take in file information!!!
+runpreprocessing = 0;
 
 if runpreprocessing
-    AAB_preprocessDLCRawFiles
-    AAB_preprocessDLCdata
+%     AAB_preprocessDLCRawFiles
+%     AAB_preprocessDLCdata
 else
-    load("D:\DLC_AllVideos_Analysis\Summary\GluA1KO\GluA1AAB_Data.mat")
+    load(fullfile(file.folder,file.subfolder,file.name))
 end
 
 %%

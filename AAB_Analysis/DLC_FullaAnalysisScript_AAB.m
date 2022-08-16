@@ -293,7 +293,7 @@ Y = Smooth_data(i).rawY(:,avg);
 H = densityplot(Smooth_data(i).rawX(:,avg),Smooth_data(i).rawY(:,avg),[100 100]);
 figure
 [N,c] = hist3([Smooth_data(i).rawX(:,avg),Smooth_data(i).rawY(:,avg)],'Nbins',[100 100]);
-% imagesc(N)
+imagesc(N)
 pcolor(N')
 shading interp
 colorbar
