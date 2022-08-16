@@ -14,3 +14,5 @@ Install compatible Visual Studio C++ compiler [Visual STudio 2019 - install the 
 
 Mistake made!!!
 Need to change everything to be compatible with Matlab 2020b! This is compatible with CUDA 10.2
+
+Note - Initial Setup of CUDA using mexGPUall function - some of the files to be compiled might have access rights errors! This seems to be a problem on NIDA computers due to the CYlance antivirus protection interfering with the reading/writing of some of the .exe files. Solution - unplug the computer from the network when running this.
