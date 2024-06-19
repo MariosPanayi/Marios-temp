@@ -1,5 +1,5 @@
 ---
-title: "LYDopaminePaper_v4"
+title: "LYDopaminePaper_v4_redone"
 author: "Marios Panayi"
 date: "4/28/2020"
 output: word_document
@@ -46,14 +46,14 @@ anova <- aov_4(Accuracy ~ (Drug|Subj), data = short_data, anova_table = list(cor
 anova_print <- apa_print(anova, mse = "FALSE",correction = "none",es = "pes")
 
 simpledrug <- emmeans(anova, ~Drug)
-simpledrug_print <- apa_print.emmGrid(contrast(simpledrug, method = "pairwise", simple = "Drug", adjust = "tukey"))
+simpledrug_print <- apa_print(contrast(simpledrug, method = "pairwise", simple = "Drug", adjust = "tukey"))
 
 # Stats - Latency Sample
 anova_latencySample <- aov_4(Latency_Sample ~ (Drug|Subj), data = short_data, anova_table = list(correction = "none", es = "pes"))
 anova_latencySample_print <- apa_print(anova_latencySample, mse = "FALSE",correction = "none",es = "pes")
 
 simpledrug_latencySample <- emmeans(anova_latencySample, ~Drug)
-simpledrug_latencySample_print <- apa_print.emmGrid(contrast(simpledrug_latencySample, method = "pairwise", simple = "Drug", adjust = "tukey"))
+simpledrug_latencySample_print <- apa_print(contrast(simpledrug_latencySample, method = "pairwise", simple = "Drug", adjust = "tukey"))
 
 # Stats - Latency Choice
 # Stats - Latency Choice
@@ -61,7 +61,7 @@ anova_latencyChoice <- aov_4(Latency_Choice ~ (Drug|Subj), data = short_data, an
 anova_latencyChoice_print <- apa_print(anova_latencyChoice, mse = "FALSE",correction = "none",es = "pes")
 
 simpledrug_latencyChoice <- emmeans(anova_latencyChoice, ~Drug)
-simpledrug_latencyChoice_print <- apa_print.emmGrid(contrast(simpledrug_latencyChoice, method = "pairwise", simple = "Drug", adjust = "tukey"))
+simpledrug_latencyChoice_print <- apa_print(contrast(simpledrug_latencyChoice, method = "pairwise", simple = "Drug", adjust = "tukey"))
 
 # anova_print$table
 # simpledrug_print$table
@@ -76,7 +76,7 @@ simpledrug_latencyChoice_print <- apa_print.emmGrid(contrast(simpledrug_latencyC
 
 We first established an active dose of the group II metabotropic agonist in our testing environment. Rats were injected with LY354740 intraperitoneally (i.p.) at a dose of either 1 mg/kg or 10 mg/kg, 45-50 min before behavioural testing. Two control conditions consisted of a no injection (No Inj) control and a distilled water (Veh) injected condition (1 ml/kg). Rewarded alternation a T-maze was used to assess spatial working memory, and was conducted as a within-subject design.
 
-In agreement with previous reports [REF], an i.p. dose of 10 mg/kg LY354740 decreased spatial working memory performance (Fig. 1A-C; main effect of Drug on Accuracy `r anova_print$statistic$Drug`, Sample Latency `r anova_latencySample_print$statistic$Drug`, Choice Latency `r anova_latencyChoice_print$statistic$Drug`). This dose significantly reduced accuracy (Fig. 1A; No Inj vs 10 mg/kg `r simpledrug_print$statistic$NoInj_X10mgkg`, Veh vs 10 mg/kg `r simpledrug_print$statistic$Veh_X10mgkg`), and an increased latencies during the sample (Fig. 1B; No Inj vs 10 mg/kg `r simpledrug_latencySample_print$statistic$NoInj_X10mgkg`, Veh vs 10 mg/kg `r simpledrug_latencySample_print$statistic$Veh_X10mgkg`, 1 vs 10 mg/kg `r simpledrug_latencySample_print$statistic$x1mgkg_x10mgkg`) and choice phases (Fig. 1C; No Inj vs 10 mg/kg `r simpledrug_latencyChoice_print$statistic$NoInj_X10mgkg`).
+In agreement with previous reports [REF], an i.p. dose of 10 mg/kg LY354740 decreased spatial working memory performance (Fig. 1A-C; main effect of Drug on Accuracy `r anova_print$statistic$Drug`, Sample Latency `r anova_latencySample_print$statistic$Drug`, Choice Latency `r anova_latencyChoice_print$statistic$Drug`). This dose significantly reduced accuracy (Fig. 1A; No Inj vs 10 mg/kg `r simpledrug_print$statistic$NoInj_X10mgkg`, Veh vs 10 mg/kg `r simpledrug_print$statistic$Veh_X10mgkg`), and an increased latencies during the sample (Fig. 1B; No Inj vs 10 mg/kg `r simpledrug_latencySample_print$statistic$NoInj_X10mgkg`, Veh vs 10 mg/kg `r simpledrug_latencySample_print$statistic$Veh_X10mgkg`, 1 vs 10 mg/kg `r simpledrug_latencySample_print$statistic$X1mgkg_X10mgkg`) and choice phases (Fig. 1C; No Inj vs 10 mg/kg `r simpledrug_latencyChoice_print$statistic$NoInj_X10mgkg`).
 
 ## Experiment 2: LY354740 enhanced the effects of amphetamine on spatial working memory
 
@@ -90,14 +90,14 @@ anova <- aov_4(Accuracy ~ (Drug|Subj), data = short_data, anova_table = list(cor
 anova_print <- apa_print(anova, mse = "FALSE",correction = "none",es = "pes")
 
 simpledrug <- emmeans(anova, ~Drug)
-simpledrug_print <- apa_print.emmGrid(contrast(simpledrug, method = "pairwise", simple = "Drug", adjust = "tukey"))
+simpledrug_print <- apa_print(contrast(simpledrug, method = "pairwise", simple = "Drug", adjust = "tukey"))
 
 # Stats - Latency Sample
 anova_latencySample <- aov_4(Latency_Sample ~ (Drug|Subj), data = short_data, anova_table = list(correction = "none", es = "pes"))
 anova_latencySample_print <- apa_print(anova_latencySample, mse = "FALSE",correction = "none",es = "pes")
 
 simpledrug_latencySample <- emmeans(anova_latencySample, ~Drug)
-simpledrug_latencySample_print <- apa_print.emmGrid(contrast(simpledrug_latencySample, method = "pairwise", simple = "Drug", adjust = "tukey"))
+simpledrug_latencySample_print <- apa_print(contrast(simpledrug_latencySample, method = "pairwise", simple = "Drug", adjust = "tukey"))
 
 # Stats - Latency Choice
 # Stats - Latency Choice
@@ -105,7 +105,7 @@ anova_latencyChoice <- aov_4(Latency_Choice ~ (Drug|Subj), data = short_data, an
 anova_latencyChoice_print <- apa_print(anova_latencyChoice, mse = "FALSE",correction = "none",es = "pes")
 
 simpledrug_latencyChoice <- emmeans(anova_latencyChoice, ~Drug)
-simpledrug_latencyChoice_print <- apa_print.emmGrid(contrast(simpledrug_latencyChoice, method = "pairwise", simple = "Drug", adjust = "tukey"))
+simpledrug_latencyChoice_print <- apa_print(contrast(simpledrug_latencyChoice, method = "pairwise", simple = "Drug", adjust = "tukey"))
 
 #Accuracy
 anova_print$table
@@ -189,10 +189,10 @@ anova <- aov_4(activity ~ Amph*LY + (bin10mins|Subj), data = data_10mins, anova_
 anova_print <- apa_print(anova, mse = "FALSE",correction = "none",es = "pes")
 
 simple <- emmeans(anova, ~Amph*LY*bin10mins)
-simple_print <- apa_print.emmGrid(contrast(simple, by = "bin10mins", interaction = "pairwise", adjust = "tukey"))
+simple_print <- apa_print(contrast(simple, by = "bin10mins", interaction = "pairwise", adjust = "tukey"))
 
 simple2 <- emmeans(anova, ~Amph*LY*bin10mins)
-simple2_print <- apa_print.emmGrid(contrast(simple2, by = c("Amph","bin10mins"), interaction = "pairwise", adjust = "tukey"))
+simple2_print <- apa_print(contrast(simple2, by = c("Amph","bin10mins"), interaction = "pairwise", adjust = "tukey"))
 
 
 # Stats - 60 mins follow up tests
@@ -200,10 +200,10 @@ anova_60 <- aov_4(activity ~ Amph*LY + (bin60mins|Subj), data = data_60mins, ano
 anova_60_print <- apa_print(anova_60, mse = "FALSE",correction = "none",es = "pes")
 
 simple_60 <- emmeans(anova_60, ~Amph*LY*bin60mins)
-simple_60_print <- apa_print.emmGrid(contrast(simple_60, by = "bin60mins", interaction = "pairwise", adjust = "tukey"))
+simple_60_print <- apa_print(contrast(simple_60, by = "bin60mins", interaction = "pairwise", adjust = "tukey"))
 
 simple2_60 <- emmeans(anova_60, ~Amph*LY*bin60mins)
-simple2_60_print <- apa_print.emmGrid(contrast(simple2_60, by = c("Amph","bin60mins"), interaction = "pairwise", adjust = "tukey"))
+simple2_60_print <- apa_print(contrast(simple2_60, by = c("Amph","bin60mins"), interaction = "pairwise", adjust = "tukey"))
 
 
 
@@ -276,10 +276,10 @@ anova <- aov_4(activity ~ Amph*LY + (bin10mins|Subj), data = data_10mins, anova_
 anova_print <- apa_print(anova, mse = "FALSE",correction = "none",es = "pes")
 
 simple <- emmeans(anova, ~Amph*LY*bin10mins)
-simple_print <- apa_print.emmGrid(contrast(simple, by = "bin10mins", interaction = "pairwise", adjust = "tukey"))
+simple_print <- apa_print(contrast(simple, by = "bin10mins", interaction = "pairwise", adjust = "tukey"))
 
 simple2 <- emmeans(anova, ~Amph*LY*bin10mins)
-simple2_print <- apa_print.emmGrid(contrast(simple2, by = c("Amph","bin10mins"), interaction = "pairwise", adjust = "tukey"))
+simple2_print <- apa_print(contrast(simple2, by = c("Amph","bin10mins"), interaction = "pairwise", adjust = "tukey"))
 
 
 # Stats - 60 mins follow up tests
@@ -287,10 +287,10 @@ anova_60 <- aov_4(activity ~ Amph*LY + (bin60mins|Subj), data = data_60mins, ano
 anova_60_print <- apa_print(anova_60, mse = "FALSE",correction = "none",es = "pes")
 
 simple_60 <- emmeans(anova_60, ~Amph*LY*bin60mins)
-simple_60_print <- apa_print.emmGrid(contrast(simple_60, by = "bin60mins", interaction = "pairwise", adjust = "tukey"))
+simple_60_print <- apa_print(contrast(simple_60, by = "bin60mins", interaction = "pairwise", adjust = "tukey"))
 
 simple2_60 <- emmeans(anova_60, ~Amph*LY*bin60mins)
-simple2_60_print <- apa_print.emmGrid(contrast(simple2_60, by = c("Amph","bin60mins"), interaction = "pairwise", adjust = "tukey"))
+simple2_60_print <- apa_print(contrast(simple2_60, by = c("Amph","bin60mins"), interaction = "pairwise", adjust = "tukey"))
 
 
 #####
@@ -307,7 +307,7 @@ simple2_60_print <- apa_print.emmGrid(contrast(simple2_60, by = c("Amph","bin60m
 
 Given these surprising results, we then re-assessed the effects of LY354740 on amphetamine-induced locomotor hyperactivity in a separate cohort of experimentally naïve rats maintained with ad libitum access to food. In agreement with the previous reports in the literature (e.g. Cartmell et al., 1999), LY354740 (10 mg/kg) now did reduce the hyperactivity following amphetamine (2.5 mg/kg) administration in these animals (Fig. 2B).
 
-As expected, amphetamine significantly increased locomotor activity (Amph `r anova_print$statistic$Amph`, Amph x Time `r anova_print$statistic$Amph_bin10mins`), an effect which was significantly reduced by LY354740 (Amph x LY354740 x Time `r anova_print$statistic$Amph_LY_bin10mins`, Amph x LY354740 `r anova_print$statistic$Amph_LY_bin10mins`). Specifically, LY354740 significantly reduced Amph induced hyperactivity 1-60 mins post injection (Amph/LY354740 vs Amph/Veh `r simple2_60_print$statistic$LY_Veh_Amph_X1`) but not 61-120 mins post injection (`r simple2_60_print$statistic$LY_Veh_Amph_X2`). In contrast, LY354740 alone did not affect locomotor activity (Veh/LY354740 vs Veh/Veh, 1-60 mins `r simple2_60_print$statistic$LY_Veh_Veh_X1`, 61-120 mins `r simple2_60_print$statistic$LY_Veh_Veh_X2`).
+As expected, amphetamine significantly increased locomotor activity (Amph `r anova_print$statistic$Amph`, Amph x Time `r anova_print$statistic$Amph_bin10mins`), an effect which was significantly reduced by LY354740 (Amph x LY354740 x Time `r anova_print$statistic$Amph_LY_bin10mins`, Amph x LY354740 `r anova_print$statistic$Amph_LY`). Specifically, LY354740 significantly reduced Amph induced hyperactivity 1-60 mins post injection (Amph/LY354740 vs Amph/Veh `r simple2_60_print$statistic$LY_Veh_Amph_X1`) but not 61-120 mins post injection (`r simple2_60_print$statistic$LY_Veh_Amph_X2`). In contrast, LY354740 alone did not affect locomotor activity (Veh/LY354740 vs Veh/Veh, 1-60 mins `r simple2_60_print$statistic$LY_Veh_Veh_X1`, 61-120 mins `r simple2_60_print$statistic$LY_Veh_Veh_X2`).
 
 
 ```{r Expt. 3/4  Plots - Fig. 2,  results='hide', include=FALSE, message = FALSE, warning=FALSE}
@@ -347,10 +347,10 @@ Peakanova <- aov_4(peak ~ (drug*rewardMagnitude|Subj), data = data_subset, anova
 Peakanova_print <- apa_print(Peakanova, mse = "FALSE",correction = "none",es = "pes")
 
 Peaksimple <- emmeans(Peakanova, ~rewardMagnitude)
-Peaksimple_print <- apa_print.emmGrid(pairs(Peaksimple, adjust = "tukey"))
+Peaksimple_print <- apa_print(pairs(Peaksimple, adjust = "tukey"))
 
 Peaksimple2 <- emmeans(Peakanova, ~drug*rewardMagnitude)
-Peaksimple2_print <- apa_print.emmGrid(contrast(Peaksimple2, by = "rewardMagnitude", interaction = "pairwise", adjust = "tukey"))
+Peaksimple2_print <- apa_print(contrast(Peaksimple2, by = "rewardMagnitude", interaction = "pairwise", adjust = "tukey"))
 
 ### AUC
 AUCanova <- aov_4(AUC ~ (drug*rewardMagnitude|Subj), data = data_subset, anova_table = list(correction = "none", es = "pes"))
@@ -358,10 +358,10 @@ AUCanova <- aov_4(AUC ~ (drug*rewardMagnitude|Subj), data = data_subset, anova_t
 AUCanova_print <- apa_print(AUCanova, mse = "FALSE",correction = "none",es = "pes")
 
 AUCsimple <- emmeans(AUCanova, ~rewardMagnitude)
-AUCsimple_print <- apa_print.emmGrid(pairs(AUCsimple, adjust = "tukey"))
+AUCsimple_print <- apa_print(pairs(AUCsimple, adjust = "tukey"))
 
 AUCsimple2 <- emmeans(AUCanova, ~drug*rewardMagnitude)
-AUCsimple2_print <- apa_print.emmGrid(contrast(AUCsimple2, by = "rewardMagnitude", interaction = "pairwise", adjust = "tukey"))
+AUCsimple2_print <- apa_print(contrast(AUCsimple2, by = "rewardMagnitude", interaction = "pairwise", adjust = "tukey"))
 
 ### Latency
 Latencyanova <- aov_4(latency2peak ~ (drug*rewardMagnitude|Subj), data = data_subset, anova_table = list(correction = "none", es = "pes"))
@@ -369,10 +369,10 @@ Latencyanova <- aov_4(latency2peak ~ (drug*rewardMagnitude|Subj), data = data_su
 Latencyanova_print <- apa_print(Latencyanova, mse = "FALSE",correction = "none",es = "pes")
 
 Latencysimple <- emmeans(Latencyanova, ~rewardMagnitude)
-Latencysimple_print <- apa_print.emmGrid(pairs(Latencysimple, adjust = "tukey"))
+Latencysimple_print <- apa_print(pairs(Latencysimple, adjust = "tukey"))
 
 Latencysimple2 <- emmeans(Latencyanova, ~drug*rewardMagnitude)
-Latencysimple2_print <- apa_print.emmGrid(contrast(Latencysimple2, by = "rewardMagnitude", interaction = "pairwise", adjust = "tukey"))
+Latencysimple2_print <- apa_print(contrast(Latencysimple2, by = "rewardMagnitude", interaction = "pairwise", adjust = "tukey"))
 
 
 ##### 
@@ -467,7 +467,7 @@ anova_print_PrePost_Peak <- apa_print(anova, mse = "FALSE",correction = "none",e
 
 
 simple <- emmeans(anova, ~drugs*injectiontime)
-simple_print_PrePost_Peak <- apa_print.emmGrid(contrast(simple, by = "drugs", interaction = "pairwise", adjust = "tukey"))
+simple_print_PrePost_Peak <- apa_print(contrast(simple, by = "drugs", interaction = "pairwise", adjust = "tukey"))
 
 ## AUC
 
@@ -476,7 +476,7 @@ anova <- aov_4(DA_AUC ~ drugs + (injectiontime|subj), data = data_subset, anova_
 anova_print_PrePost_AUC <- apa_print(anova, mse = "FALSE",correction = "none",es = "pes")
 
 simple <- emmeans(anova, ~drugs*injectiontime)
-simple_print_PrePost_AUC <- apa_print.emmGrid(contrast(simple, by = "drugs", interaction = "pairwise", adjust = "tukey"))
+simple_print_PrePost_AUC <- apa_print(contrast(simple, by = "drugs", interaction = "pairwise", adjust = "tukey"))
 
 
 ## Latency
@@ -501,7 +501,7 @@ anova_print_Intenisty_Peak_Perc <- apa_print(anova, mse = "FALSE",correction = "
 
 
 simple <- emmeans(anova, ~stimStrength)
-simple_print_Intenisty_Peak_Perc  <- apa_print.emmGrid(pairs(simple, adjust = "tukey"))
+simple_print_Intenisty_Peak_Perc  <- apa_print(pairs(simple, adjust = "tukey"))
 
 
 ## AUC
@@ -511,7 +511,7 @@ anova_print_Intenisty_AUC_Perc <- apa_print(anova, mse = "FALSE",correction = "n
 
 
 simple <- emmeans(anova, ~stimStrength)
-simple_print_Intenisty_AUC_Perc <- apa_print.emmGrid(pairs(simple, adjust = "tukey"))
+simple_print_Intenisty_AUC_Perc <- apa_print(pairs(simple, adjust = "tukey"))
 
 ## Latency
 anova <- aov_4(DA_Latency_s_PercBaseline ~ drugs + (stimStrength|subj), data = data_subset, anova_table = list(correction = "none", es = "pes"))
@@ -520,7 +520,7 @@ anova_print_Intensity_Latency_Perc <- apa_print(anova, mse = "FALSE",correction 
 
 
 simple <- emmeans(anova, ~stimStrength)
-simple_printt_Intensity_Latency_Perc <- apa_print.emmGrid(pairs(simple, adjust = "tukey"))
+simple_printt_Intensity_Latency_Perc <- apa_print(pairs(simple, adjust = "tukey"))
 
 # Stim Pulses Curve
 #Filter the relevant stage of data for analysis
@@ -534,7 +534,7 @@ anova_print_Pulse_Peak_Perc <- apa_print(anova, mse = "FALSE",correction = "none
 
 
 simple <- emmeans(anova, ~stimPulses)
-simple_print_Pulse_Peak_Perc <- apa_print.emmGrid(pairs(simple, adjust = "tukey"))
+simple_print_Pulse_Peak_Perc <- apa_print(pairs(simple, adjust = "tukey"))
 
 ## AUC
 anova <- aov_4(DA_AUC_PercBaseline ~ drugs + (stimPulses|subj), data = data_subset, anova_table = list(correction = "none", es = "pes"))
@@ -543,7 +543,7 @@ anova_print_Pulse_AUC_Perc <- apa_print(anova, mse = "FALSE",correction = "none"
 
 
 simple <- emmeans(anova, ~stimPulses)
-simple_print_Pulse_AUC_Perc  <- apa_print.emmGrid(pairs(simple, adjust = "tukey"))
+simple_print_Pulse_AUC_Perc  <- apa_print(pairs(simple, adjust = "tukey"))
 
 ## Latency
 anova <- aov_4(DA_Latency_s_PercBaseline ~ drugs + (stimPulses|subj), data = data_subset, anova_table = list(correction = "none", es = "pes"))
@@ -552,7 +552,7 @@ anova_print_Pulse_Latency_Perc <- apa_print(anova, mse = "FALSE",correction = "n
 
 
 simple <- emmeans(anova, ~stimPulses)
-simple_print_Pulse_Latency_Perc <- apa_print.emmGrid(pairs(simple, adjust = "tukey"))
+simple_print_Pulse_Latency_Perc <- apa_print(pairs(simple, adjust = "tukey"))
 
 
 
@@ -594,14 +594,14 @@ anova <- aov_4(Accuracy ~ (Drug|Subj), data = short_data, anova_table = list(cor
 anova_print <- apa_print(anova, mse = "FALSE",correction = "none",es = "pes")
 
 simpledrug <- emmeans(anova, ~Drug)
-simpledrug_print <- apa_print.emmGrid(contrast(simpledrug, method = "pairwise", simple = "Drug", adjust = "tukey"))
+simpledrug_print <- apa_print(contrast(simpledrug, method = "pairwise", simple = "Drug", adjust = "tukey"))
 
 # Stats - Latency Sample
 anova_latencySample <- aov_4(Latency_Sample ~ (Drug|Subj), data = short_data, anova_table = list(correction = "none", es = "pes"))
 anova_latencySample_print <- apa_print(anova_latencySample, mse = "FALSE",correction = "none",es = "pes")
 
 simpledrug_latencySample <- emmeans(anova_latencySample, ~Drug)
-simpledrug_latencySample_print <- apa_print.emmGrid(contrast(simpledrug_latencySample, method = "pairwise", simple = "Drug", adjust = "tukey"))
+simpledrug_latencySample_print <- apa_print(contrast(simpledrug_latencySample, method = "pairwise", simple = "Drug", adjust = "tukey"))
 
 # Stats - Latency Choice
 # Stats - Latency Choice
@@ -609,7 +609,7 @@ anova_latencyChoice <- aov_4(Latency_Choice ~ (Drug|Subj), data = short_data, an
 anova_latencyChoice_print <- apa_print(anova_latencyChoice, mse = "FALSE",correction = "none",es = "pes")
 
 simpledrug_latencyChoice <- emmeans(anova_latencyChoice, ~Drug)
-simpledrug_latencyChoice_print <- apa_print.emmGrid(contrast(simpledrug_latencyChoice, method = "pairwise", simple = "Drug", adjust = "tukey"))
+simpledrug_latencyChoice_print <- apa_print(contrast(simpledrug_latencyChoice, method = "pairwise", simple = "Drug", adjust = "tukey"))
 
 anova_print$table
 simpledrug_print$table
@@ -626,7 +626,7 @@ Increasing the delay between sample and test to 40s resulted in lower accuracy l
 
 ![](../figures/FigS1.png)
 
-**Figure S1**. The effect of LY354740 on spatial working memory in rewarded alternation T-maze assay on trials with a 40s delay. Trials with a 40s delay between sample and choice were randomly interleaved  throughout Experiment 1. The effect of either no injection (No Inj), distilled water (Veh), 1 mg/kg LY354740, or 10 mg/kg LY354740 on accuracy and response latencies on these trials are presented here. **(A)** Performance accuracy measured as the proportion of trials with a correct side alternation from sample to choice. Latency (s) to enter the left or right arm of the T-maze during the sample **(B)**  and choice **(C)** periods. Error bars represent +/- SEM. Statitsical significance of post-hoc simple effects (Tukey corrected) following a significant main effect of Drug: \* = *p* < .05, \*\* = *p* < .001.
+**Figure S1**. The effect of LY354740 on spatial working memory in rewarded alternation T-maze assay on trials with a 40s delay. Trials with a 40s delay between sample and choice were randomly interleaved  throughout Experiment 1. The effect of either no injection (No Inj), distilled water (Veh), 1 mg/kg LY354740, or 10 mg/kg LY354740 on accuracy and response latencies on these trials are presented here. **(A)** Performance accuracy measured as the proportion of trials with a correct side alternation from sample to choice. Latency (s) to enter the left or right arm of the T-maze during the sample **(B)**  and choice **(C)** periods. Error bars represent +/- SEM. Statistical significance of post-hoc simple effects (Tukey corrected) following a significant main effect of Drug: \* = *p* < .05, \*\* = *p* < .001.
 
 ### Effect of feeding state on amphetamine hyper-locomotion and blood amphetamine levels
 
@@ -682,10 +682,10 @@ anova <- aov_4(activity ~ Amph*Feeding + (bin10mins|Subj), data = data_10mins, a
 anova_print <- apa_print(anova, mse = "FALSE",correction = "none",es = "pes")
 
 simple <- emmeans(anova, ~ Amph)
-simple_print <- apa_print.emmGrid(contrast(simple, method = "pairwise", adjust = "tukey"))
+simple_print <- apa_print(contrast(simple, method = "pairwise", adjust = "tukey"))
 
 simple2 <- emmeans(anova, ~Amph*Feeding*bin10mins)
-simple2_print <- apa_print.emmGrid(contrast(simple2, by = c("Amph","bin10mins"), interaction = "pairwise", adjust = "tukey"))
+simple2_print <- apa_print(contrast(simple2, by = c("Amph","bin10mins"), interaction = "pairwise", adjust = "tukey"))
 
 
 # # Stats - 60 mins follow up tests
@@ -693,10 +693,10 @@ simple2_print <- apa_print.emmGrid(contrast(simple2, by = c("Amph","bin10mins"),
 # anova_60_print <- apa_print(anova_60, mse = "FALSE",correction = "none",es = "pes")
 # 
 # simple_60 <- emmeans(anova_60, ~Amph*bin60mins)
-# simple_60_print <- apa_print.emmGrid(contrast(simple_60, by = "Amph", interaction = "pairwise", adjust = "tukey"))
+# simple_60_print <- apa_print(contrast(simple_60, by = "Amph", interaction = "pairwise", adjust = "tukey"))
 # 
 # simple2_60 <- emmeans(anova_60, ~Feeding*bin60mins)
-# simple2_60_print <- apa_print.emmGrid(contrast(simple2_60, by = c("Feeding"), interaction = "pairwise", adjust = "tukey"))
+# simple2_60_print <- apa_print(contrast(simple2_60, by = c("Feeding"), interaction = "pairwise", adjust = "tukey"))
 
 
 
@@ -716,7 +716,7 @@ simple_print$table
 
 ## Locomotor Activity Dose Amphetamine Feeding Manipulation
 
-One potential explanation of the differential behavioural effects of LY354740 on amphetamine in food restricted and ad libitum fed rats is that food restriction changes the absorption, distribution, metabolism, or excretion profile of d-amphetamine. To test this possibility a new cohort of 90 rats were tested for the effect of feeding state on amphetamine hyper-locomotion (food restricted or ad libitum food access and i.p. injection of veh, 1.0 mg/kg, 2.5 mg/kg, or 5.0 mg/kg amphetamine; between subjects design). Prior to Amph administration (Fig. S2A, left), locomotor activity was significantly lower in food restricted than Ad libitum food access rats (Feeding `r anova_baselineprint$statistic$Feeding`, Feeding x Time `r anova_baselineprint$statistic$Feeding_bin10mins`) confirming the effect of feeding state on arousal or attentional processes that drive exploratory lcomotor activity. 
+One potential explanation of the differential behavioural effects of LY354740 on amphetamine in food restricted and ad libitum fed rats is that food restriction changes the absorption, distribution, metabolism, or excretion profile of d-amphetamine. To test this possibility a new cohort of 90 rats were tested for the effect of feeding state on amphetamine hyper-locomotion (food restricted or ad libitum food access and i.p. injection of veh, 1.0 mg/kg, 2.5 mg/kg, or 5.0 mg/kg amphetamine; between subjects design). Prior to Amph administration (Fig. S2A, left), locomotor activity was significantly lower in food restricted than Ad libitum food access rats (Feeding `r anova_baselineprint$statistic$Feeding`, Feeding x Time `r anova_baselineprint$statistic$Feeding_bin10mins`) confirming the effect of feeding state on arousal or attentional processes that drive exploratory locomotor activity. 
 
 Following injections (Fig. S2A), both food restriction (Feeding `r anova_print$statistic$Feeding`, Feeding x Time `r anova_print$statistic$Feeding_bin10mins`) and amphetamine (Amph `r anova_print$statistic$Amph`, Amph x Time `r anova_print$statistic$Amph_bin10mins`) independently enhanced locomotor activity, however they did not significantly interact with each other (Amph x Feeding x Time `r anova_print$statistic$Amph_Feeding_bin10mins`, Amph x Feeding `r anova_print$statistic$Amph_Feeding`, ). Varying doses of amphetamine produced a dose response curve (Fig. S2B, total activity post injection) such that all doses of amphetamine increased activity relative to vehicle injections (0 vs 1.0 mg/kg `r simple_print$statistic$'0_1'`, 0 vs 2.5 mg/kg `r simple_print$statistic$'0_25'`, 0 vs 5.0 mg/kg `r simple_print$statistic$'0_5'`), and 2.5 mg/kg produced the highest response (1.0 vs 2.5 mg/kg `r simple_print$statistic$'1_25'`, 2.5 vs 5.0 mg/kg `r simple_print$statistic$'25_5'`, 1.0 vs 5.0 mg/kg `r simple_print$statistic$'1_5'`). 
 
@@ -749,7 +749,7 @@ anova_1sthalfprint <- apa_print(anova_1sthalf, mse = "FALSE",correction = "none"
 
 # Simple effects
 simple <- emmeans(anova_1sthalf, ~ Amph)
-simple_print <- apa_print.emmGrid(contrast(simple, method = "pairwise", adjust = "tukey"))
+simple_print <- apa_print(contrast(simple, method = "pairwise", adjust = "tukey"))
 
 # Only use data from the first hour of the measurements since the measurements are very variable at 2 hours making the data hard to interpret.
 
@@ -785,7 +785,7 @@ anova_print_Intensity_Pre_Peak <- apa_print(anova, mse = "FALSE",correction = "n
 
 
 simple <- emmeans(anova, ~stimStrength)
-simple_print_Intensity_Pre_Peak <- apa_print.emmGrid(pairs(simple, adjust = "tukey"))
+simple_print_Intensity_Pre_Peak <- apa_print(pairs(simple, adjust = "tukey"))
 
 ## AUC
 anova <- aov_4(DA_AUC ~ drugs + (stimStrength|subj), data = data_subset, anova_table = list(correction = "none", es = "pes"))
@@ -794,7 +794,7 @@ anova_print_Intensity_Pre_AUC <- apa_print(anova, mse = "FALSE",correction = "no
 
 
 simple <- emmeans(anova, ~stimStrength)
-simple_print_Intensity_Pre_AUC <- apa_print.emmGrid(pairs(simple, adjust = "tukey"))
+simple_print_Intensity_Pre_AUC <- apa_print(pairs(simple, adjust = "tukey"))
 
 ## Latency
 anova <- aov_4(DA_Latency_s ~ drugs + (stimStrength|subj), data = data_subset, anova_table = list(correction = "none", es = "pes"))
@@ -803,7 +803,7 @@ anova_print_Intensity_Pre_Latency <- apa_print(anova, mse = "FALSE",correction =
 
 
 simple <- emmeans(anova, ~stimStrength)
-simple_print_Intensity_Pre_Latency <- apa_print.emmGrid(pairs(simple, adjust = "tukey"))
+simple_print_Intensity_Pre_Latency <- apa_print(pairs(simple, adjust = "tukey"))
 
 # Pulses - PreInjection ====
 # Filter the relevant stage of data for analysis
@@ -817,7 +817,7 @@ anova_print_Pulses_Pre_Peak <- apa_print(anova, mse = "FALSE",correction = "none
 
 
 simple <- emmeans(anova, ~stimPulses)
-simple_print_Pulses_Pre_Peak <- apa_print.emmGrid(pairs(simple, adjust = "tukey"))
+simple_print_Pulses_Pre_Peak <- apa_print(pairs(simple, adjust = "tukey"))
 
 ## AUC
 anova <- aov_4(DA_AUC ~ drugs + (stimPulses|subj), data = data_subset, anova_table = list(correction = "none", es = "pes"))
@@ -826,7 +826,7 @@ anova_print_Pulses_Pre_AUC <- apa_print(anova, mse = "FALSE",correction = "none"
 
 
 simple <- emmeans(anova, ~stimPulses)
-simple_print_Pulses_Pre_AUC <- apa_print.emmGrid(pairs(simple, adjust = "tukey"))
+simple_print_Pulses_Pre_AUC <- apa_print(pairs(simple, adjust = "tukey"))
 
 ## Latency
 anova <- aov_4(DA_Latency_s ~ drugs + (stimPulses|subj), data = data_subset, anova_table = list(correction = "none", es = "pes"))
@@ -835,7 +835,7 @@ anova_print_Pulses_Pre_Latency <- apa_print(anova, mse = "FALSE",correction = "n
 
 
 simple <- emmeans(anova, ~stimPulses)
-simple_print_Pulses_Pre_Latency <- apa_print.emmGrid(pairs(simple, adjust = "tukey"))
+simple_print_Pulses_Pre_Latency <- apa_print(pairs(simple, adjust = "tukey"))
 
 # Post Injection ----
 # Intensity - PostInjection =====
@@ -850,7 +850,7 @@ anova_print_Intensity_Post_Peak <- apa_print(anova, mse = "FALSE",correction = "
 
 
 simple <- emmeans(anova, ~stimStrength)
-simple_print_Intensity_Post_Peak <- apa_print.emmGrid(pairs(simple, adjust = "tukey"))
+simple_print_Intensity_Post_Peak <- apa_print(pairs(simple, adjust = "tukey"))
 
 ## AUC
 anova <- aov_4(DA_AUC ~ drugs + (stimStrength|subj), data = data_subset, anova_table = list(correction = "none", es = "pes"))
@@ -859,7 +859,7 @@ anova_print_Intensity_Post_AUC <- apa_print(anova, mse = "FALSE",correction = "n
 
 
 simple <- emmeans(anova, ~stimStrength)
-simple_print_Intensity_Post_AUC <- apa_print.emmGrid(pairs(simple, adjust = "tukey"))
+simple_print_Intensity_Post_AUC <- apa_print(pairs(simple, adjust = "tukey"))
 
 ## Latency
 anova <- aov_4(DA_Latency_s ~ drugs + (stimStrength|subj), data = data_subset, anova_table = list(correction = "none", es = "pes"))
@@ -868,7 +868,7 @@ anova_print_Intensity_Post_Latency <- apa_print(anova, mse = "FALSE",correction 
 
 
 simple <- emmeans(anova, ~stimStrength)
-simple_print_Intensity_Post_Latency <- apa_print.emmGrid(pairs(simple, adjust = "tukey"))
+simple_print_Intensity_Post_Latency <- apa_print(pairs(simple, adjust = "tukey"))
 
 # Pulses - PostInjection ====
 #Filter the relevant stage of data for analysis
@@ -882,7 +882,7 @@ anova_print_Pulses_Post_Peak <- apa_print(anova, mse = "FALSE",correction = "non
 
 
 simple <- emmeans(anova, ~stimPulses)
-simple_print_Pulses_Post_Peak <- apa_print.emmGrid(pairs(simple, adjust = "tukey"))
+simple_print_Pulses_Post_Peak <- apa_print(pairs(simple, adjust = "tukey"))
 
 ## AUC
 anova <- aov_4(DA_AUC ~ drugs + (stimPulses|subj), data = data_subset, anova_table = list(correction = "none", es = "pes"))
@@ -891,7 +891,7 @@ anova_print_Pulses_Post_AUC <- apa_print(anova, mse = "FALSE",correction = "none
 
 
 simple <- emmeans(anova, ~stimPulses)
-simple_print_Pulses_Post_AUC <- apa_print.emmGrid(pairs(simple, adjust = "tukey"))
+simple_print_Pulses_Post_AUC <- apa_print(pairs(simple, adjust = "tukey"))
 
 ## Latency
 anova <- aov_4(DA_Latency_s ~ drugs + (stimPulses|subj), data = data_subset, anova_table = list(correction = "none", es = "pes"))
@@ -900,13 +900,13 @@ anova_print_Pulses_Post_Latency <- apa_print(anova, mse = "FALSE",correction = "
 
 
 simple <- emmeans(anova, ~stimPulses)
-simple_print_Pulses_Post_Latency <- apa_print.emmGrid(pairs(simple, adjust = "tukey"))
+simple_print_Pulses_Post_Latency <- apa_print(pairs(simple, adjust = "tukey"))
 ```
 
 Prior to critical drug injections (i.e. the "Pre" period) all rats were injected with saline, and baseline stimulation-response curves were measured. First, stimulation intensity was manipulated (Fig S4A-C), resulting in proportional stimulation of DA release. Peak DA increased with stimulation intensity (Fig. S4A; Intensity: `r anova_print_Intensity_Pre_Peak$statistic$stimStrength`; 100 vs 200 `r simple_print_Intensity_Pre_Peak$statistic$X100_X200`, 200 vs 300 `r simple_print_Intensity_Pre_Peak$statistic$X200_X300`), but was not modulated by drug group allocation (Drug: `r anova_print_Intensity_Pre_Peak$statistic$drugs`, Drug x Intensity: `r anova_print_Intensity_Pre_Peak$statistic$drugs_stimStrength`). Similarly, AUC increased with stimulation intensity (Fig. S4B; Intensity: `r anova_print_Intensity_Pre_AUC$statistic$stimStrength`; 100 vs 200 `r simple_print_Intensity_Pre_AUC$statistic$X100_X200`, 200 vs 300 `r simple_print_Intensity_Pre_AUC$statistic$X200_X300`), but was not modulated by drug group (Drug: `r anova_print_Intensity_Pre_AUC$statistic$drugs`, Drug x Intensity: `r anova_print_Intensity_Pre_AUC$statistic$drugs_stimStrength`). Latency to peak was not modulated by stimulation intensity (Fig. S4C; Intensity: `r anova_print_Intensity_Pre_Latency$statistic$stimStrength`, or by drug group (Drug: `r anova_print_Intensity_Pre_Latency$statistic$drugs`, Drug x Intensity: `r anova_print_Intensity_Pre_Latency$statistic$drugs_stimStrength`).
 
 
-Next, the number of stimualtion pulses was manipulated (Fig. S4D-F), and again the resultant DA release was proportional to stimulation magnitude. Peak DA increased with pulse number (Fig. S4D; Pulses: `r anova_print_Pulses_Pre_Peak$statistic$stimPulses`; 12 vs 24 `r simple_print_Pulses_Pre_Peak$statistic$X12_X24`, 24 vs 36 `r simple_print_Pulses_Pre_Peak$statistic$X24_X36`), but was not modulated by drug group allocation (Drug: `r anova_print_Pulses_Pre_Peak$statistic$drugs`, Drug x Intensity: `r anova_print_Pulses_Pre_Peak$statistic$drugs_stimPulses`). Similarly, AUC increased with stimulation intensity (Fig. S4E; Pulses: `r anova_print_Pulses_Pre_AUC$statistic$stimPulses`; 12 vs 24 `r simple_print_Pulses_Pre_AUC$statistic$X12_X24`, 24 vs 36 `r simple_print_Pulses_Pre_AUC$statistic$X24_X36`), but was not modulated by drug group (Drug: `r anova_print_Pulses_Pre_AUC$statistic$drugs`, Drug x Intensity: `r anova_print_Pulses_Pre_AUC$statistic$drugs_stimPulses`). Latency to peak was also modulated by stimulation intensity (Fig. S4F; Pulses: `r anova_print_Pulses_Pre_Latency$statistic$stimPulses`; 12 vs 24 `r simple_print_Pulses_Pre_Latency$statistic$X12_X24`, 24 vs 36 `r simple_print_Pulses_Pre_Latency$statistic$X24_X36`), but was not modulated by drug group (Drug: `r anova_print_Pulses_Pre_Latency$statistic$drugs`, Drug x Intensity: `r anova_print_Pulses_Pre_Latency$statistic$drugs_stimPulses`).
+Next, the number of stimulation pulses was manipulated (Fig. S4D-F), and again the resultant DA release was proportional to stimulation magnitude. Peak DA increased with pulse number (Fig. S4D; Pulses: `r anova_print_Pulses_Pre_Peak$statistic$stimPulses`; 12 vs 24 `r simple_print_Pulses_Pre_Peak$statistic$X12_X24`, 24 vs 36 `r simple_print_Pulses_Pre_Peak$statistic$X24_X36`), but was not modulated by drug group allocation (Drug: `r anova_print_Pulses_Pre_Peak$statistic$drugs`, Drug x Intensity: `r anova_print_Pulses_Pre_Peak$statistic$drugs_stimPulses`). Similarly, AUC increased with stimulation intensity (Fig. S4E; Pulses: `r anova_print_Pulses_Pre_AUC$statistic$stimPulses`; 12 vs 24 `r simple_print_Pulses_Pre_AUC$statistic$X12_X24`, 24 vs 36 `r simple_print_Pulses_Pre_AUC$statistic$X24_X36`), but was not modulated by drug group (Drug: `r anova_print_Pulses_Pre_AUC$statistic$drugs`, Drug x Intensity: `r anova_print_Pulses_Pre_AUC$statistic$drugs_stimPulses`). Latency to peak was also modulated by stimulation intensity (Fig. S4F; Pulses: `r anova_print_Pulses_Pre_Latency$statistic$stimPulses`; 12 vs 24 `r simple_print_Pulses_Pre_Latency$statistic$X12_X24`, 24 vs 36 `r simple_print_Pulses_Pre_Latency$statistic$X24_X36`), but was not modulated by drug group (Drug: `r anova_print_Pulses_Pre_Latency$statistic$drugs`, Drug x Intensity: `r anova_print_Pulses_Pre_Latency$statistic$drugs_stimPulses`).
 
 
 Following a cirtical injection of either saline or 10 mg/kg LY354740, and a 30 minute baseline (see Fig. 4B-E), stimulation-response curves were measured once again to assess the effect of LY354740 on the sensitivity of mesolimbic DA release. First, stimulation intesnity was manipulated (same data presented as percentage of baseline in Fig. 4F-H), and DA release was proportional to stimulation intensity and not significantly modulated by LY354740 (Fig. S4G-I). Peak DA increased with stimulation intensity (Fig. S4G; Intensity: `r anova_print_Intensity_Post_Peak$statistic$stimStrength`; 100 vs 200 `r simple_print_Intensity_Post_Peak$statistic$X100_X200`, 200 vs 300 `r simple_print_Intensity_Post_Peak$statistic$X200_X300`), but was not modulated by drug condition (Drug: `r anova_print_Intensity_Post_Peak$statistic$drugs`, Drug x Intensity: `r anova_print_Intensity_Post_Peak$statistic$drugs_stimStrength`). Similarly, AUC increased with stimulation intensity (Fig. S4H; Intensity: `r anova_print_Intensity_Post_AUC$statistic$stimStrength`; 100 vs 200 `r simple_print_Intensity_Post_AUC$statistic$X100_X200`, 200 vs 300 `r simple_print_Intensity_Post_AUC$statistic$X200_X300`), but was not modulated by drug condition (Drug: `r anova_print_Intensity_Post_AUC$statistic$drugs`, Drug x Intensity: `r anova_print_Intensity_Post_AUC$statistic$drugs_stimStrength`). Latency to peak was not modulated by stimulation intensity (Fig. S4I; Intensity: `r anova_print_Intensity_Post_Latency$statistic$stimStrength`, or by drug condition (Drug: `r anova_print_Intensity_Post_Latency$statistic$drugs`, Drug x Intensity: `r anova_print_Intensity_Post_Latency$statistic$drugs_stimStrength`).
